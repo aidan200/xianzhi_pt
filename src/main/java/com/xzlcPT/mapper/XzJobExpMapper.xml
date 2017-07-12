@@ -61,7 +61,7 @@
     select
     <include refid="JobExpInfoList" />
     FROM xz_job_exp j LEFT JOIN xz_job_exp_domain d on j.jobexp_id = d.job_exp_id LEFT JOIN xz_field f on d.field_id = f.field_id
-    where f.field_type = 1
+    where f.field_type = 1 or f.field_type is null
     and resume_id = #{resumeId,jdbcType=BIGINT}
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
