@@ -17,7 +17,8 @@
         .navbar-bottom {
             background-color: rgba(85, 97, 101, 0);
             position: fixed;
-            z-index: 99999;width: 100%;background-color: rgba(85, 97, 101, 0)
+            z-index: 99999;width: 100%;background-color: rgba(85, 97, 101, 0);
+            box-shadow: none;
         }
     </style>
     <!--轮播-->
