@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+
+<%@ taglib prefix="j" uri="/xianzhipt/jsonTag" %>
 <html>
 <head>
     <title>Title</title>
@@ -18,5 +20,7 @@
         密码<input name="password" value="aaa">
         <input type="submit">
     </form>
+<%--    <j:toJson obj="${userLogin}"/>
+    aaaaa--%>
 </body>
 </html>
