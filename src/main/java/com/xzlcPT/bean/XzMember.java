@@ -20,6 +20,7 @@ public class XzMember {
     private String memberName;//姓名
     private int memberSex; //性别 0:男 1:女
     private int memberAge;//年龄
+    private Date memberBirth;//生日
     @NotEmpty(message="不能为空",groups = {F1.class})
     private String memberEducation;
     private String memberIDcard;//身份证号
@@ -46,6 +47,14 @@ public class XzMember {
     @GroupSequence( { XzMember.F1.class })
     public interface Group {
 
+    }
+
+    public Date getMemberBirth() {
+        return memberBirth;
+    }
+
+    public void setMemberBirth(Date memberBirth) {
+        this.memberBirth = memberBirth;
     }
 
     public String getMemberEducation() {
@@ -185,6 +194,7 @@ public class XzMember {
                 ", memberName='" + memberName + '\'' +
                 ", memberSex=" + memberSex +
                 ", memberAge=" + memberAge +
+                ", memberBirth=" + memberBirth +
                 ", memberEducation='" + memberEducation + '\'' +
                 ", memberIDcard='" + memberIDcard + '\'' +
                 ", memberPicture='" + memberPicture + '\'' +

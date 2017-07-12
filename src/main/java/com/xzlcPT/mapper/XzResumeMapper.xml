@@ -73,7 +73,7 @@
     select
     <include refid="ResumeInfoList" />
     FROM xz_resume r LEFT JOIN xz_resume_domain d on r.resume_id = d.resume_id LEFT JOIN xz_field f on d.field_id = f.field_id
-    where f.field_type = 1
+    where f.field_type = 2 or f.field_type = 3
     and member_id = #{memberId,jdbcType=BIGINT}
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
