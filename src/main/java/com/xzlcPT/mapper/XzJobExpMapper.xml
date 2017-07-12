@@ -45,13 +45,13 @@
       <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
     </collection>
   </resultMap>
-  <sql id="JobExpInfoList">
+  <sql id="Base_Column_List">
     jobexp_id, resume_id, jobexp_company_name, jobexp_field, jobexp_postion, jobexp_workspace, 
     jobexp_subordinate, jobexp_begin_time, jobexp_end_time, jobexp_duty, jobexp_dept, 
     jobexp_company_scale, jobexp_company_type, jobexp_mm, jobexp_ym, create_time, delete_time, 
     filed1, filed2, filed3
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="JobExpInfoList">
     j.jobexp_id, j.resume_id, j.jobexp_company_name, j.jobexp_field, j.jobexp_postion, j.jobexp_workspace,
     j.jobexp_subordinate, j.jobexp_begin_time, j.jobexp_end_time, j.jobexp_duty, j.jobexp_dept,
     j.jobexp_company_scale, j.jobexp_company_type, j.jobexp_mm, j.jobexp_ym,

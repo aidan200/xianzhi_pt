@@ -1,6 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class XzJobExp {
     private Long jobexpId;
@@ -42,6 +43,16 @@ public class XzJobExp {
     private String filed2;
 
     private String filed3;
+
+    private List<XzField> fields;
+
+    public List<XzField> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<XzField> fields) {
+        this.fields = fields;
+    }
 
     public Long getJobexpId() {
         return jobexpId;
@@ -201,5 +212,32 @@ public class XzJobExp {
 
     public void setFiled3(String filed3) {
         this.filed3 = filed3 == null ? null : filed3.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "XzJobExp{" +
+                "jobexpId=" + jobexpId +
+                ", resumeId=" + resumeId +
+                ", jobexpCompanyName='" + jobexpCompanyName + '\'' +
+                ", jobexpField='" + jobexpField + '\'' +
+                ", jobexpPostion='" + jobexpPostion + '\'' +
+                ", jobexpWorkspace='" + jobexpWorkspace + '\'' +
+                ", jobexpSubordinate=" + jobexpSubordinate +
+                ", jobexpBeginTime=" + jobexpBeginTime +
+                ", jobexpEndTime=" + jobexpEndTime +
+                ", jobexpDuty='" + jobexpDuty + '\'' +
+                ", jobexpDept='" + jobexpDept + '\'' +
+                ", jobexpCompanyScale='" + jobexpCompanyScale + '\'' +
+                ", jobexpCompanyType='" + jobexpCompanyType + '\'' +
+                ", jobexpMm=" + jobexpMm +
+                ", jobexpYm=" + jobexpYm +
+                ", createTime=" + createTime +
+                ", deleteTime=" + deleteTime +
+                ", filed1='" + filed1 + '\'' +
+                ", filed2='" + filed2 + '\'' +
+                ", filed3='" + filed3 + '\'' +
+                ", fields=" + fields +
+                '}';
     }
 }
