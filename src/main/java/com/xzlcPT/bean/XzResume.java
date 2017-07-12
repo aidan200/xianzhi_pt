@@ -1,6 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class XzResume {
     private Long resumeId;
@@ -52,6 +53,16 @@ public class XzResume {
     private String filed2;
 
     private String filed3;
+
+    private List<XzField> fields;
+
+    public List<XzField> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<XzField> fields) {
+        this.fields = fields;
+    }
 
     public Long getResumeId() {
         return resumeId;
@@ -281,6 +292,7 @@ public class XzResume {
                 ", filed1='" + filed1 + '\'' +
                 ", filed2='" + filed2 + '\'' +
                 ", filed3='" + filed3 + '\'' +
+                ", fields=" + fields +
                 '}';
     }
 }

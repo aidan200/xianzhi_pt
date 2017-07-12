@@ -24,7 +24,7 @@ public class ResumeController extends BaseController {
     @Autowired
     private XzResumeService resumeService;
 
-
+    //个人编辑页查询个人简历
     @ResponseBody
     @RequestMapping("selResume.do")
     public Map<String,Object> selResume(@ModelAttribute("userLogin")XzLogin userLogin){
