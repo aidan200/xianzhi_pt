@@ -311,14 +311,14 @@ ul,li{
 .zp_index_p_left{
     padding-left: 37px;
 }
-.zp_jianli_cont_left_xl > div > ul{
+.zp_jianli_cont_left_xl > .zp_qq1 > ul{
     width: 100%;
     padding: 0;
     margin: 0;
     height: 20px;
     margin-bottom: 20px;
 }
-.zp_jianli_cont_left_xl > div > ul > li{
+.zp_jianli_cont_left_xl > .zp_qq1 > ul > li{
     width: 33%;
     font-size: 12px;
     float: left;
@@ -548,7 +548,7 @@ ul,li{
 
 /*个人修改信息部分开始了   1*/
 .zp_jianli_zl_1 {
-    display: none;
+    display: block;
     width: 600px;
     margin: 0 auto;
     background: #ffffff;
@@ -626,7 +626,7 @@ ul,li{
 .zp_jianli_zl_2{
     width: 600px;
     margin: 0 auto;
-    display: none;
+    display: block;
     background: #ffffff;
     border: 1px solid #3D9CCC;
     border-top: 5px solid #3D9CCC;
@@ -654,13 +654,20 @@ ul,li{
     float: right;
     border-radius: 3px;
 }
+#jl_cstime{
+    display: inline-block;
+    width: 170px;
+    height: 100%;
+    float: right;
+    border-radius: 3px;
+}
 .zp_jianli_zl_2_input1 {
     display: inline-block;
     width: 170px;
     float: right;
     height: 100%;
     border-radius: 3px;
-    background: #F5F5F5;
+
 
 }
 .zp_jianli_zl_2  span{
@@ -705,8 +712,11 @@ ul,li{
     border-top: 5px solid #3D9CCC;
     position: relative;
     padding: 20px 0;
-    display: none;
+    display: block;
 
+}
+#zyyx_cont{
+    padding-left: 37px;
 }
 .zp_jianli_zl_3 > ul{
 
@@ -836,6 +846,7 @@ ul,li{
     position: relative;
     padding: 20px 0;
     display: block;
+    margin-bottom: 20px;
 }
 .zp_jianli_zl_5 > ul{
     width: 100%;
@@ -860,8 +871,9 @@ ul,li{
     display: inline-block;
     width: 200px;
     height: 100%;
-
+    padding-top: 3px;
     border-radius: 3px;
+    padding-left: 8px;
 }
 .zp_jianli_zl_5 > ul > li > input[type='checkbox']{
     position: relative;
@@ -902,12 +914,15 @@ ul,li{
 }
 .zp_jianli_zl_7{
     width: 600px;
+
     margin: 0 auto;
+    margin-bottom: 20px;
     background: #ffffff;
     border: 1px solid #3D9CCC;
     border-top: 5px solid #3D9CCC;
     position: relative;
     padding: 20px 0;
+    height: 750px;
     display: block;
 }
 .zp_jianli_zl_7 > ul{
@@ -928,4 +943,97 @@ ul,li{
     float: right;
     border-radius: 3px;
     width: 434px;
+}
+.zp_jianli_zl_7 > .zp_zmjy{
+
+    height: 540px;
+    padding: 0 60px 0 30px;
+
+}
+.zp_jianli_zl_7 > .zp_zmjy  > div{
+
+    height: 180px;
+
+}
+.zp_jianli_zl_7 > .zp_zmjy > div> div{
+    float: right;
+}
+.zp_jianli_zl_7 > .zp_zmjy >  div> div > textarea{
+    display: inline-block;
+    height: 130px;
+    border-radius: 3px;
+    padding: 15px;
+    width: 434px;
+}
+.zp_jianli_zl_7 > .zp_zmjy >  div> div > p{
+    text-align: right;
+}
+.zp_xmjy{
+    padding-left: 37px;
+    margin-bottom: 20px;
+}
+.zp_xmjy_left {
+    width: 70px;
+
+
+    float: left;
+}
+.zp_xmjy_right {
+    float: left;
+
+
+    width: 500px;
+
+}
+.zp_xmjy  ul{
+    list-style: none;
+
+}
+.zp_xmjy  li{
+    border-bottom: 10px;
+    padding: 10px 0;
+}
+.zp_jianli_zl_8{
+    width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #3D9CCC;
+    border-top: 5px solid #3D9CCC;
+    position: relative;
+    padding: 20px 20px;
+    display: block;
+}
+.zp_jianli_zl_8 > textarea{
+    height: 130px;
+    margin-bottom: 5px;
+}
+.zp_jianli_zl_8 > p{
+    color: #c0c0c0;
+    text-align: right;
+    font-size: 14px;
+}
+.zp_jianli_zl_8 > p > span{
+    color: #333333;
+}
+.zp_jianli_zl_9{
+    width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #3D9CCC;
+    border-top: 5px solid #3D9CCC;
+    position: relative;
+    padding: 20px 20px;
+    display: block;
+}
+.zp_jianli_zl_9 > textarea{
+    height: 130px;
+    margin-bottom: 5px;
+}
+.zp_jianli_zl_9 > p{
+    color: #c0c0c0;
+    text-align: right;
+    font-size: 14px;
+}
+.zp_jianli_zl_9 > p > span{
+    color: #333333;
 }
