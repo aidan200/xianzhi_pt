@@ -574,7 +574,8 @@ ul {
     overflow: hidden;
 
 }
-.zp_na2 a{
+
+.zp_na2 a {
     float: right;
     overflow: hidden;
     height: 15px;
@@ -618,6 +619,8 @@ ul {
     background-color: rgb(255, 165, 0);
     color: #FFFFFF;
     border: 1px solid rgb(255, 165, 0);
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
 }
 
 /*不能点击class b*/
