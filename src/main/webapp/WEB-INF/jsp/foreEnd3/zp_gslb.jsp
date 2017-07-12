@@ -19,6 +19,7 @@
     <title>公司列表</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_lb.css">
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
@@ -36,81 +37,84 @@
     </div>
 </div>
 <section class="container zp_lb_cont">
-    <div class="row zp_lb_cont_top">
-        <div class="zp_lb_cont_top_1">
-            <div class="pull-left" style="width: 42px">薪资：</div>
-            <div class="pull-left" style="width: 766px">
-                <ul>
-                    <li><a href="">10-15万</a></li>
-                    <li><a href="">15-20万</a></li>
-                    <li><a href="">20-30万</a></li>
-                    <li><a href="">50-100万</a></li>
-                    <li><a href="">100万以上</a></li>
-                    <li><a href="">自定义</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="zp_lb_cont_top_2">
-            <div class="pull-left" style="width: 42px">更多：</div>
-            <div class="pull-left" style="width: 766px">
-                <ul>
-                    <li class="zp_lb_li">
-                        <a >三天以内</a>
-                        <ul>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                        </ul>
-                    </li>
-                    <li class="zp_lb_li">
-                        <a >三天以内</a>
-                        <ul>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                        </ul>
-                    </li>
-                    <li class="zp_lb_li">
-                        <a >三天以内</a>
-                        <ul>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                        </ul>
-                    </li>
-                    <li class="zp_lb_li">
-                        <a >三天以内</a>
-                        <ul>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                            <li><a href="">三天以内</a></li>
-                        </ul>
-                    </li>
 
-                </ul>
+    <form action="">
+        <div class="row zp_lb_cont_top">
+            <div class="zp_lb_cont_top_1">
+                <div class="pull-left" style="width: 42px;color: #999">薪资：</div>
+                <div class="pull-left" style="width: 766px">
+                    <ul>
+                        <li><a href="###" rel="type" id="aa" class="divSmall">10-15万</a></li>
+                        <li><a href="###" rel="type" id="bb" class="divSmall">15-20万</a></li>
+                        <li><a href="###" rel="type" id="cc" class="divSmall">20-30万</a></li>
+                        <li><a href="###" rel="type" id="dd" class="divSmall">50-100万</a></li>
+                        <li><a href="###" rel="type" id="ee" class="divSmall">100万以上</a></li>
+                        <li><a href="###" rel="type" id="ff" class="divSmall">自定义</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="zp_lb_cont_top_2">
+                <div class="pull-left" style="width: 42px;color: #999">更多：</div>
+                <div class="pull-left" style="width: 766px">
+                    <ul>
+                        <li class="zp_lb_li">
+                            <a>发布时间</a>
+                            <ul>
+                                <li><a href="###" rel="one" id="gg" class="divSmall">一天以内</a></li>
+                                <li><a href="###" rel="one" id="hh" class="divSmall">二天以内</a></li>
+                                <li><a href="###" rel="one" id="ii" class="divSmall">三天以内</a></li>
+                                <li><a href="###" rel="one" id="jj" class="divSmall">四天以内</a></li>
+                            </ul>
+                        </li>
+                        <li class="zp_lb_li">
+                            <a>职位类型</a>
+                            <ul>
+                                <li><a href="###" rel="two" id="kk" class="divSmall">CEO</a></li>
+                                <li><a href="###" rel="two" id="ll" class="divSmall">CFO</a></li>
+                                <li><a href="###" rel="two" id="mm" class="divSmall">CIO</a></li>
+                                <li><a href="###" rel="two" id="nn" class="divSmall">COO</a></li>
+                            </ul>
+                        </li>
+                        <li class="zp_lb_li">
+                            <a>企业规模</a>
+                            <ul>
+                                <li><a href="###" rel="three" id="oo" class="divSmall">特别大</a></li>
+                                <li><a href="###" rel="three" id="pp" class="divSmall">很大</a></li>
+                                <li><a href="###" rel="three" id="qq" class="divSmall">一般大</a></li>
+                                <li><a href="###" rel="three" id="rr" class="divSmall">有点小</a></li>
+                            </ul>
+                        </li>
+                        <li class="zp_lb_li">
+                            <a>企业性质</a>
+                            <ul>
+                                <li><a href="###" rel="four" id="ss" class="divSmall">政府</a></li>
+                                <li><a href="###" rel="four" id="tt" class="divSmall">事业单位</a></li>
+                                <li><a href="###" rel="four" id="uu" class="divSmall">私企</a></li>
+                                <li><a href="###" rel="four" id="vv" class="divSmall">国企</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="zp_lb_cont_top_3">
+                <div class="zp_lb_cont_top_3_left">
+                    <span>已选条件：</span>
+                </div>
+                <div class="zp_lb_cont_top_3_right" id="mainSelect">
+                    <%--<a href="">三天之内&nbsp;&nbsp;<span>x</span></a>--%>
+                    <%--<a href="">三天之内&nbsp;&nbsp;<span>x</span></a>--%>
+                    <%--<a href="">三天之内&nbsp;&nbsp;<span>x</span></a>--%>
+                </div>
+                <div class="zp_lb_cont_top_3_right2">
+                    共找到 <span>10000+</span>职位
+                </div>
             </div>
         </div>
-        <div class="zp_lb_cont_top_3">
-            <div class="zp_lb_cont_top_3_left">
-                <span>已选条件：</span>
-            </div>
-            <div class="zp_lb_cont_top_3_right">
-                <a href="">三天之内&nbsp;&nbsp;<span>x</span></a>
-                <a href="">三天之内&nbsp;&nbsp;<span>x</span></a>
-                <a href="">三天之内&nbsp;&nbsp;<span>x</span></a>
-            </div>
-            <div class="zp_lb_cont_top_3_right2">
-                共找到 <span>10000+</span>职位
-            </div>
-        </div>
-    </div>
+    </form>
     <div class="row zp_lb_cont_middle">
-        <div class="col-md-8 zp_lb_cont_middle_left">
-            <ul>
+        <div class="col-md-9 zp_lb_cont_middle_left">
+            <ul class="zp_u">
                 <c:forEach items="${postionList}" var="p">
                     <li>
                         <i><b>
@@ -137,7 +141,8 @@
                                         ${p.postionMm*12/10000}万-${p.postionYm*12/10000}万
                                     </c:otherwise>
                                 </c:choose>
-                            </span>&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionExp}</p>
+                            </span>&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionExp}
+                            </p>
                             <span><fmt:formatDate value="${p.postionTime}" pattern="yyyy-MM-dd"/></span>
                         </div>
                         <div class="zp_index_cont_left_zwtj_cont_right">
@@ -162,7 +167,7 @@
                                         <c:set var="exitId" value="0"></c:set>
                                     </c:if>
                                 </c:forEach>
-                                </p>
+                            </p>
                         </div>
                     </li>
                 </c:forEach>
@@ -193,24 +198,58 @@
                     </div>
                 </li>--%>
             </ul>
-            <div class="zp_lb_fy">
-                <div></div>
-                <a href="" class="fa fa-angle-double-left zp_lb_fy_a1"></a>
-                <a href="" class="zp_lb_fy_a2">上一页</a>
-                <div>
-                    <a href="">1</a>
-                    <a href="">22</a>
-                    <a href="">333</a>
-                </div>
-                <a href="" class="zp_lb_fy_a2">下一页</a>
-                <a href="" class="fa fa-angle-double-right zp_lb_fy_a1"></a>
-                <form action="">
-                    跳转到<input type="text">页
-                    <button type="submit">确定</button>
-                </form>
+            <div class="zp_botv">
+                <ul class="pagination zp_pa">
+                    <li class="b"><a href="#">上一页</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li class="a"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">下一页</a></li>
+                </ul>
             </div>
         </div>
-        <div class="col-md-4 zp_lb_cont_middle_right " style="padding-left: 30px;">
+        <div class="col-md-3 zp_lb_cont_middle_right " style="padding-left: 15px;">
+            <div class="zp_rt">
+                <h4>最近浏览</h4>
+                <ul>
+                    <li>
+                        <div>
+                            <a href="" class="zp_na">上海融链科技有限公司</a>
+                            <span class="zp_na2"><a href="">WEB前端</a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="" class="zp_na">上海融链科技有限公司</a>
+                            <span class="zp_na2"><a href="">WEB前端</a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="" class="zp_na">上海融链科技有限公司</a>
+                            <span class="zp_na2"><a href="">WEB前端</a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="" class="zp_na">上海融链科技有限公司</a>
+                            <span class="zp_na2"><a href="">WEB前端</a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <a href="" class="zp_na">上海融链科技有限公司</a>
+                            <span class="zp_na2"><a href="">WEB前端WEB前端WEB前端WEB前端WEB前端WEB前端</a></span>
+                        </div>
+                    </li>
+                    
+
+
+                </ul>
+
+            </div>
             <ul>
                 <li style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_lb_gb1.png')"></li>
                 <li style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_lb_gb2.png')"></li>
@@ -224,8 +263,45 @@
 
 </section>
 
-
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".divSmall").click(function () {
+            var isAlreadyHave = false;
+            var thisID = $(this).attr("id");
+            var classType = $(this).attr("rel")
+            $(".divSmall2").each(function () {
+                if ($(this).attr("rel") == thisID) {
+                    isAlreadyHave = true;
+                }
+                if ($(this).attr("ttype") == classType) {
+                    goBegin($(this).attr("rel"));
+                    $(this).remove();
+                }
+            });
+            if (!isAlreadyHave) {
+                $(this).css({"background-color":"#FFA500",
+                    "color":"white"
+                });
+                writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"));
+            }
+        });
+        $(".zp_img").live('click', function () {
+            goBegin($(this).parent().attr("rel"));
+            $(this).parent().remove();
+        });
+    });
+    //输出一个div
+    function writeDiv(name, id, classONE) {
+        var divShow = "<div class='divSmall2' rel='" + id + "' ttype='" + classONE + "'>" + name + "<span class='fa fa-remove zp_img'></span></div>";
+        $("#mainSelect").html($("#mainSelect").html() + divShow);
+    }
+    function goBegin(ID) {
+        $("#" + ID).css({
+            "background-color":"#f8f8f8",
+            "color":"#666666"
+        });
+    }
+</script>
 
 
 </body>

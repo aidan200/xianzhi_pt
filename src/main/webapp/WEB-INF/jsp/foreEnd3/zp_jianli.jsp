@@ -166,7 +166,7 @@
 
                     </div>
                     <p class="zp_index_p_left zp_index_p_2">更准确的技能标签，让HR/猎头找到你？</p>
-                    <div class="zp_jianli_div1">
+                    <div class="zp_jianli_div1" id="jl_tjscjn">
                         添加擅长技能
                     </div>
 

@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -17,7 +16,7 @@
         .navbar-bottom {
             background-color: rgba(85, 97, 101, 0);
             position: fixed;
-            z-index: 99999;width: 100%;background-color: rgba(85, 97, 101, 0);
+            z-index: 99999;width: 100%;
             box-shadow: none;
         }
     </style>

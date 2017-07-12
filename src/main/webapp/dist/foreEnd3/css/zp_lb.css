@@ -42,44 +42,46 @@ ul {
     list-style-type: none;
 }
 
-
 /*----------------------导航---------------------------*/
 
-
 /****************************************************88*/
-.zp_lb_top{
-
-    height: 120px;
+.zp_lb_top {
+    height: 80px;
     background: #F0F0F0;
-    padding: 40px 0;
+    padding: 20px 0;
 }
-.zp_lb_ssk{
+
+.zp_lb_ssk {
     width: 980px;
     height: 40px;
     background: #ffffff;
     padding: 0;
 }
-.zp_lb_ssk_left{
+
+.zp_lb_ssk_left {
     float: left;
     height: 40px;
     width: 65px;
     border: 2px solid #FC9A2F;
-    box-sizing:border-box;
+    box-sizing: border-box;
     line-height: 40px;
     text-align: center;
 }
-.zp_lb_ssk_right{
+
+.zp_lb_ssk_right {
     float: left;
     border: 2px solid #FC9A2F;
-    box-sizing:border-box;
+    box-sizing: border-box;
     border-left: none;
     width: 915px;
     height: 40px;
 }
-.zp_lb_ssk_right > form{
+
+.zp_lb_ssk_right > form {
     height: 100%;
 }
-.zp_lb_ssk_right > form > input{
+
+.zp_lb_ssk_right > form > input {
     float: left;
     border: none;
     width: 80%;
@@ -88,7 +90,8 @@ ul {
     font-size: 14px;
     outline: none;
 }
-.zp_lb_ssk_right > form > button{
+
+.zp_lb_ssk_right > form > button {
     display: block;
     outline: none;
     border: none;
@@ -101,41 +104,48 @@ ul {
     height: 100%;
     float: right;
 }
+
 /*搜索结束了*/
-.zp_lb_cont{
+.zp_lb_cont {
     margin-top: 20px;
     width: 980px;
 }
-.zp_lb_cont_top{
 
-    background: #EEEEEE;
+.zp_lb_cont_top {
+
+    background: #f8f8f8;
     border: 1px solid #F0F0F0;
     padding: 15px 20px;
 }
-.zp_lb_cont_top > .zp_lb_cont_top_1{
+
+.zp_lb_cont_top > .zp_lb_cont_top_1 {
     height: 36px;
     margin-bottom: 10px;
 
 }
-.zp_lb_cont_top >.zp_lb_cont_top_1 > div{
+
+.zp_lb_cont_top > .zp_lb_cont_top_1 > div {
     height: 36px;
     margin-right: 20px;
     line-height: 36px;
     text-align: center;
 }
-.zp_lb_cont_top >.zp_lb_cont_top_1 > div > ul{
+
+.zp_lb_cont_top > .zp_lb_cont_top_1 > div > ul {
     padding: 0;
     margin: 0;
     height: 100%;
 }
-.zp_lb_cont_top >.zp_lb_cont_top_1 > div > ul > li{
+
+.zp_lb_cont_top > .zp_lb_cont_top_1 > div > ul > li {
     float: left;
     height: 100%;
     overflow: hidden;
     margin-right: 10px;
     padding: 6px 0;
 }
-.zp_lb_cont_top > .zp_lb_cont_top_1> div > ul > li > a{
+
+.zp_lb_cont_top > .zp_lb_cont_top_1 > div > ul > li > a {
     padding: 0 10px;
     text-align: center;
     margin: 0 auto;
@@ -145,27 +155,33 @@ ul {
     height: 24px;
     border-radius: 3px;
 }
-.zp_lb_cont_top > .zp_lb_cont_top_1 > div > ul > li > a:hover{
+
+.zp_lb_cont_top > .zp_lb_cont_top_1 > div > ul > li > a:hover {
+    /*color: #FFFFFF;*/
     background: #FC9A2F;
 }
-.zp_lb_cont_top > .zp_lb_cont_top_2{
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 {
     height: 36px;
     margin-bottom: 10px;
     z-index: 1000;
 
 }
-.zp_lb_cont_top >.zp_lb_cont_top_2 > div{
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 > div {
     height: 36px;
     margin-right: 20px;
     line-height: 36px;
     text-align: center;
 }
-.zp_lb_cont_top >.zp_lb_cont_top_2 > div > ul{
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 > div > ul {
     padding: 0;
     margin: 0;
     height: 100%;
 }
-.zp_lb_cont_top >.zp_lb_cont_top_2 > div > ul > li{
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 > div > ul > li {
     float: left;
     height: 100%;
     margin-right: 15px;
@@ -174,7 +190,8 @@ ul {
     position: relative;
 
 }
-.zp_lb_cont_top >.zp_lb_cont_top_2 > div > ul > li > a{
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 > div > ul > li > a {
     display: block;
     background: #FFFFFF;
     width: 100%;
@@ -184,9 +201,10 @@ ul {
     height: 100%;
     text-align: left;
     padding-left: 5px;
-    line-height:23px;
+    line-height: 23px;
 }
-.zp_lb_cont_top >.zp_lb_cont_top_2 > div > ul > li > ul{
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 > div > ul > li > ul {
     width: 100%;
     padding: 0;
     margin: 0;
@@ -196,15 +214,16 @@ ul {
     z-index: 9999;
     position: absolute;
 
-
 }
-.zp_lb_cont_top >.zp_lb_cont_top_2 > div > ul > li > ul li{
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 > div > ul > li > ul li {
     height: 24px;
     width: 100%;
     background: #ffffff;
     /*z-index: 9999;*/
 }
-.zp_lb_cont_top >.zp_lb_cont_top_2 > div > ul > li > ul li a{
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 > div > ul > li > ul li a {
     display: block;
     width: 100%;
     height: 100%;
@@ -212,74 +231,86 @@ ul {
     margin: 0 auto;
     font-size: 14px;
     padding-left: 5px;
-    line-height:23px;
+    line-height: 23px;
     color: #999999;
     /*z-index: 9999;*/
 }
-.zp_lb_cont_top >.zp_lb_cont_top_2 > div > ul > li > ul li a:hover{
-    background: #3D9CCC;
+
+.zp_lb_cont_top > .zp_lb_cont_top_2 > div > ul > li > ul li a:hover {
+    background: #FFA500;
     color: #ffffff;
 }
-.zp_lb_cont_top_3{
+
+.zp_lb_cont_top_3 {
     background: #F2F2F2;
     padding: 0 10px;
     color: #999B9E;
-    height: 40px;
+    height: 30px;
     z-index: -1;
 }
-.zp_lb_cont_top_3_left{
+
+.zp_lb_cont_top_3_left {
     float: left;
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
 
 }
+
 .zp_lb_cont_top_3_right {
     padding: 10px 0;
     float: left;
     width: 600px;
-    height: 40px;
+    height: 30px;
 
 }
-.zp_lb_cont_top_3_right > a{
-    height: 20px;
+
+.zp_lb_cont_top_3_right > a {
+    height: 23px;
     display: inline-block;
     margin-right: 5px;
-    padding:0 10px;
+    padding: 0 10px;
     color: #ffffff;
     background: #3D9CCC;
     border-radius: 2px;
     font-size: 12px;
-    line-height: 19px;
+    line-height: 23px;
 }
-.zp_lb_cont_top_3_right2{
+
+.zp_lb_cont_top_3_right2 {
     float: right;
-    height: 40px;
-    line-height: 40px;
+    height: 30px;
+    line-height: 30px;
 
 }
-.zp_lb_cont_top_3_right2 > span{
+
+.zp_lb_cont_top_3_right2 > span {
     color: #FC9A2F;
 }
-.zp_lb_cont_middle{
+
+.zp_lb_cont_middle {
     margin-top: 20px;
 }
-.zp_lb_cont_middle > div{
+
+.zp_lb_cont_middle > div {
     padding: 0;
 }
-.zp_lb_cont_middle_left ul{
+
+.zp_lb_cont_middle_left .zp_u {
     padding: 0;
     margin: 0;
 }
-.zp_lb_cont_middle_left ul li{
+
+.zp_lb_cont_middle_left > .zp_u > li {
     width: 100%;
     margin-bottom: 10px;
     background: #ffffff;
     border: 1px solid #D9D9D9;
     padding: 10px 20px 15px 20px;
-    height: 116px;
+    height: 120px;
     position: relative;
 }
-.zp_lb_cont_middle_left ul li > i{
+
+.zp_lb_cont_middle_left .zp_u li > i {
     position: absolute;
     right: 0;
     top: 0;
@@ -290,7 +321,8 @@ ul {
     cursor: pointer;
     text-align: center;
 }
-.zp_lb_cont_middle_left ul li > i b{
+
+.zp_lb_cont_middle_left .zp_u li > i b {
     position: absolute;
     top: -40px;
     left: -19px;
@@ -299,40 +331,50 @@ ul {
     color: #fff;
     font-style: normal;
 }
-.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_left{
+
+.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_left {
     width: 60%;
     height: 100%;
     border-right: 1px dotted #8197A2;
     float: left;
     box-sizing: border-box;
+    color: #666666;
 }
-.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_left > h4{
+
+.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_left > h4 {
     color: #3DA8DA;
 }
-.zp_lb_cont_middle_left  .zp_index_cont_left_zwtj_cont_left > p > span {
+
+.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_left > p > span {
     color: #FF6600;
 }
-.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_left >  span {
-    font-size: 10px;
+
+.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_left > span {
+    font-size: 13px;
     color: #999999;
 }
+
 .zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_right {
     width: 40%;
     height: 100%;
     float: left;
     padding-left: 20px;
     padding-top: 10px;
+    color: #666666;
 }
-.zp_lb_cont_middle_left  .zp_index_cont_left_zwtj_cont_right > p {
+
+.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_right > p {
     margin-bottom: 8px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
 .zp_lb_cont_middle_left .zp_index_cont_bz {
     height: 28px;
 }
-.zp_lb_cont_middle_left  .zp_index_cont_left_zwtj_cont_right > p > span {
+
+.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_right > p > span {
     float: left;
     padding: 2px 5px;
     border: 1px solid #e1f2fa;
@@ -342,12 +384,14 @@ ul {
     background-color: #edf9ff;
     color: #3d9ccc;
 }
-.zp_lb_fy{
+
+.zp_lb_fy {
     height: 28px;
     padding-left: 100px;
     margin-top: 25px;
 }
-.zp_lb_fy > .zp_lb_fy_a1{
+
+.zp_lb_fy > .zp_lb_fy_a1 {
     float: left;
     text-align: center;
     background: #F6F6F6;
@@ -358,7 +402,8 @@ ul {
     color: #3D9CCC;
 
 }
-.zp_lb_fy > .zp_lb_fy_a2{
+
+.zp_lb_fy > .zp_lb_fy_a2 {
     float: left;
     text-align: center;
     background: #F6F6F6;
@@ -369,12 +414,14 @@ ul {
     padding: 0 10px;
     color: #3D9CCC;
 }
-.zp_lb_fy > div{
+
+.zp_lb_fy > div {
     float: left;
 
     height: 28px;
 }
-.zp_lb_fy > div > a{
+
+.zp_lb_fy > div > a {
     color: #3D9CCC;
     float: left;
     text-align: center;
@@ -385,13 +432,15 @@ ul {
     font-size: 10px;
     padding: 0 15px;
 }
-.zp_lb_fy form{
+
+.zp_lb_fy form {
     float: left;
     margin-left: 30px;
     height: 28px;
     font-size: 12px;
 }
-.zp_lb_fy form input[type='text']{
+
+.zp_lb_fy form input[type='text'] {
     text-align: center;
     width: 33px;
     font-size: 12px;
@@ -399,7 +448,8 @@ ul {
     color: #BFCDE1;
     margin: 0 5px;
 }
-.zp_lb_fy form button{
+
+.zp_lb_fy form button {
     height: 28px;
     font-size: 10px;
     padding: 0 10px;
@@ -408,10 +458,11 @@ ul {
     color: #127DB3;
 }
 
-.zp_lb_cont_middle_right > ul{
+.zp_lb_cont_middle_right > ul {
     width: 100%;
 
 }
+
 .zp_lb_cont_middle_right > ul > li {
     width: 100%;
     height: 80px;
@@ -419,4 +470,166 @@ ul {
     background-repeat: no-repeat;
     background-position: center;
     margin-bottom: 10px;
+}
+
+/*-----------------*/
+.pull-left > ul > li > a {
+    color: #666666;
+}
+
+.zp_lb_cont_middle_left .zp_index_cont_left_zwtj_cont_left p {
+    margin-top: 18px;
+    font-size: 16px;
+}
+
+/**/
+.divClass {
+    float: left;
+    margin-top: 2px;
+    font-weight: bolder;
+}
+
+.divSmall {
+    width: auto;
+    height: 15px;
+    float: left;
+    margin-left: 4px;
+    margin-top: 2px;
+    /*background-color: #FFFFFF;*/
+    padding: 3px;
+    line-height: 15px;
+    cursor: pointer;
+}
+
+.divSmall:hover {
+    color: #FFFFFF;
+}
+
+.divSmall2 {
+    background-color: rgb(255, 165, 0);
+    color: #FFFFFF;
+    border-radius: 3px;
+    width: auto;
+    height: 20px;
+    float: left;
+    margin-left: 4px;
+    line-height: 16px;
+    padding: 3px;
+    margin-top: -5px;
+
+}
+
+.zp_img {
+    float: right;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.zp_rt {
+    width: 100%;
+    height: auto;
+    border: 1px solid #D9D9D9;
+    overflow: hidden;
+    padding: 20px 20px 10px 20px;
+    margin-bottom: 10px;
+
+}
+
+.zp_rt h4 {
+    font-size: 15px;
+    border-left: 5px solid rgb(255, 165, 0);
+    padding-left: 5px;
+}
+
+.zp_rt ul {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 5px;
+}
+
+.zp_rt ul li div {
+    border-bottom: 1px dashed #D9D9D9;
+    display: block;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+.zp_na {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    height: 24px;
+    overflow: hidden;
+}
+
+.zp_na2 {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    width: 100%;
+    height: 15px;
+    overflow: hidden;
+
+}
+.zp_na2 a{
+    float: right;
+    overflow: hidden;
+    height: 15px;
+    display: block;
+    text-align: right;
+}
+
+.zp_botv {
+    width: 100%;
+    text-align: center;
+}
+
+.zp_pa {
+    margin-top: 20px;
+}
+
+.zp_pa > .active > a {
+    background-color: rgb(255, 165, 0);
+    border: 1px solid rgb(255, 165, 0);
+}
+
+.zp_pa > .active > a:hover {
+    background-color: rgb(255, 165, 0);
+    border: 1px solid rgb(255, 165, 0);
+}
+
+.zp_pa > li > a {
+    color: #666666;
+}
+
+.zp_pa > li > a:hover, .zp_pa > li > span:hover, .zp_pa > li > a:focus, .zp_pa > li > span:focus {
+    /*border: 1px solid rgb(255, 165, 0);*/
+}
+
+.zp_pa > li > a, .zp_pa > li > span {
+    border: 1px solid #EEEEEE;
+    margin: 3px;
+}
+
+.zp_pa > .a > a:hover {
+    background-color: rgb(255, 165, 0);
+    color: #FFFFFF;
+    border: 1px solid rgb(255, 165, 0);
+}
+
+/*不能点击class b*/
+.zp_pa > .b > a {
+    /*background-color: #f8f8f8;*/
+    cursor: default;
+    color: #cacaca;
+}
+
+.zp_pa > .b > a:hover {
+    color: #cacaca;
+    /*background-color: #f8f8f8;*/
+    border: 1px solid #EEEEEE;
+
 }
