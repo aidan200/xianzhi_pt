@@ -9,6 +9,7 @@ function obj_yhxx(){
     this.gznf='';                       //工作年份
     this.zwmc='';                       //职位名称
     this.dqcs='';                       //当前城市
+    this.szgs='';                       //所在公司
     this.DOM={
         name:$('#grxx_name'),
         zwmc:$('#grxx_zwmc'),
@@ -28,9 +29,10 @@ obj_yhxx.prototype.init=function (){
             _self.name=data.resume.resumeName;         //姓名
             _self.xb=usersex;                         //性别
             _self.gznf=data.resume.resumeWorkinglife; //工作年份
-            _self.dqhy='adadad';                      //当前行业
+            _self.dqhy=data.resume.fields;           //当前行业
             _self.zwmc=data.resume.resumePosition;   //当前职位
             _self.dqcs=data.resume.resumeWorkspace;  //当前城市
+            _self.szgs=data.resume.resumeField;
             _self.bindingDOM();
             _self.bindingSJ();
         },error:function (){ //报错执行的
@@ -40,17 +42,33 @@ obj_yhxx.prototype.init=function (){
 };
 obj_yhxx.prototype.bindingDOM=function (){ //个人信息绑定
     var _self=this;
-    _self.DOM.name.html(_self.name)         //名字
-    _self.DOM.zwmc.html(_self.zwmc)        //职位名称
-    _self.DOM.szgs.html("没有") ;           //所在公司
+    _self.DOM.name.html(_self.name)           //名字
+    _self.DOM.zwmc.html(_self.zwmc)          //职位名称
+    _self.DOM.szgs.html(_self.szgs)         //所在公司
     _self.DOM.dqcs.html(_self.dqcs)        //当前城市
-    _self.DOM.dqhy.html(_self.dqhy)         //当前行业
+    var str='';
+    for(var i=0;i<_self.dqhy.length;i++){
+            if(i==_self.dqhy.length-1){
+                str+=_self.dqhy[i].fieldName
+            }else{
+                str+=_self.dqhy[i].fieldName+'/';
+            }
+    }
+    _self.DOM.dqhy.html(str)         //当前行业
     _self.DOM.gznf.html(_self.gznf)         //工作年份
 };
 obj_yhxx.prototype.bindingSJ=function (){
     var _self=this;
     var kg=true;
     $('.zp_jianli_cont_left_top2_top').find('.zp_jianli_xg').on('click',function (){  //点击修改的时候
+        var str2='';
+        for(var i=0;i<_self.dqhy.length;i++){
+            if(i==_self.dqhy.length-1){
+                str2+=_self.dqhy[i].fieldName
+            }else{
+                str2+=_self.dqhy[i].fieldName+'/';
+            }
+        }
         if(kg){
             kg=false;
             var str='';
@@ -75,7 +93,7 @@ obj_yhxx.prototype.bindingSJ=function (){
             }
             str+='</li>'
             str+='<li>'
-            str+='当前行业 <input id="jl_dqhy" value="'+_self.dqhy+'" type="text" class="form-control zp_jianli_input2" >'
+            str+='当前行业 <input id="jl_dqhy" value="'+str2+'" type="text" class="form-control zp_jianli_input2" >'
             str+='</li>'
             str+='<li>'
             str+='工作年份&nbsp;&nbsp;&nbsp;<input id="jl_gznf" value="'+_self.gznf+'" type="text"  class="form-control zp_jianli_input3" style="margin-right: 27px">   职位名称&nbsp;&nbsp;&nbsp;<input id="jl_zwmc" value="'+_self.zwmc+'" type="text" class="form-control zp_jianli_input3" >'
@@ -969,43 +987,70 @@ obj_fjxx.prototype.bindingSJ=function (){
         }
     })
 };
+//附加信息结束了
+//擅长技能开始
+function obj_scjn(){
+    this.scjc=[];
+}
+obj_scjn.prototype.init=function (){
+
+};
+obj_scjn.prototype.bindingSJ=function () {
+    $('#jl_tjscjn').on('click',function (){
+        var _self=this;
+        var data={cont:["adad","adadad"]}
+        _self.scjc=data.cont;
+        var str='';
+        str+='<div class="zp_jianli_zl_10">'
+        str+='<div class="scjn_top">'
+        str+='<p>已添加:</p>'
+        str+='<div>'
 
 
+        str+='</div>'
+        str+='</div>'
+        str+='<div class="scjn_buttom">'
+        str+='<p>请输入你擅长的技能：<input type="text" class="form-control"> <a class="btn btn-default" >添加</a></p>'
+        str+='</div>'
+        str+='<div class="zp_jianli_zl_2_bottom">'
+        str+='<button type="button" class="btn btn-primary">确定</button>'
+        str+='<button class="btn btn-default"  type="button">取消</button>'
+        str+='</div>'
+        str+='</div>'
 
+        alert(str)
+    })
+
+}
 
 $(function (){
-
     var obj__yhxx=new obj_yhxx();           //基本信息
     obj__yhxx.init();
 
     var obj__zbzl=new obj_zbzl();           //基本资料
     obj__zbzl.init();
 
+    var obj__zyyx=new obj_zyyx();           //职业意向
+    obj__zyyx.init();
 
-        var obj__zyyx=new obj_zyyx();                 //职业意向
-        obj__zyyx.init();
+    var obj__gzjl=new obj_gzjl();           //创建简历对象
+    obj__gzjl.init();
 
-    //当页面加载完成后AJAX插入所有简历
-    var obj__gzjl=new obj_gzjl();     //创建简历对象
-    obj__gzjl.init();      //当页面加载完成后插入简历
-
-    //教育经历
-    var obj__yyjl=new obj_yyjl();
+    var obj__yyjl=new obj_yyjl();           //教育经历
     obj__yyjl.init();
 
-    //项目经验开始
-    var obj__xmjy=new obj_xmjy();
+    var obj__xmjy=new obj_xmjy();           //项目经验开始
     obj__xmjy.init();
     obj__xmjy.bindingSJ();
-    //项目经验结束
 
-    //自我评价开始
-    var obj__zopj=new obj_zopj();
+    var obj__zopj=new obj_zopj();           //自我评价开始
     obj__zopj.init();
-    //自我评价结束了
-    //附加信息开始
-    var obj__fjxx=new obj_fjxx();
+
+    var obj__fjxx=new obj_fjxx();           //附加信息开始
     obj__fjxx.init();
+
+    var obj__scjn=new obj_scjn();           //擅长技能
+    obj__scjn.bindingSJ()
 
 });
 

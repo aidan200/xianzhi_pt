@@ -1037,3 +1037,84 @@ ul,li{
 .zp_jianli_zl_9 > p > span{
     color: #333333;
 }
+
+.zp_jianli_zl_10{
+    width: 600px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #3D9CCC;
+    border-top: 5px solid #3D9CCC;
+    position: relative;
+    padding: 20px;
+    display: block;
+
+}
+
+.scjn_top{
+
+
+}
+.scjn_top > div{
+
+}
+.scjn_top > div > div {
+
+
+    border: 1px solid #E6E6E6;
+    float: left;
+    height: 30px;
+    margin-right: 15px;
+
+    margin-bottom: 10px;
+
+}
+.scjn_top > div:after{
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height:0;
+    line-height:0;
+    content:".";
+}
+.scjn_top > div > div > a{
+    float: left;
+    display: inline-block;
+    width: 20px;
+    height: 28px;
+    background: #E9F1F5;
+    text-align: center;
+    line-height: 28px;
+    color: #85B4CC;
+
+}
+.scjn_top > div > div > a:hover{
+    background: #3D9CCC;
+    color: #ffffff;
+}
+.scjn_top > div > div > div{
+    line-height: 30px;
+    padding: 0 15px;
+    height: 28px;
+    float: left;
+    text-align: center;
+}
+.scjn_buttom{
+    margin-bottom: 20px ;
+}
+.scjn_buttom > p{
+    position: relative;
+}
+.scjn_buttom > p > input{
+    width: 280px;
+    text-align: center;
+    top: 1px;
+    position: relative;
+    display: inline-block;
+}
+.scjn_buttom > p > a{
+    background: #E9F1F5;
+    margin-left: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
