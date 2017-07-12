@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>发布职位</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <link href="../dist/foreEnd/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css'/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../dist/foreEnd/js/jquery.min.js"></script>
+    <script src="../dist/foreEnd/js/bootstrap.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="../dist/foreEnd/css/style.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="../dist/foreEnd/css/jquery.countdown.css"/>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+    <!----font-Awesome----->
+    <link href="../dist/foreEnd/css/font-awesome.css" rel="stylesheet">
+    <!----font-Awesome----->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Logo</a>
+        </div>
+        <!--/.navbar-header-->
+        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="login.html"><i class="fa fa-user"></i><span>登录</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="courses.html" class="dropdown-toggle"><i class="fa fa-list"></i><span>课程</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="events.html" class="dropdown-toggle"><i class="fa fa-calendar"></i><span>活动</span></a>
+
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                            class="fa fa-search"></i><span>搜索</span></a>
+                    <ul class="dropdown-menu search-form">
+                        <form>
+                            <input type="text" class="search-text" name="s" placeholder="搜索...">
+                            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!--/.navbar-collapse-->
+</nav>
+<nav class="navbar nav_bottom" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header nav_2">
+            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                    data-target="#bs-megadropdown-tabs">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+            <ul class="nav navbar-nav nav_1">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="admission.html">报名</a></li>
+                <li><a href="faculty.html">师资</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">问题<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="terms.html">如何报名</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">服务</a></li>
+                <!--<li><a href="features.html">Features</a></li>-->
+                <li><a href="blog.html">博客</a></li>
+                <li><a href="career.html">职业</a></li>
+                <li class="last"><a href="contact.html">联系</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+<!-- banner -->
+<div class="courses_banner">
+    <div class="container">
+        <h3>发布职位</h3>
+        <p class="description">
+        </p>
+        <div class="breadcrumb1">
+            <ul>
+                <li class="icon6"><a href="index.html">首页</a></li>
+                <li class="current-page">发布职位</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //banner -->
+<div class="courses_box1">
+    <div class="container" style="width: 90%">
+        <!--基本信息-->
+        <div class="company_position">
+            <!--<h2>发布职位</h2>-->
+            <form action="" class="position_form">
+                <hr>
+                <h4 class="position_h4">基本信息</h4>
+                <label>
+                    <span class="position_word">公司名称 : </span>
+                    <input type="text" name="experience" autocomplete="off" class="position_input2"/>
+                </label>
+                <label>
+                    <span class="position_word">职位名称 : </span>
+                    <input type="text" name="genre" autocomplete="off" class="position_input2"/>
+                </label>
+                <label>
+                    <span class="position_word">职位类别 : </span>
+                    <input type="text" name="genre" autocomplete="off" class="position_input2"/>
+                </label>
+                <label>
+                    <span class="position_word">职位月薪 : </span>
+                    <input type="text" name="position" autocomplete="off" class="position_input1"/> -
+                    <input type="text" name="position" autocomplete="off" class="position_input1"/>
+                </label>
+                <label>
+                    <span class="position_word">工作经验 : </span>
+                    <input type="text" name="experience" autocomplete="off" class="position_input2"/>
+                </label>
+                <label>
+                    <span class="position_word">招聘人数 : </span>
+                    <input type="text" name="number" autocomplete="off" class="position_input2"/>
+                </label>
+                <label>
+                    <span class="position_word">工作地点 : </span>
+                    <input type="text" name="place" autocomplete="off" class="position_input2"/>
+                </label>
+                <label>
+                    <span class="position_word">工作性质 : </span>
+                    <input type="radio" name="nature" class="position_input3" checked="checked">全职
+                    <input type="radio" name="nature" class="position_input3">兼职
+                </label>
+                <label>
+                    <span class="position_word">学历要求 : </span>
+                    <select name="education" class="position_input4">
+                        <option value=""></option>
+                        <option value="">专科</option>
+                        <option value="">本科</option>
+                        <option value="">研究生</option>
+                    </select>
+                </label>
+                <hr>
+                <h4 class="position_h4">职位描述</h4>
+                <label>
+                    <span class="position_word" style="float: left">薪资待遇&emsp; </span>
+                    <textarea class="position_txt"></textarea>
+                </label>
+                <label>
+                    <span class="position_word" style="float: left">晋升渠道&emsp; </span>
+                    <textarea class="position_txt"></textarea>
+                </label>
+                <label>
+                    <span class="position_word" style="float: left">岗位职责&emsp; </span>
+                    <textarea class="position_txt"></textarea>
+                </label>
+                <label>
+                    <span class="position_word" style="float: left">岗位要求&emsp; </span>
+                    <textarea class="position_txt"></textarea>
+                </label>
+                <label>
+                    <span class="position_word" style="float: left">备&emsp;&emsp;注&emsp; </span>
+                    <textarea class="position_txt"></textarea>
+                </label>
+                <button type="submit" class="position_button btn btn-primary">提交</button>
+
+            </form>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div class="footer2">
+    <div class="container">
+        <div class="copy">
+            <p>&copy; 2017.先知蓝创<a target="_blank" href="#"></a></p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

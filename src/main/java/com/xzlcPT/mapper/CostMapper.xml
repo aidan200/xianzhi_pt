@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.CostMapper">
+    <resultMap id="CostResultMap" type="com.xzlcPT.bean.Cost">
+        <id column="cost_id" jdbcType="BIGINT" property="costId" />
+        <result column="vip_id" jdbcType="BIGINT" property="vipId" />
+        <result column="cost_money" jdbcType="DOUBLE" property="costMoney" />
+        <result column="cost_type" jdbcType="VARCHAR" property="costType" />
+        <result column="cost_reason" jdbcType="VARCHAR" property="costReason" />
+        <result column="cost_time" jdbcType="TIMESTAMP" property="costTime" />
+        <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+        <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+        <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+    </resultMap>
+    <sql id="Cost_Column_List">
+        cost_id,vip_id,cost_money,cost_type,cost_reason,cost_time,filed1,filed2,filed3,delete_flag
+    </sql>
+
+    <insert id="insertSelective" parameterType="com.xzlcPT.bean.Cost">
+        INSERT INTO xz_cost
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="costId != null">cost_id,</if>
+            <if test="vipId != null">vip_id,</if>
+            <if test="costMoney != null">cost_money,</if>
+            <if test="costType != null">cost_type,</if>
+            <if test="costReason != null">cost_reason,</if>
+            <if test="costTime != null">cost_time,</if>
+            <if test="filed1 != null">filed1,</if>
+            <if test="filed2 != null">filed2,</if>
+            <if test="filed3 != null">filed3,</if>
+            <if test="deleteFlag != null">delete_flag,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="costId != null">#{costId,jdbcType=BIGINT},</if>
+            <if test="vipId != null">#{vipId,jdbcType=BIGINT},</if>
+            <if test="costMoney != null">#{costMoney,jdbcType=DOUBLE},</if>
+            <if test="costType != null">#{costType,jdbcType=VARCHAR},</if>
+            <if test="costReason != null">#{costReason,jdbcType=VARCHAR},</if>
+            <if test="costTime != null">#{costTime,jdbcType=TIMESTAMP},</if>
+            <if test="filed1 != null">#{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">#{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">#{filed3,jdbcType=VARCHAR},</if>
+            <if test="deleteFlag != null">0</if>
+        </trim>
+    </insert>
+    <insert id="insert" parameterType="com.xzlcPT.bean.Cost">
+        INSERT INTO xz_cost (cost_id,vip_id,cost_money,cost_type,cost_reason,cost_time,filed1,filed2,filed3,delete_flag)
+        VALUES (
+        #{costId,jdbcType=BIGINT},#{vipId,jdbcType=BIGINT},#{costMoney,jdbcType=DOUBLE},#{costType,jdbcType=VARCHAR},
+        #{costReason,jdbcType=VARCHAR},#{costTime,jdbcType=TIMESTAMP},#{filed1,jdbcType=VARCHAR},#{filed2,jdbcType=VARCHAR},
+        #{filed3,jdbcType=VARCHAR},0
+        )
+    </insert>
+    <!--删除标记-->
+    <delete id="deleteByPrimaryKey" parameterType="com.xzlcPT.bean.Cost">
+        UPDATE xz_cost
+        SET delete_flag = 1
+        WHERE delete_flag = 0 AND cost_id = #{costId,jdbcType=BIGINT}
+    </delete>
+    <!--判断删除标记！！！-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.Cost">
+        UPDATE xz_cost
+        <set>
+            <if test="vipId != null">vip_id = #{vipId,jdbcType=BIGINT},</if>
+            <if test="costMoney != null">cost_money = #{costMoney,jdbcType=DOUBLE},</if>
+            <if test="costType != null">cost_type = #{costType,jdbcType=VARCHAR},</if>
+            <if test="costReason != null">cost_reason = #{costReason,jdbcType=VARCHAR},</if>
+            <if test="costTime != null">cost_time = #{costTime,jdbcType=TIMESTAMP},</if>
+            <if test="filed1 != null">filed1 = #{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">filed2 = #{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">filed3 = #{filed3,jdbcType=VARCHAR},</if>
+        </set>
+        WHERE delete_flag = 0 AND cost_id = #{costId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.Cost">
+        UPDATE xz_cost
+        SET vip_id = #{vipId,jdbcType=BIGINT},cost_money = #{costMoney,jdbcType=DOUBLE},cost_type = #{costType,jdbcType=VARCHAR},
+        cost_reason = #{costReason,jdbcType=VARCHAR},cost_time = #{costTime,jdbcType=TIMESTAMP},filed1 = #{filed1,jdbcType=VARCHAR},
+        filed2 = #{filed2,jdbcType=VARCHAR},filed3 = #{filed3,jdbcType=VARCHAR}
+        WHERE delete_flag = 0 AND cost_id = #{costId,jdbcType=BIGINT}
+    </update>
+    <!--判断删除标记！！！-->
+    <select id="selectCostAll" resultMap="CostResultMap" parameterType="com.xzlcPT.bean.Cost">
+        SELECT <include refid="Cost_Column_List"/>
+        FROM xz_cost WHERE delete_flag = 0
+    </select>
+    <!--后台条件查询数据-->
+    <select id="selectCostAllEnd" resultMap="CostResultMap" parameterType="java.util.HashMap">
+        SELECT
+        <include refid="Cost_Column_List"/>
+        FROM xz_cost WHERE delete_flag = 0
+        <if test="costId!=null and costId!=0">
+            AND cost_id = #{costId,jdbcType=BIGINT}
+        </if>
+        <if test="vipId!=null and vipId!=0">
+            AND vip_id = #{vipId,jdbcType=BIGINT}
+        </if>
+        <if test="costMoney!=null and costMoney!=0">
+            AND cost_money = #{costMoney,jdbcType=DOUBLE}
+        </if>
+        <if test="costType!=null and costType!=''">
+            AND cost_type LIKE CONCAT('%',#{costType},'%')
+        </if>
+        <if test="costReason!=null and costReason!=''">
+            AND cost_reason LIKE CONCAT('%',#{costReason},'%')
+        </if>
+        <if test="startTime!=null and endTime!=null">
+            AND cost_time &gt; #{startTime,jdbcType=TIMESTAMP} AND cost_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime!=null and endTime==null">
+            AND cost_time &gt; #{startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime==null and endTime!=null">
+            AND cost_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="filed1!=null and filed1!=''">
+            AND filed1 LIKE CONCAT('%',#{filed1},'%')
+        </if>
+        <if test="filed2!=null and filed2!=''">
+            AND filed2 LIKE CONCAT('%',#{filed2},'%')
+        </if>
+        <if test="filed3!=null and filed3!=''">
+            AND filed3 LIKE CONCAT('%',#{filed3},'%')
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="CostResultMap" parameterType="com.xzlcPT.bean.Cost">
+        SELECT
+        <include refid="Cost_Column_List"/>
+        FROM xz_cost
+        WHERE delete_flag = 0 and cost_id = #{costId,jdbcType=BIGINT}
+    </select>
+    <!--查询某会员总支出金额(前台)-->
+    <select id="selectSumCostMoney" resultMap="CostResultMap" parameterType="java.lang.Long">
+        SELECT vip_id,SUM(cost_money) AS cost_money
+        FROM xz_cost
+        WHERE delete_flag = 0 AND cost_type = '支出' AND vip_id = #{0}
+    </select>
+</mapper>

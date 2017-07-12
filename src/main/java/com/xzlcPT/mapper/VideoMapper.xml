@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.VideoMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzVideo">
+        <id column="video_id" jdbcType="BIGINT" property="videoID"/>
+        <result column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <result column="member_name" jdbcType="VARCHAR" property="memberName"/>
+        <result column="video_introduce" jdbcType="VARCHAR" property="videoIntroduce"/>
+        <result column="video_picture" jdbcType="VARCHAR" property="videoPicture"/>
+        <result column="video_name" jdbcType="VARCHAR" property="videoName"/>
+        <result column="video_address" jdbcType="VARCHAR" property="videoAddress"/>
+        <result column="vclass" jdbcType="INTEGER" property="vclass"/>
+        <result column="video_type" jdbcType="INTEGER" property="videoType"/>
+        <result column="video_price" jdbcType="DOUBLE" property="videoPrice"/>
+        <result column="delete_video_date" jdbcType="DATE" property="deleteVideoDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+        <result column="class_name" jdbcType="VARCHAR" property="className"/>
+        <result column="record_date" jdbcType="DATE" property="recordDate"/>
+        <result column="video_dis" jdbcType="INTEGER" property="videoDis"/>
+    </resultMap>
+    <resultMap id="RecentVideoResultMap" type="com.xzlcPT.bean.RecentVideo">
+        <result column="video_id" jdbcType="BIGINT" property="videoId"/>
+        <result column="member_name" jdbcType="VARCHAR" property="memberName"/>
+        <result column="member_picture" jdbcType="VARCHAR" property="memberPicture"/>
+        <result column="video_name" jdbcType="VARCHAR" property="videoName"/>
+        <result column="record_date" jdbcType="TIMESTAMP" property="recordDate"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      xz_video.video_id, xz_video.login_id, xz_video.member_name, xz_video.video_picture,
+      xz_video.video_name, xz_video.video_introduce, xz_video.video_address, xz_video.vclass, xz_video.video_type,
+      xz_video.video_price , xz_video.delete_video_date, xz_video.delete_falt, video_dis
+    </sql>
+
+    <select id="selectMaxID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT  <include refid="Base_Column_List"/>
+        FROM xz_video
+        WHERE video_id = (
+          SELECT MAX(video_id)
+          FROM xz_video
+          WHERE login_id = #{loginID}
+          and delete_falt = 0
+        )
+    </select>
+
+    <update id="updateVideoAddress" parameterType="com.xzlcPT.bean.XzVideo">
+        update xz_video
+        SET video_address = #{videoAddress}
+        WHERE video_id = #{videoID}
+    </update>
+
+    <select id="selectAllVideo" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideo">
+        select
+        <include refid="Base_Column_List"/>,class_name,record_date
+        FROM xz_video, xz_video_class, xz_video_record
+        where xz_video.delete_falt = 0
+        and xz_video.vclass = xz_video_class.vclass_id
+        and xz_video.video_type = 1
+        and xz_video.video_id = xz_video_record.video_id
+        and xz_video_record.record_type = 1
+        <if test="videoID != 0">
+            and video_id = #{videoID,jdbcType=BIGINT}
+        </if>
+        <if test="memberName!=null and memberName!=''">
+            and member_name like CONCAT('%',#{memberName},'%')
+        </if>
+        <if test="videoName!=null and videoName!=''">
+            and video_name like CONCAT('%',#{videoName},'%')
+        </if>
+        <if test="vclass != 0">
+            and xz_video.vclass = #{vclass,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <insert id="insertVideo"  parameterType="com.xzlcPT.bean.XzVideo">
+        <selectKey keyProperty="videoID" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into xz_video
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            video_id,
+            <if test="loginID != 0">
+                login_id,
+            </if>
+            <if test="memberName != null">
+                member_name,
+            </if>
+            <if test="videoPicture != null">
+                video_picture,
+            </if>
+            <if test="videoName != null">
+                video_name,
+            </if>
+            <if test="videoIntroduce != null">
+                video_introduce,
+            </if>
+            <if test="videoAddress != null">
+                video_address,
+            </if>
+            <if test="vclass != 0">
+                vclass,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{videoID,jdbcType=BIGINT},
+            <if test="loginID != 0">
+                #{loginID,jdbcType=BIGINT},
+            </if>
+            <if test="memberName != null">
+                #{memberName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoPicture != null">
+                #{videoPicture,jdbcType=VARCHAR},
+            </if>
+            <if test="videoName != null">
+                #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoIntroduce != null">
+                #{videoIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="videoAddress != null">
+                #{videoAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="vclass != 0">
+                #{vclass,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectVideo" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideo">
+        select
+        <include refid="Base_Column_List"/>,class_name,record_date
+        FROM xz_video, xz_video_class, xz_video_record
+        where xz_video.delete_falt = 0
+        and xz_video.vclass = xz_video_class.vclass_id
+        and xz_video.video_type = 1
+        and xz_video.video_id = xz_video_record.video_id
+        and xz_video_record.record_type = 1
+        <if test="videoID != 0">
+            and video_id = #{videoID,jdbcType=BIGINT}
+        </if>
+        <if test="loginID != 0">
+            and login_id = #{loginID,jdbcType=BIGINT}
+        </if>
+        <if test="videoName!=null and videoName!=''">
+            and video_name like CONCAT('%',#{videoName},'%')
+        </if>
+        <if test="vclass != 0">
+            and xz_video.vclass = #{vclass,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="selectBoughtVideo" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideoRecord">
+        select <include refid="Base_Column_List"/>,xz_video_class.class_name,xz_video_record.record_date
+        from xz_video, xz_video_class,xz_video_record
+        where  xz_video.vclass = xz_video_class.vclass_id
+        and xz_video.video_id = xz_video_record.video_id
+        and xz_video.video_price &lt;&gt; 0
+        and xz_video_record.login_id = #{loginID,jdbcType=BIGINT}
+        and xz_video_record.record_type = 2
+        and xz_video.video_type = 1
+        <if test="recordDate != null and recordDate != '' and recordDate2 != null and recordDate2 != '' ">
+            and xz_video_record.record_date BETWEEN #{recordDate,jdbcType=DATE} and #{recordDate2,jdbcType=DATE}
+        </if>
+    </select>
+
+    <select id="selectVideoHistory" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideoRecord">
+        select <include refid="Base_Column_List"/>,xz_video_class.class_name,xz_video_record.record_date
+        from xz_video, xz_video_class,xz_video_record
+        where  xz_video.vclass = xz_video_class.vclass_id
+        and xz_video.video_id = xz_video_record.video_id
+        and xz_video_record.login_id = #{loginID,jdbcType=BIGINT}
+        and xz_video_record.record_type = 2
+        and xz_video.video_type = 1
+        <if test="recordDate != null and recordDate != '' and recordDate2 != null and recordDate2 != '' ">
+            and xz_video_record.record_date BETWEEN #{recordDate,jdbcType=DATE} and #{recordDate2,jdbcType=DATE}
+        </if>
+    </select>
+
+    <update id="updateVideo" parameterType="com.xzlcPT.bean.XzVideo">
+        update xz_video
+        <set>
+            <if test="videoPicture != null and videoPicture != ''">
+                video_picture = #{videoPicture,jdbcType=VARCHAR},
+            </if>
+            <if test="videoName != null and videoName != ''">
+                video_name = #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoIntroduce != null and videoIntroduce != '' ">
+                video_introduce = #{videoIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="videoAddress != null and videoAddress != '' ">
+                video_address = #{videoAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="vclass != 0">
+                vclass = #{vclass,jdbcType=INTEGER},
+            </if>
+            <if test="deleteVideoDate != null and deleteVideoDate != ''">
+                delete_video_date = #{deleteVideoDate,jdbcType=DATE},
+            </if>
+            <if test="deleteFalt != 0">
+                delete_falt = #{deleteFalt,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where video_id = #{videoID}
+    </update>
+
+    <select id="selectVideoByID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_video
+        where delete_falt = 0
+        and video_id = #{videoID,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectVideoManage" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideo">
+        select
+        <include refid="Base_Column_List"/>,xz_video_class.class_name,xz_video_record.record_date
+        FROM xz_video,xz_video_class,xz_video_record
+        where xz_video.delete_falt = 0
+        and xz_video.video_id = xz_video_record.video_id
+        and xz_video_record.record_type = 1
+        and xz_video.vclass = xz_video_class.vclass_id
+        and xz_video.login_id = #{loginID,jdbcType=BIGINT}
+        <if test="videoType != 0">
+            and xz_video.video_type = #{videoType,jdbcType=INTEGER}
+        </if>
+        <if test="videoName!=null and videoName!=''">
+            and xz_video.video_name like CONCAT('%',#{videoName},'%')
+        </if>
+        <if test="vclass != 0">
+            and xz_video.vclass = #{vclass,jdbcType=INTEGER}
+        </if>
+        <if test="recordDate != null and recordDate != '' and recordDate2 != null and recordDate2 != '' ">
+            and xz_video_record.record_date BETWEEN #{recordDate,jdbcType=DATE} and #{recordDate2,jdbcType=DATE}
+        </if>
+    </select>
+
+
+
+
+    <!--后台-->
+
+    <select id="selectVideoEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideo">
+        select
+        <include refid="Base_Column_List"/>,class_name
+        FROM xz_video,xz_video_class
+        where xz_video.delete_falt = 0
+        and vclass = vclass_id
+        <if test="videoID != 0">
+            and xz_video.video_id = #{videoID,jdbcType=BIGINT}
+        </if>
+        <if test="memberName != null and memberName != ''">
+            and xz_video.member_name = #{memberName,jdbcType=VARCHAR}
+        </if>
+        <if test="videoName!=null and videoName!=''">
+            and xz_video.video_name like CONCAT('%',#{videoName},'%')
+        </if>
+        <if test="vclass != 0">
+            and xz_video.vclass = #{vclass,jdbcType=INTEGER}
+        </if>
+        <if test="videoType != 0">
+            and xz_video.video_type = #{videoType,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <insert id="insertVideoEnd" parameterType="com.xzlcPT.bean.XzVideo">
+        insert into xz_video
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            video_id,
+            <if test="loginID != 0">
+                login_id,
+            </if>
+            <if test="memberName != null">
+                member_name,
+            </if>
+            <if test="videoPicture != null">
+                video_picture,
+            </if>
+            <if test="videoName != null">
+                video_name,
+            </if>
+            <if test="videoIntroduce != null">
+                video_introduce,
+            </if>
+            <if test="videoAddress != null">
+                video_address,
+            </if>
+            <if test="vclass != 0">
+                vclass,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{videoID,jdbcType=BIGINT},
+            <if test="loginID != 0">
+                #{loginID,jdbcType=BIGINT},
+            </if>
+            <if test="memberName != null">
+                #{memberName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoPicture != null">
+                #{videoPicture,jdbcType=VARCHAR},
+            </if>
+            <if test="videoName != null">
+                #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoIntroduce != null">
+                #{videoIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="videoAddress != null">
+                #{videoAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="vclass != 0">
+                #{vclass,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateVideoEnd" parameterType="com.xzlcPT.bean.XzVideo">
+        update xz_video
+        <set>
+            <if test="videoType != 0">
+                video_type = #{videoType,jdbcType=VARCHAR},
+            </if>
+            <if test="videoPicture != null">
+                video_picture = #{videoPicture,jdbcType=VARCHAR},
+            </if>
+            <if test="videoName != null">
+                video_name = #{videoName,jdbcType=VARCHAR},
+            </if>
+            <if test="videoIntroduce != null">
+                video_introduce = #{videoIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="videoAddress != null">
+                video_address = #{videoAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="vclass != 0">
+                vclass = #{vclass,jdbcType=INTEGER},
+            </if>
+            <if test="videoPrice != 0">
+                video_price = #{videoPrice,jdbcType=DOUBLE},
+            </if>
+            <if test="deleteVideoDate != null">
+                delete_video_date = #{deleteVideoDate,jdbcType=DATE},
+            </if>
+            <if test="deleteFalt != 0">
+                delete_falt = #{deleteFalt,jdbcType=VARCHAR},
+            </if>
+
+        </set>
+        where video_id = #{videoID,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectVideoByIDEnd" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_video
+        where delete_falt = 0
+        and video_id = #{videoID,jdbcType=BIGINT}
+    </select>
+
+    <!--查询最新发布的视频(前台)-->
+    <select id="selectRecentVideo" resultMap="RecentVideoResultMap" parameterType="com.xzlcPT.bean.RecentVideo">
+        SELECT v.video_id,v.member_name,m.member_picture,v.video_name,vr.record_date
+        FROM xz_video v,xz_video_record vr,xz_member m
+        WHERE v.video_id = vr.video_id AND v.login_id = vr.login_id AND v.delete_falt = 0 AND vr.delete_falt = 0
+        AND vr.record_type = 1 AND m.login_id = v.login_id AND v.video_type = 1
+        ORDER BY vr.record_date DESC
+    </select>
+</mapper>

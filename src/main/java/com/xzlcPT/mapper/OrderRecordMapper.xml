@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.OrderRecordMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.TrackOrderResponse">
+        <id column="order_id" jdbcType="BIGINT" property="order_id"/>
+        <result column="appid" jdbcType="VARCHAR" property="appid"/>
+        <result column="mch_id" jdbcType="VARCHAR" property="mch_id"/>
+        <result column="nonce_str" jdbcType="VARCHAR" property="nonce_str"/>
+        <result column="sign" jdbcType="VARCHAR" property="sign"/>
+        <result column="result_code" jdbcType="VARCHAR" property="result_code"/>
+        <result column="out_trade_no" jdbcType="VARCHAR" property="out_trade_no"/>
+        <result column="trade_state" jdbcType="VARCHAR" property="trade_state"/>
+        <result column="cash_fee" jdbcType="VARCHAR" property="cash_fee"/>
+        <result column="record_time" jdbcType="TIMESTAMP" property="record_time"/>
+        <result column="delete_order_date" jdbcType="DATE" property="deleteOrderDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+    </resultMap>
+    <sql id="Base_Column_List" >
+        order_id,appid,mch_id,nonce_str,sign,result_code,out_trade_no,trade_state,cash_fee,record_time,delete_order_date,delete_falt
+    </sql>
+    <insert id="insertOrderRecord" parameterType="com.xzlcPT.bean.TrackOrderResponse">
+        <selectKey keyProperty="order_id" order="AFTER" resultType="java.lang.Long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO xz_order_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            order_id,
+            <if test="appid != null">
+                appid,
+            </if>
+            <if test="mch_id != null">
+                mch_id,
+            </if>
+            <if test="nonce_str != null">
+                nonce_str,
+            </if>
+            <if test="sign != null">
+                sign,
+            </if>
+            <if test="result_code != null">
+                result_code,
+            </if>
+            <if test="out_trade_no != null">
+                out_trade_no,
+            </if>
+            <if test="trade_state != null">
+                trade_state,
+            </if>
+            <if test="cash_fee != null">
+                cash_fee,
+            </if>
+            <if test="record_time != null">
+                record_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{order_id,jdbcType=BIGINT},
+            <if test="appid != null">
+                #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="mch_id != null">
+                #{mch_id,jdbcType=VARCHAR},
+            </if>
+            <if test="nonce_str != null">
+                #{nonce_str,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null">
+                #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="result_code != null">
+                #{result_code,jdbcType=VARCHAR},
+            </if>
+            <if test="out_trade_no != null">
+                #{out_trade_no,jdbcType=INTEGER},
+            </if>
+            <if test="trade_state != null">
+                #{trade_state,jdbcType=INTEGER},
+            </if>
+            <if test="cash_fee != null">
+                #{cash_fee,jdbcType=INTEGER},
+            </if>
+            <if test="record_time != null">
+                #{record_time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateOrderRecord" parameterType="com.xzlcPT.bean.TrackOrderResponse">
+        UPDATE xz_order_record
+        <set>
+            <if test="trade_state != null">
+                trade_state = #{trade_state,jdbcType=VARCHAR},
+            </if>
+            <if test="cash_fee != null">
+                cash_fee = #{cash_fee,jdbcType=VARCHAR},
+            </if>
+            <if test="record_time != null">
+                record_time = #{record_time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        WHERE order_id = #{order_id,jdbcType=BIGINT}
+    </update>
+    
+    <select id="selectOrderRecordByID" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT  <include refid="Base_Column_List"/>
+        FROM xz_order_record
+        WHERE delete_falt = 0
+        AND  out_trade_no = #{out_trade_no}
+    </select>
+
+</mapper>

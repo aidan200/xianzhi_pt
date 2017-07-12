@@ -1,0 +1,470 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <link href="../dist/foreEnd/css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css'/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../dist/foreEnd/js/jquery.min.js"></script>
+    <script src="../dist/foreEnd/js/bootstrap.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="../dist/foreEnd/css/style.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="../dist/foreEnd/css/jquery.countdown.css"/>
+
+    <!--<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>-->
+    <!----font-Awesome----->
+    <link href="../dist/foreEnd/css/font-awesome.css" rel="stylesheet">
+    <!----font-Awesome----->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+    </script>
+    <style>
+        .readonly input {
+            border: 1px solid #c6c6c6;
+        }
+
+    </style>
+</head>
+<body class="jg">
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Logo</a>
+            <a href="user.html" class="user"><span>用户名</span></a>
+        </div>
+        <!--/.navbar-header-->
+
+        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><i class="fa fa-user"></i><span>登录</span></a>
+                    <ul class="dropdown-menu login">
+                        <li><a href="login.html">个人登录</a></li>
+                        <li><a href="login2.html">企业登录</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><i class="fa fa-pencil"></i><span>注册</span></a>
+                    <ul class="dropdown-menu login">
+                        <li><a href="register.html">个人注册</a></li>
+                        <li><a href="register2.html">企业注册</a></li>
+                    </ul>
+                </li>
+                <!--<a href="login.html"><i class="fa fa-user"></i><span>登录</span></a>-->
+                <!--</li>-->
+                <li class="dropdown">
+                    <a href="courses.html" class="dropdown-toggle"><i class="fa fa-list"></i><span>课程</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="events.html" class="dropdown-toggle"><i class="fa fa-calendar"></i><span>活动</span></a>
+
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                            class="fa fa-search"></i><span>搜索</span></a>
+                    <ul class="dropdown-menu search-form">
+                        <form>
+                            <input type="text" class="search-text" name="s" placeholder="搜索...">
+                            <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!--/.navbar-collapse-->
+</nav>
+<nav class="navbar nav_bottom" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header nav_2">
+            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                    data-target="#bs-megadropdown-tabs">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+            <ul class="nav navbar-nav nav_1">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="admission.html">报名</a></li>
+                <li><a href="faculty.html">师资</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">问题<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="terms.html">如何报名</a></li>
+                        <li><a href="faq.html">常见问题</a></li>
+                    </ul>
+                </li>
+                <li><a href="services.html">服务</a></li>
+                <!--<li><a href="features.html">Features</a></li>-->
+                <li><a href="blog.html">博客</a></li>
+                <li><a href="career.html">职业</a></li>
+                <li class="last"><a href="contact.html">联系</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+<!-- banner -->
+<!--<div class="courses_banner">-->
+    <!--<div class="container">-->
+        <!--<h3>用户信息</h3>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="container">
+    <div class="users">
+        <div class="himg">
+            <div class="col-md-4">
+                <div class="imgt">
+                    <div class="img" id="preview"></div>
+                    <span class="choose"></span>
+                    <input type="file" class="file" onchange="preview(this)"/>
+                </div>
+            </div>
+            <div class="col-md-8 ll">
+                <h3 class="st">基本信息</h3>
+                <form class="news readonly" id="dvInput">
+                    <label for="name" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;姓名 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="name">
+                    </label>
+                    <label for="sex" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;性别 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="sex">
+                    </label>
+
+                    <label for="age" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;年龄 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="age">
+                    </label>
+
+                    <label for="IDcard" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;身份证号 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="IDcard">
+                    </label>
+
+                    <label for="phone" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;电话 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="phone">
+                    </label>
+                    <input type="button" value="修改" onclick="btnClick(this)" id="btn" class="btn4 btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+
+        <div class="himg">
+            <div class="col-md-1"></div>
+            <div class="col-md-11 ll">
+                <h3 class="st2">学历信息</h3>
+                <form class="news readonly" id="dvInput2">
+                    <label for="education" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;学历 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="education">
+                    </label>
+                    <label for="school" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;学校 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="school">
+                    </label>
+
+                    <label for="major" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;专业 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="major">
+                    </label>
+
+                    <label for="enrollment_date" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;入学时间 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="enrollment_date">
+                    </label>
+
+                    <label for="gradute_date" class="user_o">
+                        <span><span class="fa ffa-asterisk"></span>&nbsp;&nbsp;毕业时间 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="gradute_date">
+                    </label>
+                    <input type="button" value="修改" onclick="btnClick2(this)" id="btn2" class="btn4 btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+
+        <div class="gimg">
+            <div class="col-md-1"></div>
+            <div class="col-md-11 ll">
+                <h3 class="st2">工作经验</h3>
+                <form class="news readonly" id="dvInput3">
+                    <label for="company" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;公司 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="company">
+                    </label>
+                    <label for="duty" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;职务 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="duty">
+                    </label>
+
+                    <label for="entry_date" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;入职日期 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="entry_date">
+                    </label>
+
+                    <label for="dimission_date" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;离职日期 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="dimission_date">
+                    </label>
+
+                    <label for="dimission_cause" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;离职原因 : </span>
+                        <textarea id="dimission_cause" disabled rows="10"></textarea>
+                    </label>
+                    <input type="button" value="修改" onclick="btnClick3(this)" id="btn3" class="btn4 btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+
+        <div class="jimg">
+            <div class="col-md-1"></div>
+            <div class="col-md-11 ll">
+                <h3 class="st2">项目经验</h3>
+                <form class="news readonly" id="dvInput4">
+                    <label for="project_name" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;项目名称 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="project_name">
+                    </label>
+                    <label for="project_describe" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;项目描述 : </span>
+                        <textarea id="project_describe" disabled rows="10"></textarea>
+                    </label>
+
+                    <label for="startdate" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;开始日期 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="startdate">
+                    </label>
+
+                    <label for="enddate" class="user_o">
+                        <span><span class="fa fa-asterisk"></span>&nbsp;&nbsp;结束日期 : </span>
+                        <input type="text" autocomplete="off" readonly class="oh" id="enddate">
+                    </label>
+
+                    <label for="job_duties" class="user_o">
+                        <span><span class="fa fa-repeat"></span>&nbsp;&nbsp;工作内容 : </span>
+                        <textarea id="job_duties" disabled rows="10"></textarea>
+                    </label>
+                    <input type="button" value="修改" onclick="btnClick4(this)" id="btn4" class="btn4 btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <div class="col-md-3 grid_4">
+            <h3>关于我们</h3>
+            <p>
+                伴随IT产业的发展和变革，人才培训实施体系、人才资格评定体系、继续学习支撑体系、人才发展跟踪服务体系、人才交流互动体系、专家库体系及人才培养组织体系的中高端IT人才能力模型，推出中高端IT人才能力发展解决方案。</p>
+            <ul class="social-nav icons_2 clearfix">
+                <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" class="facebook"> <i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-3 grid_4">
+            <h3>联系我们</h3>
+            <ul class="footer_list">
+                <li><a href="#">- 地址:沈阳市和平区 </a></li>
+                <li><a href="#">- 邮编:110000</a></li>
+                <li><a href="#">- 电话: 024-31091926</a></li>
+                <li><a href="#">- 电子邮箱:xianzhi_lc @163.com</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3 grid_4">
+            <h3>快速链接 </h3>
+            <ul class="footer_list">
+                <li><a href="blog.html">- 先知博客 </a></li>
+                <li><a href="forum.html">- 先知论坛</a></li>
+                <li><a href="register.html">- 账号注册</a></li>
+                <li><a href="courses.html">- 先知课程</a></li>
+            </ul>
+        </div>
+        <div class="col-md-3 grid_4">
+            <h3>工作时间</h3>
+            <table class="table_working_hours">
+                <tbody>
+                <tr class="opened_1">
+                    <td class="day_label">星期一</td>
+                    <td class="day_value">上午 9:00 - 下午 6.00</td>
+                </tr>
+                <tr class="opened">
+                    <td class="day_label">星期二</td>
+                    <td class="day_value">上午 9:00 - 下午 6.00</td>
+                </tr>
+                <tr class="opened">
+                    <td class="day_label">星期三</td>
+                    <td class="day_value">上午 9:00 - 下午 6.00</td>
+                </tr>
+                <tr class="opened">
+                    <td class="day_label">星期四</td>
+                    <td class="day_value">上午 9:00 - 下午 6.00</td>
+                </tr>
+                <tr class="opened">
+                    <td class="day_label">星期五</td>
+                    <td class="day_value">上午 9:00 - 下午 3.00</td>
+                </tr>
+                <tr class="closed">
+                    <td class="day_label">星期六</td>
+                    <td class="day_value closed"><span>关闭</span></td>
+                </tr>
+                <tr class="closed">
+                    <td class="day_label">星期日</td>
+                    <td class="day_value closed"><span>关闭</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="copy">
+            <p>Copyright &copy; 2017. <a target="_blank" href="http://byu2710530001.my3w.com/">先知蓝创科技有限公司</a> 版权所有</p>
+        </div>
+    </div>
+</div>
+
+<!--<script src="js/jquery.countdown.js"></script>-->
+<!--<script src="js/script.js"></script>-->
+<!--<script src="js/index.js"></script>-->
+<!--<script src="js/sketch.min.js"></script>-->
+<script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+    function btnClick(btn) {
+        var toEdit = btn.value == '修改';
+        $('#dvInput')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+            .attr('readonly', toEdit ? false : true);
+        btn.value = toEdit ? '保存' : '修改';
+        if (!toEdit) {//保存的ajax代码
+        }
+        document.getElementById("name").focus();
+    }
+
+    function btnClick2(btn2) {
+        var toEdit = btn2.value == '修改';
+        $('#dvInput2')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+            .attr('readonly', toEdit ? false : true);
+        btn2.value = toEdit ? '保存' : '修改';
+        if (!toEdit) {//保存的ajax代码
+        }
+        document.getElementById("education").focus();
+    }
+
+    var txt = document.getElementById('dimission_cause');
+    var btn3 = document.getElementById('btn3');
+    function btnClick3(btn3) {
+        var toEdit = btn3.value == '修改';
+        $('#dvInput3')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+            .attr('readonly', toEdit ? false : true);
+        btn3.value = toEdit ? '保存' : '修改';
+        if (!toEdit) {//保存的ajax代码
+        }
+        txt.removeAttribute('disabled');
+        document.getElementById("company").focus();
+    }
+
+
+    var txt1 = document.getElementById('project_describe');
+    var txt2 = document.getElementById('job_duties');
+    var btn4 = document.getElementById('btn4');
+    function btnClick4(btn4) {
+        var toEdit = btn4.value == '修改';
+        $('#dvInput4')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+            .attr('readonly', toEdit ? false : true);
+        btn4.value = toEdit ? '保存' : '修改';
+        if (!toEdit) {//保存的ajax代码
+        }
+        txt1.removeAttribute('disabled');
+        txt2.removeAttribute('disabled');
+        document.getElementById("project_name").focus();
+
+    }
+
+//    var txt5 = document.getElementById('dimission_cause');
+//    var txt6 = document.getElementById('project_describe');
+//    var txt7 = document.getElementById('job_duties');
+//    var btn5 = document.getElementById('btn5');
+//    function btnClick5(btn5) {
+//        var toEdit = btn5.value == '保存';
+//        $('#dvInput1')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+//            .attr('readonly', toEdit ? false : true);
+//        $('#dvInput2')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+//            .attr('readonly', toEdit ? false : true);
+//        $('#dvInput3')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+//            .attr('readonly', toEdit ? false : true);
+//        $('#dvInput4')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+//            .attr('readonly', toEdit ? false : true);
+//        btn5.value = toEdit ? '保存' : '修改';
+//        if (!toEdit) {//保存的ajax代码
+//        }
+//        txt5.removeAttribute('disabled');
+//        txt6.removeAttribute('disabled');
+//        txt7.removeAttribute('disabled');
+//
+//    }
+
+    //选择封面图片
+    function preview(file) {
+        var prevDiv = document.getElementById('preview');
+        if (file.files && file.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                prevDiv.innerHTML = '<img src="' + evt.target.result + '" width="150xp" height="150px"/>';
+            };
+            reader.readAsDataURL(file.files[0]);
+        } else {
+            prevDiv.innerHTML = '<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + file.value + '\'"></div>';
+        }
+    }
+</script>
+
+
+</body>
+</html>

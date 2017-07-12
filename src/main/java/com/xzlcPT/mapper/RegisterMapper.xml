@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.RegisterMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzLogin">
+        <id column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <result column="login_count" jdbcType="VARCHAR" property="loginCount"/>
+        <result column="login_password" jdbcType="VARCHAR" property="loginPassword"/>
+        <result column="login_email" jdbcType="VARCHAR" property="loginEmail"/>
+        <result column="login_type" jdbcType="INTEGER" property="loginType"/>
+        <result column="login_active" jdbcType="INTEGER" property="loginActive"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    login_id, login_count, login_password, login_email, login_type,login_active
+  </sql>
+
+    <insert id="insertUser" parameterType="com.xzlcPT.bean.XzLogin">
+      insert into xz_login (login_id, login_count, login_password, login_email, login_type,login_active
+      )
+    values (#{loginID,jdbcType=BIGINT}, #{loginCount,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR},
+      #{loginEmail,jdbcType=VARCHAR}, #{loginType,jdbcType=INTEGER}, #{loginActive,jdbcType=INTEGER}
+      )
+  </insert>
+
+
+    <update id="updateActiveCount" parameterType="com.xzlcPT.bean.XzLogin">
+        update xz_login
+        <set>
+            <if test="loginActive != null">
+                login_active = 1,
+            </if>
+        </set>
+        where login_count = #{loginCount,jdbcType=VARCHAR}
+    </update>
+
+
+    <select id="selectByUser" parameterType="com.xzlcPT.bean.XzLogin" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from xz_login
+        where login_count = #{loginCount,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByEmail" parameterType="com.xzlcPT.bean.XzLogin" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from xz_login
+        where login_email = #{loginEmail,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from xz_login
+        where login_count = #{loginCount,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from xz_login
+        where login_email = #{loginEmail,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getPassword" parameterType="com.xzlcPT.bean.XzLogin" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from xz_login
+        where login_email = #{loginEmail,jdbcType=VARCHAR}
+    </select>
+
+    <update id="updatePassword" parameterType="com.xzlcPT.bean.XzLogin">
+        update xz_login
+
+        set login_password = #{loginPassword,jdbcType=VARCHAR}
+
+        where login_count = #{loginCount,jdbcType=BIGINT}
+    </update>
+
+</mapper>

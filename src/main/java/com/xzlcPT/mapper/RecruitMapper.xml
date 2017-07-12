@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.RecruitMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzRecruit">
+        <id column="recruit_id" jdbcType="BIGINT" property="recruitID"/>
+        <result column="company_id" jdbcType="BIGINT" property="companyID"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="job_name" jdbcType="VARCHAR" property="jobName"/>
+        <result column="monthly_min" jdbcType="DOUBLE" property="monthlyMin"/>
+        <result column="monthly_max" jdbcType="DOUBLE" property="monthlyMax"/>
+        <result column="workplace" jdbcType="VARCHAR" property="workplace"/>
+        <result column="work_experience" jdbcType="VARCHAR" property="workExperience"/>
+        <result column="rec_number" jdbcType="VARCHAR" property="recNumber"/>
+        <result column="job_nature" jdbcType="INTEGER" property="jobNature"/>
+        <result column="education" jdbcType="INTEGER" property="education"/>
+        <result column="treatment" jdbcType="VARCHAR" property="treatment"/>
+        <result column="obligation" jdbcType="VARCHAR" property="obligation"/>
+        <result column="job_address" jdbcType="VARCHAR" property="jobAddress"/>
+        <result column="profession" jdbcType="VARCHAR" property="profession"/>
+        <result column="release_date" jdbcType="DATE" property="releaseDate"/>
+        <result column="delete_recruit_date" jdbcType="DATE" property="deleteRecruitDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+        <result column="field1" jdbcType="VARCHAR" property="field1"/>
+        <result column="field2" jdbcType="VARCHAR" property="field2"/>
+        <result column="field3" jdbcType="VARCHAR" property="field3"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        recruit_id, company_id, job_name, company_name, monthly_min, monthly_max, workplace, work_experience, rec_number, job_nature,
+        education, treatment,obligation, job_address, profession, release_date, delete_recruit_date, delete_falt, field1, field2, field3
+    </sql>
+
+    <insert id="insertRecruit" parameterType="com.xzlcPT.bean.XzRecruit">
+        insert into xz_recruit
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            recruit_id,
+            <if test="companyID != 0">
+                company_id,
+            </if>
+            <if test="companyName != null and companyName != '' ">
+                company_name,
+            </if>
+            <if test="jobName != null and jobName != '' ">
+                job_name,
+            </if>
+            <if test="monthlyMin != 0">
+                monthly_min,
+            </if>
+            <if test="monthlyMax != 0">
+                monthly_max,
+            </if>
+            <if test="workplace != null and workplace != '' ">
+                workplace,
+            </if>
+            <if test="workExperience != null and workExperience != ''">
+                work_experience,
+            </if>
+            <if test="recNumber != null and recNumber != ''">
+                rec_number,
+            </if>
+            <if test="jobNature != 0">
+                job_nature,
+            </if>
+            <if test="education != 0">
+                education,
+            </if>
+            <if test="treatment != null and treatment != '' ">
+                treatment,
+            </if>
+            <if test="obligation != null and obligation != '' ">
+                obligation,
+            </if>
+            <if test="jobAddress != null and jobAddress != '' ">
+                job_address,
+            </if>
+            <if test="profession != null and profession != ''">
+                profession,
+            </if>
+            <if test="releaseDate != null and releaseDate != '' ">
+                release_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{recruitID,jdbcType=BIGINT},
+            <if test="companyID != 0">
+                #{companyID,jdbcType=BIGINT},
+            </if>
+            <if test="companyName != null and companyName != ''">
+                #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="jobName != null and jobName != ''">
+                #{jobName,jdbcType=VARCHAR},
+            </if>
+            <if test="monthlyMin != 0">
+                #{monthlyMin,jdbcType=DOUBLE},
+            </if>
+            <if test="monthlyMax != 0">
+                #{monthlyMax,jdbcType=DOUBLE},
+            </if>
+            <if test="workplace != null and workplace != '' ">
+                #{workplace,jdbcType=VARCHAR},
+            </if>
+            <if test="workExperience != null and workExperience != ''">
+                #{workExperience,jdbcType=VARCHAR},
+            </if>
+            <if test="recNumber != null and recNumber != ''">
+                #{recNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="jobNature != 0">
+                #{jobNature,jdbcType=INTEGER},
+            </if>
+            <if test="education != 0">
+                #{education,jdbcType=INTEGER},
+            </if>
+            <if test="treatment != null and treatment != '' ">
+                #{treatment,jdbcType=VARCHAR},
+            </if>
+            <if test="obligation != null and obligation != ''">
+                #{obligation,jdbcType=VARCHAR},
+            </if>
+            <if test="jobAddress != null and jobAddress != '' ">
+                #{jobAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="profession != null and profession != ''">
+                #{profession,jdbcType=VARCHAR},
+            </if>
+            <if test="releaseDate != null and releaseDate != ''">
+                #{releaseDate,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateRecruit" parameterType="com.xzlcPT.bean.XzRecruit">
+        update xz_recruit
+        <set>
+            <if test="jobName != null and jobName != ''">
+                job_name = #{jobName,jdbcType=VARCHAR},
+            </if>
+            <if test="monthlyMin != 0">
+                monthly_min = #{monthlyMin,jdbcType=DOUBLE},
+            </if>
+            <if test="monthlyMax != 0">
+                monthly_max = #{monthlyMax,jdbcType=DOUBLE},
+            </if>
+            <if test="workplace != null and workplace != '' ">
+                workplace = #{workplace,jdbcType=VARCHAR},
+            </if>
+            <if test="workExperience != null and workExperience != ''">
+                work_experience = #{workExperience,jdbcType=VARCHAR},
+            </if>
+            <if test="recNumber != null and recNumber != ''">
+                rec_number = #{recNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="jobNature != 0">
+                job_nature = #{jobNature,jdbcType=INTEGER},
+            </if>
+            <if test="education != 0">
+                education = #{education,jdbcType=INTEGER},
+            </if>
+            <if test="treatment != null and treatment != '' ">
+                treatment = #{treatment,jdbcType=VARCHAR},
+            </if>
+            <if test="obligation != null and obligation != ''">
+                obligation = #{obligation,jdbcType=VARCHAR},
+            </if>
+            <if test="jobAddress != null and jobAddress != '' ">
+                job_address = #{jobAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="profession != null and profession != ''">
+                profession = #{profession,jdbcType=VARCHAR},
+            </if>
+            <if test="releaseDate != null and releaseDate != ''">
+                release_date = #{releaseDate,jdbcType=DATE},
+            </if>
+            <if test="deleteRecruitDate != null and deleteRecruitDate != ''">
+                delete_recruit_date = #{deleteRecruitDate,jdbcType=DATE},
+            </if>
+            <if test="deleteFalt != 0">
+                delete_falt = #{deleteFalt,jdbcType=INTEGER},
+            </if>
+        </set>
+        where recruit_id = #{recruitID,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectRecruit" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzRecruit">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_recruit
+        where delete_falt = 0
+        <if test="recruitID != 0">
+            and recruit_id = #{recruitID,jdbcType=BIGINT}
+        </if>
+        <if test="companyID != 0">
+            and company_id = #{companyID,jdbcType=BIGINT}
+        </if>
+        <if test="companyName != null and companyName != '' ">
+            and company_name like CONCAT('%',#{companyName},'%')
+        </if>
+        <if test="workplace!=null and workplace!=''">
+            and workplace like CONCAT('%',#{workplace},'%')
+        </if>
+        <if test="jobName!=null and jobName!=''">
+            and job_name like CONCAT('%',#{jobName},'%')
+        </if>
+        <if test="workExperience!=null and workExperience!=''">
+            and work_experience like CONCAT('%',#{workExperience},'%')
+        </if>
+        <if test="monthlyMin != 0 and monthlyMin != 10000">
+            and monthly_min &lt;= #{monthlyMin,jdbcType=DOUBLE}
+            and monthly_max &gt;= #{monthlyMin,jdbcType=DOUBLE}
+        </if>
+        <if test="monthlyMin == 10000">
+            and monthly_min &lt;= 10000
+            and monthly_max &gt;= #{monthlyMin,jdbcType=DOUBLE}
+        </if>
+        <if test="releaseDate != null and releaseDate != '' and releaseDate2 != null and releaseDate2 != ''">
+            and release_date BETWEEN #{releaseDate,jdbcType=DATE} and #{releaseDate2,jdbcType=DATE}
+        </if>
+        <if test="education != 0">
+            and education &lt;= #{education,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="selectRecruitByID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_recruit
+        where delete_falt = 0
+        and recruit_id = #{recruitID,jdbcType=BIGINT}
+    </select>
+
+
+    <select id="selectRecruitEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzRecruit">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_recruit
+        where delete_falt = 0
+        <if test="recruitID != 0">
+            and recruit_id = #{recruitID,jdbcType=BIGINT}
+        </if>
+        <if test="companyName != null">
+            and company_name like CONCAT('%',#{companyName},'%')
+        </if>
+        <if test="workplace!=null and workplace!=''">
+            and workplace like CONCAT('%',#{workplace},'%')
+        </if>
+        <if test="monthlyMin != 0">
+            and monthly_min &lt;= #{monthlyMin,jdbcType=DOUBLE}
+            and monthly_max &gt;= #{monthlyMin,jdbcType=DOUBLE}
+        </if>
+    </select>
+
+    <update id="updateRecruitEnd" parameterType="com.xzlcPT.bean.XzRecruit">
+        update xz_recruit
+        <set>
+            <if test="jobName != null and jobName != ''">
+                job_name = #{jobName,jdbcType=VARCHAR},
+            </if>
+            <if test="monthlyMin != 0">
+                monthly_min = #{monthlyMin,jdbcType=DOUBLE},
+            </if>
+            <if test="monthlyMax != 0">
+                monthly_max = #{monthlyMax,jdbcType=DOUBLE},
+            </if>
+            <if test="workplace != null">
+                workplace = #{workplace,jdbcType=VARCHAR},
+            </if>
+            <if test="workExperience != null and workExperience != ''">
+                work_experience = #{workExperience,jdbcType=VARCHAR},
+            </if>
+            <if test="recNumber != null and recNumber != ''">
+                rec_number = #{recNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="jobNature != 0">
+                job_nature = #{jobNature,jdbcType=INTEGER},
+            </if>
+            <if test="education != 0">
+                education = #{education,jdbcType=INTEGER},
+            </if>
+            <if test="treatment != null">
+                treatment = #{treatment,jdbcType=VARCHAR},
+            </if>
+            <if test="obligation != null">
+                obligation = #{obligation,jdbcType=VARCHAR},
+            </if>
+            <if test="jobAddress != null">
+                job_address = #{jobAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="profession != null and profession != ''">
+                profession = #{profession,jdbcType=VARCHAR},
+            </if>
+            <if test="releaseDate != null">
+                release_date = #{releaseDate,jdbcType=DATE},
+            </if>
+            <if test="deleteRecruitDate != null">
+                delete_recruit_date#{deleteRecruitDate,jdbcType=DATE},
+            </if>
+            <if test="deleteFalt != 0">
+                delete_falt = #{deleteFalt,jdbcType=INTEGER},
+            </if>
+            <if test="field1 != null">
+                field1= #{field1,jdbcType=VARCHAR},
+            </if>
+            <if test="field2 != null">
+                field2 = #{field2,jdbcType=VARCHAR},
+            </if>
+            <if test="field3 != null">
+                field3 = #{field3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where recruit_id = #{recruitID,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectRecruitByIDEnd" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_recruit
+        where delete_falt = 0
+        and recruit_id = #{recruitID,jdbcType=BIGINT}
+    </select>
+
+</mapper>

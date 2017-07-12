@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.VideoRecordMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzVideoRecord">
+        <id column="record_id" jdbcType="BIGINT" property="recordID"/>
+        <result column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <result column="video_id" jdbcType="BIGINT" property="videoID"/>
+        <result column="record_type" jdbcType="INTEGER" property="recordType"/>
+        <result column="record_date" jdbcType="DATE" property="recordDate"/>
+        <result column="delete_record_date" jdbcType="DATE" property="deleteRecordDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+      record_id, login_id, video_id, record_type, record_date, delete_record_date, delete_falt
+    </sql>
+
+
+
+    <insert id="insertRecord" parameterType="com.xzlcPT.bean.XzVideoRecord">
+        insert into xz_video_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                record_id,
+            <if test="loginID != 0">
+                login_id,
+            </if>
+            <if test="videoID != 0">
+                video_id,
+            </if>
+            <if test="recordType != 0">
+                record_type,
+            </if>
+            <if test="recordDate != null and recordDate != ''">
+                record_date,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{recordID,jdbcType=BIGINT},
+            <if test="loginID != 0">
+                #{loginID,jdbcType=BIGINT},
+            </if>
+            <if test="videoID != 0">
+                #{videoID,jdbcType=BIGINT},
+            </if>
+            <if test="recordType != 0">
+                #{recordType,jdbcType=INTEGER},
+            </if>
+            <if test="recordDate != null and recordDate != ''">
+                #{recordDate,jdbcType=DATE},
+            </if>
+
+        </trim>
+    </insert>
+    <select id="selectRecord" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideoRecord">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_video_record
+        where delete_falt = 0
+        <if test="loginID != 0">
+            and login_id = #{loginID,jdbcType=BIGINT}
+        </if>
+        <if test="videoID != 0">
+            and video_id = #{videoID,jdbcType=BIGINT}
+        </if>
+        <if test="recordType != 0">
+            and record_type = #{recordType,jdbcType=INTEGER}
+        </if>
+
+    </select>
+    <update id="updateRecord" parameterType="com.xzlcPT.bean.XzVideoRecord">
+        update xz_video_record
+        <set>
+
+            <if test="loginID != 0">
+                login_id = #{loginID,jdbcType=BIGINT},
+            </if>
+            <if test="videoID != 0">
+                video_id = #{videoID,jdbcType=BIGINT},
+            </if>
+            <if test="recordType != 0">
+                record_type = #{recordType,jdbcType=INTEGER},
+            </if>
+            <if test="recordDate != null">
+                record_date = #{recordDate,jdbcType=DATE},
+            </if>
+            <if test="deleteRecordDate != null">
+                delete_record_date = #{deleteRecordDate,jdbcType=DATE},
+            </if>
+            <if test="deleteFalt != 0">
+                delete_falt = #{deleteFalt,jdbcType=VARCHAR},
+            </if>
+            <if test="filed1 != null">
+                filed1 = #{filed1,jdbcType=VARCHAR},
+            </if>
+            <if test="filed2 != null">
+                filed2 = #{filed2,jdbcType=VARCHAR},
+            </if>
+            <if test="filed3 != null">
+                filed3 = #{filed3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where record_id = #{recordID,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectRecordByID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_video_record
+        where delete_falt = 0
+        and record_id = #{recordID,jdbcType=BIGINT}
+    </select>
+    <!--判断某用户是否购买过某视频-->
+    <select id="selectBuyRecord" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideoRecord">
+        SELECT vr.record_date
+        FROM xz_video_record vr,xz_video v
+        WHERE vr.video_id = v.video_id AND vr.delete_falt = 0 AND vr.record_type = 2 AND v.video_price > 0
+        AND vr.video_id = #{videoID,jdbcType=BIGINT} AND vr.login_id = #{loginID,jdbcType=BIGINT}
+    </select>
+</mapper>

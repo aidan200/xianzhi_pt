@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发表博客</title>
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="css/css测试.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+    <script src="lib/html5shiv/html5shiv.js"></script>
+    <script src="lib/respond/respond.min.js"></script>
+
+    <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-bottom" role="navigation">
+    <div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#two">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="img/LOGO1.png" alt="" class="alllogo">
+        </div>
+        <div class="navbar-collapse collapse" id="two">
+            <!--<ul class="wrapper-inner-tab">-->
+            <!--<li class="wrapper-inner-tab-backgrounds">-->
+            <!--<a class="sim-button button01"><span>登录</span></a>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav nav_2">
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;先知首页&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;先知课程&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;会员中心&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;先知博客&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;招聘中心&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;技术领域&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;活动中心&nbsp;</span></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav nav_1">
+                <li class="login1">
+                    <a href="#"><span>登录</span></a>
+                </li>
+                <li class="register1">
+                    <a href="#"><span>注册</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="bw_all">
+        <form action="">
+            <div class="bw_top">
+                <img src="img/small.jpg" alt="" class="bw_head">
+                <div style="display: inline-block">
+                    <h4>snowyanhaha</h4>
+                    <div style="margin-left: 20px">
+                        <span><a href="">个人主页</a></span> | <span><a href="">我的博客</a></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bw_t2" style="">
+                <h4>发表文章</h4>
+                <h5>文章标题</h5>
+                <hr style="margin-top: 5px">
+                <select name="" id="" class="bw_s1">
+                    <option>请选择</option>
+                    <option>原创</option>
+                    <option>转载</option>
+                </select>
+                <input type="text" class="bw_in1"/>
+                <h5>文章内容</h5>
+                <textarea class="bw_text"></textarea>
+
+                <h5>上传图片</h5>
+                <div class="bw_aim">
+                    <input type="file" class="bw_in2" style="display: inline-block">
+                    <button class="bw_sb" type="submit">上 传</button>
+                    <div class="bw_d">
+                        <div>1、图片大小不能超过2M</div>
+                        <div>2、支持格式：.jpg .gif .png .bmp</div>
+                    </div>
+                </div>
+
+                <h5>文章标签 （添加Tag，你的内容能被更多人看到）</h5>
+                <hr style="margin-top: 5px">
+                <input type="text" class="bw_in1">
+                <span>（最多添加5个标签，多个标签之间用“,”分隔）</span>
+
+                <h5>个人分类</h5>
+                <hr style="margin-top: 5px">
+                <input type="text" class="bw_in1">
+                <span>（多个分类之间用“,”分隔）</span>
+
+                <h5>文章分类</h5>
+                <hr style="margin-top: 5px">
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>移动开发</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>Web前端</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>架构设计</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>编程语言</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>互联网</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>数据库</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>系统运维</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>云计算</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>研发管理</span></div>
+                <div class="bw_classify"><input type="radio" name="classify" value=""/> <span>综合</span></div>
+
+                <h5>更多文章 （添加关联的文章url）</h5>
+                <hr style="margin-top: 5px">
+                <input type="text" class="bw_in1"><button class="bw_sb2">添加</button>
+                <h5>摘要：（默认自动提取您文章的前200字显示在博客首页作为文章摘要，您也可以在这里自行编辑 ）</h5>
+                <hr style="margin-top: 5px">
+                <textarea class="bw_text2"></textarea>
+                <div>提示：请不要发布任何推广、广告（包括招聘）、政治、低俗等方面的内容，不要把博客当作SEO工具，否则可能会影响到您的使用。</div>
+
+                <div class="bw_bottom">
+                <button class="bw_sb2">发表文章</button>
+                <button class="bw_sb2">保存</button>
+                <button class="bw_sb2">舍弃</button></div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+<footer>
+</footer>
+</body>
+</html>

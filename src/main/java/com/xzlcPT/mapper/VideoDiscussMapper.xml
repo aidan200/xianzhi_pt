@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.VideoDiscussMapper">
+    <resultMap id="VideoDiscussResultMap" type="com.xzlcPT.bean.VideoDiscuss">
+        <result column="video_id" jdbcType="BIGINT" property="videoId"/>
+        <result column="discuss_id" jdbcType="BIGINT" property="discussId"/>
+        <result column="discuss_writer" jdbcType="VARCHAR" property="discussWriter"/>
+        <result column="discuss_article" jdbcType="VARCHAR" property="discussArticle"/>
+        <result column="member_picture" jdbcType="VARCHAR" property="memberPicture"/>
+        <result column="discuss_time" jdbcType="TIMESTAMP" property="discussTime"/>
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag"/>
+        <collection property="replyId" ofType="com.xzlcPT.bean.Discuss">
+            <id column="r_id" jdbcType="BIGINT" property="discussId"/>
+            <result column="r_writer" jdbcType="VARCHAR" property="discussWriter" />
+            <result column="r_article" jdbcType="VARCHAR" property="discussArticle" />
+            <result column="r_time" jdbcType="TIMESTAMP" property="discussTime" />
+            <result column="r_flag" jdbcType="INTEGER" property="deleteFlag" />
+        </collection>
+    </resultMap>
+    <!--添加视频评论关系数据-->
+    <insert id="insertVDiscuss" parameterType="com.xzlcPT.bean.VideoDiscuss">
+        INSERT INTO xz_vdiscuss(video_id,discuss_id,delete_falt)
+        VALUES (
+        #{videoId,jdbcType=BIGINT},#{discussId,jdbcType=BIGINT},0
+        )
+    </insert>
+    <!--前台删除视频评论(修改删除标记！！！)-->
+    <delete id="deleteVideoDiscuss" parameterType="java.lang.Long">
+        UPDATE xz_discuss SET delete_flag = 1,reply_id = NULL
+        WHERE delete_flag = 0 AND discuss_id = #{0}
+    </delete>
+    <!--视频评论关系表删除记录-->
+    <delete id="deleteVDiscuss" parameterType="com.xzlcPT.bean.VideoDiscuss">
+        UPDATE xz_vdiscuss SET delete_falt = 1
+        WHERE delete_falt = 0 AND video_id = #{videoId,jdbcType=BIGINT} AND discuss_id = #{discussId,jdbcType=BIGINT}
+    </delete>
+    <!--新增评论时，修改该视频的video_dis-->
+    <update id="updateInsertVideoDis" parameterType="java.lang.Long">
+        UPDATE xz_video SET video_dis = 2
+        WHERE delete_falt = 0 AND video_id = #{0}
+    </update>
+    <!--当某视频全部评论都被删除时，修改该视频的video_dis-->
+    <update id="updateVideoDis" parameterType="java.lang.Long">
+        UPDATE xz_video SET video_dis = 1
+        WHERE delete_falt = 0 AND video_id = #{0}
+    </update>
+    <!--查询某视频是否有评论-->
+    <select id="ifHaveDiscuss" resultMap="VideoDiscussResultMap" parameterType="java.lang.Long">
+        SELECT discuss_id
+        FROM xz_vdiscuss
+        WHERE delete_falt = 0 AND video_id = #{0}
+    </select>
+    <!--查询新插入的评论的discussId-->
+    <select id="selectDiscussId" resultMap="VideoDiscussResultMap" parameterType="java.lang.String">
+        SELECT MAX(discuss_id) AS discuss_id,discuss_writer FROM xz_discuss WHERE discuss_writer = #{discussWriter,jdbcType=VARCHAR}
+    </select>
+    <!--查询视频评论-->
+    <select id="selectVideoDiscuss" resultMap="VideoDiscussResultMap" parameterType="java.lang.Long">
+        SELECT d1.discuss_id,d1.discuss_writer,d1.discuss_article,d1.discuss_time,d1.delete_flag,m.member_picture,
+			d2.discuss_id r_id,d2.discuss_writer r_writer,d2.discuss_article r_article,d2.discuss_time r_time,d2.delete_flag r_flag,vd.video_id
+        FROM xz_vdiscuss vd,xz_login l,xz_member m,xz_discuss d1 LEFT JOIN xz_discuss d2 ON d1.discuss_id = d2.reply_id
+        WHERE vd.discuss_id = d1.discuss_id AND d1.discuss_writer = l.login_count AND m.login_id = l.login_id AND d1.discuss_type = "视频"
+        AND d1.delete_flag = 0 AND (d2.delete_flag = 0 OR d2.delete_flag IS NULL) AND vd.video_id = #{0}
+        ORDER BY d1.discuss_id
+    </select>
+</mapper>

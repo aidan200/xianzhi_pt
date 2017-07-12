@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzCompanyWelfareMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzCompanyWelfare">
+    <id column="welfare_id" jdbcType="BIGINT" property="welfareId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="welfare_name" jdbcType="VARCHAR" property="welfareName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    welfare_id, company_id, welfare_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_company_welfare
+    where welfare_id = #{welfareId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_company_welfare
+    where welfare_id = #{welfareId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertAll" parameterType="java.util.List">
+    insert into xz_company_welfare (welfare_id, company_id, welfare_name
+    )
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+      (#{item.welfareId,jdbcType=BIGINT}, #{item.companyId,jdbcType=BIGINT}, #{item.welfareName,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzCompanyWelfare">
+    insert into xz_company_welfare (welfare_id, company_id, welfare_name
+      )
+    values (#{welfareId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{welfareName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzCompanyWelfare">
+    insert into xz_company_welfare
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="welfareId != null">
+        welfare_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="welfareName != null">
+        welfare_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="welfareId != null">
+        #{welfareId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="welfareName != null">
+        #{welfareName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzCompanyWelfare">
+    update xz_company_welfare
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="welfareName != null">
+        welfare_name = #{welfareName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where welfare_id = #{welfareId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzCompanyWelfare">
+    update xz_company_welfare
+    set company_id = #{companyId,jdbcType=BIGINT},
+      welfare_name = #{welfareName,jdbcType=VARCHAR}
+    where welfare_id = #{welfareId,jdbcType=BIGINT}
+  </update>
+</mapper>

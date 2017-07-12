@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.DiscussMapper">
+    <resultMap id="DiscussResultMap" type="com.xzlcPT.bean.Discuss">
+        <id column="discuss_id" jdbcType="BIGINT" property="discussId" />
+        <result column="member_id" jdbcType="BIGINT" property="memberID" />
+        <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
+        <result column="discuss_writer" jdbcType="VARCHAR" property="discussWriter" />
+        <result column="discuss_article" jdbcType="VARCHAR" property="discussArticle" />
+        <result column="discuss_time" jdbcType="TIMESTAMP" property="discussTime" />
+        <result column="blog_id" jdbcType="BIGINT" property="blogId" />
+        <result column="exist" jdbcType="INTEGER" property="exist" />
+        <result column="discuss_type" jdbcType="VARCHAR" property="discussType" />
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+        <collection property="replyId" ofType="com.xzlcPT.bean.Discuss">
+            <id column="r_id" jdbcType="BIGINT" property="discussId"/>
+            <result column="r_writer" jdbcType="VARCHAR" property="discussWriter" />
+            <result column="r_article" jdbcType="VARCHAR" property="discussArticle" />
+            <result column="r_time" jdbcType="TIMESTAMP" property="discussTime" />
+        </collection>
+    </resultMap>
+    <resultMap id="ReplyResultMap" type="com.xzlcPT.bean.Discuss">
+        <result column="discuss_id" jdbcType="BIGINT" property="discussId" />
+        <result column="discuss_writer" jdbcType="VARCHAR" property="discussWriter" />
+        <result column="discuss_article" jdbcType="VARCHAR" property="discussArticle" />
+        <result column="discuss_time" jdbcType="TIMESTAMP" property="discussTime" />
+        <result column="reply_id" jdbcType="BIGINT" property="blogId" />
+    </resultMap>
+
+    <!--添加评论(后台)-->
+    <insert id="insertDiscuss" parameterType="com.xzlcPT.bean.Discuss">
+        INSERT INTO xz_discuss (discuss_writer,discuss_article,discuss_time,delete_date,filed1,filed2,filed3,delete_flag)
+        VALUES (
+        #{discussWriter,jdbcType=VARCHAR},#{discussArticle,jdbcType=VARCHAR},#{discussTime,jdbcType=TIMESTAMP},#{deleteDate,jdbcType=DATE},#{filed1,jdbcType=VARCHAR},
+        #{filed2,jdbcType=VARCHAR},#{filed3,jdbcType=VARCHAR},0
+        )
+    </insert>
+    <!--添加评论(前台)-->
+    <insert id="insertDiscussInfo" parameterType="com.xzlcPT.bean.Discuss">
+        INSERT INTO xz_discuss (discuss_writer,discuss_article,discuss_time,discuss_type,delete_date,filed1,filed2,filed3,delete_flag, member_id, member_picture)
+        VALUES (
+        #{discussWriter,jdbcType=VARCHAR},#{discussArticle,jdbcType=VARCHAR},NOW(),#{discussType,jdbcType=VARCHAR},#{deleteDate,jdbcType=DATE},#{filed1,jdbcType=VARCHAR},
+        #{filed2,jdbcType=VARCHAR},#{filed3,jdbcType=VARCHAR},0,#{memberID},#{memberPicture}
+        )
+    </insert>
+    <!--添加博客评论关系-->
+    <insert id="insertBlogDiscuss" parameterType="com.xzlcPT.bean.Discuss">
+        INSERT INTO xz_blog_discuss(blog_id,discuss_id)
+        VALUES (
+        #{blogId,jdbcType=BIGINT},#{discussId,jdbcType=BIGINT}
+        )
+    </insert>
+    <!--添加回复，前台-->
+    <insert id="insertReply" parameterType="com.xzlcPT.bean.Discuss">
+        INSERT INTO xz_discuss(discuss_writer,discuss_article,discuss_time,discuss_type,reply_id,delete_date,filed1,filed2,filed3,delete_flag)
+        VALUES (
+        #{discussWriter,jdbcType=VARCHAR},#{discussArticle,jdbcType=VARCHAR},NOW(),#{discussType,jdbcType=VARCHAR},#{discussId,jdbcType=BIGINT},
+        #{deleteDate,jdbcType=DATE},#{filed1,jdbcType=VARCHAR},#{filed2,jdbcType=VARCHAR},#{filed3,jdbcType=VARCHAR},0
+        )
+    </insert>
+    <!--添加回复，后台-->
+    <insert id="insertReplyEnd" parameterType="com.xzlcPT.bean.Discuss">
+        INSERT INTO xz_discuss(discuss_writer,discuss_article,discuss_time,reply_id,delete_date,filed1,filed2,filed3,delete_flag)
+        VALUES (
+        #{discussWriter,jdbcType=VARCHAR},#{discussArticle,jdbcType=VARCHAR},#{discussTime,jdbcType=TIMESTAMP},#{blogId,jdbcType=BIGINT},
+        #{deleteDate,jdbcType=DATE},#{filed1,jdbcType=VARCHAR},#{filed2,jdbcType=VARCHAR},#{filed3,jdbcType=VARCHAR},0
+        )
+    </insert>
+    <!--删除评论-->
+    <delete id="deleteDiscuss" parameterType="java.lang.Long">
+        UPDATE xz_discuss SET delete_flag = 1,reply_id = NULL
+        WHERE delete_flag = 0 AND discuss_id = #{0}
+    </delete>
+    <!--删除博客评论关系表的数据(修改删除标记)-->
+    <delete id="deleteBlogDiscuss" parameterType="com.xzlcPT.bean.Discuss">
+        UPDATE xz_blog_discuss SET delete_flag = 1
+        WHERE delete_flag = 0 AND blog_id = #{blogId,jdbcType=BIGINT} AND discuss_id = #{discussId,jdbcType=BIGINT}
+    </delete>
+    <!--修改评论，后台-->
+    <update id="updateDiscuss" parameterType="com.xzlcPT.bean.Discuss">
+        UPDATE xz_discuss
+        SET discuss_writer = #{discussWriter,jdbcType=VARCHAR},discuss_article = #{discussArticle,jdbcType=VARCHAR},
+        discuss_time = #{discussTime,jdbcType=TIMESTAMP}
+        WHERE delete_flag = 0 AND discuss_id = #{discussId,jdbcType=BIGINT}
+    </update>
+    <!--更改某条评论对应的博客编号-->
+    <update id="updateBlogId" parameterType="com.xzlcPT.bean.Discuss">
+        UPDATE xz_blog_discuss
+        SET blog_id = #{blogId,jdbcType=BIGINT}
+        WHERE discuss_id = #{discussId,jdbcType=BIGINT}
+    </update>
+    <!--修改回复(后台，带discussTime，带replyId)-->
+    <update id="updateReply" parameterType="com.xzlcPT.bean.Discuss">
+        UPDATE xz_discuss
+        SET discuss_writer = #{discussWriter,jdbcType=VARCHAR},discuss_article = #{discussArticle,jdbcType=VARCHAR},
+        discuss_time = #{discussTime,jdbcType=TIMESTAMP}
+        WHERE delete_flag = 0 AND discuss_id = #{discussId,jdbcType=BIGINT}
+    </update>
+    <!--某条评论被添加回复时，修改exist-->
+    <update id="saveExist" parameterType="java.lang.Long">
+        UPDATE xz_discuss
+        SET exist = 2
+        WHERE discuss_id = #{0}
+    </update>
+    <!--某条评论没有回复时，修改exist-->
+    <update id="updateExist" parameterType="java.lang.Long">
+        UPDATE xz_discuss
+        SET exist = 1
+        WHERE discuss_id = #{0}
+    </update>
+    <!--查询评论和回复-->
+    <select id="selectDiscussAndReplyAll" resultMap="DiscussResultMap" parameterType="java.lang.Long">
+        SELECT d.discuss_id,bd.blog_id,d.discuss_writer,d.discuss_article,discuss_time,exist
+        FROM xz_discuss d,xz_blog_discuss bd
+        WHERE d.delete_flag = 0 AND bd.discuss_id = d.discuss_id
+        ORDER BY d.discuss_id
+    </select>
+    <!--查看单条评论-->
+    <select id="selectByPrimaryKey" resultMap="DiscussResultMap" parameterType="java.lang.Long">
+        SELECT discuss_id,discuss_writer,discuss_article,reply_id,discuss_time,delete_flag
+        FROM xz_discuss
+        WHERE delete_flag = 0 and discuss_id = #{discussId,jdbcType=BIGINT}
+    </select>
+    <!--查询评论和回复(单条博客)-->
+    <select id="selectDiscussAndReply" resultMap="DiscussResultMap" parameterType="java.lang.Long">
+        SELECT d1.member_id,d1.member_picture ,d1.discuss_id,d1.discuss_writer,d1.discuss_article,d1.discuss_time,d1.exist,
+        d2.discuss_id r_id,d2.discuss_writer r_writer,d2.discuss_article r_article,d2.discuss_time r_time
+        FROM xz_blog_discuss bd,xz_discuss d1 LEFT JOIN xz_discuss d2 ON d1.discuss_id = d2.reply_id
+        WHERE bd.discuss_id = d1.discuss_id AND d1.delete_flag = 0 AND (d2.delete_flag = 0 OR d2.delete_flag IS NULL) AND bd.blog_id = #{0}
+    </select>
+    <!--查询新插入的评论的discussId-->
+    <select id="selectDiscussId" resultMap="DiscussResultMap" parameterType="java.lang.String">
+        SELECT MAX(discuss_id) AS discuss_id,discuss_writer FROM xz_discuss WHERE discuss_writer = #{discussWriter,jdbcType=VARCHAR}
+    </select>
+    <!--根据reply_id查看回复内容-->
+    <select id="selectReply" resultMap="DiscussResultMap" parameterType="java.lang.Long">
+        SELECT discuss_id,discuss_writer,discuss_article,discuss_time
+        FROM xz_discuss
+        WHERE delete_flag = 0 AND reply_id = #{0}
+    </select>
+    <!--查询某条评论对应的博客编号-->
+    <select id="selectBlogId" resultMap="DiscussResultMap" parameterType="java.lang.Long">
+        SELECT blog_id
+        FROM xz_blog_discuss
+        WHERE delete_flag = 0 AND discuss_id = #{0}
+    </select>
+    <!--查询某条回复的上级评论编号-->
+    <select id="selectReplyId" resultMap="ReplyResultMap" parameterType="java.lang.Long">
+        SELECT discuss_id,discuss_writer,discuss_article,discuss_time,reply_id
+        FROM xz_discuss
+        WHERE delete_flag = 0 AND discuss_id = #{0}
+    </select>
+    <!--(后台)带blog_id，根据条件查询xz_discuss所有数据-->
+    <select id="selectDiscussSelective" resultMap="DiscussResultMap" parameterType="java.util.HashMap">
+        SELECT d.discuss_id,bd.blog_id,d.discuss_writer,d.discuss_article,discuss_time,exist
+        FROM xz_discuss d,xz_blog_discuss bd WHERE d.delete_flag = 0 AND bd.discuss_id = d.discuss_id
+        <if test="discussId!=null and discussId!=''">
+            AND d.discuss_id = #{discussId,jdbcType=BIGINT}
+        </if>
+        <if test="blogId!=null and blogId!=''">
+            AND bd.blog_id = #{blogId,jdbcType=BIGINT}
+        </if>
+        <if test="discussWriter!=null and discussWriter!=''">
+            AND d.discuss_writer LIKE CONCAT('%',#{discussWriter},'%')
+        </if>
+        <if test="discussArticle!=null and discussArticle!=''">
+            AND d.discuss_article LIKE CONCAT('%',#{discussArticle},'%')
+        </if>
+        <if test="startTime!=null and endTime!=null">
+            AND discuss_time &gt; #{startTime,jdbcType=TIMESTAMP} AND discuss_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime!=null and endTime==null">
+            AND discuss_time &gt; #{startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime==null and endTime!=null">
+            AND discuss_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="exist!=null and exist!=0">
+            AND exist = #{exist,jdbcType=INTEGER}
+        </if>
+        ORDER BY d.discuss_id
+    </select>
+    <select id="selectReplySelective" resultMap="DiscussResultMap" parameterType="java.util.HashMap">
+        SELECT discuss_id,discuss_writer,discuss_article,discuss_time
+        FROM xz_discuss WHERE delete_flag = 0 AND reply_id = #{blogId,jdbcType=BIGINT}
+        <if test="discussWriter!=null and discussWriter!=''">
+            AND discuss_writer LIKE CONCAT('%',#{discussWriter},'%')
+        </if>
+        <if test="discussArticle!=null and discussArticle!=''">
+            AND discuss_article LIKE CONCAT('%',#{discussArticle},'%')
+        </if>
+        <if test="startTime!=null and endTime!=null">
+            AND discuss_time &gt; #{startTime,jdbcType=TIMESTAMP} AND discuss_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime!=null and endTime==null">
+            AND discuss_time &gt; #{startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime==null and endTime!=null">
+            AND discuss_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+    </select>
+    <!--查看某条博客是否有评论-->
+    <select id="selectIfExist" resultMap="DiscussResultMap" parameterType="java.lang.Long">
+        SELECT discuss_id
+        FROM xz_blog_discuss WHERE delete_flag = 0 AND blog_id = #{0}
+    </select>
+    <!--根据blogId查看相应评论(后台，只有评论和exist，没有回复内容)-->
+    <select id="selectOnlyDiscuss" resultMap="DiscussResultMap" parameterType="java.lang.Long">
+        SELECT bd.blog_id,d.discuss_id,d.discuss_writer,d.discuss_article,d.discuss_time,d.exist
+        FROM xz_blog b,xz_blog_discuss bd,xz_discuss d
+        WHERE b.blog_id = bd.blog_id AND d.discuss_id = bd.discuss_id AND b.blog_id = #{0}
+    </select>
+
+    <update id="updateMemberPicture" parameterType="com.xzlcPT.bean.Discuss">
+         UPDATE xz_discuss
+        SET member_picture = #{memberPicture}
+        WHERE member_id = #{memberID}
+    </update>
+</mapper>

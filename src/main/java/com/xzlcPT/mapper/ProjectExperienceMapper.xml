@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.ProjectExperienceMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzProjectExperience">
+        <id column="project_id" jdbcType="BIGINT" property="projectID"/>
+        <result column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <result column="project_name" jdbcType="VARCHAR" property="projectName"/>
+        <result column="project_describe" jdbcType="VARCHAR" property="projectDescribe"/>
+        <result column="start_date" jdbcType="DATE" property="startDate"/>
+        <result column="end_date" jdbcType="DATE" property="endDate"/>
+        <result column="job_duties" jdbcType="VARCHAR" property="jobDuties"/>
+        <result column="delete_project_date" jdbcType="DATE" property="deleteProjectDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+        <result column="filed1" jdbcType="VARCHAR" property="filed1"/>
+        <result column="filed2" jdbcType="VARCHAR" property="filed2"/>
+        <result column="filed3" jdbcType="VARCHAR" property="filed3"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    project_id, login_id, project_name, project_describe, start_date, end_date, job_duties
+  </sql>
+    <sql id="Base_Column_List1">
+        project_id, login_id, project_name, project_describe, start_date, end_date, job_duties, delete_project_date, delete_falt,filed1,filed2,filed3
+    </sql>
+
+    <insert id="addProject" parameterType="com.xzlcPT.bean.XzProjectExperience">
+        insert into xz_project_experience (
+        <include refid="Base_Column_List"/>
+        )
+        values (#{projectID,jdbcType=BIGINT},
+        #{loginID,jdbcType=BIGINT},#{projectName,jdbcType=VARCHAR},#{projectDescribe,jdbcType=VARCHAR},
+        #{startDate,jdbcType=VARCHAR},#{endDate,jdbcType=DATE},#{jobDuties,jdbcType=VARCHAR}
+
+        )
+    </insert>
+
+    <select id="selectProjectByID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_project_experience where 1=1
+        and login_id = #{loginID,jdbcType=BIGINT}
+        and delete_falt = 0
+    </select>
+
+    <update id="updateProject" parameterType="com.xzlcPT.bean.XzProjectExperience">
+        update xz_project_experience
+
+        <set>
+            <if test="projectName != null">
+                project_name = #{projectName},
+            </if>
+            <if test="projectDescribe != null">
+                project_describe = #{projectDescribe},
+            </if>
+            <if test="startDate != null">
+                start_date = #{startDate},
+            </if>
+            <if test="endDate != null">
+                end_date = #{endDate},
+            </if>
+            <if test="jobDuties != null">
+                job_duties = #{jobDuties},
+            </if>
+            <if test="deleteProjectDate != null">
+                delete_project_date = #{deleteProjectDate},
+            </if>
+            <if test="deleteFalt != null">
+                delete_falt = #{deleteFalt},
+            </if>
+
+
+        </set>
+        where project_id = #{projectID,jdbcType=BIGINT}
+    </update>
+
+    <delete id="delateProject" parameterType="java.lang.Long">
+        delete from xz_project_experience
+        where project_id = #{projectID,jdbcType=BIGINT}
+    </delete>
+
+    <select id="selectProjectByPID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_project_experience
+        where 1=1
+        and delete_falt = 0
+        and project_id = #{projectID,jdbcType=BIGINT}
+    </select>
+
+
+    <select id="selAllProjectEEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzProjectExperience">
+        select
+        <include refid="Base_Column_List1"/>
+        FROM xz_project_experience
+        where delete_falt = 0
+        <if test="loginID != 0">
+            and login_id = #{loginID}
+        </if>
+        <if test="projectName!=null and projectName!=''">
+            and project_name like CONCAT('%',#{projectName},'%')
+        </if>
+        <if test="projectDescribe!=null and projectDescribe!=''">
+            and project_describe like CONCAT('%',#{projectDescribe},'%')
+        </if>
+
+    </select>
+
+    <!--project_id, login_id, project_name, project_describe, start_date, end_date, job_duties, delete_project_date, delete_falt,filed1,filed2,filed3-->
+
+    <insert id="addProjectEnd" parameterType="com.xzlcPT.bean.XzProjectExperience">
+        insert into xz_project_experience
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            login_id,
+            <if test="projectName != null">
+                project_name,
+            </if>
+            <if test="projectDescribe != null">
+                project_describe,
+            </if>
+            <if test="startDate != null">
+                start_date,
+            </if>
+            <if test="endDate != null">
+                end_date,
+            </if>
+            <if test="jobDuties != null">
+                job_duties,
+            </if>
+
+            <if test="filed1 != null">
+                filed1,
+            </if>
+            <if test="filed2 != null">
+                filed2,
+            </if>
+            <if test="filed3 != null">
+                filed3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{loginID,jdbcType=BIGINT},
+            <if test="projectName != null">
+                #{projectName,jdbcType=VARCHAR},
+            </if>
+            <if test="projectDescribe != null">
+                #{projectDescribe,jdbcType=VARCHAR},
+            </if>
+            <if test="startDate != null">
+                #{startDate,jdbcType=DATE},
+            </if>
+            <if test="endDate != null">
+                #{endDate,jdbcType=DATE},
+            </if>
+            <if test="jobDuties != null">
+                #{jobDuties,jdbcType=VARCHAR},
+            </if>
+            <if test="filed1 != null">
+                #{filed1,jdbcType=VARCHAR},
+            </if>
+            <if test="filed2 != null">
+                #{filed2,jdbcType=VARCHAR},
+            </if>
+            <if test="filed3 != null">
+                #{filed3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+    <select id="selByLoginIDEnd" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List1"/>
+        FROM xz_project_experience
+        where 1=1
+        and project_id = #{projectID,jdbcType=BIGINT}
+
+    </select>
+
+    <update id="updateProjectEEnd" parameterType="com.xzlcPT.bean.XzProjectExperience">
+        update xz_project_experience
+        <set>
+            <if test="projectName != null">
+                project_name = #{projectName},
+            </if>
+            <if test="projectDescribe != null">
+                project_describe = #{projectDescribe},
+            </if>
+            <if test="startDate != null">
+                start_date = #{startDate},
+            </if>
+            <if test="endDate != null">
+                end_date = #{endDate},
+            </if>
+            <if test="jobDuties != null">
+                job_duties = #{jobDuties},
+            </if>
+            <if test="deleteProjectDate != null">
+                delete_project_date = #{deleteProjectDate},
+            </if>
+            <if test="deleteFalt != null">
+                delete_falt = #{deleteFalt},
+            </if>
+            <if test="filed1 != null">
+                filed1 = #{filed1},
+            </if>
+            <if test="filed2 != null">
+                filed2 = #{filed2},
+            </if>
+            <if test="filed3 != null">
+                filed3 = #{filed3},
+            </if>
+        </set>
+        WHERE project_id = #{projectID,jdbcType=BIGINT}
+    </update>
+
+    <delete id="deleteProjectEEnd" parameterType="java.lang.Long">
+        delete from xz_project_experience
+        WHERE project_id = #{projectID,jdbcType=BIGINT}
+    </delete>
+</mapper>

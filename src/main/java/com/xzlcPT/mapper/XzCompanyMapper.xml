@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzCompanyMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzCompany">
+    <id column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="login_id" jdbcType="BIGINT" property="loginId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_location" jdbcType="VARCHAR" property="companyLocation" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_picture" jdbcType="VARCHAR" property="companyPicture" />
+    <result column="company_intro" jdbcType="VARCHAR" property="companyIntro" />
+    <result column="company_scale" jdbcType="VARCHAR" property="companyScale" />
+    <result column="company_nature" jdbcType="INTEGER" property="companyNature" />
+    <result column="licence" jdbcType="VARCHAR" property="licence" />
+    <result column="company_state" jdbcType="INTEGER" property="companyState" />
+    <result column="is_listing" jdbcType="INTEGER" property="isListing" />
+    <result column="domain" jdbcType="VARCHAR" property="domain" />
+    <result column="skill" jdbcType="VARCHAR" property="skill" />
+    <result column="financing" jdbcType="VARCHAR" property="financing" />
+    <result column="delete_company_date" jdbcType="DATE" property="deleteCompanyDate" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    <result column="delete_falt" jdbcType="BIGINT" property="deleteFalt" />
+  </resultMap>
+  <resultMap id="CompanyInfo" type="com.xzlcPT.bean.XzCompany">
+    <id column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="login_id" jdbcType="BIGINT" property="loginId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_location" jdbcType="VARCHAR" property="companyLocation" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_picture" jdbcType="VARCHAR" property="companyPicture" />
+    <result column="company_intro" jdbcType="VARCHAR" property="companyIntro" />
+    <result column="company_scale" jdbcType="VARCHAR" property="companyScale" />
+    <result column="company_nature" jdbcType="INTEGER" property="companyNature" />
+    <result column="licence" jdbcType="VARCHAR" property="licence" />
+    <result column="company_state" jdbcType="INTEGER" property="companyState" />
+    <result column="is_listing" jdbcType="INTEGER" property="isListing" />
+    <result column="domain" jdbcType="VARCHAR" property="domain" />
+    <result column="skill" jdbcType="VARCHAR" property="skill" />
+    <result column="financing" jdbcType="VARCHAR" property="financing" />
+    <collection property="products" ofType="com.xzlcPT.bean.XzCompanyProduct">
+      <id column="product_id" jdbcType="BIGINT" property="productId" />
+      <result column="company_id" jdbcType="BIGINT" property="companyId" />
+      <result column="product_Intro" jdbcType="VARCHAR" property="productIntro" />
+      <result column="product_url" jdbcType="VARCHAR" property="productUrl" />
+    </collection>
+    <collection property="images" ofType="com.xzlcPT.bean.XzCompanyImage">
+      <id column="image_id" jdbcType="BIGINT" property="imageId" />
+      <result column="image_type" jdbcType="VARCHAR" property="imageType" />
+      <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
+      <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    </collection>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    company_id, login_id, company_name, company_location, company_phone, company_picture, 
+    company_intro, company_scale, company_nature, licence, company_state, is_listing, 
+    domain, skill, financing, delete_company_date, filed1, filed2, filed3, delete_falt
+  </sql>
+  <sql id="selCompanyInfoList">
+    c.company_id, c.login_id, c.company_name, c.company_location, c.company_phone, c.company_picture,
+    c.company_intro, c.company_scale, c.company_nature, c.licence, c.company_state, c.is_listing,
+    c.domain, c.skill, c.financing,
+    p.product_id, p.company_id, p.product_Intro, p.product_url,
+    i.image_id, i.image_type, i.image_path, i.company_id
+  </sql>
+  <select id="selCompanyInfo" resultMap="CompanyInfo" parameterType="java.lang.Long">
+      select
+      <include refid="selCompanyInfoList" />
+      FROM xz_company c LEFT JOIN xz_company_product p on c.company_id = p.company_id LEFT JOIN xz_company_image i on c.company_id = i.company_id
+      where c.company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_company
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_company
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </delete>
+  <insert id="addCompany" parameterType="com.xzlcPT.bean.XzCompany">
+    <selectKey keyProperty="companyId" resultType="long">
+      select LAST_INSERT_ID()
+    </selectKey>
+    insert into xz_company (company_id, login_id, company_name,
+    company_location, company_phone, company_picture,
+    company_intro, company_scale, company_nature,
+    licence, company_state, is_listing,
+    domain, skill, financing,
+    delete_company_date, filed1, filed2,
+    filed3, delete_falt)
+    values (#{companyId,jdbcType=BIGINT}, #{loginId,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR},
+    #{companyLocation,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, #{companyPicture,jdbcType=VARCHAR},
+    #{companyIntro,jdbcType=VARCHAR}, #{companyScale,jdbcType=VARCHAR}, #{companyNature,jdbcType=INTEGER},
+    #{licence,jdbcType=VARCHAR}, #{companyState,jdbcType=INTEGER}, #{isListing,jdbcType=INTEGER},
+    #{domain,jdbcType=VARCHAR}, #{skill,jdbcType=VARCHAR}, #{financing,jdbcType=VARCHAR},
+    #{deleteCompanyDate,jdbcType=DATE}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR},
+    #{filed3,jdbcType=VARCHAR}, #{deleteFalt,jdbcType=BIGINT})
+  </insert>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzCompany">
+    insert into xz_company (company_id, login_id, company_name, 
+      company_location, company_phone, company_picture, 
+      company_intro, company_scale, company_nature, 
+      licence, company_state, is_listing, 
+      domain, skill, financing, 
+      delete_company_date, filed1, filed2, 
+      filed3, delete_falt)
+    values (#{companyId,jdbcType=BIGINT}, #{loginId,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, 
+      #{companyLocation,jdbcType=VARCHAR}, #{companyPhone,jdbcType=VARCHAR}, #{companyPicture,jdbcType=VARCHAR}, 
+      #{companyIntro,jdbcType=VARCHAR}, #{companyScale,jdbcType=VARCHAR}, #{companyNature,jdbcType=INTEGER}, 
+      #{licence,jdbcType=VARCHAR}, #{companyState,jdbcType=INTEGER}, #{isListing,jdbcType=INTEGER}, 
+      #{domain,jdbcType=VARCHAR}, #{skill,jdbcType=VARCHAR}, #{financing,jdbcType=VARCHAR}, 
+      #{deleteCompanyDate,jdbcType=DATE}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
+      #{filed3,jdbcType=VARCHAR}, #{deleteFalt,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzCompany">
+    insert into xz_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="loginId != null">
+        login_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyLocation != null">
+        company_location,
+      </if>
+      <if test="companyPhone != null">
+        company_phone,
+      </if>
+      <if test="companyPicture != null">
+        company_picture,
+      </if>
+      <if test="companyIntro != null">
+        company_intro,
+      </if>
+      <if test="companyScale != null">
+        company_scale,
+      </if>
+      <if test="companyNature != null">
+        company_nature,
+      </if>
+      <if test="licence != null">
+        licence,
+      </if>
+      <if test="companyState != null">
+        company_state,
+      </if>
+      <if test="isListing != null">
+        is_listing,
+      </if>
+      <if test="domain != null">
+        domain,
+      </if>
+      <if test="skill != null">
+        skill,
+      </if>
+      <if test="financing != null">
+        financing,
+      </if>
+      <if test="deleteCompanyDate != null">
+        delete_company_date,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="loginId != null">
+        #{loginId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLocation != null">
+        #{companyLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPicture != null">
+        #{companyPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIntro != null">
+        #{companyIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="companyScale != null">
+        #{companyScale,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNature != null">
+        #{companyNature,jdbcType=INTEGER},
+      </if>
+      <if test="licence != null">
+        #{licence,jdbcType=VARCHAR},
+      </if>
+      <if test="companyState != null">
+        #{companyState,jdbcType=INTEGER},
+      </if>
+      <if test="isListing != null">
+        #{isListing,jdbcType=INTEGER},
+      </if>
+      <if test="domain != null">
+        #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="skill != null">
+        #{skill,jdbcType=VARCHAR},
+      </if>
+      <if test="financing != null">
+        #{financing,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteCompanyDate != null">
+        #{deleteCompanyDate,jdbcType=DATE},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFalt != null">
+        #{deleteFalt,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzCompany">
+    update xz_company
+    <set>
+      <if test="loginId != null">
+        login_id = #{loginId,jdbcType=BIGINT},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLocation != null">
+        company_location = #{companyLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPicture != null">
+        company_picture = #{companyPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIntro != null">
+        company_intro = #{companyIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="companyScale != null">
+        company_scale = #{companyScale,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNature != null">
+        company_nature = #{companyNature,jdbcType=INTEGER},
+      </if>
+      <if test="licence != null">
+        licence = #{licence,jdbcType=VARCHAR},
+      </if>
+      <if test="companyState != null">
+        company_state = #{companyState,jdbcType=INTEGER},
+      </if>
+      <if test="isListing != null">
+        is_listing = #{isListing,jdbcType=INTEGER},
+      </if>
+      <if test="domain != null">
+        domain = #{domain,jdbcType=VARCHAR},
+      </if>
+      <if test="skill != null">
+        skill = #{skill,jdbcType=VARCHAR},
+      </if>
+      <if test="financing != null">
+        financing = #{financing,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteCompanyDate != null">
+        delete_company_date = #{deleteCompanyDate,jdbcType=DATE},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt = #{deleteFalt,jdbcType=BIGINT},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzCompany">
+    update xz_company
+    set login_id = #{loginId,jdbcType=BIGINT},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      company_location = #{companyLocation,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      company_picture = #{companyPicture,jdbcType=VARCHAR},
+      company_intro = #{companyIntro,jdbcType=VARCHAR},
+      company_scale = #{companyScale,jdbcType=VARCHAR},
+      company_nature = #{companyNature,jdbcType=INTEGER},
+      licence = #{licence,jdbcType=VARCHAR},
+      company_state = #{companyState,jdbcType=INTEGER},
+      is_listing = #{isListing,jdbcType=INTEGER},
+      domain = #{domain,jdbcType=VARCHAR},
+      skill = #{skill,jdbcType=VARCHAR},
+      financing = #{financing,jdbcType=VARCHAR},
+      delete_company_date = #{deleteCompanyDate,jdbcType=DATE},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      delete_falt = #{deleteFalt,jdbcType=BIGINT}
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </update>
+</mapper>

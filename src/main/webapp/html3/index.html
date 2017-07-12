@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="css/css测试.css" type="text/css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+    <script src="lib/html5shiv/html5shiv.js"></script>
+    <script src="lib/respond/respond.min.js"></script>
+
+    <script src="lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--轮播-->
+    <script src="lib/jquery/jquery.color.js"></script>
+    <script src="js/lunbo.js"></script>
+    <script>
+        $(function () {
+            m_lo1("#home_1")
+        })
+    </script>
+    <!--导航透明度-->
+    <script src="js/script.js"></script>
+
+    <!--一堆东西-->
+    <script type="text/javascript" src="js/jquery-v1.8.2.js"></script>
+    <script type="text/javascript" src="js/jquery-events-frame.js"></script>
+    <script type="text/javascript" src="js/jparallax.js"></script>
+    <script>
+        $(function () {
+            if (jQuery('.parallax').length != 0) {
+                if (jQuery(window).width() > 980) {
+
+                    //apply parallax effect
+                    jQuery('.parallax .parallax-layer').parallax(
+                        {mouseport: jQuery('.parallax')}
+                    );
+
+                    $(window).load(function () {
+                        jQuery('.parallax .parallax-layer').css('display', 'block');
+
+                    });
+                }
+            }
+        });
+    </script>
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-bottom" role="navigation" style="position: fixed;
+z-index: 9999;width: 100%">
+    <div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#two">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="img/LOGO1.png" alt="" class="alllogo">
+        </div>
+        <div class="navbar-collapse collapse" id="two">
+            <ul class="nav navbar-nav nav_2">
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;先知首页&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;先知课程&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;会员中心&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;先知博客&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;招聘中心&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;技术领域&nbsp;</span></a>
+                </li>
+                <li>
+                    <a href="#" class="sim-button button01"><span>&nbsp;活动中心&nbsp;</span></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav nav_1">
+                <li class="login1">
+                    <a href="#"><span>登录</span></a>
+                </li>
+                <li class="register1">
+                    <a href="#"><span>注册</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header id="home_1" style="z-index: 4">
+    <h4></h4>
+    <div style="background-image:url('img/121.jpg');z-index:2;background-size: cover">
+        <div id="container2">
+            <div class="parallax parallax-viewport">
+                <div class="parallax-layer parallax1">
+                    <img src="img/v2.png" alt="">
+                </div>
+                <div class="parallax-layer parallax2">
+                    <img src="img/b2.png" alt="" style="width: 900px;height:500px">
+                </div>
+
+                <!--<div class="parallax-layer parallax3">-->
+                <!--<img src="img/balloons-3.png" alt="">-->
+                <!--</div>-->
+
+                <!--<div class="parallax-layer parallax4">-->
+                <!--<img src="img/balloons-4.png" alt="">-->
+                <!--</div>-->
+
+                <!--<div class="parallax-layer parallax5">-->
+                <!--<img src="img/balloons-5.png" alt="">-->
+                <!--</div>-->
+
+            </div>
+        </div>
+    </div>
+    <div style="background-image:url('img/122.jpg')">
+        <div id="container3">
+            <div class="parallax parallax-viewport">
+
+                <div class="parallax-layer parallax1">
+                    <img src="img/v2.png" alt="">
+                </div>
+                <div class="parallax-layer parallax2">
+                    <img src="img/b2.png" alt="" style="width: 900px;height:500px">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div style="background-image:url('img/125.jpg')">
+        <div id="container4">
+            <div class="parallax parallax-viewport">
+                <div class="parallax-layer parallax1">
+                    <img src="img/v2.png" alt="">
+                </div>
+                <div class="parallax-layer parallax2">
+                    <img src="img/b2.png" alt="" style="width: 900px;height:500px">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--子导航-->
+<nav class="nav_02">
+    <div class="container">
+        <ul>
+            <li><a href="">免费套餐</a></li>
+            <li><a href="">服务内容</a></li>
+            <li><a href="">先知共创</a></li>
+            <li><a href="">校园支持</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="index_all">
+
+    <!--全民开发计划-->
+    <div class="index_01">
+        <h3>全民开发计划</h3>
+        <p>全球领先、安全、稳定的云计算产品,计算储存网络安全大数据人工智能惠普科技助你飞跃发展</p>
+
+        <div class="index_plan">
+            <div class="col-md-6">
+                <div class="plan_in">
+                    <div class="plan_c col-md-6">
+                        <h4>入门型</h4>
+                        <p>适用个人网站初始阶段并发访问量小
+                            开发、测试环境
+                            代码存储服务器</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="img/1111.png" alt="" style="width:90px;height: 100px;margin-top: 10px">
+                        <div><a href="" style="color: #0073b2">查看详情</a></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="plan_in">
+                    <div class="plan_c col-md-6">
+                        <h4>入门型</h4>
+                        <p>适用个人网站初始阶段并发访问量小
+                            开发、测试环境
+                            代码存储服务器</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="img/1111.png" alt="" style="width:90px;height: 100px;margin-top: 10px">
+                        <div><a href="" style="color: #0073b2">查看详情</a></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="plan_in">
+                    <div class="plan_c col-md-6">
+                        <h4>入门型</h4>
+                        <p>适用个人网站初始阶段并发访问量小
+                            开发、测试环境
+                            代码存储服务器</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="img/1111.png" alt="" style="width:90px;height: 100px;margin-top: 10px">
+                        <div><a href="" style="color: #0073b2">查看详情</a></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="plan_in">
+                    <div class="plan_c col-md-6">
+                        <h4>入门型</h4>
+                        <p>适用个人网站初始阶段并发访问量小
+                            开发、测试环境
+                            代码存储服务器</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="img/1111.png" alt="" style="width:90px;height: 100px;margin-top: 10px">
+                        <div><a href="" style="color: #0073b2">查看详情</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+    <!--解决方案-->
+    <div class="index_02">
+        <div class="main">
+            <div class="view view-eighth">
+                <img src="img/dd.jpg"/>
+                <div class="mask">
+                    <h2>电商解决方案</h2>
+                    <img src="img/oh1.png" alt="">
+                    <p>结合大数据能力帮助电商企业快速搭建平台，应对业务高并发，剖析秒杀视频直播等场景</p>
+                    <a href="#" class="info">查看详情</a>
+                </div>
+            </div>
+            <div class="view view-eighth">
+                <img src="img/ff.jpg"/>
+                <div class="mask">
+                    <h2>电商解决方案</h2>
+                    <img src="img/oh1.png" alt="">
+                    <p>结合大数据能力帮助电商企业快速搭建平台，应对业务高并发，剖析秒杀视频直播等场景</p>
+                    <a href="#" class="info">查看详情</a>
+                </div>
+            </div>
+            <div class="view view-eighth">
+                <img src="img/gg.jpg"/>
+                <div class="mask">
+                    <h2>电商解决方案</h2>
+                    <img src="img/oh1.png" alt="">
+                    <p>结合大数据能力帮助电商企业快速搭建平台，应对业务高并发，剖析秒杀视频直播等场景</p>
+                    <a href="#" class="info">查看详情</a>
+                </div>
+            </div>
+            <div class="view view-eighth">
+                <img src="img/hh.jpg"/>
+                <div class="mask">
+                    <h2>电商解决方案</h2>
+                    <img src="img/oh1.png" alt="">
+                    <p>结合大数据能力帮助电商企业快速搭建平台，应对业务高并发，剖析秒杀视频直播等场景</p>
+                    <a href="#" class="info">查看详情</a>
+                </div>
+            </div>
+            <div class="view view-eighth">
+                <img src="img/jj.jpg"/>
+                <div class="mask">
+                    <h2>电商解决方案</h2>
+                    <img src="img/oh1.png" alt="">
+                    <p>结合大数据能力帮助电商企业快速搭建平台，应对业务高并发，剖析秒杀视频直播等场景</p>
+                    <a href="#" class="info">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--服务内容-->
+    <div class="index_03">
+        <h3>海纳百川，精选全球的高品质软件与服务</h3>
+        <p>开发者工具、建站、API、企业应用、支持云端应用服务</p>
+        <div class="index_content">
+            <div class="content_in col-md-4">
+                <img src="img/24.png" alt="">
+                <h4>软件环境</h4>
+                <div>
+                    预装PHP | 预装JAVA | 预装ASP/.NET
+                </div>
+                <div> 预装建站系统 | 服务器软件 | 应用开发工具
+                </div>
+            </div>
+            <div class="content_in col-md-4">
+                <img src="img/25.png" alt="">
+                <h4>软件环境</h4>
+                <div>
+                    预装PHP | 预装JAVA | 预装ASP/.NET
+                </div>
+                <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+            </div>
+            <div class="content_in col-md-4">
+                <img src="img/26.png" alt="">
+                <h4>软件环境</h4>
+                <div>
+                    预装PHP | 预装JAVA | 预装ASP/.NET
+                </div>
+                <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+            </div>
+            <div class="content_in col-md-4">
+                <img src="img/27.png" alt="">
+                <h4>软件环境</h4>
+                <div>
+                    预装PHP | 预装JAVA | 预装ASP/.NET
+                </div>
+                <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+            </div>
+            <div class="content_in col-md-4">
+                <img src="img/28.png" alt="">
+                <h4>软件环境</h4>
+                <div>
+                    预装PHP | 预装JAVA | 预装ASP/.NET
+                </div>
+                <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+            </div>
+            <div class="content_in col-md-4">
+                <img src="img/29.png" alt="">
+                <h4>软件环境</h4>
+                <div>
+                    预装PHP | 预装JAVA | 预装ASP/.NET
+                </div>
+                <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+            </div>
+        </div>
+    </div>
+
+    <!--社区-->
+    <div class="index_02">
+    </div>
+
+    <!--生态圈-->
+    <div class="index_01"></div>
+
+</div>
+
+
+<!--轮播里的小东西-->
+<script type="text/javascript">
+    var get_height = window.innerHeight;
+    var get_height1 = get_height - 25;
+    var get_container = document.getElementById('container2');
+    get_container.style.height = get_height1 + 'px';
+
+    var get_container3 = document.getElementById('container3');
+    get_container3.style.height = get_height1 + 'px';
+
+    var get_container4 = document.getElementById('container4');
+    get_container4.style.height = get_height1 + 'px';
+</script>
+
+</body>
+</html>

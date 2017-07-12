@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.BlogMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.Blog">
+        <id column="blog_id" jdbcType="BIGINT" property="blogId" />
+        <result column="login_id" jdbcType="BIGINT" property="loginId" />
+        <result column="blog_title" jdbcType="VARCHAR" property="blogTitle" />
+        <result column="blog_abstract" jdbcType="VARCHAR" property="blogAbstract" />
+        <result column="blog_article" jdbcType="VARCHAR" property="blogArticle" />
+        <result column="blog_style" jdbcType="VARCHAR" property="blogStyle" />
+        <result column="blog_type_self" jdbcType="VARCHAR" property="blogTypeSelf" />
+        <result column="blog_tag" jdbcType="VARCHAR" property="blogTag" />
+        <result column="blog_type" jdbcType="VARCHAR" property="blogType" />
+        <result column="blog_state" jdbcType="VARCHAR" property="blogState" />
+        <result column="blog_time" jdbcType="TIMESTAMP" property="blogTime" />
+        <result column="delete_date" jdbcType="DATE" property="deleteDate" />
+        <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+        <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+        <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+    <resultMap id="BlogResultMap" type="com.xzlcPT.bean.Blog">
+        <id column="blog_id" jdbcType="BIGINT" property="blogId" />
+        <result column="login_id" jdbcType="BIGINT" property="loginID" />
+        <result column="blog_title" jdbcType="VARCHAR" property="blogTitle" />
+        <result column="blog_abstract" jdbcType="VARCHAR" property="blogAbstract" />
+        <result column="blog_article" jdbcType="VARCHAR" property="blogArticle" />
+        <result column="blog_style" jdbcType="VARCHAR" property="blogStyle" />
+        <result column="blog_tag" jdbcType="VARCHAR" property="blogTag" />
+        <result column="blog_type" jdbcType="VARCHAR" property="blogType" />
+        <result column="blog_type_self" jdbcType="VARCHAR" property="blogTypeSelf" />
+        <result column="blog_state" jdbcType="VARCHAR" property="blogState" />
+        <result column="blog_time" jdbcType="TIMESTAMP" property="blogTime" />
+        <result column="delete_date" jdbcType="DATE" property="deleteDate" />
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+        <association property="login" javaType="com.xzlcPT.bean.XzLogin">
+            <id column="login_id" jdbcType="BIGINT" property="loginID"/>
+            <result column="login_count" jdbcType="VARCHAR" property="loginCount"/>
+            <result column="login_password" jdbcType="VARCHAR" property="loginPassword"/>
+            <result column="login_email" jdbcType="VARCHAR" property="loginEmail"/>
+            <result column="login_type" jdbcType="INTEGER" property="loginType"/>
+            <result column="login_active" jdbcType="INTEGER" property="loginActive"/>
+            <association property="member" javaType="com.xzlcPT.bean.XzMember">
+                <id column="member_id" jdbcType="BIGINT" property="memberID" />
+                <result column="login_id" jdbcType="BIGINT" property="loginID" />
+                <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+                <result column="member_sex" jdbcType="INTEGER" property="memberSex" />
+                <result column="member_age" jdbcType="INTEGER" property="memberAge" />
+                <result column="member_education" jdbcType="VARCHAR" property="memberEducation" />
+                <result column="member_IDcard" jdbcType="VARCHAR" property="memberIDcard" />
+                <result column="member_phone" jdbcType="VARCHAR" property="memberPhone" />
+                <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
+                <result column="member_address" jdbcType="VARCHAR" property="memberAddress" />
+                <result column="member_email" jdbcType="VARCHAR" property="memberEmail" />
+            </association>
+        </association>
+    </resultMap>
+    <resultMap id="BlogForIndex" type="com.xzlcPT.bean.Blog">
+        <id column="blog_id" jdbcType="BIGINT" property="blogId" />
+        <result column="blog_title" jdbcType="VARCHAR" property="blogTitle" />
+        <result column="blog_abstract" jdbcType="VARCHAR" property="blogAbstract" />
+        <result column="blog_type" jdbcType="VARCHAR" property="blogType" />
+        <result column="blog_time" jdbcType="TIMESTAMP" property="blogTime" />
+        <result column="lsum" javaType="INTEGER" property="lsum"/>
+        <association property="login" javaType="com.xzlcPT.bean.XzLogin">
+            <id column="login_id" jdbcType="BIGINT" property="loginID"/>
+            <result column="login_count" jdbcType="VARCHAR" property="loginCount"/>
+            <result column="login_type" jdbcType="INTEGER" property="loginType"/>
+            <association property="member" javaType="com.xzlcPT.bean.XzMember">
+                <id column="member_id" jdbcType="BIGINT" property="memberID" />
+                <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
+            </association>
+        </association>
+    </resultMap>
+    <sql id="Base_Column_List">
+        blog_id,login_id, blog_title, blog_abstract, blog_article, blog_style, blog_type_self,
+        blog_tag, blog_type, blog_state, blog_time, delete_date, filed1, filed2, filed3,
+        delete_flag, create_time
+    </sql>
+    <select id="BlogForIndex" resultMap="BlogForIndex">
+        SELECT b.blog_id,b.blog_title,b.blog_abstract,b.blog_time,l.login_count,b.blog_type,m.member_picture,COALESCE(SUM(k.id),0) as "lsum"
+        from xz_blog b LEFT JOIN xz_blog_like k ON b.blog_id = k.blog_id and k.like_type = 2 ,xz_login l,xz_member m
+        WHERE b.login_id = l.login_id and l.login_id = m.login_id
+        GROUP BY b.blog_id,b.blog_title,b.blog_article,b.blog_time,l.login_count,b.blog_type,m.member_picture
+        order by b.blog_time desc
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from xz_blog
+        where blog_id = #{blogId,jdbcType=BIGINT}
+    </select>
+    <insert id="insert" parameterType="com.xzlcPT.bean.Blog">
+        insert into xz_blog (blog_id, login_id, blog_title,
+        blog_abstract, blog_article, blog_style,
+        blog_type_self, blog_tag, blog_type,
+        blog_state, blog_time, delete_date,
+        filed1, filed2, filed3,
+        delete_flag, create_time)
+        values (#{blogId,jdbcType=BIGINT}, #{loginId,jdbcType=BIGINT}, #{blogTitle,jdbcType=VARCHAR},
+        #{blogAbstract,jdbcType=VARCHAR}, #{blogArticle,jdbcType=VARCHAR}, #{blogStyle,jdbcType=VARCHAR},
+        #{blogTypeSelf,jdbcType=VARCHAR}, #{blogTag,jdbcType=VARCHAR}, #{blogType,jdbcType=VARCHAR},
+        #{blogState,jdbcType=VARCHAR}, #{blogTime,jdbcType=TIMESTAMP}, #{deleteDate,jdbcType=DATE},
+        #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR},
+        #{deleteFlag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.xzlcPT.bean.Blog">
+        insert into xz_blog
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="blogId != null">
+                blog_id,
+            </if>
+            <if test="loginId != null">
+                login_id,
+            </if>
+            <if test="blogTitle != null">
+                blog_title,
+            </if>
+            <if test="blogAbstract != null">
+                blog_abstract,
+            </if>
+            <if test="blogArticle != null">
+                blog_article,
+            </if>
+            <if test="blogStyle != null">
+                blog_style,
+            </if>
+            <if test="blogTypeSelf != null">
+                blog_type_self,
+            </if>
+            <if test="blogTag != null">
+                blog_tag,
+            </if>
+            <if test="blogType != null">
+                blog_type,
+            </if>
+            <if test="blogState != null">
+                blog_state,
+            </if>
+            <if test="blogTime != null">
+                blog_time,
+            </if>
+            <if test="deleteDate != null">
+                delete_date,
+            </if>
+            <if test="filed1 != null">
+                filed1,
+            </if>
+            <if test="filed2 != null">
+                filed2,
+            </if>
+            <if test="filed3 != null">
+                filed3,
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="blogId != null">
+                #{blogId,jdbcType=BIGINT},
+            </if>
+            <if test="loginId != null">
+                #{loginId,jdbcType=BIGINT},
+            </if>
+            <if test="blogTitle != null">
+                #{blogTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="blogAbstract != null">
+                #{blogAbstract,jdbcType=VARCHAR},
+            </if>
+            <if test="blogArticle != null">
+                #{blogArticle,jdbcType=VARCHAR},
+            </if>
+            <if test="blogStyle != null">
+                #{blogStyle,jdbcType=VARCHAR},
+            </if>
+            <if test="blogTypeSelf != null">
+                #{blogTypeSelf,jdbcType=VARCHAR},
+            </if>
+            <if test="blogTag != null">
+                #{blogTag,jdbcType=VARCHAR},
+            </if>
+            <if test="blogType != null">
+                #{blogType,jdbcType=VARCHAR},
+            </if>
+            <if test="blogState != null">
+                #{blogState,jdbcType=VARCHAR},
+            </if>
+            <if test="blogTime != null">
+                #{blogTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteDate != null">
+                #{deleteDate,jdbcType=DATE},
+            </if>
+            <if test="filed1 != null">
+                #{filed1,jdbcType=VARCHAR},
+            </if>
+            <if test="filed2 != null">
+                #{filed2,jdbcType=VARCHAR},
+            </if>
+            <if test="filed3 != null">
+                #{filed3,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteFlag != null">
+                #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.Blog">
+        update xz_blog
+        <set>
+            <if test="loginId != null">
+                login_id = #{loginId,jdbcType=BIGINT},
+            </if>
+            <if test="blogTitle != null">
+                blog_title = #{blogTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="blogAbstract != null">
+                blog_abstract = #{blogAbstract,jdbcType=VARCHAR},
+            </if>
+            <if test="blogArticle != null">
+                blog_article = #{blogArticle,jdbcType=VARCHAR},
+            </if>
+            <if test="blogStyle != null">
+                blog_style = #{blogStyle,jdbcType=VARCHAR},
+            </if>
+            <if test="blogTypeSelf != null">
+                blog_type_self = #{blogTypeSelf,jdbcType=VARCHAR},
+            </if>
+            <if test="blogTag != null">
+                blog_tag = #{blogTag,jdbcType=VARCHAR},
+            </if>
+            <if test="blogType != null">
+                blog_type = #{blogType,jdbcType=VARCHAR},
+            </if>
+            <if test="blogState != null">
+                blog_state = #{blogState,jdbcType=VARCHAR},
+            </if>
+            <if test="blogTime != null">
+                blog_time = #{blogTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteDate != null">
+                delete_date = #{deleteDate,jdbcType=DATE},
+            </if>
+            <if test="filed1 != null">
+                filed1 = #{filed1,jdbcType=VARCHAR},
+            </if>
+            <if test="filed2 != null">
+                filed2 = #{filed2,jdbcType=VARCHAR},
+            </if>
+            <if test="filed3 != null">
+                filed3 = #{filed3,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteFlag != null">
+                delete_flag = #{deleteFlag,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where blog_id = #{blogId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.Blog">
+        update xz_blog
+        set login_id = #{loginId,jdbcType=BIGINT},
+        blog_title = #{blogTitle,jdbcType=VARCHAR},
+        blog_abstract = #{blogAbstract,jdbcType=VARCHAR},
+        blog_article = #{blogArticle,jdbcType=VARCHAR},
+        blog_style = #{blogStyle,jdbcType=VARCHAR},
+        blog_type_self = #{blogTypeSelf,jdbcType=VARCHAR},
+        blog_tag = #{blogTag,jdbcType=VARCHAR},
+        blog_type = #{blogType,jdbcType=VARCHAR},
+        blog_state = #{blogState,jdbcType=VARCHAR},
+        blog_time = #{blogTime,jdbcType=TIMESTAMP},
+        delete_date = #{deleteDate,jdbcType=DATE},
+        filed1 = #{filed1,jdbcType=VARCHAR},
+        filed2 = #{filed2,jdbcType=VARCHAR},
+        filed3 = #{filed3,jdbcType=VARCHAR},
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP}
+        where blog_id = #{blogId,jdbcType=BIGINT}
+    </update>
+
+
+
+    <!--删除标记-->
+    <delete id="deleteByPrimaryKey" parameterType="com.xzlcPT.bean.Blog">
+        UPDATE xz_blog
+        SET delete_flag = 1
+        WHERE delete_flag = 0 AND blog_id = #{blogId,jdbcType=BIGINT}
+    </delete>
+    <!--删除评论时修改博客表的if_exist-->
+ <!--   <delete id="deleteIfExist" parameterType="java.lang.Long">
+        UPDATE xz_blog SET if_exist = 1
+        WHERE delete_flag = 0 AND blog_id = #{0}
+    </delete>-->
+    <!--&lt;!&ndash;判断删除标记！！！&ndash;&gt;
+    <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.Blog">
+        UPDATE xz_blog
+        <set>
+            <if test="blogWriter != null">blog_writer = #{blogWriter,jdbcType=VARCHAR},</if>
+            <if test="blogTitle != null">blog_title = #{blogTitle,jdbcType=VARCHAR},</if>
+            <if test="blogArticle != null">blog_article = #{blogArticle,jdbcType=VARCHAR},</if>
+            <if test="blogTime != null">blog_time = #{blogTime,jdbcType=TIMESTAMP},</if>
+            <if test="deleteDate != null">delete_date = #{deleteDate,jdbcType=DATE},</if>
+            <if test="filed1 != null">filed1 = #{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">filed2 = #{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">filed3 = #{filed3,jdbcType=VARCHAR},</if>
+        </set>
+        WHERE delete_flag = 0 AND blog_id = #{blogId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.Blog">
+        UPDATE xz_blog
+        SET blog_writer = #{blogWriter,jdbcType=VARCHAR},blog_title = #{blogTitle,jdbcType=VARCHAR},
+        blog_article = #{blogArticle,jdbcType=VARCHAR},blog_time = #{blogTime,jdbcType=TIMESTAMP},
+        delete_date = #{deleteDate,jdbcType=DATE},filed1 = #{filed1,jdbcType=VARCHAR},filed2 = #{filed2,jdbcType=VARCHAR},
+        filed3 = #{filed3,jdbcType=VARCHAR}
+        WHERE delete_flag = 0 AND blog_id = #{blogId,jdbcType=BIGINT}
+    </update>
+    &lt;!&ndash;添加评论时修改博客表的if_exist&ndash;&gt;
+    <update id="updateIfExist" parameterType="java.lang.Long">
+        UPDATE xz_blog
+        SET if_exist = 2 WHERE delete_flag = 0 AND blog_id = #{0}
+    </update>
+    &lt;!&ndash;判断删除标记！！！&ndash;&gt;
+    <select id="selectBlogAll" resultMap="BlogResultMap" parameterType="com.xzlcPT.bean.Blog">
+        SELECT b.blog_id,b.blog_writer,b.blog_title,b.blog_article,b.blog_time,b.if_exist,i.image_type,i.image_path
+        FROM xz_blog b LEFT JOIN xz_image i ON b.blog_image = i.image_id WHERE b.delete_flag = 0 AND i.image_type = '博客'
+    </select>-->
+    <!--后台条件查询数据-->
+    <select id="selectBlogAllEnd" resultMap="BlogResultMap" parameterType="java.util.HashMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM xz_blog WHERE delete_flag = 0
+        <if test="blogId!=null and blogId!=''">
+            AND blog_id = #{blogId,jdbcType=BIGINT}
+        </if>
+        <if test="blogWriter!=null and blogWriter!=''">
+            AND blog_writer LIKE CONCAT('%',#{blogWriter},'%')
+        </if>
+        <if test="blogTitle!=null and blogTitle!=''">
+            AND blog_title LIKE CONCAT('%',#{blogTitle},'%')
+        </if>
+        <if test="blogArticle!=null and blogArticle!=''">
+            AND blog_article LIKE CONCAT('%',#{blogArticle},'%')
+        </if>
+        <if test="startTime!=null and endTime!=null">
+            AND blog_time &gt; #{startTime,jdbcType=TIMESTAMP} AND blog_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime!=null and endTime==null">
+            AND blog_time &gt; #{startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime==null and endTime!=null">
+            AND blog_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="deleteDate!=null and deleteDate!=''">
+            AND TO_DAYS(delete_date) = TO_DAYS(#{deleteDate})
+        </if>
+        <if test="filed1!=null and filed1!=''">
+            AND filed1 LIKE CONCAT('%',#{filed1},'%')
+        </if>
+        <if test="filed2!=null and filed2!=''">
+            AND filed2 LIKE CONCAT('%',#{filed2},'%')
+        </if>
+        <if test="filed3!=null and filed3!=''">
+            AND filed3 LIKE CONCAT('%',#{filed3},'%')
+        </if>
+    </select>
+    <select id="selectByBlogWriter" resultMap="BlogResultMap" parameterType="com.xzlcPT.bean.Blog">
+        SELECT <include refid="Base_Column_List"/>
+        FROM xz_blog
+        WHERE delete_flag = 0 and blog_writer = #{blogWriter,jdbcType=VARCHAR}
+    </select>
+    <!--查询最近博客-->
+    <select id="selectRecentBlog" resultMap="BlogResultMap">
+        SELECT b.blog_id,b.blog_writer,b.blog_title,b.blog_article,b.blog_time,i.image_type,i.image_path
+        FROM xz_blog b LEFT JOIN xz_image i ON b.blog_image = i.image_id
+        WHERE b.delete_flag = 0 AND i.image_type = '近期博客' ORDER BY b.blog_id DESC
+    </select>
+</mapper>

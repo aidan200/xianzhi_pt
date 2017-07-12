@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.EducationMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzEducation">
+        <id column="education_id" jdbcType="BIGINT" property="educationID"/>
+        <result column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <result column="education" jdbcType="VARCHAR" property="education"/>
+        <result column="school" jdbcType="VARCHAR" property="school"/>
+        <result column="major" jdbcType="VARCHAR" property="major"/>
+        <result column="enrollment_date" jdbcType="DATE" property="enrollmentDate"/>
+        <result column="graduate_date" jdbcType="DATE" property="graduateDate"/>
+        <result column="education_skill" jdbcType="VARCHAR" property="educationSkill"/>
+        <result column="delete_education_date" jdbcType="DATE" property="deleteEducationDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    education_id, login_id, education, school, major, enrollment_date, graduate_date, education_skill
+  </sql>
+    <sql id="Base_Column_List1">
+        education_id, login_id, education, school, major, enrollment_date, graduate_date, education_skill, delete_education_date, delete_falt
+    </sql>
+
+    <insert id="addEducation" parameterType="com.xzlcPT.bean.XzEducation">
+        INSERT INTO xz_education
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            education_id,
+            <if test="loginID != 0">
+                login_id,
+            </if>
+            <if test="education != null and education != ''">
+                education,
+            </if>
+            <if test="school != null and school != ''">
+                school,
+            </if>
+            <if test="major != null and major != ''">
+                major,
+            </if>
+            <if test="enrollmentDate != null and enrollmentDate != ''">
+                enrollment_date,
+            </if>
+            <if test="graduateDate != null and graduateDate != ''">
+                graduate_date,
+            </if>
+            <if test="educationSkill != null and educationSkill != ''">
+                education_skill,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{educationID,jdbcType=BIGINT},
+            <if test="loginID != 0">
+                #{loginID,jdbcType=BIGINT},
+            </if>
+            <if test="education != null and education != ''">
+                #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="school != null and school != ''">
+                #{school,jdbcType=VARCHAR},
+            </if>
+            <if test="major != null and major != ''">
+                #{major,jdbcType=VARCHAR},
+            </if>
+            <if test="enrollmentDate != null and enrollmentDate != ''">
+                #{enrollmentDate,jdbcType=DATE},
+            </if>
+            <if test="graduateDate != null and graduateDate != ''">
+                #{graduateDate,jdbcType=DATE},
+            </if>
+            <if test="educationSkill != null and educationSkill != ''">
+                #{educationSkill,jdbcType=VARCHAR},
+            </if>
+        </trim>
+  </insert>
+
+    <select id="selectMemberId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_education where delete_falt  &lt;&gt; 1
+        and login_id = #{memberId,jdbcType=BIGINT}
+        and delete_falt = 0
+    </select>
+
+    <select id="selectEducationByID" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzEducation">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_education where 1=1
+        and login_id = #{loginID,jdbcType=BIGINT}
+        and delete_falt = 0
+    </select>
+
+    <update id="updateEducation" parameterType="com.xzlcPT.bean.XzEducation">
+        update xz_education
+
+        <set>
+            <if test="education != null and education != ''">
+                education = #{education},
+            </if>
+            <if test="school != null and school != ''">
+                school = #{school},
+            </if>
+            <if test="major != null and major != ''">
+                major = #{major},
+            </if>
+            <if test="enrollmentDate != null and enrollmentDate != ''">
+                enrollment_date = #{enrollmentDate},
+            </if>
+            <if test="graduateDate != null and graduateDate != ''">
+                graduate_date = #{graduateDate},
+            </if>
+            <if test="deleteEducationDate != null and deleteEducationDate != ''">
+                delete_education_date = #{deleteEducationDate},
+            </if>
+            <if test="deleteFalt != 0">
+                delete_falt = #{deleteFalt},
+            </if>
+            <if test="educationSkill != null and educationSkill != ''">
+                education_skill = #{educationSkill},
+            </if>
+        </set>
+        where education_id = #{educationID,jdbcType=BIGINT}
+    </update>
+
+    <delete id="delateEducation" parameterType="java.lang.Long">
+        delete from xz_education
+        where education_id = #{educationID,jdbcType=BIGINT}
+    </delete>
+
+    <select id="selectEducationByEID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_education where 1=1
+        and education_id = #{educationID,jdbcType=BIGINT}
+    </select>
+
+
+    <select id="selAllEducationEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzEducation">
+        select
+        <include refid="Base_Column_List1"/>
+        FROM xz_education
+        where delete_falt = 0
+        <if test="loginID != 0">
+            and login_id = #{loginID}
+        </if>
+
+        <if test="education!=null and education!=''">
+            and education like CONCAT('%',#{education},'%')
+        </if>
+        <if test="school!=null and school!=''">
+            and school like CONCAT('%',#{school},'%')
+        </if>
+        <if test="major!=null and major!=''">
+            and major like CONCAT('%',#{major},'%')
+        </if>
+        <if test="educationSkill != null and educationSkill != ''">
+            and education_skill like CONCAT('%',#{educationSkill},'%')
+        </if>
+
+    </select>
+
+    <!--education_id, login_id, education, school, major, enrollment_date, graduate_date, delete_education_date, delete_falt,filed1,filed2,filed3-->
+
+    <insert id="addEducationEnd" parameterType="com.xzlcPT.bean.XzEducation">
+        insert into xz_education
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            login_id,
+            <if test="education != null">
+                education,
+            </if>
+            <if test="school != null">
+                school,
+            </if>
+            <if test="major != null">
+                major,
+            </if>
+            <if test="enrollmentDate != null">
+                enrollment_date,
+            </if>
+            <if test="graduateDate != null">
+                graduate_date,
+            </if>
+            <if test="educationSkill != null">
+                education_skill,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+            #{loginID,jdbcType=BIGINT},
+
+            <if test="education != null">
+                #{education,jdbcType=VARCHAR},
+            </if>
+            <if test="school != null">
+                #{school,jdbcType=VARCHAR},
+            </if>
+            <if test="major != null">
+                #{major,jdbcType=VARCHAR},
+            </if>
+            <if test="enrollmentDate != null">
+                #{enrollmentDate,jdbcType=DATE},
+            </if>
+            <if test="graduateDate != null">
+                #{graduateDate,jdbcType=DATE},
+            </if>
+            <if test="educationSkill != null">
+                #{educationSkill,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+    <select id="selByLoginIDEnd" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List1"/>
+        FROM xz_education
+        where 1=1
+        and delete_falt = 0
+        and education_id = #{educationID,jdbcType=BIGINT}
+    </select>
+
+    <update id="updateEducationEnd" parameterType="com.xzlcPT.bean.XzEducation">
+        update xz_education
+        <set>
+            <if test="education != null">
+                education = #{education},
+            </if>
+            <if test="school != null">
+                school = #{school},
+            </if>
+            <if test="major != null">
+                major = #{major},
+            </if>
+            <if test="enrollmentDate != null">
+                enrollment_date = #{enrollmentDate},
+            </if>
+            <if test="graduateDate != null">
+                graduate_date = #{graduateDate},
+            </if>
+
+            <if test="deleteEducationDate != null">
+                delete_education_date = #{deleteEducationDate},
+            </if>
+            <if test="deleteFalt != null">
+                delete_falt = #{deleteFalt},
+            </if>
+            <if test="educationSkill != null">
+                education_skill = #{educationSkill,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where education_id = #{educationID,jdbcType=BIGINT}
+    </update>
+
+    <delete id="deleteEducationEnd" parameterType="java.lang.Long">
+        delete from xz_education
+        where education_id = #{educationID,jdbcType=BIGINT}
+    </delete>
+
+</mapper>

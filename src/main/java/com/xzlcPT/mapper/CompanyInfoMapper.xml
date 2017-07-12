@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.CompanyInfoMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzCompany">
+        <id column="company_id" jdbcType="BIGINT" property="companyID"/>
+        <result column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="company_location" jdbcType="VARCHAR" property="companyLocation"/>
+        <result column="company_phone" jdbcType="VARCHAR" property="companyPhone"/>
+        <result column="company_picture" jdbcType="VARCHAR" property="companyPicture"/>
+        <result column="company_intro" jdbcType="VARCHAR" property="companyIntro"/>
+        <result column="company_scale" jdbcType="VARCHAR" property="companyScale"/>
+        <result column="company_nature" jdbcType="INTEGER" property="companyNature"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="delete_company_date" jdbcType="DATE" property="deleteCompanyDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    company_id, login_id, company_name, company_location, company_phone, company_picture, company_intro, company_scale, company_nature, industry
+  </sql>
+    <sql id="Base_Column_List1">
+    company_id, login_id, company_name, company_location, company_phone, company_picture, company_intro, company_scale, company_nature, industry, delete_company_date, delete_falt
+  </sql>
+
+    <insert id="insertCompanyInfo" parameterType="com.xzlcPT.bean.XzCompany">
+    insert into xz_company (company_id, login_id, company_name, company_location, company_phone,company_picture,company_intro, company_scale, company_nature, industry
+    )
+    values (#{companyID,jdbcType=BIGINT}, #{loginID,jdbcType=BIGINT}, #{companyName,jdbcType=VARCHAR}, #{companyLocation,jdbcType=VARCHAR},
+    #{companyPhone,jdbcType=VARCHAR},#{companyPicture,jdbcType=VARCHAR},#{companyIntro,jdbcType=VARCHAR},#{companyScale,jdbcType=VARCHAR},
+    #{companyNature,jdbcType=INTEGER},#{industry,jdbcType=VARCHAR}
+    )
+  </insert>
+
+    <select id="selectByCompanyName" parameterType="com.xzlcPT.bean.XzCompany" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from xz_company
+        where company_name = #{companyName,jdbcType=VARCHAR}
+        and delete_falt = 0
+    </select>
+
+    <select id="selectByLoginID" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzCompany">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_company where 1=1
+        and delete_falt = 0
+        <if test="loginID!= 0 ">
+            and login_id = #{loginID,jdbcType=BIGINT}
+        </if>
+        <if test="companyID!= 0 ">
+            and company_id = #{companyID,jdbcType=BIGINT}
+        </if>
+    </select>
+
+    <select id="selectByCompanyID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_company where 1=1
+        and delete_falt = 0
+        and company_id = #{companyID,jdbcType=BIGINT}
+    </select>
+
+    <update id="updateCompanyInfo" parameterType="com.xzlcPT.bean.XzCompany">
+        update xz_company
+        <set>
+            <if test="companyName != null">
+                company_name = #{companyName},
+            </if>
+            <if test="companyLocation != null">
+                company_location = #{companyLocation},
+            </if>
+            <if test="companyPhone != null">
+                company_phone = #{companyPhone},
+            </if>
+            <if test="companyPicture != null">
+                company_picture = #{companyPicture},
+            </if>
+            <if test="companyIntro != null">
+                company_intro = #{companyIntro},
+            </if>
+            <if test="companyScale != null">
+                company_scale = #{companyScale},
+            </if>
+            <if test="companyNature != 0">
+                company_nature = #{companyNature},
+            </if>
+            <if test="industry != null">
+                industry = #{industry},
+            </if>
+        </set>
+        where login_id = #{loginID,jdbcType=BIGINT}
+    </update>
+
+
+    <select id="selAllCompanyEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzCompany">
+        select
+        <include refid="Base_Column_List1"/>
+        FROM xz_company where 1=1
+        and delete_falt = 0
+        <if test="companyName!=null and companyName!=''">
+            and company_name like CONCAT('%',#{companyName},'%')
+        </if>
+        <if test="companyPhone!=null and companyPhone!=''">
+            and company_phone like CONCAT('%',#{companyPhone},'%')
+        </if>
+    </select>
+
+    <select id="selByLoginIDEnd" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List1"/>
+        FROM xz_company where 1=1
+        and delete_falt = 0
+        and login_id = #{loginID,jdbcType=BIGINT}
+    </select>
+
+    <update id="updateCompanyEnd" parameterType="com.xzlcPT.bean.XzCompany">
+        update xz_company
+        <set>
+            <if test="companyName != null and companyName != '' ">
+                company_name = #{companyName},
+            </if>
+            <if test="companyLocation != null and companyLocation != '' ">
+                company_location = #{companyLocation},
+            </if>
+            <if test="companyPhone != null and companyPhone != '' ">
+                company_phone = #{companyPhone},
+            </if>
+            <if test="companyPicture != null and companyPicture != '' ">
+                company_picture = #{companyPicture},
+            </if>
+            <if test="companyIntro != null and companyIntro != ''">
+                company_intro = #{companyIntro},
+            </if>
+            <if test="companyScale != null">
+                company_scale = #{companyScale},
+            </if>
+            <if test="companyNature != 0">
+                company_nature = #{companyNature},
+            </if>
+            <if test="industry != null and industry != ''">
+                industry = #{industry},
+            </if>
+            <if test="deleteCompanyDate != null and deleteCompanyDate != '' ">
+                delete_company_date = #{deleteCompanyDate},
+            </if>
+            <if test="deleteFalt != 0 ">
+                delete_falt = #{deleteFalt},
+            </if>
+        </set>
+        where company_id = #{companyID,jdbcType=BIGINT}
+    </update>
+
+    <delete id="deleteCompanyEnd" parameterType="java.lang.Long">
+    delete from xz_company
+    where login_id = #{loginID,jdbcType=BIGINT}
+  </delete>
+
+
+</mapper>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.WorkExperienceMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzWorkExperience">
+        <id column="work_experience_id" jdbcType="BIGINT" property="workExperienceID"/>
+        <result column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <result column="company" jdbcType="VARCHAR" property="company"/>
+        <result column="duty" jdbcType="VARCHAR" property="duty"/>
+        <result column="entry_date" jdbcType="DATE" property="entryDate"/>
+        <result column="dimission_date" jdbcType="DATE" property="dimissionDate"/>
+        <result column="dimission_cause" jdbcType="VARCHAR" property="dimissionCause"/>
+        <result column="work_description" jdbcType="VARCHAR" property="workDescription"/>
+        <result column="delete_work_date" jdbcType="DATE" property="deleteWorkDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+    work_experience_id, login_id, company, duty, entry_date, dimission_date, dimission_cause, work_description
+  </sql>
+    <sql id="Base_Column_List1">
+        work_experience_id, login_id, company, duty, entry_date, dimission_date, dimission_cause, work_description, delete_work_date, delete_falt
+    </sql>
+
+    <insert id="addWorkExperience" parameterType="com.xzlcPT.bean.XzWorkExperience">
+    insert into xz_work_experience (
+        <include refid="Base_Column_List"/>
+    )
+    values (#{workExperienceID,jdbcType=BIGINT}, #{loginID,jdbcType=BIGINT},#{company,jdbcType=VARCHAR},#{duty,jdbcType=VARCHAR},
+        #{entryDate,jdbcType=VARCHAR},#{dimissionDate,jdbcType=DATE},#{dimissionCause,jdbcType=DATE},#{workDescription,jdbcType=VARCHAR}
+    )
+  </insert>
+
+    <select id="selectWorkEByID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_work_experience where 1=1
+        and login_id = #{loginID,jdbcType=BIGINT}
+        and delete_falt = 0
+    </select>
+
+    <update id="updateWorkE" parameterType="com.xzlcPT.bean.XzWorkExperience">
+        update xz_work_experience
+
+        <set>
+            <if test="company != null">
+                company = #{company},
+            </if>
+            <if test="duty != null">
+                duty = #{duty},
+            </if>
+            <if test="entryDate != null">
+                entry_date = #{entryDate},
+            </if>
+            <if test="dimissionDate != null">
+                dimission_date = #{dimissionDate},
+            </if>
+            <if test="dimissionCause != null">
+                dimission_cause = #{dimissionCause},
+            </if>
+
+            <if test="deleteWorkDate != null">
+                delete_work_date = #{deleteWorkDate},
+            </if>
+            <if test="deleteFalt != null">
+                delete_falt = #{deleteFalt},
+            </if>
+            <if test="workDescription != null">
+                work_description = #{workDescription},
+            </if>
+
+        </set>
+        where work_experience_id = #{workExperienceID,jdbcType=BIGINT}
+    </update>
+
+    <delete id="delateWorkE" parameterType="java.lang.Long">
+        delete from xz_work_experience
+        where work_experience_id = #{workExperienceID,jdbcType=BIGINT}
+    </delete>
+
+    <select id="selectWorkEByWID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_work_experience where 1=1
+        and work_experience_id = #{workExperienceID,jdbcType=BIGINT}
+    </select>
+
+    <select id="selAllWorkEEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzWorkExperience">
+        select
+        <include refid="Base_Column_List1"/>
+        FROM xz_work_experience
+        where delete_falt = 0
+        <if test="loginID != 0">
+            and login_id = #{loginID}
+        </if>
+        <if test="company!=null and company!=''">
+            and company like CONCAT('%',#{company},'%')
+        </if>
+        <if test="duty!=null and duty!=''">
+            and duty  like CONCAT('%',#{duty},'%')
+        </if>
+    </select>
+
+
+    <!--work_experience_id, login_id, company, duty, entry_date, dimission_date, dimission_cause, delete_work_date, delete_falt,filed1,filed2,filed3-->
+
+    <insert id="addWorkEnd" parameterType="com.xzlcPT.bean.XzWorkExperience">
+        insert into xz_work_experience
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            login_id,
+            <if test="company != null">
+                company,
+            </if>
+            <if test="duty != null">
+                duty,
+            </if>
+            <if test="entryDate != null">
+                entry_date,
+            </if>
+            <if test="dimissionDate != null">
+                dimission_date,
+            </if>
+            <if test="dimissionCause != null">
+                dimission_cause,
+            </if>
+            <if test="workDescription != null">
+                work_description,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+            #{loginID,jdbcType=BIGINT},
+
+            <if test="company != null">
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="duty != null">
+                #{duty,jdbcType=VARCHAR},
+            </if>
+            <if test="entryDate != null">
+                #{entryDate,jdbcType=DATE},
+            </if>
+            <if test="dimissionDate != null">
+                #{dimissionDate,jdbcType=DATE},
+            </if>
+            <if test="dimissionCause != null">
+                #{dimissionCause,jdbcType=VARCHAR},
+            </if>
+            <if test="workDescription != null">
+                #{workDescription},
+            </if>
+        </trim>
+    </insert>
+
+
+    <select id="selByLoginIDEnd" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List1"/>
+        FROM xz_work_experience where 1=1
+        and work_experience_id = #{workExperienceID,jdbcType=BIGINT}
+    </select>
+
+    <update id="updateWorkEEnd" parameterType="com.xzlcPT.bean.XzWorkExperience">
+        update xz_work_experience
+        <set>
+            <if test="company != null">
+                company = #{company},
+            </if>
+            <if test="duty != null">
+                duty = #{duty},
+            </if>
+            <if test="entryDate != null">
+                entry_date = #{entryDate},
+            </if>
+            <if test="dimissionDate != null">
+                dimission_date = #{dimissionDate},
+            </if>
+            <if test="dimissionCause != null">
+                dimission_cause = #{dimissionCause},
+            </if>
+
+            <if test="deleteWorkDate != null">
+                delete_work_date = #{deleteWorkDate},
+            </if>
+            <if test="deleteFalt != null">
+                delete_falt = #{deleteFalt},
+            </if>
+            <if test="workDescription != null">
+                work_description = #{workDescription},
+            </if>
+        </set>
+        WHERE work_experience_id = #{workExperienceID,jdbcType=BIGINT}
+    </update>
+
+    <delete id="deleteWorkEEnd" parameterType="java.lang.Long">
+        delete from xz_work_experience
+       WHERE work_experience_id = #{workExperienceID,jdbcType=BIGINT}
+    </delete>
+
+</mapper>

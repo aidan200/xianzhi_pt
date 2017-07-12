@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzPostionMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzPostion">
+    <id column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
+    <result column="postion_company" jdbcType="VARCHAR" property="postionCompany" />
+    <result column="postion_ym" jdbcType="INTEGER" property="postionYm" />
+    <result column="postion_mm" jdbcType="INTEGER" property="postionMm" />
+    <result column="postion_space" jdbcType="VARCHAR" property="postionSpace" />
+    <result column="postion_time" jdbcType="TIMESTAMP" property="postionTime" />
+    <result column="postion_education" jdbcType="VARCHAR" property="postionEducation" />
+    <result column="postion_exp" jdbcType="VARCHAR" property="postionExp" />
+    <result column="postion_age" jdbcType="VARCHAR" property="postionAge" />
+    <result column="postion_description" jdbcType="VARCHAR" property="postionDescription" />
+    <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="delete_flat" jdbcType="INTEGER" property="deleteFlat" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+  </resultMap>
+  <resultMap id="selPostionInfo" type="com.xzlcPT.bean.XzPostion">
+    <id column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
+    <result column="postion_company" jdbcType="VARCHAR" property="postionCompany" />
+    <result column="postion_ym" jdbcType="INTEGER" property="postionYm" />
+    <result column="postion_mm" jdbcType="INTEGER" property="postionMm" />
+    <result column="postion_space" jdbcType="VARCHAR" property="postionSpace" />
+    <result column="postion_time" jdbcType="TIMESTAMP" property="postionTime" />
+    <result column="postion_education" jdbcType="VARCHAR" property="postionEducation" />
+    <result column="postion_exp" jdbcType="VARCHAR" property="postionExp" />
+    <result column="postion_age" jdbcType="VARCHAR" property="postionAge" />
+    <result column="postion_description" jdbcType="VARCHAR" property="postionDescription" />
+    <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
+    <association property="company" javaType="com.xzlcPT.bean.XzCompany">
+      <id column="company_id" jdbcType="BIGINT" property="companyId" />
+      <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+      <result column="company_location" jdbcType="VARCHAR" property="companyLocation" />
+      <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+      <result column="company_picture" jdbcType="VARCHAR" property="companyPicture" />
+      <result column="company_intro" jdbcType="VARCHAR" property="companyIntro" />
+      <result column="company_scale" jdbcType="VARCHAR" property="companyScale" />
+      <result column="company_nature" jdbcType="INTEGER" property="companyNature" />
+      <result column="is_listing" jdbcType="INTEGER" property="isListing" />
+      <result column="domain" jdbcType="VARCHAR" property="domain" />
+      <result column="skill" jdbcType="VARCHAR" property="skill" />
+      <result column="financing" jdbcType="VARCHAR" property="financing" />
+    </association>
+    <collection property="postionMsgs" ofType="com.xzlcPT.bean.XzPostionMsg">
+      <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
+      <result column="postion_id" jdbcType="BIGINT" property="postionId" />
+      <result column="pmsg_name" jdbcType="VARCHAR" property="pmsgName" />
+      <result column="pmsg_value" jdbcType="VARCHAR" property="pmsgValue" />
+    </collection>
+  </resultMap>
+  <resultMap id="selPostionList" type="com.xzlcPT.bean.XzPostion">
+    <id column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
+    <result column="postion_ym" jdbcType="INTEGER" property="postionYm" />
+    <result column="postion_mm" jdbcType="INTEGER" property="postionMm" />
+    <result column="postion_space" jdbcType="VARCHAR" property="postionSpace" />
+    <result column="postion_time" jdbcType="TIMESTAMP" property="postionTime" />
+    <result column="postion_education" jdbcType="VARCHAR" property="postionEducation" />
+    <result column="postion_exp" jdbcType="VARCHAR" property="postionExp" />
+    <association property="company" javaType="com.xzlcPT.bean.XzCompany">
+      <id column="company_id" jdbcType="BIGINT" property="companyId" />
+      <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+      <result column="company_picture" jdbcType="VARCHAR" property="companyPicture" />
+      <result column="company_scale" jdbcType="VARCHAR" property="companyScale" />
+      <result column="company_nature" jdbcType="INTEGER" property="companyNature" />
+      <result column="domain" jdbcType="VARCHAR" property="domain" />
+      <result column="skill" jdbcType="VARCHAR" property="skill" />
+      <collection property="welfares" ofType="com.xzlcPT.bean.XzCompanyWelfare">
+        <id column="welfare_id" jdbcType="BIGINT" property="welfareId" />
+        <result column="welfare_name" jdbcType="VARCHAR" property="welfareName" />
+      </collection>
+      <collection property="fields" ofType="com.xzlcPT.bean.XzField">
+        <id column="field_id" jdbcType="BIGINT" property="fieldId" />
+        <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+      </collection>
+    </association>
+  </resultMap>
+
+  <sql id="Postion_index_list">
+    p.postion_id, p.postion_name, p.postion_ym, p.postion_mm,p.postion_space, p.postion_time, p.postion_education, p.postion_exp,
+    c.company_id, c.company_name, c.company_picture, c.company_scale, c.company_nature, c.domain, c.skill,
+    w.welfare_id, w.welfare_name, f.field_id, f.field_name
+  </sql>
+  <sql id="Base_Column_List">
+    postion_id, p.company_id, postion_name, postion_company, postion_ym, postion_mm, postion_space,
+    postion_time, postion_education, postion_exp, postion_age, postion_description, postion_welfare,
+    p.delete_flat
+  </sql>
+  <select id="selPostionByListId" resultMap="selPostionList" parameterType="java.util.List">
+    select
+    <include refid="Postion_index_list" />
+    from xz_postion p LEFT JOIN xz_company c on p.company_id = c.company_id LEFT JOIN xz_company_welfare w on c.company_id = w.company_id
+    LEFT JOIN xz_company_domain d on c.company_id = d.company_id LEFT JOIN xz_field f on d.field_id = f.field_id
+    where p.delete_flat = 0 and (f.field_type = 1 or f.field_type is null)
+    and p.postion_id in 
+    <foreach collection="list" item="pid" index="index" open="(" close=")" separator=",">
+      #{pid}
+    </foreach>
+  </select>
+  <select id="selPostionList" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzPostion">
+    select
+    <include refid="Base_Column_List" />
+    from xz_postion p LEFT JOIN xz_company c on p.company_id = c.company_id
+    where p.delete_flat = 0
+    <if test="company!=null and company.domain!=null">
+      and c.domain = #{company.domain,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_postion
+    where postion_id = #{postionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_postion
+    where postion_id = #{postionId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzPostion">
+    insert into xz_postion (postion_id, company_id, postion_name, 
+      postion_company, postion_ym, postion_mm, 
+      postion_space, postion_time, postion_education, 
+      postion_exp, postion_age, postion_description, 
+      postion_welfare, create_time, delete_time, 
+      delete_flat, filed1, filed2, 
+      filed3)
+    values (#{postionId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{postionName,jdbcType=VARCHAR}, 
+      #{postionCompany,jdbcType=VARCHAR}, #{postionYm,jdbcType=INTEGER}, #{postionMm,jdbcType=INTEGER}, 
+      #{postionSpace,jdbcType=VARCHAR}, #{postionTime,jdbcType=TIMESTAMP}, #{postionEducation,jdbcType=VARCHAR}, 
+      #{postionExp,jdbcType=VARCHAR}, #{postionAge,jdbcType=VARCHAR}, #{postionDescription,jdbcType=VARCHAR}, 
+      #{postionWelfare,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
+      #{deleteFlat,jdbcType=INTEGER}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
+      #{filed3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostion">
+    insert into xz_postion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="postionId != null">
+        postion_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="postionName != null">
+        postion_name,
+      </if>
+      <if test="postionCompany != null">
+        postion_company,
+      </if>
+      <if test="postionYm != null">
+        postion_ym,
+      </if>
+      <if test="postionMm != null">
+        postion_mm,
+      </if>
+      <if test="postionSpace != null">
+        postion_space,
+      </if>
+      <if test="postionTime != null">
+        postion_time,
+      </if>
+      <if test="postionEducation != null">
+        postion_education,
+      </if>
+      <if test="postionExp != null">
+        postion_exp,
+      </if>
+      <if test="postionAge != null">
+        postion_age,
+      </if>
+      <if test="postionDescription != null">
+        postion_description,
+      </if>
+      <if test="postionWelfare != null">
+        postion_welfare,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="deleteFlat != null">
+        delete_flat,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="postionId != null">
+        #{postionId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="postionName != null">
+        #{postionName,jdbcType=VARCHAR},
+      </if>
+      <if test="postionCompany != null">
+        #{postionCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="postionYm != null">
+        #{postionYm,jdbcType=INTEGER},
+      </if>
+      <if test="postionMm != null">
+        #{postionMm,jdbcType=INTEGER},
+      </if>
+      <if test="postionSpace != null">
+        #{postionSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="postionTime != null">
+        #{postionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionEducation != null">
+        #{postionEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="postionExp != null">
+        #{postionExp,jdbcType=VARCHAR},
+      </if>
+      <if test="postionAge != null">
+        #{postionAge,jdbcType=VARCHAR},
+      </if>
+      <if test="postionDescription != null">
+        #{postionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="postionWelfare != null">
+        #{postionWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlat != null">
+        #{deleteFlat,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzPostion">
+    update xz_postion
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="postionName != null">
+        postion_name = #{postionName,jdbcType=VARCHAR},
+      </if>
+      <if test="postionCompany != null">
+        postion_company = #{postionCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="postionYm != null">
+        postion_ym = #{postionYm,jdbcType=INTEGER},
+      </if>
+      <if test="postionMm != null">
+        postion_mm = #{postionMm,jdbcType=INTEGER},
+      </if>
+      <if test="postionSpace != null">
+        postion_space = #{postionSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="postionTime != null">
+        postion_time = #{postionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionEducation != null">
+        postion_education = #{postionEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="postionExp != null">
+        postion_exp = #{postionExp,jdbcType=VARCHAR},
+      </if>
+      <if test="postionAge != null">
+        postion_age = #{postionAge,jdbcType=VARCHAR},
+      </if>
+      <if test="postionDescription != null">
+        postion_description = #{postionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="postionWelfare != null">
+        postion_welfare = #{postionWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlat != null">
+        delete_flat = #{deleteFlat,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where postion_id = #{postionId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostion">
+    update xz_postion
+    set company_id = #{companyId,jdbcType=BIGINT},
+      postion_name = #{postionName,jdbcType=VARCHAR},
+      postion_company = #{postionCompany,jdbcType=VARCHAR},
+      postion_ym = #{postionYm,jdbcType=INTEGER},
+      postion_mm = #{postionMm,jdbcType=INTEGER},
+      postion_space = #{postionSpace,jdbcType=VARCHAR},
+      postion_time = #{postionTime,jdbcType=TIMESTAMP},
+      postion_education = #{postionEducation,jdbcType=VARCHAR},
+      postion_exp = #{postionExp,jdbcType=VARCHAR},
+      postion_age = #{postionAge,jdbcType=VARCHAR},
+      postion_description = #{postionDescription,jdbcType=VARCHAR},
+      postion_welfare = #{postionWelfare,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      delete_flat = #{deleteFlat,jdbcType=INTEGER},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR}
+    where postion_id = #{postionId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzResumeMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzResume">
+    <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
+    <result column="resume_field" jdbcType="VARCHAR" property="resumeField" />
+    <result column="resume_workspace" jdbcType="VARCHAR" property="resumeWorkspace" />
+    <result column="resume_mm" jdbcType="INTEGER" property="resumeMm" />
+    <result column="resume_ym" jdbcType="INTEGER" property="resumeYm" />
+    <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
+    <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
+    <result column="resume_nationality" jdbcType="VARCHAR" property="resumeNationality" />
+    <result column="resume_state" jdbcType="VARCHAR" property="resumeState" />
+    <result column="resume_marriage" jdbcType="VARCHAR" property="resumeMarriage" />
+    <result column="resume_flash" jdbcType="TIMESTAMP" property="resumeFlash" />
+    <result column="resume_intent_workspace" jdbcType="VARCHAR" property="resumeIntentWorkspace" />
+    <result column="resume_intent_field" jdbcType="VARCHAR" property="resumeIntentField" />
+    <result column="resume_intent_mm" jdbcType="INTEGER" property="resumeIntentMm" />
+    <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+    <result column="resume_intent_position" jdbcType="VARCHAR" property="resumeIntentPosition" />
+    <result column="resume_completion" jdbcType="INTEGER" property="resumeCompletion" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    resume_id, member_id, resume_name, resume_field, resume_workspace, resume_mm, resume_ym, 
+    resume_position, resume_workinglife, resume_nationality, resume_state, resume_marriage, 
+    resume_flash, resume_intent_workspace, resume_intent_field, resume_intent_mm, resume_intent_ym, 
+    resume_intent_position, resume_completion, create_time, delete_time, delete_falt,
+    filed1, filed2, filed3
+  </sql>
+  <select id="selectByMemberId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_resume
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_resume
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_resume
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzResume">
+    insert into xz_resume (resume_id, member_id, resume_name, 
+      resume_field, resume_workspace, resume_mm, 
+      resume_ym, resume_position, resume_workinglife, 
+      resume_nationality, resume_state, resume_marriage, 
+      resume_flash, resume_intent_workspace, resume_intent_field, 
+      resume_intent_mm, resume_intent_ym, resume_intent_position, 
+      resume_completion, create_time, delete_time, 
+      delete_falt, filed1, filed2, 
+      filed3)
+    values (#{resumeId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{resumeName,jdbcType=VARCHAR}, 
+      #{resumeField,jdbcType=VARCHAR}, #{resumeWorkspace,jdbcType=VARCHAR}, #{resumeMm,jdbcType=INTEGER}, 
+      #{resumeYm,jdbcType=INTEGER}, #{resumePosition,jdbcType=VARCHAR}, #{resumeWorkinglife,jdbcType=VARCHAR}, 
+      #{resumeNationality,jdbcType=VARCHAR}, #{resumeState,jdbcType=VARCHAR}, #{resumeMarriage,jdbcType=VARCHAR}, 
+      #{resumeFlash,jdbcType=TIMESTAMP}, #{resumeIntentWorkspace,jdbcType=VARCHAR}, #{resumeIntentField,jdbcType=VARCHAR}, 
+      #{resumeIntentMm,jdbcType=INTEGER}, #{resumeIntentYm,jdbcType=INTEGER}, #{resumeIntentPosition,jdbcType=VARCHAR}, 
+      #{resumeCompletion,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
+      #{deleteFalt,jdbcType=INTEGER}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
+      #{filed3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzResume">
+    insert into xz_resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="resumeName != null">
+        resume_name,
+      </if>
+      <if test="resumeField != null">
+        resume_field,
+      </if>
+      <if test="resumeWorkspace != null">
+        resume_workspace,
+      </if>
+      <if test="resumeMm != null">
+        resume_mm,
+      </if>
+      <if test="resumeYm != null">
+        resume_ym,
+      </if>
+      <if test="resumePosition != null">
+        resume_position,
+      </if>
+      <if test="resumeWorkinglife != null">
+        resume_workinglife,
+      </if>
+      <if test="resumeNationality != null">
+        resume_nationality,
+      </if>
+      <if test="resumeState != null">
+        resume_state,
+      </if>
+      <if test="resumeMarriage != null">
+        resume_marriage,
+      </if>
+      <if test="resumeFlash != null">
+        resume_flash,
+      </if>
+      <if test="resumeIntentWorkspace != null">
+        resume_intent_workspace,
+      </if>
+      <if test="resumeIntentField != null">
+        resume_intent_field,
+      </if>
+      <if test="resumeIntentMm != null">
+        resume_intent_mm,
+      </if>
+      <if test="resumeIntentYm != null">
+        resume_intent_ym,
+      </if>
+      <if test="resumeIntentPosition != null">
+        resume_intent_position,
+      </if>
+      <if test="resumeCompletion != null">
+        resume_completion,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="resumeName != null">
+        #{resumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeField != null">
+        #{resumeField,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeWorkspace != null">
+        #{resumeWorkspace,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeMm != null">
+        #{resumeMm,jdbcType=INTEGER},
+      </if>
+      <if test="resumeYm != null">
+        #{resumeYm,jdbcType=INTEGER},
+      </if>
+      <if test="resumePosition != null">
+        #{resumePosition,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeWorkinglife != null">
+        #{resumeWorkinglife,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeNationality != null">
+        #{resumeNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeState != null">
+        #{resumeState,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeMarriage != null">
+        #{resumeMarriage,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeFlash != null">
+        #{resumeFlash,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resumeIntentWorkspace != null">
+        #{resumeIntentWorkspace,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeIntentField != null">
+        #{resumeIntentField,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeIntentMm != null">
+        #{resumeIntentMm,jdbcType=INTEGER},
+      </if>
+      <if test="resumeIntentYm != null">
+        #{resumeIntentYm,jdbcType=INTEGER},
+      </if>
+      <if test="resumeIntentPosition != null">
+        #{resumeIntentPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeCompletion != null">
+        #{resumeCompletion,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFalt != null">
+        #{deleteFalt,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzResume">
+    update xz_resume
+    <set>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="resumeName != null">
+        resume_name = #{resumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeField != null">
+        resume_field = #{resumeField,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeWorkspace != null">
+        resume_workspace = #{resumeWorkspace,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeMm != null">
+        resume_mm = #{resumeMm,jdbcType=INTEGER},
+      </if>
+      <if test="resumeYm != null">
+        resume_ym = #{resumeYm,jdbcType=INTEGER},
+      </if>
+      <if test="resumePosition != null">
+        resume_position = #{resumePosition,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeWorkinglife != null">
+        resume_workinglife = #{resumeWorkinglife,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeNationality != null">
+        resume_nationality = #{resumeNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeState != null">
+        resume_state = #{resumeState,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeMarriage != null">
+        resume_marriage = #{resumeMarriage,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeFlash != null">
+        resume_flash = #{resumeFlash,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resumeIntentWorkspace != null">
+        resume_intent_workspace = #{resumeIntentWorkspace,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeIntentField != null">
+        resume_intent_field = #{resumeIntentField,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeIntentMm != null">
+        resume_intent_mm = #{resumeIntentMm,jdbcType=INTEGER},
+      </if>
+      <if test="resumeIntentYm != null">
+        resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER},
+      </if>
+      <if test="resumeIntentPosition != null">
+        resume_intent_position = #{resumeIntentPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeCompletion != null">
+        resume_completion = #{resumeCompletion,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt = #{deleteFalt,jdbcType=INTEGER},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzResume">
+    update xz_resume
+    set member_id = #{memberId,jdbcType=BIGINT},
+      resume_name = #{resumeName,jdbcType=VARCHAR},
+      resume_field = #{resumeField,jdbcType=VARCHAR},
+      resume_workspace = #{resumeWorkspace,jdbcType=VARCHAR},
+      resume_mm = #{resumeMm,jdbcType=INTEGER},
+      resume_ym = #{resumeYm,jdbcType=INTEGER},
+      resume_position = #{resumePosition,jdbcType=VARCHAR},
+      resume_workinglife = #{resumeWorkinglife,jdbcType=VARCHAR},
+      resume_nationality = #{resumeNationality,jdbcType=VARCHAR},
+      resume_state = #{resumeState,jdbcType=VARCHAR},
+      resume_marriage = #{resumeMarriage,jdbcType=VARCHAR},
+      resume_flash = #{resumeFlash,jdbcType=TIMESTAMP},
+      resume_intent_workspace = #{resumeIntentWorkspace,jdbcType=VARCHAR},
+      resume_intent_field = #{resumeIntentField,jdbcType=VARCHAR},
+      resume_intent_mm = #{resumeIntentMm,jdbcType=INTEGER},
+      resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER},
+      resume_intent_position = #{resumeIntentPosition,jdbcType=VARCHAR},
+      resume_completion = #{resumeCompletion,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      delete_falt = #{deleteFalt,jdbcType=INTEGER},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR}
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </update>
+</mapper>

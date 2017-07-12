@@ -1,0 +1,8 @@
+.anifTopLe{}
+.anifInput{}
+.anifTop{
+    top:0px;
+    margin: 0;
+    position: fixed;
+    z-index: 1000;
+}

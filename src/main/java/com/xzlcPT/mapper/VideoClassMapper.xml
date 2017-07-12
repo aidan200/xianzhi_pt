@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.VideoClassMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzVideoClass">
+        <id column="vclass_id" jdbcType="BIGINT" property="vclassID"/>
+        <result column="class_name" jdbcType="VARCHAR" property="className"/>
+        <result column="class_introduce" jdbcType="VARCHAR" property="classIntroduce"/>
+        <result column="delete_vclass_date" jdbcType="DATE" property="deleteVclassDate"/>
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      vclass_id, class_name,class_introduce, delete_vclass_date, delete_falt
+    </sql>
+
+    <insert id="insertVideoClass" parameterType="com.xzlcPT.bean.XzVideoClass">
+        insert into xz_video_class
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                vclass_id,
+            <if test="className != null and className != ''">
+                class_name,
+            </if>
+            <if test="classIntroduce != null and '' != classIntroduce">
+                class_introduce,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{vclassID,jdbcType=BIGINT},
+            <if test="className != null and '' != className">
+                #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="classIntroduce != null and '' != classIntroduce">
+                #{classIntroduce,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectVideoClass" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzVideoClass">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_video_class
+        where delete_falt = 0
+        <if test="vclassID != 0">
+            #{vclassID,jdbcType=BIGINT},
+        </if>
+        <if test="className != null and '' != className">
+            #{className,jdbcType=VARCHAR},
+        </if>
+    </select>
+    <update id="updateVideoClass" parameterType="com.xzlcPT.bean.XzVideoClass">
+        update xz_video_class
+        <set>
+            <if test="className != null and className != ''">
+                class_name = #{className,jdbcType=VARCHAR},
+            </if>
+            <if test="classIntroduce != null and classIntroduce != ''">
+                class_introduce = #{classIntroduce,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteVclassDate != null and deleteVclassDate != ''">
+                delete_vclass_date = #{deleteVclassDate,jdbcType=DATE},
+            </if>
+            <if test="deleteFalt != 0">
+                delete_falt = #{deleteFalt,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where vclass_id = #{vclassID,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectVclassByID" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        FROM xz_video_class
+        where delete_falt = 0
+        and vclass_id = #{vclassID,jdbcType=BIGINT}
+    </select>
+
+</mapper>

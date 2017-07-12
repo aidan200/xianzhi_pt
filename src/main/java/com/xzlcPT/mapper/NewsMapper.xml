@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.NewsMapper">
+    <resultMap id="NewsResultMap" type="com.xzlcPT.bean.News">
+        <id column="news_id" jdbcType="BIGINT" property="newsId" />
+        <result column="news_writer" jdbcType="VARCHAR" property="newsWriter" />
+        <result column="news_title" jdbcType="VARCHAR" property="newsTitle" />
+        <result column="news_article" jdbcType="VARCHAR" property="newsArticle" />
+        <result column="news_date" jdbcType="DATE" property="newsDate" />
+        <result column="delete_date" jdbcType="DATE" property="deleteDate" />
+        <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+        <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+        <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+    </resultMap>
+    <sql id="News_Column_List">
+        news_id,news_writer,news_title,news_article,news_date,delete_date,filed1,filed2,filed3,delete_flag
+    </sql>
+    <insert id="insertSelective" parameterType="com.xzlcPT.bean.News">
+        INSERT INTO xz_news
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="newsId != null">news_id,</if>
+            <if test="newsWriter != null">news_writer,</if>
+            <if test="newsTitle != null">news_title,</if>
+            <if test="newsArticle != null">news_article,</if>
+            <if test="newsTime != null">news_time,</if>
+            <if test="deleteDate != null">delete_date,</if>
+            <if test="filed1 != null">filed1,</if>
+            <if test="filed2 != null">filed2,</if>
+            <if test="filed3 != null">filed3,</if>
+            <if test="deleteFlag != null">delete_flag,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="newsId != null">#{newsId,jdbcType=BIGINT},</if>
+            <if test="newsWriter != null">#{newsWriter,jdbcType=VARCHAR},</if>
+            <if test="newsTitle != null">#{newsTitle,jdbcType=VARCHAR},</if>
+            <if test="newsArticle != null">#{newsArticle,jdbcType=VARCHAR},</if>
+            <if test="newsDate != null">#{newsDate,jdbcType=DATE},</if>
+            <if test="deleteDate != null">#{deleteDate,jdbcType=DATE},</if>
+            <if test="filed1 != null">#{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">#{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">#{filed3,jdbcType=VARCHAR},</if>
+            <if test="deleteFlag != null">0</if>
+        </trim>
+    </insert>
+    <insert id="insert" parameterType="com.xzlcPT.bean.News">
+        INSERT INTO xz_news (news_id,news_writer,news_title,news_article,news_date,delete_date,filed1,filed2,filed3,delete_flag)
+        VALUES (
+        #{newsId,jdbcType=BIGINT},#{newsWriter,jdbcType=VARCHAR},#{newsTitle,jdbcType=VARCHAR},#{newsArticle,jdbcType=VARCHAR},
+        #{newsDate,jdbcType=DATE},#{deleteDate,jdbcType=DATE},#{filed1,jdbcType=VARCHAR},#{filed2,jdbcType=VARCHAR},
+        #{filed3,jdbcType=VARCHAR},0
+        )
+    </insert>
+    <!--删除标记-->
+    <update id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        UPDATE xz_news
+        SET delete_flag = 1
+        WHERE delete_flag = 0 AND news_id = #{newsId,jdbcType=BIGINT}
+    </update>
+    <!--判断删除标记！！！-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.News">
+        UPDATE xz_news
+        <set>
+            <if test="newsWriter != null">news_writer = #{newsWriter,jdbcType=VARCHAR},</if>
+            <if test="newsTitle != null">news_title = #{newsTitle,jdbcType=VARCHAR},</if>
+            <if test="newsArticle != null">news_article = #{newsArticle,jdbcType=VARCHAR},</if>
+            <if test="newsDate != null">news_date = #{newsDate,jdbcType=DATE},</if>
+            <if test="deleteDate != null">delete_date = #{deleteDate,jdbcType=DATE},</if>
+            <if test="filed1 != null">filed1 = #{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">filed2 = #{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">filed3 = #{filed3,jdbcType=VARCHAR},</if>
+        </set>
+        WHERE delete_flag = 0 AND news_id = #{newsId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.News">
+        UPDATE xz_news
+        SET news_writer = #{newsWriter,jdbcType=VARCHAR},news_title = #{newsTitle,jdbcType=VARCHAR},
+        news_article = #{newsArticle,jdbcType=VARCHAR},news_date = #{newsDate,jdbcType=DATE},
+        delete_date = #{deleteDate,jdbcType=DATE},filed1 = #{filed1,jdbcType=VARCHAR},filed2 = #{filed2,jdbcType=VARCHAR},
+        filed3 = #{filed3,jdbcType=VARCHAR}
+        WHERE delete_flag = 0 AND news_id = #{newsId,jdbcType=BIGINT}
+    </update>
+    <select id="selectNewsAll" resultMap="NewsResultMap" parameterType="com.xzlcPT.bean.News">
+        SELECT <include refid="News_Column_List"/>
+        FROM xz_news WHERE delete_flag = 0
+    </select>
+    <!--判断删除标记！！！-->
+    <select id="selectNewsAllEnd" resultMap="NewsResultMap" parameterType="java.util.HashMap">
+        SELECT
+        <include refid="News_Column_List"/>
+        FROM xz_news WHERE delete_flag = 0
+        <if test="newsId!=null and newsId!=''">
+            AND news_id = #{newsId,jdbcType=BIGINT}
+        </if>
+        <if test="newsWriter!=null and newsWriter!=''">
+            AND news_writer LIKE CONCAT('%',#{newsWriter},'%')
+        </if>
+        <if test="newsTitle!=null and newsTitle!=''">
+            AND news_title LIKE CONCAT('%',#{newsTitle},'%')
+        </if>
+        <if test="newsArticle!=null and newsArticle!=''">
+            AND news_article LIKE CONCAT('%',#{newsArticle},'%')
+        </if>
+        <if test="startDate!=null and endDate!=null">
+            AND news_date &gt; #{startDate,jdbcType=DATE} AND news_date &lt; #{endDate,jdbcType=DATE}
+        </if>
+        <if test="startDate!=null and endDate==null">
+            AND news_date &gt; #{startDate,jdbcType=DATE}
+        </if>
+        <if test="endDate!=null and startDate==null">
+            AND news_date &lt; #{endDate,jdbcType=DATE}
+        </if>
+        <if test="filed1!=null and filed1!=''">
+            AND filed1 LIKE CONCAT('%',#{filed1},'%')
+        </if>
+        <if test="filed2!=null and filed2!=''">
+            AND filed2 LIKE CONCAT('%',#{filed2},'%')
+        </if>
+        <if test="filed3!=null and filed3!=''">
+            AND filed3 LIKE CONCAT('%',#{filed3},'%')
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="NewsResultMap" parameterType="com.xzlcPT.bean.News">
+        SELECT
+        <include refid="News_Column_List"/>
+        FROM xz_news
+        WHERE delete_flag = 0 and news_id = #{newsId,jdbcType=BIGINT}
+    </select>
+</mapper>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzJobExpMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzJobExp">
+    <id column="jobexp_id" jdbcType="BIGINT" property="jobexpId" />
+    <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="jobexp_company_name" jdbcType="VARCHAR" property="jobexpCompanyName" />
+    <result column="jobexp_field" jdbcType="VARCHAR" property="jobexpField" />
+    <result column="jobexp_postion" jdbcType="VARCHAR" property="jobexpPostion" />
+    <result column="jobexp_workspace" jdbcType="VARCHAR" property="jobexpWorkspace" />
+    <result column="jobexp_subordinate" jdbcType="INTEGER" property="jobexpSubordinate" />
+    <result column="jobexp_begin_time" jdbcType="TIMESTAMP" property="jobexpBeginTime" />
+    <result column="jobexp_end_time" jdbcType="TIMESTAMP" property="jobexpEndTime" />
+    <result column="jobexp_duty" jdbcType="VARCHAR" property="jobexpDuty" />
+    <result column="jobexp_dept" jdbcType="VARCHAR" property="jobexpDept" />
+    <result column="jobexp_company_scale" jdbcType="VARCHAR" property="jobexpCompanyScale" />
+    <result column="jobexp_company_type" jdbcType="VARCHAR" property="jobexpCompanyType" />
+    <result column="jobexp_mm" jdbcType="INTEGER" property="jobexpMm" />
+    <result column="jobexp_ym" jdbcType="INTEGER" property="jobexpYm" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    jobexp_id, resume_id, jobexp_company_name, jobexp_field, jobexp_postion, jobexp_workspace, 
+    jobexp_subordinate, jobexp_begin_time, jobexp_end_time, jobexp_duty, jobexp_dept, 
+    jobexp_company_scale, jobexp_company_type, jobexp_mm, jobexp_ym, create_time, delete_time, 
+    filed1, filed2, filed3
+  </sql>
+  <select id="selectByResumeId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_job_exp
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_job_exp
+    where jobexp_id = #{jobexpId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_job_exp
+    where jobexp_id = #{jobexpId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzJobExp">
+    insert into xz_job_exp (jobexp_id, resume_id, jobexp_company_name, 
+      jobexp_field, jobexp_postion, jobexp_workspace, 
+      jobexp_subordinate, jobexp_begin_time, jobexp_end_time, 
+      jobexp_duty, jobexp_dept, jobexp_company_scale, 
+      jobexp_company_type, jobexp_mm, jobexp_ym, 
+      create_time, delete_time, filed1, 
+      filed2, filed3)
+    values (#{jobexpId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{jobexpCompanyName,jdbcType=VARCHAR}, 
+      #{jobexpField,jdbcType=VARCHAR}, #{jobexpPostion,jdbcType=VARCHAR}, #{jobexpWorkspace,jdbcType=VARCHAR}, 
+      #{jobexpSubordinate,jdbcType=INTEGER}, #{jobexpBeginTime,jdbcType=TIMESTAMP}, #{jobexpEndTime,jdbcType=TIMESTAMP}, 
+      #{jobexpDuty,jdbcType=VARCHAR}, #{jobexpDept,jdbcType=VARCHAR}, #{jobexpCompanyScale,jdbcType=VARCHAR}, 
+      #{jobexpCompanyType,jdbcType=VARCHAR}, #{jobexpMm,jdbcType=INTEGER}, #{jobexpYm,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, #{filed1,jdbcType=VARCHAR}, 
+      #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzJobExp">
+    insert into xz_job_exp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jobexpId != null">
+        jobexp_id,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="jobexpCompanyName != null">
+        jobexp_company_name,
+      </if>
+      <if test="jobexpField != null">
+        jobexp_field,
+      </if>
+      <if test="jobexpPostion != null">
+        jobexp_postion,
+      </if>
+      <if test="jobexpWorkspace != null">
+        jobexp_workspace,
+      </if>
+      <if test="jobexpSubordinate != null">
+        jobexp_subordinate,
+      </if>
+      <if test="jobexpBeginTime != null">
+        jobexp_begin_time,
+      </if>
+      <if test="jobexpEndTime != null">
+        jobexp_end_time,
+      </if>
+      <if test="jobexpDuty != null">
+        jobexp_duty,
+      </if>
+      <if test="jobexpDept != null">
+        jobexp_dept,
+      </if>
+      <if test="jobexpCompanyScale != null">
+        jobexp_company_scale,
+      </if>
+      <if test="jobexpCompanyType != null">
+        jobexp_company_type,
+      </if>
+      <if test="jobexpMm != null">
+        jobexp_mm,
+      </if>
+      <if test="jobexpYm != null">
+        jobexp_ym,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jobexpId != null">
+        #{jobexpId,jdbcType=BIGINT},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="jobexpCompanyName != null">
+        #{jobexpCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpField != null">
+        #{jobexpField,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpPostion != null">
+        #{jobexpPostion,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpWorkspace != null">
+        #{jobexpWorkspace,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpSubordinate != null">
+        #{jobexpSubordinate,jdbcType=INTEGER},
+      </if>
+      <if test="jobexpBeginTime != null">
+        #{jobexpBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobexpEndTime != null">
+        #{jobexpEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobexpDuty != null">
+        #{jobexpDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpDept != null">
+        #{jobexpDept,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpCompanyScale != null">
+        #{jobexpCompanyScale,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpCompanyType != null">
+        #{jobexpCompanyType,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpMm != null">
+        #{jobexpMm,jdbcType=INTEGER},
+      </if>
+      <if test="jobexpYm != null">
+        #{jobexpYm,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzJobExp">
+    update xz_job_exp
+    <set>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="jobexpCompanyName != null">
+        jobexp_company_name = #{jobexpCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpField != null">
+        jobexp_field = #{jobexpField,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpPostion != null">
+        jobexp_postion = #{jobexpPostion,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpWorkspace != null">
+        jobexp_workspace = #{jobexpWorkspace,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpSubordinate != null">
+        jobexp_subordinate = #{jobexpSubordinate,jdbcType=INTEGER},
+      </if>
+      <if test="jobexpBeginTime != null">
+        jobexp_begin_time = #{jobexpBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobexpEndTime != null">
+        jobexp_end_time = #{jobexpEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobexpDuty != null">
+        jobexp_duty = #{jobexpDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpDept != null">
+        jobexp_dept = #{jobexpDept,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpCompanyScale != null">
+        jobexp_company_scale = #{jobexpCompanyScale,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpCompanyType != null">
+        jobexp_company_type = #{jobexpCompanyType,jdbcType=VARCHAR},
+      </if>
+      <if test="jobexpMm != null">
+        jobexp_mm = #{jobexpMm,jdbcType=INTEGER},
+      </if>
+      <if test="jobexpYm != null">
+        jobexp_ym = #{jobexpYm,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jobexp_id = #{jobexpId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzJobExp">
+    update xz_job_exp
+    set resume_id = #{resumeId,jdbcType=BIGINT},
+      jobexp_company_name = #{jobexpCompanyName,jdbcType=VARCHAR},
+      jobexp_field = #{jobexpField,jdbcType=VARCHAR},
+      jobexp_postion = #{jobexpPostion,jdbcType=VARCHAR},
+      jobexp_workspace = #{jobexpWorkspace,jdbcType=VARCHAR},
+      jobexp_subordinate = #{jobexpSubordinate,jdbcType=INTEGER},
+      jobexp_begin_time = #{jobexpBeginTime,jdbcType=TIMESTAMP},
+      jobexp_end_time = #{jobexpEndTime,jdbcType=TIMESTAMP},
+      jobexp_duty = #{jobexpDuty,jdbcType=VARCHAR},
+      jobexp_dept = #{jobexpDept,jdbcType=VARCHAR},
+      jobexp_company_scale = #{jobexpCompanyScale,jdbcType=VARCHAR},
+      jobexp_company_type = #{jobexpCompanyType,jdbcType=VARCHAR},
+      jobexp_mm = #{jobexpMm,jdbcType=INTEGER},
+      jobexp_ym = #{jobexpYm,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR}
+    where jobexp_id = #{jobexpId,jdbcType=BIGINT}
+  </update>
+</mapper>

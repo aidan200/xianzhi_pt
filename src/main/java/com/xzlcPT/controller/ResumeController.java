@@ -1,0 +1,52 @@
+package com.xzlcPT.controller;
+
+import com.xzlcPT.bean.XzLogin;
+import com.xzlcPT.bean.XzResume;
+import com.xzlcPT.service.XzResumeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by Administrator on 2017/7/10.
+ */
+@Controller
+@RequestMapping("Resume")
+@SessionAttributes({"userLogin"})
+public class ResumeController extends BaseController {
+
+    @Autowired
+    private XzResumeService resumeService;
+
+
+    @ResponseBody
+    @RequestMapping("selResume.do")
+    public Map<String,Object> selResume(@ModelAttribute("userLogin")XzLogin userLogin){
+        Map<String,Object> map = new HashMap<>();
+        XzResume resume = resumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        map.put("resume",resume);
+
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("updateResume.do")
+    public Map<String,Object> updateResume(XzResume resume){
+        Map<String,Object> map = new HashMap<>();
+        int i = resumeService.updateResumeByFore(resume);
+        if(i==1){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
+    }
+
+
+}

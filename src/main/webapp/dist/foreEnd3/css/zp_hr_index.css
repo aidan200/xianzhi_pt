@@ -1,0 +1,138 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #222222;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+body a {
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+/*----------------------导航---------------------------*/
+
+.navbar-top{
+    background-color: #004098;
+}
+.navbar-bottom{
+    background-color: #0087d1;
+    border-top:#008dda;
+    box-shadow: 0 2px 4px rgba(0,0,0,.25);
+}
+.alllogo{
+    width: 150px;
+    height: 55px;
+    margin: 5px;
+}
+.navbar{
+    margin-bottom: 0;
+    border-radius: 0;
+}
+.navbar-nav{
+    float: right;
+}
+.navbar-nav li a{
+    color: #ffffff;
+    font-size: 15px;
+}
+.nav_2{
+    float: none;
+}
+.nav_2 li{
+    border-left: 1px solid #0073b2;
+    border-right: 1px solid #0073b2;
+}
+.nav_2 li a:hover{
+    background-color: #46bef1;
+}
+.nav_2 li a{
+    border-right:1px solid #009df2;
+}
+.nav_1 li a{
+    margin-top: 13px;
+}
+.nav_1 li a:hover{
+    background-color: transparent;
+}
+/*****************************************************/
+body{
+    background: #E6E6E6;
+}
+.zp_hr_index_cont{
+    width: 1100px;
+}
+.zp_hr_index_gg{
+    height: 110px;
+    margin: 20px 0;
+    border-radius: 3px;
+}
+.zp_hr_index_cont_jl{
+
+    background: #FFFFFF;
+    padding: 20px 20px;
+    border-left: 5px solid #6b6;
+    position: relative;
+    margin-bottom: 20px;
+
+}
+.zp_hr_index_cont_jl > h4{
+    margin: 0;
+    width: 83%;
+    font-size: 14px;
+    line-height:1.6em;
+}
+.zp_hr_index_cont_jl > a{
+    position: absolute;
+    right: 20px;
+    background-color: #29c;
+    border-color: #29c;
+    color: #fff;
+    top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.zp_hr_index_cont_xxk > ul{
+    height: 64px;
+    padding: 0;
+    margin: 0;
+
+}
+.zp_hr_index_cont_xxk > ul> li{
+    float: left;
+    height: 64px;
+    width: 25%;
+    background: #00b95a;
+}

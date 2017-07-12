@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.TestMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.Test">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="test_a" jdbcType="VARCHAR" property="testA" />
+    <result column="test_b" jdbcType="VARCHAR" property="testB" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, test_a, test_b
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.Test">
+    select
+    <include refid="Base_Column_List"/>
+    FROM xz_test where 1=1
+      <if test="id!=null and id!=''">
+       and id = #{id,jdbcType=BIGINT}
+      </if>
+      <if test="testA!=null and testA!=''">
+       and test_a like CONCAT('%',#{testA},'%')
+      </if>
+      <if test="testB!=null and testB!=''">
+       and test_b like CONCAT('%',#{testB},'%')
+      </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_test
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByTestB" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_test
+    where test_b = #{testB,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_test
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.Test">
+    insert into xz_test (id, test_a, test_b
+      )
+    values (#{id,jdbcType=BIGINT}, #{testA,jdbcType=VARCHAR}, #{testB,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.Test">
+    insert into xz_test
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="testA != null">
+        test_a,
+      </if>
+      <if test="testB != null">
+        test_b,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="testA != null">
+        #{testA,jdbcType=VARCHAR},
+      </if>
+      <if test="testB != null">
+        #{testB,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.Test">
+    update xz_test
+    <set>
+      <if test="testA != null">
+        test_a = #{testA,jdbcType=VARCHAR},
+      </if>
+      <if test="testB != null">
+        test_b = #{testB,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.Test">
+    update xz_test
+    set test_a = #{testA,jdbcType=VARCHAR},
+      test_b = #{testB,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

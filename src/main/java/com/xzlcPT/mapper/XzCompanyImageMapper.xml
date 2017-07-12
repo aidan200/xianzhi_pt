@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzCompanyImageMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzCompanyImage">
+    <id column="image_id" jdbcType="BIGINT" property="imageId" />
+    <result column="image_type" jdbcType="VARCHAR" property="imageType" />
+    <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    image_id, image_type, image_path, company_id, filed2, filed3, delete_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_company_image
+    where image_id = #{imageId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_company_image
+    where image_id = #{imageId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzCompanyImage">
+    insert into xz_company_image (image_id, image_type, image_path, 
+      company_id, filed2, filed3, 
+      delete_flag)
+    values (#{imageId,jdbcType=BIGINT}, #{imageType,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=BIGINT}, #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR}, 
+      #{deleteFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzCompanyImage">
+    insert into xz_company_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imageId != null">
+        image_id,
+      </if>
+      <if test="imageType != null">
+        image_type,
+      </if>
+      <if test="imagePath != null">
+        image_path,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imageId != null">
+        #{imageId,jdbcType=BIGINT},
+      </if>
+      <if test="imageType != null">
+        #{imageType,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null">
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzCompanyImage">
+    update xz_company_image
+    <set>
+      <if test="imageType != null">
+        image_type = #{imageType,jdbcType=VARCHAR},
+      </if>
+      <if test="imagePath != null">
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where image_id = #{imageId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzCompanyImage">
+    update xz_company_image
+    set image_type = #{imageType,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER}
+    where image_id = #{imageId,jdbcType=BIGINT}
+  </update>
+</mapper>

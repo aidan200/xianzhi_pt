@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzProjectExpMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzProjectExp">
+    <id column="proexp_id" jdbcType="BIGINT" property="proexpId" />
+    <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="proexp_name" jdbcType="VARCHAR" property="proexpName" />
+    <result column="proexp_duty" jdbcType="VARCHAR" property="proexpDuty" />
+    <result column="proexp_begin_time" jdbcType="TIMESTAMP" property="proexpBeginTime" />
+    <result column="proexp_end_time" jdbcType="TIMESTAMP" property="proexpEndTime" />
+    <result column="proexp_describe" jdbcType="VARCHAR" property="proexpDescribe" />
+    <result column="proexp_postion" jdbcType="VARCHAR" property="proexpPostion" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    proexp_id, resume_id, proexp_name, proexp_duty, proexp_begin_time, proexp_end_time, 
+    proexp_describe, proexp_postion, create_time, delete_time, filed1, filed2, filed3
+  </sql>
+  <select id="selectByResumeId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_project_exp
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_project_exp
+    where proexp_id = #{proexpId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_project_exp
+    where proexp_id = #{proexpId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzProjectExp">
+    insert into xz_project_exp (proexp_id, resume_id, proexp_name, 
+      proexp_duty, proexp_begin_time, proexp_end_time, 
+      proexp_describe, proexp_postion, create_time, 
+      delete_time, filed1, filed2, 
+      filed3)
+    values (#{proexpId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{proexpName,jdbcType=VARCHAR}, 
+      #{proexpDuty,jdbcType=VARCHAR}, #{proexpBeginTime,jdbcType=TIMESTAMP}, #{proexpEndTime,jdbcType=TIMESTAMP}, 
+      #{proexpDescribe,jdbcType=VARCHAR}, #{proexpPostion,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{deleteTime,jdbcType=TIMESTAMP}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
+      #{filed3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzProjectExp">
+    insert into xz_project_exp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="proexpId != null">
+        proexp_id,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="proexpName != null">
+        proexp_name,
+      </if>
+      <if test="proexpDuty != null">
+        proexp_duty,
+      </if>
+      <if test="proexpBeginTime != null">
+        proexp_begin_time,
+      </if>
+      <if test="proexpEndTime != null">
+        proexp_end_time,
+      </if>
+      <if test="proexpDescribe != null">
+        proexp_describe,
+      </if>
+      <if test="proexpPostion != null">
+        proexp_postion,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="proexpId != null">
+        #{proexpId,jdbcType=BIGINT},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="proexpName != null">
+        #{proexpName,jdbcType=VARCHAR},
+      </if>
+      <if test="proexpDuty != null">
+        #{proexpDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="proexpBeginTime != null">
+        #{proexpBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proexpEndTime != null">
+        #{proexpEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proexpDescribe != null">
+        #{proexpDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="proexpPostion != null">
+        #{proexpPostion,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzProjectExp">
+    update xz_project_exp
+    <set>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="proexpName != null">
+        proexp_name = #{proexpName,jdbcType=VARCHAR},
+      </if>
+      <if test="proexpDuty != null">
+        proexp_duty = #{proexpDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="proexpBeginTime != null">
+        proexp_begin_time = #{proexpBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proexpEndTime != null">
+        proexp_end_time = #{proexpEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="proexpDescribe != null">
+        proexp_describe = #{proexpDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="proexpPostion != null">
+        proexp_postion = #{proexpPostion,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where proexp_id = #{proexpId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzProjectExp">
+    update xz_project_exp
+    set resume_id = #{resumeId,jdbcType=BIGINT},
+      proexp_name = #{proexpName,jdbcType=VARCHAR},
+      proexp_duty = #{proexpDuty,jdbcType=VARCHAR},
+      proexp_begin_time = #{proexpBeginTime,jdbcType=TIMESTAMP},
+      proexp_end_time = #{proexpEndTime,jdbcType=TIMESTAMP},
+      proexp_describe = #{proexpDescribe,jdbcType=VARCHAR},
+      proexp_postion = #{proexpPostion,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR}
+    where proexp_id = #{proexpId,jdbcType=BIGINT}
+  </update>
+</mapper>

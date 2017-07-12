@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>modify</title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href="../dist/backEnd/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../dist/backEnd/css/home.css">
+    <link rel="stylesheet" href="../dist/backEnd/css/font-awesome.css">
+    <script src="../dist/backEnd/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+</head>
+
+
+<body class="">
+<div class="navbar">
+    <div class="navbar-inner">
+        <ul class="nav pull-right">
+        </ul>
+        <a class="brand" href="home.html"><span class="first">XIAN</span> <span class="second">ZHI</span></a>
+    </div>
+</div>
+<div class="sidebar-nav" id="accordion">
+    <form class="search form-inline">
+        <input type="text" placeholder="Search...">
+    </form>
+
+    <a href="#one" class="nav-header" data-toggle="collapse" data-parent="#accordion">
+        <i class="icon-bookmark"></i>one</a>
+    <ul id="one" class="nav nav-list collapse in">
+        <li><a href="one1.html">1</a></li>
+        <li><a href="new.html">2</a></li>
+        <li><a href="###">3</a></li>
+        <li><a href="###">4</a></li>
+    </ul>
+
+    <a href="#two" class="nav-header" data-toggle="collapse" data-parent="#accordion">
+        <i class="icon-bookmark"></i>two</a>
+    <ul id="two" class="nav nav-list collapse">
+        <li><a href="###">1</a></li>
+        <li><a href="###">2</a></li>
+        <li><a href="###">3</a></li>
+        <li><a href="###">4</a></li>
+    </ul>
+
+    <a href="#three" class="nav-header collapsed" data-toggle="collapse" data-parent="#accordion">
+        <i class="icon-bookmark"></i>three</a>
+    <ul id="three" class="nav nav-list collapse">
+        <li><a href="###">1</a></li>
+        <li><a href="###">2</a></li>
+        <li><a href="###">3</a></li>
+        <li><a href="###">4</a></li>
+    </ul>
+
+    <a href="#four" class="nav-header" data-toggle="collapse" data-parent="#accordion">
+        <i class="icon-bookmark"></i>four</a>
+    <ul id="four" class="nav nav-list collapse">
+        <li><a href="###">1</a></li>
+        <li><a href="###">2</a></li>
+        <li><a href="###">3</a></li>
+        <li><a href="###">4</a></li>
+    </ul>
+
+    <a href="#five" class="nav-header" data-toggle="collapse" data-parent="#accordion">
+        <i class="icon-bookmark"></i>five</a>
+    <ul id="five" class="nav nav-list collapse">
+        <li><a href="###">1</a></li>
+        <li><a href="###">2</a></li>
+        <li><a href="###">3</a></li>
+        <li><a href="###">4</a></li>
+    </ul>
+    <a href="#six" class="nav-header" data-toggle="collapse" data-parent="#accordion">
+        <i class="icon-bookmark"></i>six</a>
+    <ul id="six" class="nav nav-list collapse">
+        <li><a href="###">1</a></li>
+        <li><a href="###">2</a></li>
+        <li><a href="###">3</a></li>
+        <li><a href="###">4</a></li>
+    </ul>
+    </ul>
+</div>
+
+
+<div class="content">
+    <div class="header">
+        <h1 class="page-title">修改用户信息</h1>
+    </div>
+
+    <ul class="breadcrumb">
+        <li><a href="home.html">首页</a> <span class="divider">/</span></li>
+        <li class="active">User</li>
+    </ul>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="btn-toolbar">
+                <button class="btn btn-warning" type="submit"><i class="icon-ok"></i>保存</button>
+                <a href="#myModal" class="btn btn-danger" data-toggle="modal"><i class="icon-remove"></i>删除</a>
+                <div class="btn-group">
+                </div>
+            </div>
+            <div class="well">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
+                    <li><a href="#profile" data-toggle="tab">密码</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane active in" id="home">
+                        <form id="tab">
+                            <label>用户名</label>
+                            <input type="text" placeholder="用户名 *" class="input-xlarge">
+                            <label>电话</label>
+                            <input type="text" placeholder="电话 *" class="input-xlarge">
+                            <label>邮箱</label>
+                            <input type="text" placeholder="邮箱 *" class="input-xlarge">
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="profile">
+                        <form id="tab2">
+                            <label>新密码</label>
+                            <input type="password" class="input-xlarge">
+                            <div>
+                                <button class="btn btn-info"><i class="icon-cog"></i>修改</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">删除信息</h3>
+                </div>
+                <div class="modal-body">
+                    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>你确定要删除这条信息么？</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                    <button class="btn btn-danger" data-dismiss="modal">删除</button>
+                </div>
+            </div>
+
+
+            <footer>
+                <hr>
+                <p>&copy; 2017 <a href="#" target="_blank">先知蓝创</a></p>
+            </footer>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../dist/backEnd/js/bootstrap.js"></script>
+
+</body>
+</html>

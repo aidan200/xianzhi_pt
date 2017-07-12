@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.ItemMapper">
+    <resultMap id="ItemResultMap" type="com.xzlcPT.bean.Item">
+        <id column="item_id" jdbcType="BIGINT" property="itemId" />
+        <result column="item_title" jdbcType="VARCHAR" property="itemTitle" />
+        <result column="item_article" jdbcType="VARCHAR" property="itemArticle" />
+        <result column="item_writer" jdbcType="VARCHAR" property="itemWriter" />
+        <result column="item_time" jdbcType="TIMESTAMP" property="itemTime" />
+        <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+        <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+        <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+        <!--<collection property="itemImage" ofType="com.xzlcPT.bean.Image">
+            <id column="image_id" jdbcType="BIGINT" property="imageId"/>
+            <result column="image_type" jdbcType="VARCHAR" property="imageType" />
+            <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
+        </collection>-->
+    </resultMap>
+    <sql id="Item_Column_List">
+        item_id,item_title,item_article,item_writer,item_time,item_image,filed1,filed2,filed3,delete_flag
+    </sql>
+    <insert id="insertSelective" parameterType="com.xzlcPT.bean.Item">
+        INSERT INTO xz_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="itemId != null">item_id,</if>
+            <if test="itemTitle != null">item_title,</if>
+            <if test="itemArticle != null">item_article,</if>
+            <if test="itemWriter != null">item_writer,</if>
+            <if test="itemTime != null">item_time,</if>
+            <if test="filed1 != null">filed1,</if>
+            <if test="filed2 != null">filed2,</if>
+            <if test="filed3 != null">filed3,</if>
+            <if test="deleteFlag != null">delete_flag,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="itemId != null">#{itemId,jdbcType=BIGINT},</if>
+            <if test="itemTitle != null">#{itemTitle,jdbcType=VARCHAR},</if>
+            <if test="itemArticle != null">#{itemArticle,jdbcType=VARCHAR},</if>
+            <if test="itemWriter != null">#{itemWriter,jdbcType=VARCHAR},</if>
+            <if test="itemTime != null">#{itemTime,jdbcType=TIMESTAMP},</if>
+            <if test="filed1 != null">#{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">#{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">#{filed3,jdbcType=VARCHAR},</if>
+            <if test="deleteFlag != null">0</if>
+        </trim>
+    </insert>
+    <insert id="insert" parameterType="com.xzlcPT.bean.Item">
+        INSERT INTO xz_item (item_id,item_title,item_article,item_writer,item_time,filed1,filed2,filed3,delete_flag)
+        VALUES (
+        #{itemId,jdbcType=BIGINT},#{itemTitle,jdbcType=VARCHAR},#{itemArticle,jdbcType=VARCHAR},#{itemWriter,jdbcType=VARCHAR},
+        #{itemTime,jdbcType=TIMESTAMP},#{filed1,jdbcType=VARCHAR},#{filed2,jdbcType=VARCHAR},#{filed3,jdbcType=VARCHAR},0
+        )
+    </insert>
+    <!--删除标记-->
+    <delete id="deleteByPrimaryKey" parameterType="com.xzlcPT.bean.Item">
+        UPDATE xz_item
+        SET delete_flag = 1
+        WHERE delete_flag = 0 AND item_id = #{itemId,jdbcType=BIGINT}
+    </delete>
+    <!--判断删除标记！！！-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.Item">
+        UPDATE xz_item
+        <set>
+            <if test="itemTitle != null">item_title = #{itemTitle,jdbcType=VARCHAR},</if>
+            <if test="itemArticle != null">item_article = #{itemArticle,jdbcType=VARCHAR},</if>
+            <if test="itemWriter != null">item_writer = #{itemWriter,jdbcType=VARCHAR},</if>
+            <if test="itemTime != null">item_time = #{itemTime,jdbcType=TIMESTAMP},</if>
+            <if test="filed1 != null">filed1 = #{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">filed2 = #{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">filed3 = #{filed3,jdbcType=VARCHAR},</if>
+        </set>
+        WHERE delete_flag = 0 AND item_id = #{itemId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.Item">
+        UPDATE xz_item
+        SET item_writer = #{itemWriter,jdbcType=VARCHAR},item_title = #{itemTitle,jdbcType=VARCHAR},
+        item_article = #{itemArticle,jdbcType=VARCHAR},item_time = #{itemTime,jdbcType=TIMESTAMP},
+        filed1 = #{filed1,jdbcType=VARCHAR},filed2 = #{filed2,jdbcType=VARCHAR},filed3 = #{filed3,jdbcType=VARCHAR}
+        WHERE delete_flag = 0 AND item_id = #{itemId,jdbcType=BIGINT}
+    </update>
+    <!--判断删除标记！！！-->
+    <!--<select id="selectItemAll" resultMap="ItemResultMap" parameterType="com.xzlcPT.bean.Item">
+        SELECT it.item_id,it.item_title,it.item_article,it.item_writer,it.item_time,i.image_type,i.image_path,
+        it.filed1,it.filed2,it.filed3,it.delete_flag
+        FROM xz_item it LEFT JOIN xz_image i ON it.item_image = i.image_id WHERE it.delete_flag = 0
+    </select>--><!--<select id="selectItemAll" resultMap="ItemResultMap" parameterType="com.xzlcPT.bean.Item">
+        SELECT it.item_id,it.item_title,it.item_article,it.item_writer,it.item_time,i.image_type,i.image_path,
+        it.filed1,it.filed2,it.filed3,it.delete_flag
+        FROM xz_item it LEFT JOIN xz_image i ON it.item_image = i.image_id WHERE it.delete_flag = 0
+    </select>-->
+    <!--后台条件查询数据-->
+    <select id="selectItemAllEnd" resultMap="ItemResultMap" parameterType="java.util.HashMap">
+        SELECT
+        <include refid="Item_Column_List"/>
+        FROM xz_item WHERE delete_flag = 0
+        <if test="itemId!=null and itemId!=0">
+            AND item_id = #{itemId,jdbcType=BIGINT}
+        </if>
+        <if test="itemWriter!=null and itemWriter!=''">
+            AND item_writer LIKE CONCAT('%',#{itemWriter},'%')
+        </if>
+        <if test="itemTitle!=null and itemTitle!=''">
+            AND item_title LIKE CONCAT('%',#{itemTitle},'%')
+        </if>
+        <if test="itemArticle!=null and itemArticle!=''">
+            AND item_article LIKE CONCAT('%',#{itemArticle},'%')
+        </if>
+        <if test="startTime!=null and endTime!=null">
+            AND item_time &gt; #{startTime,jdbcType=TIMESTAMP} AND item_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime!=null and endTime==null">
+            AND item_time &gt; #{startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime==null and endTime!=null">
+            AND item_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="filed1!=null and filed1!=''">
+            AND filed1 LIKE CONCAT('%',#{filed1},'%')
+        </if>
+        <if test="filed2!=null and filed2!=''">
+            AND filed2 LIKE CONCAT('%',#{filed2},'%')
+        </if>
+        <if test="filed3!=null and filed3!=''">
+            AND filed3 LIKE CONCAT('%',#{filed3},'%')
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="ItemResultMap" parameterType="com.xzlcPT.bean.Item">
+        SELECT
+        <include refid="Item_Column_List"/>
+        FROM xz_item
+        WHERE delete_flag = 0 and item_id = #{itemId,jdbcType=BIGINT}
+    </select>
+</mapper>

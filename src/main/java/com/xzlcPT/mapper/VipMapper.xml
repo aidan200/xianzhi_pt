@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.VipMapper">
+    <resultMap id="VipResultMap" type="com.xzlcPT.bean.Vip">
+        <id column="vip_id" jdbcType="BIGINT" property="vipId"/>
+        <result column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <result column="vip_level" jdbcType="VARCHAR" property="vipLevel"/>
+        <result column="vip_time" jdbcType="TIMESTAMP" property="vipTime"/>
+        <result column="last_time" jdbcType="TIMESTAMP" property="lastTime"/>
+        <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime"/>
+        <result column="vip_score" jdbcType="BIGINT" property="vipScore"/>
+        <result column="vip_rest" jdbcType="DOUBLE" property="vipRest"/>
+        <result column="filed1" jdbcType="VARCHAR" property="filed1"/>
+        <result column="filed2" jdbcType="VARCHAR" property="filed2"/>
+        <result column="filed3" jdbcType="VARCHAR" property="filed3"/>
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag"/>
+    </resultMap>
+    <resultMap id="LeaguerResultMap" type="com.xzlcPT.bean.Leaguer">
+        <result column="login_id" jdbcType="BIGINT" property="loginId" />
+        <result column="member_id" jdbcType="BIGINT" property="memberId" />
+        <result column="vip_id" jdbcType="BIGINT" property="vipId" />
+        <result column="member_sex" jdbcType="INTEGER" property="memberSex"/>
+        <result column="login_count" jdbcType="VARCHAR" property="loginCount" />
+        <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+        <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
+        <result column="vip_level" jdbcType="VARCHAR" property="vipLevel" />
+        <result column="vip_time" jdbcType="TIMESTAMP" property="vipTime" />
+        <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+        <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+        <result column="vip_score" jdbcType="BIGINT" property="vipScore" />
+        <result column="vip_rest" jdbcType="DOUBLE" property="vipRest" />
+        <result column="login_type" jdbcType="INTEGER" property="loginType" />
+        <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+        <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+        <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+    </resultMap>
+    <resultMap id="CompanyVipResultMap" type="com.xzlcPT.bean.CompanyVip">
+        <result column="login_id" jdbcType="BIGINT" property="loginId" />
+        <result column="company_id" jdbcType="BIGINT" property="companyId" />
+        <result column="vip_id" jdbcType="BIGINT" property="vipId" />
+        <result column="login_count" jdbcType="VARCHAR" property="loginCount" />
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="company_picture" jdbcType="VARCHAR" property="companyPicture" />
+        <result column="vip_level" jdbcType="VARCHAR" property="vipLevel" />
+        <result column="vip_time" jdbcType="TIMESTAMP" property="vipTime" />
+        <result column="last_time" jdbcType="TIMESTAMP" property="lastTime" />
+        <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+        <result column="vip_score" jdbcType="BIGINT" property="vipScore" />
+        <result column="vip_rest" jdbcType="DOUBLE" property="vipRest" />
+        <result column="login_type" jdbcType="INTEGER" property="loginType" />
+        <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+        <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+        <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+    </resultMap>
+    <sql id="Vip_Column_List">
+        vip_id,login_id,vip_level,vip_time,last_time,expire_time,vip_score,vip_rest,filed1,filed2,filed3,delete_flag
+    </sql>
+    <sql id="Vip_Column_List1">
+        vip_id, login_id, vip_level, vip_time, vip_score, vip_rest, delete_flag
+    </sql>
+    <sql id="Leaguer_Column_List">
+        v.vip_id,l.login_id,l.login_count,v.vip_level,v.vip_time,v.last_time,v.expire_time,v.vip_score,v.vip_rest,
+        l.login_type,v.filed1,v.filed2,v.filed3
+    </sql>
+    <insert id="insertVip" parameterType="com.xzlcPT.bean.Vip">
+        INSERT INTO xz_vip
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="vipId != 0">
+                vip_id,
+            </if>
+            <if test="loginID != 0">
+                login_id,
+            </if>
+            <if test="vipLevel != null and vipLevel != '' ">
+                vip_level,
+            </if>
+            <if test="vipTime != null and vipTime != ''">
+                vip_time,
+            </if>
+            <if test="vipScore != 0">
+                vip_score,
+            </if>
+            <if test="vipRest != 0">
+                vip_rest,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="vipId != 0">
+                #{vipId,jdbcType=BIGINT},
+            </if>
+            <if test="loginID != 0">
+                #{loginID,jdbcType=BIGINT},
+            </if>
+            <if test="vipLevel != null and vipLevel != ''">
+                #{vipLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="vipTime != null and vipTime != '' ">
+                #{vipTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="vipScore != 0">
+                #{vipScore,jdbcType=BIGINT},
+            </if>
+            <if test="vipRest != 0">
+                #{vipRest,jdbcType=DOUBLE},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectVipByLoginID" resultMap="VipResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Vip_Column_List"/>
+        from xz_vip
+        where login_id = #{loginID,jdbcType = BIGINT}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.xzlcPT.bean.Vip">
+        INSERT INTO xz_vip
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="vipId != null">vip_id,</if>
+            <if test="loginId != null">login_id,</if>
+            <if test="vipLevel != null">vip_level,</if>
+            <if test="vipTime != null">vip_time,</if>
+            <if test="vipScore != null">vip_score,</if>
+            <if test="vipRest != null">vip_rest,</if>
+            <if test="filed1 != null">filed1,</if>
+            <if test="filed2 != null">filed2,</if>
+            <if test="filed3 != null">filed3,</if>
+            <if test="deleteFlag != null">delete_flag,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="vipId != null">#{vipId,jdbcType=BIGINT},</if>
+            <if test="loginId != null">#{loginId,jdbcType=BIGINT},</if>
+            <if test="vipLevel != null">#{vipLevel,jdbcType=VARCHAR},</if>
+            <if test="vipTime != null">#{vipTime,jdbcType=TIMESTAMP},</if>
+            <if test="vipScore != null">#{vipScore,jdbcType=BIGINT},</if>
+            <if test="vipRest != null">#{vipRest,jdbcType=DOUBLE},</if>
+            <if test="filed1 != null">#{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">#{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">#{filed3,jdbcType=VARCHAR},</if>
+            <if test="deleteFlag != null">0</if>
+        </trim>
+    </insert>
+    <insert id="insert" parameterType="com.xzlcPT.bean.Vip">
+        INSERT INTO xz_vip (vip_id,login_id,vip_level,vip_time,vip_score,vip_rest,vip_type,filed1,filed2,filed3,delete_flag)
+        VALUES (
+        #{vipId,jdbcType=BIGINT},#{loginId,jdbcType=BIGINT},#{vipLevel,jdbcType=VARCHAR},#{vipTime,jdbcType=TIMESTAMP},
+        #{vipScore,jdbcType=BIGINT},#{vipRest,jdbcType=DOUBLE},#{filed1,jdbcType=VARCHAR},#{filed2,jdbcType=VARCHAR},
+        #{filed3,jdbcType=VARCHAR},0 )
+    </insert>
+    <!--删除标记-->
+    <update id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        UPDATE xz_vip
+        SET delete_flag = 1
+        WHERE delete_flag = 0 AND vip_id = #{vipId,jdbcType=BIGINT}
+    </update>
+    <!--判断删除标记！！！-->
+    <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.Vip">
+        UPDATE xz_vip
+        <set>
+            <if test="vipLevel != null">vip_level = #{vipLevel,jdbcType=VARCHAR},</if>
+            <if test="vipTime != null">vip_time = #{vipTime,jdbcType=TIMESTAMP},</if>
+            <if test="vipScore != null">vip_score = #{vipScore,jdbcType=BIGINT},</if>
+            <if test="vipRest != null">vip_rest = #{vipRest,jdbcType=DOUBLE},</if>
+            <if test="filed1 != null">filed1 = #{filed1,jdbcType=VARCHAR},</if>
+            <if test="filed2 != null">filed2 = #{filed2,jdbcType=VARCHAR},</if>
+            <if test="filed3 != null">filed3 = #{filed3,jdbcType=VARCHAR},</if>
+        </set>
+        WHERE delete_flag = 0 AND vip_id = #{vipId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.Vip">
+        UPDATE xz_vip
+        SET vip_level = #{vipLevel,jdbcType=VARCHAR},vip_time = #{vipTime,jdbcType=TIMESTAMP},
+        vip_score = #{vipScore,jdbcType=BIGINT},vip_rest = #{vipRest,jdbcType=DOUBLE},filed1 = #{filed1,jdbcType=VARCHAR},
+        filed2 = #{filed2,jdbcType=VARCHAR},filed3 = #{filed3,jdbcType=VARCHAR}
+        WHERE delete_flag = 0 AND vip_id = #{vipId,jdbcType=BIGINT}
+    </update>
+    <!--观看视频时扣费操作-->
+    <update id="minusVipRest" parameterType="com.xzlcPT.bean.Vip">
+        UPDATE xz_vip
+        SET vip_rest = #{vipRest,jdbcType=BIGINT}
+        WHERE delete_flag = 0 AND login_id = #{loginID,jdbcType=BIGINT}
+    </update>
+    <select id="selectVipAll" resultMap="VipResultMap" parameterType="com.xzlcPT.bean.Vip">
+        SELECT
+        <include refid="Vip_Column_List"/>
+        FROM xz_vip WHERE delete_flag = 0
+    </select>
+    <!--后台根据条件进行查询(判断删除标记！！！)-->
+    <select id="selectVipAllEnd" resultMap="LeaguerResultMap" parameterType="java.util.HashMap">
+        SELECT <include refid="Leaguer_Column_List"/>
+        FROM xz_login l,xz_vip v WHERE l.delete_falt = 0 AND l.login_id = v.login_id
+        AND l.delete_falt = 0 AND v.delete_flag = 0
+        <if test="vipId!=null and vipId!=0">
+            AND v.vip_id = #{vipId,jdbcType=BIGINT}
+        </if>
+        <if test="loginCount!=null and loginCount!=''">
+            AND l.login_count LIKE CONCAT('%',#{loginCount},'%')
+        </if>
+        <if test="vipLevel!=null and vipLevel!=''">
+            AND v.vip_level = #{vipLevel,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime!=null and endTime!=null">
+            AND v.expire_time &gt; #{startTime,jdbcType=TIMESTAMP} AND v.expire_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="startTime!=null and endTime==null">
+            AND v.expire_time &gt; #{startTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="endTime!=null and startTime==null">
+            AND v.expire_time &lt; #{endTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="minScore!=null and minScore!=0 and maxScore!=null and maxScore!=0">
+            AND v.vip_score BETWEEN #{minScore,jdbcType=BIGINT} AND #{maxScore,jdbcType=BIGINT}
+        </if>
+        <if test="minScore!=null and minScore!=0">
+            AND v.vip_score &gt; #{minScore,jdbcType=BIGINT}
+        </if>
+        <if test="maxScore!=null and maxScore!=0">
+            AND v.vip_score &lt; #{maxScore,jdbcType=BIGINT}
+        </if>
+        <if test="loginType!=null and loginType!=0">
+            AND l.login_type = #{loginType,jdbcType=INTEGER}
+        </if>
+        <if test="minRest!=null and minRest!=0 and maxRest!=null and maxRest!=0">
+            AND v.vip_rest BETWEEN #{minRest,jdbcType=DOUBLE} AND #{maxRest,jdbcType=DOUBLE}
+        </if>
+        <if test="minRest!=null and minRest!=0">
+            AND v.vip_rest &gt; #{minRest,jdbcType=DOUBLE}
+        </if>
+        <if test="maxRest!=null and maxRest!=0">
+            AND v.vip_rest &lt; #{maxRest,jdbcType=DOUBLE}
+        </if>
+        <if test="filed1!=null and filed1!=''">
+            AND v.filed1 LIKE CONCAT('%',#{filed1},'%')
+        </if>
+        <if test="filed2!=null and filed2!=''">
+            AND v.filed2 LIKE CONCAT('%',#{filed2},'%')
+        </if>
+        <if test="filed3!=null and filed3!=''">
+            AND v.filed3 LIKE CONCAT('%',#{filed3},'%')
+        </if>
+    </select>
+    <!--根据login_id查询用户会员信息(前台)-->
+    <select id="selectVipByLoginId" resultMap="LeaguerResultMap" parameterType="java.lang.Long">
+        SELECT l.login_id,l.login_count,m.member_id,m.member_name,m.member_sex,m.member_picture,v.vip_id,v.vip_level,
+        v.vip_time,v.last_time,v.expire_time,v.vip_score,v.vip_rest,l.login_type,v.filed1,v.filed2,v.filed3
+        FROM xz_login l,xz_member m,xz_vip v
+        WHERE l.login_id = m.login_id AND l.login_id = v.login_id AND l.delete_falt = 0
+        AND m.delete_falt = 0 AND v.delete_flag = 0 AND v.login_id = #{0}
+    </select>
+    <!--根据login_id查询公司会员信息(前台)-->
+    <select id="selectVipCompanyByLoginId" resultMap="CompanyVipResultMap" parameterType="java.lang.Long">
+        SELECT l.login_id,l.login_count,c.company_id,c.company_name,c.company_picture,v.vip_id,v.vip_level,
+        v.vip_time,v.last_time,v.expire_time,v.vip_score,v.vip_rest,l.login_type,v.filed1,v.filed2,v.filed3
+        FROM xz_login l,xz_company c,xz_vip v
+        WHERE l.login_id = c.login_id AND l.login_id = v.login_id
+        AND l.delete_falt = 0 AND c.delete_falt = 0 AND v.delete_flag = 0 AND v.login_id = #{0}
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="LeaguerResultMap" parameterType="java.lang.Long">
+        SELECT <include refid="Leaguer_Column_List"/>
+        FROM xz_login l,xz_vip v
+        WHERE l.login_id = v.login_id AND l.delete_falt = 0 AND v.delete_flag = 0 AND v.vip_id = #{0}
+    </select>
+    <!--查询某用户的会员是否过期(前台)-->
+    <select id="selectExpireTime" resultMap="VipResultMap" parameterType="java.lang.Long">
+        SELECT expire_time
+        FROM xz_vip
+        WHERE delete_flag = 0 AND expire_time &gt;= NOW() AND vip_id = #{0}
+    </select>
+    <!--查询会员是否过期三个月-->
+    <select id="selectThreeMonth" resultMap="VipResultMap" parameterType="java.lang.Long">
+        SELECT expire_time
+        FROM xz_vip
+        WHERE delete_flag = 0 AND DATEDIFF(NOW(),expire_time) &lt;= 90 AND vip_id = #{0}
+    </select>
+</mapper>

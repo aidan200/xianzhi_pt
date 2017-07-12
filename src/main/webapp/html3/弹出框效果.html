@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    /*#div1{*/
+        /*width: 150px;*/
+        /*background: #00b95a;*/
+        /*height: 300px;*/
+        /*position: fixed;*/
+        /*top: 50%;*/
+        /*margin-top: -250px;*/
+        /*left: 50%;*/
+        /*margin-left: -150px;*/
+    /*}*/
+    #div2{
+        display: none;
+        width: 0px;
+        height: 0px;
+        background: #000000;
+        opacity: 0.5;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+    #div3{
+        position: relative;
+        width: 0px;
+        height: 0px;
+        margin: 200px auto;
+        background: #00b95a;
+    }
+</style>
+<script src="lib/jquery/jquery-3.2.1.min.js"></script>
+<script src="js/弹出框效果.js"></script>
+<body>
+    <button id="btn1">切换地区</button>
+    <button id="btn2">切换地区</button>
+    <div id="div1">内容</div>
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</body>
+</html>

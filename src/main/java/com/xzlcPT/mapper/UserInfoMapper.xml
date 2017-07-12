@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzMember">
+    <id column="member_id" jdbcType="BIGINT" property="memberID" />
+    <result column="login_id" jdbcType="BIGINT" property="loginID" />
+    <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+    <result column="member_sex" jdbcType="INTEGER" property="memberSex" />
+    <result column="member_age" jdbcType="INTEGER" property="memberAge" />
+    <result column="member_education" jdbcType="VARCHAR" property="memberEducation" />
+    <result column="member_IDcard" jdbcType="VARCHAR" property="memberIDcard" />
+    <result column="member_phone" jdbcType="VARCHAR" property="memberPhone" />
+    <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
+    <result column="member_address" jdbcType="VARCHAR" property="memberAddress" />
+    <result column="member_email" jdbcType="VARCHAR" property="memberEmail" />
+    <result column="delete_member_date" jdbcType="DATE" property="deleteMemberDate"/>
+    <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt"/>
+  </resultMap>
+  <resultMap id="LoginResultMap" type="com.xzlcPT.bean.XzMember">
+    <result column="login_id" jdbcType="BIGINT" property="loginID" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    member_id, login_id, member_name, member_sex, member_age, member_education, member_IDcard, member_phone, member_picture,member_address,member_email
+  </sql>
+  <sql id="Base_Column_List1">
+    member_id, login_id, member_name, member_sex, member_age, member_education, member_IDcard, member_phone, member_picture,member_address,member_email,delete_member_date, delete_falt
+  </sql>
+
+  <select id="selectUserByID" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzMember">
+    select
+    <include refid="Base_Column_List"/>
+    FROM xz_member where delete_falt = 0
+    <if test="loginID!=null and loginID!=''">
+      and login_id = #{loginID,jdbcType=BIGINT}
+    </if>
+  </select>
+
+  <insert id="addUserInfo" parameterType="com.xzlcPT.bean.XzMember">
+    insert into xz_member (member_id, login_id, member_picture
+    )
+    values (#{memberID,jdbcType=BIGINT},
+          #{loginID,jdbcType=BIGINT},
+          #{memberPicture,jdbcType=VARCHAR}
+    )
+  </insert>
+
+  <update id="updateUserInfo" parameterType="com.xzlcPT.bean.XzMember">
+    update xz_member
+    set member_name = #{memberName,jdbcType=VARCHAR},
+    member_sex = #{memberSex,jdbcType=INTEGER},
+    member_age = #{memberAge,jdbcType=INTEGER},
+    member_education = #{memberEducation,jdbcType=VARCHAR},
+    member_IDcard = #{memberIDcard,jdbcType=VARCHAR},
+    member_phone = #{memberPhone,jdbcType=VARCHAR},
+    member_picture = #{memberPicture,jdbcType=VARCHAR},
+    member_address = #{memberAddress,jdbcType=VARCHAR},
+    member_email = #{memberEmail,jdbcType=VARCHAR}
+    where login_id = #{loginID,jdbcType=BIGINT}
+  </update>
+
+  <select id="selAllUserInfoEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzMember">
+    select
+    <include refid="Base_Column_List1"/>
+    FROM xz_member
+    where delete_falt = 0
+    <if test="memberName!=null and memberName!=''">
+      and member_name like CONCAT('%',#{memberName},'%')
+    </if>
+    <if test="memberSex!=null and memberSex!=0 ">
+      and member_sex = #{memberSex}
+    </if>
+    <if test="memberIDcard!=null and memberIDcard!=''">
+      and member_IDcard like CONCAT('%', #{memberIDcard},'%')
+    </if>
+  </select>
+
+  <select id="selByLoginIDEnd" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select
+    <include refid="Base_Column_List1"/>
+    FROM xz_member
+    where 1=1
+    and delete_falt = 0
+    and login_id = #{loginID,jdbcType=BIGINT}
+  </select>
+
+  <update id="updateUserInfoEnd" parameterType="com.xzlcPT.bean.XzLogin">
+    update xz_member
+    <set>
+      <if test="memberName != null">
+        member_name = #{memberName},
+      </if>
+      <if test="memberSex != null and memberSex!=0 ">
+        member_sex = #{memberSex},
+      </if>
+      <if test="memberAge != null">
+        member_age = #{memberAge},
+      </if>
+      <if test="memberEducation != null">
+        member_education = #{memberEducation},
+      </if>
+      <if test="memberIDcard != null">
+        member_IDcard = #{memberIDcard},
+      </if>
+      <if test="memberPhone != null">
+        member_phone = #{memberPhone},
+      </if>
+      <if test="memberPicture != null">
+        member_picture = #{memberPicture},
+      </if>
+      <if test="memberAddress != null">
+        member_address = #{memberAddress},
+      </if>
+      <if test="memberEmail != null">
+        member_email = #{memberEmail},
+      </if>
+      <if test="deleteMemberDate != null">
+        delete_member_date = #{deleteMemberDate},
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt = #{deleteFalt},
+      </if>
+
+    </set>
+    where login_id = #{loginID,jdbcType=BIGINT}
+  </update>
+
+  <delete id="deleteUserInfoEnd" parameterType="java.lang.Long">
+    delete from xz_member
+    where login_id = #{loginID,jdbcType=BIGINT}
+  </delete>
+
+<!--根据member_id查询login_id-->
+  <select id="selectLoginId" resultMap="LoginResultMap" parameterType="java.lang.Long">
+    SELECT login_id FROM xz_member WHERE delete_falt = 0 AND member_id = #{0}
+  </select>
+
+</mapper>
