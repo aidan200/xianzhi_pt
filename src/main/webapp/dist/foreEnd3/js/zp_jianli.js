@@ -4,7 +4,6 @@
 //个人信息开始
 function obj_yhxx(){
     this.name='';                       //姓名
-    this.xb='';                         //性别
     this.dqhy='';                       //当前行业
     this.gznf='';                       //工作年份
     this.zwmc='';                       //职位名称
@@ -26,11 +25,9 @@ obj_yhxx.prototype.init=function (){
         async:true,  //是否异步
         url:path+'Resume/selResume.do',    //路径
         success:function (data){//data 就是数据 json
-            ID=data.resume.resumeId                   //获取到ID
-
-
+            ID=data.resume.resumeId;                  //获取到ID
+            memberId=data.resume.memberId
             _self.name=data.resume.resumeName;         //姓名
-            _self.xb=s.member.memberSex;              //性别
             _self.gznf=data.resume.resumeWorkinglife; //工作年份
             _self.dqhy=data.resume.fields;           //行业
             _self.zwmc=data.resume.resumePosition;   //当前职位
@@ -86,13 +83,6 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='<li>'
             str+='姓名 <input id="jl_name" type="text" value="'+_self.name+'"  class="form-control zp_jianli_input1">'
             str+='</li>'
-            str+='<li id="jl_xb">'
-            if(_self.xb==0){
-                str+='性别 <input id="nan" checked  name="xb" type="radio" value="0" ><label for="nan">男</label><input value="1" type="radio" name="xb" id="nan2"><label for="nan2">女</label>'
-            }else{
-                str+='性别 <input id="nan"  checked  name="xb" type="radio" value="0" ><label for="nan">男</label><input value="1" type="radio" name="xb" id="nan2"><label for="nan2">女</label>'
-            }
-            str+='</li>'
             str+='<li>'
             str+='当前行业 <input id="jl_dqhy" value="'+str3+'" type="text" class="form-control zp_jianli_input2" >'
             str+='</li>'
@@ -118,10 +108,11 @@ obj_yhxx.prototype.bindingSJ=function (){
                 $('.zp_jianli_cont_left_top2_top').css({"display":"block"}); //显示
             })
             $('.zp_jianli_zl_1').find('button').eq(0).on('click',function (){
+                var www=$('#jl_dqhy').val().split('/');
                 var resume={
-                    resumeName:$('#jl_name').val(),                 //姓名
-                    resumeWorkinglife:$('#jl_dqhy').val(),          //工作年份
-                    field:$('#jl_gznf').val(),                      //行业
+                    resumeName:$('#jl_name').val(),                 //姓名//性别
+                    resumeWorkinglife:$('#jl_gznf').val(),          //工作年份
+                    field:www,                                      //行业
                     resumePosition:$('#jl_zwmc').val(),              //当前职位
                     resumeWorkspace:$('#jl_dqcs').val(),             //当前城市
                     resumeId:ID
@@ -157,12 +148,14 @@ function obj_zbzl(){
     this.zt='';         //状态
     this.hyzk='';       //婚姻状况
     this.youxiang='';   //邮箱
+    this.xb='';         //性别
     this.DOM={
         csnf:$('#csnf'),
         hyzk:$('#hyzk'),
         sj:$('#sj'),
         yx:$('#yx'),
-        zt:$('#zt')
+        zt:$('#zt'),
+        xb:$('#xb')
     }
 }
 obj_zbzl.prototype.init=function (){    //初始化赋值
@@ -174,6 +167,7 @@ obj_zbzl.prototype.init=function (){    //初始化赋值
         success:function (data){                //data 就是数据 json
             _self.cstime=s.member.memberBirth;    //出生年月
             _self.sj=s.member.memberPhone;          //手机号
+            _self.xb=s.member.memberSex;            //性别
             _self.zt=data.resume.resumeState;       //状态
             _self.hyzk=data.resume.resumeMarriage; //婚姻状况
             _self.youxiang=s.member.memberEmail;    //邮箱
@@ -197,6 +191,12 @@ obj_zbzl.prototype.bindingDOM=function (){//绑定基本信息
     }
     _self.DOM.sj.html(_self.sj);            // 手机
     _self.DOM.yx.html(_self.youxiang);      //邮箱
+               //性别
+    if(_self.xb==0){
+        _self.DOM.xb.html("男")
+    }else{
+        _self.DOM.xb.html("女")
+    }
     if(_self.zt==0){                        //状态
         _self.DOM.zt.html("就职");
     }else if(_self.hyzk==1){
@@ -207,52 +207,65 @@ obj_zbzl.prototype.bindingDOM=function (){//绑定基本信息
 };
 obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
     var _self=this;
+    var kg=true;
     $('.zp_jianli_xg').eq(1).on('click',function (){
+        if(kg){
+            kg=false;
             var str='';
-        str+='<div class="zp_jianli_zl_2">'
-        str+='<div class="pull-left">'
-        str+='<ul>'
-        str+='<li>'
-        str+='出生年月'
-        str+='<input class="form-control" value="'+getNowFormatDate(_self.cstime)+'" id="jl_cstime">'
-        str+='</li>'
-        str+='<li class="zp_jianli_zl_2_li2" >'
-        str+='<span >手机</span>'
-        str+='<input id="jl_sj" type="text"  value="'+_self.sj+'" class="form-control zp_jianli_zl_2_input1 ">'
-        str+='</li>'
-        str+='<li>'
-        str+='<span>状态</span>'
-        str+='<select class="form-control" id="jl_zt">'
-        str+='<option value="0">就职</option>'
-        str+='<option value="1">未就职</option>'
-        str+='<option value="2">保密</option>'
-        str+='</select>'
-        str+='</li>'
-        str+='</ul>'
-        str+='</div>'
-        str+='<div class="pull-right">'
-        str+='<ul>'
-        str+='<li>'
-        str+='婚姻状况'
-        str+='<select class="form-control" id="jl_hyzk">'
-        str+='<option value="0">未婚</option>'
-        str+='<option value="1" >已婚</option>'
-        str+='<option value="2">保密</option>'
-        str+='</select>'
-        str+='</li>'
-        str+='<li class="zp_jianli_zl_2_li2" >'
-        str+='<span>邮箱</span>'
-        str+='<input id="jl_yx" type="text" value="'+_self.youxiang+'" class="form-control zp_jianli_zl_2_input1 ">'
-        str+='</li>'
-        str+='</ul>'
-        str+='</div>'
-        str+='<div style="clear: both;"></div>'
-        str+='<div class="zp_jianli_zl_2_bottom">'
-        str+='<button type="button" class="btn btn-primary">确定</button>'
-        str+='<button class="btn btn-default" id="jbzl_2_qx"  type="button">取消</button>'
-        str+='</div>'
-        str+='</div>'
-        $('.zp_jianli_cont_left_jbzl_yl').after(str);
+            str+='<div class="zp_jianli_zl_2">'
+
+            if(_self.xb==0){
+                str+='<div>性别 <input name="xb" checked  type="radio" id="xp_0" value="0"><label for="xp_0">男</label><input name="xb" value="1" id="xp_1" type="radio" ><label for="xp_1" >女</label></div>';
+            }else{
+                str+='<div>性别 <input name="xb"  type="radio" id="xp_0" value="0"><label for="xp_0">男</label><input name="xb" value="1" id="xp_1" type="radio" ><label for="xp_1" >女</label></div>';
+            }
+
+            str+='<div class="pull-left">'
+            str+='<ul>'
+            str+='<li>'
+            str+='出生年月'
+            str+='<input class="form-control" value="'+getNowFormatDate(_self.cstime)+'" id="jl_cstime">'
+            str+='</li>'
+            str+='<li class="zp_jianli_zl_2_li2" >'
+            str+='<span >手机</span>'
+            str+='<input id="jl_sj" type="text"  value="'+_self.sj+'" class="form-control zp_jianli_zl_2_input1 ">'
+            str+='</li>'
+            str+='<li>'
+            str+='<span>状态</span>'
+            str+='<select class="form-control" id="jl_zt">'
+            str+='<option value="0">就职</option>'
+            str+='<option value="1">未就职</option>'
+            str+='<option value="2">保密</option>'
+            str+='</select>'
+            str+='</li>'
+            str+='</ul>'
+            str+='</div>'
+            str+='<div class="pull-right">'
+            str+='<ul>'
+            str+='<li>'
+            str+='婚姻状况'
+            str+='<select class="form-control" id="jl_hyzk">'
+            str+='<option value="0">未婚</option>'
+            str+='<option value="1" >已婚</option>'
+            str+='<option value="2">保密</option>'
+            str+='</select>'
+            str+='</li>'
+            str+='<li class="zp_jianli_zl_2_li2" >'
+            str+='<span>邮箱</span>'
+            str+='<input id="jl_yx" type="text" value="'+_self.youxiang+'" class="form-control zp_jianli_zl_2_input1 ">'
+            str+='</li>'
+            str+='</ul>'
+            str+='</div>'
+            str+='<div style="clear: both;"></div>'
+            str+='<div class="zp_jianli_zl_2_bottom">'
+            str+='<button type="button" class="btn btn-primary">确定</button>'
+            str+='<button class="btn btn-default" id="jbzl_2_qx"  type="button">取消</button>'
+            str+='</div>'
+            str+='</div>'
+            $('.zp_jianli_cont_left_jbzl_yl').after(str);
+        }else{
+
+        }
 
         $('#jl_zt > option').each(function (index,ele){         //就职状态
             if($(ele).val()==_self.zt){
@@ -268,11 +281,42 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
 
         $('.zp_jianli_cont_left_jbzl_middle').css({"display":"none"});
         $('.zp_jianli_zl_2').find('button').eq(1).on('click',function (){
+                kg=true;
                 $('.zp_jianli_cont_left_jbzl_middle').css({"display":"block"});
                 $(this).parent().parent().remove();
         })
-        $('.zp_jianli_zl_2').find('button').eq(0).on('click',function (){
-                alert('ajax')
+        $('.zp_jianli_zl_2').find('button').eq(0).on('click',function (){       //基本状态提交事件
+            var oxb = $('.zp_jianli_zl_2 input[name="xb"]:checked ').val();      //性别的值
+            var ozt=$('select').eq(0).val();                                     //状态的值
+            var ohyzt=$('select').eq(1).val();                                   //婚姻状态的值
+            var resume = {
+
+                resumeState:ozt,                         //状态
+                resumeMarriage:ohyzt                    //婚姻状况
+            }
+            var member={
+                memberBirth:$('#jl_cstime').val(),      //出生年月
+                memberPhone:$('#jl_sj').val(),          //手机
+                memberSex:oxb,                           //性别
+                memberEmail:$('#jl_yx').val(),          //邮箱
+                memberId:memberId,
+                resume:resume
+            };
+            member.resume = resume;
+            $.ajax({
+                type:"post",    //提交方式
+                async:true,  //是否异步
+                contentType: "application/json",
+                data:JSON.stringify(member),
+                url:path+'Member/updateMember.do',    //路径
+                success:function (data){//data 就是数据 json
+
+                        alert('aaa')
+                },error:function (){ //报错执行的
+                    alert('基本资料修改错误')
+                }
+
+            })
         })
     })
 

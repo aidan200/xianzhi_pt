@@ -9,7 +9,7 @@
     <result column="member_age" jdbcType="INTEGER" property="memberAge" />
     <result column="member_birth" jdbcType="DATE" property="memberBirth" />
     <result column="member_education" jdbcType="VARCHAR" property="memberEducation" />
-    <result column="member_IDcard" jdbcType="VARCHAR" property="memberIdcard" />
+    <result column="member_Idcard" jdbcType="VARCHAR" property="memberIdcard" />
     <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
     <result column="member_phone" jdbcType="VARCHAR" property="memberPhone" />
     <result column="member_address" jdbcType="VARCHAR" property="memberAddress" />
@@ -22,7 +22,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     member_id, login_id, member_name, member_sex, member_age, member_birth, member_education, 
-    member_IDcard, member_picture, member_phone, member_address, member_email, delete_member_date, 
+    member_Idcard, member_picture, member_phone, member_address, member_email, delete_member_date,
     filed1, filed2, filed3, delete_falt
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -38,7 +38,7 @@
   <insert id="insert" parameterType="com.xzlcPT.bean.XzMember">
     insert into xz_member (member_id, login_id, member_name, 
       member_sex, member_age, member_birth, 
-      member_education, member_IDcard, member_picture, 
+      member_education, member_Idcard, member_picture,
       member_phone, member_address, member_email, 
       delete_member_date, filed1, filed2, 
       filed3, delete_falt)
@@ -74,7 +74,7 @@
         member_education,
       </if>
       <if test="memberIdcard != null">
-        member_IDcard,
+        member_Idcard,
       </if>
       <if test="memberPicture != null">
         member_picture,
@@ -180,7 +180,7 @@
         member_education = #{memberEducation,jdbcType=VARCHAR},
       </if>
       <if test="memberIdcard != null">
-        member_IDcard = #{memberIdcard,jdbcType=VARCHAR},
+        member_Idcard = #{memberIdcard,jdbcType=VARCHAR},
       </if>
       <if test="memberPicture != null">
         member_picture = #{memberPicture,jdbcType=VARCHAR},
@@ -220,7 +220,7 @@
       member_age = #{memberAge,jdbcType=INTEGER},
       member_birth = #{memberBirth,jdbcType=DATE},
       member_education = #{memberEducation,jdbcType=VARCHAR},
-      member_IDcard = #{memberIdcard,jdbcType=VARCHAR},
+      member_Idcard = #{memberIdcard,jdbcType=VARCHAR},
       member_picture = #{memberPicture,jdbcType=VARCHAR},
       member_phone = #{memberPhone,jdbcType=VARCHAR},
       member_address = #{memberAddress,jdbcType=VARCHAR},

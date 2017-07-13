@@ -82,7 +82,7 @@ public class RegisterController extends BaseController {
             XzLogin newXz = new XzLogin();
             newXz = registerService.selectByUser(xzLogin);
             XzMember xzMember = new XzMember();
-            xzMember.setLoginId(newXz.getLoginId());
+            //xzMember.setLoginId(newXz.getLoginId());
             xzMember.setMemberPicture("timg1.jpg");
 //            向用户表中添加一条空数据
             /*int b = userInfoService.addUserInfo(xzMember);

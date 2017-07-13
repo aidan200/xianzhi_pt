@@ -85,7 +85,7 @@ public class DiscussController extends BaseController {
 
                 if (userLogin.getLoginType() == 1){
                     XzMember xzMember = userInfoService.selectUserByID(userLogin.getLoginId());
-                    discuss.setMemberID(xzMember.getLoginId());
+                    //discuss.setMemberID(xzMember.getLoginId());
                     discuss.setMemberPicture(xzMember.getMemberPicture());
                 }else{
                     XzCompany xzCompany = companyInfoService.selectByLoginID(userLogin.getLoginId());

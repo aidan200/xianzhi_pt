@@ -115,7 +115,7 @@ public class VideoController extends BaseController {
      *
      * @return
      */
-    @RequestMapping("goUploadVideo.do")
+   /* @RequestMapping("goUploadVideo.do")
     public ModelAndView goUploadVideo(@ModelAttribute("userLogin") XzLogin userLogin) {
         ModelAndView mv = new ModelAndView("foreEnd/uploadVideo");
         XzVideo xzVideo1 = videoService.selectMaxID(userLogin.getLoginId());//查询最大ID 的数据
@@ -143,7 +143,7 @@ public class VideoController extends BaseController {
         List<XzVideoClass> xzVideoClassList = videoClassService.selectVideoVideoClass(new XzVideoClass());
         mv.addObject("xzVideoClassList", xzVideoClassList);
         return mv;
-    }
+    }*/
 
 
     /**
@@ -175,7 +175,7 @@ public class VideoController extends BaseController {
      * @param imageDataurl
      * @return
      */
-    @RequestMapping("uploadVideo.do")
+    /*@RequestMapping("uploadVideo.do")
     public ModelAndView uploadVideo(@ModelAttribute("userLogin") XzLogin userLogin,
                                     @Validated(XzVideo.F1.class) XzVideo xzVideo, BindingResult bindingResult,
                                     String imageDataurl) {
@@ -219,7 +219,7 @@ public class VideoController extends BaseController {
             }
         }
         return mv;
-    }
+    }*/
 
     /**
      * 跳转到 修改视频信息页面

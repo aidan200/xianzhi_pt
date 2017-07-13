@@ -14,28 +14,23 @@ import java.util.Date;
  * @create 2017/3/30 17:43
  **/
 public class XzMember {
-    private long memberId;//用户ID
-    private long loginId;//登录表ID
-    @NotEmpty(message="不能为空",groups = {F1.class})
+    private Long memberId;//用户ID
+    private Long loginId;//登录表ID
     private String memberName;//姓名
-    private int memberSex; //性别 0:男 1:女
-    private int memberAge;//年龄
+    private Integer memberSex; //性别 0:男 1:女
+    private Integer memberAge;//年龄
     private Date memberBirth;//生日
-    @NotEmpty(message="不能为空",groups = {F1.class})
     private String memberEducation;
-    private String memberIDcard;//身份证号
+    private String memberIdcard;//身份证号
     private String memberPicture;//头像
-    @NotEmpty(message="不能为空",groups = {F1.class})
     private String memberPhone;//电话
-    @NotEmpty(message="不能为空",groups = {F1.class})
     private String memberEmail;//用户邮箱
-    @NotEmpty(message="不能为空",groups = {F1.class})
     private String memberAddress;//居住地址
     private XzResume resume;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date deleteMemberDate;//删除日期
-    private int deleteFalt;//删除类型
+    private Integer deleteFalt;//删除类型
     private String filed1;//备用列1
     private String filed2;//备用列2
     private String filed3;//备用列3
@@ -57,6 +52,54 @@ public class XzMember {
 
     public void setResume(XzResume resume) {
         this.resume = resume;
+    }
+
+    public Integer getMemberSex() {
+        return memberSex;
+    }
+
+    public void setMemberSex(Integer memberSex) {
+        this.memberSex = memberSex;
+    }
+
+    public Integer getMemberAge() {
+        return memberAge;
+    }
+
+    public void setMemberAge(Integer memberAge) {
+        this.memberAge = memberAge;
+    }
+
+    public String getMemberIdcard() {
+        return memberIdcard;
+    }
+
+    public void setMemberIdcard(String memberIdcard) {
+        this.memberIdcard = memberIdcard;
+    }
+
+    public Integer getDeleteFalt() {
+        return deleteFalt;
+    }
+
+    public void setDeleteFalt(Integer deleteFalt) {
+        this.deleteFalt = deleteFalt;
+    }
+
+    public Long getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(Long loginId) {
+        this.loginId = loginId;
+    }
+
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
     }
 
     public Date getMemberBirth() {
@@ -115,30 +158,11 @@ public class XzMember {
         this.filed3 = filed3;
     }
 
-    public int getDeleteFalt() {
-        return deleteFalt;
-    }
-
-    public void setDeleteFalt(int deleteFalt) {
-        this.deleteFalt = deleteFalt;
-    }
-
 
     public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 
-    public void setMemberSex(int memberSex) {
-        this.memberSex = memberSex;
-    }
-
-    public void setMemberAge(int memberAge) {
-        this.memberAge = memberAge;
-    }
-
-    public void setMemberIDcard(String memberIDcard) {
-        this.memberIDcard = memberIDcard;
-    }
 
     public void setMemberPicture(String memberPicture) {
         this.memberPicture = memberPicture;
@@ -152,36 +176,8 @@ public class XzMember {
         this.deleteMemberDate = deleteMemberDate;
     }
 
-    public long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
-    }
-
-    public long getLoginId() {
-        return loginId;
-    }
-
-    public void setLoginId(long loginId) {
-        this.loginId = loginId;
-    }
-
     public String getMemberName() {
         return memberName;
-    }
-
-    public int getMemberSex() {
-        return memberSex;
-    }
-
-    public int getMemberAge() {
-        return memberAge;
-    }
-
-    public String getMemberIDcard() {
-        return memberIDcard;
     }
 
     public String getMemberPicture() {
@@ -206,7 +202,6 @@ public class XzMember {
                 ", memberAge=" + memberAge +
                 ", memberBirth=" + memberBirth +
                 ", memberEducation='" + memberEducation + '\'' +
-                ", memberIDcard='" + memberIDcard + '\'' +
                 ", memberPicture='" + memberPicture + '\'' +
                 ", memberPhone='" + memberPhone + '\'' +
                 ", memberEmail='" + memberEmail + '\'' +

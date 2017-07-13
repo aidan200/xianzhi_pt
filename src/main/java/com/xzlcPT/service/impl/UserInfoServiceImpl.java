@@ -31,7 +31,7 @@ public class UserInfoServiceImpl implements UserInfoService{
     @Override
     public XzMember selectUserByID(Long id) {
         XzMember loginID = new XzMember();
-        loginID.setLoginId(id);
+        //loginID.setLoginId(id);
         XzMember xzMember = new XzMember();
 
         if (id!=null){
