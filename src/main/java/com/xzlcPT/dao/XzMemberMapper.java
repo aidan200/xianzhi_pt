@@ -1,4 +1,4 @@
-package com.xzlcPT.controller;
+package com.xzlcPT.dao;
 
 import com.xzlcPT.bean.XzMember;
 

@@ -31,6 +31,8 @@ public class XzMember {
     private String memberEmail;//用户邮箱
     @NotEmpty(message="不能为空",groups = {F1.class})
     private String memberAddress;//居住地址
+    private XzResume resume;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date deleteMemberDate;//删除日期
     private int deleteFalt;//删除类型
@@ -47,6 +49,14 @@ public class XzMember {
     @GroupSequence( { XzMember.F1.class })
     public interface Group {
 
+    }
+
+    public XzResume getResume() {
+        return resume;
+    }
+
+    public void setResume(XzResume resume) {
+        this.resume = resume;
     }
 
     public Date getMemberBirth() {

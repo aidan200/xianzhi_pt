@@ -18,7 +18,7 @@
     <form action="${pageContext.request.contextPath}/XzLogin/Login.do">
         用户名<input name="username" value="aaa">
         密码<input name="password" value="aaa">
-        <input type="submit">
+        <input  type="submit">
     </form>
     <%--<j:toJson obj="${userLogin}"/>
 aaaaaa--%>
