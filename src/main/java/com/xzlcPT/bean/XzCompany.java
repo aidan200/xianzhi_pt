@@ -18,8 +18,12 @@ public class XzCompany {
     private long companyId;//公司表ID
     private long loginId;//登录表ID
     private String companyName;//公司名
+    private String companyCity;
+    private String companySpace;
     @NotEmpty(message="不能为空",groups = {F1.class})
     private String companyLocation;//公司地址
+    private Double companyY;
+    private Double companyX;
     @NotEmpty(message="不能为空",groups = {F1.class})
     private String companyPhone;//公司电话
     private String companyPicture;//公司标志 url
@@ -39,12 +43,13 @@ public class XzCompany {
     private List<XzField> fields;//经营领域
     private List<XzCompanyProduct> products;//产品列表
     private List<Image> images;//公司风采
-
+    private List<XzPostion> postions;//公司职位
     private Date deleteCompanyDate;//删除日期
     private int deleteFalt;//删除类型
     private String filed1;//备用列1
     private String filed2;//备用列2
     private String filed3;//备用列3
+    private int pcount;//职位个数
 
     public List<XzField> getFields() {
         return fields;
@@ -236,6 +241,54 @@ public class XzCompany {
 
     public void setFiled3(String filed3) {
         this.filed3 = filed3;
+    }
+
+    public void setPostions(List<XzPostion> postions) {
+        this.postions = postions;
+    }
+
+    public List<XzPostion> getPostions() {
+        return postions;
+    }
+
+    public void setPcount(int pcount) {
+        this.pcount = pcount;
+    }
+
+    public int getPcount() {
+        return pcount;
+    }
+
+    public void setCompanyCity(String companyCity) {
+        this.companyCity = companyCity;
+    }
+
+    public String getCompanyCity() {
+        return companyCity;
+    }
+
+    public void setCompanySpace(String companySpace) {
+        this.companySpace = companySpace;
+    }
+
+    public String getCompanySpace() {
+        return companySpace;
+    }
+
+    public void setCompanyX(Double companyX) {
+        this.companyX = companyX;
+    }
+
+    public Double getCompanyX() {
+        return companyX;
+    }
+
+    public void setCompanyY(Double companyY) {
+        this.companyY = companyY;
+    }
+
+    public Double getCompanyY() {
+        return companyY;
     }
 
     @Override

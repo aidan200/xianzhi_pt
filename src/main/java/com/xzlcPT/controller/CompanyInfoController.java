@@ -5,6 +5,7 @@ import com.util.PageBean;
 import com.util.SavePicture;
 import com.xzlcPT.bean.Discuss;
 import com.xzlcPT.bean.XzCompany;
+import com.xzlcPT.bean.XzCompanyWelfare;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.service.CompanyInfoService;
 import com.xzlcPT.service.DiscussService;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -244,6 +246,18 @@ public class CompanyInfoController {
         int b = loginUserService.updateLoginEnd(xzLogin);
         return b;
     }
-
-
+    @RequestMapping("selectAllJob")
+    public ModelAndView selectAllJob(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "8") Integer rows, XzCompany xzCompany){
+        ModelAndView mv =new ModelAndView("/foreEnd3/companylist");
+        PageBean<XzCompany> pageBean=companyService.selectPcount(page, rows, xzCompany);
+        List<XzCompany> clist=pageBean.getList();
+        List<XzCompany> tlist=companyService.selectAllJob(clist);
+        mv.addObject("page", pageBean.getPageNum());
+        mv.addObject("pages", pageBean.getPages());
+        mv.addObject("rows", pageBean.getPageSize());
+        mv.addObject("total", pageBean.getTotal());
+        mv.addObject("test", xzCompany);
+        mv.addObject("clist",clist);
+        return mv;
+    }
 }
