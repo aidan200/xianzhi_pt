@@ -121,7 +121,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                 var resume={
                     resumeName:$('#jl_name').val(),                 //姓名
                     resumeWorkinglife:$('#jl_dqhy').val(),          //工作年份
-                    fields:$('#jl_gznf').val(),                      //行业
+                    field:$('#jl_gznf').val(),                      //行业
                     resumePosition:$('#jl_zwmc').val(),              //当前职位
                     resumeWorkspace:$('#jl_dqcs').val(),             //当前城市
                     resumeId:ID
@@ -130,7 +130,8 @@ obj_yhxx.prototype.bindingSJ=function (){
                 $.ajax({
                     type:"post",    //提交方式
                     async:true,  //是否异步
-                    data:resume,
+                    data:JSON.stringify(resume),
+                    contentType: "application/json",
                     url:path+'Resume/updateResume.do',    //路径
 
                     success:function (data){//data 就是数据 json
