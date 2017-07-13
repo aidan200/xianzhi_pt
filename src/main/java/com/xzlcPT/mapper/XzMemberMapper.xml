@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzMemberMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzMember">
+    <id column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="login_id" jdbcType="BIGINT" property="loginId" />
+    <result column="member_name" jdbcType="VARCHAR" property="memberName" />
+    <result column="member_sex" jdbcType="INTEGER" property="memberSex" />
+    <result column="member_age" jdbcType="INTEGER" property="memberAge" />
+    <result column="member_birth" jdbcType="DATE" property="memberBirth" />
+    <result column="member_education" jdbcType="VARCHAR" property="memberEducation" />
+    <result column="member_IDcard" jdbcType="VARCHAR" property="memberIdcard" />
+    <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
+    <result column="member_phone" jdbcType="VARCHAR" property="memberPhone" />
+    <result column="member_address" jdbcType="VARCHAR" property="memberAddress" />
+    <result column="member_email" jdbcType="VARCHAR" property="memberEmail" />
+    <result column="delete_member_date" jdbcType="TIMESTAMP" property="deleteMemberDate" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    member_id, login_id, member_name, member_sex, member_age, member_birth, member_education, 
+    member_IDcard, member_picture, member_phone, member_address, member_email, delete_member_date, 
+    filed1, filed2, filed3, delete_falt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_member
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_member
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzMember">
+    insert into xz_member (member_id, login_id, member_name, 
+      member_sex, member_age, member_birth, 
+      member_education, member_IDcard, member_picture, 
+      member_phone, member_address, member_email, 
+      delete_member_date, filed1, filed2, 
+      filed3, delete_falt)
+    values (#{memberId,jdbcType=BIGINT}, #{loginId,jdbcType=BIGINT}, #{memberName,jdbcType=VARCHAR}, 
+      #{memberSex,jdbcType=INTEGER}, #{memberAge,jdbcType=INTEGER}, #{memberBirth,jdbcType=DATE}, 
+      #{memberEducation,jdbcType=VARCHAR}, #{memberIdcard,jdbcType=VARCHAR}, #{memberPicture,jdbcType=VARCHAR}, 
+      #{memberPhone,jdbcType=VARCHAR}, #{memberAddress,jdbcType=VARCHAR}, #{memberEmail,jdbcType=VARCHAR}, 
+      #{deleteMemberDate,jdbcType=TIMESTAMP}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
+      #{filed3,jdbcType=VARCHAR}, #{deleteFalt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzMember">
+    insert into xz_member
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="loginId != null">
+        login_id,
+      </if>
+      <if test="memberName != null">
+        member_name,
+      </if>
+      <if test="memberSex != null">
+        member_sex,
+      </if>
+      <if test="memberAge != null">
+        member_age,
+      </if>
+      <if test="memberBirth != null">
+        member_birth,
+      </if>
+      <if test="memberEducation != null">
+        member_education,
+      </if>
+      <if test="memberIdcard != null">
+        member_IDcard,
+      </if>
+      <if test="memberPicture != null">
+        member_picture,
+      </if>
+      <if test="memberPhone != null">
+        member_phone,
+      </if>
+      <if test="memberAddress != null">
+        member_address,
+      </if>
+      <if test="memberEmail != null">
+        member_email,
+      </if>
+      <if test="deleteMemberDate != null">
+        delete_member_date,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="loginId != null">
+        #{loginId,jdbcType=BIGINT},
+      </if>
+      <if test="memberName != null">
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberSex != null">
+        #{memberSex,jdbcType=INTEGER},
+      </if>
+      <if test="memberAge != null">
+        #{memberAge,jdbcType=INTEGER},
+      </if>
+      <if test="memberBirth != null">
+        #{memberBirth,jdbcType=DATE},
+      </if>
+      <if test="memberEducation != null">
+        #{memberEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="memberIdcard != null">
+        #{memberIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPicture != null">
+        #{memberPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPhone != null">
+        #{memberPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="memberAddress != null">
+        #{memberAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="memberEmail != null">
+        #{memberEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteMemberDate != null">
+        #{deleteMemberDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFalt != null">
+        #{deleteFalt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzMember">
+    update xz_member
+    <set>
+      <if test="loginId != null">
+        login_id = #{loginId,jdbcType=BIGINT},
+      </if>
+      <if test="memberName != null">
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberSex != null">
+        member_sex = #{memberSex,jdbcType=INTEGER},
+      </if>
+      <if test="memberAge != null">
+        member_age = #{memberAge,jdbcType=INTEGER},
+      </if>
+      <if test="memberBirth != null">
+        member_birth = #{memberBirth,jdbcType=DATE},
+      </if>
+      <if test="memberEducation != null">
+        member_education = #{memberEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="memberIdcard != null">
+        member_IDcard = #{memberIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPicture != null">
+        member_picture = #{memberPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPhone != null">
+        member_phone = #{memberPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="memberAddress != null">
+        member_address = #{memberAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="memberEmail != null">
+        member_email = #{memberEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteMemberDate != null">
+        delete_member_date = #{deleteMemberDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt = #{deleteFalt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzMember">
+    update xz_member
+    set login_id = #{loginId,jdbcType=BIGINT},
+      member_name = #{memberName,jdbcType=VARCHAR},
+      member_sex = #{memberSex,jdbcType=INTEGER},
+      member_age = #{memberAge,jdbcType=INTEGER},
+      member_birth = #{memberBirth,jdbcType=DATE},
+      member_education = #{memberEducation,jdbcType=VARCHAR},
+      member_IDcard = #{memberIdcard,jdbcType=VARCHAR},
+      member_picture = #{memberPicture,jdbcType=VARCHAR},
+      member_phone = #{memberPhone,jdbcType=VARCHAR},
+      member_address = #{memberAddress,jdbcType=VARCHAR},
+      member_email = #{memberEmail,jdbcType=VARCHAR},
+      delete_member_date = #{deleteMemberDate,jdbcType=TIMESTAMP},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      delete_falt = #{deleteFalt,jdbcType=INTEGER}
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </update>
+</mapper>

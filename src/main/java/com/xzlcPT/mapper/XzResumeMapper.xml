@@ -67,13 +67,13 @@
     r.resume_position, r.resume_workinglife, r.resume_nationality, r.resume_state, r.resume_marriage,
     r.resume_flash, r.resume_intent_workspace, r.resume_intent_field, r.resume_intent_mm, r.resume_intent_ym,
     r.resume_intent_position, r.resume_completion,
-    f.field_id,f.field_name
+    f.field_id,f.field_name,f.field_type
   </sql>
   <select id="selectByMemberId" parameterType="java.lang.Long" resultMap="ResumeInfo">
     select
     <include refid="ResumeInfoList" />
     FROM xz_resume r LEFT JOIN xz_resume_domain d on r.resume_id = d.resume_id LEFT JOIN xz_field f on d.field_id = f.field_id
-    where f.field_type = 1
+    where f.field_type = 2 or f.field_type = 3 or f.field_type is null
     and member_id = #{memberId,jdbcType=BIGINT}
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">

@@ -20,7 +20,7 @@
         密码<input name="password" value="aaa">
         <input type="submit">
     </form>
-<%--    <j:toJson obj="${userLogin}"/>
-    aaaaa--%>
+    <%--<j:toJson obj="${userLogin}"/>
+aaaaaa--%>
 </body>
 </html>
