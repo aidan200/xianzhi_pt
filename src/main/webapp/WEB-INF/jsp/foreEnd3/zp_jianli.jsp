@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@taglib prefix="j" uri="/xianzhipt/jsonTag" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -15,9 +16,9 @@
     <jsp:include page="distforeEnd.jsp"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_jianli.css">
     <script>
-        var path='${pageContext.request.contextPath}/';
-        var usersex = '${userLogin.member.memberSex}';
-
+        var path='${pageContext.request.contextPath}/';     //全局路径
+        var s = <j:toJson obj="${userLogin}"/>;
+        var ID=''                                          //ID
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_jianli.js"></script>
 
@@ -106,6 +107,7 @@
                                 <em class="tips-required">必填<i></i></em>
 
                             </div>
+
                         </div>
                     </div>
                     <div class="zp_jianli_div1" id="tj_gzjl">
@@ -160,12 +162,16 @@
 
                 </div>
                 <div class="zp_jianli_cont_left_scjn">
-                    <div class="zp_jianli_cont_left_jbzl_top">
+                    <div class="zp_jianli_cont_left_jbzl_top" id="scjn">
                         <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                         <span>擅长技能</span>
+                        <a class="zp_jianli_xg" href="javascript:;"></a>
+                    </div>
+
+                    <div class="zp_index_p_left zp_index_p_2" id="scjn_cont">
+
 
                     </div>
-                    <p class="zp_index_p_left zp_index_p_2">更准确的技能标签，让HR/猎头找到你？</p>
                     <div class="zp_jianli_div1" id="jl_tjscjn">
                         添加擅长技能
                     </div>
