@@ -653,6 +653,8 @@ ul,li{
     height: 100%;
     float: right;
     border-radius: 3px;
+    padding-top: 4px;
+    padding-left: 8px;
 }
 #jl_cstime{
     display: inline-block;
@@ -694,6 +696,8 @@ ul,li{
     height: 100%;
     float: right;
     border-radius: 3px;
+    padding-top: 4px;
+    padding-left: 8px;
 }
 .zp_jianli_zl_2_bottom{
     text-align: center;
@@ -922,7 +926,7 @@ ul,li{
     border-top: 5px solid #3D9CCC;
     position: relative;
     padding: 20px 0;
-    height: 750px;
+
     display: block;
 }
 .zp_jianli_zl_7 > ul{
@@ -946,7 +950,7 @@ ul,li{
 }
 .zp_jianli_zl_7 > .zp_zmjy{
 
-    height: 540px;
+
     padding: 0 60px 0 30px;
 
 }
@@ -1116,5 +1120,25 @@ ul,li{
     margin-left: 20px;
     padding-left: 20px;
     padding-right: 20px;
+
+}
+.zp_jianli_zl_4_div2 > input{
+    display: inline-block;
+    width: 180px;
+    border-radius: 3px;
+    height: 30px;
+    margin: 0;
+}
+#scjn_cont{
+    margin-bottom: 20px;
+}
+#scjn_cont > div{
+    padding: 0 10px;
+    height: 30px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    color: #000;
+    border: 1px solid #E6E6E6;
 
 }
