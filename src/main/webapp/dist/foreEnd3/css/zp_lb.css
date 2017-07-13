@@ -118,6 +118,52 @@ ul {
     padding: 15px 20px;
 }
 
+/**/
+.zp_lb_cont_top > .zp_lb_cont_top_0 {
+    height: auto;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+}
+
+.zp_lb_cont_top > .zp_lb_cont_top_0 > div {
+    height: auto;
+    margin-right: 20px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.zp_lb_cont_top > .zp_lb_cont_top_0 > div > ul {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.zp_lb_cont_top > .zp_lb_cont_top_0 > div > ul > li {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    margin-right: 10px;
+    padding: 6px 0;
+}
+
+.zp_lb_cont_top > .zp_lb_cont_top_0 > div > ul > li > a {
+    padding: 0 10px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    line-height: 23px;
+    height: 24px;
+    border-radius: 3px;
+}
+
+.zp_lb_cont_top > .zp_lb_cont_top_0 > div > ul > li > a:hover {
+    /*color: #FFFFFF;*/
+    background: #FC9A2F;
+}
+
+/**/
 .zp_lb_cont_top > .zp_lb_cont_top_1 {
     height: 36px;
     margin-bottom: 10px;
@@ -197,7 +243,7 @@ ul {
     width: 100%;
     border: 1px solid #CCCCCC;
     font-size: 14px;
-    color: #999999;
+    color: #666;
     height: 100%;
     text-align: left;
     padding-left: 5px;
@@ -232,7 +278,7 @@ ul {
     font-size: 14px;
     padding-left: 5px;
     line-height: 23px;
-    color: #999999;
+    color: #666666;
     /*z-index: 9999;*/
 }
 
@@ -501,6 +547,7 @@ ul {
     cursor: pointer;
 }
 
+
 .divSmall:hover {
     color: #FFFFFF;
 }
@@ -513,8 +560,8 @@ ul {
     height: 20px;
     float: left;
     margin-left: 4px;
-    line-height: 16px;
-    padding: 3px;
+    line-height: 12px;
+    padding: 4px;
     margin-top: -5px;
 
 }
@@ -586,10 +633,28 @@ ul {
 .zp_botv {
     width: 100%;
     text-align: center;
+    height: auto;
+    overflow: hidden;
 }
 
 .zp_pa {
     margin-top: 20px;
+    float: left;
+}
+
+.zp_pl {
+    width: 620px;
+    margin: 0 auto;
+    height: auto;
+}
+
+.zp_page {
+    width: 120px;
+    height: 38px;
+    float: left;
+    margin-top: 20px;
+    line-height: 38px;
+
 }
 
 .zp_pa > .active > a {
@@ -604,6 +669,7 @@ ul {
 
 .zp_pa > li > a {
     color: #666666;
+    padding: 5px 10px;
 }
 
 .zp_pa > li > a:hover, .zp_pa > li > span:hover, .zp_pa > li > a:focus, .zp_pa > li > span:focus {
@@ -619,8 +685,8 @@ ul {
     background-color: rgb(255, 165, 0);
     color: #FFFFFF;
     border: 1px solid rgb(255, 165, 0);
-    border-top-right-radius:0;
-    border-bottom-right-radius:0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 /*不能点击class b*/

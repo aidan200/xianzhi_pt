@@ -40,6 +40,23 @@
 
     <form action="">
         <div class="row zp_lb_cont_top">
+
+            <div class="zp_lb_cont_top_0">
+                <div class="pull-left" style="width: 42px;color: #999">行业：</div>
+                <div class="pull-left" style="width: 766px">
+                    <ul>
+                        <li><a href="###" rel="aspect" id="ww" class="divSmall"> 电子·通信·硬件</a></li>
+                        <li><a href="###" rel="aspect2" id="xx" class="divSmall">互联网·电商</a></li>
+                        <li><a href="###" rel="aspect3" id="yy" class="divSmall">网络游戏</a></li>
+                        <li><a href="###" rel="aspect4" id="zz" class="divSmall">计算机软件</a></li>
+                        <li><a href="###" rel="aspect5" id="aaa" class="divSmall">IT服务</a></li>
+                        <li><a href="###" rel="aspect6" id="bbb" class="divSmall">通信服务</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+
             <div class="zp_lb_cont_top_1">
                 <div class="pull-left" style="width: 42px;color: #999">薪资：</div>
                 <div class="pull-left" style="width: 766px">
@@ -49,7 +66,6 @@
                         <li><a href="###" rel="type" id="cc" class="divSmall">20-30万</a></li>
                         <li><a href="###" rel="type" id="dd" class="divSmall">50-100万</a></li>
                         <li><a href="###" rel="type" id="ee" class="divSmall">100万以上</a></li>
-                        <li><a href="###" rel="type" id="ff" class="divSmall">自定义</a></li>
                     </ul>
                 </div>
             </div>
@@ -61,27 +77,18 @@
                             <a>发布时间</a>
                             <ul>
                                 <li><a href="###" rel="one" id="gg" class="divSmall">一天以内</a></li>
-                                <li><a href="###" rel="one" id="hh" class="divSmall">二天以内</a></li>
-                                <li><a href="###" rel="one" id="ii" class="divSmall">三天以内</a></li>
-                                <li><a href="###" rel="one" id="jj" class="divSmall">四天以内</a></li>
-                            </ul>
-                        </li>
-                        <li class="zp_lb_li">
-                            <a>职位类型</a>
-                            <ul>
-                                <li><a href="###" rel="two" id="kk" class="divSmall">CEO</a></li>
-                                <li><a href="###" rel="two" id="ll" class="divSmall">CFO</a></li>
-                                <li><a href="###" rel="two" id="mm" class="divSmall">CIO</a></li>
-                                <li><a href="###" rel="two" id="nn" class="divSmall">COO</a></li>
+                                <li><a href="###" rel="one" id="hh" class="divSmall">三天以内</a></li>
+                                <li><a href="###" rel="one" id="ii" class="divSmall">一周以内</a></li>
+                                <li><a href="###" rel="one" id="jj" class="divSmall">一个月以内</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>企业规模</a>
                             <ul>
-                                <li><a href="###" rel="three" id="oo" class="divSmall">特别大</a></li>
-                                <li><a href="###" rel="three" id="pp" class="divSmall">很大</a></li>
-                                <li><a href="###" rel="three" id="qq" class="divSmall">一般大</a></li>
-                                <li><a href="###" rel="three" id="rr" class="divSmall">有点小</a></li>
+                                <li><a href="###" rel="three" id="oo" class="divSmall">50人以下</a></li>
+                                <li><a href="###" rel="three" id="pp" class="divSmall">50-100人</a></li>
+                                <li><a href="###" rel="three" id="qq" class="divSmall">100-500人</a></li>
+                                <li><a href="###" rel="three" id="rr" class="divSmall">1000人以上</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
@@ -199,15 +206,18 @@
                 </li>--%>
             </ul>
             <div class="zp_botv">
-                <ul class="pagination zp_pa">
-                    <li class="b"><a href="#">上一页</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li class="a"><a href="#">2</a></li>
-                    <li class="a"><a href="#">3</a></li>
-                    <li class="a"><a href="#">4</a></li>
-                    <li class="a"><a href="#">5</a></li>
-                    <li class="a"><a href="#">下一页</a></li>
-                </ul>
+                <div class="zp_pl">
+                    <ul class="pagination zp_pa">
+                        <li class="b"><a href="#">上一页</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li class="a"><a href="#">2</a></li>
+                        <li class="a"><a href="#">3</a></li>
+                        <li class="a"><a href="#">4</a></li>
+                        <li class="a"><a href="#">5</a></li>
+                        <li class="a"><a href="#">下一页</a></li>
+                    </ul>
+                    <div class="zp_page">共 <span>38</span> 页</div>
+                </div>
             </div>
         </div>
         <div class="col-md-3 zp_lb_cont_middle_right " style="padding-left: 15px;">
@@ -244,7 +254,6 @@
                             <span class="zp_na2"><a href="">WEB前端WEB前端WEB前端WEB前端WEB前端WEB前端</a></span>
                         </div>
                     </li>
-                    
 
 
                 </ul>
@@ -279,8 +288,9 @@
                 }
             });
             if (!isAlreadyHave) {
-                $(this).css({"background-color":"#FFA500",
-                    "color":"white"
+                $(this).css({
+                    "background-color": "#FFA500",
+                    "color": "white"
                 });
                 writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"));
             }
@@ -297,8 +307,8 @@
     }
     function goBegin(ID) {
         $("#" + ID).css({
-            "background-color":"#f8f8f8",
-            "color":"#666666"
+            "background-color": "transparent",
+            "color": "#666666"
         });
     }
 </script>
