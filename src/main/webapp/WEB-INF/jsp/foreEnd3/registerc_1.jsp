@@ -58,10 +58,10 @@
                         <span>用 户 名&nbsp;</span>&emsp;<input type="text" class="r1_g">
                     </div>
                     <div class="r2_every">
-                        <span>密&emsp;&emsp;码</span>&emsp;<input type="text" class="r1_g">
+                        <span>密&emsp;&emsp;码</span>&emsp;<input type="password" class="r1_g">
                     </div>
                     <div class="r2_every">
-                        <span>确认密码</span>&emsp;<input type="text" class="r1_g">
+                        <span>确认密码</span>&emsp;<input type="password" class="r1_g">
                     </div>
                     <!--<div class="r2_every">-->
                     <!--<span>邮&emsp;&emsp;箱</span>&emsp;<input type="text" class="r2_g">-->
