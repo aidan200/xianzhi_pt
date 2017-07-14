@@ -3,10 +3,11 @@ package com.xzlcPT.dao;
 import com.xzlcPT.bean.XzPostion;
 
 import java.util.List;
+import java.util.Map;
 
 public interface XzPostionMapper {
 
-    List<XzPostion> selPostionList(XzPostion postion);
+    List<XzPostion> selPostionList(Map map);
 
     List<XzPostion> selPostionByListId(List<Long> ll);
 

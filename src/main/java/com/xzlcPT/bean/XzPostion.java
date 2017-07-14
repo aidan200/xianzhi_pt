@@ -1,6 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class XzPostion {
     private Long postionId;
@@ -42,6 +43,16 @@ public class XzPostion {
     private String filed3;
 
     private XzCompany company;
+
+    private List<XzField> fields;
+
+    public List<XzField> getFields() {
+        return fields;
+    }
+
+    public void setFields(List<XzField> fields) {
+        this.fields = fields;
+    }
 
     public XzCompany getCompany() {
         return company;
@@ -226,6 +237,7 @@ public class XzPostion {
                 ", filed2='" + filed2 + '\'' +
                 ", filed3='" + filed3 + '\'' +
                 ", company=" + company +
+                ", fields=" + fields +
                 '}';
     }
 }

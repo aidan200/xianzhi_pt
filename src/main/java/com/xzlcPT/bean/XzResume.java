@@ -10,6 +10,14 @@ public class XzResume {
 
     private String resumeName;
 
+    private Integer resumeSex;
+
+    private Date resumeBirth;
+
+    private String resumeEmail;
+
+    private String resumePhone;
+
     private String resumeField;
 
     private String resumeWorkspace;
@@ -86,6 +94,38 @@ public class XzResume {
 
     public void setResumeName(String resumeName) {
         this.resumeName = resumeName == null ? null : resumeName.trim();
+    }
+
+    public Integer getResumeSex() {
+        return resumeSex;
+    }
+
+    public void setResumeSex(Integer resumeSex) {
+        this.resumeSex = resumeSex;
+    }
+
+    public Date getResumeBirth() {
+        return resumeBirth;
+    }
+
+    public void setResumeBirth(Date resumeBirth) {
+        this.resumeBirth = resumeBirth;
+    }
+
+    public String getResumeEmail() {
+        return resumeEmail;
+    }
+
+    public void setResumeEmail(String resumeEmail) {
+        this.resumeEmail = resumeEmail == null ? null : resumeEmail.trim();
+    }
+
+    public String getResumePhone() {
+        return resumePhone;
+    }
+
+    public void setResumePhone(String resumePhone) {
+        this.resumePhone = resumePhone == null ? null : resumePhone.trim();
     }
 
     public String getResumeField() {
@@ -264,12 +304,17 @@ public class XzResume {
         this.filed3 = filed3 == null ? null : filed3.trim();
     }
 
+
     @Override
     public String toString() {
         return "XzResume{" +
                 "resumeId=" + resumeId +
                 ", memberId=" + memberId +
                 ", resumeName='" + resumeName + '\'' +
+                ", resumeSex=" + resumeSex +
+                ", resumeBirth=" + resumeBirth +
+                ", resumeEmail='" + resumeEmail + '\'' +
+                ", resumePhone='" + resumePhone + '\'' +
                 ", resumeField='" + resumeField + '\'' +
                 ", resumeWorkspace='" + resumeWorkspace + '\'' +
                 ", resumeMm=" + resumeMm +

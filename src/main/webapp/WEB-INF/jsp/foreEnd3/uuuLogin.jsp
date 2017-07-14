@@ -20,6 +20,11 @@
         密码<input name="password" value="aaa">
         <input  type="submit">
     </form>
-    <span>${userLogin}</span>
+    <br>
+    <form action="${pageContext.request.contextPath}/Postion/selPostionIndex.do" method="post">
+        <input name="nature" value="1">
+        <input name="fields" value="555">
+        <input type="submit">
+    </form>
 </body>
 </html>

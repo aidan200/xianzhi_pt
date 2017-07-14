@@ -82,4 +82,18 @@ public class XzField {
     public void setFiled3(String filed3) {
         this.filed3 = filed3 == null ? null : filed3.trim();
     }
+
+    @Override
+    public String toString() {
+        return "XzField{" +
+                "fieldId=" + fieldId +
+                ", fieldName='" + fieldName + '\'' +
+                ", fieldType='" + fieldType + '\'' +
+                ", createTime=" + createTime +
+                ", deleteTime=" + deleteTime +
+                ", filed1='" + filed1 + '\'' +
+                ", filed2='" + filed2 + '\'' +
+                ", filed3='" + filed3 + '\'' +
+                '}';
+    }
 }

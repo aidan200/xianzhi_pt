@@ -5,6 +5,10 @@
     <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
     <result column="member_id" jdbcType="BIGINT" property="memberId" />
     <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
+    <result column="resume_sex" jdbcType="INTEGER" property="resumeSex" />
+    <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
+    <result column="resume_email" jdbcType="VARCHAR" property="resumeEmail" />
+    <result column="resume_phone" jdbcType="VARCHAR" property="resumePhone" />
     <result column="resume_field" jdbcType="VARCHAR" property="resumeField" />
     <result column="resume_workspace" jdbcType="VARCHAR" property="resumeWorkspace" />
     <result column="resume_mm" jdbcType="INTEGER" property="resumeMm" />
@@ -56,14 +60,15 @@
   </resultMap>
 
   <sql id="Base_Column_List">
-    resume_id, member_id, resume_name, resume_field, resume_workspace, resume_mm, resume_ym, 
-    resume_position, resume_workinglife, resume_nationality, resume_state, resume_marriage, 
-    resume_flash, resume_intent_workspace, resume_intent_field, resume_intent_mm, resume_intent_ym, 
-    resume_intent_position, resume_completion, create_time, delete_time, delete_falt,
-    filed1, filed2, filed3
+    resume_id, member_id, resume_name, resume_sex, resume_birth, resume_email, resume_phone,
+    resume_field, resume_workspace, resume_mm, resume_ym, resume_position, resume_workinglife,
+    resume_nationality, resume_state, resume_marriage, resume_flash, resume_intent_workspace,
+    resume_intent_field, resume_intent_mm, resume_intent_ym, resume_intent_position,
+    resume_completion, create_time, delete_time, delete_falt, filed1, filed2, filed3
   </sql>
   <sql id="ResumeInfoList">
-    r.resume_id, r.member_id, r.resume_name, r.resume_field, r.resume_workspace, r.resume_mm, r.resume_ym,
+    r.resume_id, r.member_id, r.resume_name, r.resume_sex, r.resume_birth, r.resume_email, r.resume_phone,
+    r.resume_field, r.resume_workspace, r.resume_mm, r.resume_ym,
     r.resume_position, r.resume_workinglife, r.resume_nationality, r.resume_state, r.resume_marriage,
     r.resume_flash, r.resume_intent_workspace, r.resume_intent_field, r.resume_intent_mm, r.resume_intent_ym,
     r.resume_intent_position, r.resume_completion,
@@ -87,24 +92,28 @@
     where resume_id = #{resumeId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.xzlcPT.bean.XzResume">
-    insert into xz_resume (resume_id, member_id, resume_name, 
-      resume_field, resume_workspace, resume_mm, 
-      resume_ym, resume_position, resume_workinglife, 
-      resume_nationality, resume_state, resume_marriage, 
-      resume_flash, resume_intent_workspace, resume_intent_field, 
-      resume_intent_mm, resume_intent_ym, resume_intent_position, 
-      resume_completion, create_time, delete_time, 
-      delete_falt, filed1, filed2, 
-      filed3)
-    values (#{resumeId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{resumeName,jdbcType=VARCHAR}, 
-      #{resumeField,jdbcType=VARCHAR}, #{resumeWorkspace,jdbcType=VARCHAR}, #{resumeMm,jdbcType=INTEGER}, 
-      #{resumeYm,jdbcType=INTEGER}, #{resumePosition,jdbcType=VARCHAR}, #{resumeWorkinglife,jdbcType=VARCHAR}, 
-      #{resumeNationality,jdbcType=VARCHAR}, #{resumeState,jdbcType=VARCHAR}, #{resumeMarriage,jdbcType=VARCHAR}, 
-      #{resumeFlash,jdbcType=TIMESTAMP}, #{resumeIntentWorkspace,jdbcType=VARCHAR}, #{resumeIntentField,jdbcType=VARCHAR}, 
-      #{resumeIntentMm,jdbcType=INTEGER}, #{resumeIntentYm,jdbcType=INTEGER}, #{resumeIntentPosition,jdbcType=VARCHAR}, 
-      #{resumeCompletion,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
-      #{deleteFalt,jdbcType=INTEGER}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
-      #{filed3,jdbcType=VARCHAR})
+    insert into xz_resume (resume_id, member_id, resume_name,
+    resume_sex, resume_birth, resume_email,
+    resume_phone, resume_field, resume_workspace,
+    resume_mm, resume_ym, resume_position,
+    resume_workinglife, resume_nationality, resume_state,
+    resume_marriage, resume_flash, resume_intent_workspace,
+    resume_intent_field, resume_intent_mm, resume_intent_ym,
+    resume_intent_position, resume_completion,
+    create_time, delete_time, delete_falt,
+    filed1, filed2, filed3
+    )
+    values (#{resumeId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, #{resumeName,jdbcType=VARCHAR},
+    #{resumeSex,jdbcType=INTEGER}, #{resumeBirth,jdbcType=DATE}, #{resumeEmail,jdbcType=VARCHAR},
+    #{resumePhone,jdbcType=VARCHAR}, #{resumeField,jdbcType=VARCHAR}, #{resumeWorkspace,jdbcType=VARCHAR},
+    #{resumeMm,jdbcType=INTEGER}, #{resumeYm,jdbcType=INTEGER}, #{resumePosition,jdbcType=VARCHAR},
+    #{resumeWorkinglife,jdbcType=VARCHAR}, #{resumeNationality,jdbcType=VARCHAR}, #{resumeState,jdbcType=VARCHAR},
+    #{resumeMarriage,jdbcType=VARCHAR}, #{resumeFlash,jdbcType=TIMESTAMP}, #{resumeIntentWorkspace,jdbcType=VARCHAR},
+    #{resumeIntentField,jdbcType=VARCHAR}, #{resumeIntentMm,jdbcType=INTEGER}, #{resumeIntentYm,jdbcType=INTEGER},
+    #{resumeIntentPosition,jdbcType=VARCHAR}, #{resumeCompletion,jdbcType=INTEGER},
+    #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, #{deleteFalt,jdbcType=INTEGER},
+    #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR}
+    )
   </insert>
   <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzResume">
     insert into xz_resume
@@ -117,6 +126,18 @@
       </if>
       <if test="resumeName != null">
         resume_name,
+      </if>
+      <if test="resumeSex != null">
+        resume_sex,
+      </if>
+      <if test="resumeBirth != null">
+        resume_birth,
+      </if>
+      <if test="resumeEmail != null">
+        resume_email,
+      </if>
+      <if test="resumePhone != null">
+        resume_phone,
       </if>
       <if test="resumeField != null">
         resume_field,
@@ -195,6 +216,18 @@
       <if test="resumeName != null">
         #{resumeName,jdbcType=VARCHAR},
       </if>
+      <if test="resumeSex != null">
+        #{resumeSex,jdbcType=INTEGER},
+      </if>
+      <if test="resumeBirth != null">
+        #{resumeBirth,jdbcType=DATE},
+      </if>
+      <if test="resumeEmail != null">
+        #{resumeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="resumePhone != null">
+        #{resumePhone,jdbcType=VARCHAR},
+      </if>
       <if test="resumeField != null">
         #{resumeField,jdbcType=VARCHAR},
       </if>
@@ -272,6 +305,18 @@
       <if test="resumeName != null">
         resume_name = #{resumeName,jdbcType=VARCHAR},
       </if>
+      <if test="resumeSex != null">
+        resume_sex = #{resumeSex,jdbcType=INTEGER},
+      </if>
+      <if test="resumeBirth != null">
+        resume_birth = #{resumeBirth,jdbcType=DATE},
+      </if>
+      <if test="resumeEmail != null">
+        resume_email = #{resumeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="resumePhone != null">
+        resume_phone = #{resumePhone,jdbcType=VARCHAR},
+      </if>
       <if test="resumeField != null">
         resume_field = #{resumeField,jdbcType=VARCHAR},
       </if>
@@ -344,29 +389,33 @@
   <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzResume">
     update xz_resume
     set member_id = #{memberId,jdbcType=BIGINT},
-      resume_name = #{resumeName,jdbcType=VARCHAR},
-      resume_field = #{resumeField,jdbcType=VARCHAR},
-      resume_workspace = #{resumeWorkspace,jdbcType=VARCHAR},
-      resume_mm = #{resumeMm,jdbcType=INTEGER},
-      resume_ym = #{resumeYm,jdbcType=INTEGER},
-      resume_position = #{resumePosition,jdbcType=VARCHAR},
-      resume_workinglife = #{resumeWorkinglife,jdbcType=VARCHAR},
-      resume_nationality = #{resumeNationality,jdbcType=VARCHAR},
-      resume_state = #{resumeState,jdbcType=VARCHAR},
-      resume_marriage = #{resumeMarriage,jdbcType=VARCHAR},
-      resume_flash = #{resumeFlash,jdbcType=TIMESTAMP},
-      resume_intent_workspace = #{resumeIntentWorkspace,jdbcType=VARCHAR},
-      resume_intent_field = #{resumeIntentField,jdbcType=VARCHAR},
-      resume_intent_mm = #{resumeIntentMm,jdbcType=INTEGER},
-      resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER},
-      resume_intent_position = #{resumeIntentPosition,jdbcType=VARCHAR},
-      resume_completion = #{resumeCompletion,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
-      delete_falt = #{deleteFalt,jdbcType=INTEGER},
-      filed1 = #{filed1,jdbcType=VARCHAR},
-      filed2 = #{filed2,jdbcType=VARCHAR},
-      filed3 = #{filed3,jdbcType=VARCHAR}
+    resume_name = #{resumeName,jdbcType=VARCHAR},
+    resume_sex = #{resumeSex,jdbcType=INTEGER},
+    resume_birth = #{resumeBirth,jdbcType=DATE},
+    resume_email = #{resumeEmail,jdbcType=VARCHAR},
+    resume_phone = #{resumePhone,jdbcType=VARCHAR},
+    resume_field = #{resumeField,jdbcType=VARCHAR},
+    resume_workspace = #{resumeWorkspace,jdbcType=VARCHAR},
+    resume_mm = #{resumeMm,jdbcType=INTEGER},
+    resume_ym = #{resumeYm,jdbcType=INTEGER},
+    resume_position = #{resumePosition,jdbcType=VARCHAR},
+    resume_workinglife = #{resumeWorkinglife,jdbcType=VARCHAR},
+    resume_nationality = #{resumeNationality,jdbcType=VARCHAR},
+    resume_state = #{resumeState,jdbcType=VARCHAR},
+    resume_marriage = #{resumeMarriage,jdbcType=VARCHAR},
+    resume_flash = #{resumeFlash,jdbcType=TIMESTAMP},
+    resume_intent_workspace = #{resumeIntentWorkspace,jdbcType=VARCHAR},
+    resume_intent_field = #{resumeIntentField,jdbcType=VARCHAR},
+    resume_intent_mm = #{resumeIntentMm,jdbcType=INTEGER},
+    resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER},
+    resume_intent_position = #{resumeIntentPosition,jdbcType=VARCHAR},
+    resume_completion = #{resumeCompletion,jdbcType=INTEGER},
+    create_time = #{createTime,jdbcType=TIMESTAMP},
+    delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+    delete_falt = #{deleteFalt,jdbcType=INTEGER},
+    filed1 = #{filed1,jdbcType=VARCHAR},
+    filed2 = #{filed2,jdbcType=VARCHAR},
+    filed3 = #{filed3,jdbcType=VARCHAR}
     where resume_id = #{resumeId,jdbcType=BIGINT}
   </update>
 </mapper>

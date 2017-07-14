@@ -24,8 +24,12 @@ public class XzPostionServiceImpl implements XzPostionService{
 
 
     @Override
-    public PageBean<XzPostion> selPostionIndex(int page, int rows, XzPostion postion) {
-        PageHelper.startPage(page,rows);
+    public PageBean<XzPostion> selPostionIndex(int page, int rows, Map map) {
+        System.out.println(map);
+        //System.out.println(postion.getFields().size());
+        List<XzPostion> postion1 = postionMapper.selPostionList(map);
+        System.out.println(postion1);
+        /*PageHelper.startPage(page,rows);
         List<XzPostion> postion1 = postionMapper.selPostionList(postion);
         PageBean<XzPostion> pp = new PageBean<>(postion1);
         List<Long> ll = new ArrayList<>();
@@ -35,6 +39,7 @@ public class XzPostionServiceImpl implements XzPostionService{
         }
         List<XzPostion> aa = postionMapper.selPostionByListId(ll);
         pp.setList(aa);
-        return pp;
+        return pp;*/
+        return null;
     }
 }
