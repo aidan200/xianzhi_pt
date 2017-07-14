@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="login_input" style="margin-top: 40px">
-                    <input class="effect-4" type="text" placeholder="请输入密码">
+                    <input class="effect-4" type="password" placeholder="请输入密码">
                     <span class="focus-border"></span>
                 </div>
 
