@@ -431,6 +431,68 @@
             </a>
         </div>
     </div>
+    <div class="index_04">
+        <h3>大咖云集，知识分享的开发者技术社区</h3>
+        <p>实战干货、在线直播、专家问答、技术论坛、学习、成长、分享、共建</p>
+        <ul class="index_list">
+            <li>
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/lv.jpg">
+                <div class="mask4">
+                    <p class="index_04p">【分享】SQL Server疑难杂症解决之道</p>
+                    <a href="">点击查看</a>
+                </div>
+            </li>
+            <li>
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hu.jpg">
+                <div class="mask4">
+                    <p>【分享】SQL Server疑难杂症解决之道</p>
+                    <a href="">点击查看</a>
+                </div>
+            </li>
+            <li>
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/lan.jpg">
+                <div class="mask4">
+                    <p>【分享】SQL Server疑难杂症解决之道</p>
+                    <a href="">点击查看</a>
+                </div>
+            </li>
+            <li>
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zhu.jpg">
+                <div class="mask4">
+                    <p>【分享】SQL Server疑难杂症解决之道</p>
+                    <a href="">点击查看</a>
+                </div>
+            </li>
+            <li>
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/qianblue.jpg">
+                <div class="mask4">
+                    <p>【分享】SQL Server疑难杂症解决之道</p>
+                    <a href="">点击查看</a>
+                </div>
+            </li>
+            <li>
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/pi.jpg">
+                <div class="mask4">
+                    <p>【分享】SQL Server疑难杂症解决之道</p>
+                    <a href="">点击查看</a>
+                </div>
+            </li>
+            <li>
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/qainbl.jpg">
+                <div class="mask4">
+                    <p>【分享】SQL Server疑难杂症解决之道</p>
+                    <a href="">点击查看</a>
+                </div>
+            </li>
+            <li>
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/shenb.jpg">
+                <div class="mask4">
+                    <p>【分享】SQL Server疑难杂症解决之道</p>
+                    <a href="">点击查看</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 
     <!--生态圈-->
     <div class="index_05">
@@ -495,6 +557,85 @@
 <footer>
 
 </footer>
+<script>
+    (function($) {
+        $(function() {
+            $(".index_list li").bind("mouseenter mouseleave", function(e) {
+                var w = $(this).width();
+                var h = $(this).height();
+                var x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1);
+                var y = (e.pageY - this.offsetTop - (h / 2)) * (h > w ? (w / h) : 1);
+                var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4; //direction的值为“0,1,2,3”分别对应着“上，右，下，左”
+                var eventType = e.type;
+                var dirName = new Array('上方', '右侧', '下方', '左侧');
+                let mask = $(this).children('.mask4');
+                if (e.type == 'mouseenter') {
+                    switch (direction) {
+                        case 0:
+                            mask.css({
+                                top: -240,
+                                left: 0
+                            });
+                            break;
+                        case 1:
+                            mask.css({
+                                top: 0,
+                                left: 240
+                            });
+                            break;
+                        case 2:
+                            mask.css({
+                                top: 240,
+                                left: 0
+                            });
+                            break;
+                        case 3:
+                            mask.css({
+                                top: 0,
+                                left: -240
+                            });
+                            break;
+                    }
+                    mask.stop(true).animate({
+                        left: 0,
+                        top: 0
+                    }, 400);
+                } else {
+                    let end = {};
+                    switch (direction) {
+                        case 0:
+                            end = {
+                                top: -240,
+                                left: 0
+                            };
+                            break;
+                        case 1:
+                            end = {
+                                top: 0,
+                                left: 240
+                            };
+                            break;
+                        case 2:
+                            end = {
+                                top: 240,
+                                left: 0
+                            };
+                            break;
+                        case 3:
+                        {
+                            end = {
+                                top: 0,
+                                left: -240
+                            };
+                            break;
+                        }
+                    }
+                    mask.stop(true).animate(end, 400);
+                }
+            });
+        });
+    })(jQuery);
+</script>
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>
 <!--轮播里的小东西-->
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/haha.js"></script>

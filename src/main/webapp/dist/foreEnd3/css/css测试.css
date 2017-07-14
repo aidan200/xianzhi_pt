@@ -2379,6 +2379,61 @@ footer {
 
 }
 
+/*新改的社区*/
+.index_list {
+    width: 1000px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.index_list li {
+    float: left;
+    width: 240px;
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.index_list li img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: all 1s;
+}
+
+.index_list li .mask4 {
+    background-color: rgba(85, 97, 101, 0.9);
+    position: absolute;
+    left: -1000px;
+    top: -1000px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 30px;
+    padding-top: 30px;
+    color: #ffffff;
+}
+
+.mask4 p {
+    margin-top: 50px;
+    height: 40px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.mask4 a {
+    display: block;
+    width: 80px;
+    height: 30px;
+    border: 1px solid #ffffff;
+    outline: none;
+    background-color: transparent;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-top: 30px;
+    color: #ffffff;
+}
 
 /*-----------------------------公司列表---------------------------------*/
 /*------轮播-----*/
@@ -2818,4 +2873,237 @@ footer {
     position: relative;
     display: inline-block;
     margin: 8px;
+}
+
+/*------------------------注册--------------------------------*/
+/*进度的*/
+.ui-stepBar-wrap {
+    position: relative;
+    width: 1000px;
+    height: 130px;
+    overflow: hidden;
+    display: none;
+    z-index: 100;
+    margin: 0 auto;
+}
+
+.ui-stepBar-wrap .ui-stepBar {
+    position: relative;
+    width: 90%;
+    height: 5px;
+    background: #cccccc;
+    top: 50px;
+    left: 5%;
+    z-index: 101;
+}
+
+.ui-stepBar-wrap .ui-stepBar .ui-stepProcess {
+    position: relative;
+    width: 0;
+    height: 5px;
+    background: #f8a91e;
+    top: 0;
+    left: 0;
+    z-index: 102;
+}
+
+.ui-stepBar-wrap .ui-stepInfo-wrap {
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo {
+    position: relative;
+    float: left;
+    padding-top: 36px;
+    text-align: center;
+}
+
+.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo .ui-stepSequence {
+    position: relative;
+    padding: 4px 8px;
+    border-radius: 50%;
+    z-index: 103;
+}
+
+.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo .ui-stepName {
+    position: relative;
+    line-height: 50px;
+    z-index: 103;
+}
+
+.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-pre-change,
+.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-hind-change {
+    cursor: pointer;
+}
+
+.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-pre-change:hover {
+    box-shadow: 0 0 3px 1px #f8a91e;
+}
+
+.ui-stepBar-wrap .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-hind-change:hover {
+    box-shadow: 0 0 3px 1px #cccccc;
+}
+
+.judge-stepSequence-pre {
+    background: #f8a91e;
+    color: #ffffff;
+}
+
+.judge-stepSequence-hind {
+    background: #cccccc;
+    color: #ffffff;
+}
+
+/*----------注册1-----------*/
+.register1_all {
+    max-width: 1100px;
+    height: 560px;
+    background-color: #f7f7f7;
+    margin: 0 auto;
+    padding: 40px;
+    overflow: hidden;
+}
+
+/*-----------注册2--------------*/
+.register2_in {
+    width: 600px;
+    height: 560px;
+    float: left;
+}
+
+.r2_ne {
+    width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.r2_left {
+    width: 600px;
+}
+
+.register2_in input {
+    font-size: 16px;
+}
+
+.r2_g {
+    width: 400px;
+    height: 40px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.r1_g {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.r2_g2 {
+    width: 400px;
+    height: 140px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding-left: 10px;
+    outline: none;
+}
+
+.r3_g {
+    width: 390px;
+    height: 40px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.r2_every {
+    margin-top: 20px;
+}
+
+.r2_every input {
+    outline: none;
+}
+
+.r2_every > span {
+    font-size: 16px;
+}
+
+.r2_bottom {
+    width: 300px;
+    float: left;
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 100px;
+
+}
+
+.r2_bottom img {
+    width: 130px;
+    height: 140px;
+    margin: 0 auto;
+}
+
+.r2_bottom h3, .r2_bottom p {
+    color: #33444c;
+}
+
+.r2_button {
+    width: 140px;
+    height: 40px;
+    background-color: #6AC8B7;
+    margin-top: 40px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    transition: 0.45s all;
+    -webkit-transition: 0.45s all;
+    -o-transition: 0.45s all;
+    -moz-transition: 0.45s all;
+    -ms-transition: 0.45s all;
+    font-size: 16px;
+}
+
+.r2_button:hover {
+    background-color: #f8a91e;
+    border: none;
+    transition: 0.45s all;
+    -webkit-transition: 0.45s all;
+    -o-transition: 0.45s all;
+    -moz-transition: 0.45s all;
+    -ms-transition: 0.45s all;
+}
+
+/*注册3*/
+.fileWrapper {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+}
+
+input[type="text"].fileInputText {
+    float: left;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 5px;
+    margin: 0
+}
+
+input[type="button"].fileInputButton {
+    float: right;
+    border: solid 1px #f8a91e;
+    border-radius: 3px;
+    background: #f8a91e;
+    color: #fff;
+    font-size: 17px;
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box
 }

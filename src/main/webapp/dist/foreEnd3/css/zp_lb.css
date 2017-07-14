@@ -291,7 +291,7 @@ ul {
     background: #F2F2F2;
     padding: 0 10px;
     color: #999B9E;
-    height: 30px;
+    height: auto;
     z-index: -1;
 }
 
@@ -307,6 +307,7 @@ ul {
     float: left;
     width: 600px;
     height: 30px;
+   margin-top: -8px;
 
 }
 
@@ -562,7 +563,9 @@ ul {
     margin-left: 4px;
     line-height: 12px;
     padding: 4px;
-    margin-top: -5px;
+    /*margin-top: -5px;*/
+    margin-top: 3px;
+
 
 }
 
@@ -701,4 +704,12 @@ ul {
     /*background-color: #f8f8f8;*/
     border: 1px solid #EEEEEE;
 
+}
+
+/*自定义*/
+.zp_owner:hover{
+   color: #FFFFFF;
+}
+.zp_ospan{
+    display: none;
 }

@@ -55,8 +55,8 @@
                     </ul>
                 </div>
             </div>
-            <div style="clear: both"></div>
 
+            <div style="clear: both"></div>
             <div class="zp_lb_cont_top_1">
                 <div class="pull-left" style="width: 42px;color: #999">薪资：</div>
                 <div class="pull-left" style="width: 766px">
@@ -277,7 +277,8 @@
         $(".divSmall").click(function () {
             var isAlreadyHave = false;
             var thisID = $(this).attr("id");
-            var classType = $(this).attr("rel")
+            var classType = $(this).attr("rel");
+
             $(".divSmall2").each(function () {
                 if ($(this).attr("rel") == thisID) {
                     isAlreadyHave = true;
@@ -287,6 +288,7 @@
                     $(this).remove();
                 }
             });
+
             if (!isAlreadyHave) {
                 $(this).css({
                     "background-color": "#FFA500",
