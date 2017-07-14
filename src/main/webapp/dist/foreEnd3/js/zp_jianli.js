@@ -491,7 +491,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                     async:true,  //是否异步
                     contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
                     data:JSON.stringify(pcont),        //转为JSON格式
-                    url:path+'Member/updateMember.do',    //路径
+                    url:path+'Resume/updateResume.do',    //路径
                     success:function (data){//data 就是数据 json
                         xgk.remove();//删除修改框
                         _self.init();//重新载入
