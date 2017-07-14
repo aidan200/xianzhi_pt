@@ -799,18 +799,18 @@ obj_yyjl.prototype.init=function (){
     var _self=this;
     $.ajax({
         type: "get",//数据发送的方式（post 或者 get）
-        url: path+'Education/selEducationByMemberId',//要发送的后台地址
-        data:{memberId:1},                                      //传的参数
+        url: path+'Education/selEducationByResumeId.do',//要发送的后台地址
+        data:{resumeId:1},                                      //传的参数
         success: function (data) {//ajax请求成功后触发的方法
             _self.obj_s=[];//接收对象的数组
             for(var i=0;i<data.educationList.length;i++){
                 var obj__yyjl=new obj_yyjl();
-                obj__yyjl.xxmc=data.educationList[i].school;
-                obj__yyjl.zymc=data.educationList[i].major;
+                obj__yyjl.xxmc=data.educationList[i].educationSchool;
+                obj__yyjl.zymc=data.educationList[i].educationMajor;
                 obj__yyjl.jdsj=data.educationList[i].enrollmentDate;
                 obj__yyjl.bynf=data.educationList[i].graduateDate;
-                obj__yyjl.xl=data.educationList[i].education;
-                obj__yyjl.sftz=data.educationList[i].educationSkill; //缺少是否统招
+                obj__yyjl.xl=data.educationList[i].educationLevel;
+                obj__yyjl.sftz=data.educationList[i].educationEntrance; //缺少是否统招
                 _self.obj_s[i]=obj__yyjl;      //插入
             }
             //便利对象到页面上
@@ -1332,8 +1332,8 @@ $(function (){                              //入口函数
     var obj__gzjl=new obj_gzjl();           //创建简历对象
     obj__gzjl.init();
 
-    // var obj__yyjl=new obj_yyjl();           //教育经历
-    // obj__yyjl.init();
+     var obj__yyjl=new obj_yyjl();           //教育经历
+     obj__yyjl.init();
 
     var obj__xmjy=new obj_xmjy();           //项目经验开始
     obj__xmjy.init();
@@ -1346,6 +1346,7 @@ $(function (){                              //入口函数
 
     var obj__scjn=new obj_scjn();           //擅长技能
     obj__scjn.init()
+
 
 });
 
