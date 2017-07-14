@@ -27,6 +27,20 @@
     from xz_field
     where field_id = #{fieldId,jdbcType=BIGINT}
   </select>
+  <delete id="deleteByResumeDomain" parameterType="Map">
+    DELETE FROM xz_resume_domain
+    where id in (
+        SELECT a.id from
+        (select d.id as id
+        from xz_resume_domain d LEFT JOIN xz_field f on d.field_id = f.field_id
+        where d.resume_id = #{resumeId,jdbcType=BIGINT} and (f.field_type = #{fieldType,jdbcType=VARCHAR} or f.field_type is null)
+        ) a
+    )
+  </delete>
+  <insert id="insertByResumeDomain" parameterType="Map">
+    insert into xz_resume_domain (resume_id, field_id)
+    VALUES (#{resumeId,jdbcType=BIGINT},#{fieldId,jdbcType=BIGINT})
+  </insert>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from xz_field
     where field_id = #{fieldId,jdbcType=BIGINT}

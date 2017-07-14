@@ -3,8 +3,13 @@ package com.xzlcPT.dao;
 import com.xzlcPT.bean.XzField;
 
 import java.util.List;
+import java.util.Map;
 
 public interface XzFieldMapper {
+
+    int deleteByResumeDomain(Map map);
+
+    int insertByResumeDomain(Map map);
 
     List<XzField> selectByType(int fieldType);
 

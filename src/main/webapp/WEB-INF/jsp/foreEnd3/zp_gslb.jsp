@@ -45,7 +45,7 @@
                 <div class="pull-left" style="width: 42px;color: #999">行业：</div>
                 <div class="pull-left" style="width: 766px">
                     <ul>
-                        <li><a href="###" rel="aspect" id="ww" class="divSmall"> 电子·通信·硬件</a></li>
+                        <li><a href="###" rel="aspect" id="ww" inpName="ccc" inpValue="ggg" class="divSmall"> 电子·通信·硬件</a></li>
                         <li><a href="###" rel="aspect2" id="xx" class="divSmall">互联网·电商</a></li>
                         <li><a href="###" rel="aspect3" id="yy" class="divSmall">网络游戏</a></li>
                         <li><a href="###" rel="aspect4" id="zz" class="divSmall">计算机软件</a></li>
@@ -269,7 +269,7 @@
             </ul>
         </div>
     </div>
-
+    <form id="hidForm"></form>
 </section>
 
 <script type="text/javascript">
@@ -278,6 +278,8 @@
             var isAlreadyHave = false;
             var thisID = $(this).attr("id");
             var classType = $(this).attr("rel");
+            var inpName = $(this).attr("inpName");
+            var inpValue = $(this).attr("inpValue");
 
             $(".divSmall2").each(function () {
                 if ($(this).attr("rel") == thisID) {
@@ -294,24 +296,31 @@
                     "background-color": "#FFA500",
                     "color": "white"
                 });
-                writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"));
+                writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"),inpName,inpValue);
+
             }
         });
         $(".zp_img").live('click', function () {
             goBegin($(this).parent().attr("rel"));
+            removeMyInp($(this).attr("rel"));
             $(this).parent().remove();
         });
     });
     //输出一个div
-    function writeDiv(name, id, classONE) {
-        var divShow = "<div class='divSmall2' rel='" + id + "' ttype='" + classONE + "'>" + name + "<span class='fa fa-remove zp_img'></span></div>";
+    function writeDiv(name, id, classONE, inpName, inpValue) {
+        var divShow = "<div class='divSmall2' rel='" + id + "' ttype='" + classONE + "'>" + name + "<span class='fa fa-remove zp_img' rel='"+id+"inp'></span></div>";
+        var inputShow = "<input id='"+id+"inp'  type='hidden'  name='"+inpName+"' value='"+inpValue+"'/>";
         $("#mainSelect").html($("#mainSelect").html() + divShow);
+        $("#hidForm").html($("#hidForm").html()+inputShow);
     }
     function goBegin(ID) {
         $("#" + ID).css({
             "background-color": "transparent",
             "color": "#666666"
         });
+    }
+    function removeMyInp(id) {
+        $("#" + id).remove();
     }
 </script>
 
