@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzResumeEducationMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzResumeEducation">
+    <id column="education_id" jdbcType="BIGINT" property="educationId" />
+    <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+    <result column="education_school" jdbcType="VARCHAR" property="educationSchool" />
+    <result column="education_major" jdbcType="VARCHAR" property="educationMajor" />
+    <result column="enrollment_date" jdbcType="DATE" property="enrollmentDate" />
+    <result column="graduate_date" jdbcType="DATE" property="graduateDate" />
+    <result column="education_entrance" jdbcType="INTEGER" property="educationEntrance" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="delete_date" jdbcType="TIMESTAMP" property="deleteDate" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    education_id, resume_id, education_level, education_school, education_major, enrollment_date, 
+    graduate_date, education_entrance, create_date, delete_date, filed1, filed2, filed3, 
+    delete_falt
+  </sql>
+  <select id="selectByResumeId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_resume_education
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_resume_education
+    where education_id = #{educationId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_resume_education
+    where education_id = #{educationId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzResumeEducation">
+    insert into xz_resume_education (education_id, resume_id, education_level, 
+      education_school, education_major, enrollment_date, 
+      graduate_date, education_entrance, create_date, 
+      delete_date, filed1, filed2, 
+      filed3, delete_falt)
+    values (#{educationId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{educationLevel,jdbcType=VARCHAR}, 
+      #{educationSchool,jdbcType=VARCHAR}, #{educationMajor,jdbcType=VARCHAR}, #{enrollmentDate,jdbcType=DATE}, 
+      #{graduateDate,jdbcType=DATE}, #{educationEntrance,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{deleteDate,jdbcType=TIMESTAMP}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
+      #{filed3,jdbcType=VARCHAR}, #{deleteFalt,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzResumeEducation">
+    insert into xz_resume_education
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="educationId != null">
+        education_id,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="educationLevel != null">
+        education_level,
+      </if>
+      <if test="educationSchool != null">
+        education_school,
+      </if>
+      <if test="educationMajor != null">
+        education_major,
+      </if>
+      <if test="enrollmentDate != null">
+        enrollment_date,
+      </if>
+      <if test="graduateDate != null">
+        graduate_date,
+      </if>
+      <if test="educationEntrance != null">
+        education_entrance,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="deleteDate != null">
+        delete_date,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="educationId != null">
+        #{educationId,jdbcType=BIGINT},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="educationLevel != null">
+        #{educationLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="educationSchool != null">
+        #{educationSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="educationMajor != null">
+        #{educationMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="enrollmentDate != null">
+        #{enrollmentDate,jdbcType=DATE},
+      </if>
+      <if test="graduateDate != null">
+        #{graduateDate,jdbcType=DATE},
+      </if>
+      <if test="educationEntrance != null">
+        #{educationEntrance,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteDate != null">
+        #{deleteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFalt != null">
+        #{deleteFalt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzResumeEducation">
+    update xz_resume_education
+    <set>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="educationLevel != null">
+        education_level = #{educationLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="educationSchool != null">
+        education_school = #{educationSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="educationMajor != null">
+        education_major = #{educationMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="enrollmentDate != null">
+        enrollment_date = #{enrollmentDate,jdbcType=DATE},
+      </if>
+      <if test="graduateDate != null">
+        graduate_date = #{graduateDate,jdbcType=DATE},
+      </if>
+      <if test="educationEntrance != null">
+        education_entrance = #{educationEntrance,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteDate != null">
+        delete_date = #{deleteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt = #{deleteFalt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where education_id = #{educationId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzResumeEducation">
+    update xz_resume_education
+    set resume_id = #{resumeId,jdbcType=BIGINT},
+      education_level = #{educationLevel,jdbcType=VARCHAR},
+      education_school = #{educationSchool,jdbcType=VARCHAR},
+      education_major = #{educationMajor,jdbcType=VARCHAR},
+      enrollment_date = #{enrollmentDate,jdbcType=DATE},
+      graduate_date = #{graduateDate,jdbcType=DATE},
+      education_entrance = #{educationEntrance,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      delete_date = #{deleteDate,jdbcType=TIMESTAMP},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR},
+      delete_falt = #{deleteFalt,jdbcType=INTEGER}
+    where education_id = #{educationId,jdbcType=BIGINT}
+  </update>
+</mapper>
