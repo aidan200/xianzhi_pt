@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_jianli.css">
     <script>
         var path='${pageContext.request.contextPath}/';     //全局路径
-        var s = <j:toJson obj="${userLogin}"/>;
-        var ID=''                                          //ID
+        var ID='';                                          //ID
+        var memberId;
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_jianli.js"></script>
 
@@ -65,11 +65,16 @@
                             <a class="zp_jianli_xg" href="javascript:;"></a>
                         </div>
                         <div class="zp_jianli_cont_left_jbzl_middle">
+                            <div class="xb">
+                                性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<span id="xb"></span>
+                            </div>
                             <div class="zp_jianli_cont_left_jbzl_csny">
+
                                 <div class="pull-left">&nbsp; 出生年份: &nbsp; <span id="csnf">1997年</span></div>
                                 <div class="pull-right">婚姻状况: &nbsp; <span id="hyzk">保密</span></div>
                             </div>
                             <div class="zp_jianli_cont_left_jbzl_sjh">
+
                                 <div>
                                     手机：<span id="sj">	131****1497</span>
                                 </div>
@@ -79,6 +84,7 @@
                                 <div>
                                     状态：<span id="zt">在职，看看新机会</span>
                                 </div>
+
                             </div>
                         </div>
                     </div>

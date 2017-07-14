@@ -152,20 +152,10 @@ public class UserInfoController {
         } else {
             int a = 0;
             boolean mo = MobileAndPersonID.isMobileNO(xzMember.getMemberPhone());
-            boolean pe = MobileAndPersonID.personIdValidation(xzMember.getMemberIDcard());
             if (!mo) {
                 mv.addObject("mob", "格式错误!");
             }
-            if (!pe) {
-                mv.addObject("peID", "格式错误!");
-            }
-            if (mo && pe) {
 
-            } else {
-                mv.setViewName("foreEnd/updateUserInfo");
-                mv.addObject("xzMember", xzMember);
-                return mv;
-            }
             if (xzMember != null) {
                 if (photoFile.getOriginalFilename() != null && photoFile.getOriginalFilename() != "") {
                     String picName = SavePicture.savePicture(photoFile, request);
@@ -174,7 +164,7 @@ public class UserInfoController {
                 }
                 a = userInfoService.updateUserInfo(xzMember);
                 Discuss discuss = new Discuss();
-                discuss.setMemberID(xzMember.getLoginId());
+                //discuss.setMemberID(xzMember.getLoginId());
                 discuss.setMemberPicture(xzMember.getMemberPicture());
                 int c = discussService.updateMemberPicture(discuss);
                 System.out.println(c + "   :" + discuss.getMemberID() + "    " + discuss.getMemberPicture());
@@ -217,6 +207,7 @@ public class UserInfoController {
         mv.addObject("xzMember", xzMember1);
         return mv;
     }
+/*
 
     //    修改方法
     @RequestMapping("updateUserInfo.emp")
@@ -291,6 +282,7 @@ public class UserInfoController {
 
         return mv;
     }
+*/
 
 
     public int updateLogin(long loginID, int deleteFalt) {

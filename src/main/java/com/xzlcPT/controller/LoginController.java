@@ -191,7 +191,7 @@ public class LoginController extends BaseController {
                 xzLogin = loginService.selLoginByCountEnd(xzLogin);
                 if (xzLogin.getLoginType() == 1) {
                     XzMember xzMember = new XzMember();
-                    xzMember.setLoginId(xzLogin.getLoginId());
+                    //xzMember.setLoginId(xzLogin.getLoginId());
                     xzMember.setMemberPicture("timg1.jpg");
                     userInfoService.addUserInfo(xzMember);
                 } else {

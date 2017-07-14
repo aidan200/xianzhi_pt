@@ -2,6 +2,8 @@ package com.xzlcPT.dao;
 
 import com.xzlcPT.bean.XzCompany;
 
+import java.util.List;
+
 public interface XzCompanyMapper {
 
     int addCompany(XzCompany company);
@@ -19,4 +21,11 @@ public interface XzCompanyMapper {
     int updateByPrimaryKeySelective(XzCompany record);
 
     int updateByPrimaryKey(XzCompany record);
+
+    List<XzCompany> selectAllJob(List<Long> list);
+
+    List<XzCompany> selectPcount(XzCompany record);
+
+
+
 }

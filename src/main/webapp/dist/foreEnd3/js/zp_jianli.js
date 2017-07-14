@@ -4,7 +4,6 @@
 //个人信息开始
 function obj_yhxx(){
     this.name='';                       //姓名
-    this.xb='';                         //性别
     this.dqhy='';                       //当前行业
     this.gznf='';                       //工作年份
     this.zwmc='';                       //职位名称
@@ -26,11 +25,9 @@ obj_yhxx.prototype.init=function (){
         async:true,  //是否异步
         url:path+'Resume/selResume.do',    //路径
         success:function (data){//data 就是数据 json
-            ID=data.resume.resumeId                   //获取到ID
-
-
+            ID=data.resume.resumeId;                  //获取到ID
+            memberId=data.resume.memberId
             _self.name=data.resume.resumeName;         //姓名
-            _self.xb=s.member.memberSex;              //性别
             _self.gznf=data.resume.resumeWorkinglife; //工作年份
             _self.dqhy=data.resume.fields;           //行业
             _self.zwmc=data.resume.resumePosition;   //当前职位
@@ -86,13 +83,6 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='<li>'
             str+='姓名 <input id="jl_name" type="text" value="'+_self.name+'"  class="form-control zp_jianli_input1">'
             str+='</li>'
-            str+='<li id="jl_xb">'
-            if(_self.xb==0){
-                str+='性别 <input id="nan" checked  name="xb" type="radio" value="0" ><label for="nan">男</label><input value="1" type="radio" name="xb" id="nan2"><label for="nan2">女</label>'
-            }else{
-                str+='性别 <input id="nan"  checked  name="xb" type="radio" value="0" ><label for="nan">男</label><input value="1" type="radio" name="xb" id="nan2"><label for="nan2">女</label>'
-            }
-            str+='</li>'
             str+='<li>'
             str+='当前行业 <input id="jl_dqhy" value="'+str3+'" type="text" class="form-control zp_jianli_input2" >'
             str+='</li>'
@@ -118,10 +108,14 @@ obj_yhxx.prototype.bindingSJ=function (){
                 $('.zp_jianli_cont_left_top2_top').css({"display":"block"}); //显示
             })
             $('.zp_jianli_zl_1').find('button').eq(0).on('click',function (){
+                var xgk=$(this).parent().parent();               //修改框
+
+
+                var www=$('#jl_dqhy').val().split('/');
                 var resume={
-                    resumeName:$('#jl_name').val(),                 //姓名
-                    resumeWorkinglife:$('#jl_dqhy').val(),          //工作年份
-                    field:$('#jl_gznf').val(),                      //行业
+                    resumeName:$('#jl_name').val(),                 //姓名//性别
+                    resumeWorkinglife:$('#jl_gznf').val(),          //工作年份
+                    field:www,                                      //行业
                     resumePosition:$('#jl_zwmc').val(),              //当前职位
                     resumeWorkspace:$('#jl_dqcs').val(),             //当前城市
                     resumeId:ID
@@ -135,8 +129,9 @@ obj_yhxx.prototype.bindingSJ=function (){
                     url:path+'Resume/updateResume.do',    //路径
 
                     success:function (data){//data 就是数据 json
-
-                            alert('成功了')
+                             xgk.remove();          //删除修改框
+                            _self.init();           //重新加载数据
+                            $('.zp_jianli_cont_left_top2_top').css({"display":"block"});//显示出来
 
                     },error:function (){ //报错执行的
                         alert('基本信息修改失败了')
@@ -157,12 +152,14 @@ function obj_zbzl(){
     this.zt='';         //状态
     this.hyzk='';       //婚姻状况
     this.youxiang='';   //邮箱
+    this.xb='';         //性别
     this.DOM={
         csnf:$('#csnf'),
         hyzk:$('#hyzk'),
         sj:$('#sj'),
         yx:$('#yx'),
-        zt:$('#zt')
+        zt:$('#zt'),
+        xb:$('#xb')
     }
 }
 obj_zbzl.prototype.init=function (){    //初始化赋值
@@ -172,11 +169,13 @@ obj_zbzl.prototype.init=function (){    //初始化赋值
         async:true,  //是否异步
         url:path+'Resume/selResume.do',             //路径
         success:function (data){                //data 就是数据 json
-            _self.cstime=s.member.memberBirth;    //出生年月
-            _self.sj=s.member.memberPhone;          //手机号
+            _self.cstime=data.resume.resumeBirth;    //出生年月
+            _self.sj=data.resume.resumePhone;          //手机号
+            _self.xb=data.resume.resumeSex;            //性别
             _self.zt=data.resume.resumeState;       //状态
             _self.hyzk=data.resume.resumeMarriage; //婚姻状况
-            _self.youxiang=s.member.memberEmail;    //邮箱
+            _self.youxiang=data.resume.resumeEmail;    //邮箱
+
             _self.bindingDOM();
             _self.bindingSJ();
         },error:function (){ //报错执行的
@@ -197,62 +196,81 @@ obj_zbzl.prototype.bindingDOM=function (){//绑定基本信息
     }
     _self.DOM.sj.html(_self.sj);            // 手机
     _self.DOM.yx.html(_self.youxiang);      //邮箱
+               //性别
+    if(_self.xb==0){
+        _self.DOM.xb.html("男")
+    }else{
+        _self.DOM.xb.html("女")
+    }
     if(_self.zt==0){                        //状态
         _self.DOM.zt.html("就职");
-    }else if(_self.hyzk==1){
+    }else if(_self.zt==1){
         _self.DOM.zt.html("未就职");
-    }else if(_self.hyzk==2){
+    }else if(_self.zt==2){
         _self.DOM.zt.html("保密");
     }
 };
 obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
     var _self=this;
+    var kg=true;
     $('.zp_jianli_xg').eq(1).on('click',function (){
+        if(kg){
+            kg=false;
             var str='';
-        str+='<div class="zp_jianli_zl_2">'
-        str+='<div class="pull-left">'
-        str+='<ul>'
-        str+='<li>'
-        str+='出生年月'
-        str+='<input class="form-control" value="'+getNowFormatDate(_self.cstime)+'" id="jl_cstime">'
-        str+='</li>'
-        str+='<li class="zp_jianli_zl_2_li2" >'
-        str+='<span >手机</span>'
-        str+='<input id="jl_sj" type="text"  value="'+_self.sj+'" class="form-control zp_jianli_zl_2_input1 ">'
-        str+='</li>'
-        str+='<li>'
-        str+='<span>状态</span>'
-        str+='<select class="form-control" id="jl_zt">'
-        str+='<option value="0">就职</option>'
-        str+='<option value="1">未就职</option>'
-        str+='<option value="2">保密</option>'
-        str+='</select>'
-        str+='</li>'
-        str+='</ul>'
-        str+='</div>'
-        str+='<div class="pull-right">'
-        str+='<ul>'
-        str+='<li>'
-        str+='婚姻状况'
-        str+='<select class="form-control" id="jl_hyzk">'
-        str+='<option value="0">未婚</option>'
-        str+='<option value="1" >已婚</option>'
-        str+='<option value="2">保密</option>'
-        str+='</select>'
-        str+='</li>'
-        str+='<li class="zp_jianli_zl_2_li2" >'
-        str+='<span>邮箱</span>'
-        str+='<input id="jl_yx" type="text" value="'+_self.youxiang+'" class="form-control zp_jianli_zl_2_input1 ">'
-        str+='</li>'
-        str+='</ul>'
-        str+='</div>'
-        str+='<div style="clear: both;"></div>'
-        str+='<div class="zp_jianli_zl_2_bottom">'
-        str+='<button type="button" class="btn btn-primary">确定</button>'
-        str+='<button class="btn btn-default" id="jbzl_2_qx"  type="button">取消</button>'
-        str+='</div>'
-        str+='</div>'
-        $('.zp_jianli_cont_left_jbzl_yl').after(str);
+            str+='<div class="zp_jianli_zl_2">'
+
+            if(_self.xb==0){
+                str+='<div>性别 <input name="xb" checked  type="radio" id="xp_0" value="0"><label for="xp_0">男</label><input name="xb" value="1" id="xp_1" type="radio" ><label for="xp_1" >女</label></div>';
+            }else{
+                str+='<div>性别 <input name="xb"  type="radio" id="xp_0" value="0"><label for="xp_0">男</label><input name="xb" checked value="1" id="xp_1" type="radio" ><label for="xp_1" >女</label></div>';
+            }
+
+            str+='<div class="pull-left">'
+            str+='<ul>'
+            str+='<li>'
+            str+='出生年月'
+            str+='<input class="form-control" value="'+getNowFormatDate(_self.cstime)+'" id="jl_cstime">'
+            str+='</li>'
+            str+='<li class="zp_jianli_zl_2_li2" >'
+            str+='<span >手机</span>'
+            str+='<input id="jl_sj" type="text"  value="'+_self.sj+'" class="form-control zp_jianli_zl_2_input1 ">'
+            str+='</li>'
+            str+='<li>'
+            str+='<span>状态</span>'
+            str+='<select class="form-control" id="jl_zt">'
+            str+='<option value="0">就职</option>'
+            str+='<option value="1">未就职</option>'
+            str+='<option value="2">保密</option>'
+            str+='</select>'
+            str+='</li>'
+            str+='</ul>'
+            str+='</div>'
+            str+='<div class="pull-right">'
+            str+='<ul>'
+            str+='<li>'
+            str+='婚姻状况'
+            str+='<select class="form-control" id="jl_hyzk">'
+            str+='<option value="0">未婚</option>'
+            str+='<option value="1" >已婚</option>'
+            str+='<option value="2">保密</option>'
+            str+='</select>'
+            str+='</li>'
+            str+='<li class="zp_jianli_zl_2_li2" >'
+            str+='<span>邮箱</span>'
+            str+='<input id="jl_yx" type="text" value="'+_self.youxiang+'" class="form-control zp_jianli_zl_2_input1 ">'
+            str+='</li>'
+            str+='</ul>'
+            str+='</div>'
+            str+='<div style="clear: both;"></div>'
+            str+='<div class="zp_jianli_zl_2_bottom">'
+            str+='<button type="button" class="btn btn-primary">确定</button>'
+            str+='<button class="btn btn-default" id="jbzl_2_qx"  type="button">取消</button>'
+            str+='</div>'
+            str+='</div>'
+            $('.zp_jianli_cont_left_jbzl_yl').after(str);
+        }else{
+
+        }
 
         $('#jl_zt > option').each(function (index,ele){         //就职状态
             if($(ele).val()==_self.zt){
@@ -267,12 +285,49 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
         });
 
         $('.zp_jianli_cont_left_jbzl_middle').css({"display":"none"});
+                                               //修改框
         $('.zp_jianli_zl_2').find('button').eq(1).on('click',function (){
+                kg=true;
                 $('.zp_jianli_cont_left_jbzl_middle').css({"display":"block"});
                 $(this).parent().parent().remove();
         })
-        $('.zp_jianli_zl_2').find('button').eq(0).on('click',function (){
-                alert('ajax')
+        $('.zp_jianli_zl_2').find('button').eq(0).on('click',function (){       //基本状态提交事件
+            var tck=$(this).parent().parent()
+            var oxb = $('.zp_jianli_zl_2 input[name="xb"]:checked ').val();      //性别的值
+            var ozt=$('select').eq(0).val();                                     //状态的值
+            var ohyzt=$('select').eq(1).val();                                   //婚姻状态的值
+            var resume = {
+                resumeId:ID,                             //id号
+                resumeState:ozt,                         //状态           好使
+                resumeMarriage:ohyzt,                    //婚姻状况        好使
+                resumeBirth:$('#jl_cstime').val(),      //出生年月
+                resumePhone:$('#jl_sj').val(),          //手机
+                resumeSex:oxb,                           //性别
+                resumeEmail:$('#jl_yx').val(),          //邮箱
+            }
+            /*var member={
+                resumeBirth:$('#jl_cstime').val(),      //出生年月
+                resumePhone:$('#jl_sj').val(),          //手机
+                resumeSex:oxb,                           //性别
+                resumeEmail:$('#jl_yx').val(),          //邮箱
+                resume:resume
+            };
+            member.resume = resume;*/
+            $.ajax({
+                type:"post",    //提交方式
+                async:true,  //是否异步
+                contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                data:JSON.stringify(resume),        //转为JSON格式
+                url:path+'Resume/updateResume.do',    //路径
+                success:function (data){//data 就是数据 json
+                        tck.remove();                           //删除修改框
+                        _self.init();                           //重新加载
+                        $('.zp_jianli_cont_left_jbzl_middle').css({"display":"block"})
+                },error:function (){ //报错执行的
+                    alert('基本资料修改错误')
+                }
+
+            })
         })
     })
 
@@ -331,11 +386,8 @@ obj_zyyx.prototype.bindingDOM=function (){
     if(str2!=''&&str2!=null){
         str+='<p>期望行业：'+str2+'</p>';
     }
-    if(str3!=''&&str3!=null){
-        str+='<p>目前行业：'+str3+'</p>';
-    }
     if( _self.qwzn!=null&&_self.qwzn!=''){
-        str+='<p>期望只能：'+_self.qwzn+'</p>'
+        str+='<p>期望职能：'+_self.qwzn+'</p>'
     }
     if( _self.qwdd!=null&&_self.qwdd!=''){
         str+='<p>期望地点：'+_self.qwdd+'</p>'
@@ -372,10 +424,6 @@ obj_zyyx.prototype.bindingSJ=function (){
             str+='<ul>'
             str+='<li>'
             str+='期望行业 <input id="jl_qwhy" value="'+str2+'" type="text" class="form-control zp_jianli_zl_3_input1 ">'
-            str+='<em></em>'
-            str+='</li>'
-            str+='<li>'
-            str+='目前行业 <input id="jl_qwhy" value="'+str3+'" type="text" class="form-control zp_jianli_zl_3_input1 ">'
             str+='<em></em>'
             str+='</li>'
             str+='<li>'
@@ -424,13 +472,38 @@ obj_zyyx.prototype.bindingSJ=function (){
                 $('#zyyx_cont').css({"display":"block"});
                 $(this).parent().parent().remove()
             })
-            $('.zp_jianli_zl_3').find('button').eq(0).on('click',function (){
-                alert('ajax')
+            $('.zp_jianli_zl_3').find('button').eq(0).on('click',function (){       //职业意向修改事件
+                var xgk=$(this).parent().parent();
+                var o_qwhy= $('#jl_qwhy').val().split('/');      //期望行业的数组
+                var shuzu=[];                                   //存放的数组
+                for(var i=0;i<o_qwhy.length;i++){
+                    shuzu[i]={fieldId:"3",fieldName:o_qwhy[i]}
+                }
+                var pcont={
+                    fields:shuzu,                                   //行业
+                    resumeIntentPosition:$('#jl_qwzn').val(),   //期望职能
+                    resumeWorkspace:$('#jl_qwdd').val(),        //期望地点
+                    resumeIntentYm:$('#jl_qwnx input').eq(0).val(),//期望年薪
+                    resumeYm:$('#jl_mqnx input').eq(0).val()     //当前年息
+                };
+                $.ajax({
+                    type:"post",    //提交方式
+                    async:true,  //是否异步
+                    contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                    data:JSON.stringify(pcont),        //转为JSON格式
+                    url:path+'Resume/updateResume.do',    //路径
+                    success:function (data){//data 就是数据 json
+                        xgk.remove();//删除修改框
+                        _self.init();//重新载入
+                        $('#zyyx_cont').css({"display":"block"})   //显示
+
+                    },error:function (){ //报错执行的
+                        alert('基本资料修改错误')
+                    }
+
+                })
             })
 
-            function ww(){
-                $()
-            }
         }else{
 
         }
@@ -605,9 +678,11 @@ obj_gzjl.prototype.bindingSJ=function (){
             $(this).siblings('.zp_jianli_zl_4').find('button').eq(1).on('click',function (){ //添加简历的取消事件
                 tj_kg=true;
                 $(this).parent().parent().remove();
-            })
+            });
             $(this).siblings('.zp_jianli_zl_4').find('button').eq(0).on('click',function (){ //添加简历提交事件
             //    在这里向后台提交表单
+
+
 
 
             })

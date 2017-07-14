@@ -91,8 +91,8 @@
     w.welfare_id, w.welfare_name, f.field_id, f.field_name
   </sql>
   <sql id="Base_Column_List">
-    postion_id, p.company_id, postion_name, postion_company, postion_ym, postion_mm, postion_space,
-    postion_time, postion_education, postion_exp, postion_age, postion_description, postion_welfare,
+    p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
+    p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
     p.delete_flat
   </sql>
   <select id="selPostionByListId" resultMap="selPostionList" parameterType="java.util.List">
@@ -106,14 +106,28 @@
       #{pid}
     </foreach>
   </select>
-  <select id="selPostionList" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzPostion">
+  <select id="selPostionList" resultMap="BaseResultMap" parameterType="Map">
     select
+    p.postion_id
+    from xz_postion p LEFT JOIN xz_company c on p.company_id = c.company_id LEFT JOIN xz_company_domain d on c.company_id = d.company_id LEFT JOIN xz_field f on d.field_id = f.field_id
+    where p.delete_flat = 0 and (f.field_type = 1 or f.field_type is null)
+    <if test="fields!=null">
+      and f.field_name in
+      <foreach collection="fields" item="field" index="index" open="(" close=")" separator=",">
+        #{field}
+      </foreach>
+    </if>
+    <if test="nature!=null">
+      and c.company_nature = #{nature,jdbcType=INTEGER}
+    </if>
+    GROUP BY p.postion_id
+    <!--select
     <include refid="Base_Column_List" />
     from xz_postion p LEFT JOIN xz_company c on p.company_id = c.company_id
     where p.delete_flat = 0
     <if test="company!=null and company.domain!=null">
       and c.domain = #{company.domain,jdbcType=VARCHAR}
-    </if>
+    </if>-->
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">

@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%--引入jstl--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -611,126 +613,25 @@
     <div class="com_position1">
         <div class="com_top">
             <h4>行业名企 <a href=""><span>更多名企 &raquo</span></a>></h4>
+            <c:forEach var="c1" items="${clist}">
             <div class="com_com">
                 <a href="" style="display: block;text-align: center">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
                 </a>
-                <a href=""><p class="com_p1">推荐算法工程师</p></a>
-                <a href=""><p class="com_p1">结构工程师-手机</p></a>
+                <c:forEach var="p1" items="${c1.postions}">
+                <a href=""><p class="com_p1">${p1.postionName}</p></a>
+                </c:forEach>
                 <div class="com_morem">
                     <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
+                    <span class="com_sp"> <span style="color: #fc6866">${c1.pcount} </span> 个在招职位</span>
                 </div>
                 <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
+                <c:forEach var="w1" items="${c1.welfares}">
+                    <span class="com_sp2">${w1.welfareName}</span>
+                </c:forEach>
                 </div>
             </div>
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
-                </a>
-                <a href=""><p class="com_p1">推荐算法工程师</p></a>
-                <a href=""><p class="com_p1">结构工程师-手机</p></a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
-                </a>
-                <a href=""><p class="com_p1">推荐算法工程师</p></a>
-                <a href=""><p class="com_p1">结构工程师-手机</p></a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
-                </a>
-                <a href=""><p class="com_p1">推荐算法工程师</p></a>
-                <a href=""><p class="com_p1">结构工程师-手机</p></a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
-                </a>
-                <a href=""><p class="com_p1">推荐算法工程师</p></a>
-                <a href=""><p class="com_p1">结构工程师-手机</p></a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
-                </a>
-                <a href=""><p class="com_p1">推荐算法工程师</p></a>
-                <a href=""><p class="com_p1">结构工程师-手机</p></a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
-                </a>
-                <a href=""><p class="com_p1">推荐算法工程师</p></a>
-                <a href=""><p class="com_p1">结构工程师-手机</p></a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
-                </a>
-                <a href=""><p class="com_p1">推荐算法工程师</p></a>
-                <a href=""><p class="com_p1">结构工程师-手机</p></a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 

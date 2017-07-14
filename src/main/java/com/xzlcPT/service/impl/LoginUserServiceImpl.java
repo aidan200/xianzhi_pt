@@ -27,7 +27,7 @@ public class LoginUserServiceImpl implements LoginUserService {
     /**
      *前台方法
      */
-
+    //登录
     @Override
     public Map sellogin(String username, String passowrd) {
         Map<String,Object> rsMap = new HashMap<>();
@@ -48,6 +48,11 @@ public class LoginUserServiceImpl implements LoginUserService {
             rsMap.put("msg","miss");
         }
         return rsMap;
+    }
+    //修改个人信息
+    public int updateLogin(XzLogin login){
+
+        return 0;
     }
 
     /**
