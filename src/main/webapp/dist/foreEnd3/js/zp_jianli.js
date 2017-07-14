@@ -108,6 +108,9 @@ obj_yhxx.prototype.bindingSJ=function (){
                 $('.zp_jianli_cont_left_top2_top').css({"display":"block"}); //显示
             })
             $('.zp_jianli_zl_1').find('button').eq(0).on('click',function (){
+                var xgk=$(this).parent().parent();               //修改框
+
+
                 var www=$('#jl_dqhy').val().split('/');
                 var resume={
                     resumeName:$('#jl_name').val(),                 //姓名//性别
@@ -126,8 +129,9 @@ obj_yhxx.prototype.bindingSJ=function (){
                     url:path+'Resume/updateResume.do',    //路径
 
                     success:function (data){//data 就是数据 json
-
-                            alert('成功了')
+                             xgk.remove();          //删除修改框
+                            _self.init();           //重新加载数据
+                            $('.zp_jianli_cont_left_top2_top').css({"display":"block"});//显示出来
 
                     },error:function (){ //报错执行的
                         alert('基本信息修改失败了')
@@ -165,12 +169,13 @@ obj_zbzl.prototype.init=function (){    //初始化赋值
         async:true,  //是否异步
         url:path+'Resume/selResume.do',             //路径
         success:function (data){                //data 就是数据 json
-            _self.cstime=s.member.memberBirth;    //出生年月
-            _self.sj=s.member.memberPhone;          //手机号
-            _self.xb=s.member.memberSex;            //性别
+            _self.cstime=data.resume.resumeBirth;    //出生年月
+            _self.sj=data.resume.resumePhone;          //手机号
+            _self.xb=data.resume.resumeSex;            //性别
             _self.zt=data.resume.resumeState;       //状态
             _self.hyzk=data.resume.resumeMarriage; //婚姻状况
-            _self.youxiang=s.member.memberEmail;    //邮箱
+            _self.youxiang=data.resume.resumeEmail;    //邮箱
+
             _self.bindingDOM();
             _self.bindingSJ();
         },error:function (){ //报错执行的
@@ -199,9 +204,9 @@ obj_zbzl.prototype.bindingDOM=function (){//绑定基本信息
     }
     if(_self.zt==0){                        //状态
         _self.DOM.zt.html("就职");
-    }else if(_self.hyzk==1){
+    }else if(_self.zt==1){
         _self.DOM.zt.html("未就职");
-    }else if(_self.hyzk==2){
+    }else if(_self.zt==2){
         _self.DOM.zt.html("保密");
     }
 };
@@ -217,7 +222,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
             if(_self.xb==0){
                 str+='<div>性别 <input name="xb" checked  type="radio" id="xp_0" value="0"><label for="xp_0">男</label><input name="xb" value="1" id="xp_1" type="radio" ><label for="xp_1" >女</label></div>';
             }else{
-                str+='<div>性别 <input name="xb"  type="radio" id="xp_0" value="0"><label for="xp_0">男</label><input name="xb" value="1" id="xp_1" type="radio" ><label for="xp_1" >女</label></div>';
+                str+='<div>性别 <input name="xb"  type="radio" id="xp_0" value="0"><label for="xp_0">男</label><input name="xb" checked value="1" id="xp_1" type="radio" ><label for="xp_1" >女</label></div>';
             }
 
             str+='<div class="pull-left">'
@@ -280,38 +285,44 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
         });
 
         $('.zp_jianli_cont_left_jbzl_middle').css({"display":"none"});
+                                               //修改框
         $('.zp_jianli_zl_2').find('button').eq(1).on('click',function (){
                 kg=true;
                 $('.zp_jianli_cont_left_jbzl_middle').css({"display":"block"});
                 $(this).parent().parent().remove();
         })
         $('.zp_jianli_zl_2').find('button').eq(0).on('click',function (){       //基本状态提交事件
+            var tck=$(this).parent().parent()
             var oxb = $('.zp_jianli_zl_2 input[name="xb"]:checked ').val();      //性别的值
             var ozt=$('select').eq(0).val();                                     //状态的值
             var ohyzt=$('select').eq(1).val();                                   //婚姻状态的值
             var resume = {
-
-                resumeState:ozt,                         //状态
-                resumeMarriage:ohyzt                    //婚姻状况
+                resumeId:ID,                             //id号
+                resumeState:ozt,                         //状态           好使
+                resumeMarriage:ohyzt,                    //婚姻状况        好使
+                resumeBirth:$('#jl_cstime').val(),      //出生年月
+                resumePhone:$('#jl_sj').val(),          //手机
+                resumeSex:oxb,                           //性别
+                resumeEmail:$('#jl_yx').val(),          //邮箱
             }
-            var member={
-                memberBirth:$('#jl_cstime').val(),      //出生年月
-                memberPhone:$('#jl_sj').val(),          //手机
-                memberSex:oxb,                           //性别
-                memberEmail:$('#jl_yx').val(),          //邮箱
-                memberId:memberId,
+            /*var member={
+                resumeBirth:$('#jl_cstime').val(),      //出生年月
+                resumePhone:$('#jl_sj').val(),          //手机
+                resumeSex:oxb,                           //性别
+                resumeEmail:$('#jl_yx').val(),          //邮箱
                 resume:resume
             };
-            member.resume = resume;
+            member.resume = resume;*/
             $.ajax({
                 type:"post",    //提交方式
                 async:true,  //是否异步
-                contentType: "application/json",
-                data:JSON.stringify(member),
-                url:path+'Member/updateMember.do',    //路径
+                contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                data:JSON.stringify(resume),        //转为JSON格式
+                url:path+'Resume/updateResume.do',    //路径
                 success:function (data){//data 就是数据 json
-
-                        alert('aaa')
+                        tck.remove();                           //删除修改框
+                        _self.init();                           //重新加载
+                        $('.zp_jianli_cont_left_jbzl_middle').css({"display":"block"})
                 },error:function (){ //报错执行的
                     alert('基本资料修改错误')
                 }
@@ -468,13 +479,37 @@ obj_zyyx.prototype.bindingSJ=function (){
                 $('#zyyx_cont').css({"display":"block"});
                 $(this).parent().parent().remove()
             })
-            $('.zp_jianli_zl_3').find('button').eq(0).on('click',function (){
-                alert('ajax')
+            $('.zp_jianli_zl_3').find('button').eq(0).on('click',function (){       //职业意向修改事件
+
+                var aaaa= $('#jl_qwhy').val().split('/');      //期望行业的数组
+                var aa={                                      //当前行业
+                    fieldId:"2",
+                    fieldName:aaaa
+                }
+                var pcont={
+                    fields:aa,                                   //行业
+                    resumeIntentPosition:$('#jl_qwzn').val(),   //期望职能
+                    resumeWorkspace:$('#jl_qwdd').val(),        //期望地点
+                    resumeIntentYm:$('#jl_qwnx input').eq(0).val(),//期望年薪
+                    resumeYm:$('#jl_mqnx input').eq(0).val()     //当前年息
+                };
+                alert($('#jl_mqnx input').eq(0).val());
+                $.ajax({
+                    type:"post",    //提交方式
+                    async:true,  //是否异步
+                    contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                    data:JSON.stringify(pcont),        //转为JSON格式
+                    url:path+'Member/updateMember.do',    //路径
+                    success:function (data){//data 就是数据 json
+
+                        alert('aaa')
+                    },error:function (){ //报错执行的
+                        alert('基本资料修改错误')
+                    }
+
+                })
             })
 
-            function ww(){
-                $()
-            }
         }else{
 
         }

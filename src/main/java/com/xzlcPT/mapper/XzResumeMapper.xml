@@ -36,6 +36,10 @@
     <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
     <result column="member_id" jdbcType="BIGINT" property="memberId" />
     <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
+    <result column="resume_sex" jdbcType="INTEGER" property="resumeSex" />
+    <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
+    <result column="resume_email" jdbcType="VARCHAR" property="resumeEmail" />
+    <result column="resume_phone" jdbcType="VARCHAR" property="resumePhone" />
     <result column="resume_field" jdbcType="VARCHAR" property="resumeField" />
     <result column="resume_workspace" jdbcType="VARCHAR" property="resumeWorkspace" />
     <result column="resume_mm" jdbcType="INTEGER" property="resumeMm" />
