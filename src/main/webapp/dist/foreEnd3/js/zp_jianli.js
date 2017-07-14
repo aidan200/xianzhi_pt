@@ -386,11 +386,8 @@ obj_zyyx.prototype.bindingDOM=function (){
     if(str2!=''&&str2!=null){
         str+='<p>期望行业：'+str2+'</p>';
     }
-    if(str3!=''&&str3!=null){
-        str+='<p>目前行业：'+str3+'</p>';
-    }
     if( _self.qwzn!=null&&_self.qwzn!=''){
-        str+='<p>期望只能：'+_self.qwzn+'</p>'
+        str+='<p>期望职能：'+_self.qwzn+'</p>'
     }
     if( _self.qwdd!=null&&_self.qwdd!=''){
         str+='<p>期望地点：'+_self.qwdd+'</p>'
@@ -427,10 +424,6 @@ obj_zyyx.prototype.bindingSJ=function (){
             str+='<ul>'
             str+='<li>'
             str+='期望行业 <input id="jl_qwhy" value="'+str2+'" type="text" class="form-control zp_jianli_zl_3_input1 ">'
-            str+='<em></em>'
-            str+='</li>'
-            str+='<li>'
-            str+='目前行业 <input id="jl_qwhy" value="'+str3+'" type="text" class="form-control zp_jianli_zl_3_input1 ">'
             str+='<em></em>'
             str+='</li>'
             str+='<li>'
@@ -480,20 +473,19 @@ obj_zyyx.prototype.bindingSJ=function (){
                 $(this).parent().parent().remove()
             })
             $('.zp_jianli_zl_3').find('button').eq(0).on('click',function (){       //职业意向修改事件
-
-                var aaaa= $('#jl_qwhy').val().split('/');      //期望行业的数组
-                var aa={                                      //当前行业
+                var xgk=$(this).parent().parent();
+                var o_qwhy= $('#jl_qwhy').val().split('/');      //期望行业的数组
+                var qwhy={                                      //期望行业
                     fieldId:"2",
-                    fieldName:aaaa
-                }
+                    fieldName:o_qwhy
+                };
                 var pcont={
-                    fields:aa,                                   //行业
+                    fields:qwhy,                                   //行业
                     resumeIntentPosition:$('#jl_qwzn').val(),   //期望职能
                     resumeWorkspace:$('#jl_qwdd').val(),        //期望地点
                     resumeIntentYm:$('#jl_qwnx input').eq(0).val(),//期望年薪
                     resumeYm:$('#jl_mqnx input').eq(0).val()     //当前年息
                 };
-                alert($('#jl_mqnx input').eq(0).val());
                 $.ajax({
                     type:"post",    //提交方式
                     async:true,  //是否异步
@@ -501,8 +493,10 @@ obj_zyyx.prototype.bindingSJ=function (){
                     data:JSON.stringify(pcont),        //转为JSON格式
                     url:path+'Member/updateMember.do',    //路径
                     success:function (data){//data 就是数据 json
+                        xgk.remove();//删除修改框
+                        _self.init();//重新载入
+                        $('#zyyx_cont').css({"display":"block"})   //显示
 
-                        alert('aaa')
                     },error:function (){ //报错执行的
                         alert('基本资料修改错误')
                     }
@@ -684,9 +678,11 @@ obj_gzjl.prototype.bindingSJ=function (){
             $(this).siblings('.zp_jianli_zl_4').find('button').eq(1).on('click',function (){ //添加简历的取消事件
                 tj_kg=true;
                 $(this).parent().parent().remove();
-            })
+            });
             $(this).siblings('.zp_jianli_zl_4').find('button').eq(0).on('click',function (){ //添加简历提交事件
             //    在这里向后台提交表单
+
+
 
 
             })
