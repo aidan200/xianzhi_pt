@@ -475,12 +475,12 @@ obj_zyyx.prototype.bindingSJ=function (){
             $('.zp_jianli_zl_3').find('button').eq(0).on('click',function (){       //职业意向修改事件
                 var xgk=$(this).parent().parent();
                 var o_qwhy= $('#jl_qwhy').val().split('/');      //期望行业的数组
-                var qwhy={                                      //期望行业
-                    fieldId:"2",
-                    fieldName:o_qwhy
-                };
+                var shuzu=[];                                   //存放的数组
+                for(var i=0;i<o_qwhy.length;i++){
+                    shuzu[i]={fieldId:"3",fieldName:o_qwhy[i]}
+                }
                 var pcont={
-                    fields:qwhy,                                   //行业
+                    fields:shuzu,                                   //行业
                     resumeIntentPosition:$('#jl_qwzn').val(),   //期望职能
                     resumeWorkspace:$('#jl_qwdd').val(),        //期望地点
                     resumeIntentYm:$('#jl_qwnx input').eq(0).val(),//期望年薪
