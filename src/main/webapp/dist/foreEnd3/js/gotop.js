@@ -5,11 +5,11 @@ $(window).scroll(function () {
     var sc = $(window).scrollTop();
 //        var rwidth = $(window).width()
     if (sc > 300) {
-        $("#index_bb").css("display", "block");
+        $("#goTopBtn").css("display", "block");
 
 //            $("#goTopBtn").css("left", (rwidth - 36) + "px")
     } else {
-        $("#index_bb").css("display", "none");
+        $("#goTopBtn").css("display", "none");
 
 
     }

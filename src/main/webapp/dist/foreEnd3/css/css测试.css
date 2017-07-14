@@ -2203,19 +2203,26 @@ footer {
     width: 50px;
     height: 50px;
     cursor: pointer;
-}
-#index_bb{
-    width: 50px;
-    height: 200px;
-    position: fixed;
-    right: 10px;
-    bottom: 50px;
     display: none;
 }
-.index_gh{
+
+#index_bb {
+    width: 50px;
+    height: 60px;
+    position: fixed;
+    right: 10px;
+    bottom: 70px;
+    /*display: none;*/
+}
+
+.index_gh {
     width: 50px;
     height: 50px;
     margin-top: 10px;
+    z-index: 99999;
+    position: fixed;
+    right: 10px;
+    bottom: 20px;
 }
 
 /*---------------------登录---------------------------*/
