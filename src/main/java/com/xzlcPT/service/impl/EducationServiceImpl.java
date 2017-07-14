@@ -57,6 +57,11 @@ public class EducationServiceImpl implements EducationService {
     }
 
     @Override
+    public int insertEducation(XzEducation education) {
+        return 0;
+    }
+
+    @Override
     public List<XzEducation> selectMemberId(Long menberId) {
         return educationMapper.selectMemberId(menberId);
     }

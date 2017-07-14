@@ -422,8 +422,12 @@ obj_zyyx.prototype.bindingSJ=function (){
 
             str+='<div class="zp_jianli_zl_3">'
             str+='<ul>'
-            str+='<li>'
-            str+='期望行业 <input id="jl_qwhy" value="'+str2+'" type="text" class="form-control zp_jianli_zl_3_input1 ">'
+            str+='<li  class="li_01">'
+            str+='期望行业 <div id="zp_qwhy" value="'+str2+'" type="text" class="form-control zp_jianli_zl_3_input1 ">'
+            //这块循环出来  需要判断是否有内容没有给li设置一个高度
+            str+='<div><div>前端</div><a href="javascript:;">x</a></div>'
+
+            str+='</div>'
             str+='<em></em>'
             str+='</li>'
             str+='<li>'
@@ -453,8 +457,63 @@ obj_zyyx.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_zyyx_yl').after(str);
-
+            zhisha_01()
             $('#zyyx_cont').css({"display":"none"});
+
+            function zhisha_01(){                   //一些判断什么的
+                if( $('#zp_qwhy div').length==0){
+                    $('.li_01').css({"height":"30px"})
+                }else{
+                    $('.li_01').css({"height":"auto"})
+                }
+                $('#zp_qwhy a').on('click',function (){
+                    $(this).parent().remove();
+                    if( $('#zp_qwhy div').length==0){
+                        $('.li_01').css({"height":"30px"})
+                        $('#zp_qwhy').html('请选择期望的行业')
+                        $('#zp_qwhy').css({"line-height":"10px"})
+                    }else{
+                        $('.li_01').css({"height":"auto"})
+                         $('#zp_qwhy').css({"line-height":"26px"})
+                    }
+                })
+            }
+
+            ////////////////////////////////选择行业//////////////////////////////////
+            $('.zp_jianli_zl_3 em').eq(0).on("click",function (event){       //弹出框事件
+                event.preventDefault();
+                $('.cd-popup').addClass('is-visible');
+            });
+            $('.cd-popup').on('click', function(event){                    //返回按钮
+                if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
+                    event.preventDefault();
+                    $(this).removeClass('is-visible');
+                }
+            });
+            $(document).keyup(function(event){                            //键盘关闭
+                if(event.which=='27'){
+                    $('.cd-popup').removeClass('is-visible');
+                }
+            });
+            $('#xz_qwhy_qd').on('click',function (){                    //确认按钮
+                //第一步获取所有选中的复选框
+                var attr_1=[];
+                $('#qwhy__').find('input[type=checkbox]:checked').each(function (index,ele){
+                    attr_1[index]={value:$(ele).attr('data-value'),fieldId:$(ele).attr('data-fieldId'),fieldtype:$(ele).attr('data-fieldtype')}
+                })
+
+                var str_qwhy=''                 //所选的期望行业
+                for(var i=0;i<attr_1.length;i++){
+                    str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
+                }
+                $('#zp_qwhy').html(str_qwhy);        //赋值
+                $('.cd-popup').removeClass('is-visible');
+                zhisha_01();                         //删除技能自杀按钮
+
+
+            });
+
+
 
             // $('#jl_qwnx input').keyup(function (event){         //鼠标抬起事件
             //         var aa_qwnx=$('#jl_qwnx').find('input').eq(0).val()*$('#jl_qwnx').find('input').eq(1).val(); //
@@ -465,8 +524,6 @@ obj_zyyx.prototype.bindingSJ=function (){
             //     $('#qwnx_cont').html(aa_qwnx/10000);             //目前年薪
             // })
 
-
-
             $('.zp_jianli_zl_3').find('button').eq(1).on('click',function (){
                 kg=true;
                 $('#zyyx_cont').css({"display":"block"});
@@ -474,12 +531,19 @@ obj_zyyx.prototype.bindingSJ=function (){
             })
             $('.zp_jianli_zl_3').find('button').eq(0).on('click',function (){       //职业意向修改事件
                 var xgk=$(this).parent().parent();
-                var o_qwhy= $('#jl_qwhy').val().split('/');      //期望行业的数组
+
                 var shuzu=[];                                   //存放的数组
-                for(var i=0;i<o_qwhy.length;i++){
-                    shuzu[i]={fieldId:"3",fieldName:o_qwhy[i]}
+                var qwhy3=$('#zp_qwhy > div > div');
+
+
+                for(var i=0;i<qwhy3.length;i++){
+                    shuzu[i]={
+                        fieldId: $(qwhy3).eq(i).attr('data-fieldid'),
+                        fieldType:$(qwhy3).eq(i).attr('data-fieldtype'),
+                    }
                 }
                 var pcont={
+                    resumeId:ID,                                    //ID
                     fields:shuzu,                                   //行业
                     resumeIntentPosition:$('#jl_qwzn').val(),   //期望职能
                     resumeWorkspace:$('#jl_qwdd').val(),        //期望地点
