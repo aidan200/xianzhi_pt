@@ -1936,7 +1936,7 @@ footer {
     text-align: center;
     /*margin-bottom: 76px;*/
     overflow: hidden;
-    padding-bottom: 76px;
+    padding-bottom: 56px;
 }
 
 .index_04 h3 {
@@ -2389,7 +2389,7 @@ footer {
 /*新改的社区*/
 .index_list {
     width: 1000px;
-    margin: 50px auto;
+    margin: 30px auto;
     overflow: hidden;
 }
 

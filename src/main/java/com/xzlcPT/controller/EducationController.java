@@ -4,7 +4,9 @@ import com.util.ComPareDate;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzEducation;
 import com.xzlcPT.bean.XzLogin;
+import com.xzlcPT.bean.XzResumeEducation;
 import com.xzlcPT.service.EducationService;
+import com.xzlcPT.service.XzResumeEducationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -33,7 +35,7 @@ import java.util.Map;
 @SessionAttributes("userLogin")
 public class EducationController extends BaseController {
     @Autowired
-    private EducationService educationService;
+    private XzResumeEducationService resumeEducationService;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -42,6 +44,64 @@ public class EducationController extends BaseController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
+    @ResponseBody
+    @RequestMapping("selEducationByResumeId.do")
+    public Map<String,Object> selEducationByResumeId(Long resumeId){
+        Map<String,Object> map = new HashMap<>();
+        List<XzResumeEducation> list = resumeEducationService.selectByResumeId(resumeId);
+        map.put("educationList",list);
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("selEducationById.do")
+    public Map<String,Object> selEducationById(Long educationId){
+        Map<String,Object> map = new HashMap<>();
+        XzResumeEducation education = resumeEducationService.selectById(educationId);
+        map.put("education",education);
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("addEducation.do")
+    public Map<String,Object> addEducation(XzResumeEducation education){
+        Map<String,Object> map = new HashMap<>();
+        int i = resumeEducationService.insertEducation(education);
+        if(i==1){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("updateEducation.do")
+    public Map<String,Object> updateEducation(XzResumeEducation education){
+        Map<String,Object> map = new HashMap<>();
+        int i = resumeEducationService.updateEducation(education);
+        if(i==1){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("deleteEducation.do")
+    public Map<String,Object> deleteEducation(Long educationId){
+        Map<String,Object> map = new HashMap<>();
+        int i = resumeEducationService.deleteEducation(educationId);
+        if(i==1){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
+    }
+
+    /*
     //按memberId查询
     @ResponseBody
     @RequestMapping("selEducationByMemberId")
@@ -49,6 +109,15 @@ public class EducationController extends BaseController {
         Map<String,Object> map = new HashMap<>();
         List<XzEducation> list = educationService.selectMemberId(memberId);
         map.put("educationList",list);
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("addEducation.do")
+    public Map<String,Object> addEducation(XzEducation education){
+        Map<String,Object> map = new HashMap();
+
+
         return map;
     }
 
@@ -63,13 +132,13 @@ public class EducationController extends BaseController {
         return mv;
     }
 
-    /**
+    *//**
      * 添加学历信息方法
      *
      * @param xzEducation
      * @param result
      * @return
-     */
+     *//*
     @RequestMapping("AddEducation.do")
     public ModelAndView addEducation(@Validated({XzEducation.F1.class}) XzEducation xzEducation, BindingResult result) {
         ModelAndView mv = new ModelAndView("foreEnd/addEducation");
@@ -107,12 +176,12 @@ public class EducationController extends BaseController {
         return mv;
     }
 
-    /**
+    *//**
      * 跳转到修改学历信息页面
      *
      * @param educationID
      * @return
-     */
+     *//*
     @RequestMapping("goUpdateEducation.do")
     public ModelAndView goUpdateEducation(Long educationID) {
         ModelAndView mv = new ModelAndView("foreEnd/addEducation");
@@ -124,13 +193,13 @@ public class EducationController extends BaseController {
         return mv;
     }
 
-    /**
+    *//**
      * 修改学历信息
      *
      * @param xzEducation
      * @param result
      * @return
-     */
+     *//*
     @RequestMapping("updateEducation.do")
     public ModelAndView updateEducation(@Validated({XzEducation.F1.class}) XzEducation xzEducation, BindingResult result) {
         ModelAndView mv = new ModelAndView("foreEnd/addEducation");
@@ -158,12 +227,12 @@ public class EducationController extends BaseController {
         return mv;
     }
 
-    /**
+    *//**
      * 删除学历信息
      *
      * @param edID
      * @return
-     */
+     *//*
     @RequestMapping("deleteEducation.do")
     public ModelAndView deleteEducation(long edID) {
         ModelAndView mv = new ModelAndView("redirect:/UserInfo/goUserInfo.do");
@@ -216,12 +285,12 @@ public class EducationController extends BaseController {
         return mv;
     }
 
-    /**
+    *//**
      * 跳转到添加工作经验方法
      *
      * @param loginID
      * @return
-     */
+     *//*
     @RequestMapping("goAddEducationEnd.emp")
     public ModelAndView goAddEducationEnd(long loginID) {
         System.out.println("goAddEducationEnd.emp" + loginID);
@@ -334,5 +403,5 @@ public class EducationController extends BaseController {
         return mv;
     }
 
-
+*/
 }

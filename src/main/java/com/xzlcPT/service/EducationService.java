@@ -12,12 +12,15 @@ import java.util.List;
  * @create 2017/3/30 17:43
  **/
 public interface EducationService {
+
+    //    根据member ID 查询
+    List<XzEducation> selectEducationByID(long id);
+    // 添加学历
+    int insertEducation(XzEducation education);
+
+
     //    新增学历信息
     int addUserInfo(XzEducation ed);
-
-    //    根据登录表 ID 查询
-    List<XzEducation> selectEducationByID(long id);
-
     // memberId 查询
     List<XzEducation> selectMemberId(Long menberId);
 
