@@ -21,4 +21,24 @@ public class XzJobExpServiceImpl implements XzJobExpService{
     public List<XzJobExp> selectByResumeId(Long resumeId) {
         return jobExpMapper.selectByResumeId(resumeId);
     }
+
+    @Override
+    public XzJobExp selectByJobExpId(Long jobExpId) {
+        return jobExpMapper.selectByPrimaryKey(jobExpId);
+    }
+
+    @Override
+    public int insertJobExp(XzJobExp jobExp) {
+        return jobExpMapper.insert(jobExp);
+    }
+
+    @Override
+    public int updateJobExp(XzJobExp jobExp) {
+        return jobExpMapper.updateByPrimaryKeySelective(jobExp);
+    }
+
+    @Override
+    public int deleteJobExpById(Long jobExpId) {
+        return jobExpMapper.deleteByPrimaryKey(jobExpId);
+    }
 }

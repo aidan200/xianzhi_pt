@@ -12,6 +12,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--引入jstl日期类型--%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="myPage" uri="/xianzhiOA/pageTag" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -100,13 +102,15 @@
                 <div class="pull-left" style="width: 42px;color: #999">行业：</div>
                 <div class="pull-left" style="width: 766px">
                     <ul>
-                        <li><a href="###" rel="aspect" id="ww" inpName="ccc" inpValue="ggg" class="divSmall"> 电子·通信·硬件</a></li>
-                        <li><a href="###" rel="aspect2" id="xx" class="divSmall">互联网·电商</a></li>
-                        <li><a href="###" rel="aspect3" id="yy" class="divSmall">网络游戏</a></li>
-                        <li><a href="###" rel="aspect4" id="zz" class="divSmall">计算机软件</a></li>
-                        <li><a href="###" rel="aspect5" id="aaa" class="divSmall">IT服务</a></li>
-                        <li><a href="###" rel="aspect6" id="bbb" class="divSmall">通信服务</a></li>
-
+                        <li><a href="###" rel="aspect" id="嵌入式" inpName="ccc" inpValue="嵌入式" class="divSmall"> 教育企业</a></li>
+                        <li><a href="###" rel="aspect2" id="游戏" class="divSmall">游戏开发</a></li>
+                        <li><a href="###" rel="aspect3" id="移动" class="divSmall">政府医疗</a></li>
+                        <li><a href="###" rel="aspect4" id="应用开发" class="divSmall">电子商务</a></li>
+                        <li><a href="###" rel="aspect5" id="前端开发" class="divSmall">社交通讯</a></li>
+                        <li><a href="###" rel="aspect6" id="新闻资讯" class="divSmall">新闻资讯</a></li>
+                        <li><a href="###" rel="aspect7" id="金融财务" class="divSmall">金融财务</a></li>
+                        <li><a href="###" rel="aspect8" id="娱乐应用" class="divSmall">娱乐应用</a></li>
+                        <li><a href="###" rel="aspect9" id="资源管理" class="divSmall">资源管理</a></li>
                     </ul>
                 </div>
             </div>
@@ -197,10 +201,10 @@
                             <p> <span>
                                 <c:choose>
                                     <c:when test="${p.postionMm==p.postionYm}">
-                                        ${p.postionMm*12/10000}万
+                                        ${fn:replace((p.postionMm*12/10000),".0","")}万
                                     </c:when>
                                     <c:otherwise>
-                                        ${p.postionMm*12/10000}万-${p.postionYm*12/10000}万
+                                        ${fn:replace((p.postionMm*12/10000),".0","")}万-${fn:replace((p.postionYm*12/10000),".0","")}万
                                     </c:otherwise>
                                 </c:choose>
                             </span>&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionExp}
@@ -263,13 +267,14 @@
             <div class="zp_botv">
                 <div class="zp_pl">
                     <ul class="pagination zp_pa">
-                        <li class="b"><a href="#">上一页</a></li>
+<%--                        <li class="b"><a href="#">上一页</a></li>
                         <li class="active"><a href="#">1</a></li>
                         <li class="a"><a href="#">2</a></li>
                         <li class="a"><a href="#">3</a></li>
                         <li class="a"><a href="#">4</a></li>
                         <li class="a"><a href="#">5</a></li>
-                        <li class="a"><a href="#">下一页</a></li>
+                        <li class="a"><a href="#">下一页</a></li>--%>
+                        <myPage:paging length="10" page="${page}" pages="${pages}"/>
                     </ul>
                     <div class="zp_page">共 <span>38</span> 页</div>
                 </div>
@@ -481,6 +486,7 @@
     $(document).ready(function () {
         $(".divSmall").click(function () {
             var isAlreadyHave = false;
+            var inputAlreadyHave = false;
             var thisID = $(this).attr("id");
             var classType = $(this).attr("rel");
             var inpName = $(this).attr("inpName");
@@ -488,11 +494,13 @@
 
             $(".divSmall2").each(function () {
                 if ($(this).attr("rel") == thisID) {
-                    isAlreadyHave = true;
+                    isAlreadyHave = true
+                    inputAlreadyHave = true;
                 }
                 if ($(this).attr("ttype") == classType) {
                     goBegin($(this).attr("rel"));
                     $(this).remove();
+                    removeMyInp($(this).attr("rel")+"inp")
                 }
             });
 
@@ -509,7 +517,8 @@
             goBegin($(this).parent().attr("rel"));
             removeMyInp($(this).attr("rel"));
             $(this).parent().remove();
-        });
+        })
+        alert('${queryPostion.nature==null}');
     });
     //输出一个div
     function writeDiv(name, id, classONE, inpName, inpValue) {

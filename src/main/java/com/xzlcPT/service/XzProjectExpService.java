@@ -9,4 +9,8 @@ import java.util.List;
  */
 public interface XzProjectExpService {
     List<XzProjectExp> selectByResumeId(Long resumeId);
+    XzProjectExp selectByProjectExpId(Long projectExpId);
+    int insertProjectExp(XzProjectExp projectExp);
+    int updateProjectExp(XzProjectExp projectExp);
+    int deleteProjectExpById(Long projectExpId);
 }

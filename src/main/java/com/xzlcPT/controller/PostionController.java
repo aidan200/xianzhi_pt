@@ -43,17 +43,17 @@ public class PostionController extends BaseController{
         System.out.println(nature);
         Map map = new HashMap();
         map.put("nature",nature);
-        map.put("fields",fields);
+        //map.put("fields",fields);*/
         ModelAndView mv = new ModelAndView("foreEnd3/zp_gslb");
         PageBean<XzPostion> pageBean = postionService.selPostionIndex(page,rows,map);
-        /*List<XzPostion> pp = pageBean.getList();
+        List<XzPostion> pp = pageBean.getList();
         System.out.println(pp);
         mv.addObject("postionList",pageBean.getList());
         mv.addObject("page", pageBean.getPageNum());
         mv.addObject("pages", pageBean.getPages());
         mv.addObject("rows", pageBean.getPageSize());
         mv.addObject("total", pageBean.getTotal());
-        mv.addObject("queryPostion",postion);*/
+        mv.addObject("queryPostion",map);
         return mv;
     }
 
