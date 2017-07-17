@@ -574,7 +574,13 @@
                 </div>
             </div>
         </div>
-
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(".hotCity").click(function(){
+                    $("#div6").css("background-color","#FC9A2F");
+                });
+            });
+        </script>
 
         <%--添加上面一堆标签--%>
         <script type="text/javascript">
