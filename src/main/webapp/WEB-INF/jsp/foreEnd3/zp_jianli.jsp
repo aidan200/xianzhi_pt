@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_jianli.css">
     <script>
         var path='${pageContext.request.contextPath}/';     //全局路径
-        var ID=${param};                                          //ID
+        var ID=1;                                          //ID
         var memberId;
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_jianli.js"></script>
