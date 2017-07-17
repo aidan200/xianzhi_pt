@@ -13,6 +13,8 @@ public interface XzFieldMapper {
 
     List<XzField> selectByType(int fieldType);
 
+    List<XzField> selectSkillByResumeId(Long resumeId);
+
     int deleteByPrimaryKey(Long fieldId);
 
     int insert(XzField record);

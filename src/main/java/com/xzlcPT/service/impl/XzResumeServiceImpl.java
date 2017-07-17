@@ -2,8 +2,10 @@ package com.xzlcPT.service.impl;
 
 import com.xzlcPT.bean.XzField;
 import com.xzlcPT.bean.XzResume;
+import com.xzlcPT.bean.XzResumeSkill;
 import com.xzlcPT.dao.XzFieldMapper;
 import com.xzlcPT.dao.XzResumeMapper;
+import com.xzlcPT.dao.XzResumeSkillMapper;
 import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,8 @@ public class XzResumeServiceImpl implements XzResumeService{
     private XzResumeMapper resumeMapper;
     @Autowired
     private XzFieldMapper fieldMapper;
-
+    @Autowired
+    private XzResumeSkillMapper resumeSkillMapper;
 
     @Override
     public XzResume selectByMemberId(Long memberId) {
