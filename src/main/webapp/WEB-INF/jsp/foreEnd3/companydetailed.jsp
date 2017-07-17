@@ -12,6 +12,26 @@
 <html lang="en">
 <head>
     <jsp:include page="distforeEnd.jsp"/>
+    <style>
+        .cd-popup-trigger {
+            display: inline-block;
+            width: 160px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            color: #FFF;
+            font-size: 16px;
+            text-transform: uppercase;
+            background: #f8a91e;
+            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.07);
+            border-radius: 3px;
+            margin-top: 30px;
+        }
+
+        .cd-popup-trigger:hover {
+            color: #ffffff;
+        }
+    </style>
 
 </head>
 <body>
