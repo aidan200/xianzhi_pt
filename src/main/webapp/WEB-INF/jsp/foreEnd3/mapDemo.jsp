@@ -47,12 +47,14 @@
             console.log("成功");
             initMaps(position);
         }
+
+
         var address;
         var map;
         var city = "沈阳市-和平区";
+        var x = 116.404;
+        var y = 39.915;
         function initMaps(position) {
-            var x = 116.404;
-            var y = 39.915
             if(position){
                 x = position.coords.latitude
                 y = position.coords.longitude;
