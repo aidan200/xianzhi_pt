@@ -882,15 +882,11 @@ ul {
 }
 
 .zp_one span {
-    /*display: inline-block;*/
-    background-color: #FC9A2F;
+    display: inline-block;
+    background-color: #FFFFFF;
     color: #FFFFFF;
     padding: 3px 15px;
     border-radius: 3px;
-}
-
-#div6{
-    display: none;
 }
 
 /*2*/

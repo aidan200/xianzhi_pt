@@ -533,7 +533,7 @@
                 function change(t,_self) {
                     var str = '<div style="padding-left: 20px">'+_self.innerHTML+'</div><ul class="zp_ul">';
                     for(var i = 0;i< map[t].length;i++){
-                        str += "<li><a onclick='got("+t+","+i+")'>"+map[t][i]+"</a></li>";
+                        str += "<li><a onclick='got("+t+","+i+")' class='ohoh'>"+map[t][i]+"</a></li>";
                     }
                     str += "</ul>"
                     var uul = document.getElementById("gggui");
@@ -614,10 +614,10 @@
                 })
                 alert('${queryPostion.nature==null}');
                 $(".hotCity").click(function(){
-                    $("#div6").css("display","inline-block");
+                    $("#div6").css("background-color","#FC9A2F");
                 });
                 $(".cd-popup-trigger ").click(function(){
-                    $("#div6").css("display","inline-block");
+                    $("#div6").css("background-color","#FC9A2F");
                 });
             });
             //输出一个div
