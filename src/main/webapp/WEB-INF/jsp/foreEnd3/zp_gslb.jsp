@@ -102,15 +102,15 @@
                 <div class="pull-left" style="width: 42px;color: #999">行业：</div>
                 <div class="pull-left" style="width: 766px">
                     <ul>
-                        <li><a href="###" rel="aspect" id="嵌入式" inpName="ccc" inpValue="嵌入式" class="divSmall"> 教育企业</a></li>
-                        <li><a href="###" rel="aspect2" id="游戏" class="divSmall">游戏开发</a></li>
-                        <li><a href="###" rel="aspect3" id="移动" class="divSmall">政府医疗</a></li>
-                        <li><a href="###" rel="aspect4" id="应用开发" class="divSmall">电子商务</a></li>
-                        <li><a href="###" rel="aspect5" id="前端开发" class="divSmall">社交通讯</a></li>
-                        <li><a href="###" rel="aspect6" id="新闻资讯" class="divSmall">新闻资讯</a></li>
-                        <li><a href="###" rel="aspect7" id="金融财务" class="divSmall">金融财务</a></li>
-                        <li><a href="###" rel="aspect8" id="娱乐应用" class="divSmall">娱乐应用</a></li>
-                        <li><a href="###" rel="aspect9" id="资源管理" class="divSmall">资源管理</a></li>
+                        <li><a href="###" rel="aspect" id="教育培训" inpName="fields" inpValue="教育培训" class="divSmall"> 教育培训</a></li>
+                        <li><a href="###" rel="aspect2" id="游戏开发" inpName="fields" inpValue="游戏开发" class="divSmall">游戏开发</a></li>
+                        <li><a href="###" rel="aspect3" id="政府医疗" inpName="fields" inpValue="政府医疗" class="divSmall">政府医疗</a></li>
+                        <li><a href="###" rel="aspect4" id="电子商务" inpName="fields" inpValue="电子商务" class="divSmall">电子商务</a></li>
+                        <li><a href="###" rel="aspect5" id="社交通讯" inpName="fields" inpValue="社交通讯" class="divSmall">社交通讯</a></li>
+                        <li><a href="###" rel="aspect6" id="新闻资讯" inpName="fields" inpValue="新闻资讯" class="divSmall">新闻资讯</a></li>
+                        <li><a href="###" rel="aspect7" id="金融财务" inpName="fields" inpValue="金融财务"class="divSmall">金融财务</a></li>
+                        <li><a href="###" rel="aspect8" id="娱乐应用" inpName="fields" inpValue="娱乐应用" class="divSmall">娱乐应用</a></li>
+                        <li><a href="###" rel="aspect9" id="企业管理" inpName="fields" inpValue="企业管理" class="divSmall">企业管理</a></li>
                     </ul>
                 </div>
             </div>
@@ -120,11 +120,12 @@
                 <div class="pull-left" style="width: 42px;color: #999">薪资：</div>
                 <div class="pull-left" style="width: 766px">
                     <ul>
-                        <li><a href="###" rel="type" id="aa" class="divSmall">10-15万</a></li>
-                        <li><a href="###" rel="type" id="bb" class="divSmall">15-20万</a></li>
-                        <li><a href="###" rel="type" id="cc" class="divSmall">20-30万</a></li>
-                        <li><a href="###" rel="type" id="dd" class="divSmall">50-100万</a></li>
-                        <li><a href="###" rel="type" id="ee" class="divSmall">100万以上</a></li>
+                        <li><a href="###" rel="type" id="s_x_5000" inpName="salary" inpValue="s_x_5000" class="divSmall">6万以下</a></li>
+                        <li><a href="###" rel="type" id="s_5000_10000" inpName="salary" inpValue="s_5000_10000" class="divSmall">6-12万</a></li>
+                        <li><a href="###" rel="type" id="s_10000_25000" inpName="salary" inpValue="s_10000_25000" class="divSmall">12-30万</a></li>
+                        <li><a href="###" rel="type" id="s_25000_50000" inpName="salary" inpValue="s_25000_50000" class="divSmall">30-60万</a></li>
+                        <li><a href="###" rel="type" id="s_50000_100000" inpName="salary" inpValue="s_50000_100000" class="divSmall">60-120万</a></li>
+                        <li><a href="###" rel="type" id="s_100000_x" inpName="salary" inpValue="s_100000_x" class="divSmall">120万以上</a></li>
                     </ul>
                 </div>
             </div>
@@ -135,28 +136,28 @@
                         <li class="zp_lb_li">
                             <a>发布时间</a>
                             <ul>
-                                <li><a href="###" rel="one" id="gg" class="divSmall">一天以内</a></li>
-                                <li><a href="###" rel="one" id="hh" class="divSmall">三天以内</a></li>
-                                <li><a href="###" rel="one" id="ii" class="divSmall">一周以内</a></li>
-                                <li><a href="###" rel="one" id="jj" class="divSmall">一个月以内</a></li>
+                                <li><a href="###" rel="one" id="d_1" inpName="fadate" inpValue="d_1" class="divSmall">一天以内</a></li>
+                                <li><a href="###" rel="one" id="d_3" inpName="fadate" inpValue="d_3" class="divSmall">三天以内</a></li>
+                                <li><a href="###" rel="one" id="d_7" inpName="fadate" inpValue="d_7" class="divSmall">一周以内</a></li>
+                                <li><a href="###" rel="one" id="d_30" inpName="fadate" inpValue="d_30" class="divSmall">一个月以内</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>企业规模</a>
                             <ul>
-                                <li><a href="###" rel="three" id="oo" class="divSmall">50人以下</a></li>
-                                <li><a href="###" rel="three" id="pp" class="divSmall">50-100人</a></li>
-                                <li><a href="###" rel="three" id="qq" class="divSmall">100-500人</a></li>
-                                <li><a href="###" rel="three" id="rr" class="divSmall">1000人以上</a></li>
+                                <li><a href="###" rel="three" id="g_x_50" inpName="company_scale" inpValue="g_x_50" class="divSmall">50人以下</a></li>
+                                <li><a href="###" rel="three" id="g_50_500" inpName="company_scale" inpValue="g_50_500" class="divSmall">50-500人</a></li>
+                                <li><a href="###" rel="three" id="g_500_1000" inpName="company_scale" inpValue="g_500_1000" class="divSmall">500-1000人</a></li>
+                                <li><a href="###" rel="three" id="g_1000_x" inpName="company_scale" inpValue="g_1000_x" class="divSmall">1000人以上</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>企业性质</a>
                             <ul>
-                                <li><a href="###" rel="four" id="ss" class="divSmall">政府</a></li>
-                                <li><a href="###" rel="four" id="tt" class="divSmall">事业单位</a></li>
-                                <li><a href="###" rel="four" id="uu" class="divSmall">私企</a></li>
-                                <li><a href="###" rel="four" id="vv" class="divSmall">国企</a></li>
+                                <li><a href="###" rel="four" id="n_1" inpName="company_nature" inpValue=n_1" class="divSmall">国企</a></li>
+                                <li><a href="###" rel="four" id="n_2" inpName="company_nature" inpValue=n_2" class="divSmall">民营</a></li>
+                                <li><a href="###" rel="four" id="n_3" inpName="company_nature" inpValue=n_3" class="divSmall">外企</a></li>
+                                <li><a href="###" rel="four" id="n_4" inpName="company_nature" inpValue=n_4" class="divSmall">政府</a></li>
                             </ul>
                         </li>
 
