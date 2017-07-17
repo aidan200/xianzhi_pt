@@ -24,9 +24,11 @@ public class XzResumeSkillServiceImpl implements XzResumeSkillService{
 
     @Override
     public int insertSkillByResume(List<XzResumeSkill> resumeSkills) {
-        Long resumeId = resumeSkills.get(0).getResumeId();
         int i = 1;
-        resumeSkillMapper.deleteByResumeId(resumeId);
+        if(resumeSkills!=null&&resumeSkills.size()!=0){
+            Long resumeId = resumeSkills.get(0).getResumeId();
+            resumeSkillMapper.deleteByResumeId(resumeId);
+        }
         for (XzResumeSkill resumeSkill : resumeSkills) {
             int i2 = resumeSkillMapper.insert(resumeSkill);
             if(i2==0){

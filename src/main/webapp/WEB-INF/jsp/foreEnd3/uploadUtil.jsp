@@ -16,7 +16,7 @@
 </head>
 <body>
 <form id="aaaa"></form>
-    <div id="test" style="width: 300px;height: 300px;background: red">
+    <div id="test" style="width: 300px;height: 300px;background: red;">
     </div>
         <input id="ggg">
 <div id="test2" style="width: 300px;height: 300px;background: red">

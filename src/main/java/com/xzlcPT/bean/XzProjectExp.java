@@ -1,7 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
-
+//项目经验
 public class XzProjectExp {
     private Long proexpId;
 

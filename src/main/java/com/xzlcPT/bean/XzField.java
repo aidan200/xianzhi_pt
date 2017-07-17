@@ -1,7 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
-
+//领域 静态资源
 public class XzField {
     private Long fieldId;
 

@@ -1,5 +1,5 @@
 package com.xzlcPT.bean;
-
+//简历技能
 public class XzResumeSkill {
     private Long skillId;
 

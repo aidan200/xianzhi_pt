@@ -1,7 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
-
+//简历学历
 public class XzResumeEducation {
     private Long educationId;
 
