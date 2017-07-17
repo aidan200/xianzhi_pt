@@ -882,13 +882,16 @@ ul {
 }
 
 .zp_one span {
-    display: inline-block;
-    background-color: #FFFFFF;
+    /*display: inline-block;*/
+    background-color: #FC9A2F;
     color: #FFFFFF;
     padding: 3px 15px;
     border-radius: 3px;
 }
 
+#div6{
+    display: none;
+}
 
 /*2*/
 .img-replace {
@@ -906,6 +909,8 @@ ul {
     font-size: 14px;
     text-transform: uppercase;
 }
+
+
 
 
 .cd-popup {

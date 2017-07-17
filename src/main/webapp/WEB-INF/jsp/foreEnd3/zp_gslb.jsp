@@ -574,13 +574,6 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $(".hotCity").click(function(){
-                    $("#div6").css("background-color","#FC9A2F");
-                });
-            });
-        </script>
 
         <%--添加上面一堆标签--%>
         <script type="text/javascript">
@@ -620,6 +613,12 @@
                     $(this).parent().remove();
                 })
                 alert('${queryPostion.nature==null}');
+                $(".hotCity").click(function(){
+                    $("#div6").css("display","inline-block");
+                });
+                $(".cd-popup-trigger ").click(function(){
+                    $("#div6").css("display","inline-block");
+                });
             });
             //输出一个div
             function writeDiv(name, id, classONE, inpName, inpValue) {
