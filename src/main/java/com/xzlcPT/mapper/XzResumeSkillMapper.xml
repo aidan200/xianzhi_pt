@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzResumeSkillMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzResumeSkill">
+    <id column="skill_id" jdbcType="BIGINT" property="skillId" />
+    <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="skill_name" jdbcType="VARCHAR" property="skillName" />
+    <result column="skill_type" jdbcType="INTEGER" property="skillType" />
+    <result column="skill_value" jdbcType="VARCHAR" property="skillValue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    skill_id, resume_id, skill_name, skill_type, skill_value
+  </sql>
+  <select id="selectByResumeId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_resume_skill
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByResumeId" parameterType="java.lang.Long">
+    DELETE FROM xz_resume_skill
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+  </delete>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_resume_skill
+    where skill_id = #{skillId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_resume_skill
+    where skill_id = #{skillId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzResumeSkill">
+    insert into xz_resume_skill (skill_id, resume_id, skill_name, 
+      skill_type, skill_value)
+    values (#{skillId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{skillName,jdbcType=VARCHAR}, 
+      #{skillType,jdbcType=INTEGER}, #{skillValue,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzResumeSkill">
+    insert into xz_resume_skill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="skillId != null">
+        skill_id,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="skillName != null">
+        skill_name,
+      </if>
+      <if test="skillType != null">
+        skill_type,
+      </if>
+      <if test="skillValue != null">
+        skill_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="skillId != null">
+        #{skillId,jdbcType=BIGINT},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="skillName != null">
+        #{skillName,jdbcType=VARCHAR},
+      </if>
+      <if test="skillType != null">
+        #{skillType,jdbcType=INTEGER},
+      </if>
+      <if test="skillValue != null">
+        #{skillValue,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzResumeSkill">
+    update xz_resume_skill
+    <set>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="skillName != null">
+        skill_name = #{skillName,jdbcType=VARCHAR},
+      </if>
+      <if test="skillType != null">
+        skill_type = #{skillType,jdbcType=INTEGER},
+      </if>
+      <if test="skillValue != null">
+        skill_value = #{skillValue,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where skill_id = #{skillId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzResumeSkill">
+    update xz_resume_skill
+    set resume_id = #{resumeId,jdbcType=BIGINT},
+      skill_name = #{skillName,jdbcType=VARCHAR},
+      skill_type = #{skillType,jdbcType=INTEGER},
+      skill_value = #{skillValue,jdbcType=VARCHAR}
+    where skill_id = #{skillId,jdbcType=BIGINT}
+  </update>
+</mapper>

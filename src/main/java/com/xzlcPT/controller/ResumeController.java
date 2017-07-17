@@ -1,13 +1,16 @@
 package com.xzlcPT.controller;
 
+import com.xzlcPT.bean.XzField;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzResume;
+import com.xzlcPT.bean.XzResumeSkill;
 import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
