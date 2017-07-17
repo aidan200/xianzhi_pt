@@ -1,7 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
-
+//公司风采
 public class XzCompanyProduct {
     private Long productId;
 

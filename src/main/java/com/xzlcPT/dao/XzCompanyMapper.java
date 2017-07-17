@@ -1,6 +1,7 @@
 package com.xzlcPT.dao;
 
 import com.xzlcPT.bean.XzCompany;
+import com.xzlcPT.bean.XzField;
 
 import java.util.List;
 
@@ -26,6 +27,8 @@ public interface XzCompanyMapper {
 
     List<XzCompany> selectPcount(XzCompany record);
 
+    List<XzCompany> selectByDomain(XzCompany record);
 
+    XzCompany selCompanyInf(Long companyId);
 
 }

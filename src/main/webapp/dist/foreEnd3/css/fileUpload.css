@@ -5,9 +5,10 @@
     overflow: hidden;
 }
 .xzFileBox .iimg{
-    display: block;
+    /*display: block;*/
     margin: 0 auto;
-    height: 100%
+    height: 100%;
+    width: 100%;
 }
 .xzFileBox .fffup{
     display: none;
@@ -20,7 +21,26 @@
     left: 25%;
     top:40%;
     text-align: center;
+    background: green;
 }
+.xzFileBox .pro-bar {
+    background: hsl(0, 0%, 97%);
+    box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.1) inset;
+    width: 100%;
+    height:3px;
+    bottom:0px;
+    position: absolute;
+}
+.xzFileBox .progress-bar-inner {
+    background-color: hsl(0, 0%, 88%);
+    display: none;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 @keyframes toUpOver
 {
     from {opacity:1;}

@@ -2,7 +2,7 @@ package com.xzlcPT.bean;
 
 import java.util.Date;
 import java.util.List;
-
+//简历工作经验
 public class XzJobExp {
     private Long jobexpId;
 

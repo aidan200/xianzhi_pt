@@ -1,5 +1,5 @@
 package com.xzlcPT.bean;
-
+//公司福利
 public class XzCompanyWelfare {
     private Long welfareId;
 

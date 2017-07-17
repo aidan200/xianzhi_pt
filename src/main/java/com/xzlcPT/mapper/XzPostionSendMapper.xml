@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzPostionSendMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzPostionSend">
+    <id column="send_id" jdbcType="BIGINT" property="sendId" />
+    <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
+    <result column="send_state" jdbcType="INTEGER" property="sendState" />
+    <result column="send_msg" jdbcType="VARCHAR" property="sendMsg" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
+    <result column="field2" jdbcType="VARCHAR" property="field2" />
+    <result column="field3" jdbcType="VARCHAR" property="field3" />
+    <result column="delete_falt" jdbcType="TIMESTAMP" property="deleteFalt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    send_id, resume_id, company_id, postion_id, send_time, send_state, send_msg, create_time, 
+    delete_time, field1, field2, field3, delete_falt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_postion_send
+    where send_id = #{sendId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_postion_send
+    where send_id = #{sendId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzPostionSend">
+    insert into xz_postion_send (send_id, resume_id, company_id, 
+      postion_id, send_time, send_state, 
+      send_msg, create_time, delete_time, 
+      field1, field2, field3, 
+      delete_falt)
+    values (#{sendId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, 
+      #{postionId,jdbcType=BIGINT}, #{sendTime,jdbcType=TIMESTAMP}, #{sendState,jdbcType=INTEGER}, 
+      #{sendMsg,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
+      #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, #{field3,jdbcType=VARCHAR}, 
+      #{deleteFalt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostionSend">
+    insert into xz_postion_send
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sendId != null">
+        send_id,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="postionId != null">
+        postion_id,
+      </if>
+      <if test="sendTime != null">
+        send_time,
+      </if>
+      <if test="sendState != null">
+        send_state,
+      </if>
+      <if test="sendMsg != null">
+        send_msg,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="field1 != null">
+        field1,
+      </if>
+      <if test="field2 != null">
+        field2,
+      </if>
+      <if test="field3 != null">
+        field3,
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sendId != null">
+        #{sendId,jdbcType=BIGINT},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="postionId != null">
+        #{postionId,jdbcType=BIGINT},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendState != null">
+        #{sendState,jdbcType=INTEGER},
+      </if>
+      <if test="sendMsg != null">
+        #{sendMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFalt != null">
+        #{deleteFalt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzPostionSend">
+    update xz_postion_send
+    <set>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="postionId != null">
+        postion_id = #{postionId,jdbcType=BIGINT},
+      </if>
+      <if test="sendTime != null">
+        send_time = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendState != null">
+        send_state = #{sendState,jdbcType=INTEGER},
+      </if>
+      <if test="sendMsg != null">
+        send_msg = #{sendMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="field1 != null">
+        field1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        field2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        field3 = #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFalt != null">
+        delete_falt = #{deleteFalt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where send_id = #{sendId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostionSend">
+    update xz_postion_send
+    set resume_id = #{resumeId,jdbcType=BIGINT},
+      company_id = #{companyId,jdbcType=BIGINT},
+      postion_id = #{postionId,jdbcType=BIGINT},
+      send_time = #{sendTime,jdbcType=TIMESTAMP},
+      send_state = #{sendState,jdbcType=INTEGER},
+      send_msg = #{sendMsg,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR},
+      field3 = #{field3,jdbcType=VARCHAR},
+      delete_falt = #{deleteFalt,jdbcType=TIMESTAMP}
+    where send_id = #{sendId,jdbcType=BIGINT}
+  </update>
+</mapper>

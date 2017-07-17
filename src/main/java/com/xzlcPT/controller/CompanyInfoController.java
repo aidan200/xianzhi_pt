@@ -1,12 +1,11 @@
 package com.xzlcPT.controller;
 
+import com.amazonaws.services.dynamodbv2.xspec.L;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.util.MobileAndPersonID;
 import com.util.PageBean;
 import com.util.SavePicture;
-import com.xzlcPT.bean.Discuss;
-import com.xzlcPT.bean.XzCompany;
-import com.xzlcPT.bean.XzCompanyWelfare;
-import com.xzlcPT.bean.XzLogin;
+import com.xzlcPT.bean.*;
 import com.xzlcPT.service.CompanyInfoService;
 import com.xzlcPT.service.DiscussService;
 import com.xzlcPT.service.LoginUserService;
@@ -15,16 +14,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -251,13 +249,42 @@ public class CompanyInfoController {
         ModelAndView mv =new ModelAndView("/foreEnd3/companylist");
         PageBean<XzCompany> pageBean=companyService.selectPcount(page, rows, xzCompany);
         List<XzCompany> clist=pageBean.getList();
-        List<XzCompany> tlist=companyService.selectAllJob(clist);
         mv.addObject("page", pageBean.getPageNum());
         mv.addObject("pages", pageBean.getPages());
         mv.addObject("rows", pageBean.getPageSize());
         mv.addObject("total", pageBean.getTotal());
         mv.addObject("test", xzCompany);
         mv.addObject("clist",clist);
+        return mv;
+    }
+    @RequestMapping("selectByDomain")
+    public ModelAndView selectByDomain(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "8") Integer rows,XzCompany xzCompany, String[] fieldList){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test1");
+            if (fieldList!=null){
+              List<String> fieldList1=Arrays.asList(fieldList);
+              List<XzField> fields=new ArrayList<>();
+              for (int i=0;i<fieldList1.size();i++){
+                XzField xzField=new XzField();
+                xzField.setFieldName(fieldList1.get(i));
+                fields.add(xzField);
+              }
+            }
+            PageBean<XzCompany> pageBean = companyService.selectDomain(page, rows, xzCompany);
+            List<XzCompany> dlist = pageBean.getList();
+            mv.addObject("page", pageBean.getPageNum());
+            mv.addObject("pages", pageBean.getPages());
+            mv.addObject("rows", pageBean.getPageSize());
+            mv.addObject("total", pageBean.getTotal());
+            mv.addObject("test", xzCompany);
+            mv.addObject("dlist", dlist);
+            return mv;
+    }
+    @ResponseBody
+    @RequestMapping("selCompanyInf")
+    public ModelAndView selCompanyInf (Long companyId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        XzCompany xzCompany=companyService.selCompanyInf(companyId);
+        mv.addObject("xzCompany",xzCompany);
         return mv;
     }
 }

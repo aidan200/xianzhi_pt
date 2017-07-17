@@ -2,7 +2,7 @@ package com.xzlcPT.bean;
 
 import java.util.Date;
 import java.util.List;
-
+//简历
 public class XzResume {
     private Long resumeId;
 
