@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzCompanyWelfare;
+import com.xzlcPT.bean.XzField;
 import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.dao.XzCompanyMapper;
 import com.xzlcPT.dao.XzCompanyWelfareMapper;
@@ -38,15 +39,6 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         }
         return i;
     }
-
-    @Override
-    public List<XzCompany> selectAllJob(List<XzCompany> clist) {
-      /* XzCompany x=new XzCompany();
-       List<XzCompany> alist=companyMapper.selectPcount(x);
-        List<XzCompany> tlist=companyMapper.selectAllJob(alist);*/
-        return null;
-    }
-
     @Override
     public PageBean<XzCompany> selectPcount(Integer page, Integer rows, XzCompany xzCompany) {
         //计数分页
@@ -87,5 +79,48 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         return pb;
 
     }
+
+    @Override
+    public PageBean<XzCompany> selectDomain(Integer page, Integer rows, XzCompany xzCompany) {
+        PageHelper.startPage(page,rows);
+        List<XzCompany> dlist = companyMapper.selectByDomain(xzCompany);
+        PageBean<XzCompany> pb=new PageBean<XzCompany>(dlist);
+        List<XzCompany> alist=pb.getList();
+        List list = new ArrayList();
+        for (XzCompany company : alist) {
+            list.add(company.getCompanyId());
+        }
+        List<XzCompany> companyList = companyMapper.selectAllJob(list);
+        for (int i=0;i<companyList.size();i++){
+            for (int j=0;j<dlist.size();j++){
+                if (companyList.get(i).getCompanyId()==dlist.get(j).getCompanyId()){
+                    companyList.get(i).setPcount(dlist.get(j).getPcount());
+                }
+            }
+        }
+        List<XzPostion> polist=new ArrayList<XzPostion>();
+        for (int i=0;i<companyList.size();i++){
+            if (companyList.get(i).getPostions().size()>2){
+                polist=companyList.get(i).getPostions().subList(0,2);
+                companyList.get(i).setPostions(polist);
+            }
+        }
+        List<XzCompanyWelfare> welist=new ArrayList<XzCompanyWelfare>();
+        for (int i=0;i<companyList.size();i++){
+            if (companyList.get(i).getWelfares().size()>2){
+                welist=companyList.get(i).getWelfares().subList(0,2);
+                companyList.get(i).setWelfares(welist);
+            }
+        }
+        pb.setList(companyList);
+        return pb;
+    }
+
+    @Override
+    public XzCompany selCompanyInf(Long companyId) {
+        XzCompany xzCompany=companyMapper.selCompanyInf(companyId);
+        return xzCompany;
+    }
+
 
 }

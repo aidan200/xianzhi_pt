@@ -2,6 +2,7 @@ package com.xzlcPT.service;
 
 import com.util.PageBean;
 import com.xzlcPT.bean.XzCompany;
+import com.xzlcPT.bean.XzField;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  */
 public interface XzCompanyService {
     int addCompany(XzCompany company);
-    List<XzCompany> selectAllJob(List<XzCompany> clist);
     PageBean<XzCompany> selectPcount(Integer page, Integer rows, XzCompany xzCompany);
+    PageBean<XzCompany> selectDomain(Integer page, Integer rows, XzCompany xzCompany);
+    XzCompany selCompanyInf(Long companyId);
 }

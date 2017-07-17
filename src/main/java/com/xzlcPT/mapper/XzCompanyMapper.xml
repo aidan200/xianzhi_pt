@@ -119,6 +119,54 @@
       <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     </collection>
   </resultMap>
+  <resultMap id="selectInf" type="com.xzlcPT.bean.XzCompany">
+    <id column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="login_id" jdbcType="BIGINT" property="loginId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_city" jdbcType="VARCHAR" property="companyCity"/>
+    <result column="company_space" jdbcType="VARCHAR" property="companySpace"/>
+    <result column="company_location" jdbcType="VARCHAR" property="companyLocation"/>
+    <result column="company_y" jdbcType="DOUBLE" property="companyY"/>
+    <result column="company_x" jdbcType="DOUBLE" property="companyX"/>
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_picture" jdbcType="VARCHAR" property="companyPicture" />
+    <result column="company_intro" jdbcType="VARCHAR" property="companyIntro" />
+    <result column="company_scale" jdbcType="VARCHAR" property="companyScale" />
+    <result column="company_nature" jdbcType="INTEGER" property="companyNature" />
+    <result column="licence" jdbcType="VARCHAR" property="licence" />
+    <result column="company_state" jdbcType="INTEGER" property="companyState" />
+    <result column="is_listing" jdbcType="INTEGER" property="isListing" />
+    <result column="domain" jdbcType="VARCHAR" property="domain" />
+    <result column="skill" jdbcType="VARCHAR" property="skill" />
+    <result column="financing" jdbcType="VARCHAR" property="financing" />
+    <result column="delete_company_date" jdbcType="DATE" property="deleteCompanyDate" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="pcount" jdbcType="INTEGER" property="pcount"/>
+    <collection property="products" ofType="com.xzlcPT.bean.XzCompanyProduct">
+      <id column="product_id" jdbcType="BIGINT" property="productId" />
+      <result column="company_id" jdbcType="BIGINT" property="companyId" />
+      <result column="product_Intro" jdbcType="VARCHAR" property="productIntro" />
+      <result column="product_url" jdbcType="VARCHAR" property="productUrl" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    </collection>
+    <collection property="welfares" ofType="com.xzlcPT.bean.XzCompanyWelfare">
+      <id column="welfare_id" jdbcType="BIGINT" property="welfareId" />
+      <result column="company_id" jdbcType="BIGINT" property="companyId" />
+      <result column="welfare_name" jdbcType="VARCHAR" property="welfareName" />
+    </collection>
+      <collection property="fields" ofType="com.xzlcPT.bean.XzField">
+        <id column="field_id" jdbcType="BIGINT" property="fieldId" />
+        <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+        <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
+      </collection>
+    <collection property="postions" ofType="com.xzlcPT.bean.XzPostion">
+      <id column="postion_id" jdbcType="BIGINT" property="postionId" />
+      <result column="company_id" jdbcType="BIGINT" property="companyId" />
+      <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
+    </collection>
+  </resultMap>
 
 
   <sql id="Base_Column_List">
@@ -143,6 +191,15 @@
     p.postion_education,p.postion_exp,p.postion_age,p.postion_description,p.postion_welfare,p.create_time,p.delete_time,
     p.delete_flat,p.filed1,p.filed2,p.filed3
   </sql>
+  <sql id="selInfList">
+    c.company_id, c.login_id, c.company_name,c.company_city, c.company_space, c.company_location, c.company_y, c.company_x, c.company_phone, c.company_picture,
+    c.company_intro, c.company_scale, c.company_nature, c.licence, c.company_state, c.is_listing,
+    c.domain, c.skill, c.financing,
+    p.product_id,p.company_id, p.product_Intro, p.product_url,
+    w.welfare_id,w.company_id,w.welfare_name,
+    f.field_id, f.field_name, f.field_type,
+    s.company_id,s.postion_name ,s.postion_id
+   </sql>
 
   <select id="selCompanyInfo" resultMap="CompanyInfo" parameterType="java.lang.Long">
     select
@@ -454,13 +511,49 @@
     from xz_company c  LEFT JOIN xz_postion p on c.company_id = p.company_id
     GROUP BY company_id
   </select>
-  <select id="selectAllJob"  resultMap="SelectAllMap">
+  <select id="selectAllJob"  resultMap="SelectAllMap" parameterType="java.util.List">
     select
     <include refid="selAllJobList"/>
     from xz_company c LEFT JOIN xz_company_welfare w on c.company_id = w.company_id LEFT JOIN xz_company_image i on c.company_id = i.company_id LEFT  JOIN  xz_postion p on c.company_id = p.company_id
-    where c.company_id in
+    where delete_falt = 0
+    <if test="list.size>0">
+    and c.company_id in
     <foreach collection="list" item="company_id" open="(" close=")" separator="," >
       #{company_id,jdbcType=BIGINT}
     </foreach>
+    </if>
+    <if test="list.size==0">
+      and 1=0
+    </if>
+  </select>
+  <select id="selectByDomain" resultMap="SelectAllMap"  parameterType="com.xzlcPT.bean.XzCompany">
+    SELECT  c.company_id,count(p.postion_id) as pcount from
+    xz_company c  LEFT JOIN xz_company_domain d ON
+    c.company_id=d.company_id LEFT JOIN xz_field f ON f.field_id=d.field_id
+    LEFT JOIN xz_postion p on c.company_id = p.company_id
+    WHERE delete_falt = 0
+    <if test="fields!=null">
+    AND f.field_name in
+    <foreach collection="fields" item = "field" open="(" close=")" separator="," >
+      #{field.fieldName,jdbcType=VARCHAR}
+    </foreach>
+   </if>
+    <if test="companyCity != null and companyCity != ''">
+    and c.company_city = #{companyCity,jdbcType=VARCHAR}
+  </if>
+    <if test="companyName != null and companyName != '' ">
+    and c.company_name like CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')
+    </if>
+    GROUP BY c.company_id
+  </select>
+  <select id="selCompanyInf" resultMap="selectInf" parameterType="java.lang.Long">
+    select
+    <include refid="selInfList"/>
+    from xz_company c LEFT JOIN xz_company_welfare w on c.company_id = w.company_id
+    LEFT JOIN xz_company_product p on c.company_id = p.company_id  LEFT JOIN xz_company_domain d ON
+    c.company_id=d.company_id LEFT JOIN xz_field f ON f.field_id=d.field_id LEFT JOIN xz_postion s ON
+    s.company_id=c.company_id where c.delete_falt = 0
+    AND c.company_id = #{companyId,jdbcType=BIGINT}
+    GROUP BY  c.company_id
   </select>
 </mapper>

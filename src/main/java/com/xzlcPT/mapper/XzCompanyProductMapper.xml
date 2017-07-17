@@ -27,7 +27,7 @@
     delete from xz_company_product
     where product_id = #{productId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.xzlcPT.bean.XzCompanyProduct">
+  <insert id="insert"  parameterType="com.xzlcPT.bean.XzCompanyProduct">
     insert into xz_company_product (product_id, company_id, product_Intro, 
       product_url, create_time, delete_time, 
       delete_falt, filed1, filed2, 
@@ -150,4 +150,30 @@
       filed3 = #{filed3,jdbcType=VARCHAR}
     where product_id = #{productId,jdbcType=BIGINT}
   </update>
+  <insert id="insertProduct" parameterType="com.xzlcPT.bean.XzCompanyProduct" >
+    insert into xz_company_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="productIntro != null">
+        product_Intro,
+      </if>
+      <if test="productUrl != null">
+        product_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="productIntro != null">
+        #{productIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="productUrl != null">
+        #{productUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+    WHERE productId = #{productId,jdbcType=BIGINT}
+  </insert>
 </mapper>
