@@ -18,4 +18,8 @@ jQuery(document).ready(function($){
     		$('.cd-popup').removeClass('is-visible');
 	    }
     });
+    $('.hotCity').on('click', function (event) {
+        got2($(this).html());
+    });
 });
+

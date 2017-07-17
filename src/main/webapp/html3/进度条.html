@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .progress_bar{
+            width: 400px;
+        }
+        .progress_bar .pro-bar {
+            background: hsl(0, 0%, 97%);
+            box-shadow: 0 1px 2px hsla(0, 0%, 0%, 0.1) inset;
+            height:3px;
+            margin-bottom: 12px;
+            margin-top: 50px;
+            position: relative;
+        }
+        .progress_bar .progress_bar_title{
+            color: #333;
+            font-size: 15px;
+            font-weight: 300;
+            position: relative;
+            top: -28px;
+            z-index: 1;
+        }
+        .progress_bar .progress_number{
+            float: right;
+            margin-top: -24px;
+        }
+        .progress_bar .progress-bar-inner {
+            background-color: hsl(0, 0%, 88%);
+            display: block;
+            width: 0;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 1s linear 0s;
+            animation: animate-positive 2s;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="progress_bar">
+    <div class="pro-bar">
+        <small class="progress_bar_title">
+            <span class="progress_number"></span>
+        </small>
+        <span class="progress-bar-inner" style="background-color: #fc9a2f; width: 90%;"></span>
+    </div>
+</div>
+</body>
+</html>
