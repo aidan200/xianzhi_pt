@@ -145,7 +145,7 @@
 
             ['银川市', '吴忠市', '中卫市', '石嘴山市', '固原市']
         ];
-        function got(t,i) {
+        function got(t, i) {
             //alert(t+"---"+i);
             var div6 = document.getElementById("div6");
             div6.innerHTML = map[t][i];
@@ -472,7 +472,7 @@
         <div class="zp_gsxq_bd_tck_cont2_cont" style="padding-top: 10px">
             <div style="padding-left: 20px;height: 30px">热门城市</div>
             <ul class="zp_ul1">
-                <li><a href="javascript:void(0)" class="hotCity" >北京市</a></li>
+                <li><a href="javascript:void(0)" class="hotCity">北京市</a></li>
                 <li><a class="hotCity">上海市</a></li>
                 <li><a class="hotCity">广州市</a></li>
                 <li><a class="hotCity">深圳市</a></li>
@@ -530,10 +530,10 @@
                 <li><a href="#0" class="cd-popup-trigger" onclick="change(34,this)">宁夏回族自治区</a></li>
             </ul>
             <script>
-                function change(t,_self) {
-                    var str = '<div style="padding-left: 20px">'+_self.innerHTML+'</div><ul class="zp_ul">';
-                    for(var i = 0;i< map[t].length;i++){
-                        str += "<li><a onclick='got("+t+","+i+")' class='ohoh'>"+map[t][i]+"</a></li>";
+                function change(t, _self) {
+                    var str = '<div style="padding-left: 20px">' + _self.innerHTML + '</div><ul class="zp_ul">';
+                    for (var i = 0; i < map[t].length; i++) {
+                        str += "<li><a onclick='got(" + t + "," + i + ")' class='ohoh'>" + map[t][i] + "</a></li>";
                     }
                     str += "</ul>"
                     var uul = document.getElementById("gggui");
@@ -574,70 +574,71 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<%--添加上面一堆标签--%>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".divSmall").click(function () {
+            var isAlreadyHave = false;
+            var inputAlreadyHave = false;
+            var thisID = $(this).attr("id");
+            var classType = $(this).attr("rel");
+            var inpName = $(this).attr("inpName");
+            var inpValue = $(this).attr("inpValue");
 
-        <%--添加上面一堆标签--%>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $(".divSmall").click(function () {
-                    var isAlreadyHave = false;
-                    var inputAlreadyHave = false;
-                    var thisID = $(this).attr("id");
-                    var classType = $(this).attr("rel");
-                    var inpName = $(this).attr("inpName");
-                    var inpValue = $(this).attr("inpValue");
-
-                    $(".divSmall2").each(function () {
-                        if ($(this).attr("rel") == thisID) {
-                            isAlreadyHave = true
-                            inputAlreadyHave = true;
-                        }
-                        if ($(this).attr("ttype") == classType) {
-                            goBegin($(this).attr("rel"));
-                            $(this).remove();
-                            removeMyInp($(this).attr("rel") + "inp")
-                        }
-                    });
-
-                    if (!isAlreadyHave) {
-                        $(this).css({
-                            "background-color": "#FFA500",
-                            "color": "white"
-                        });
-                        writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"), inpName, inpValue);
-
-                    }
-                });
-                $(".zp_img").live('click', function () {
-                    goBegin($(this).parent().attr("rel"));
-                    removeMyInp($(this).attr("rel"));
-                    $(this).parent().remove();
-                })
-                alert('${queryPostion.nature==null}');
-                $(".hotCity").click(function(){
-                    $("#div6").css("background-color","#FC9A2F");
-                });
-                $(".cd-popup-trigger ").click(function(){
-                    $("#div6").css("background-color","#FC9A2F");
-                });
+            $(".divSmall2").each(function () {
+                if ($(this).attr("rel") == thisID) {
+                    isAlreadyHave = true
+                    inputAlreadyHave = true;
+                }
+                if ($(this).attr("ttype") == classType) {
+                    goBegin($(this).attr("rel"));
+                    $(this).remove();
+                    removeMyInp($(this).attr("rel") + "inp")
+                }
             });
-            //输出一个div
-            function writeDiv(name, id, classONE, inpName, inpValue) {
-                var divShow = "<div class='divSmall2' rel='" + id + "' ttype='" + classONE + "'>" + name + "<span class='fa fa-remove zp_img' rel='" + id + "inp'></span></div>";
-                var inputShow = "<input id='" + id + "inp'  type='hidden'  name='" + inpName + "' value='" + inpValue + "'/>";
-                $("#mainSelect").html($("#mainSelect").html() + divShow);
-                $("#hidForm").html($("#hidForm").html() + inputShow);
-            }
-            function goBegin(ID) {
-                $("#" + ID).css({
-                    "background-color": "transparent",
-                    "color": "#666666"
+
+            if (!isAlreadyHave) {
+                $(this).css({
+                    "background-color": "#FFA500",
+                    "color": "white"
                 });
+                writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"), inpName, inpValue);
+
             }
-            function removeMyInp(id) {
-                $("#" + id).remove();
-            }
-        </script>
-        <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
+        });
+        $(".zp_img").live('click', function () {
+            goBegin($(this).parent().attr("rel"));
+            removeMyInp($(this).attr("rel"));
+            $(this).parent().remove();
+        })
+        alert('${queryPostion.nature==null}');
+        $(".hotCity").click(function () {
+            $("#div6").css("background-color", "#FC9A2F");
+        });
+        $(".cd-popup-trigger ").click(function () {
+            $("#div6").css("background-color", "#FC9A2F");
+        });
+    });
+    //输出一个div
+    function writeDiv(name, id, classONE, inpName, inpValue) {
+        var divShow = "<div class='divSmall2' rel='" + id + "' ttype='" + classONE + "'>" + name + "<span class='fa fa-remove zp_img' rel='" + id + "inp'></span></div>";
+        var inputShow = "<input id='" + id + "inp'  type='hidden'  name='" + inpName + "' value='" + inpValue + "'/>";
+        $("#mainSelect").html($("#mainSelect").html() + divShow);
+        $("#hidForm").html($("#hidForm").html() + inputShow);
+    }
+    function goBegin(ID) {
+        $("#" + ID).css({
+            "background-color": "transparent",
+            "color": "#666666"
+        });
+    }
+    function removeMyInp(id) {
+        $("#" + id).remove();
+    }
+</script>
+<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
 
 </body>
 </html>
