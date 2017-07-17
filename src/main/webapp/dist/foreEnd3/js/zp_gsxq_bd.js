@@ -1,7 +1,7 @@
 /**
  * Created by Administrator on 2017/7/3.
  */
-$(function (){
+$(function (){                          //页面功能
     var width=$(window).width();
     var height=$(window).height();
     
@@ -80,42 +80,8 @@ $(function (){
             "height":"0"
         })
     });
-//   添加公司产品开始
-    var btnId = 0;
-    $('.zp_gsxq_cpjs_div1').on("click",function (){
-        $(this).before('<div class="zp_gsxq_cpjs_cp"><div class="zp_gsxq_cpjs_cp_left"><h3>请上传一张产品图片</h3><div onclick="aaa('+btnId+')" class="zp_gsxq_ttbg"></div><input form="zp_gsxq_form" id="mybtn'+btnId+'" name="File2['+btnId+']" class="zp_gsxq_cp_file" type="file" style="display: none"></div><div class="zp_gsxq_cpjs_cp_right"><input form="zp_gsxq_form" type="text" placeholder="请输入产品名称">   <textarea form="zp_gsxq_form">请输入产品信息</textarea></div> <div style="clear:both"></div><span>X</span></div>')
-        //   产品关闭按钮
-        $('.zp_gsxq_cpjs_cp >  span').on("click",function (){
-            $(this).parent().remove();//自杀
-        });
-        btnId++;
-    });
-    //上传公司头像
-    $('.gstb > div').on("click",function (){
-        $(this).siblings('input').click()
-    });
-    //公司风采
-    var btnID2=0;
-    $('.qyfc > h4').on("click",function (){
-        $(this).before('<div><div id='+"gsfc"+btnID2+'></div></div>');
-            var box = document.getElementById("gsfc"+btnID2);
-            var sssss =  "123123";
-            var uu =  new uploadUtil(box,null,null,function () {
-                alert(sssss);
-            });
-            uu.init();
-        btnID2++
-    })
-
-
-
 });
-    function aaa (btnId) {
-        var dd = document.getElementById("mybtn"+btnId);
-        console.log(dd);
-        dd.click();
-    }
-    function change() {
+function change() {
     var map = ['', ['朝阳区', '海淀区', '通州区', '房山区', '丰台区', '昌平区', '大兴区', '顺义区', '西城区', '延庆县', '石景山区', '宣武区', '怀柔区', '崇文区', '密云县', '东城区', '平谷区', '门头沟区'],
 
         ['东莞市', '广州市', '中山市', '深圳市', '惠州市', '江门市', '珠海市', '汕头市', '佛山市', '湛江市', '河源市', '肇庆市', '清远市', '潮州市', '韶关市', '揭阳市', '阳江市', '梅州市', '云浮市', '茂名市', '汕尾市'],
@@ -192,3 +158,132 @@ $(function (){
     }
     city.innerHTML = str;
 }//城市
+function jbxx(){    //基本信息
+        this.gsmc='',       //公司名称
+        this.ly='',         //领域
+        this.yyjs='',       //应用技术
+        this.gsgm='',       //公司规模
+        this.gsdz=[],       //公司地址
+        this.gsdy=[]        //公司待遇
+        this.gsjs=''        //公司介绍
+        this.cpjs=[]        //产品介绍
+        this.DOM={
+            ogsmc:$('#gsxq_gsmc'),
+            oly:$('#gsxq_gshy'),
+            oyyjs:$('#gsxq_yyjs'),
+            ogsgm:$('#gsxq_gsgm'),
+            ogsdz:$('#gsxq_gsdz'),//公司地址input_1
+            ogsdz2:$('#gsxq_gsdz2'),//公司地址input_2
+            ogsdy:$('#gsxq_gsdy input'),
+            ogsjs:$('#gsxq_gsjs'),
+            ocpjs:$('#gsxq_cpjs'),
+    }
+}
+jbxx.prototype.init=function (){    //基本信息初始化
+    var This=this;
+    var aaa={
+        gsmc:"沈阳先知蓝创",
+        ly:"互联网行业",
+        yyjs:"牛的技术",
+        gsgm:"2",
+        gsdz:{e:"辽宁省",s:"沈阳市",j:"啦啦啦啦同方广场"},
+        gsdy:{aa:[1,2,6,8,0]},
+        gsjs:"相当好",
+        cpjs:"非常好",
+    };
+    This.gsmc=aaa.gsmc;
+    This.ly=aaa.ly;
+    This.yyjs=aaa.yyjs;
+    This.gsgm=aaa.gsgm;
+    This.gsdz=aaa.gsdz;
+    This.gsdy=aaa.gsdy;
+    This.gsjs=aaa.gsjs;
+    This.cpjs=aaa.cpjs;
+    This.bindingDOM()
+};
+jbxx.prototype.bindingDOM=function (){
+    var This=this;
+    This.DOM.ogsmc.val(this.gsmc);                                  //公司名称
+    This.DOM.oly.val(this.ly);                                      //公司领域
+    This.DOM.oyyjs.val(this.yyjs);                                  //应用技术
+    This.DOM.ogsgm.find('option') .each(function (index,ele){       //公司规模
+        if($(ele).attr('data-value')==This.gsgm){
+            $(ele).attr('selected','selected')
+        }
+    });
+   var cs_dj=This.gsdz.e+'/'+This.gsdz.s;
+    This.DOM.ogsdz.val(cs_dj);                                        //公司城市地址
+    This.DOM.ogsdz2.val(This.gsdz.j);                                 //公司街道地址
+
+    for(var i=0;i<This.gsdy.aa.length;i++){                          //公司待遇福利
+        This.DOM.ogsdy.each(function (index,ele){
+            if($(ele).attr('data-value')==This.gsdy.aa[i]){
+                $(ele).attr('checked','checked')
+            }
+        })
+    }
+
+
+    This.DOM.ogsjs.val(This.gsjs);                                    //公司介绍
+}
+
+function qyfc(){        //企业风采
+        this.lj='',         //路径
+        this.ms=''          //描述
+        this.DOM={
+            tj_gsfc:$('#tj_gsfc')
+        }
+}
+qyfc.prototype.bindingSJ=function (){          //添加一个新的企业风采
+    var This=this;
+    var a=0;
+    This.DOM.tj_gsfc.on('click',function (){   //添加按钮的事件
+        var aa={id:a++}                         //传进模板里的对象
+        var qyfc_html = template('qyfc_mb',aa);
+        $(this).before(qyfc_html);           //添加模板
+        var aaa= $(this).prev('div').find('div').attr('id');
+        var bbb=document.getElementById(aaa);                //获取到背景DIV的元素
+        var ccc= $(this).prev('div').find('input[type=text]').attr('id');
+        var ddd=document.getElementById(ccc);
+        var uu =  new uploadUtil(bbb,"http://localhost:8080/upload/img",ddd,function (imgName){
+            //上传成功后的回调函数
+            alert(imgName);
+            alert("ajax");
+        });
+        uu.init();
+        $('.a1_gb').on('click',function (){
+            $(this).parent().parent().remove(); //删除事件
+        });
+    })
+};
+function gstb(){                //公司图标
+
+}
+gstb.prototype.bindingSJ=function (){
+    var  ogstb_bg=document.getElementById('gstb_bg');
+    var  Ogstb_inp1=document.getElementById('gstb_inp1');
+    var uu =  new uploadUtil(ogstb_bg,"http://localhost:8080/upload/img",Ogstb_inp1,function (imgName){
+                alert('aaa')
+    });
+    uu.init();
+}
+
+$(function (){
+    var ojbxx=new jbxx();           //公司基本信息
+    ojbxx.init()
+
+    var oqyfc=new qyfc();
+    oqyfc.bindingSJ();
+
+
+    var ogstb=new gstb();            //企业风采
+    ogstb.bindingSJ();
+
+
+
+
+
+})
+
+
+

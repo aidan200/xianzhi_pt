@@ -15,6 +15,7 @@
     <title>企业登录首页</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_gsxq_bd.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/fileUpload.css">
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/template-web.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/uploadUtil.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_gsxq_bd.js"></script>
 </head>
@@ -32,120 +33,126 @@
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司名称：</label>
                 <div class="group-content valid-row relative">
-                    <input form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司" validate-title="职位名称" validate-rules="[['required','请填写$'],['reallength',{'max':140},'$1长度不能大于70个字'],['repeat',{'max':5},'请准确填写您的$1信息'],['not',{'type':['email','mobile']},'请勿在$里填写手机号码、QQ、MSN等联系方式']]" value=""><ul data-selector="ejob-list" class="ejob-list" style="display: none;"></ul>
+                    <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司"  value=""><ul  class="ejob-list" style="display: none;"></ul>
                     <span class="addtions text-muted">注：名称发布后不可以修改</span>
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>领域：</label>
                 <div class="zp_gsxq_hy">
-                    <input form="zp_gsxq_form" name="domain" type="text" placeholder="请输入或者选择行业">
+                    <input id="gsxq_gshy" form="zp_gsxq_form" name="domain" type="text" placeholder="请输入或者选择领域">
                     <em></em>
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>应用技术：</label>
                 <div class="group-content valid-row relative">
-                    <input form="zp_gsxq_form" class="text" size="60" type="text" name="skill" maxlength="70" placeholder="如：大数据" validate-title="职位名称" validate-rules="[['required','请填写$'],['reallength',{'max':140},'$1长度不能大于70个字'],['repeat',{'max':5},'请准确填写您的$1信息'],['not',{'type':['email','mobile']},'请勿在$里填写手机号码、QQ、MSN等联系方式']]" value=""><ul data-selector="ejob-list" class="ejob-list" style="display: none;"></ul>
-                    <span class="addtions text-muted">注：选择从事领域</span>
+                    <input id="gsxq_yyjs" form="zp_gsxq_form" class="text" size="60" type="text" name="skill" maxlength="70" placeholder="如：大数据" validate-title="职位名称" validate-rules="[['required','请填写$'],['reallength',{'max':140},'$1长度不能大于70个字'],['repeat',{'max':5},'请准确填写您的$1信息'],['not',{'type':['email','mobile']},'请勿在$里填写手机号码、QQ、MSN等联系方式']]" value=""><ul data-selector="ejob-list" class="ejob-list" style="display: none;"></ul>
+                    <span class="addtions text-muted">注：应用技术</span>
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司规模：</label>
                 <div class="zp_gsxq_gm">
-                    <select form="zp_gsxq_form" name="companyScale" id="">
-                        <option value="">50-100人</option>
-                        <option value="">100-500人</option>
-                        <option value="">500-2000人</option>
-                        <option value="">2000-1W人</option>
-                        <option value="">1W人以上</option>
+                    <select form="zp_gsxq_form" name="companyScale"  id="gsxq_gsgm">
+                        <option data-value="0">50-100人</option>
+                        <option data-value="1">100-500人</option>
+                        <option data-value="2">500-2000人</option>
+                        <option data-value="3">2000-1W人</option>
+                        <option data-value="4">1W人以上</option>
                     </select>
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司地址：</label>
                 <div class="zp_gsxq_dz">
-                    <input form="zp_gsxq_form" name="companyLocation" type="text" placeholder="请选择省/市/区">
+                    <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" placeholder="请选择省/市/区">
                     <em></em>
-                    <input form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                    <input id="gsxq_gsdz2" form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司待遇：</label>
-                <div class="zp_gsxq_dy">
+                <div class="zp_gsxq_dy"  id="gsxq_gsdy">
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox" name="welfares[0].welfareName" value="绩效奖金"> 绩效奖金
+                        <input form="zp_gsxq_form" type="checkbox"  data-value="0"> 绩效奖金
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox" name="welfares[1].welfareName" value="带薪年假"> 带薪年假
+                        <input form="zp_gsxq_form" type="checkbox"   data-value="1"> 带薪年假
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox" name="welfares[2].welfareName" value="交通补助"> 交通补助
+                        <input form="zp_gsxq_form" type="checkbox"   data-value="2"> 交通补助
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 定期体检
+                        <input form="zp_gsxq_form" type="checkbox"  data-value="3"> 定期体检
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 年度旅游
+                        <input form="zp_gsxq_form" type="checkbox" data-value="4"> 年度旅游
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 免费班车
+                        <input form="zp_gsxq_form" type="checkbox" data-value="5"> 免费班车
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 管理规范
+                        <input form="zp_gsxq_form" type="checkbox" data-value="6"> 管理规范
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 技能培训
+                        <input form="zp_gsxq_form" type="checkbox" data-value="7"> 技能培训
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 岗位晋升
+                        <input form="zp_gsxq_form" type="checkbox" data-value="8"> 岗位晋升
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 五险一金
+                        <input form="zp_gsxq_form" type="checkbox" data-value="9"> 五险一金
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 生育补贴
+                        <input form="zp_gsxq_form" type="checkbox" data-value="10"> 生育补贴
                     </label>
                     &nbsp;
                     <label>
-                        <input  form="zp_gsxq_form" type="checkbox"> 上市公司
+                        <input  form="zp_gsxq_form" type="checkbox" data-value="11"> 上市公司
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 形态多样
+                        <input form="zp_gsxq_form" type="checkbox" data-value="12"> 形态多样
                     </label>
                     &nbsp;
                     <label>
-                        <input form="zp_gsxq_form" type="checkbox"> 平台广阔
+                        <input form="zp_gsxq_form" type="checkbox" data-value="13"> 平台广阔
                     </label>
-
-
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司图标：</label>
                 <div class="zp_gsxq_logo gstb">
                     <p>请您上传一张公司标志图片作为公司展示头像</p>
-                    <div></div>
-                    <input form="zp_gsxq_form" type="file" style="display: none">
+                    <div id="gstb_bg"></div>
+                    <input id="gstb_inp1" form="zp_gsxq_form" type="text" style="display: none">
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>企业风采：</label>
                 <div class="qyfc">
                     <p>企业风采照片</p>
-                    <h4>添加公司风采图片</h4>
-                </div>
+                    <script id="qyfc_mb" type="text/html">
+                        <div>
+                            <h3><a href="javascript:;" class="pull-right a1_gb">x</a></h3>
+                            <div id=qyfc_bg_{{id}} class="qyfc_bg"></div>
+                            <input type="text" style="display: none" value="" id=qyfc_{{id}}>
+                            <textarea>我是描述1111</textarea>
+                        </div>
+                    </script>
+                    <h4 id="tj_gsfc">添加公司风采图片</h4>
+               </div>
             </div>
 
         </div>
@@ -156,13 +163,13 @@
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司介绍：</label>
                 <div class="zp_gsxq_js">
-                    <textarea form="zp_gsxq_form"></textarea>
+                    <textarea  id="gsxq_gsjs" form="zp_gsxq_form"></textarea>
                     <p>注：职位描述中请勿填写涉及歧视的内容，例如：女性优先，只招男士，残疾，乙肝等</p>
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error"></span>产品介绍：</label>
-                <div class="zp_gsxq_cpjs">
+                <div class="zp_gsxq_cpjs" id="gsxq_cpjs">
 
                     <div class="zp_gsxq_cpjs_div1">
                         添加公司产品
