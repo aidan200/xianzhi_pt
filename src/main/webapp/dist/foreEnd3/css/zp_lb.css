@@ -67,7 +67,8 @@ ul {
     line-height: 40px;
     text-align: center;
 }
-.zp_lb_ssk_left span{
+
+.zp_lb_ssk_left span {
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -118,7 +119,7 @@ ul {
 }
 
 .zp_lb_cont_top {
-
+    height: auto;
     background: #f8f8f8;
     border: 1px solid #F0F0F0;
     padding: 15px 20px;
@@ -295,7 +296,7 @@ ul {
 
 .zp_lb_cont_top_3 {
     background: #F2F2F2;
-    padding: 0 10px;
+    /*padding: 0 10px;*/
     color: #999B9E;
     height: auto;
     z-index: -1;
@@ -309,11 +310,11 @@ ul {
 }
 
 .zp_lb_cont_top_3_right {
-    padding: 10px 0;
+    padding-top: 10px;
     float: left;
-    width: 600px;
-    height: 30px;
-   margin-top: -8px;
+    width: 700px;
+    min-height: 30px;
+    margin-top: -8px;
 
 }
 
@@ -554,7 +555,6 @@ ul {
     cursor: pointer;
 }
 
-
 .divSmall:hover {
     color: #FFFFFF;
 }
@@ -570,8 +570,7 @@ ul {
     line-height: 12px;
     padding: 4px;
     /*margin-top: -5px;*/
-    margin-top: 3px;
-
+    margin-top: 4px;
 
 }
 
@@ -624,7 +623,7 @@ ul {
 .zp_na2 {
     display: block;
     margin-top: 5px;
-    font-size: 13px;
+    font-size: 12px;
     width: 100%;
     height: 15px;
     overflow: hidden;
@@ -713,30 +712,31 @@ ul {
 }
 
 /*自定义*/
-.zp_owner:hover{
-   color: #FFFFFF;
+.zp_owner:hover {
+    color: #FFFFFF;
 }
-.zp_ospan{
+
+.zp_ospan {
     display: none;
 }
 
 /*---全国----*/
- #zp_gsxq_bd_tck {
-     display: none;
-     width: 0;
-     height: 100%;
-     background-color: rgba(0, 0, 0, 0.5);
-     position: fixed;
-     left: 0;
-     top: 0;
-     z-index: 1111111111;
- }
+#zp_gsxq_bd_tck {
+    display: none;
+    width: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1111111111;
+}
 
 #zp_gsxq_bd_tck > div {
     position: relative;
     width: 0px;
     height: 0px;
-    margin: 100px auto;
+    margin: 60px auto;
     background: #ffffff;
 }
 
@@ -752,8 +752,6 @@ ul {
     margin: 0 auto;
     margin-top: 100px;
 }
-
-
 
 .gb {
     display: block;
@@ -792,7 +790,7 @@ ul {
     margin-right: 10px;
 }
 
-.zp_ul, .zp_ul1{
+.zp_ul, .zp_ul1 {
     width: 100%;
     height: auto;
     overflow: hidden;
@@ -812,6 +810,7 @@ ul {
     padding-left: 20px;
     margin-top: 8px;
 }
+
 .zp_ul1 li {
     float: left;
     display: inline-block;
@@ -820,11 +819,12 @@ ul {
     padding-left: 25px;
     margin-top: 5px;
 }
-.zp_button1{
+
+.zp_button1 {
     width: 80px;
     height: 30px;
     outline: none;
-    border: 1px solid#FC9A2F;
+    border: 1px solid #FC9A2F;
     background-color: #FFFFFF;
     display: inline-block;
     text-align: center;
@@ -834,7 +834,8 @@ ul {
     cursor: pointer;
     border-radius: 3px;
 }
-.zp_button1:hover{
+
+.zp_button1:hover {
     width: 80px;
     height: 30px;
     outline: none;
@@ -846,7 +847,8 @@ ul {
     color: #FFFFFF;
     margin-right: 15px;
 }
-.zp_button{
+
+.zp_button {
     width: 80px;
     height: 30px;
     outline: none;
@@ -858,3 +860,30 @@ ul {
     color: #FFFFFF;
     border-radius: 3px;
 }
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border: none;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-tabs > li > a {
+    border: none;
+}
+
+.zp_one {
+    margin-left: 35px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.zp_one span {
+    display: inline-block;
+    background-color: #FC9A2F;
+    color: #FFFFFF;
+    padding: 3px 15px;
+    border-radius: 3px;
+}
+
