@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_gsxq_bd.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/fileUpload.css">
     <script>
+        var ID=1;
         var dkh="http://localhost:8080";        //端口号
         var path="${pageContext.request.contextPath}/"
 

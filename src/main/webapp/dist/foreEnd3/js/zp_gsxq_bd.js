@@ -236,13 +236,10 @@ function qyfc(){        //企业风采
         }
 }
 qyfc.prototype.init=function (){
-    var aaa={
-        productId:1
-    }
     $.ajax({
         type:"post",    //提交方式
         async:true,  //是否异步
-        data:{productId:1},        //转为JSON格式
+        data:{productId:ID},        //转为JSON格式
         url:path+'Product/selectByPrimaryKey',    //路径
         dataType:'json',
         success:function (data){//data 就是数据 json
@@ -251,8 +248,7 @@ qyfc.prototype.init=function (){
         },error:function (){ //报错执行的
             alert('基本资料修改错误')
         }
-
-    })
+    });
     var This=this;
         var aaa={ww:[{
             qyfc_id: 1,
