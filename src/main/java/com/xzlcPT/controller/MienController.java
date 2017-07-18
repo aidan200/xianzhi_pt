@@ -48,7 +48,7 @@ public class MienController extends BaseController {
     }
     @ResponseBody
     @RequestMapping("selectByCompanyId")
-    public XzCompanyMien[] selectByCompanyId(Long companyId){
+    public Map selectByCompanyId(Long companyId){
         List<XzCompanyMien> MienList=xzMienService.selectByCompanyId(companyId);
         int j=MienList.size();
         XzCompanyMien[] arr=new XzCompanyMien[j];
@@ -56,7 +56,9 @@ public class MienController extends BaseController {
          XzCompanyMien xzCompanyMien=MienList.get(i);
           arr[i]=xzCompanyMien;
         }
-        return arr;
+        Map map=new HashMap();
+        map.put("arr",arr);
+        return map;
     }
     @RequestMapping("updateMienPicture")
     public Map updateMienPicture(@RequestBody XzCompanyMien xzCompanyMien){
@@ -64,12 +66,5 @@ public class MienController extends BaseController {
         int i=xzMienService.updateMienPicture(xzCompanyMien);
         map.put("i",i);
         return map;
-    }
-    @RequestMapping("cs")
-    public ModelAndView cs(XzCompanyMien xzCompanyMien){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
-        int i=xzMienService.updateMienPicture(xzCompanyMien);
-        mv.addObject("i",i);
-        return mv;
     }
 }
