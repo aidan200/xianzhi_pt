@@ -111,6 +111,7 @@
     <div class="tab-pane fade" id="register_two">
         <div class="register1_all">
             验证信息已经发送到你的邮箱
+            <button>前往邮箱完成验证</button>
             <a href="#register_three" data-toggle="tab">
                 <button onclick="buttonon()">下一步</button>
             </a>
@@ -152,7 +153,13 @@
                     animation: false
                 });
         });
-
+        if ($("#register_three").css("display") == 'block') {
+            stepBar.init("stepBar", {
+                step: 3,
+                change: false,
+                animation: false
+            });
+        }
     });
 
 
