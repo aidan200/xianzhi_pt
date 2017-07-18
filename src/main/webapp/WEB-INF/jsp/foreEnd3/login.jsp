@@ -14,8 +14,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="${pageContext.request.contextPath}/dist/foreEnd3/css/css测试.css" type="text/css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/dist/foreEnd3/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <jsp:include page="distforeEnd.jsp"/>
+    <style>
+        .cd-popup-container {
+            height: 400px;
+            margin-top: 100px;
+            overflow: hidden;
+        }
+        .index_tan{
+            width: 100%;
+            height: 200px;
+            margin-top: 50px;
+        }
+    </style>
+
 </head>
 <body background="${pageContext.request.contextPath}/dist/foreEnd3/img/scsc.jpg" class="login_body">
 
@@ -51,11 +63,21 @@
 
                 </div>
                 <button type="submit" class="login_button">登 录</button>
-                <a href="#0" class="login_re">没有账号？ 立即注册</a>
+                <a href="#0" class="login_re cd-popup-trigger">没有账号？ 立即注册</a>
             </div>
         </form>
     </div>
 
+</div>
+
+<div class="cd-popup" role="alert">
+    <div class="cd-popup-container">
+        <div class="index_tan">
+            <a href="#">用户</a>
+            <a href="#">企业</a>
+        </div>
+        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
+    </div>
 </div>
 
 
