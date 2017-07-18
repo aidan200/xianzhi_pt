@@ -119,6 +119,8 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     @Override
     public XzCompany selCompanyInf(Long companyId) {
         XzCompany xzCompany=companyMapper.selCompanyInf(companyId);
+        int i=xzCompany.getPostions().size();
+        xzCompany.setPcount(i);
         return xzCompany;
     }
 

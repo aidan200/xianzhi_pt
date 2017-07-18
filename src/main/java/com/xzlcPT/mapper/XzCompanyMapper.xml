@@ -165,6 +165,22 @@
       <id column="postion_id" jdbcType="BIGINT" property="postionId" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
+      <result column="postion_company" jdbcType="VARCHAR" property="postionCompany" />
+      <result column="postion_ym" jdbcType="INTEGER" property="postionYm" />
+      <result column="postion_mm" jdbcType="INTEGER" property="postionMm" />
+      <result column="postion_space" jdbcType="VARCHAR" property="postionSpace" />
+      <result column="postion_time" jdbcType="TIMESTAMP" property="postionTime" />
+      <result column="postion_education" jdbcType="VARCHAR" property="postionEducation" />
+      <result column="postion_exp" jdbcType="VARCHAR" property="postionExp" />
+      <result column="postion_age" jdbcType="VARCHAR" property="postionAge" />
+      <result column="postion_description" jdbcType="VARCHAR" property="postionDescription" />
+      <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+      <result column="delete_flat" jdbcType="INTEGER" property="deleteFlat" />
+      <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+      <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+      <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     </collection>
   </resultMap>
 
@@ -198,7 +214,8 @@
     p.product_id,p.company_id, p.product_Intro, p.product_url,
     w.welfare_id,w.company_id,w.welfare_name,
     f.field_id, f.field_name, f.field_type,
-    s.company_id,s.postion_name ,s.postion_id
+    s.postion_id,s.company_id,s.postion_name,s.postion_company,s.postion_ym,s.postion_mm,s.postion_space,s.postion_time,
+    s.postion_education,s.postion_exp,s.postion_age,s.postion_description,s.postion_welfare,s.create_time,s.delete_time
    </sql>
 
   <select id="selCompanyInfo" resultMap="CompanyInfo" parameterType="java.lang.Long">

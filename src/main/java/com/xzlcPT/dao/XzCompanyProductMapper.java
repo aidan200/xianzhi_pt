@@ -3,6 +3,8 @@ package com.xzlcPT.dao;
 import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzCompanyProduct;
 
+import java.util.List;
+
 public interface XzCompanyProductMapper {
     int deleteByPrimaryKey(Long productId);
 
@@ -19,5 +21,7 @@ public interface XzCompanyProductMapper {
     int insertProduct(XzCompanyProduct record);
 
     int updateProduct(XzCompanyProduct record);
+
+    List<XzCompanyProduct> selectByCompanyId(Long companyId);
 
 }

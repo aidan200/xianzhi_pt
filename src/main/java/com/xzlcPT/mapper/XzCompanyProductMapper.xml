@@ -190,4 +190,10 @@
     </set>
     where product_id = #{productId,jdbcType=BIGINT}
   </update>
+  <select id="selectByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_company_product
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </select>
 </mapper>

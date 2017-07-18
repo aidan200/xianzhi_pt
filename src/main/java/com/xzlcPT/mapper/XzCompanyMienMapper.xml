@@ -63,5 +63,20 @@
         FROM xz_company_mien WHERE
         mien_id = #{mienId,jdbcType=BIGINT}
     </select>
+    <select id="selectByCompanyId"  resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xz_company_mien WHERE
+        company_id = #{companyId,jdbcType=BIGINT}
+    </select>
+    <update id="updateMienPicture" parameterType="com.xzlcPT.bean.XzCompanyMien">
+        update xz_company_mien
+        <set>
+            <if test="mienUrl != null and mienUrl != ''">
+                mien_url = #{mienUrl,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where mien_id = #{mienId,jdbcType=BIGINT}
+    </update>
 </mapper>
 
