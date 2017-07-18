@@ -71,7 +71,7 @@ public class MienController extends BaseController {
     }
     @ResponseBody
     @RequestMapping("deleteMien")
-    public Map deleteMien( Long mienId){
+    public Map deleteMien(Long mienId){
         Map map=new HashMap();
         int i =xzMienService.deleteMien(mienId);
         map.put("i",i);
