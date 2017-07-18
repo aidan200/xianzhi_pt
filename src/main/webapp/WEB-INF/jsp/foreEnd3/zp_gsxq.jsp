@@ -99,26 +99,41 @@
 
                 </ul>
             </div>
-            <div class="zp_gsxq_fy" >
-                <nav aria-label="Page navigation" >
-                    <ul class="pagination" style="margin">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+            <%--<div class="zp_gsxq_fy" >--%>
+                <%--<nav aria-label="Page navigation" >--%>
+                    <%--<ul class="pagination" style="margin">--%>
+                        <%--<li>--%>
+                            <%--<a href="#" aria-label="Previous">--%>
+                                <%--<span aria-hidden="true">&laquo;</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li><a href="#">1</a></li>--%>
+                        <%--<li><a href="#">2</a></li>--%>
+                        <%--<li><a href="#">3</a></li>--%>
+                        <%--<li><a href="#">4</a></li>--%>
+                        <%--<li><a href="#">5</a></li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" aria-label="Next">--%>
+                                <%--<span aria-hidden="true">&raquo;</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                    <%--</ul>--%>
+                <%--</nav>--%>
+            <%--</div>--%>
+            <div class="zp_botv">
+                <div class="zp_pl">
+                    <ul class="pagination zp_pa">
+                                       <li class="b"><a href="#">上一页</a></li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li class="a"><a href="#">2</a></li>
+                                                <li class="a"><a href="#">3</a></li>
+                                                <li class="a"><a href="#">4</a></li>
+                                                <li class="a"><a href="#">5</a></li>
+                                                <li class="a"><a href="#">下一页</a></li>
+                        <%--<myPage:paging length="10" page="${page}" pages="${pages}"/>--%>
                     </ul>
-                </nav>
+                    <div class="zp_page">共 <span>38</span> 页</div>
+                </div>
             </div>
         </div>
         <div class="col-md-4 zp_spxq_cont_right" style=" padding-left: 20px;">
@@ -141,14 +156,14 @@
                         基本信息<hr>
                     </h2>
                     <ul>
-                        <li>行业：<span>
-                            <c:forEach var="f1" items="${xzCompany.fields}">
-                           ${f1.fieldName}/
-                            </c:forEach></span></li>
-                        <li>领域：<span>电子商务</span></li>
-                        <li>融资：<span>天使轮</span></li>
-                        <li>规模：<span>50-99人</span></li>
-                        <li style="height: auto">地址：<span>科技园科丰路2号特发信息港B栋8楼810-815</span></li>
+                        <li>行业：
+                            <c:forEach  var="po" items="${xzCompany.postions}">
+                                <span>${po.postionName}/</span>
+                            </c:forEach></li>
+                        <li>领域：<span>IT</span></li>
+                        <li>融资：<span>${xzCompany.financing}</span></li>
+                        <li>规模：<span>${xzCompany.companyScale}人</span></li>
+                        <li style="height: auto">地址：<span>${xzCompany.companyLocation}</span></li>
                     </ul>
                     <div class="zp_spxq_dt" style="background-image: url('img/zp_gsxq_dt.png')">
                     </div>
@@ -162,26 +177,13 @@
                         企业风采<hr>
                     </h2>
                     <ul>
+                        <c:forEach var="m1" items="${xzCompany.miens}">
                         <li>
                             <a href="">
-                                爱淘苗“清风”一路向西，新疆瑞绎昕强势登陆
+                                ${m1.mienIntro}
                             </a>
                         </li>
-                        <li>
-                            <a href="">
-                                爱淘苗“清风”一路向西，新疆瑞绎昕强势登陆
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                爱淘苗“清风”一路向西，新疆瑞绎昕强势登陆
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                爱淘苗“清风”一路向西，新疆瑞绎昕强势登陆
-                            </a>
-                        </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>

@@ -182,6 +182,14 @@
       <result column="filed2" jdbcType="VARCHAR" property="filed2" />
       <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     </collection>
+    <collection property="miens" ofType="com.xzlcPT.bean.XzCompanyMien">
+      <id column="mien_id" jdbcType="BIGINT" property="mienId" />
+      <result column="company_id" jdbcType="BIGINT" property="companyId" />
+      <result column="mien_Intro" jdbcType="VARCHAR" property="mienIntro" />
+      <result column="mien_url" jdbcType="VARCHAR" property="mienUrl" />
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    </collection>
   </resultMap>
 
 
@@ -215,8 +223,9 @@
     w.welfare_id,w.company_id,w.welfare_name,
     f.field_id, f.field_name, f.field_type,
     s.postion_id,s.company_id,s.postion_name,s.postion_company,s.postion_ym,s.postion_mm,s.postion_space,s.postion_time,
-    s.postion_education,s.postion_exp,s.postion_age,s.postion_description,s.postion_welfare,s.create_time,s.delete_time
-   </sql>
+    s.postion_education,s.postion_exp,s.postion_age,s.postion_description,s.postion_welfare,s.create_time,s.delete_time,
+    m.mien_id,m.company_id, m.mien_Intro, m.mien_url
+</sql>
 
   <select id="selCompanyInfo" resultMap="CompanyInfo" parameterType="java.lang.Long">
     select
@@ -569,8 +578,8 @@
     from xz_company c LEFT JOIN xz_company_welfare w on c.company_id = w.company_id
     LEFT JOIN xz_company_product p on c.company_id = p.company_id  LEFT JOIN xz_company_domain d ON
     c.company_id=d.company_id LEFT JOIN xz_field f ON f.field_id=d.field_id LEFT JOIN xz_postion s ON
-    s.company_id=c.company_id where c.delete_falt = 0
-    AND c.company_id = #{companyId,jdbcType=BIGINT}
+    s.company_id=c.company_id LEFT JOIN xz_company_mien m ON c.company_id=m.company_id  where
+    c.company_id = #{companyId,jdbcType=BIGINT}
   </select>
   <update id="updateCompanyPic"  parameterType="com.xzlcPT.bean.XzCompany">
     update xz_company

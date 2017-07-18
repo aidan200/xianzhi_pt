@@ -3515,3 +3515,76 @@ input[type="button"].fileInputButton {
     top: -96px;
 }
 
+/*------分页--------*/
+.zp_botv {
+    width: 100%;
+    text-align: center;
+    height: auto;
+    overflow: hidden;
+}
+
+.zp_pa {
+    margin-top: 20px;
+    float: left;
+}
+
+.zp_pl {
+    width: 620px;
+    margin: 0 auto;
+    height: auto;
+}
+
+.zp_page {
+    width: 120px;
+    height: 38px;
+    float: left;
+    margin-top: 20px;
+    line-height: 38px;
+
+}
+
+.zp_pa > .active > a {
+    background-color: rgb(255, 165, 0);
+    border: 1px solid rgb(255, 165, 0);
+}
+
+.zp_pa > .active > a:hover {
+    background-color: rgb(255, 165, 0);
+    border: 1px solid rgb(255, 165, 0);
+}
+
+.zp_pa > li > a {
+    color: #666666;
+    padding: 5px 10px;
+}
+
+.zp_pa > li > a:hover, .zp_pa > li > span:hover, .zp_pa > li > a:focus, .zp_pa > li > span:focus {
+    /*border: 1px solid rgb(255, 165, 0);*/
+}
+
+.zp_pa > li > a, .zp_pa > li > span {
+    border: 1px solid #EEEEEE;
+    margin: 3px;
+}
+
+.zp_pa > .a > a:hover {
+    background-color: rgb(255, 165, 0);
+    color: #FFFFFF;
+    border: 1px solid rgb(255, 165, 0);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/*不能点击class b*/
+.zp_pa > .b > a {
+    /*background-color: #f8f8f8;*/
+    cursor: default;
+    color: #cacaca;
+}
+
+.zp_pa > .b > a:hover {
+    color: #cacaca;
+    /*background-color: #f8f8f8;*/
+    border: 1px solid #EEEEEE;
+
+}

@@ -43,6 +43,7 @@ public class XzCompany {
     private List<XzField> fields;//经营领域
     private List<XzCompanyProduct> products;//产品列表
     private List<Image> images;//公司风采
+    private List<XzCompanyMien> miens;//公司风采
     private List<XzPostion> postions;//公司职位
     private Date deleteCompanyDate;//删除日期
     private int deleteFalt;//删除类型
@@ -289,6 +290,14 @@ public class XzCompany {
 
     public Double getCompanyY() {
         return companyY;
+    }
+
+    public void setMiens(List<XzCompanyMien> miens) {
+        this.miens = miens;
+    }
+
+    public List<XzCompanyMien> getMiens() {
+        return miens;
     }
 
     @Override
