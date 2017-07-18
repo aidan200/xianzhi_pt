@@ -8,6 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.GroupSequence;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -19,12 +21,14 @@ import java.util.Date;
 public class XzLogin {
 
     private Long loginId;//会员登录表ID
-    @ValidById(serviceClazz = RegisterService.class,message = "用户名已存在",methodName = "selectByCount",groups = {F1.class})
+    @Size(min = 6,max = 18, message="长度必须在6到18字符之间",groups = {F1.class})
+    @ValidById(serviceClazz = RegisterService.class,message = "用户名已存在",methodName = "selectByCount",groups = {F2.class})
     private String loginCount;//账号
-    @NotNull(message="密码: 不能为空",groups = {F2.class})
+    @Size(min = 6,max = 18, message="长度必须在6到18字符之间",groups = {F1.class})
     private String loginPassword;//密码
     private int loginType;//会员类型 1:个人 2:公司
-    @ValidById(serviceClazz = RegisterService.class,message = "该邮箱已被注册",methodName = "selectEmail",groups = {F3.class})
+    @Pattern(regexp="^[\\w,\\.,-]*@[0-9A-Za-z]{1,20}((\\.com)|(\\.net)|(\\.com.cn)){1}$", message="邮箱格式不正确",groups = {F1.class})
+    @ValidById(serviceClazz = RegisterService.class,message = "该邮箱已被注册",methodName = "selectEmail",groups = {F2.class})
     private String loginEmail;//用户邮箱
     private int loginActive;//激活状态
     private String confirmPassword;//重复输入密码
@@ -160,17 +164,9 @@ public class XzLogin {
     public interface F2{
 
     }
-    //验证分组3
-    public interface F3{
-
-    }
-    //验证分组4
-    public interface F4{
-
-    }
 
     //组序列
-    @GroupSequence( { XzLogin.F1.class, XzLogin.F2.class,XzLogin.F4.class, XzLogin.F3.class})
+    @GroupSequence( { XzLogin.F1.class, XzLogin.F2.class})
     public interface Group {
 
     }

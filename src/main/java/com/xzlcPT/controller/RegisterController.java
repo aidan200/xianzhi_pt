@@ -38,29 +38,30 @@ public class RegisterController extends BaseController {
     private CompanyInfoService companyInfoService;
 
     @Autowired
-    private UserInfoService userInfoService;
-
-    @Autowired
     private VipService vipService;
 
-    @Autowired
-    //private ResumeService resumeService;
 
     //    跳转到用户注册页面
     @RequestMapping("/goRegister.do")
-    public ModelAndView getRegisterC(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession) {
-        ModelAndView mv = new ModelAndView("foreEnd/RegisterUser");
+    public ModelAndView toRegister(Integer type) {
+        ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
         XzLogin xzLogin = new XzLogin();
+        xzLogin.setLoginType(type);
         mv.addObject("xzLogin", xzLogin);
-
+        mv.addObject("state",1);
         return mv;
     }
 
     //    用户注册
     @RequestMapping("Register.do")
-    public ModelAndView getRegister1(@Validated({XzLogin.F1.class, XzLogin.F2.class, XzLogin.F3.class}) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView("foreEnd/Login");
-        Pattern p = Pattern.compile("^([a-z0-9A-Z_]+[_-|\\.]?)+[a-z0-9A-Z_]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
+    public ModelAndView getRegister1(@Validated(XzLogin.Group.class) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
+        ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
+        if(result.hasErrors()){
+
+        }else{
+
+        }
+        /*Pattern p = Pattern.compile("^([a-z0-9A-Z_]+[_-|\\.]?)+[a-z0-9A-Z_]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
         Matcher m = p.matcher(xzLogin.getLoginEmail());
         boolean bl = m.matches();
         boolean b2 = xzLogin.getConfirmPassword().equals(xzLogin.getLoginPassword());
@@ -85,10 +86,10 @@ public class RegisterController extends BaseController {
             //xzMember.setLoginId(newXz.getLoginId());
             xzMember.setMemberPicture("timg1.jpg");
 //            向用户表中添加一条空数据
-            /*int b = userInfoService.addUserInfo(xzMember);
+            *//*int b = userInfoService.addUserInfo(xzMember);
             Resume resume = new Resume();
             resume.setResumeMember(newXz.getLoginID());
-            resumeService.insert(resume);*/
+            resumeService.insert(resume);*//*
             if (a == 1) {//添加未激活用户
 
                 mv = new ModelAndView("foreEnd/jumpGoEmail");
@@ -103,7 +104,7 @@ public class RegisterController extends BaseController {
                 System.out.println("添加未激活用户失败!");
             }
 
-        }
+        }*/
         return mv;
     }
 
@@ -118,7 +119,7 @@ public class RegisterController extends BaseController {
 
     //    企业注册
     @RequestMapping("/RegisterC.do")
-    public ModelAndView getRegisterC(@Validated({XzLogin.F1.class, XzLogin.F2.class, XzLogin.F3.class}) XzLogin xzLogin, BindingResult result, String Cname, HttpServletRequest request) {
+    public ModelAndView getRegisterC(@Validated({XzLogin.F1.class, XzLogin.F2.class}) XzLogin xzLogin, BindingResult result, String Cname, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("foreEnd/RegisterCompany");
 
         System.out.println("RegisterC:" + xzLogin.getLoginCount());

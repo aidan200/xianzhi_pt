@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%--引入springMVC form--%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,19 +25,7 @@
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/dist/foreEnd3/js/stepBar.js"></script>
-    <script type="text/javascript">
-        function buttonon() {
-            var i = 2;
-            setInterval(function () {
-                if (i == 0) {
-                    location.href = "index.html";
-                }
-                document.getElementById("test").innerHTML = i--;
 
-            }, 800);
-        }
-        ;
-    </script>
 </head>
 <body style="background-color: #e6e6e6">
 
@@ -68,15 +58,17 @@
 
 <div id="myTabContent" class="tab-content">
 
-    <div class="tab-pane fade in active" id="register_one">
+    <div class="myTab" id="register_1">
         <div class="register1_all">
-            <form action="">
+            <sf:form class="login" id="signupForm" method="post"
+                     action="${pageContext.request.contextPath}/XzRegister/Register.do" modelAttribute="xzLogin">
                 <div class="register2_in">
                     <div class="r2_left">
                         <div class="r2_ne">
+                            <sf:hidden path="loginType"/>
                             <div class="r2_every" style="margin-top: 100px">
-                                <span>用 户 名&nbsp;</span>&emsp;<input type="text" class="r1_g"><span class="ru_s"
-                                                                                                    style="font-size: 13px">用户名不能为空</span>
+                                <span>用 户 名&nbsp;</span>&emsp;<sf:input path="loginCount" type="text"  class="r1_g"
+                                 onKeyUp="value=value.replace(/[^\w\.\/]/ig,'')"/><span class="ru_s" style="font-size: 13px"><sf:errors path="loginCount"/></span>
                             </div>
                             <div class="r2_every">
                                 <span>密&emsp;&emsp;码</span>&emsp;<input type="text" class="r1_g"><span class="ru_s"
@@ -90,9 +82,7 @@
                                 <span>邮&emsp;&emsp;箱</span>&emsp;<input type="text" class="r1_g"><span class="ru_s"
                                                                                                        style="font-size: 13px">用户名不能为空</span>
                             </div>
-                            <a href="#register_two" data-toggle="tab">
-                                <button class="r2_button">下一步</button>
-                            </a>
+                                <button class="r2_button" type="submit">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -104,21 +94,21 @@
                     </div>
                 </div>
 
-            </form>
+            </sf:form>
         </div>
     </div>
 
-    <div class="tab-pane fade" id="register_two">
+    <div class="myTab" id="register_2">
         <div class="register1_all">
             验证信息已经发送到你的邮箱
             <button>前往邮箱完成验证</button>
             <a href="#register_three" data-toggle="tab">
-                <button onclick="buttonon()">下一步</button>
+                <button >下一步</button>
             </a>
         </div>
     </div>
 
-    <div class="tab-pane fade" id="register_three">
+    <div class="myTab" id="register_3">
         <div class="register1_all">
             <div class="reu_over">
                 <div class="reu_b">
@@ -139,58 +129,32 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var state = 1;
+        if(${'state'}){
+            console.log(${'state'});
+            state = ${'state'};
+        }
         stepBar.init("stepBar", {
-            step: 1,
+            step: state,
             change: false,
             animation: false
 
         });
-        $(".r2_button").click(function () {
-            if ($("#register_two").is(':hidden'))
-                stepBar.init("stepBar", {
-                    step: 2,
-                    change: false,
-                    animation: false
-                });
-        });
-        if ($("#register_three").css("display") == 'block') {
-            stepBar.init("stepBar", {
-                step: 3,
-                change: false,
-                animation: false
-            });
+        $('.myTab').hide();
+        $('#register_'+state).show();
+        if(state=='3'){
+            var i = 2;
+            setInterval(function () {
+                if (i == 0) {
+                    location.href = "index.html";
+                }
+                document.getElementById("test").innerHTML = i--;
+
+            }, 800);
         }
     });
 
-
 </script>
-<%--<script type="text/javascript">--%>
-<%--$(document).ready(function () {--%>
-<%--stepBar.init("stepBar", {--%>
-<%--step: 1,--%>
-<%--change: false,--%>
-<%--animation: false--%>
-<%--});--%>
-<%--$(".r2_button").click(function () {--%>
-<%--if($("#register_two").css("display")=='block'){--%>
-<%--stepBar.init("stepBar", {--%>
-<%--step: 2,--%>
-<%--change: false,--%>
-<%--animation: false--%>
-<%--});--%>
-<%--}--%>
-<%--});--%>
-<%--if( $("#register_three").css("display")=='block' ){--%>
-<%--stepBar.init("stepBar", {--%>
-<%--step: 3,--%>
-<%--change: false,--%>
-<%--animation: false--%>
-<%--});--%>
-<%--}--%>
-<%--});--%>
-
-<%--</script>--%>
-
 
 </body>
 </html>

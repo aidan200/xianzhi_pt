@@ -21,7 +21,7 @@ public class ValidByIdImpl implements ConstraintValidator<ValidById,String> {
         serviceClass = myValid.serviceClazz();
         methodName= myValid.methodName();
         TestService.class.getName();
-        System.out.println(TestService.class.getName());
+        //System.out.println(TestService.class.getName());
     }
 
     @Override

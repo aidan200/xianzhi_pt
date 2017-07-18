@@ -51,7 +51,7 @@
 
                 </div>
                 <button type="submit" class="login_button">登 录</button>
-                <a href="${pageContext.request.contextPath}/view/foreEnd3/registeru_1.html" class="login_re">没有账号？ 立即注册</a>
+                <a href="#0" class="login_re">没有账号？ 立即注册</a>
             </div>
         </form>
     </div>

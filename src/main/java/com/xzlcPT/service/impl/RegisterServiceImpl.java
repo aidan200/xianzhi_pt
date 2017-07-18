@@ -83,11 +83,12 @@ public class RegisterServiceImpl implements RegisterService {
      */
     @Override
     public XzLogin selectByCount(String user) {
-        XzLogin newUser = new XzLogin();
         if(user != null){
-            newUser = registerMapper.selectByUsername(user);
+            XzLogin newUser = registerMapper.selectByUsername(user);
+            return newUser;
+        }else{
+            return null;
         }
-        return newUser;
     }
 
     /**

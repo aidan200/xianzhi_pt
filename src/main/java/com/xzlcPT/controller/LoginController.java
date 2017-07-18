@@ -46,62 +46,6 @@ public class LoginController extends BaseController {
     @Autowired
     private VipService vipService;
 
-    //    跳转到主页
-    /*@RequestMapping("/goIndex.do")
-    public ModelAndView getIndex() {
-        ModelAndView mv = new ModelAndView("redirect:/");
-        return mv;
-    }*/
-
-    //    跳转到登录页面 并传入cookies
-    /*@RequestMapping("/goLogin.do")
-    public ModelAndView getLogin(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession) {
-        ModelAndView mv = new ModelAndView("foreEnd/Login");
-        XzLogin xzLogin = new XzLogin();
-        xzLogin = (XzLogin) httpSession.getAttribute("loginUnActive");
-
-        mv.addObject("xzLogin", xzLogin);
-        Cookie[] cookies = request.getCookies();
-        String count1 = null;
-        String password1 = null;
-        XzLogin userLogin = (XzLogin) httpSession.getAttribute("userLogin");
-        if (userLogin == null) {
-            userLogin = new XzLogin();
-            mv.addObject("userLogin", userLogin);
-        }
-        String str1 = (String) httpSession.getAttribute("loginC1");
-        if ("该账户尚未激活".equals(str1)) {
-            mv.addObject("count1", xzLogin.getLoginCount());
-        } else {
-            if (userLogin.getLoginID() != 0) {
-                mv.addObject("count1", userLogin.getLoginCount());
-                mv.addObject("password1", userLogin.getLoginPassword());
-            } else {
-                for (int i = 0; i < cookies.length; i++) {
-                    if (cookies[i] != null) {
-                        if (cookies[i].getName().equalsIgnoreCase("count")) { //获取键
-                            count1 = cookies[i].getValue().toString();    //获取值
-                            System.out.println("cookies:" + count1);
-                            mv.addObject("count1", count1);
-                            continue;
-                        }
-                        if (cookies[i].getName().equalsIgnoreCase("pw")) { //获取键
-                            password1 = cookies[i].getValue().toString();    //获取值
-                            mv.addObject("password1", password1);
-                            continue;
-                        }
-                    }
-                }
-            }
-        }
-        XzLogin newUser = (XzLogin) httpSession.getAttribute("userLogin");
-        if (newUser != null) {
-            mv.addObject("userLogin", newUser);
-        }
-
-        return mv;
-    }*/
-
     //      登录方法
     @RequestMapping("/Login.do")
     public ModelAndView getLogin1(String username, String password, String remember,HttpServletResponse response,HttpServletRequest request) {
@@ -143,6 +87,8 @@ public class LoginController extends BaseController {
         return mv;
     }
 
+
+
     //    退出登录方法
     @RequestMapping("ExitUser.do")
     public ModelAndView exitUser(SessionStatus sessionStatus) {
@@ -179,7 +125,7 @@ public class LoginController extends BaseController {
 
     //    添加用户
     @RequestMapping("addLogin.emp")
-    public ModelAndView addLoginEnd(@Validated({XzLogin.F1.class, XzLogin.F3.class}) XzLogin xzLogin, BindingResult result) {
+    public ModelAndView addLoginEnd(@Validated({XzLogin.F1.class}) XzLogin xzLogin, BindingResult result) {
         ModelAndView mv = new ModelAndView("redirect:selAllLogin.emp");
         if (result.hasErrors()) {
             System.out.println("hasErrors:" + xzLogin);

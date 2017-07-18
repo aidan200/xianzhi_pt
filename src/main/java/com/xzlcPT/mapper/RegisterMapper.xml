@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xzlcPT.dao.RegisterMapper">
     <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzLogin">
-        <id column="login_id" jdbcType="BIGINT" property="loginID"/>
+        <id column="login_id" jdbcType="BIGINT" property="loginId"/>
         <result column="login_count" jdbcType="VARCHAR" property="loginCount"/>
         <result column="login_password" jdbcType="VARCHAR" property="loginPassword"/>
         <result column="login_email" jdbcType="VARCHAR" property="loginEmail"/>
@@ -17,7 +17,7 @@
     <insert id="insertUser" parameterType="com.xzlcPT.bean.XzLogin">
       insert into xz_login (login_id, login_count, login_password, login_email, login_type,login_active
       )
-    values (#{loginID,jdbcType=BIGINT}, #{loginCount,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR},
+    values (#{loginId,jdbcType=BIGINT}, #{loginCount,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR},
       #{loginEmail,jdbcType=VARCHAR}, #{loginType,jdbcType=INTEGER}, #{loginActive,jdbcType=INTEGER}
       )
   </insert>
@@ -53,7 +53,7 @@
         select
         <include refid="Base_Column_List"/>
         from xz_login
-        where login_count = #{loginCount,jdbcType=VARCHAR}
+        where login_count = #{username,jdbcType=VARCHAR}
     </select>
 
     <select id="selectEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
