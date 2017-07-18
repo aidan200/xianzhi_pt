@@ -37,15 +37,8 @@ public class RegisterServiceImpl implements RegisterService {
      * @return
      */
     @Override
-    public String updateActiveCount(XzLogin activeCount) {
-        int a = 0;
-        if (activeCount!=null){
-            a = registerMapper.updateActiveCount(activeCount);
-        }
-        if (a!=0){
-            return "激活成功!";
-        }
-        return "激活失败!";
+    public int updateActiveCount(XzLogin activeCount) {
+         return registerMapper.updateActiveCount(activeCount);
     }
 
     /**
@@ -98,11 +91,11 @@ public class RegisterServiceImpl implements RegisterService {
      */
     @Override
     public XzLogin selectEmail(String email) {
-        XzLogin newUser = new XzLogin();
         if (email != null) {
-            newUser = registerMapper.selectEmail(email);
+            XzLogin newUser = registerMapper.selectEmail(email);
+            return newUser;
         }
-        return newUser;
+        return null;
     }
 
     /**

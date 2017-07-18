@@ -3,8 +3,14 @@ package com.xzlcPT.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.util.PageBean;
+import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzLogin;
+import com.xzlcPT.bean.XzMember;
+import com.xzlcPT.bean.XzResume;
 import com.xzlcPT.dao.LoginUserMapper;
+import com.xzlcPT.dao.XzCompanyMapper;
+import com.xzlcPT.dao.XzMemberMapper;
+import com.xzlcPT.dao.XzResumeMapper;
 import com.xzlcPT.service.LoginUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +31,12 @@ public class LoginUserServiceImpl implements LoginUserService {
 
     @Autowired
     private LoginUserMapper loginUserMapper;
+    @Autowired
+    private XzMemberMapper memberMapper;
+    @Autowired
+    private XzResumeMapper resumeMapper;
+    @Autowired
+    private XzCompanyMapper companyMapper;
     /**
      *前台方法
      */
@@ -51,6 +63,49 @@ public class LoginUserServiceImpl implements LoginUserService {
         }
         return rsMap;
     }
+
+    @Override
+    public int addUserForMember(XzLogin xzLogin) {
+        //添加用户个人基本信息
+        XzMember member = new XzMember();
+        member.setMemberName(xzLogin.getLoginCount());
+        member.setMemberEmail(xzLogin.getLoginEmail());
+        member.setLoginId(xzLogin.getLoginId());
+        int i = memberMapper.insert(member);
+        if(i==1){
+            //添加简历信息
+            XzResume resume = new XzResume();
+            resume.setMemberId(member.getMemberId());
+            resume.setResumeEmail(member.getMemberEmail());
+            i = resumeMapper.insert(resume);
+            if(i==1){
+                return i;
+            }else{
+                i = i/0;
+            }
+        }else{
+           i = i/0;
+        }
+        return 0;
+    }
+
+    @Override
+    public XzCompany addUserForCompany(XzLogin xzLogin) {
+        //添加企业基本信息
+        XzCompany company = new XzCompany();
+        company.setLoginId(xzLogin.getLoginId());
+        int i = companyMapper.addCompany(company);
+        if(i==1){
+            return company;
+        }
+        return null;
+    }
+
+    @Override
+    public XzLogin selLoginForMOrCById(Map map) {
+        return loginUserMapper.selLoginForMOrCById(map);
+    }
+
     //修改个人信息
     public int updateLogin(XzLogin login){
 

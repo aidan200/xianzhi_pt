@@ -36,13 +36,18 @@
                     <a href="blog_home.html" class="sim-button button01"><span data-hover="先知社区">&nbsp;先知社区&nbsp;</span></a>
                 </li>
                 <li>
-                    <a href="zp_index.html" class="sim-button button01"><span data-hover="招聘中心">&nbsp;招聘中心&nbsp;</span></a>
+                    <a href="${pageContext.request.contextPath}/zp_index" class="sim-button button01"><span data-hover="招聘中心">&nbsp;招聘中心&nbsp;</span></a>
                 </li>
                 <li>
                     <a href="#" class="sim-button button01"><span data-hover="活动中心">&nbsp;活动中心&nbsp;</span></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav nav_1">
+                <c:if test="${userLogin!=undefined}">
+                    <li class="login1">
+                        <a><span>${userLogin.loginCount}${userLogin.member.memberId}</span></a>
+                    </li>
+                </c:if>
                 <li class="login1">
                     <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"><span>登录</span></a>
                 </li>

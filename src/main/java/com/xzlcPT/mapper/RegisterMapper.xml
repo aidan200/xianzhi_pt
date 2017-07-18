@@ -15,6 +15,9 @@
   </sql>
 
     <insert id="insertUser" parameterType="com.xzlcPT.bean.XzLogin">
+    <selectKey keyProperty="loginId" resultType="long">
+        select LAST_INSERT_ID()
+    </selectKey>
       insert into xz_login (login_id, login_count, login_password, login_email, login_type,login_active
       )
     values (#{loginId,jdbcType=BIGINT}, #{loginCount,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR},
@@ -60,7 +63,7 @@
         select
         <include refid="Base_Column_List"/>
         from xz_login
-        where login_email = #{loginEmail,jdbcType=VARCHAR}
+        where login_email = #{email,jdbcType=VARCHAR}
     </select>
 
     <select id="getPassword" parameterType="com.xzlcPT.bean.XzLogin" resultMap="BaseResultMap">

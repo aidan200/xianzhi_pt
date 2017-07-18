@@ -2,6 +2,7 @@ package com.xzlcPT.service;
 
 
 import com.util.PageBean;
+import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzLogin;
 
 import java.util.List;
@@ -17,6 +18,13 @@ public interface LoginUserService {
     //    前台
     // 用户登录
     Map sellogin(String username,String passowrd);
+    //个人用户登录
+    int addUserForMember(XzLogin xzLogin);
+    //企业用户登陆
+    XzCompany addUserForCompany(XzLogin xzLogin);
+    //按类型和id查询企业和个人信息
+    XzLogin selLoginForMOrCById(Map map);
+
     //      后台
     // 管理员登陆
     XzLogin selAdmin(String username,String passowrd);

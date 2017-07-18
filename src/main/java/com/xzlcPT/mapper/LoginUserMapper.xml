@@ -23,7 +23,6 @@
         <result column="login_active" jdbcType="INTEGER" property="loginActive"/>
         <association property="member" javaType="com.xzlcPT.bean.XzMember">
             <id column="member_id" jdbcType="BIGINT" property="memberId" />
-            <result column="login_id" jdbcType="BIGINT" property="loginId" />
             <result column="member_name" jdbcType="VARCHAR" property="memberName" />
             <result column="member_sex" jdbcType="INTEGER" property="memberSex" />
             <result column="member_age" jdbcType="INTEGER" property="memberAge" />
@@ -37,7 +36,6 @@
         </association>
         <association property="company" javaType="com.xzlcPT.bean.XzCompany">
             <id column="company_id" jdbcType="BIGINT" property="companyId"/>
-            <result column="login_id" jdbcType="BIGINT" property="loginId"/>
             <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
             <result column="company_location" jdbcType="VARCHAR" property="companyLocation"/>
             <result column="company_phone" jdbcType="VARCHAR" property="companyPhone"/>
@@ -55,8 +53,28 @@
     <sql id="Base_Column_List1">
     login_id, login_count, login_password, login_email, login_type, login_active, delete_login_date, delete_falt
   </sql>
-
-
+    <!--用户详细信息  需要修改  登陆信息不全-->
+    <sql id="userInfos">
+        l.login_id, login_count, login_password, login_email, login_type, login_active, delete_login_date, delete_falt
+    </sql>
+    <select id="selLoginForMOrCById" parameterType="Map" resultMap="CompanyOrMember">
+        select * FROM
+        xz_login l
+        <if test="usertype==1">
+            ,xz_member m
+        </if>
+        <if test="usertype==2">
+            ,xz_company c
+        </if>
+        where l.delete_falt = 0
+        <if test="usertype==1">
+            and l.login_id = m.login_id
+        </if>
+        <if test="usertype==2">
+            and l.login_id = c.login_id
+        </if>
+        and l.login_id = #{loginId,jdbcType=BIGINT}
+    </select>
     <select id="selNE" resultMap="BaseResultMap" parameterType="Map">
         select
         <include refid="Base_Column_List"/>
@@ -126,7 +144,7 @@
 
     <insert id="addLoginEnd" parameterType="com.xzlcPT.bean.XzLogin">
 
-        <selectKey keyProperty="loginID" order="AFTER" resultType="java.lang.Long">
+        <selectKey keyProperty="loginId" order="AFTER" resultType="java.lang.Long">
             SELECT LAST_INSERT_ID()
         </selectKey>
         insert into xz_login
@@ -149,7 +167,7 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-                #{loginID,jdbcType=BIGINT},
+                #{loginId,jdbcType=BIGINT},
             <if test="loginCount != null">
                 #{loginCount,jdbcType=VARCHAR},
             </if>
@@ -202,19 +220,19 @@
                 filed3 = #{filed3},
             </if>
         </set>
-        where login_id = #{loginID,jdbcType=BIGINT}
+        where login_id = #{loginId,jdbcType=BIGINT}
     </update>
 
     <delete id="deleteLoginEnd" parameterType="java.lang.Long">
         delete from xz_login
-        where login_id = #{loginID,jdbcType=BIGINT}
+        where login_id = #{loginId,jdbcType=BIGINT}
     </delete>
 
-    <select id="selByLoginIDEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzLogin">
+    <select id="selByloginIdEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzLogin">
         select
         <include refid="Base_Column_List1"/>
         FROM xz_login
-        where login_id = #{loginID,jdbcType=BIGINT}
+        where login_id = #{loginId,jdbcType=BIGINT}
         and delete_falt = 0
     </select>
 

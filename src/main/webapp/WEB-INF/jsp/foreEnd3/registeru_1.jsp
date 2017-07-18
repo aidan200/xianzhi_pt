@@ -61,7 +61,7 @@
     <div class="myTab" id="register_1">
         <div class="register1_all">
             <sf:form class="login" id="signupForm" method="post"
-                     action="${pageContext.request.contextPath}/XzRegister/Register.do" modelAttribute="xzLogin">
+                     action="${pageContext.request.contextPath}/XzRegister/Register.do" modelAttribute="xzLogin" onsubmit="return goSubMit()">
                 <div class="register2_in">
                     <div class="r2_left">
                         <div class="r2_ne">
@@ -71,16 +71,18 @@
                                  onKeyUp="value=value.replace(/[^\w\.\/]/ig,'')"/><span class="ru_s" style="font-size: 13px"><sf:errors path="loginCount"/></span>
                             </div>
                             <div class="r2_every">
-                                <span>密&emsp;&emsp;码</span>&emsp;<input type="text" class="r1_g"><span class="ru_s"
-                                                                                                       style="font-size: 13px">用户名不能为空</span>
+                                <span>密&emsp;&emsp;码</span>&emsp;<sf:input id="password" path="loginPassword" type="password" class="r1_g"
+                                 onKeyUp="value=value.replace(/[^\w\.\/]/ig,'')" onblur="validatePass()"/>
+                                <span class="ru_s" style="font-size: 13px"><sf:errors path="loginPassword"/></span>
                             </div>
                             <div class="r2_every">
-                                <span>确认密码</span>&emsp;<input type="text" class="r1_g"><span class="ru_s"
-                                                                                             style="font-size: 13px">用户名不能为空</span>
+                                <span>确认密码</span>&emsp;<input id="password2" type="text" class="r1_g" onblur="validatePass()">
+                                <span class="ru_s" style="font-size: 13px" id="password2f"></span>
                             </div>
                             <div class="r2_every">
-                                <span>邮&emsp;&emsp;箱</span>&emsp;<input type="text" class="r1_g"><span class="ru_s"
-                                                                                                       style="font-size: 13px">用户名不能为空</span>
+                                <span>邮&emsp;&emsp;箱</span>&emsp; <sf:input id="email" path="loginEmail" type="text" class="r1_g"
+                                 onKeyUp="value=value.replace(/(^\s*)|(\s*$)/g,'')"/>
+                                <span class="ru_s"style="font-size: 13px"><sf:errors path="loginEmail"/></span>
                             </div>
                                 <button class="r2_button" type="submit">下一步</button>
                         </div>
@@ -100,11 +102,9 @@
 
     <div class="myTab" id="register_2">
         <div class="register1_all">
-            验证信息已经发送到你的邮箱
-            <button>前往邮箱完成验证</button>
-            <a href="#register_three" data-toggle="tab">
-                <button >下一步</button>
-            </a>
+            ${msg}
+            <button onclick="remailgo()">前往邮箱完成验证</button>
+            <button onclick="remailgo()">重新发送验证邮件</button>
         </div>
     </div>
 
@@ -129,10 +129,11 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        console.log('${msg}');
         var state = 1;
-        if(${'state'}){
-            console.log(${'state'});
-            state = ${'state'};
+        if('${state}'){
+            console.log('${state}');
+            state = '${state}';
         }
         stepBar.init("stepBar", {
             step: state,
@@ -146,14 +147,96 @@
             var i = 2;
             setInterval(function () {
                 if (i == 0) {
-                    location.href = "index.html";
+                    location.href = "${pageContext.request.contextPath}/";
                 }
                 document.getElementById("test").innerHTML = i--;
 
             }, 800);
         }
     });
-
+    function validatePass(b) {
+        if($('#password2').val()!=""){
+            if($('#password').val()!=$('#password2').val()){
+                $('#password2f').html("密码不一致");
+                if(b!=undefined){
+                    return b;
+                }
+            }else{
+                $('#password2f').html("");
+                if(b!=undefined){
+                    b = true;
+                    return b;
+                }
+            }
+        }
+        return b;
+    }
+    function goSubMit() {
+        var b = false;
+        alert(validatePass(b));
+        return validatePass(b);
+    }
+    function remailgo() {
+        var email = '${xzLogin.loginEmail}';
+        /*var remail = document.getElementById("remail");
+        var uurl = remail.innerText;*/
+        var uurl = gotoEmail(email);
+        if (uurl != "") {
+            window.location.href = "http://"+uurl;
+        } else {
+            alert("抱歉!未找到对应的邮箱登录地址，请自己登录邮箱查看邮件！");
+        }
+    }
+    //功能：根据用户输入的Email跳转到相应的电子邮箱首页
+    function gotoEmail($mail) {
+        $t = $mail.split('@')[1];
+        $t = $t.toLowerCase();
+        if ($t == '163.com') {
+            return 'mail.163.com';
+        } else if ($t == 'vip.163.com') {
+            return 'vip.163.com';
+        } else if ($t == '126.com') {
+            return 'mail.126.com';
+        } else if ($t == 'qq.com' || $t == 'vip.qq.com' || $t == 'foxmail.com') {
+            return 'mail.qq.com';
+        } else if ($t == 'gmail.com') {
+            return 'mail.google.com';
+        } else if ($t == 'sohu.com') {
+            return 'mail.sohu.com';
+        } else if ($t == 'tom.com') {
+            return 'mail.tom.com';
+        } else if ($t == 'vip.sina.com') {
+            return 'vip.sina.com';
+        } else if ($t == 'sina.com.cn' || $t == 'sina.com') {
+            return 'mail.sina.com.cn';
+        } else if ($t == 'tom.com') {
+            return 'mail.tom.com';
+        } else if ($t == 'yahoo.com.cn' || $t == 'yahoo.cn') {
+            return 'mail.cn.yahoo.com';
+        } else if ($t == 'tom.com') {
+            return 'mail.tom.com';
+        } else if ($t == 'yeah.net') {
+            return 'www.yeah.net';
+        } else if ($t == '21cn.com') {
+            return 'mail.21cn.com';
+        } else if ($t == 'hotmail.com') {
+            return 'www.hotmail.com';
+        } else if ($t == 'sogou.com') {
+            return 'mail.sogou.com';
+        } else if ($t == '188.com') {
+            return 'www.188.com';
+        } else if ($t == '139.com') {
+            return 'mail.10086.cn';
+        } else if ($t == '189.cn') {
+            return 'webmail15.189.cn/webmail';
+        } else if ($t == 'wo.com.cn') {
+            return 'mail.wo.com.cn/smsmail';
+        } else if ($t == '139.com') {
+            return 'mail.10086.cn';
+        } else {
+            return '';
+        }
+    };
 </script>
 
 </body>

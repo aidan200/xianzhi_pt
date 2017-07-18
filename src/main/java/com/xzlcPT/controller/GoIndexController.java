@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -19,7 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Controller 层 LoginController
@@ -32,6 +35,9 @@ import java.util.List;
 @RequestMapping("/")
 @SessionAttributes("userLogin")
 public class GoIndexController extends BaseController {
+
+    @Autowired
+    private XzResumeService xzResumeService;
 
     @Autowired
     private NewsService newsService;
@@ -78,6 +84,17 @@ public class GoIndexController extends BaseController {
 */
         return mv;
     }
-
+    @RequestMapping("zp_index")
+    public ModelAndView goZpIndex(@ModelAttribute("userLogin") XzLogin userLogin){
+        ModelAndView mv = new ModelAndView("");
+        if(userLogin.getLoginType()==0){
+            mv.setViewName("foreEnd3/zp_index");
+            XzResume resume = xzResumeService.selectByMemberId(userLogin.getMember().getMemberId());
+            mv.addObject("resume",resume);
+        }else{
+            mv.setViewName("foreEnd3/zp_indexgs");
+        }
+        return mv;
+    }
 
 }

@@ -36,6 +36,9 @@
     where member_id = #{memberId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.xzlcPT.bean.XzMember">
+    <selectKey keyProperty="memberId" resultType="long">
+      select LAST_INSERT_ID()
+    </selectKey>
     insert into xz_member (member_id, login_id, member_name, 
       member_sex, member_age, member_birth, 
       member_education, member_Idcard, member_picture,

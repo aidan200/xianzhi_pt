@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,7 @@ import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/XzRegister")
+@SessionAttributes({"userLogin"})
 public class RegisterController extends BaseController {
     @Autowired
     private RegisterService registerService;
@@ -38,148 +40,121 @@ public class RegisterController extends BaseController {
     private CompanyInfoService companyInfoService;
 
     @Autowired
-    private VipService vipService;
+    private LoginUserService loginUserService;
 
 
     //    跳转到用户注册页面
     @RequestMapping("/goRegister.do")
-    public ModelAndView toRegister(Integer type) {
+    public ModelAndView toRegister() {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
         XzLogin xzLogin = new XzLogin();
-        xzLogin.setLoginType(type);
+        xzLogin.setLoginType(0);
         mv.addObject("xzLogin", xzLogin);
         mv.addObject("state",1);
         return mv;
     }
+    //    跳转到企业注册页面
+    @RequestMapping("/goRegisterC.do")
+    public ModelAndView getRegister() {
+        ModelAndView mv = new ModelAndView("foreEnd3/registerc_1");
+        XzLogin xzLogin = new XzLogin();
+        xzLogin.setLoginType(1);
+        mv.addObject("xzLogin", xzLogin);
+        return mv;
+    }
+
+
 
     //    用户注册
     @RequestMapping("Register.do")
     public ModelAndView getRegister1(@Validated(XzLogin.Group.class) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
-        if(result.hasErrors()){
-
-        }else{
-
-        }
-        /*Pattern p = Pattern.compile("^([a-z0-9A-Z_]+[_-|\\.]?)+[a-z0-9A-Z_]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
-        Matcher m = p.matcher(xzLogin.getLoginEmail());
-        boolean bl = m.matches();
-        boolean b2 = xzLogin.getConfirmPassword().equals(xzLogin.getLoginPassword());
-        System.out.println(b2 + " : " + xzLogin.getConfirmPassword() + "   " + xzLogin.getLoginPassword());
-        if (result.hasErrors() || !bl || !b2) {
-            mv.setViewName("foreEnd/RegisterUser");
-            if (!bl) {
-                mv.addObject("eSpan", "邮箱格式错误!");
-            }
-            if (!b2) {
-                mv.addObject("confirmSpan", "两次密码不一致!");
-            }
-        } else {
+        if(!result.hasErrors()){
+            //加密
             String strMd5 = MD5.md5(xzLogin.getLoginPassword());
             xzLogin.setLoginPassword(strMd5);
-            xzLogin.setLoginType(1);
-            xzLogin.setLoginActive(2);
-            int a = registerService.insertUser(xzLogin);
-            XzLogin newXz = new XzLogin();
-            newXz = registerService.selectByUser(xzLogin);
-            XzMember xzMember = new XzMember();
-            //xzMember.setLoginId(newXz.getLoginId());
-            xzMember.setMemberPicture("timg1.jpg");
-//            向用户表中添加一条空数据
-            *//*int b = userInfoService.addUserInfo(xzMember);
-            Resume resume = new Resume();
-            resume.setResumeMember(newXz.getLoginID());
-            resumeService.insert(resume);*//*
-            if (a == 1) {//添加未激活用户
-
-                mv = new ModelAndView("foreEnd/jumpGoEmail");
-//                发送激活邮件
-                String email = "/XzRegister/activeCount.do";
-                sentEmail(xzLogin, email, "", request);
-                System.out.println("添加未激活用户成功!");
-                mv.addObject("jumpInfo", "请登录邮箱激活账号!");
-                mv.addObject("jumpAddress", "goIndex.do");
-                mv.addObject("goEmail", xzLogin.getLoginEmail());
-            } else {
-                System.out.println("添加未激活用户失败!");
-            }
-
-        }*/
-        return mv;
-    }
-
-    //    跳转到企业注册页面
-    @RequestMapping("/goRegisterC.do")
-    public ModelAndView getRegister(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession) {
-        ModelAndView mv = new ModelAndView("foreEnd/RegisterCompany");
-        XzLogin xzLogin = new XzLogin();
-        mv.addObject("xzLogin", xzLogin);
-        return mv;
-    }
-
-    //    企业注册
-    @RequestMapping("/RegisterC.do")
-    public ModelAndView getRegisterC(@Validated({XzLogin.F1.class, XzLogin.F2.class}) XzLogin xzLogin, BindingResult result, String Cname, HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView("foreEnd/RegisterCompany");
-
-        System.out.println("RegisterC:" + xzLogin.getLoginCount());
-        System.out.println("RegisterC:" + Cname);
-//        System.out.println(result.hasErrors());
-        Pattern p = Pattern.compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
-        Matcher m = p.matcher(xzLogin.getLoginEmail());
-        boolean bl = m.matches();
-        boolean b2 = xzLogin.getConfirmPassword().equals(xzLogin.getLoginPassword());
-        if (result.hasErrors() || Cname == null || "".equals(Cname) || !bl || !b2) {
-//            验证失败
-            mv.setViewName("foreEnd/RegisterCompany");
-            mv.addObject("companyName", Cname);
-            if (Cname == null || "".equals(Cname)) {
-                mv.addObject("companyAAA", "公司名不能为空");
-            }
-            if (!result.hasErrors() && !bl) {
-                mv.addObject("eSpan", "邮箱格式错误!");
-            }
-            if (!b2) {
-                mv.addObject("confirmSpan", "两次密码不一致!");
-            }
-        } else {
-            String strMd5 = MD5.md5(xzLogin.getLoginPassword());
-            xzLogin.setLoginPassword(strMd5);
-            xzLogin.setLoginType(2);
-            xzLogin.setLoginActive(2);
-            int a = registerService.insertUser(xzLogin);
-            XzLogin newUser = registerService.selectByUser(xzLogin);
-            System.out.println("01      " + newUser.getLoginId());
-            XzCompany companyInfo = new XzCompany();
-            companyInfo.setCompanyName(Cname);
-            companyInfo.setLoginId(newUser.getLoginId());
-            companyInfo.setCompanyPicture("timg1.jpg");
-            if (a != 0) {//添加未激活用户
-                int b = companyInfoService.insertCompanyInfo(companyInfo);
-                if (b != 0) {
-                    mv = new ModelAndView("foreEnd/jumpGoEmail");
-//                发送激活邮件
-                    String email = "/XzRegister/activeCount.do";
-                    sentEmail(xzLogin, email, "", request);
-                    System.out.println("添加未激活用户成功!");
-                    mv.addObject("jumpInfo", "请登录邮箱激活账号!");
-                    mv.addObject("jumpAddress", "goIndex.do");
-                    mv.addObject("goEmail", xzLogin.getLoginEmail());
-                } else {
-                    System.out.println("添加公司信息失败!");
+            xzLogin.setLoginActive(0);
+            int i = registerService.insertUser(xzLogin);
+            if(i==1){
+                int rs = 0;
+                if(xzLogin.getLoginType()==0){
+                    rs = loginUserService.addUserForMember(xzLogin);
+                }else{
+                    //企业用户跳转到注册第二步---企业信息
+                    XzCompany company = loginUserService.addUserForCompany(xzLogin);
+                    mv.setViewName("foreEnd3/registerc_1");
+                    mv.addObject("xzCompany",company);
+                    return mv;
                 }
-            } else {
-                System.out.println("添加未激活用户失败!");
+                if(rs==1){
+                    //第一步成功
+                    mv.addObject("state",2);
+                    mv.addObject("xzLogin",xzLogin);
+                    String information = "呵呵哒";
+                    //                发送激活邮件
+                    try {
+                        System.out.println("发邮件:" + xzLogin.getLoginEmail());
+                        long newTime = System.currentTimeMillis();
+                        String strMail = "?username=" + xzLogin.getLoginCount() + "&newTime=" + newTime;
+                        String user = "测试邮件:" + xzLogin.getLoginCount();
+                        String toMail = xzLogin.getLoginEmail();
+                        String email = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+                        MailUtil.sendMail("xianzhi_lc@sina.com", "xianzhi_lc@sina.com", "tt6403947",
+                                toMail,
+                                "测试邮件",
+                                "<a href='" + email + "/XzRegister/activeCount.do" + strMail + "'>"+ email + "/XzRegister/activeCount.do" + strMail +"</a>：<b>" + user + "<br/>" + information + "</b>");
+                        mv.addObject("msg","发送成功巴拉巴拉");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println("发送失败!");
+                        mv.addObject("msg","发送失败巴拉巴拉");
+                    }
+                }else{
+                    mv.addObject("msg","注册失败");
+                }
+            }else{
+                mv.addObject("msg","注册失败");
             }
-
         }
         return mv;
     }
 
-    //    跳转到主页
-    @RequestMapping("/goIndex.do")
-    public ModelAndView getIndex(HttpServletRequest request, HttpServletResponse response, HttpSession httpSession) {
-        ModelAndView mv = new ModelAndView("redirect:/");
+    //    激活账号
+    @RequestMapping("activeCount.do")
+    public ModelAndView activeCount(String username, String newTime) {
+        ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
+        mv.addObject("state",2);
+        if (username != null) {
+            XzLogin activeUser = selActiveUser(username);
+            mv.addObject("xzLogin",activeUser);
+            long activeTime = System.currentTimeMillis() - Long.parseLong(newTime);
+            System.out.println(activeTime);
+            if (activeTime < 86400000) {
+                if (activeUser.getLoginActive() != 1) {
+                    activeUser.setLoginActive(1);
+                    System.out.println("激活测试:" + activeUser.getLoginCount());
+                    int a = registerService.updateActiveCount(activeUser);
+                    if(a!=1){
+                        mv.addObject("msg","激活失败");
+                    }else{
+                        mv.addObject("state",3);
+                        mv.addObject("msg","激活成功");
+                        //把登录成功后的用户加入session
+                        Map map = new HashMap();
+                        map.put("usertype",activeUser.getLoginType());
+                        map.put("loginId",activeUser.getLoginId());
+                        mv.addObject("userLogin",loginUserService.selLoginForMOrCById(map));
+                    }
+                } else {
+                    mv.addObject("state",3);
+                    mv.addObject("msg","已经激活无需重复激活");
+                }
+
+            } else {
+                mv.addObject("msg", "邮件已超过24小时,请重新激活!");
+            }
+        }
+        mv.addObject("msg","激活路径有误请重新登陆激活");
         return mv;
     }
 
@@ -260,7 +235,7 @@ public class RegisterController extends BaseController {
     }
 
     //    发送邮件方法
-    public void sentEmail(XzLogin LoginUser, String email, String information, HttpServletRequest request) {
+    private void sentEmail(XzLogin LoginUser, String email, String information, HttpServletRequest request) {
         try {
             System.out.println("发邮件:" + LoginUser.getLoginEmail());
             long newTime = System.currentTimeMillis();
@@ -288,54 +263,7 @@ public class RegisterController extends BaseController {
         return newUser;
     }
 
-    //    激活账号
-    @RequestMapping("activeCount.do")
-    public ModelAndView activeCount(String username, String newTime, HttpSession httpSession, HttpServletRequest request) {
-        System.out.println(username);
-        System.out.println(newTime);
-        ModelAndView mv = new ModelAndView("foreEnd/jump");
-        if (username != null) {
-            XzLogin activeUser = new XzLogin();
-            activeUser = selActiveUser(username);
-            System.out.println(activeUser);
-            long activeTime = System.currentTimeMillis() - Long.parseLong(newTime);
-            System.out.println(activeTime);
-            if (activeTime < 86400000) {
-                if (activeUser.getLoginActive() != 1) {
-                    activeUser.setLoginActive(1);
-                    System.out.println("激活测试:" + activeUser.getLoginCount());
-                    String a = registerService.updateActiveCount(activeUser);
-                    activeUser.setLoginPassword(null);
-                    httpSession.setAttribute("userLogin", activeUser);
-//                    向VIP表中插入数据
-                    Vip vip = vipService.selectVipByLoginID(activeUser.getLoginId());
-                    if (vip == null) {
-                        vip = new Vip();
-                        vip.setLoginID(activeUser.getLoginId());
-                        vip.setVipRest(0.00);
-                        vip.setVipScore(0L);
-                        System.out.println(vip);
-                        int va = vipService.insertVip(vip);
-                        if (va != 0) {
-                            System.out.println("添加VIP成功");
-                        } else {
-                            System.out.println("添加VIP失败");
-                        }
-                    }
-                    mv.addObject("jumpInfo", "激活成功!");
-                } else {
-                    mv.addObject("jumpInfo", "激活无效!");
-                }
 
-            } else {
-                String email = "http://localhost:8080/xianzhiPT/XzRegister/activeCount.do";
-                sentEmail(activeUser, email, "邮件已超过24小时,请重新激活!", request);
-                mv.addObject("jumpInfo", "邮件已超过24小时,请重新激活!");
-            }
-        }
-        mv.addObject("jumpAddress", "goIndex.do");
-        return mv;
-    }
 
     //    跳转到修改密码页面
     @RequestMapping("goForget.do")

@@ -15,7 +15,7 @@ public interface RegisterService {
     int insertUser(XzLogin addUser);
 
     //    激活用户
-    String updateActiveCount(XzLogin activeCount);
+    int updateActiveCount(XzLogin activeCount);
 
     //    根据用户名查询用户
     XzLogin selectByUser(XzLogin user);

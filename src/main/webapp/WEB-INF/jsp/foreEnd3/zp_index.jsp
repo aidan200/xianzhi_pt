@@ -62,7 +62,7 @@
 
 
                 </div>
-                <p><span>默认条件:沈阳</span> <a href="">更多搜索条件</a></p>
+                <p><span>默认条件:沈阳</span> <a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do">更多搜索条件</a></p>
             </div>
             <div class="zp_index_cont_left_zwtj">
                 <h3>职位推荐&nbsp;&nbsp;<span class="fa fa-caret-down"></span></h3>
@@ -121,7 +121,7 @@
                         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" width="100%" height="100%">
                     </div>
                     <div class="zp_index_cont_right_top_right">
-                        <span>谁谁谁</span>
+                        <span>${resume.resumeName}</span>
                         <p>前端开发</p>
                         <p>沈阳先知蓝创</p>
                     </div>
@@ -129,7 +129,7 @@
                 <p> <span>沈阳</span>&nbsp;|&nbsp;<span>互联网电商</span>&nbsp;|&nbsp;<span>工作3年</span></p>
                 <ul>
                     <li class="col-md-3"><a href=""><span>刷新简历</span></a></li>
-                    <li class="col-md-3"><a href=""><span>编辑简历</span></a></li>
+                    <li class="col-md-3"><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html?resumId=${resume.resumeId}"><span>编辑简历</span></a></li>
                     <li class="col-md-3"><a href=""><span>账号设置</span></a></li>
                     <li class="col-md-3"><a href=""><span>金卡服务</span></a></li>
                 </ul>
