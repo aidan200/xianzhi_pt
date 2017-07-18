@@ -44,4 +44,10 @@ public class XzMienServiceImpl implements XzMienService{
         List<XzCompanyMien> MienList=xzCompanyMienMapper.selectByCompanyId(companyId);
         return MienList;
     }
+
+    @Override
+    public int updateMienPicture(XzCompanyMien xzCompanyMien) {
+       int i=xzCompanyMienMapper.updateMienPicture(xzCompanyMien);
+        return i;
+    }
 }

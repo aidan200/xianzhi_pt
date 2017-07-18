@@ -20,4 +20,6 @@ public interface XzCompanyMienMapper {
 
     List<XzCompanyMien> selectByCompanyId(Long companyId);
 
+    int updateMienPicture(XzCompanyMien xzCompanyMien);
+
 }

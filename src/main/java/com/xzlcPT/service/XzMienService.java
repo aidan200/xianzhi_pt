@@ -20,4 +20,6 @@ public interface XzMienService {
     XzCompanyMien selectByMienId(Long mienId);
 
     List<XzCompanyMien> selectByCompanyId(Long companyId);
+
+    int updateMienPicture(XzCompanyMien xzCompanyMien);
 }

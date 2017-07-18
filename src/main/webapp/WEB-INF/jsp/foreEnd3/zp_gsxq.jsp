@@ -39,37 +39,23 @@
             <div class="zp_gsxq_gsjs">
                 <h2 class="company-title">公司介绍</h2>
                 <p class="profile" data-selector="detail" style="display: block;">
-                    &nbsp; &nbsp;  两家上市公司（铁汉生态、岭南园林）领投，大千园林、国艺园林、星河园林一起联手注资6000万元成立横琴花木交易中心股份有限公司，诚邀行业内的有志之士携手并肩，一路前行！ 共同打造开放而独立的苗木交易第三方平台！<br>&nbsp; &nbsp; 深圳爱淘苗电子商务科技有限公司是横琴花木交易中心股份有限公司的全资子公司，注册资本...</p>
+                    &nbsp; &nbsp;${xzCompany.companyIntro}</p>
                 <a class="link-more" href="javascript:;" style="display: block;">点击展开更多详情</a>
             </div>
             <div class="zp_gsxq_cpjs">
                 <h2 class="product-title">产品介绍</h2>
-
+                <c:forEach var="p1" items="${xzCompany.products}">
                 <dl class="clearfix" style="display: block;">
                     <dt><img src="https://image0.lietou-static.com/img/57d2632962f0550b9450e1d706a.jpg" alt=""></dt>
                     <dd>
-                        <p data-selector="detail">爱淘苗电商平台</p>
+                        <p data-selector="detail">${p1.productIntro}应该是名字</p>
                     </dd>
                 </dl>
-
-                <dl class="clearfix" style="display: none;">
-                    <dt><img src="https://image0.lietou-static.com/img/57d2636b62f0550b9450e1e306a.jpg" alt=""></dt>
-                    <dd>
-                        <p data-selector="detail">爱淘苗电商平台</p>
-                    </dd>
-                </dl>
-
-                <dl class="clearfix" style="display: none;">
-                    <dt><img src="https://image0.lietou-static.com/img/57d263c162f0550b9450e20406a.jpg" alt=""></dt>
-                    <dd>
-                        <p data-selector="detail">爱淘苗电商平台</p>
-                    </dd>
-                </dl>
-
+                </c:forEach>
                 <a class="link-more" href="javascript:;" style="display: block;">点击展开更多详情</a>
             </div>
             <div class="zp_gsxq_zpzw">
-                <h2>招聘职位<span>&nbsp;( 共16个 )</span></h2>
+                <h2>招聘职位<span>&nbsp;( 共${xzCompany.pcount}个 )</span></h2>
                 <div>
                     <div class="zp_gsxq_zpzw_left">
                         <select class="form-control">
@@ -98,46 +84,19 @@
                 </div>
                 <hr>
                 <ul>
+                    <c:forEach var="po" items="${xzCompany.postions}">
                     <li>
                         <div class="zp_gsxq_zpzw_li_left">
-                            <p><a href="">人力资源专员</a></p>
-                            <p><span>7-10万</span>&nbsp;&nbsp;深圳-南山区&nbsp;&nbsp;|&nbsp;&nbsp;统招本科&nbsp;&nbsp;|&nbsp;&nbsp;2年工作经验 </p>
+                            <p><a href="">${po.postionName}</a></p>
+                            <p><span>${po.postionMm}-${po.postionYm}万</span>&nbsp;&nbsp;${po.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionExp}工作经验 </p>
                             <p><span style="color: #999999; font-size: 10px;">23小时前 投递后：24小时反馈</span></p>
                         </div>
                         <div class="zp_gsxq_zpzw_li_right">
                             <button  type="button" class="btn btn-primary btn-large">立即应聘</button>
                         </div>
                     </li>
-                    <li>
-                        <div class="zp_gsxq_zpzw_li_left">
-                            <p><a href="">人力资源专员</a></p>
-                            <p><span>7-10万</span>&nbsp;&nbsp;深圳-南山区&nbsp;&nbsp;|&nbsp;&nbsp;统招本科&nbsp;&nbsp;|&nbsp;&nbsp;2年工作经验 </p>
-                            <p><span style="color: #999999; font-size: 10px;">23小时前 投递后：24小时反馈</span></p>
-                        </div>
-                        <div class="zp_gsxq_zpzw_li_right">
-                            <button  type="button" class="btn btn-primary btn-large">立即应聘</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="zp_gsxq_zpzw_li_left">
-                            <p><a href="">人力资源专员</a></p>
-                            <p><span>7-10万</span>&nbsp;&nbsp;深圳-南山区&nbsp;&nbsp;|&nbsp;&nbsp;统招本科&nbsp;&nbsp;|&nbsp;&nbsp;2年工作经验 </p>
-                            <p><span style="color: #999999; font-size: 10px;">23小时前 投递后：24小时反馈</span></p>
-                        </div>
-                        <div class="zp_gsxq_zpzw_li_right">
-                            <button  type="button" class="btn btn-primary btn-large">立即应聘</button>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="zp_gsxq_zpzw_li_left">
-                            <p><a href="">人力资源专员</a></p>
-                            <p><span>7-10万</span>&nbsp;&nbsp;深圳-南山区&nbsp;&nbsp;|&nbsp;&nbsp;统招本科&nbsp;&nbsp;|&nbsp;&nbsp;2年工作经验 </p>
-                            <p><span style="color: #999999; font-size: 10px;">23小时前 投递后：24小时反馈</span></p>
-                        </div>
-                        <div class="zp_gsxq_zpzw_li_right">
-                            <button  type="button" class="btn btn-primary btn-large">立即应聘</button>
-                        </div>
-                    </li>
+                    </c:forEach>
+
                 </ul>
             </div>
             <div class="zp_gsxq_fy" >
@@ -182,7 +141,10 @@
                         基本信息<hr>
                     </h2>
                     <ul>
-                        <li>行业：<span>互联网/移动互联网/电子商务</span></li>
+                        <li>行业：<span>
+                            <c:forEach var="f1" items="${xzCompany.fields}">
+                           ${f1.fieldName}/
+                            </c:forEach></span></li>
                         <li>领域：<span>电子商务</span></li>
                         <li>融资：<span>天使轮</span></li>
                         <li>规模：<span>50-99人</span></li>
