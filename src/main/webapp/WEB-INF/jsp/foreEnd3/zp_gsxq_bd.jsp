@@ -159,11 +159,12 @@
                 <div class="qyfc">
                     <p>企业风采照片</p>
                     <script id="qyfc_mb" type="text/html">
-                        <div data-id={{qyfc_id}}>
+
+                        <div data-id={{companyId}}>
                             <h3><a href="javascript:;" class="fa fa-check-square a1_gb_tj"></a><a href="javascript:;" class="fa fa-window-close a1_gb_sc"></a></h3>
-                            <div id=qyfc_bg_{{qyfc_id}} data-id="{{qyfc_id}}" class="qyfc_bg" style="background-image: url('{{dkh}}{{path}}{{qyfc_url}}')" ></div>
-                            <input type="text" style="display: none" value="" id=qyfc_{{qyfc_id}}>
-                            <textarea>{{qyfc_ms}}</textarea>
+                            <div id=qyfc_bg_{{mienId}} data-id="{{mienId}}" class="qyfc_bg" style="background-image: url('{{dkh}}{{path}}{{mienUrl}}')" ></div>
+                            <input type="text" style="display: none" value="" id=qyfc_{{mienId}}>
+                            <textarea>{{mienIntro}}</textarea>
                         </div>
                     </script>
                     <h4 id="tj_gsfc">添加公司风采图片</h4>
