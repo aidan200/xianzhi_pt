@@ -23,18 +23,19 @@
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/dist/foreEnd3/js/stepBar.js"></script>
-    <%--<script type="text/javascript">--%>
-    <%--function buttonon() {--%>
-    <%--var i = 2;--%>
-    <%--setInterval(function () {--%>
-    <%--if (i == 0) {--%>
-    <%--location.href = "index.html";--%>
-    <%--}--%>
-    <%--document.getElementById("test").innerHTML = i--;--%>
+    <script type="text/javascript">
+        function buttonon() {
+            var i = 2;
+            setInterval(function () {
+                if (i == 0) {
+                    location.href = "index.html";
+                }
+                document.getElementById("test").innerHTML = i--;
 
-    <%--}, 800);--%>
-    <%--};--%>
-    <%--</script>--%>
+            }, 800);
+        }
+        ;
+    </script>
 </head>
 <body style="background-color: #e6e6e6">
 
