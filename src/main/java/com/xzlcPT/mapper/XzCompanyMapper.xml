@@ -556,4 +556,13 @@
     AND c.company_id = #{companyId,jdbcType=BIGINT}
     GROUP BY  c.company_id
   </select>
+  <update id="updateCompanyPic"  parameterType="com.xzlcPT.bean.XzCompany">
+    update xz_company
+    <set>
+      <if test="companyPicture != null and companyPicture != '' ">
+        company_picture = #{companyPicture},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </update>
 </mapper>

@@ -122,5 +122,11 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         return xzCompany;
     }
 
+    @Override
+    public int updateCompanyPic(XzCompany xzCompany) {
+        int i=companyMapper.updateCompanyPic(xzCompany);
+        return i;
+    }
+
 
 }

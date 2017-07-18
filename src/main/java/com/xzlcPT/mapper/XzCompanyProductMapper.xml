@@ -174,6 +174,21 @@
         #{productUrl,jdbcType=VARCHAR},
       </if>
     </trim>
-    WHERE productId = #{productId,jdbcType=BIGINT}
   </insert>
+  <update id="updateProduct" parameterType="com.xzlcPT.bean.XzCompanyProduct">
+     update xz_company_product
+    <set>
+      <if test="companyId != null and companyId != ''">
+      company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="productIntro != null and productIntro != ''">
+      product_Intro = #{productIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="productUrl != null and productUrl != ''">
+      product_url = #{productUrl,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=BIGINT}
+  </update>
+
 </mapper>

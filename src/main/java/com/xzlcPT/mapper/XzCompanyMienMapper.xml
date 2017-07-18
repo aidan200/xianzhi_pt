@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzCompanyMienMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzCompanyMien">
+        <id column="mien_id" jdbcType="BIGINT" property="mienId"/>
+        <result column="company_id" jdbcType="BIGINT" property="companyId"/>
+        <result column="mien_Intro" jdbcType="VARCHAR" property="mienIntro"/>
+        <result column="mien_url" jdbcType="VARCHAR" property="mienUrl"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
+        <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+        <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+        <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        mien_id, company_id, mien_Intro, mien_url, create_time, delete_time, delete_falt,
+        filed1, filed2, filed3
+    </sql>
+    <insert id="insertMien" parameterType="com.xzlcPT.bean.XzCompanyMien">
+        INSERT INTO xz_company_mien
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="mienIntro != null">
+                mien_Intro,
+            </if>
+            <if test="mienUrl != null">
+                mien_url,
+            </if>
+        </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="companyId != null">
+                    #{companyId,jdbcType=BIGINT},
+                </if>
+                <if test="mienIntro != null">
+                    #{mienIntro,jdbcType=VARCHAR},
+                </if>
+                <if test="mienUrl != null">
+                    #{mienUrl,jdbcType=VARCHAR},
+                </if>
+            </trim>
+    </insert>
+    <update id="updateMien" parameterType="com.xzlcPT.bean.XzCompanyMien">
+       update xz_company_mien
+    <set>
+        <if test="companyId != null and companyId != ''">
+        company_id = #{companyId,jdbcType=BIGINT},
+        </if>
+        <if test="mienIntro != null and mienIntro != ''">
+        mien_Intro = #{mienIntro,jdbcType=VARCHAR},
+        </if>
+        <if test="mienUrl != null and mienUrl != ''">
+        mien_url = #{mienUrl,jdbcType=VARCHAR}
+        </if>
+    </set>
+    where mien_id = #{mienId,jdbcType=BIGINT}
+    </update>
+    <select id="selectByMienId"  resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xz_company_mien WHERE
+        mien_id = #{mienId,jdbcType=BIGINT}
+    </select>
+</mapper>
+
