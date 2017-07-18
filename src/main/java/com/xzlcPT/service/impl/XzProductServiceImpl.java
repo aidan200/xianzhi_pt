@@ -28,4 +28,10 @@ public class XzProductServiceImpl implements XzProductService {
         int i=xzCompanyProductMapper.updateProduct(xzCompanyProduct);
         return i;
     }
+
+    @Override
+    public XzCompanyProduct selectByPrimaryKey(Long productId) {
+        XzCompanyProduct xzCompanyProduct=xzCompanyProductMapper.selectByPrimaryKey(productId);
+        return xzCompanyProduct;
+    }
 }

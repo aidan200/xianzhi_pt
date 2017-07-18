@@ -282,8 +282,9 @@ public class CompanyInfoController {
     @ResponseBody
     @RequestMapping("selCompanyInf")
     public ModelAndView selCompanyInf (Long companyId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
         XzCompany xzCompany=companyService.selCompanyInf(companyId);
+        System.out.println("ssssssssssssssssssssssssssssssssssssssssssize:"+xzCompany.getWelfares().size());
         mv.addObject("xzCompany",xzCompany);
         return mv;
     }

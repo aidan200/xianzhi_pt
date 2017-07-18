@@ -19,4 +19,5 @@ public interface XzCompanyProductMapper {
     int insertProduct(XzCompanyProduct record);
 
     int updateProduct(XzCompanyProduct record);
+
 }

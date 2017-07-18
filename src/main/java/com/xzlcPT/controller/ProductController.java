@@ -33,4 +33,11 @@ public class ProductController extends BaseController{
         mv.addObject("i",i);
         return mv;
     }
+    @RequestMapping("selectByPrimaryKey")
+    public ModelAndView selectByPrimaryKey(Long productId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        XzCompanyProduct xzCompanyProduct=xzProductService.selectByPrimaryKey(productId);
+        mv.addObject("xzCompanyProduct",xzCompanyProduct);
+        return mv;
+    }
 }

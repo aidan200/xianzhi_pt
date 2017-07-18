@@ -554,7 +554,6 @@
     c.company_id=d.company_id LEFT JOIN xz_field f ON f.field_id=d.field_id LEFT JOIN xz_postion s ON
     s.company_id=c.company_id where c.delete_falt = 0
     AND c.company_id = #{companyId,jdbcType=BIGINT}
-    GROUP BY  c.company_id
   </select>
   <update id="updateCompanyPic"  parameterType="com.xzlcPT.bean.XzCompany">
     update xz_company

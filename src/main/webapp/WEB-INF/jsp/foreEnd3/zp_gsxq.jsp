@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%--引入jstl--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -22,14 +24,11 @@
     <div class="row zp_spxq_cont_top">
         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zp_gsxq_img1.png">
         <div>
-            <h3><span>爱淘苗</span> <a href="">关注</a> <div class="zp_gsxq_gzrs">121人关注</div></h3>
+            <h3><span>${xzCompany.companyName}</span> <a href="">关注</a> <div class="zp_gsxq_gzrs">121人关注</div></h3>
             <ul>
-                <li>带薪年假</li>
-                <li>带薪年假</li>
-                <li>带薪年假</li>
-                <li>带薪年假</li>
-                <li>带薪年假</li>
-                <li>带薪年假</li>
+                <c:forEach var="w1" items="${xzCompany.welfares}">
+                <li>${w1.welfareName}</li>
+                </c:forEach>
                 <li>更多...</li>
             </ul>
         </div>

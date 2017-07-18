@@ -190,5 +190,4 @@
     </set>
     where product_id = #{productId,jdbcType=BIGINT}
   </update>
-
 </mapper>

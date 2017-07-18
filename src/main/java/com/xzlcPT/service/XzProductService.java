@@ -13,4 +13,6 @@ public interface XzProductService {
     int insertProduct(XzCompanyProduct xzCompanyProduct);
 
     int updateProduct(XzCompanyProduct xzCompanyProduct);
+
+    XzCompanyProduct selectByPrimaryKey(Long productId);
 }
