@@ -47,7 +47,7 @@
                     <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"><span>登录</span></a>
                 </li>
                 <li class="register1">
-                    <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do"><span>注册</span></a>
+                    <a href="#0" class="cd-popup-trigger"><span>注册</span></a>
                 </li>
             </ul>
         </div>
