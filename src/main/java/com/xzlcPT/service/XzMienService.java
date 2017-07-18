@@ -13,4 +13,6 @@ public interface XzMienService {
     int insertMien(XzCompanyMien xzCompanyMien);
 
     int updateMien(XzCompanyMien xzCompanyMien);
+
+    XzCompanyMien selectByMienId(Long mienId);
 }

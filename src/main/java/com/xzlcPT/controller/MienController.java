@@ -33,4 +33,11 @@ public class MienController extends BaseController {
         mv.addObject("i",i);
         return mv;
     }
+    @RequestMapping("selectByMienId")
+    public ModelAndView selectByMienId(Long mienId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        XzCompanyMien xzCompanyMien=xzMienService.selectByMienId(mienId);
+        mv.addObject("xzCompanyMien",xzCompanyMien);
+        return mv;
+    }
 }

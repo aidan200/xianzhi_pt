@@ -30,4 +30,10 @@ public class XzMienServiceImpl implements XzMienService{
        int i=xzCompanyMienMapper.updateMien(xzCompanyMien);
         return i;
     }
+
+    @Override
+    public XzCompanyMien selectByMienId(Long mienId) {
+       XzCompanyMien xzCompanyMien=xzCompanyMienMapper.selectByMienId(mienId);
+        return xzCompanyMien;
+    }
 }
