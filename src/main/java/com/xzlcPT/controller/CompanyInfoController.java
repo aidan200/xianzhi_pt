@@ -287,4 +287,11 @@ public class CompanyInfoController {
         mv.addObject("xzCompany",xzCompany);
         return mv;
     }
+    @RequestMapping("updateCompanyPic")
+    public  ModelAndView updateCompanyPic(XzCompany xzCompany){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        int i=companyService.updateCompanyPic(xzCompany);
+        mv.addObject("i",i);
+        return mv;
+    }
 }
