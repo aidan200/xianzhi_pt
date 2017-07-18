@@ -236,17 +236,18 @@ function qyfc(){        //企业风采
         }
 }
 qyfc.prototype.init=function (){
+
     $.ajax({
         type:"post",    //提交方式
         async:true,  //是否异步
-        data:{productId:ID},        //转为JSON格式
-        url:path+'Product/selectByPrimaryKey',    //路径
-        dataType:'json',
+        data:{companyId:ID},        //转为JSON格式
+        url:path+'Mien/selectByCompanyId',    //路径
+        dataType:'text',
         success:function (data){//data 就是数据 json
             alert('aaa')
 
         },error:function (){ //报错执行的
-            alert('基本资料修改错误')
+            alert('企业风采查询错误')
         }
     });
     var This=this;
@@ -271,23 +272,57 @@ qyfc.prototype.init=function (){
             var obj1=document.getElementById(oid1);
             var oid2=$('#tj_gsfc').prev('div').find('input').attr('id');
             var obj2=document.getElementById(oid2);
-            var tpsc =  new uploadUtil(obj1,dkh+"/upload/img",obj2);  //这是图片上传方法
+            var tpsc =  new uploadUtil(obj1,dkh+"/upload/img",obj2,function (){
+                var a = i;
+                return function (imgName) {
+                    $('.a1_gb_tj').eq(a).on('click',function (){  //确认提交事件
+                        var obj=$(this).parent().siblings('div'); //获取到你要提交的企业风采照片
+                        var cont={
+                            productId:obj.attr('data-id'),      //要提交的ID
+                            productUrl:imgName                 //将你的图片路径传进来
+                        };
+                        alert(cont.productId);
+                        // $.ajax({
+                        //     type:"post",    //提交方式
+                        //     async:true,  //是否异步
+                        //     contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                        //     data:JSON.stringify(cont),        //转为JSON格式
+                        //     dataType:'text',                   //定义返回data类型
+                        //     url:path+'Resume/updateResume.do',    //路径
+                        //     success:function (data){//data 就是数据 json
+                        //
+                        //
+                        //     },error:function (){ //报错执行的
+                        //         alert('基本资料修改错误')
+                        //     }
+                        // })
+
+                    });
+                }
+            }(i));
             tpsc.init();        //上传图片的初始化方法
         }
-    This.tj();          //监听添加
-    This.sc();          //监听删除
+
+    // This.sc();          //监听删除
     This.bindingSJ();
 
 };
 qyfc.prototype.tj=function (){                  //添加方法
     $('.a1_gb_tj').on('click',function (){  //确认提交事件
-        alert('ajax');
+        var obj=$(this).parent().siblings('div'); //获取到你要提交的企业风采照片
+        var cont={
+                id:ID,
+                productId:obj.attr('data-id'),      //要提交的ID
+                productUrl:""                 //将你的图片路径传进来
+        };
+        alert(cont.productUrl)
     });
 }
 qyfc.prototype.sc=function (){                  //删除方法
     $('.a1_gb_sc').on('click',function (){  //删除事件
         alert('ajax');
         $(this).parent().parent().remove();
+
     });
 }
 qyfc.prototype.bindingSJ=function (){          //添加一个新的企业风采
