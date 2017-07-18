@@ -323,7 +323,7 @@
                             <span><fmt:formatDate value="${p.postionTime}" pattern="yyyy-MM-dd"/></span>
                         </div>
                         <div class="zp_index_cont_left_zwtj_cont_right">
-                            <p>${p.company.companyName}</p>
+                            <p><a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf?companyId=${p.company.companyId}">${p.company.companyName}</a></p>
                             <p>
                                 <c:forEach items="${p.company.fields}" var="f">
                                     ${f.fieldName}

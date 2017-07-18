@@ -46,7 +46,7 @@ public class PostionController extends BaseController{
         System.out.println(workspace);
         System.out.println(likeStr);*/
         Map map = new HashMap();
-        if(!workspace.equals("全国")){
+        if(workspace!=null&&!workspace.equals("全国")){
             map.put("workspace",workspace);
         }
         map.put("likeStr",likeStr);

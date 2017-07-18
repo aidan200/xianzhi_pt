@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,20 +24,24 @@
     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/LOGO1.png" alt="" class="login_logo">
 
     <div class="login_all">
-        <form action="">
+        <form action="${pageContext.request.contextPath}/XzLogin/Login.do" method="post" >
             <div class="login_in">
                 <h2>欢迎登录先知账号</h2>
                 <div class="login_input" style="margin-top: 30px">
-                    <input class="effect-4" type="text" placeholder="会员名/邮箱">
+                    <input class="effect-4" type="text" name="username" value="${username}" placeholder="会员名/邮箱">
                     <span class="focus-border"></span>
                 </div>
 
                 <div class="login_input" style="margin-top: 40px">
-                    <input class="effect-4" type="password" placeholder="请输入密码">
+                    <input class="effect-4" type="password" name="password" placeholder="请输入密码">
                     <span class="focus-border"></span>
                 </div>
 
-                <div class="login_err"><span class="fa fa-exclamation-triangle">&nbsp;</span>错误信息</div>
+                <div class="login_err">
+                    <c:if test="${msg!=null}">
+                        <span class="fa fa-exclamation-triangle">&nbsp;</span>${msg}
+                    </c:if>
+                </div>
 
                 <div style="margin-top: 15px;">
                     <a class="login_forget" href="###">忘记密码?</a>
@@ -46,7 +51,7 @@
 
                 </div>
                 <button type="submit" class="login_button">登 录</button>
-                <a href="###" class="login_re">没有账号？ 立即注册</a>
+                <a href="${pageContext.request.contextPath}/view/foreEnd3/registeru_1.html" class="login_re">没有账号？ 立即注册</a>
             </div>
         </form>
     </div>
