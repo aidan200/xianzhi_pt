@@ -60,7 +60,7 @@
     <select id="selectByMienId"  resultMap="BaseResultMap" parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List" />
-        FROM xz_company_mien WHERE
+        FROM xz_company_mien WHERE delete_falt=0 AND
         mien_id = #{mienId,jdbcType=BIGINT}
     </select>
     <select id="selectByCompanyId"  resultMap="BaseResultMap" parameterType="java.lang.Long">
