@@ -33,11 +33,11 @@ public class MienController extends BaseController {
         return mv;
     }
     @RequestMapping("updateMien")
-    public  ModelAndView updateMien(@RequestBody XzCompanyMien xzCompanyMien){
-        ModelAndView mv=new ModelAndView();
+    public  Map updateMien(@RequestBody XzCompanyMien xzCompanyMien){
+        Map map=new HashMap();
         int i=xzMienService.updateMien(xzCompanyMien);
-        mv.addObject("i",i);
-        return mv;
+        map.put("i",i);
+        return map;
     }
     @RequestMapping("selectByMienId")
     public ModelAndView selectByMienId(Long mienId){
