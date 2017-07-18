@@ -90,7 +90,7 @@
 
         stepBar.init("stepBar", {
             step: 1,
-            change: false,
+            change: true,
             animation: false
         });
 
