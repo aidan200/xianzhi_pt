@@ -23,6 +23,9 @@
 
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/lib/jquery/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <%--弹出框--%>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
 </head>
 <body>
 

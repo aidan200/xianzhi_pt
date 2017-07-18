@@ -16,8 +16,20 @@
         .navbar-bottom {
             background-color: rgba(85, 97, 101, 0);
             position: fixed;
-            z-index: 99999;width: 100%;
+            z-index: 99999;
+            width: 100%;
             box-shadow: none;
+        }
+
+        .cd-popup-container {
+            height: 400px;
+            margin-top: 100px;
+            overflow: hidden;
+        }
+        .index_tan{
+            width: 100%;
+            height: 200px;
+            margin-top: 50px;
         }
     </style>
     <!--轮播-->
@@ -30,7 +42,6 @@
     </script>
     <!--导航透明度-->
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/script.js"></script>
-
 
 
 </head>
@@ -181,7 +192,8 @@
                         </span>
                     </div>
                     <div class="plan_a2">
-                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt="" class="plan_img">
+                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt=""
+                             class="plan_img">
                         <div><a href="" style="color: #2a68c5">查看详情</a></div>
                     </div>
 
@@ -197,7 +209,8 @@
                             代码存储库</p></span>
                     </div>
                     <div class="plan_a2">
-                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt="" class="plan_img">
+                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt=""
+                             class="plan_img">
                         <div><a href="" style="color: #0073b2">查看详情</a></div>
                     </div>
 
@@ -213,7 +226,8 @@
                             普通数据处理</p></span>
                     </div>
                     <div class="plan_a2">
-                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt="" class="plan_img">
+                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt=""
+                             class="plan_img">
                         <div><a href="" style="color: #0073b2">查看详情</a></div>
                     </div>
 
@@ -229,7 +243,8 @@
                             普通数据处理服务</p></span>
                     </div>
                     <div class="plan_a2">
-                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt="" class="plan_img">
+                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt=""
+                             class="plan_img">
                         <div><a href="" style="color: #0073b2">查看详情</a></div>
                     </div>
 
@@ -438,46 +453,56 @@
         <div class="index_05all">
             <div class="circle_in">
                 <div class="index_circle">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i">
+                </div>
             </div>
             <div class="circle_in">
                 <div class="index_circle2">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2">
+                </div>
             </div>
             <div class="circle_in">
                 <div class="index_circle">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i">
+                </div>
             </div>
             <div class="circle_in">
                 <div class="index_circle2">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2">
+                </div>
             </div>
             <div class="circle_in">
                 <div class="index_circle">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i">
+                </div>
             </div>
 
             <div class="circle_in">
                 <div class="index_circle2">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2">
+                </div>
             </div>
             <div class="circle_in">
                 <div class="index_circle">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i">
+                </div>
             </div>
 
             <div class="circle_in">
                 <div class="index_circle2">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2">
+                </div>
             </div>
             <div class="circle_in">
                 <div class="index_circle">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i">
+                </div>
             </div>
 
             <div class="circle_in">
                 <div class="index_circle2">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2"></div>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sony.png" alt="" class="circle_i2">
+                </div>
             </div>
 
         </div>
@@ -491,15 +516,27 @@
 </div>
 <a href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ghh.png" alt="" class="index_gh"></a>
 
+
+<div class="cd-popup" role="alert">
+    <div class="cd-popup-container">
+        <div class="index_tan">
+            <a href="#">用户</a>
+            <a href="#">企业</a>
+        </div>
+        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
+    </div>
+</div>
 <footer>
 
 </footer>
+
+<%--<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>--%>
 <%--<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/move_blog.js"></script>--%>
 <script>
     "use strict";
-    (function($) {
-        $(function() {
-            $(".index_list li").bind("mouseenter mouseleave", function(e) {
+    (function ($) {
+        $(function () {
+            $(".index_list li").bind("mouseenter mouseleave", function (e) {
                 var w = $(this).width();
                 var h = $(this).height();
                 var x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1);
@@ -560,8 +597,7 @@
                                 left: 0
                             };
                             break;
-                        case 3:
-                        {
+                        case 3: {
                             end = {
                                 top: 0,
                                 left: -240

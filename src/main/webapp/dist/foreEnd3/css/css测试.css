@@ -3187,6 +3187,7 @@ input[type="button"].fileInputButton {
     -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
     -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
     transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    z-index: 999999;
 }
 
 .cd-popup.is-visible {
