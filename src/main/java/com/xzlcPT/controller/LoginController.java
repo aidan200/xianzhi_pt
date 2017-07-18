@@ -105,7 +105,8 @@ public class LoginController extends BaseController {
     //      登录方法
     @RequestMapping("/Login.do")
     public ModelAndView getLogin1(String username, String password, String remember,HttpServletResponse response,HttpServletRequest request) {
-        ModelAndView mv = new ModelAndView("redirect:/view/foreEnd/newlogin.html");
+        ModelAndView mv = new ModelAndView("foreEnd3/login");
+        mv.addObject("username",username);
         String checkBox = remember;
         Map map = loginService.sellogin(username,MD5.md5(password));
         System.out.println(map);

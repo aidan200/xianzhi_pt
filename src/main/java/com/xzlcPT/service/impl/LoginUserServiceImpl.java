@@ -1,6 +1,7 @@
 package com.xzlcPT.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.dao.LoginUserMapper;
@@ -35,6 +36,7 @@ public class LoginUserServiceImpl implements LoginUserService {
         srechMap.put("username",username);
         srechMap.put("password",passowrd);
         XzLogin login = loginUserMapper.selNE(srechMap);
+        System.out.println(login);
         if(login!=null){
             srechMap.put("usertype",login.getLoginType());
             XzLogin theLogin = loginUserMapper.loginNE(srechMap);

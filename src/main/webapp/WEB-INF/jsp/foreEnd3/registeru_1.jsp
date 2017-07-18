@@ -59,10 +59,9 @@
                     <div class="r2_every">
                         <span>确认密码</span>&emsp;<input type="text" class="r1_g">
                     </div>
-                    <!--<div class="r2_every">-->
-                    <!--<span>邮&emsp;&emsp;箱</span>&emsp;<input type="text" class="r2_g">-->
-                    <!--</div>-->
-
+                    <div class="r2_every">
+                    <span>邮&emsp;&emsp;箱</span>&emsp;<input type="text" class="r1_g">
+                    </div>
                     <button class="r2_button">下一步</button>
                 </div></div>
         </div>

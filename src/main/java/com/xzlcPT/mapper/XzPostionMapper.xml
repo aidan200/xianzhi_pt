@@ -86,7 +86,7 @@
   </resultMap>
 
   <sql id="Postion_index_list">
-    p.postion_id, p.postion_name, p.postion_ym, p.postion_mm,p.postion_space, p.postion_time, p.postion_education, p.postion_exp,
+    p.postion_id, p.postion_name, p.postion_ym, p.postion_mm,p.postion_space, p.postion_time, p.postion_education, p.postion_exp, p.create_time,
     c.company_id, c.company_name, c.company_picture, c.company_scale, c.company_nature, c.domain, c.skill,
     w.welfare_id, w.welfare_name, f.field_id, f.field_name
   </sql>
@@ -101,34 +101,50 @@
     from xz_postion p LEFT JOIN xz_company c on p.company_id = c.company_id LEFT JOIN xz_company_welfare w on c.company_id = w.company_id
     LEFT JOIN xz_company_domain d on c.company_id = d.company_id LEFT JOIN xz_field f on d.field_id = f.field_id
     where p.delete_flat = 0 and (f.field_type = 1 or f.field_type is null)
-    and p.postion_id in 
+    and p.postion_id in
     <foreach collection="list" item="pid" index="index" open="(" close=")" separator=",">
       #{pid}
     </foreach>
-    ORDER  BY p.create_time DESC
+    ORDER BY p.create_time DESC
   </select>
   <select id="selPostionList" resultMap="BaseResultMap" parameterType="Map">
-    select
+    select DISTINCT
     p.postion_id
     from xz_postion p LEFT JOIN xz_company c on p.company_id = c.company_id LEFT JOIN xz_company_domain d on c.company_id = d.company_id LEFT JOIN xz_field f on d.field_id = f.field_id
     where p.delete_flat = 0 and (f.field_type = 1 or f.field_type is null)
+    <if test="workspace!=null and workspace!=''">
+      and p.postion_space like CONCAT('%',#{workspace,jdbcType=VARCHAR})
+    </if>
+    <if test="likeStr!=null and likeStr!=''">
+      and p.postion_name like CONCAT('%',#{likeStr,jdbcType=VARCHAR},'%')
+    </if>
     <if test="fields!=null">
       and f.field_name in
       <foreach collection="fields" item="field" index="index" open="(" close=")" separator=",">
         #{field}
       </foreach>
     </if>
-    <if test="nature!=null">
-      and c.company_nature = #{nature,jdbcType=INTEGER}
+    <if test="salaryMin!=null">
+      and p.postion_mm &gt;= #{salaryMin,jdbcType=INTEGER}
+    </if>
+    <if test="salaryMax!=null">
+      and p.postion_ym &lt;= #{salaryMax,jdbcType=INTEGER}
+    </if>
+    <if test="companyNature!=null">
+      and c.company_nature = #{companyNature,jdbcType=INTEGER}
+    </if>
+    <if test="fadate!=null">
+      <if test="fadate==30">
+        and p.postion_time &gt;= date_sub(curdate(),interval 1 MONTH)
+      </if>
+      <if test="fadate!=30">
+        and p.postion_time &gt;= date_sub(curdate(),interval #{fadate,jdbcType=INTEGER} day)
+      </if>
+    </if>
+    <if test="companyScale!=null and companyScale!=''">
+      and c.company_scale = #{companyScale,jdbcType=VARCHAR}
     </if>
     GROUP BY p.postion_id
-    <!--select
-    <include refid="Base_Column_List" />
-    from xz_postion p LEFT JOIN xz_company c on p.company_id = c.company_id
-    where p.delete_flat = 0
-    <if test="company!=null and company.domain!=null">
-      and c.domain = #{company.domain,jdbcType=VARCHAR}
-    </if>-->
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
