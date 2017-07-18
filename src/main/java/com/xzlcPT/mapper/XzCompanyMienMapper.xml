@@ -57,7 +57,7 @@
     </set>
     where mien_id = #{mienId,jdbcType=BIGINT}
     </update>
-    <select id="selectByMienId" parameterType="java.lang.Long">
+    <select id="selectByMienId"  resultMap="BaseResultMap" parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List" />
         FROM xz_company_mien WHERE
