@@ -631,7 +631,7 @@ obj_gzjl.prototype.init=function (){
          var _self=this;
         $.ajax({
         type: "get",//数据发送的方式（post 或者 get）
-        url: path+'JobExp/selByResumeId?resumeId='+1,//要发送的后台地址
+        url: path+'JobExp/selByResumeId.do?resumeId='+1,//要发送的后台地址
         success: function (data) {//ajax请求成功后触发的方法
 
             _self.obj_s=[];                           //放赋值后对象的列表
@@ -1007,7 +1007,7 @@ obj_xmjy.prototype.init=function (){
     $.ajax({
         type:"get",    //提交方式
         async:true,  //是否异步
-        url:path+'ProjectExp/selByResumeId?resumeId=1',    //路径
+        url:path+'ProjectExp/selByResumeId.do?resumeId=1',    //路径
 
         success:function (data){//data 就是数据 json
             _self.obj_s=[];
@@ -1262,14 +1262,24 @@ obj_fjxx.prototype.bindingSJ=function (){
 //附加信息结束了
 //擅长技能开始
 function obj_scjn(){
-    this.scjc=[];          //擅长的技能
+    this.scjc='';          //擅长的技能
 }
 obj_scjn.prototype.init=function (){
-        var data={cont:["adadadad","adadadad","hahahaah"]}
-        var _self=this
-        _self.scjc=data.cont;
-       _self.bindingDOM();
-        _self.bindingSJ()
+    var _self=this;
+    $.ajax({
+        type:"get",    //提交方式
+        async:true,  //是否异步
+        data:{resumeId:ID},        //转为JSON格式
+        url:path+'Skill/selSkillByResumeId.do',    //路径
+        success:function (data){//data 就是数据 json
+            _self.scjc=data.skills;              //
+            _self.bindingDOM();
+            _self.bindingSJ()
+        },error:function (){ //报错执行的
+            alert('擅长技能获取错误')
+        }
+
+    })
 
 };
 obj_scjn.prototype.bindingDOM=function (){
@@ -1277,7 +1287,7 @@ obj_scjn.prototype.bindingDOM=function (){
     var str=''
     if(_self.scjc.length!=0){
         for(var i=0;i<_self.scjc.length;i++){
-            str+='<div>'+_self.scjc[i]+'</div>'
+            str+='<div data-id="'+_self.scjc[i].skillId+'">'+_self.scjc[i].skillName+'</div>'
         }
         $('#scjn_cont').html(str);
         $('#jl_tjscjn').css({"display":"none"});                        //添加按钮
@@ -1288,6 +1298,7 @@ obj_scjn.prototype.bindingDOM=function (){
 
 };
 obj_scjn.prototype.bindingSJ=function () {
+    var kg=true;
     function jnzs(){                                 //技能自杀
         $('#jn_content > div > a').on('click',function (){
             $(this).parent().remove();              //自杀
@@ -1314,6 +1325,7 @@ obj_scjn.prototype.bindingSJ=function () {
         str+='</div>'
 
         $('#scjn_cont').after(str);
+
         $("#jl_tjscjn").css({"display":"none"});
         $('#scjn_cont').css({"display":"none"});
         $('.zp_jianli_zl_10').find('input').keydown(function (event){       //回车插入事件
@@ -1334,61 +1346,114 @@ obj_scjn.prototype.bindingSJ=function () {
             $('#scjn_cont').css({"display":"block"});
             $(this).parent().parent().remove()
         })
+        $('.zp_jianli_zl_10').find('button').eq(0).on('click',function (){  //提交地址
+            var othis= $(this).parent().parent();
+            var k=$('#jn_content > div > div');
+            var attr=[];
+            for(var i=0;i<k.length;i++){
+                attr[i]={
+                    skillName:k.eq(i).text(),
+                    resumeId:ID,
+                }
+            }
+            $.ajax({
+                type:"post",    //提交方式
+                async:true,  //是否异步
+                contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                data:JSON.stringify(attr),        //转为JSON格式
+                url:path+'Skill/updateSkillByResume.do',    //路径
+                success:function (data){//data 就是数据 json
+                    othis.remove();
+                    _self.init();
+                    $('#scjn_cont').css({"display":"block"})
+
+                },error:function (){ //报错执行的
+                    alert('擅长技能提交错误')
+                }
+            })
+        })
+
+
+
+
 
 
     })                      //添加按钮
     $('#scjn').find('.zp_jianli_xg').on('click',function (){
+        var str2='';
+        if(kg){
+            kg=false;
+            str2+='<div class="zp_jianli_zl_10">'
+            str2+='<div class="scjn_top">'
+            str2+='<p>已添加:</p>'
+            str2+='<div id="jn_content">'
+            for(var i=0;i<_self.scjc.length;i++){
+                str2+='<div><div data-id="'+_self.scjc[i].skillId+'">'+_self.scjc[i].skillName+'</div><a href="javascript:;">x</a></div>'
+            }
+            //循环技能
+            str2+='</div>'
+            str2+='</div>'
+            str2+='<div class="scjn_buttom">'
+            str2+='<p>请输入你擅长的技能：<input type="text" class="form-control"> <span style="color:#FF7F00 ;">请按回车键添加</span></p>'
+            str2+='</div>'
+            str2+='<div class="zp_jianli_zl_2_bottom">'
+            str2+='<button type="button" class="btn btn-primary">确定</button>'
+            str2+='<button class="btn btn-default"  type="button">取消</button>'
+            str2+='</div>'
+            str2+='</div>'
+            $('#scjn_cont').after(str2);                                 //插入
 
-        var str='';
-        str+='<div class="zp_jianli_zl_10">'
-        str+='<div class="scjn_top">'
-        str+='<p>已添加:</p>'
-        str+='<div id="jn_content">'
-        for(var i=0;i<_self.scjc.length;i++){
-            str+='<div><div>'+_self.scjc[i]+'</div><a href="javascript:;">x</a></div>'
-        }
-        //循环技能
-        str+='</div>'
-        str+='</div>'
-        str+='<div class="scjn_buttom">'
-        str+='<p>请输入你擅长的技能：<input type="text" class="form-control"> <span style="color:#FF7F00 ;">请按回车键添加</span></p>'
-        str+='</div>'
-        str+='<div class="zp_jianli_zl_2_bottom">'
-        str+='<button type="button" class="btn btn-primary">确定</button>'
-        str+='<button class="btn btn-default"  type="button">取消</button>'
-        str+='</div>'
-        str+='</div>'
-        $('#scjn_cont').after(str);                                 //插入
-        jnzs();                                                     //技能的自杀
-        $('#scjn_cont').css({"display":"none"});
-        $('.zp_jianli_zl_10').find('input').keydown(function (event){       //回车插入事件
-            if(event.which==13){        //13是代表回车
-                if($(this).val().length<15&&$(this).val()!=''){
-                    var ojn='<div><div>'+$(this).val()+'</div><a  href="javascript:;">x</a></div>';
-                    $('#jn_content').append(ojn);
-                    $(this).val(null)
-                   jnzs();                                           //技能自杀
-                }else{
-                    alert('字太多了或者为空')
-                    $(this).val(null)
+            jnzs();                                                     //技能的自杀
+            $('#scjn_cont').css({"display":"none"});
+            $('.zp_jianli_zl_10').find('input').keydown(function (event){       //回车插入事件
+                if(event.which==13){        //13是代表回车
+                    if($(this).val().length<15&&$(this).val()!=''){
+                        var ojn='<div><div>'+$(this).val()+'</div><a  href="javascript:;">x</a></div>';
+                        $('#jn_content').append(ojn);
+                        $(this).val(null)
+                        jnzs();                                           //技能自杀
+                    }else{
+                        alert('字太多了或者为空')
+                        $(this).val(null)
+                    }
                 }
-            }
-        })
-        $('.zp_jianli_zl_10').find('button').eq(1).on('click',function (){
-            $('#scjn_cont').css({"display":"block"});
-            $(this).parent().parent().remove()          //取消自杀
-        })
-        $('.zp_jianli_zl_10').find('button').eq(0).on('click',function (){
-            var k=$('#jn_content > div > div');
-            var attr=[];
-            for(var i=0;i<k.length;i++){
-                attr[i]=k.eq(i).text()
-            }
-            var Goodat={
-                    shuzu:attr                   //擅长技能
-            }
+            })
+            $('.zp_jianli_zl_10').find('button').eq(1).on('click',function (){
+                kg=true;
+                $('#scjn_cont').css({"display":"block"});
+                $(this).parent().parent().remove();          //取消自杀
+            })
+            $('.zp_jianli_zl_10').find('button').eq(0).on('click',function (){
+                var othis= $(this).parent().parent();
+                var k=$('#jn_content > div > div');
+                var attr=[];
+                for(var i=0;i<k.length;i++){
+                    attr[i]={
+                        skillName:k.eq(i).text(),
+                        resumeId:ID,
+                    }
+                }
+                $.ajax({
+                    type:"post",    //提交方式
+                    async:true,  //是否异步
+                    contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                    data:JSON.stringify(attr),        //转为JSON格式
+                    url:path+'Skill/updateSkillByResume.do',    //路径
+                    success:function (data){//data 就是数据 json
+                        othis.remove();
 
-        })
+                        _self.init();
+                        $('#scjn_cont').css({"display":"block"})
+
+                    },error:function (){ //报错执行的
+                        alert('擅长技能提交错误')
+                    }
+
+                })
+
+            })
+        }
+
 
     })
 

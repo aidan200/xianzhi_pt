@@ -20,13 +20,13 @@ function uploadUtil(box,upUrl,imgNameBox,callback) {
 }
 uploadUtil.prototype.init = function () {
     var _self = this;
-    _self.box.innerHTML = '<div class="xzFileBox"><img class="iimg"/><form class="afff"><div class="msg"></div><input class="fffup" type="file" name="file"></form>' +
+    _self.box.innerHTML = '<div class="xzFileBox"><form class="afff"><div class="msg"></div><input class="fffup" type="file" name="file"></form>' +
         //进度条
         '<div class="pro-bar">'+
         '<span class="progress-bar-inner" style="background-color: #fc9a2f; width: 0%;"></span>'+
         '</div>'+
         '</div>';
-    _self.sssf = _self.box.getElementsByClassName("iimg")[0];
+    _self.barBox = _self.box.getElementsByClassName("pro-bar")[0];
     _self.msg = _self.box.getElementsByClassName("msg")[0];
     _self.form = _self.box.getElementsByClassName("afff")[0];
     _self.file = _self.box.getElementsByClassName("fffup")[0];
@@ -50,7 +50,7 @@ uploadUtil.prototype.uploadImg = function() {
     //创建FormData对象，初始化为form表单中的数据。需要添加其他数据可使用formData.append("property", "value");
     var formData = new FormData(_self.form);
     //设置进度条可见
-    _self.bar.style.display = "block";
+    _self.barBox.style.display = "block";
     //ajax异步上传
     $.ajax({
         url: _self.upUrl,
@@ -60,22 +60,22 @@ uploadUtil.prototype.uploadImg = function() {
             myXhr = $.ajaxSettings.xhr();
             if(myXhr.upload){ //检查upload属性是否存在
                 //绑定progress事件的回调函数
-                myXhr.upload.addEventListener('progress',_self.progressHandlingFunction(_self.bar), false);
+                myXhr.upload.addEventListener('progress',_self.progressHandlingFunction(), false);
             }
             return myXhr; //xhr对象返回给jQuery使用
         },
         success: function(result){
             if(result.msg == "ok"){
                 //成功
-                _self.sssf.src = _self.urlBack;
-                //_self.sssf.style.backgroundImage = "url("+_self.urlBack+")";
+                //_self.sssf.src = _self.urlBack;
+                _self.box.style.backgroundImage = "url("+_self.urlBack+")";
                 //_self.sssf.style.backgroundSize = "cover";
                 //console.log(_self.imgNameBox);
                 if(_self.imgNameBox){
                     _self.imgNameBox.value = result.imgName;
                 }
                 if(_self.callback){
-                    _self.callback();
+                    _self.callback(result.imgName);
                 }
                 _self.msg.innerHTML = "上传成功";
             }else if(result.msg == "err"){
@@ -89,19 +89,19 @@ uploadUtil.prototype.uploadImg = function() {
     });
 }
 //上传进度回调函数：
-uploadUtil.prototype.progressHandlingFunction = function (bar) {
-    var theBar = bar;
+uploadUtil.prototype.progressHandlingFunction = function () {
+    var _self = this;
     //闭包传值
     return function (e) {
         if (e.lengthComputable) {
             //更新数据到进度条
             var percent = parseInt(e.loaded/e.total*100);
-            if(theBar){
-                theBar.style.width = percent +"%";
+            if(_self.bar){
+                _self.bar.style.width = percent +"%";
             }
             if(percent==100){
-                if(theBar){
-                    theBar.style.display = "none";
+                if(_self.barBox){
+                    _self.barBox.style.display = "none";
                 }
             }
         }

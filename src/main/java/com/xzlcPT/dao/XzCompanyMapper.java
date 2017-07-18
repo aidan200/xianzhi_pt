@@ -31,4 +31,6 @@ public interface XzCompanyMapper {
 
     XzCompany selCompanyInf(Long companyId);
 
+    int updateCompanyPic(XzCompany record);
+
 }
