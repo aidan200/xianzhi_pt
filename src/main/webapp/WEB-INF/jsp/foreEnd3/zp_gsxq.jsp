@@ -99,26 +99,41 @@
 
                 </ul>
             </div>
-            <div class="zp_gsxq_fy" >
-                <nav aria-label="Page navigation" >
-                    <ul class="pagination" style="margin">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+            <%--<div class="zp_gsxq_fy" >--%>
+                <%--<nav aria-label="Page navigation" >--%>
+                    <%--<ul class="pagination" style="margin">--%>
+                        <%--<li>--%>
+                            <%--<a href="#" aria-label="Previous">--%>
+                                <%--<span aria-hidden="true">&laquo;</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                        <%--<li><a href="#">1</a></li>--%>
+                        <%--<li><a href="#">2</a></li>--%>
+                        <%--<li><a href="#">3</a></li>--%>
+                        <%--<li><a href="#">4</a></li>--%>
+                        <%--<li><a href="#">5</a></li>--%>
+                        <%--<li>--%>
+                            <%--<a href="#" aria-label="Next">--%>
+                                <%--<span aria-hidden="true">&raquo;</span>--%>
+                            <%--</a>--%>
+                        <%--</li>--%>
+                    <%--</ul>--%>
+                <%--</nav>--%>
+            <%--</div>--%>
+            <div class="zp_botv">
+                <div class="zp_pl">
+                    <ul class="pagination zp_pa">
+                                       <li class="b"><a href="#">上一页</a></li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li class="a"><a href="#">2</a></li>
+                                                <li class="a"><a href="#">3</a></li>
+                                                <li class="a"><a href="#">4</a></li>
+                                                <li class="a"><a href="#">5</a></li>
+                                                <li class="a"><a href="#">下一页</a></li>
+                        <%--<myPage:paging length="10" page="${page}" pages="${pages}"/>--%>
                     </ul>
-                </nav>
+                    <div class="zp_page">共 <span>38</span> 页</div>
+                </div>
             </div>
         </div>
         <div class="col-md-4 zp_spxq_cont_right" style=" padding-left: 20px;">
