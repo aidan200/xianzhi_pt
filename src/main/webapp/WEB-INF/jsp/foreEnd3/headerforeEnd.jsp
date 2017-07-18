@@ -44,10 +44,10 @@
             </ul>
             <ul class="nav navbar-nav nav_1">
                 <li class="login1">
-                    <a href="#"><span>登录</span></a>
+                    <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"><span>登录</span></a>
                 </li>
                 <li class="register1">
-                    <a href="#"><span>注册</span></a>
+                    <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do"><span>注册</span></a>
                 </li>
             </ul>
         </div>
