@@ -15,9 +15,17 @@
     <title>企业登录首页</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_gsxq_bd.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/fileUpload.css">
+    <script>
+        var dkh="http://localhost:8080";        //端口号
+        var path="${pageContext.request.contextPath}/"
+
+    </script>
+
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/template-web.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/uploadUtil.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_gsxq_bd.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
+
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
@@ -61,14 +69,6 @@
                         <option data-value="3">2000-1W人</option>
                         <option data-value="4">1W人以上</option>
                     </select>
-                </div>
-            </div>
-            <div class="control-group clearfix">
-                <label class="group-title"><span class="text-error">* </span>公司地址：</label>
-                <div class="zp_gsxq_dz">
-                    <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" placeholder="请选择省/市/区">
-                    <em></em>
-                    <input id="gsxq_gsdz2" form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
                 </div>
             </div>
             <div class="control-group clearfix">
@@ -132,6 +132,20 @@
                 </div>
             </div>
             <div class="control-group clearfix">
+                <label class="group-title"><span class="text-error">* </span>公司地址：</label>
+                <div class="zp_gsxq_dz">
+                    <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" placeholder="请选择省/市/区"><br>
+                    <em></em>
+                    <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
+                    <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                </div>
+            </div>
+            <div class="control-group clearfix">
+                <label class="group-title"><span class="text-error">* </span>企业地址：</label>
+                <div id="gsdz" class="ditu"></div>
+            </div>
+
+            <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司图标：</label>
                 <div class="zp_gsxq_logo gstb">
                     <p>请您上传一张公司标志图片作为公司展示头像</p>
@@ -145,15 +159,16 @@
                     <p>企业风采照片</p>
                     <script id="qyfc_mb" type="text/html">
                         <div>
-                            <h3><a href="javascript:;" class="pull-right a1_gb">x</a></h3>
-                            <div id=qyfc_bg_{{id}} class="qyfc_bg"></div>
-                            <input type="text" style="display: none" value="" id=qyfc_{{id}}>
-                            <textarea>我是描述1111</textarea>
+                            <h3><a href="javascript:;" class="fa fa-check-square a1_gb_tj"></a><a href="javascript:;" class="fa fa-window-close a1_gb_sc"></a></h3>
+                            <div id=qyfc_bg_{{qyfc_id}} class="qyfc_bg" style="background-image: url('{{dkh}}{{path}}{{qyfc_url}}')" ></div>
+                            <input type="text" style="display: none" value="" id=qyfc_{{qyfc_id}}>
+                            <textarea>{{qyfc_ms}}</textarea>
                         </div>
                     </script>
                     <h4 id="tj_gsfc">添加公司风采图片</h4>
                </div>
             </div>
+
 
         </div>
     </div>
@@ -171,7 +186,23 @@
                 <label class="group-title"><span class="text-error"></span>产品介绍：</label>
                 <div class="zp_gsxq_cpjs" id="gsxq_cpjs">
 
-                    <div class="zp_gsxq_cpjs_div1">
+
+                    <script id="tj_gscp" type="text/html">
+                        <div class="zp_gsxq_cpjs_cp">
+                            <div class="zp_gsxq_cpjs_cp_left">
+                                <h3>请上传一张产品图片</h3>
+                                <div id=cpjs_{{index}} class="zp_gsxq_ttbg cpjs_bg"></div>
+                                <input id=cpjs_inp{{index}} type="text" style="display: none">
+                            </div>
+                            <div class="zp_gsxq_cpjs_cp_right"><input form="zp_gsxq_form" type="text" placeholder="请输入产品名称">
+                                <textarea form="zp_gsxq_form">请输入产品信息</textarea>
+                            </div>
+                            <div style="clear:both"></div><span>X</span>
+                        </div>
+                    </script>
+
+
+                    <div id="tjcpjs" class="zp_gsxq_cpjs_div1">
                         添加公司产品
                     </div>
                 </div>

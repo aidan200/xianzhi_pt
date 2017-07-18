@@ -6,8 +6,13 @@ import com.xzlcPT.bean.XzCompanyProduct;
 import com.xzlcPT.service.XzProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 甘汝雷
@@ -33,11 +38,12 @@ public class ProductController extends BaseController{
         mv.addObject("i",i);
         return mv;
     }
+    @ResponseBody
     @RequestMapping("selectByPrimaryKey")
-    public ModelAndView selectByPrimaryKey(Long productId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public Map selectByPrimaryKey(Long productId){
+        Map map = new HashMap();
         XzCompanyProduct xzCompanyProduct=xzProductService.selectByPrimaryKey(productId);
-        mv.addObject("xzCompanyProduct",xzCompanyProduct);
-        return mv;
+        map.put("xzCompanyProduct",xzCompanyProduct);
+        return map;
     }
 }

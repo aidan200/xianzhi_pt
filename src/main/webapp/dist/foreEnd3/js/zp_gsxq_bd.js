@@ -158,6 +158,7 @@ function change() {
     }
     city.innerHTML = str;
 }//城市
+
 function jbxx(){    //基本信息
         this.gsmc='',       //公司名称
         this.ly='',         //领域
@@ -228,11 +229,70 @@ jbxx.prototype.bindingDOM=function (){
 }
 
 function qyfc(){        //企业风采
-        this.lj='',         //路径
-        this.ms=''          //描述
+        this.qyfc='',         //企业风采
+        this.ms=''            //描述
         this.DOM={
             tj_gsfc:$('#tj_gsfc')
         }
+}
+qyfc.prototype.init=function (){
+    var aaa={
+        productId:1
+    }
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:{productId:1},        //转为JSON格式
+        url:path+'Product/selectByPrimaryKey',    //路径
+        dataType:'json',
+        success:function (data){//data 就是数据 json
+            alert('aaa')
+
+        },error:function (){ //报错执行的
+            alert('基本资料修改错误')
+        }
+
+    })
+    var This=this;
+        var aaa={ww:[{
+            qyfc_id: 1,
+            qyfc_url: "1500283002460.png",
+            qyfc_ms:"我是描述111111111111"
+         },
+            {
+                qyfc_id: 2,
+                qyfc_url: "1500283031158.png",
+                qyfc_ms:"我是描述222222222"
+            }
+        ]};
+        This.qyfc=aaa;
+        for(var i=0;i<This.qyfc.ww.length;i++){                     //页面初始化
+            This.qyfc.ww[i].dkh=dkh;
+            This.qyfc.ww[i].path=path+'uploadImg/';
+            var qyfc_html = template('qyfc_mb',This.qyfc.ww[i]);
+            $('#tj_gsfc').before(qyfc_html);           //初始化载入
+            var oid1=$('#tj_gsfc').prev('div').find('div').attr('id');
+            var obj1=document.getElementById(oid1);
+            var oid2=$('#tj_gsfc').prev('div').find('input').attr('id');
+            var obj2=document.getElementById(oid2);
+            var tpsc =  new uploadUtil(obj1,dkh+"/upload/img",obj2);  //这是图片上传方法
+            tpsc.init();        //上传图片的初始化方法
+        }
+    This.tj();          //监听添加
+    This.sc();          //监听删除
+    This.bindingSJ();
+
+};
+qyfc.prototype.tj=function (){                  //添加方法
+    $('.a1_gb_tj').on('click',function (){  //确认提交事件
+        alert('ajax');
+    });
+}
+qyfc.prototype.sc=function (){                  //删除方法
+    $('.a1_gb_sc').on('click',function (){  //删除事件
+        alert('ajax');
+        $(this).parent().parent().remove();
+    });
 }
 qyfc.prototype.bindingSJ=function (){          //添加一个新的企业风采
     var This=this;
@@ -245,45 +305,182 @@ qyfc.prototype.bindingSJ=function (){          //添加一个新的企业风采
         var bbb=document.getElementById(aaa);                //获取到背景DIV的元素
         var ccc= $(this).prev('div').find('input[type=text]').attr('id');
         var ddd=document.getElementById(ccc);
-        var uu =  new uploadUtil(bbb,"http://localhost:8080/upload/img",ddd,function (imgName){
-            //上传成功后的回调函数
-            alert(imgName);
-            alert("ajax");
+        var uu =  new uploadUtil(bbb,dkh+"/upload/img",ddd,function (imgName){
+
         });
         uu.init();
-        $('.a1_gb').on('click',function (){
-            $(this).parent().parent().remove(); //删除事件
-        });
+        This.tj();    //监听添加事件
+        This.sc();    //监听删除方法
     })
 };
-function gstb(){                //公司图标
 
-}
+function gstb(){
+
+}                //公司图标
 gstb.prototype.bindingSJ=function (){
     var  ogstb_bg=document.getElementById('gstb_bg');
     var  Ogstb_inp1=document.getElementById('gstb_inp1');
-    var uu =  new uploadUtil(ogstb_bg,"http://localhost:8080/upload/img",Ogstb_inp1,function (imgName){
+    var uu =  new uploadUtil(ogstb_bg,dkh+"/upload/img",Ogstb_inp1,function (imgName){
                 alert('aaa')
     });
     uu.init();
 }
 
+function cpjx(){                    //产品介绍
+
+
+}
+cpjx.prototype.bindingSJ=function (){
+    var ww=0;
+    $('#tjcpjs').on('click',function (){        //添加商品
+        var aaa={
+            index:ww++
+        }
+        var tjcpjs_html  = template('tj_gscp',aaa);
+        $('#tjcpjs').before(tjcpjs_html);        //插入元素
+        $('.zp_gsxq_cpjs_cp > span').on('click',function (){
+            $(this).parent().remove();          //自杀
+        })
+        var oID=$('#tjcpjs').prev('div').find('.zp_gsxq_cpjs_cp_left').find('div').attr('id')
+        var oinput=$('#tjcpjs').prev('div').find('.zp_gsxq_cpjs_cp_left').find('input').attr('id')
+        var aa=document.getElementById(oID);
+        var bb=document.getElementById(oinput);
+        var uu =  new uploadUtil(aa,dkh+"/upload/img",bb,function (imgName){
+
+        });
+        uu.init();
+
+    })
+};
+
+function gsdz(){                    //公司地址
+    this.gsdz={}
+}
+gsdz.prototype.init=function (){
+    var This=this
+    var aa={
+        gsdz:{point:{lng:116.404,lat:39.915}}                   //假设后台传过来的地址
+    }
+    This.gsdz=aa;
+}
+gsdz.prototype.bindingSJ=function (){
+    function init() {
+        if (navigator.geolocation)
+        {
+            //获取当前位置，分别传入了成功和失败的两个函数
+            navigator.geolocation.getCurrentPosition(showPosition,showError);
+        }
+        //如果不支持，则进行提示
+        else{alert("Geolocation is not supported by this browser.");}
+    }
+    function showError(error) {
+        //console.log("错误");
+        //initMaps();
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                alert("定位失败,用户拒绝请求地理定位");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("定位失败,位置信息是不可用");
+                break;
+            case error.TIMEOUT:
+                alert("定位失败,请求获取用户位置超时");
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("定位失败,定位系统失效");
+                break;
+        }
+        initMaps(position);
+    }
+
+    function showPosition(position) {
+        console.log("成功");
+        initMaps(position);
+    }
+
+
+    var address;
+    var map;
+    var city = "沈阳市-和平区";           //区选择
+    var x = 116.404;                      //经度
+    var y = 39.915;                       //纬度
+    function initMaps(position) {
+        if(position){
+            x = position.coords.latitude;
+            y = position.coords.longitude;
+        }
+        map = new BMap.Map("gsdz");
+        map.centerAndZoom(city);
+
+        map.addControl(new BMap.NavigationControl());
+        map.enableScrollWheelZoom();
+
+
+        //创建搜索服务对象
+        var autocomplete = new BMap.Autocomplete({location:"沈阳市",input:"gsdz_ssk"});
+
+        //搜索对象
+        var localSearch = new BMap.LocalSearch(map);
+        localSearch.setSearchCompleteCallback(function (searchResult) {
+            var poi = searchResult.getPoi(0);
+            setPoint(poi);
+        });
+        //搜索对象选中回调
+        autocomplete.addEventListener('onconfirm',function (rs) {
+            //alert(rs);
+            address = document.getElementById("gsdz_ssk").value;
+            console.log(address);
+            map.setZoom(14);
+            //触发坐标搜索
+            localSearch.search(address);
+        });
+        //map点击事件
+        map.addEventListener('click',function (rs) {
+            setPoint(rs);
+             x=rs.point.lng;                //重新获取用户X轴向
+             y=rs.point.lat;                //重新获取用户Y轴向
+        });
+    }
+    //设置坐标
+    function setPoint(rs) {
+        console.log(rs);
+        map.clearOverlays();//清空原来的标注
+        var ppt = new BMap.Point(rs.point.lng, rs.point.lat);
+        x=rs.point.lng;
+        y=rs.point.lat;
+        var marker = new BMap.Marker(ppt);  // 创建标注，为要查询的地址对应的经纬度
+        map.addOverlay(marker);
+        map.panTo(ppt);
+    }
+    initMaps();
+}
+
+
+
+
+
+
+
+
+
 $(function (){
     var ojbxx=new jbxx();           //公司基本信息
-    ojbxx.init()
+    ojbxx.init();
 
-    var oqyfc=new qyfc();
+    var oqyfc=new qyfc();           //上传照片
+    oqyfc.init()
     oqyfc.bindingSJ();
-
 
     var ogstb=new gstb();            //企业风采
     ogstb.bindingSJ();
 
+    var ocpjx=new cpjx();           //产品介绍
+    ocpjx.bindingSJ();
 
+    var ogsdz=new gsdz();           //公司地址
+    ogsdz.bindingSJ();
 
-
-
-})
+});
 
 
 
