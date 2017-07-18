@@ -146,7 +146,6 @@
             ['银川市', '吴忠市', '中卫市', '石嘴山市', '固原市']
         ];
         function got(t, i) {
-            //alert(t+"---"+i);
             var div6 = document.getElementById("div6");
             div6.innerHTML = map[t][i];
             $('.cd-popup').removeClass('is-visible');
@@ -158,9 +157,9 @@
         }
         function theEnter() {
             var div6 = document.getElementById("div6");
-            var this_space = document.getElementById("this_space");
             var str = div6.innerHTML;
-            $(this_space).text(str);
+            $('#this_space').text(str);
+            $('#workspace').val(str);
         }
     </script>
 </head>
@@ -173,8 +172,9 @@
         </div>
         <div class="zp_lb_ssk_right">
             <form action="">
-                <input type="text" placeholder="请输入职位关键词：如 项目经理等">
-                <button type="submit">搜索</button>
+                <input id="workspace" form="hidForm" type="hidden" name="workspace" value="" >
+                <input id="likeStr" form="hidForm" type="text" name="likeStr" placeholder="请输入职位关键词：如 项目经理等">
+                <button form="hidForm"  type="submit">搜索</button>
             </form>
         </div>
     </div>
@@ -187,23 +187,23 @@
                 <div class="pull-left" style="width: 42px;color: #999">行业：</div>
                 <div class="pull-left" style="width: 766px">
                     <ul>
-                        <li><a href="###" rel="aspect" id="教育培训" inpName="fields" inpValue="教育培训" class="divSmall">
+                        <li><a  rel="aspect" id="教育培训" inpName="fields" inpValue="教育培训" class="divSmall">
                             教育培训</a></li>
-                        <li><a href="###" rel="aspect2" id="游戏开发" inpName="fields" inpValue="游戏开发"
+                        <li><a  rel="aspect2" id="游戏开发" inpName="fields" inpValue="游戏开发"
                                class="divSmall">游戏开发</a></li>
-                        <li><a href="###" rel="aspect3" id="政府医疗" inpName="fields" inpValue="政府医疗"
+                        <li><a  rel="aspect3" id="政府医疗" inpName="fields" inpValue="政府医疗"
                                class="divSmall">政府医疗</a></li>
-                        <li><a href="###" rel="aspect4" id="电子商务" inpName="fields" inpValue="电子商务"
+                        <li><a  rel="aspect4" id="电子商务" inpName="fields" inpValue="电子商务"
                                class="divSmall">电子商务</a></li>
-                        <li><a href="###" rel="aspect5" id="社交通讯" inpName="fields" inpValue="社交通讯"
+                        <li><a  rel="aspect5" id="社交通讯" inpName="fields" inpValue="社交通讯"
                                class="divSmall">社交通讯</a></li>
-                        <li><a href="###" rel="aspect6" id="新闻资讯" inpName="fields" inpValue="新闻资讯"
+                        <li><a  rel="aspect6" id="新闻资讯" inpName="fields" inpValue="新闻资讯"
                                class="divSmall">新闻资讯</a></li>
-                        <li><a href="###" rel="aspect7" id="金融财务" inpName="fields" inpValue="金融财务"
+                        <li><a  rel="aspect7" id="金融财务" inpName="fields" inpValue="金融财务"
                                class="divSmall">金融财务</a></li>
-                        <li><a href="###" rel="aspect8" id="娱乐应用" inpName="fields" inpValue="娱乐应用"
+                        <li><a  rel="aspect8" id="娱乐应用" inpName="fields" inpValue="娱乐应用"
                                class="divSmall">娱乐应用</a></li>
-                        <li><a href="###" rel="aspect9" id="企业管理" inpName="fields" inpValue="企业管理"
+                        <li><a  rel="aspect9" id="企业管理" inpName="fields" inpValue="企业管理"
                                class="divSmall">企业管理</a></li>
                     </ul>
                 </div>
@@ -214,17 +214,15 @@
                 <div class="pull-left" style="width: 42px;color: #999">薪资：</div>
                 <div class="pull-left" style="width: 766px">
                     <ul>
-                        <li><a href="###" rel="type" id="s_x_5000" inpName="salary" inpValue="s_x_5000"
-                               class="divSmall">6万以下</a></li>
-                        <li><a href="###" rel="type" id="s_5000_10000" inpName="salary" inpValue="s_5000_10000"
-                               class="divSmall">6-12万</a></li>
-                        <li><a href="###" rel="type" id="s_10000_25000" inpName="salary" inpValue="s_10000_25000"
+                        <li><a  rel="type" id="s_x_10000" inpName="salary" inpValue="s_x_10000"
+                               class="divSmall">12万以下</a></li>
+                        <li><a  rel="type" id="s_10000_25000" inpName="salary" inpValue="s_10000_25000"
                                class="divSmall">12-30万</a></li>
-                        <li><a href="###" rel="type" id="s_25000_50000" inpName="salary" inpValue="s_25000_50000"
+                        <li><a  rel="type" id="s_25000_50000" inpName="salary" inpValue="s_25000_50000"
                                class="divSmall">30-60万</a></li>
-                        <li><a href="###" rel="type" id="s_50000_100000" inpName="salary" inpValue="s_50000_100000"
+                        <li><a  rel="type" id="s_50000_100000" inpName="salary" inpValue="s_50000_100000"
                                class="divSmall">60-120万</a></li>
-                        <li><a href="###" rel="type" id="s_100000_x" inpName="salary" inpValue="s_100000_x"
+                        <li><a  rel="type" id="s_100000_x" inpName="salary" inpValue="s_100000_x"
                                class="divSmall">120万以上</a></li>
                     </ul>
                 </div>
@@ -236,39 +234,39 @@
                         <li class="zp_lb_li">
                             <a>发布时间</a>
                             <ul>
-                                <li><a href="###" rel="one" id="d_1" inpName="fadate" inpValue="d_1" class="divSmall">一天以内</a>
+                                <li><a  rel="one" id="d_1" inpName="fadate" inpValue="d_1" class="divSmall">一天以内</a>
                                 </li>
-                                <li><a href="###" rel="one" id="d_3" inpName="fadate" inpValue="d_3" class="divSmall">三天以内</a>
+                                <li><a  rel="one" id="d_3" inpName="fadate" inpValue="d_3" class="divSmall">三天以内</a>
                                 </li>
-                                <li><a href="###" rel="one" id="d_7" inpName="fadate" inpValue="d_7" class="divSmall">一周以内</a>
+                                <li><a  rel="one" id="d_7" inpName="fadate" inpValue="d_7" class="divSmall">一周以内</a>
                                 </li>
-                                <li><a href="###" rel="one" id="d_30" inpName="fadate" inpValue="d_30" class="divSmall">一个月以内</a>
+                                <li><a  rel="one" id="d_30" inpName="fadate" inpValue="d_30" class="divSmall">一个月以内</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>企业规模</a>
                             <ul>
-                                <li><a href="###" rel="three" id="g_x_50" inpName="company_scale" inpValue="g_x_50"
+                                <li><a  rel="three" id="g_0-50" inpName="company_scale" inpValue="g_0-50"
                                        class="divSmall">50人以下</a></li>
-                                <li><a href="###" rel="three" id="g_50_500" inpName="company_scale" inpValue="g_50_500"
+                                <li><a  rel="three" id="g_50-500" inpName="company_scale" inpValue="g_50-500"
                                        class="divSmall">50-500人</a></li>
-                                <li><a href="###" rel="three" id="g_500_1000" inpName="company_scale"
-                                       inpValue="g_500_1000" class="divSmall">500-1000人</a></li>
-                                <li><a href="###" rel="three" id="g_1000_x" inpName="company_scale" inpValue="g_1000_x"
+                                <li><a  rel="three" id="g_500-1000" inpName="company_scale"
+                                       inpValue="g_500-1000" class="divSmall">500-1000人</a></li>
+                                <li><a  rel="three" id="g_1000以上" inpName="company_scale" inpValue="g_1000以上"
                                        class="divSmall">1000人以上</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>企业性质</a>
                             <ul>
-                                <li><a href="###" rel="four" id="n_1" inpName="company_nature" inpValue=n_1"
+                                <li><a  rel="four" id="n_1" inpName="company_nature" inpValue="n_1"
                                        class="divSmall">国企</a></li>
-                                <li><a href="###" rel="four" id="n_2" inpName="company_nature" inpValue=n_2"
+                                <li><a  rel="four" id="n_2" inpName="company_nature" inpValue="n_2"
                                        class="divSmall">民营</a></li>
-                                <li><a href="###" rel="four" id="n_3" inpName="company_nature" inpValue=n_3"
+                                <li><a  rel="four" id="n_3" inpName="company_nature" inpValue="n_3"
                                        class="divSmall">外企</a></li>
-                                <li><a href="###" rel="four" id="n_4" inpName="company_nature" inpValue=n_4"
+                                <li><a  rel="four" id="n_4" inpName="company_nature" inpValue="n_4"
                                        class="divSmall">政府</a></li>
                             </ul>
                         </li>
@@ -454,7 +452,7 @@
             </ul>
         </div>
     </div>
-    <form id="hidForm"></form>
+    <form id="hidForm" action="${pageContext.request.contextPath}/Postion/selPostionIndex.do"></form>
 </section>
 
 
@@ -552,25 +550,12 @@
         <div class="cd-popup" role="alert">
             <div class="cd-popup-container">
                 <div class="zp_gsxq_bd_tck_cont2_cont" id="gggui">
-                    <div style="padding-left: 20px" id="sheng123">江苏省</div>
+                    <%--<div style="padding-left: 20px" id="sheng123">江苏省</div>--%>
                     <%--<ul class="zp_ul">
                         &lt;%&ndash;<li><a href="">南京</a></li>
                         <li><a href="">常熟</a></li>
-                        <li><a href="">常州</a></li>
-                        <li><a href="">昆山</a></li>
-                        <li><a href="">连云港</a></li>
-                        <li><a href="">南通</a></li>
-                        <li><a href="">苏州</a></li>
-                        <li><a href="">太仓</a></li>
-                        <li><a href="">无锡</a></li>
-                        <li><a href="">徐州</a></li>
-                        <li><a href="">扬州</a></li>
-                        <li><a href="">镇江</a></li>
-                        <li><a href="">淮安</a></li>
                         <li><a href="">盐城</a></li>&ndash;%&gt;
-
                     </ul>--%>
-
                 </div>
             </div>
         </div>
@@ -613,7 +598,6 @@
             removeMyInp($(this).attr("rel"));
             $(this).parent().remove();
         })
-        alert('${queryPostion.nature==null}');
         $(".hotCity").click(function () {
             $("#div6").css("background-color", "#FC9A2F");
         });
@@ -639,6 +623,23 @@
     }
 </script>
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
+<script>
+    $(document).ready(function () {
+        <c:forEach items="${queryPostion.alist}" var="al">
+            $('#${al}').click();
+        </c:forEach>
+        if('${queryPostion.workspace}'){
+            $("#div6").css("background-color", "#FC9A2F");
+            var str = '${queryPostion.workspace}';
+            $("#div6").html(str);
+            $('#this_space').text(str);
+            $('#workspace').val(str);
+        }
+        if('${queryPostion.likeStr}'){
+            $('#likeStr').val('${queryPostion.likeStr}');
+        }
+    });
 
+</script>
 </body>
 </html>
