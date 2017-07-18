@@ -32,6 +32,7 @@ public class MienController extends BaseController {
         mv.addObject("i",i);
         return mv;
     }
+    @ResponseBody
     @RequestMapping("updateMien")
     public  Map updateMien(@RequestBody XzCompanyMien xzCompanyMien){
         Map map=new HashMap();
@@ -60,10 +61,19 @@ public class MienController extends BaseController {
         map.put("arr",arr);
         return map;
     }
+    @ResponseBody
     @RequestMapping("updateMienPicture")
     public Map updateMienPicture(@RequestBody XzCompanyMien xzCompanyMien){
         Map map=new HashMap();
         int i=xzMienService.updateMienPicture(xzCompanyMien);
+        map.put("i",i);
+        return map;
+    }
+    @ResponseBody
+    @RequestMapping("deleteMien")
+    public Map deleteMien(@RequestBody Long mienId){
+        Map map=new HashMap();
+        int i =xzMienService.deleteMien(mienId);
         map.put("i",i);
         return map;
     }

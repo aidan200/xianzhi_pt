@@ -22,4 +22,6 @@ public interface XzCompanyMienMapper {
 
     int updateMienPicture(XzCompanyMien xzCompanyMien);
 
+    int deleteMien(Long mienId);
+
 }

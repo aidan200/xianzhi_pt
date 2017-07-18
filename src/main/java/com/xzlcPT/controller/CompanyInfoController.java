@@ -6,10 +6,7 @@ import com.util.MobileAndPersonID;
 import com.util.PageBean;
 import com.util.SavePicture;
 import com.xzlcPT.bean.*;
-import com.xzlcPT.service.CompanyInfoService;
-import com.xzlcPT.service.DiscussService;
-import com.xzlcPT.service.LoginUserService;
-import com.xzlcPT.service.XzCompanyService;
+import com.xzlcPT.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,10 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/4/10.
@@ -42,7 +36,8 @@ public class CompanyInfoController {
     private DiscussService discussService;
     @Autowired
     private XzCompanyService companyService;
-
+    @Autowired
+    private XzPostionService xzPostionService;
 
     @RequestMapping("addCompany.do")
     public ModelAndView addCompany(XzCompany company){
@@ -281,18 +276,25 @@ public class CompanyInfoController {
     }
     @ResponseBody
     @RequestMapping("selCompanyInf")
-    public ModelAndView selCompanyInf (Long companyId){
+    public ModelAndView selCompanyInf (@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,Long companyId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
+        PageBean<XzPostion> pageBean=xzPostionService.selectByCompanyId(page,rows,companyId);
+        List<XzPostion> plist=pageBean.getList();
         XzCompany xzCompany=companyService.selCompanyInf(companyId);
-        System.out.println("ssssssssssssssssssssssssssssssssssssssssssize:"+xzCompany.getWelfares().size());
+        mv.addObject("plist",plist);
+        mv.addObject("page",pageBean.getPageNum());
+        mv.addObject("pages",pageBean.getPages());
+        mv.addObject("rows",pageBean.getPageSize());
+        mv.addObject("total",pageBean.getTotal());
         mv.addObject("xzCompany",xzCompany);
         return mv;
     }
+    @ResponseBody
     @RequestMapping("updateCompanyPic")
-    public  ModelAndView updateCompanyPic(XzCompany xzCompany){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public Map updateCompanyPic(@RequestBody XzCompany xzCompany){
+       Map map=new HashMap();
         int i=companyService.updateCompanyPic(xzCompany);
-        mv.addObject("i",i);
-        return mv;
+        map.put("i",i);
+        return map;
     }
 }

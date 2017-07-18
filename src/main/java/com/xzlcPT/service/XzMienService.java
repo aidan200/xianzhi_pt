@@ -22,4 +22,6 @@ public interface XzMienService {
     List<XzCompanyMien> selectByCompanyId(Long companyId);
 
     int updateMienPicture(XzCompanyMien xzCompanyMien);
+
+    int deleteMien(Long mienId);
 }

@@ -78,5 +78,9 @@
         </set>
         where mien_id = #{mienId,jdbcType=BIGINT}
     </update>
+    <update id="deleteMien" parameterType="java.lang.Long">
+        UPDATE  xz_company_mien SET delete_falt=1
+        where mien_id = #{mienId,jdbcType=BIGINT}
+    </update>
 </mapper>
 

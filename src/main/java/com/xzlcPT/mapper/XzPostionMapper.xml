@@ -376,4 +376,9 @@
       filed3 = #{filed3,jdbcType=VARCHAR}
     where postion_id = #{postionId,jdbcType=BIGINT}
   </update>
+  <select id="selectByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM xz_postion p WHERE p.company_id=#{companyId,jdbcType=BIGINT}
+  </select>
 </mapper>

@@ -86,7 +86,7 @@
                 </div>
                 <hr>
                 <ul>
-                    <c:forEach var="po" items="${xzCompany.postions}">
+                    <c:forEach var="po" items="${plist}">
                     <li>
                         <div class="zp_gsxq_zpzw_li_left">
                             <p><a href="">${po.postionName}</a></p>
@@ -105,18 +105,23 @@
             <div class="zp_botv">
                 <div class="zp_pl">
                     <ul class="pagination zp_pa">
-                                       <li class="b"><a href="#">上一页</a></li>
+                                      <%-- <li class="b"><a href="#">上一页</a></li>
                                                 <li class="active"><a href="#">1</a></li>
                                                 <li class="a"><a href="#">2</a></li>
                                                 <li class="a"><a href="#">3</a></li>
                                                 <li class="a"><a href="#">4</a></li>
                                                 <li class="a"><a href="#">5</a></li>
-                                                <li class="a"><a href="#">下一页</a></li>
+                                                <li class="a"><a href="#">下一页</a></li>--%>
+                        <myPage:paging length="4" page="${page}" pages="${pages}"/>
+
+
                     </ul>
-                    <div class="zp_page">共 <span>38</span> 页</div>
+                    <div class="zp_page">共 <span>${pages}</span> 页</div>
                 </div>
             </div>
         </div>
+
+
         <div class="col-md-4 zp_spxq_cont_right" style=" padding-left: 20px;">
             <div class="zp_spxq_cont_right_cont">
                 <div class="zp_spxq_cont_right_top">
@@ -174,7 +179,13 @@
 
 
 
-
+<script>
+    function pToSub(page) {
+        if(page){
+            alert(page);
+        }
+    }
+</script>
 
 
 </body>

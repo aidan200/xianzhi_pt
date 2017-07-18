@@ -41,4 +41,12 @@ public class XzPostionServiceImpl implements XzPostionService{
         return pp;
         //return null;
     }
+
+    @Override
+    public PageBean<XzPostion> selectByCompanyId(int page, int rows, Long companyId) {
+        PageHelper.startPage(page,rows);
+        List<XzPostion> plist=postionMapper.selectByCompanyId(companyId);
+        PageBean<XzPostion> pageBean=new PageBean<>(plist);
+        return pageBean;
+    }
 }
