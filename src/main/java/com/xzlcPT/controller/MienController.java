@@ -33,8 +33,8 @@ public class MienController extends BaseController {
         return mv;
     }
     @RequestMapping("updateMien")
-    public  ModelAndView updateMien(XzCompanyMien xzCompanyMien){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public  ModelAndView updateMien(@RequestBody XzCompanyMien xzCompanyMien){
+        ModelAndView mv=new ModelAndView();
         int i=xzMienService.updateMien(xzCompanyMien);
         mv.addObject("i",i);
         return mv;

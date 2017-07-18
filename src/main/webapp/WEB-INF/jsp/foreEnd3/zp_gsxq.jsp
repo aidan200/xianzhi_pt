@@ -10,6 +10,8 @@
 <%@ page isELIgnored="false" %>
 <%--引入jstl--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="myPage" uri="/xianzhiOA/pageTag" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -48,7 +50,7 @@
                 <dl class="clearfix" style="display: block;">
                     <dt><img src="https://image0.lietou-static.com/img/57d2632962f0550b9450e1d706a.jpg" alt=""></dt>
                     <dd>
-                        <p data-selector="detail">${p1.productIntro}应该是名字</p>
+                        <p data-selector="detail">${p1.productIntro}</p>
                     </dd>
                 </dl>
                 </c:forEach>
@@ -88,7 +90,8 @@
                     <li>
                         <div class="zp_gsxq_zpzw_li_left">
                             <p><a href="">${po.postionName}</a></p>
-                            <p><span>${po.postionMm}-${po.postionYm}万</span>&nbsp;&nbsp;${po.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionExp}工作经验 </p>
+                            <p><span>
+                            ${fn:replace((po.postionMm*12/10000),".0","")}-${fn:replace((po.postionYm*12/10000),".0","")}万</span>&nbsp;&nbsp;${po.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionExp}工作经验 </p>
                             <p><span style="color: #999999; font-size: 10px;">23小时前 投递后：24小时反馈</span></p>
                         </div>
                         <div class="zp_gsxq_zpzw_li_right">
@@ -99,27 +102,6 @@
 
                 </ul>
             </div>
-            <%--<div class="zp_gsxq_fy" >--%>
-                <%--<nav aria-label="Page navigation" >--%>
-                    <%--<ul class="pagination" style="margin">--%>
-                        <%--<li>--%>
-                            <%--<a href="#" aria-label="Previous">--%>
-                                <%--<span aria-hidden="true">&laquo;</span>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                        <%--<li><a href="#">1</a></li>--%>
-                        <%--<li><a href="#">2</a></li>--%>
-                        <%--<li><a href="#">3</a></li>--%>
-                        <%--<li><a href="#">4</a></li>--%>
-                        <%--<li><a href="#">5</a></li>--%>
-                        <%--<li>--%>
-                            <%--<a href="#" aria-label="Next">--%>
-                                <%--<span aria-hidden="true">&raquo;</span>--%>
-                            <%--</a>--%>
-                        <%--</li>--%>
-                    <%--</ul>--%>
-                <%--</nav>--%>
-            <%--</div>--%>
             <div class="zp_botv">
                 <div class="zp_pl">
                     <ul class="pagination zp_pa">
@@ -130,7 +112,6 @@
                                                 <li class="a"><a href="#">4</a></li>
                                                 <li class="a"><a href="#">5</a></li>
                                                 <li class="a"><a href="#">下一页</a></li>
-                        <%--<myPage:paging length="10" page="${page}" pages="${pages}"/>--%>
                     </ul>
                     <div class="zp_page">共 <span>38</span> 页</div>
                 </div>
