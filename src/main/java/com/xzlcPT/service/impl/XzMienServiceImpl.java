@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 /**
  * @author 甘汝雷
  * @create 2017-07-17 20:35
@@ -35,5 +37,11 @@ public class XzMienServiceImpl implements XzMienService{
     public XzCompanyMien selectByMienId(Long mienId) {
        XzCompanyMien xzCompanyMien=xzCompanyMienMapper.selectByMienId(mienId);
         return xzCompanyMien;
+    }
+
+    @Override
+    public List<XzCompanyMien> selectByCompanyId(Long companyId) {
+        List<XzCompanyMien> MienList=xzCompanyMienMapper.selectByCompanyId(companyId);
+        return MienList;
     }
 }

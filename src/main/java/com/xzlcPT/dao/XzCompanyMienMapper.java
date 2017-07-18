@@ -2,7 +2,10 @@ package com.xzlcPT.dao;/**
  * Created by Administrator on 2017/7/17.
  */
 
+import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzCompanyMien;
+
+import java.util.List;
 
 /**
  * @author 甘汝雷
@@ -14,4 +17,7 @@ public interface XzCompanyMienMapper {
     int updateMien(XzCompanyMien xzCompanyMien);
 
     XzCompanyMien selectByMienId(Long mienId);
+
+    List<XzCompanyMien> selectByCompanyId(Long companyId);
+
 }

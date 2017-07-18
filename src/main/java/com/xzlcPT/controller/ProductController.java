@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,6 +45,17 @@ public class ProductController extends BaseController{
         Map map = new HashMap();
         XzCompanyProduct xzCompanyProduct=xzProductService.selectByPrimaryKey(productId);
         map.put("xzCompanyProduct",xzCompanyProduct);
+        return map;
+    }
+    @ResponseBody
+    @RequestMapping("selectByCompanyId")
+    public Map selectByCompanyId(Long companyId) {
+        Map map = new HashMap();
+        List<XzCompanyProduct> productList = xzProductService.selectByCompanyId(companyId);
+        for (int i=0;i<productList.size();i++){
+            XzCompanyProduct xzCompanyProduct=productList.get(i);
+            map.put("xzCompanyProduct",xzCompanyProduct);
+        }
         return map;
     }
 }

@@ -63,5 +63,11 @@
         FROM xz_company_mien WHERE
         mien_id = #{mienId,jdbcType=BIGINT}
     </select>
+    <select id="selectByCompanyId"  resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM xz_company_mien WHERE
+        company_id = #{companyId,jdbcType=BIGINT}
+    </select>
 </mapper>
 
