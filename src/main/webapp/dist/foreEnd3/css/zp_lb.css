@@ -900,13 +900,11 @@ ul {
 }
 
 .cd-popup-trigger {
-    margin: 3em auto;
+    /*margin: 3em auto;*/
     text-align: center;
     font-size: 14px;
     text-transform: uppercase;
 }
-
-
 
 
 .cd-popup {
