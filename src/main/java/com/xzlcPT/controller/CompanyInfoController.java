@@ -280,8 +280,10 @@ public class CompanyInfoController {
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
         PageBean<XzPostion> pageBean=xzPostionService.selectByCompanyId(page,rows,companyId);
         List<XzPostion> plist=pageBean.getList();
+        List<XzPostion> clist=xzPostionService.selectByComId(companyId);
         XzCompany xzCompany=companyService.selCompanyInf(companyId);
         mv.addObject("plist",plist);
+        mv.addObject("clist",clist);
         mv.addObject("page",pageBean.getPageNum());
         mv.addObject("pages",pageBean.getPages());
         mv.addObject("rows",pageBean.getPageSize());
@@ -313,5 +315,15 @@ public class CompanyInfoController {
         mv.addObject("total",pageBean.getTotal());
         mv.addObject("xzCompany",xzCompany);
         return mv;
+    }
+    @ResponseBody
+    @RequestMapping("selByCompanyName")
+    public Map selByCompanyName(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String companyName){
+    Map map=new HashMap();
+    PageBean<XzCompany> PageBean=companyService.selByCompanyName(page,rows,companyName);
+    List<XzCompany> plist=PageBean.getList();
+    map.put("plist",plist);
+    System.out.println("--------------------aaasize="+plist.size());
+    return map;
     }
 }

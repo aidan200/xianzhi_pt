@@ -66,9 +66,11 @@ public class XzResume {
 
     private List<XzJobExp> jobExps;
 
-    private List<XzEducation> xzEducations;
+    private List<XzResumeEducation> xzResumeEducations;
 
     private List<XzProjectExp> xzProjectExps;
+
+    private List<XzResumeSkill> xzResumeSkills;
 
 
     public List<XzField> getFields() {
@@ -319,12 +321,12 @@ public class XzResume {
         return jobExps;
     }
 
-    public void setXzEducations(List<XzEducation> xzEducations) {
-        this.xzEducations = xzEducations;
+    public void setXzResumeEducations(List<XzResumeEducation> xzResumeEducations) {
+        this.xzResumeEducations = xzResumeEducations;
     }
 
-    public List<XzEducation> getXzEducations() {
-        return xzEducations;
+    public List<XzResumeEducation> getXzResumeEducations() {
+        return xzResumeEducations;
     }
 
     public void setXzProjectExps(List<XzProjectExp> xzProjectExps) {
@@ -333,6 +335,14 @@ public class XzResume {
 
     public List<XzProjectExp> getXzProjectExps() {
         return xzProjectExps;
+    }
+
+    public void setXzResumeSkills(List<XzResumeSkill> xzResumeSkills) {
+        this.xzResumeSkills = xzResumeSkills;
+    }
+
+    public List<XzResumeSkill> getXzResumeSkills() {
+        return xzResumeSkills;
     }
 
     @Override
