@@ -10,6 +10,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +65,7 @@
                             手&emsp;&emsp;机：<span>${xzResume.resumePhone}</span>
                         </div>
                         <div class="resume_every">
-                            年&emsp;&emsp;龄：<span>.......</span>
+                            年&emsp;&emsp;龄：<span>?????????</span>
                         </div>
                         <div class="resume_every">
                             出生日期： <span>${xzResume.resumeBirth}</span>
@@ -109,36 +110,37 @@
             <div style="clear: both"></div>
 
             <!--工作经历-->
-
+            <c:forEach var="je" items="${xzResume.jobExps}">
             <div class="r_out">
                 <div class="resume_more">
                     <h4><span class="fa fa-calendar-minus-o"></span>工作经历</h4>
                     <b>
                         <div class="resume_self">
-                            <span style="padding-left: 20px">2015.01</span>-<span>至今</span>
-                            <span style="padding-left: 20px">先知蓝创科技有限公司</span>
+
+                            <span style="padding-left: 20px"><fmt:formatDate value="${je.jobexpBeginTime}" pattern="yyyy-MM-dd"/></span>-<span><fmt:formatDate value="${je.jobexpEndTime}" pattern="yyyy-MM-dd"/></span>
+                            <span style="padding-left: 20px">${je.jobexpCompanyName}</span>
                         </div></b>
                     <div class="resume_two">
                         <div class="resume_every">
-                            公司描述：<span>女</span>
+                            公司描述：<span>???????????</span>
                         </div>
                         <div class="resume_every">
-                            公司性质：<span>国企</span>
+                            公司性质：<span>${je.jobexpCompanyType}</span>
                         </div>
                         <div class="resume_every">
-                            公司规模：<span>2000人</span>
+                            公司规模：<span>${je.jobexpSubordinate}人</span>
                         </div>
                         <div class="resume_every">
-                            公司行业：<span>计算机</span>
+                            公司行业：<span>${je.jobexpField}</span>
                         </div>
                         <div class="resume_every">
-                            工作职位：<span>web前端</span>
+                            工作职位：<span>${je.jobexpPostion}</span>
                         </div>
                         <div class="resume_every">
-                            薪酬状况：<span>10000</span>
+                            薪酬状况：<span>${je.jobexpMm}</span>
                         </div>
                         <div class="resume_every">
-                            工作地点：<span>沈阳</span>
+                            工作地点：<span>${}</span>
                         </div>
                         <div class="resume_every">
                             所在部门：<span> </span>
@@ -153,6 +155,7 @@
                 </div>
 
             </div>
+            </c:forEach>
             <div style="clear: both"></div>
 
             <!--教育经历-->

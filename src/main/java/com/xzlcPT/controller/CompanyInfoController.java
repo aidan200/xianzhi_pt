@@ -323,6 +323,7 @@ public class CompanyInfoController {
     PageBean<XzCompany> PageBean=companyService.selByCompanyName(page,rows,companyName);
     List<XzCompany> plist=PageBean.getList();
     map.put("plist",plist);
+    System.out.println("--------------------aaasize="+plist.size());
     return map;
     }
 }

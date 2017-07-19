@@ -590,7 +590,7 @@
     </set>
     where company_id = #{companyId,jdbcType=BIGINT}
   </update>
-  <select id="selByCompanyName" parameterType="java.lang.String">
+  <select id="selByCompanyName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select company_id,company_name from xz_company WHERE
     company_name LIKE CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')
   </select>
