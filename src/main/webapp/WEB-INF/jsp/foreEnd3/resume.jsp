@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,22 +29,22 @@
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="resume_head">
             </div>
             <div class="resume_right">
-                <h3>郑秀妍</h3>
+                <h3>${xzResume.resumeName}</h3>
                 <div style="margin-top: 20px">
                     <span class="resume_outs">
-                    目前公司: <span>先知蓝创科技有限公司</span>
+                    目前公司: <span>${xzResume.resumeField}</span>
                     </span>
                     <span class="resume_outs">
-                    所在地点: <span>沈阳-苏家屯</span>
+                    所在地点: <span>${xzResume.resumeWorkspace}</span>
                     </span>
                 </div>
 
                 <div style="margin-top: 10px">
                     <span class="resume_outs">
-                    目前职位: <span>web前端</span>
+                    目前职位: <span>${xzResume.resumePosition}</span>
                     </span>
                     <span class="resume_outs">
-                    工作年限: <span>1年以上</span>
+                    工作年限: <span>${xzResume.resumeIntentYm}</span>
                     </span>
                 </div>
             </div>
@@ -56,22 +58,22 @@
                     <h4><span class="fa fa-user-circle-o"></span>基本资料</h4>
                     <div class="resume_two">
                         <div class="resume_every">
-                            性&emsp;&emsp;别：<span>女</span>
+                            性&emsp;&emsp;别：<span>${xzResume.resumeSex}</span>
                         </div>
                         <div class="resume_every">
-                            手&emsp;&emsp;机：<span>168571561872</span>
+                            手&emsp;&emsp;机：<span>${xzResume.resumePhone}</span>
                         </div>
                         <div class="resume_every">
-                            年&emsp;&emsp;龄：<span>28</span>
+                            年&emsp;&emsp;龄：<span>.......</span>
                         </div>
                         <div class="resume_every">
-                            出生日期： <span>1989-04-18</span>
+                            出生日期： <span>${xzResume.resumeBirth}</span>
                         </div>
                         <div class="resume_every">
-                            婚姻状况： <span>保密</span>
+                            婚姻状况： <span>${xzResume.resumeMarriage}</span>
                         </div>
                         <div class="resume_every">
-                            目前状态： <span>在职，看看新机会</span>
+                            目前状态： <span>${xzResume.resumeState}</span>
                         </div>
                     </div>
 
@@ -85,19 +87,19 @@
                     <h4><span class="fa fa-map-signs"></span>职业意向</h4>
                     <div class="resume_two">
                         <div class="resume_every">
-                            期望行业：<span>计算机</span>
+                            期望行业：<span>${xzResume.resumeIntentField}</span>
                         </div>
                         <div class="resume_every">
-                            期望地点：<span>沈阳</span>
+                            期望地点：<span>${xzResume.resumeIntentWorkspace}</span>
                         </div>
                     </div>
 
                     <div class="resume_two">
                         <div class="resume_every">
-                            期望职位： <span>cfo</span>
+                            期望职位： <span>${xzResume.resumeIntentPosition}</span>
                         </div>
                         <div class="resume_every">
-                            期望年薪： <span>100万</span>
+                            期望年薪： <span> ${fn:replace((xzResume.resumeIntentMm*12/10000),".0","")}万</span>
                         </div>
 
                     </div>
@@ -107,6 +109,7 @@
             <div style="clear: both"></div>
 
             <!--工作经历-->
+
             <div class="r_out">
                 <div class="resume_more">
                     <h4><span class="fa fa-calendar-minus-o"></span>工作经历</h4>

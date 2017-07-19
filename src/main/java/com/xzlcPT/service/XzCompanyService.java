@@ -20,4 +20,6 @@ public interface XzCompanyService {
     XzCompany selCompanyInf(Long companyId);
 
     int updateCompanyPic(XzCompany xzCompany);
+
+    PageBean<XzCompany> selByCompanyName(Integer page,Integer rows,String companyName);
 }

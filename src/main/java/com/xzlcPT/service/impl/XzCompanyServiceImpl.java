@@ -130,5 +130,13 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         return i;
     }
 
+    @Override
+    public PageBean<XzCompany> selByCompanyName(Integer page, Integer rows, String companyName) {
+        PageHelper.startPage(page,rows);
+        List<XzCompany> dlist = companyMapper.selByCompanyName(companyName);
+        PageBean<XzCompany> pb=new PageBean<XzCompany>(dlist);
+        return pb;
+    }
+
 
 }
