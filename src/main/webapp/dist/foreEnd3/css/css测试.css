@@ -3159,6 +3159,16 @@ input[type="button"].fileInputButton {
 .reu_bo{
     margin-left: 230px;
 }
+.r3_span {
+    display: inline-block;
+    float: left;
+    font-size: 16px;
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin-top: 20px;
+}
 /*-----------详细--------------------------------------------------------*/
 .comd_topimg {
     width: 100%;
