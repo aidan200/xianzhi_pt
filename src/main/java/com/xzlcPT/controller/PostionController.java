@@ -36,7 +36,7 @@ public class PostionController extends BaseController{
     }
     //职位列表查询
     @RequestMapping("/selPostionIndex.do")
-    public ModelAndView selPostionIndex( @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows,
+    public ModelAndView selPostionIndex( @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
                                         String[] fields, String salary, String fadate, String company_scale, String company_nature, String workspace,String likeStr){
         /*System.out.println(fields);
         System.out.println(salary);
@@ -78,8 +78,6 @@ public class PostionController extends BaseController{
         ModelAndView mv = new ModelAndView("foreEnd3/zp_gslb");
         PageBean<XzPostion> pageBean = postionService.selPostionIndex(page,rows,map);
 
-        List<XzPostion> pp = pageBean.getList();
-        //System.out.println(pp);
         mv.addObject("postionList",pageBean.getList());
         mv.addObject("page", pageBean.getPageNum());
         mv.addObject("pages", pageBean.getPages());
@@ -93,12 +91,36 @@ public class PostionController extends BaseController{
             }
         }
 
-        /*map.put("salary",salary);
-        map.put("fadate",fadate);
-        map.put("company_scale",company_scale);
-        map.put("company_nature",company_nature);*/
         map.put("alist",alist);
         mv.addObject("queryPostion",map);
+        return mv;
+    }
+
+    //类表查询异步
+    @ResponseBody
+    @RequestMapping("selPostionIndexAjax.do")
+    public Map selPostionIndexAjax(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "2") Integer rows,
+                                            String workspace, String likeStr){
+        Map map = new HashMap();
+        if(workspace!=null&&!workspace.equals("全国")){
+            map.put("workspace",workspace);
+        }
+        if(likeStr!=null&&!likeStr.equals("")){
+            map.put("likeStr",likeStr);
+        }
+        PageBean<XzPostion> pageBean = postionService.selPostionIndex(page,rows,map);
+        map.put("postionList",pageBean.getList());
+        map.put("page", pageBean.getPageNum());
+        map.put("pages", pageBean.getPages());
+        return map;
+    }
+
+    //按职位id查询详情
+    @RequestMapping("selPostionById.do")
+    public ModelAndView selPostionById(Long postionId){
+        ModelAndView mv = new ModelAndView();
+
+
         return mv;
     }
 
