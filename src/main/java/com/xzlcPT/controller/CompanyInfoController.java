@@ -316,4 +316,13 @@ public class CompanyInfoController {
         mv.addObject("xzCompany",xzCompany);
         return mv;
     }
+    @ResponseBody
+    @RequestMapping("selByCompanyName")
+    public Map selByCompanyName(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String companyName){
+    Map map=new HashMap();
+    PageBean<XzCompany> PageBean=companyService.selByCompanyName(page,rows,companyName);
+    List<XzCompany> plist=PageBean.getList();
+    map.put("plist",plist);
+    return map;
+    }
 }

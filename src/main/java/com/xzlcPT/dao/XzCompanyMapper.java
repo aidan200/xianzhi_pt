@@ -33,4 +33,6 @@ public interface XzCompanyMapper {
 
     int updateCompanyPic(XzCompany record);
 
+    List<XzCompany> selByCompanyName(String companyName);
+
 }
