@@ -270,7 +270,9 @@
     });
     $(function(){
         var s=$("#s2").text();
-
+        if (s==""){
+            $("#s2").text("至今");
+        }
     });
 
 </script>
