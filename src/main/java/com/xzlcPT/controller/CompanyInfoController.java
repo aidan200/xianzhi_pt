@@ -280,8 +280,10 @@ public class CompanyInfoController {
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
         PageBean<XzPostion> pageBean=xzPostionService.selectByCompanyId(page,rows,companyId);
         List<XzPostion> plist=pageBean.getList();
+        List<XzPostion> clist=xzPostionService.selectByComId(companyId);
         XzCompany xzCompany=companyService.selCompanyInf(companyId);
         mv.addObject("plist",plist);
+        mv.addObject("clist",clist);
         mv.addObject("page",pageBean.getPageNum());
         mv.addObject("pages",pageBean.getPages());
         mv.addObject("rows",pageBean.getPageSize());

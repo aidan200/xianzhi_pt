@@ -8,6 +8,7 @@ import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Map;
  * Created by Administrator on 2017/7/10.
  */
 @Controller
-@RequestMapping("Resume")
+@RequestMapping("/Resume")
 @SessionAttributes({"userLogin"})
 public class ResumeController extends BaseController {
 
@@ -47,6 +48,14 @@ public class ResumeController extends BaseController {
             map.put("msg","err");
         }
         return map;
+    }
+
+    @RequestMapping("selResumeInformation")
+    public ModelAndView selResumeInformation(Long resumeId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/resume");
+        XzResume xzResume=resumeService.selResumeInformation(resumeId);
+        mv.addObject("xzResume",xzResume);
+        return mv;
     }
 
 
