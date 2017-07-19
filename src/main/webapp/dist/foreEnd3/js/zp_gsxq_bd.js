@@ -335,7 +335,6 @@ qyfc.prototype.sc=function (){                  //删除方法
 
         })
 
-
     });
 }
 qyfc.prototype.bindingSJ=function (){
@@ -351,6 +350,10 @@ qyfc.prototype.bindingSJ=function (){
             var qyfc_html = template('qyfc_mb',obj);
             $(this).before(qyfc_html);           //添加模板
             var eee=$(this);
+            eee.prev('div').find('.a1_gb_sc').on('click',function (){       //删除事件
+                kg=true;
+                $(this).parent().parent().remove()
+            })
             var aaa= $(this).prev('div').find('div').attr('id');
             var bbb=document.getElementById(aaa);                //获取到背景DIV的元素
             var ccc= $(this).prev('div').find('input[type=text]').attr('id');
@@ -361,7 +364,7 @@ qyfc.prototype.bindingSJ=function (){
             });
             uu.init();
             This.qr()           //提交方法
-            This.sc()           //删除方法
+
         }
 
 
@@ -381,9 +384,11 @@ gstb.prototype.bindingSJ=function (){
 }
 
 function cpjx(){
+    this.cpjs=''
+}
+cpjx.prototype.init=function (){
 
-
-}                                 //产品介绍
+};
 cpjx.prototype.bindingSJ=function (){
     var ww=0;
     $('#tjcpjs').on('click',function (){        //添加商品
@@ -521,18 +526,20 @@ $(function (){
     var ojbxx=new jbxx();           //公司基本信息
     ojbxx.init();
 
-    var oqyfc=new qyfc();           //上传照片
+    var ogsdz=new gsdz();           //公司地址
+    ogsdz.bindingSJ();
+
+    var oqyfc=new qyfc();           //企业风采
     oqyfc.init()
     oqyfc.bindingSJ();
 
-    var ogstb=new gstb();            //企业风采
+    var ogstb=new gstb();           //公司图标
     ogstb.bindingSJ();
 
     var ocpjx=new cpjx();           //产品介绍
     ocpjx.bindingSJ();
 
-    var ogsdz=new gsdz();           //公司地址
-    ogsdz.bindingSJ();
+
 
 });
 
