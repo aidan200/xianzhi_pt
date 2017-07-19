@@ -86,6 +86,9 @@
     <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
     <result column="resume_intent_position" jdbcType="VARCHAR" property="resumeIntentPosition" />
     <result column="resume_completion" jdbcType="INTEGER" property="resumeCompletion" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <collection property="fields" ofType="com.xzlcPT.bean.XzField">
       <id column="field_id" jdbcType="BIGINT" property="fieldId" />
       <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
@@ -108,16 +111,15 @@
       <result column="jobexp_mm" jdbcType="INTEGER" property="jobexpMm" />
       <result column="jobexp_ym" jdbcType="INTEGER" property="jobexpYm" />
     </collection>
-    <collection property="xzEducations" ofType="com.xzlcPT.bean.XzEducation">
-      <id column="education_id" jdbcType="BIGINT" property="educationID"/>
-      <result column="login_id" jdbcType="BIGINT" property="loginID"/>
-      <result column="education" jdbcType="VARCHAR" property="education"/>
-      <result column="school" jdbcType="VARCHAR" property="school"/>
-      <result column="major" jdbcType="VARCHAR" property="major"/>
-      <result column="enrollment_date" jdbcType="DATE" property="enrollmentDate"/>
-      <result column="graduate_date" jdbcType="DATE" property="graduateDate"/>
-      <result column="education_skill" jdbcType="VARCHAR" property="educationSkill"/>
-      <result column="delete_education_date" jdbcType="DATE" property="deleteEducationDate"/>
+    <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
+      <id column="education_id" jdbcType="BIGINT" property="educationId" />
+      <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+      <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+      <result column="education_school" jdbcType="VARCHAR" property="educationSchool" />
+      <result column="education_major" jdbcType="VARCHAR" property="educationMajor" />
+      <result column="enrollment_date" jdbcType="DATE" property="enrollmentDate" />
+      <result column="graduate_date" jdbcType="DATE" property="graduateDate" />
+      <result column="education_entrance" jdbcType="INTEGER" property="educationEntrance" />
     </collection>
     <collection property="xzProjectExps" ofType="com.xzlcPT.bean.XzProjectExp">
       <id column="proexp_id" jdbcType="BIGINT" property="proexpId" />
@@ -129,6 +131,7 @@
       <result column="proexp_describe" jdbcType="VARCHAR" property="proexpDescribe" />
       <result column="proexp_postion" jdbcType="VARCHAR" property="proexpPostion" />
     </collection>
+
   </resultMap>
 
 
@@ -152,7 +155,7 @@
     r.resume_field, r.resume_workspace, r.resume_mm, r.resume_ym,
     r.resume_position, r.resume_workinglife, r.resume_nationality, r.resume_state, r.resume_marriage,
     r.resume_flash, r.resume_intent_workspace, r.resume_intent_field, r.resume_intent_mm, r.resume_intent_ym,
-    r.resume_intent_position, r.resume_completion,
+    r.resume_intent_position, r.resume_completion,r.filed1,r.filed2,
     p.proexp_id,p.resume_id, p.proexp_name, p.proexp_duty, p.proexp_begin_time, p.proexp_end_time,
     p.proexp_describe, p.proexp_postion,
     e.education_id, e.resume_id, e.education_level, e.education_school, e.education_major, e.enrollment_date,

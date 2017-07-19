@@ -68,7 +68,8 @@
                             年&emsp;&emsp;龄：<span>?????????</span>
                         </div>
                         <div class="resume_every">
-                            出生日期： <span>${xzResume.resumeBirth}</span>
+                            出生日期： <span>
+                            <fmt:formatDate value="${xzResume.resumeBirth}" pattern="yyyy-MM-dd"/></span>
                         </div>
                         <div class="resume_every">
                             婚姻状况： <span>${xzResume.resumeMarriage}</span>
@@ -110,11 +111,11 @@
             <div style="clear: both"></div>
 
             <!--工作经历-->
-            <c:forEach var="je" items="${xzResume.jobExps}">
             <div class="r_out">
                 <div class="resume_more">
                     <h4><span class="fa fa-calendar-minus-o"></span>工作经历</h4>
                     <b>
+                        <c:forEach var="je" items="${xzResume.jobExps}">
                         <div class="resume_self">
 
                             <span style="padding-left: 20px"><fmt:formatDate value="${je.jobexpBeginTime}" pattern="yyyy-MM-dd"/></span>-<span><fmt:formatDate value="${je.jobexpEndTime}" pattern="yyyy-MM-dd"/></span>
@@ -140,44 +141,45 @@
                             薪酬状况：<span>${je.jobexpMm}</span>
                         </div>
                         <div class="resume_every">
-                            工作地点：<span>${}</span>
+                            工作地点：<span>${je.jobexpWorkspace}</span>
                         </div>
                         <div class="resume_every">
-                            所在部门：<span> </span>
+                            所在部门：<span>${je.jobexpDept}</span>
                         </div>
                         <div class="resume_every3">
-                            <span style="display: inline-block;float: left">职责业绩：</span>
+                            <span style="display: inline-block;float: left">职责业绩：${je.jobexpDuty}</span>
                             <span class="resume_many">hhahhahahahhahaha</span>
                         </div>
                     </div>
-
+                    </c:forEach>
 
                 </div>
 
             </div>
-            </c:forEach>
+
             <div style="clear: both"></div>
 
             <!--教育经历-->
             <div class="r_out">
                 <div class="resume_more">
                     <h4><span class="fa fa-graduation-cap"></span>教育经历</h4>
+                    <c:forEach var="e1" items="${xzResume.xzResumeEducations}">
                     <div class="resume_two">
                         <div class="resume_every3">
-                            <b><span>辽东学院</span><span style="margin-left: 20px">2014.09-2016.07</span></b>
+                            <b><span>${e1.educationSchool}</span><span style="margin-left: 20px"><fmt:formatDate value="${e1.enrollmentDate}" pattern="yyyy-MM-dd"/>-<fmt:formatDate value="${e1.graduateDate}" pattern="yyyy-MM-dd"/></span></b>
                         </div>
                         <div class="resume_every2">
-                            专业名称：<span>信息管理与信息系统</span>
+                            专业名称：<span>${e1.educationMajor}</span>
                         </div>
                         <div class="resume_every2">
-                            学历：<span>本科</span>
+                            学历：<span>${e1.educationLevel}</span>
                         </div>
                         <div class="resume_every2">
-                            是否是统招：<span>是</span>
+                            是否是统招：<span>${e1.educationEntrance}</span>
                         </div>
 
                     </div>
-
+                    </c:forEach>
 
                 </div>
 
@@ -188,24 +190,25 @@
             <div class="r_out">
                 <div class="resume_more">
                     <h4><span class="fa fa-map-signs"></span>项目经验</h4>
+                    <c:forEach var="e2" items="${xzResume.xzProjectExps}">
                     <div class="resume_two">
                         <div class="resume_every3">
-                            项目名称：<span>balbbaliba</span>
+                            项目名称：<span>${e2.proexpName}</span>
                         </div>
                         <div class="resume_every3">
                             <span style="display: inline-block;float: left">项目职务：</span>
-                            <span class="resume_many">baliabali</span>
+                            <span class="resume_many">${e2.proexpPostion}</span>
                         </div>
                         <div class="resume_every3">
                             <span style="display: inline-block;float: left">项目职责：</span>
-                            <span class="resume_many">abakakabnaofh</span>
+                            <span class="resume_many">${e2.proexpDuty}</span>
                         </div>
                         <div class="resume_every3">
                             <span style="display: inline-block;float: left">项目描述：</span>
-                            <span class="resume_many">hhahhahahahhahaha</span>
+                            <span class="resume_many">${e2.proexpDescribe}</span>
                         </div>
                     </div>
-
+                    </c:forEach>
                 </div>
 
             </div>
@@ -216,7 +219,7 @@
                 <div class="resume_more">
                     <h4> <span class="fa fa-pencil-square-o"></span>自我评价</h4>
                     <div class="resume_two">
-                        巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉
+                        ${xzResume.filed1}
                     </div>
                 </div>
             </div>
@@ -227,7 +230,7 @@
                 <div class="resume_more">
                     <h4><span class="fa fa-tags"></span>附加信息</h4>
                     <div class="resume_two">
-                        哈哈啊哈哈哈哈哈哈
+                        ${xzResume.filed2}
                     </div>
 
 
