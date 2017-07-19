@@ -62,7 +62,7 @@
                             手&emsp;&emsp;机：<span>168571561872</span>
                         </div>
                         <div class="resume_every">
-                            性&emsp;&emsp;别：<span>女</span>
+                            年&emsp;&emsp;龄：<span>28</span>
                         </div>
                         <div class="resume_every">
                             出生日期： <span>1989-04-18</span>
