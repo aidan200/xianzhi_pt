@@ -15,4 +15,6 @@ public interface XzPostionService {
 
     PageBean<XzPostion> selectByCompanyId(int page,int rows, Long companyId);
 
+    PageBean<XzPostion> selectByConditions(int page,int rows,XzPostion xzPostion);
+
 }

@@ -64,6 +64,13 @@ public class XzResume {
 
     private List<XzField> fields;
 
+    private List<XzJobExp> jobExps;
+
+    private List<XzEducation> xzEducations;
+
+    private List<XzProjectExp> xzProjectExps;
+
+
     public List<XzField> getFields() {
         return fields;
     }
@@ -304,6 +311,29 @@ public class XzResume {
         this.filed3 = filed3 == null ? null : filed3.trim();
     }
 
+    public void setJobExps(List<XzJobExp> jobExps) {
+        this.jobExps = jobExps;
+    }
+
+    public List<XzJobExp> getJobExps() {
+        return jobExps;
+    }
+
+    public void setXzEducations(List<XzEducation> xzEducations) {
+        this.xzEducations = xzEducations;
+    }
+
+    public List<XzEducation> getXzEducations() {
+        return xzEducations;
+    }
+
+    public void setXzProjectExps(List<XzProjectExp> xzProjectExps) {
+        this.xzProjectExps = xzProjectExps;
+    }
+
+    public List<XzProjectExp> getXzProjectExps() {
+        return xzProjectExps;
+    }
 
     @Override
     public String toString() {

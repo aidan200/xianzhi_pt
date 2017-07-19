@@ -297,4 +297,19 @@ public class CompanyInfoController {
         map.put("i",i);
         return map;
     }
+    @ResponseBody
+    @RequestMapping("selectByConditions")
+    public ModelAndView selectByConditions (@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,XzPostion xzPostion){
+        ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
+        PageBean<XzPostion> pageBean=xzPostionService.selectByConditions(page,rows,xzPostion);
+        List<XzPostion> plist=pageBean.getList();
+        XzCompany xzCompany=companyService.selCompanyInf(xzPostion.getCompanyId());
+        mv.addObject("plist",plist);
+        mv.addObject("page",pageBean.getPageNum());
+        mv.addObject("pages",pageBean.getPages());
+        mv.addObject("rows",pageBean.getPageSize());
+        mv.addObject("total",pageBean.getTotal());
+        mv.addObject("xzCompany",xzCompany);
+        return mv;
+    }
 }

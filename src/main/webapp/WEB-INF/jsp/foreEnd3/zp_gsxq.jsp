@@ -56,17 +56,18 @@
                 </c:forEach>
                 <a class="link-more" href="javascript:;" style="display: block;">点击展开更多详情</a>
             </div>
+            <form id="f1" action="/CompanyInfo/selectByConditions">
             <div class="zp_gsxq_zpzw">
                 <h2>招聘职位<span>&nbsp;( 共${xzCompany.pcount}个 )</span></h2>
                 <div>
                     <div class="zp_gsxq_zpzw_left">
-                        <select class="form-control">
-                            <option>工作地点</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select class="form-control" name="postionSpace">
+                            <option value="">工作地点</option>
+                            <c:forEach var="p2" items="${plist}">
+                                <option value="${p2.postionSpace}">${p2.postionSpace}</option>
+                            </c:forEach>
                         </select>
+
                     </div>
                     <div class="zp_gsxq_zpzw_left" style="width: 140px">
                         <select class="form-control">
@@ -78,10 +79,10 @@
                         </select>
                     </div>
                     <div class="zp_gsxq_zpzw_left" style="width: 250px">
-                        <input type="text" class="form-control"placeholder="职位名称">
+                        <input type="text"  name="postionName" class="form-control"placeholder="职位名称">
                     </div>
                     <div class="zp_gsxq_zpzw_left" style="width:auto; float: right; margin-right: 0">
-                        <button type="button" class="btn btn-primary">确定</button>
+                        <button type="button" class="btn btn-primary" onclick="sel()">确定</button>
                     </div>
                 </div>
                 <hr>
@@ -112,15 +113,15 @@
                                                 <li class="a"><a href="#">4</a></li>
                                                 <li class="a"><a href="#">5</a></li>
                                                 <li class="a"><a href="#">下一页</a></li>--%>
+                        <input id="infPage" type="hidden" name="page" value="${page}">
+                        <input id="companyId" type="hidden" name="companyId" value="${xzCompany.companyId}">
                         <myPage:paging length="4" page="${page}" pages="${pages}"/>
-
-
                     </ul>
                     <div class="zp_page">共 <span>${pages}</span> 页</div>
                 </div>
             </div>
+            </form>
         </div>
-
 
         <div class="col-md-4 zp_spxq_cont_right" style=" padding-left: 20px;">
             <div class="zp_spxq_cont_right_cont">
@@ -181,10 +182,17 @@
 
 <script>
     function pToSub(page) {
-        if(page){
-            alert(page);
+        var infpage=parseInt(document.getElementById("infPage").value);
+        if(page!=infpage){
+            document.getElementById("infPage").value=page
+            document.getElementById("f1").submit();
         }
     }
+    function sel() {
+        document.getElementById("infPage").value=1;
+        document.getElementById("f1").submit();
+    }
+
 </script>
 
 

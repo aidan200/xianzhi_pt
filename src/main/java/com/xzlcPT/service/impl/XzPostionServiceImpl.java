@@ -49,4 +49,12 @@ public class XzPostionServiceImpl implements XzPostionService{
         PageBean<XzPostion> pageBean=new PageBean<>(plist);
         return pageBean;
     }
+
+    @Override
+    public PageBean<XzPostion> selectByConditions(int page, int rows, XzPostion xzPostion) {
+       PageHelper.startPage(page,rows);
+       List<XzPostion> plist=postionMapper.selectByConditions(xzPostion);
+       PageBean<XzPostion> pageBean=new PageBean<>(plist);
+        return pageBean;
+    }
 }
