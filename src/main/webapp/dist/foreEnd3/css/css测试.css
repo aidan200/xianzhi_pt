@@ -3693,11 +3693,15 @@ input[type="button"].fileInputButton {
 
 .resume_every3 {
     margin-top: 10px;
-
     width: 100%;
     float: left;
 
 }
+.resume_many{
+    display: inline-block;
+    width: 600px;
+}
+
 
 .resume_every > span，.resume_every2 > span {
     margin-left: 10px;

@@ -140,8 +140,9 @@
                         <div class="resume_every">
                             所在部门：<span> </span>
                         </div>
-                        <div class="resume_every" style="width: 100%">
-                            职责业绩：<span> </span>
+                        <div class="resume_every3">
+                            <span style="display: inline-block;float: left">职责业绩：</span>
+                            <span class="resume_many">hhahhahahahhahaha</span>
                         </div>
                     </div>
 
@@ -171,6 +172,33 @@
 
                     </div>
 
+
+                </div>
+
+            </div>
+            <div style="clear: both"></div>
+
+            <!--项目经验-->
+            <div class="r_out">
+                <div class="resume_more">
+                    <h4><span class="fa fa-map-signs"></span>项目经验</h4>
+                    <div class="resume_two">
+                        <div class="resume_every3">
+                            项目名称：<span>balbbaliba</span>
+                        </div>
+                        <div class="resume_every3">
+                            <span style="display: inline-block;float: left">项目职务：</span>
+                            <span class="resume_many">baliabali</span>
+                        </div>
+                        <div class="resume_every3">
+                            <span style="display: inline-block;float: left">项目职责：</span>
+                            <span class="resume_many">abakakabnaofh</span>
+                        </div>
+                        <div class="resume_every3">
+                            <span style="display: inline-block;float: left">项目描述：</span>
+                            <span class="resume_many">hhahhahahahhahaha</span>
+                        </div>
+                    </div>
 
                 </div>
 
