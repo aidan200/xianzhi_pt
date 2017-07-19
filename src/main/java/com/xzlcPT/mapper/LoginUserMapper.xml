@@ -53,24 +53,40 @@
     <sql id="Base_Column_List1">
     login_id, login_count, login_password, login_email, login_type, login_active, delete_login_date, delete_falt
   </sql>
-    <!--用户详细信息  需要修改  登陆信息不全-->
+    <!--用户详细信息-->
     <sql id="userInfos">
-        l.login_id, login_count, login_password, login_email, login_type, login_active, delete_login_date, delete_falt
+        l.login_id, l.login_count, l.login_password, l.login_email, l.login_type, l.login_active,
+        m.member_id, m.member_name, m.member_sex, m.member_age, m.member_birth, m.member_education,
+        m.member_Idcard, m.member_picture, m.member_phone, m.member_address, m.member_email
+    </sql>
+    <!--企业详细信息-->
+    <sql id="companyInfos">
+        l.login_id, l.login_count, l.login_password, l.login_email, l.login_type, l.login_active,
+        c.company_id, c.company_name,c.company_city, c.company_space, c.company_location, c.company_y, c.company_x, c.company_phone, c.company_picture,
+        c.company_intro, c.company_scale, c.company_nature, c.licence, c.company_state, c.is_listing,
+        c.domain, c.skill, c.financing
     </sql>
     <select id="selLoginForMOrCById" parameterType="Map" resultMap="CompanyOrMember">
-        select * FROM
-        xz_login l
+        select
+        <if test="usertype==0">
+            <include refid="userInfos"/>
+        </if>
         <if test="usertype==1">
+            <include refid="companyInfos"/>
+        </if>
+        FROM
+        xz_login l
+        <if test="usertype==0">
             ,xz_member m
         </if>
-        <if test="usertype==2">
+        <if test="usertype==1">
             ,xz_company c
         </if>
         where l.delete_falt = 0
-        <if test="usertype==1">
+        <if test="usertype==0">
             and l.login_id = m.login_id
         </if>
-        <if test="usertype==2">
+        <if test="usertype==1">
             and l.login_id = c.login_id
         </if>
         and l.login_id = #{loginId,jdbcType=BIGINT}
@@ -87,12 +103,18 @@
     </select>
 
     <select id="loginNE" resultMap="CompanyOrMember" parameterType="Map">
-        select *
-        FROM xz_login l
+        select
+        <if test="usertype==0">
+            <include refid="userInfos"/>
+        </if>
         <if test="usertype==1">
+            <include refid="companyInfos"/>
+        </if>
+        FROM xz_login l
+        <if test="usertype==0">
             ,xz_member m
         </if>
-        <if test="usertype==2">
+        <if test="usertype==1">
             ,xz_company c
         </if>
         where l.delete_falt = 0
@@ -102,10 +124,10 @@
         <if test="email!=null and email!=''">
             and l.login_email = #{email} and l.login_password = #{password}
         </if>
-        <if test="usertype==1">
+        <if test="usertype==0">
             and l.login_id = m.login_id
         </if>
-        <if test="usertype==2">
+        <if test="usertype==1">
             and l.login_id = c.login_id
         </if>
     </select>
