@@ -63,20 +63,11 @@
                     <div class="zp_gsxq_zpzw_left">
                         <select class="form-control" name="postionSpace">
                             <option value="">工作地点</option>
-                            <c:forEach var="p2" items="${plist}">
+                            <c:forEach var="p2" items="${clist}">
                                 <option value="${p2.postionSpace}">${p2.postionSpace}</option>
                             </c:forEach>
                         </select>
 
-                    </div>
-                    <div class="zp_gsxq_zpzw_left" style="width: 140px">
-                        <select class="form-control">
-                            <option>工作地点</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
                     </div>
                     <div class="zp_gsxq_zpzw_left" style="width: 250px">
                         <input type="text"  name="postionName" class="form-control"placeholder="职位名称">
@@ -183,7 +174,7 @@
 <script>
     function pToSub(page) {
         var infpage=parseInt(document.getElementById("infPage").value);
-        if(page!=infpage){
+        if(page!=infpage&&page-infpage>0||page!=infpage&&page-infpage<0){
             document.getElementById("infPage").value=page
             document.getElementById("f1").submit();
         }

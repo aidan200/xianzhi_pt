@@ -303,8 +303,10 @@ public class CompanyInfoController {
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
         PageBean<XzPostion> pageBean=xzPostionService.selectByConditions(page,rows,xzPostion);
         List<XzPostion> plist=pageBean.getList();
+        List<XzPostion> clist=xzPostionService.selectByComId(xzPostion.getCompanyId());
         XzCompany xzCompany=companyService.selCompanyInf(xzPostion.getCompanyId());
         mv.addObject("plist",plist);
+        mv.addObject("clist",clist);
         mv.addObject("page",pageBean.getPageNum());
         mv.addObject("pages",pageBean.getPages());
         mv.addObject("rows",pageBean.getPageSize());
