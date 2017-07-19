@@ -103,9 +103,23 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</div>'
             str+='<em class="em1"></em>'
             str+='</li>'
+            // str+='<li>'
+            // str+='工作年份&nbsp;&nbsp;&nbsp;<input id="jl_gznf" value="'+_self.gznf+'" type="text"  class="form-control zp_jianli_input3" style="margin-right: 27px" placeholder="请输入工作年份" >   职位名称&nbsp;&nbsp;&nbsp;<input id="jl_zwmc"  value="'+_self.zwmc+'" type="text" class="form-control zp_jianli_input3" placeholder="请输入职位名称" >'
+            // str+='</li>'
+
             str+='<li>'
-            str+='工作年份&nbsp;&nbsp;&nbsp;<input id="jl_gznf" value="'+_self.gznf+'" type="text"  class="form-control zp_jianli_input3" style="margin-right: 27px" placeholder="请输入姓名" >   职位名称&nbsp;&nbsp;&nbsp;<input id="jl_zwmc" value="'+_self.zwmc+'" type="text" class="form-control zp_jianli_input3" >'
+            str+='工作年份&nbsp;&nbsp;&nbsp;'
+            str+='<select name="" id="zp_select_time1" class="form-control zp_select1">'
+            var date=new Date();
+            var dq_n=date.getFullYear();        //获取到当前年
+             for(var i=dq_n;i>=dq_n-50;i--){
+                 str+='<option value="'+i+'">'+i+'年</option>'
+             }
+            str+='</select>'
+            str+='职位名称&nbsp;&nbsp;&nbsp;<input id="jl_zwmc"  value="'+_self.zwmc+'" type="text" class="form-control zp_jianli_input3" placeholder="请输入职位名称" >'
+
             str+='</li>'
+
             str+='<li>'
             str+='当前城市 <input id="jl_dqcs" value="'+_self.dqcs+'" type="text" class="form-control zp_jianli_input2" >'
             str+='</li>'
@@ -115,6 +129,11 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_top2_top').after(str);              //插入
+            $('#zp_select_time1 option').each(function (index,ele){
+                if($(ele).val()==_self.gznf){               //判断如果等于数据库的时间
+                    $(ele).attr('selected','selected')
+                }
+            });
             function sc(){                  //当前行业删除
                 $('#dqhy_1 > div').find('a').on('click',function (){
                     $(this).parent().remove();
@@ -223,7 +242,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                 }
                 var resume={
                     resumeName:$('#jl_name').val(),                 //姓名//性别
-                    resumeWorkinglife:$('#jl_gznf').val(),          //工作年份
+                    resumeWorkinglife:$('#zp_select_time1').val(),          //工作年份
                     fields:shuzu,                                   //当前行业
                     resumePosition:$('#jl_zwmc').val(),              //当前职位
                     resumeWorkspace:$('#jl_dqcs').val(),             //当前城市
