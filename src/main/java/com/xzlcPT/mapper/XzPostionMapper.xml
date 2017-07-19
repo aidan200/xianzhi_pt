@@ -381,4 +381,15 @@
     <include refid="Base_Column_List" />
     FROM xz_postion p WHERE p.company_id=#{companyId,jdbcType=BIGINT}
   </select>
+  <select id="selectByConditions" parameterType="com.xzlcPT.bean.XzPostion" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM xz_postion p WHERE delete_flat = 0
+    <if test="postionSpace != null and postionSpace != ''">
+    AND  postion_space = #{postionSpace,jdbcType=VARCHAR}
+    </if>
+    <if test="postionName != null and postionName != ''">
+    AND  postion_name like CONCAT('%',#{postionName,jdbcType=VARCHAR},'%')
+    </if>
+  </select>
 </mapper>

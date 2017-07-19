@@ -62,4 +62,10 @@ public class XzResumeServiceImpl implements XzResumeService{
         return i;
     }
 
+    @Override
+    public XzResume selResumeInformation(Long resumeId) {
+       XzResume xzResume=resumeMapper.selResumeInformation(resumeId);
+        return xzResume;
+    }
+
 }

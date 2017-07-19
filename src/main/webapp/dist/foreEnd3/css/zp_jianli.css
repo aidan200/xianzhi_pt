@@ -1443,3 +1443,16 @@ clear: both;
     line-height: 26px;
     background: #3b97c4;
 }
+.jbxx2 span{
+    margin-right: 10px;
+    display: inline-block;
+}
+.zp_select1{
+    width: 130px;
+    display: inline-block;
+    height: 100%;
+    border-radius: 3px;
+    margin-left: 0;
+    margin-right: 31px;
+    text-align: center;
+}

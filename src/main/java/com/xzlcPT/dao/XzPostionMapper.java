@@ -24,4 +24,6 @@ public interface XzPostionMapper {
     int updateByPrimaryKey(XzPostion record);
 
     List<XzPostion> selectByCompanyId(Long companyId);
+
+    List<XzPostion> selectByConditions(XzPostion record);
 }

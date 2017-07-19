@@ -1,5 +1,6 @@
 package com.xzlcPT.dao;
 
+import com.xzlcPT.bean.XzEducation;
 import com.xzlcPT.bean.XzResume;
 
 public interface XzResumeMapper {
@@ -16,4 +17,6 @@ public interface XzResumeMapper {
     int updateByPrimaryKeySelective(XzResume record);
 
     int updateByPrimaryKey(XzResume record);
+
+    XzResume selResumeInformation(Long resumeId);
 }
