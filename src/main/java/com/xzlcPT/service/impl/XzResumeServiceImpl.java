@@ -10,10 +10,7 @@ import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/7/10.
@@ -34,6 +31,14 @@ public class XzResumeServiceImpl implements XzResumeService{
 
     @Override
     public int updateResumeByFore(XzResume resume) {
+        if(resume.getResumeWorkinglife()!=null){
+            int year = Integer.parseInt(resume.getResumeWorkinglife());
+            Calendar a= Calendar.getInstance();
+            int i = a.get(Calendar.YEAR);
+            resume.setResumeIntentYm(i-year);
+        }
+        //刷新简历
+        resume.setResumeFlash(new Date());
         int i = resumeMapper.updateByPrimaryKeySelective(resume);
         if(resume.getFields()!=null){
             Map map = new HashMap<>();

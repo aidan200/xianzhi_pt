@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -122,11 +123,31 @@
                     </div>
                     <div class="zp_index_cont_right_top_right">
                         <span>${resume.resumeName}</span>
-                        <p>前端开发</p>
-                        <p>沈阳先知蓝创</p>
+                        <p>${resume.resumePosition}</p>
+                        <p>${resume.resumeField}</p>
                     </div>
                 </div>
-                <p> <span>沈阳</span>&nbsp;|&nbsp;<span>互联网电商</span>&nbsp;|&nbsp;<span>工作3年</span></p>
+                <p>
+                    <c:if test="${resume.resumeWorkspace!=undefined}">
+                        <span>${resume.resumeWorkspace}</span>
+                    </c:if>
+                    <c:if test="${resume.resumeIntentYm!=undefined}">
+                        &nbsp;|&nbsp;<span>工作${resume.resumeIntentYm}年</span>
+                    </c:if>
+                </p>
+                <p>
+                    <c:if test="${resume.fields!=undefined}">
+                        <c:forEach items="${resume.fields}" varStatus="sss" var="f">
+                            <c:if test="${f.fieldType==2}">
+                                <span>${f.fieldName}</span>
+                            </c:if>
+                            <c:if test="${sss.index==5}">
+                                <c:set var="exitId" value="0"></c:set>
+                                <span>更多</span>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                </p>
                 <ul>
                     <li class="col-md-3"><a href=""><span>刷新简历</span></a></li>
                     <li class="col-md-3"><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html?resumId=${resume.resumeId}"><span>编辑简历</span></a></li>
@@ -137,7 +158,7 @@
             <div class="zp_index_cont_right_middle">
                 <p><i></i>隐私设置</p>
                 <ul>
-                    <li>
+                    <%--<li>
                         <span>社交名片:</span>
                         <div>
                             <select class="form-control">
@@ -148,16 +169,13 @@
                                 <option>5</option>
                             </select>
                         </div>
-                    </li>
+                    </li>--%>
                     <li>
                         <span>求职简历:</span>
                         <div>
                             <select class="form-control">
                                 <option>开放简历</option>
-                                <option></option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option>隐藏简历</option>
                             </select>
                         </div>
                     </li>
