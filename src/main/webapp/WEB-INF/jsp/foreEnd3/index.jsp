@@ -517,15 +517,7 @@
 <a href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ghh.png" alt="" class="index_gh"></a>
 
 
-<div class="cd-popup" role="alert">
-    <div class="cd-popup-container">
-        <div class="index_tan">
-            <a href="#">用户</a>
-            <a href="#">企业</a>
-        </div>
-        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
-    </div>
-</div>
+
 <footer>
 
 </footer>
