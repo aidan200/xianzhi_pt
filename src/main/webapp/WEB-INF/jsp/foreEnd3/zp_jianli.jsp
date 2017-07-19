@@ -46,11 +46,11 @@
                 </div>
             </div>
             <div class="zp_jianli_cont_left_top2">
-                <div class="zp_jianli_cont_left_top2_top">
+                <div class="zp_jianli_cont_left_top2_top jbxx2">
                     <div class="zp_jianli_cont_left_top2_left"></div>
                     <h3><span id="grxx_name">谁谁谁</span> <a class="zp_jianli_xg" href="javascript:;"></a></h3>
-                    <p><span id="grxx_zwmc">前端开发</span> - <span id="grxx_szgs">沈阳先知蓝创</span></p>
-                    <p><span id="grxx_dqcs">沈阳-苏家屯</span> |  <span id="grxx_dqhy">互联网/移动互联网/电子商务</span>  |  <span id="grxx_gznf">工作 3 年以上</span></p>
+                    <p>职位名称：<span id="grxx_zwmc">前端开发</span>当前城市：<span id="grxx_dqcs">沈阳-苏家屯</span>工作年限：<span id="grxx_gznf">工作 3 年以上</span></p>
+                    <p>当前行业：<span id="grxx_dqhy">互联网/移动互联网/电子商务</span></p>
                 </div>
 
             </div>

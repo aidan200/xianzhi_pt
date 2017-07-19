@@ -48,7 +48,7 @@ obj_yhxx.prototype.bindingDOM=function (){ //个人信息绑定
     _self.DOM.dqcs.html(_self.dqcs)        //当前城市
     var str='';
     for(var i=0;i<_self.dqhy.length;i++){
-         if(_self.dqhy[i].fieldType=="3"){
+         if(_self.dqhy[i].fieldType=="2"){
              str+=_self.dqhy[i].fieldName+'/'
          }
     }
@@ -81,22 +81,45 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='<div class="zp_jianli_zl_1_right">'
             str+='<ul>'
             str+='<li>'
-            str+='姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名 <input id="jl_name" type="text" value="'+_self.name+'"  class="form-control zp_jianli_input1">'
+            str+='姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名 <input id="jl_name" type="text" value="'+_self.name+'"  class="form-control zp_jianli_input1" placeholder="请输入姓名">'
             str+='</li>'
             str+='<li class="li_02" style="height:auto;">'
 
             str+='当前行业 <div id="dqhy_1">'
+            var qq=0;
             for(var i=0;i<_self.dqhy.length;i++){
-                if(_self.dqhy[i].fieldType=="3"&&_self.dqhy[i].fieldName!=''){
+                if(_self.dqhy[i].fieldType=="2"&&_self.dqhy[i].fieldName!=''){
+                    qq++;        //检测有几个当前行业
                     str+='<div><div data-fieldId='+_self.dqhy[i].fieldId+' data-fieldtype='+_self.dqhy[i].fieldType+'>'+_self.dqhy[i].fieldName+'</div><a href="javascript:;">x</a></div>'
                 }
+            }
+            if(qq==0){              //如果没有行业改变下样式
+                $('#dqhy_1').css({
+                    "height":"30px",
+                    "line-height":"10px",
+                    "color":"#999999"
+                }).html('请选择当前行业')
             }
             str+='</div>'
             str+='<em class="em1"></em>'
             str+='</li>'
+            // str+='<li>'
+            // str+='工作年份&nbsp;&nbsp;&nbsp;<input id="jl_gznf" value="'+_self.gznf+'" type="text"  class="form-control zp_jianli_input3" style="margin-right: 27px" placeholder="请输入工作年份" >   职位名称&nbsp;&nbsp;&nbsp;<input id="jl_zwmc"  value="'+_self.zwmc+'" type="text" class="form-control zp_jianli_input3" placeholder="请输入职位名称" >'
+            // str+='</li>'
+
             str+='<li>'
-            str+='工作年份&nbsp;&nbsp;&nbsp;<input id="jl_gznf" value="'+_self.gznf+'" type="text"  class="form-control zp_jianli_input3" style="margin-right: 27px">   职位名称&nbsp;&nbsp;&nbsp;<input id="jl_zwmc" value="'+_self.zwmc+'" type="text" class="form-control zp_jianli_input3" >'
+            str+='工作年份&nbsp;&nbsp;&nbsp;'
+            str+='<select name="" id="zp_select_time1" class="form-control zp_select1">'
+            var date=new Date();
+            var dq_n=date.getFullYear();        //获取到当前年
+             for(var i=dq_n;i>=dq_n-50;i--){
+                 str+='<option value="'+i+'">'+i+'年</option>'
+             }
+            str+='</select>'
+            str+='职位名称&nbsp;&nbsp;&nbsp;<input id="jl_zwmc"  value="'+_self.zwmc+'" type="text" class="form-control zp_jianli_input3" placeholder="请输入职位名称" >'
+
             str+='</li>'
+
             str+='<li>'
             str+='当前城市 <input id="jl_dqcs" value="'+_self.dqcs+'" type="text" class="form-control zp_jianli_input2" >'
             str+='</li>'
@@ -106,19 +129,108 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_top2_top').after(str);              //插入
+            $('#zp_select_time1 option').each(function (index,ele){
+                if($(ele).val()==_self.gznf){               //判断如果等于数据库的时间
+                    $(ele).attr('selected','selected')
+                }
+            });
+            function sc(){                  //当前行业删除
+                $('#dqhy_1 > div').find('a').on('click',function (){
+                    $(this).parent().remove();
+                    if($('#dqhy_1 > div').length==0){
+                        $('#dqhy_1').css({
+                            "height":"30px",
+                            "line-height":"10px",
+                            "color":"#999999"
+                        }).html('请选择当前行业')
+                    }
+                })
 
+            }
+            sc();
             $('.zp_jianli_cont_left_top2_top').css({"display":"none"}); //隐藏
             //弹出框事件
             $('.em1').on('click',function (){
-                alert('aaa')
+                $.ajax({
+                    type:"get",
+                    async:true,
+                    data:{type:2},
+                    url:path+'Field/selByType',
+                    success:function (data){        //
+                        var attr=[]
+                        var str4=""
+                        str4+='<tr>'
+                        str4+='<td class="comd_td"><span>互联网·游戏·软件</span></td>'
+                        str4+='<td>'
+                        str4+='<ul class="comd_ul">'
+                        for(var i=0;i<data.fieldList.length;i++){
+                            str4+='<li><input type="checkbox" data-fieldtype="'+data.fieldList[i].fieldType+'" data-fieldId="'+data.fieldList[i].fieldId+'" data-value="'+data.fieldList[i].fieldName+'" />'+data.fieldList[i].fieldName+'</li>'
+                        }
+                        str4+='</ul>'
+                        str4+='</td>'
+                        str4+='</tr>'
+                        $('#hy_tab').html(str4);            //将后台提供的数据保存到列表中
+                        $('#hy_tab').find('input[type=checkbox]').each(function (index,ele){
+                           var www= $(ele).attr('data-fieldid');
+                            $('#dqhy_1 > div > div').each(function (index2,ele2){
+                               var rrr= $(ele2).attr('data-fieldid');
+                               if(www==rrr){
+                                   $(ele).attr('checked','checked')
+                               }
+                            })
+                        })
+                        event.preventDefault();
+                        $('.cd-popup').addClass('is-visible');
+
+                        $('#xz_qwhy_qd').on('click',function (){                    //确认按钮
+                            //第一步获取所有选中的复选框
+                            var attr_1=[];
+                            $('#qwhy__').find('input[type=checkbox]:checked').each(function (index,ele){
+                                attr_1[index]={value:$(ele).attr('data-value'),fieldId:$(ele).attr('data-fieldId'),fieldtype:$(ele).attr('data-fieldtype')}
+                            })
+
+                            var str_qwhy=''                 //所选的当前行业
+                            for(var i=0;i<attr_1.length;i++){
+                                str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
+                            }
+                            $('#dqhy_1').html(str_qwhy);        //赋值
+                            $('.cd-popup').removeClass('is-visible');
+                            sc();
+                            $('#dqhy_1').css({
+                                "height":"auto",
+                                "line-height":"26px",
+                            })
+                            if($('#qwhy__').find('input[type=checkbox]:checked').length==0){        //判断是否
+                                if($('#dqhy_1 > div').length==0){
+                                    $('#dqhy_1').css({
+                                        "height":"30px",
+                                        "line-height":"10px",
+                                        "color":"#999999"
+                                    }).html('请选择当前行业')
+                                }
+                            }
+
+                        });
+
+                    },error:function (){ //报错执行的
+                        alert('报错了报错了')
+                    }
+
+                })
+
+
+
+
+
             })
             //修改的事件
             $('.zp_jianli_zl_1').find('button').eq(1).on('click',function (){
                 kg=true;
-                $(this).parent().parent().remove()                      //自杀
+                $(this).parent().parent().remove()                           //自杀
                 $('.zp_jianli_cont_left_top2_top').css({"display":"block"}); //显示
             })
             $('.zp_jianli_zl_1').find('button').eq(0).on('click',function (){
+
                 var xgk=$(this).parent().parent();               //修改框
                 var shuzu=[];                                   //存放的数组
                 var dqhy=$('#dqhy_1 > div > div');
@@ -130,13 +242,12 @@ obj_yhxx.prototype.bindingSJ=function (){
                 }
                 var resume={
                     resumeName:$('#jl_name').val(),                 //姓名//性别
-                    resumeWorkinglife:$('#jl_gznf').val(),          //工作年份
+                    resumeWorkinglife:$('#zp_select_time1').val(),          //工作年份
                     fields:shuzu,                                   //当前行业
                     resumePosition:$('#jl_zwmc').val(),              //当前职位
                     resumeWorkspace:$('#jl_dqcs').val(),             //当前城市
                     resumeId:ID
                 };
-
                 $.ajax({
                     type:"post",    //提交方式
                     async:true,  //是否异步
@@ -284,6 +395,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_jbzl_yl').after(str);
+
         }else{
 
         }
@@ -389,7 +501,7 @@ obj_zyyx.prototype.bindingDOM=function (){
     var str2=''                 //期望行业变量
     var str3=''                 //当前行业变量
     for(var i=0;i<_self.qwhy.length;i++){
-        if(_self.qwhy[i].fieldType=="2"&&_self.qwhy[i].fieldName!=''){
+        if(_self.qwhy[i].fieldType=="3"&&_self.qwhy[i].fieldName!=''){
             str2+=_self.qwhy[i].fieldName+'/'
         }
     }
@@ -429,7 +541,7 @@ obj_zyyx.prototype.bindingSJ=function (){
             str+='期望行业 <div id="zp_qwhy"  type="text" class="form-control zp_jianli_zl_3_input1 ">'
             //这块循环出来  需要判断是否有内容没有给li设置一个高度
             for(var i=0;i<_self.qwhy.length;i++){
-                if(_self.qwhy[i].fieldType=="2"&&_self.qwhy[i].fieldName!=''){
+                if(_self.qwhy[i].fieldType=="3"&&_self.qwhy[i].fieldName!=''){
                     str+='<div><div data-fieldId='+_self.qwhy[i].fieldId+' data-fieldtype='+_self.qwhy[i].fieldType+'>'+_self.qwhy[i].fieldName+'</div><a href="javascript:;">x</a></div>'
                 }
             }
@@ -489,12 +601,10 @@ obj_zyyx.prototype.bindingSJ=function (){
 
             ////////////////////////////////选择行业//////////////////////////////////
             $('.zp_jianli_zl_3 em').eq(0).on("click",function (event){       //弹出框事件
-
-
                 $.ajax({
                     type:"get",
                     async:true,
-                    data:{type:2},
+                    data:{type:3},
                     url:path+'Field/selByType',
                     success:function (data){        //
                         var attr=[]
@@ -511,9 +621,16 @@ obj_zyyx.prototype.bindingSJ=function (){
                         str4+='</td>'
                         str4+='</tr>'
 
-
                         $('#hy_tab').html(str4);            //将后台提供的数据保存到列表中
-
+                        $('#hy_tab').find('input[type=checkbox]').each(function (index,ele){
+                            var www= $(ele).attr('data-fieldid');
+                            $('#zp_qwhy > div > div').each(function (index2,ele2){
+                                var rrr= $(ele2).attr('data-fieldid');
+                                if(www==rrr){
+                                    $(ele).attr('checked','checked')
+                                }
+                            })
+                        })
 
                         event.preventDefault();
                         $('.cd-popup').addClass('is-visible');

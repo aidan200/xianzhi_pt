@@ -62,6 +62,75 @@
       <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
     </collection>
   </resultMap>
+  <resultMap id="ResumeInformation" type="com.xzlcPT.bean.XzResume">
+    <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
+    <result column="resume_sex" jdbcType="INTEGER" property="resumeSex" />
+    <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
+    <result column="resume_email" jdbcType="VARCHAR" property="resumeEmail" />
+    <result column="resume_phone" jdbcType="VARCHAR" property="resumePhone" />
+    <result column="resume_field" jdbcType="VARCHAR" property="resumeField" />
+    <result column="resume_workspace" jdbcType="VARCHAR" property="resumeWorkspace" />
+    <result column="resume_mm" jdbcType="INTEGER" property="resumeMm" />
+    <result column="resume_ym" jdbcType="INTEGER" property="resumeYm" />
+    <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
+    <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
+    <result column="resume_nationality" jdbcType="VARCHAR" property="resumeNationality" />
+    <result column="resume_state" jdbcType="VARCHAR" property="resumeState" />
+    <result column="resume_marriage" jdbcType="VARCHAR" property="resumeMarriage" />
+    <result column="resume_flash" jdbcType="TIMESTAMP" property="resumeFlash" />
+    <result column="resume_intent_workspace" jdbcType="VARCHAR" property="resumeIntentWorkspace" />
+    <result column="resume_intent_field" jdbcType="VARCHAR" property="resumeIntentField" />
+    <result column="resume_intent_mm" jdbcType="INTEGER" property="resumeIntentMm" />
+    <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+    <result column="resume_intent_position" jdbcType="VARCHAR" property="resumeIntentPosition" />
+    <result column="resume_completion" jdbcType="INTEGER" property="resumeCompletion" />
+    <collection property="fields" ofType="com.xzlcPT.bean.XzField">
+      <id column="field_id" jdbcType="BIGINT" property="fieldId" />
+      <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+      <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
+    </collection>
+    <collection property="jobExps" ofType="com.xzlcPT.bean.XzJobExp">
+      <id column="jobexp_id" jdbcType="BIGINT" property="jobexpId" />
+      <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+      <result column="jobexp_company_name" jdbcType="VARCHAR" property="jobexpCompanyName" />
+      <result column="jobexp_field" jdbcType="VARCHAR" property="jobexpField" />
+      <result column="jobexp_postion" jdbcType="VARCHAR" property="jobexpPostion" />
+      <result column="jobexp_workspace" jdbcType="VARCHAR" property="jobexpWorkspace" />
+      <result column="jobexp_subordinate" jdbcType="INTEGER" property="jobexpSubordinate" />
+      <result column="jobexp_begin_time" jdbcType="TIMESTAMP" property="jobexpBeginTime" />
+      <result column="jobexp_end_time" jdbcType="TIMESTAMP" property="jobexpEndTime" />
+      <result column="jobexp_duty" jdbcType="VARCHAR" property="jobexpDuty" />
+      <result column="jobexp_dept" jdbcType="VARCHAR" property="jobexpDept" />
+      <result column="jobexp_company_scale" jdbcType="VARCHAR" property="jobexpCompanyScale" />
+      <result column="jobexp_company_type" jdbcType="VARCHAR" property="jobexpCompanyType" />
+      <result column="jobexp_mm" jdbcType="INTEGER" property="jobexpMm" />
+      <result column="jobexp_ym" jdbcType="INTEGER" property="jobexpYm" />
+    </collection>
+    <collection property="xzEducations" ofType="com.xzlcPT.bean.XzEducation">
+      <id column="education_id" jdbcType="BIGINT" property="educationID"/>
+      <result column="login_id" jdbcType="BIGINT" property="loginID"/>
+      <result column="education" jdbcType="VARCHAR" property="education"/>
+      <result column="school" jdbcType="VARCHAR" property="school"/>
+      <result column="major" jdbcType="VARCHAR" property="major"/>
+      <result column="enrollment_date" jdbcType="DATE" property="enrollmentDate"/>
+      <result column="graduate_date" jdbcType="DATE" property="graduateDate"/>
+      <result column="education_skill" jdbcType="VARCHAR" property="educationSkill"/>
+      <result column="delete_education_date" jdbcType="DATE" property="deleteEducationDate"/>
+    </collection>
+    <collection property="xzProjectExps" ofType="com.xzlcPT.bean.XzProjectExp">
+      <id column="proexp_id" jdbcType="BIGINT" property="proexpId" />
+      <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+      <result column="proexp_name" jdbcType="VARCHAR" property="proexpName" />
+      <result column="proexp_duty" jdbcType="VARCHAR" property="proexpDuty" />
+      <result column="proexp_begin_time" jdbcType="TIMESTAMP" property="proexpBeginTime" />
+      <result column="proexp_end_time" jdbcType="TIMESTAMP" property="proexpEndTime" />
+      <result column="proexp_describe" jdbcType="VARCHAR" property="proexpDescribe" />
+      <result column="proexp_postion" jdbcType="VARCHAR" property="proexpPostion" />
+    </collection>
+  </resultMap>
+
 
   <sql id="Base_Column_List">
     resume_id, member_id, resume_name, resume_sex, resume_birth, resume_email, resume_phone,
@@ -77,6 +146,20 @@
     r.resume_flash, r.resume_intent_workspace, r.resume_intent_field, r.resume_intent_mm, r.resume_intent_ym,
     r.resume_intent_position, r.resume_completion,
     f.field_id,f.field_name,f.field_type
+  </sql>
+  <sql id="ResumeInformationList">
+    r.resume_id, r.member_id, r.resume_name, r.resume_sex, r.resume_birth, r.resume_email, r.resume_phone,
+    r.resume_field, r.resume_workspace, r.resume_mm, r.resume_ym,
+    r.resume_position, r.resume_workinglife, r.resume_nationality, r.resume_state, r.resume_marriage,
+    r.resume_flash, r.resume_intent_workspace, r.resume_intent_field, r.resume_intent_mm, r.resume_intent_ym,
+    r.resume_intent_position, r.resume_completion,
+    p.proexp_id,p.resume_id, p.proexp_name, p.proexp_duty, p.proexp_begin_time, p.proexp_end_time,
+    p.proexp_describe, p.proexp_postion,
+    e.education_id, e.resume_id, e.education_level, e.education_school, e.education_major, e.enrollment_date,
+    e.graduate_date, e.education_entrance,
+    j.jobexp_id, j.resume_id, j.jobexp_company_name, j.jobexp_field, j.jobexp_postion, j.jobexp_workspace,
+    j.jobexp_subordinate, j.jobexp_begin_time, j.jobexp_end_time, j.jobexp_duty, j.jobexp_dept,
+    j.jobexp_company_scale, j.jobexp_company_type, j.jobexp_mm, j.jobexp_ym
   </sql>
   <select id="selectByMemberId" parameterType="java.lang.Long" resultMap="ResumeInfo">
     select
@@ -422,4 +505,11 @@
     filed3 = #{filed3,jdbcType=VARCHAR}
     where resume_id = #{resumeId,jdbcType=BIGINT}
   </update>
+  <select id="selResumeInformation" resultMap="ResumeInformation" parameterType="java.lang.Long">
+    SELECT
+    <include refid="ResumeInformationList"/>
+    FROM xz_resume r LEFT JOIN xz_project_exp p ON  r.resume_id = p.resume_id LEFT JOIN xz_resume_education e
+    ON r.resume_id = e.resume_id LEFT JOIN xz_job_exp j ON r.resume_id=j.resume_id WHERE
+    r.resume_id = #{resumeId,jdbcType=BIGINT}
+  </select>
 </mapper>

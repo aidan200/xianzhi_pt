@@ -13,4 +13,5 @@ import java.util.List;
 public interface XzResumeService {
     XzResume selectByMemberId(Long memberId);
     int updateResumeByFore(XzResume resume);
+    XzResume selResumeInformation(Long resumeId);
 }
