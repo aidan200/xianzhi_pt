@@ -131,7 +131,13 @@
       <result column="proexp_describe" jdbcType="VARCHAR" property="proexpDescribe" />
       <result column="proexp_postion" jdbcType="VARCHAR" property="proexpPostion" />
     </collection>
-
+      <collection property="xzResumeSkills" ofType="com.xzlcPT.bean.XzResumeSkill">
+        <id column="skill_id" jdbcType="BIGINT" property="skillId" />
+        <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+        <result column="skill_name" jdbcType="VARCHAR" property="skillName" />
+        <result column="skill_type" jdbcType="INTEGER" property="skillType" />
+        <result column="skill_value" jdbcType="VARCHAR" property="skillValue" />
+      </collection>
   </resultMap>
 
 
@@ -162,7 +168,8 @@
     e.graduate_date, e.education_entrance,
     j.jobexp_id, j.resume_id, j.jobexp_company_name, j.jobexp_field, j.jobexp_postion, j.jobexp_workspace,
     j.jobexp_subordinate, j.jobexp_begin_time, j.jobexp_end_time, j.jobexp_duty, j.jobexp_dept,
-    j.jobexp_company_scale, j.jobexp_company_type, j.jobexp_mm, j.jobexp_ym
+    j.jobexp_company_scale, j.jobexp_company_type, j.jobexp_mm, j.jobexp_ym,
+    s.skill_id, s.resume_id, s.skill_name, s.skill_type, s.skill_value
   </sql>
   <select id="selectByMemberId" parameterType="java.lang.Long" resultMap="ResumeInfo">
     select
@@ -512,7 +519,8 @@
     SELECT
     <include refid="ResumeInformationList"/>
     FROM xz_resume r LEFT JOIN xz_project_exp p ON  r.resume_id = p.resume_id LEFT JOIN xz_resume_education e
-    ON r.resume_id = e.resume_id LEFT JOIN xz_job_exp j ON r.resume_id=j.resume_id WHERE
+    ON r.resume_id = e.resume_id LEFT JOIN xz_job_exp j ON r.resume_id=j.resume_id LEFT JOIN xz_resume_skill s
+    ON  r.resume_id = s.resume_id WHERE
     r.resume_id = #{resumeId,jdbcType=BIGINT}
   </select>
 </mapper>

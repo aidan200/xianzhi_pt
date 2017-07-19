@@ -59,13 +59,13 @@
                     <h4><span class="fa fa-user-circle-o"></span>基本资料</h4>
                     <div class="resume_two">
                         <div class="resume_every">
-                            性&emsp;&emsp;别：<span>${xzResume.resumeSex}</span>
+                            性&emsp;&emsp;别：<span>${xzResume.resumeSex eq 1?'女':''}${xzResume.resumeSex eq 0?'男':''}</span>
                         </div>
                         <div class="resume_every">
                             手&emsp;&emsp;机：<span>${xzResume.resumePhone}</span>
                         </div>
                         <div class="resume_every">
-                            年&emsp;&emsp;龄：<span>?????????</span>
+                            年&emsp;&emsp;龄：<span id="s1"><fmt:formatDate value="${xzResume.resumeBirth}" pattern="yyyy"/></span>
                         </div>
                         <div class="resume_every">
                             出生日期： <span>
@@ -118,13 +118,10 @@
                         <c:forEach var="je" items="${xzResume.jobExps}">
                         <div class="resume_self">
 
-                            <span style="padding-left: 20px"><fmt:formatDate value="${je.jobexpBeginTime}" pattern="yyyy-MM-dd"/></span>-<span><fmt:formatDate value="${je.jobexpEndTime}" pattern="yyyy-MM-dd"/></span>
+                            <span style="padding-left: 20px"><fmt:formatDate value="${je.jobexpBeginTime}" pattern="yyyy-MM-dd"/></span>-<span id="s2"><fmt:formatDate value="${je.jobexpEndTime}" pattern="yyyy-MM-dd"/></span>
                             <span style="padding-left: 20px">${je.jobexpCompanyName}</span>
                         </div></b>
                     <div class="resume_two">
-                        <div class="resume_every">
-                            公司描述：<span>???????????</span>
-                        </div>
                         <div class="resume_every">
                             公司性质：<span>${je.jobexpCompanyType}</span>
                         </div>
@@ -175,7 +172,8 @@
                             学历：<span>${e1.educationLevel}</span>
                         </div>
                         <div class="resume_every2">
-                            是否是统招：<span>${e1.educationEntrance}</span>
+                            是否是统招：<span>${e1.educationEntrance eq 1?'统招':''}${e1.educationEntrance eq 0?'非统招':''}
+                        </span>
                         </div>
 
                     </div>
@@ -244,9 +242,9 @@
                 <div class="resume_more">
                     <h4><span class="fa fa-motorcycle"></span>擅长技能</h4>
                     <div class="resume_two">
-                        <span class="res_sp">java</span>
-                        <span class="res_sp">java</span>
-                        <span class="res_sp">java</span>
+                        <c:forEach var="s1" items="${xzResume.xzResumeSkills}">
+                        <span class="res_sp">${s1.skillName}</span>
+                        </c:forEach>
                     </div>
                 </div>
 
@@ -262,6 +260,19 @@
 <a href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ghh.png" alt="" class="index_gh"></a>
 
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>
+<script>
+    $(function(){
+        var n=$("#s1").text();
+        var date=new Date();
+        var year = date.getYear();
+        var c=parseInt(year)+1900-parseInt(n);
+        $("#s1").text(c);
+    });
+    $(function(){
+        var s=$("#s2").text();
 
+    });
+
+</script>
 </body>
 </html>
