@@ -244,6 +244,7 @@ qyfc.prototype.init=function (){
         dataType:'json',
         success:function (data){//data 就是数据 json
             This.qyfc=data;
+            alert(This.qyfc.arr.length)
             for(var i=0;i<This.qyfc.arr.length;i++){                     //页面初始化
                 This.qyfc.arr[i].dkh=dkh;
                 This.qyfc.arr[i].path=path+'uploadImg/';
@@ -273,6 +274,7 @@ qyfc.prototype.init=function (){
 
 };
 qyfc.prototype.qr=function (){                  //修改方法
+
     var This=this;
     $('.a1_gb_tj').on('click',function (){  //确认提交事件
         var obj=$(this).parent().siblings('div'); //获取到你要提交的企业风采照片
@@ -290,8 +292,9 @@ qyfc.prototype.qr=function (){                  //修改方法
                 data:JSON.stringify(aaa),        //转为JSON格式
                 url:path+'Mien/updateMien',    //路径
                 success:function (data){//data 就是数据 json
-                    $('#tj_gsfc').siblings('div').remove();
+                    $('.qyfc').find('div').remove();
                     This.init();
+
                 },error:function (){ //报错执行的
                     alert('企业风采修改错误')
                 }
@@ -318,9 +321,10 @@ qyfc.prototype.qr=function (){                  //修改方法
 
 }                   //修改和键盘监听
 qyfc.prototype.sc=function (){                  //删除方法
+    var This=this;
     $('.a1_gb_sc').on('click',function (){  //删除事件
+
         var sc_id=$(this).parent().siblings('div').attr('data-id'); //企业风采的ID
-        alert(sc_id);
         $.ajax({
             type:"post",    //提交方式
             async:true,  //是否异步
@@ -328,7 +332,8 @@ qyfc.prototype.sc=function (){                  //删除方法
             dataType:'text',
             url:path+'Mien/deleteMien',
             success:function (data){
-
+                $('#tj_gsfc').siblings('div').remove();
+                This.init();
             },error:function (){ //报错执行的
                 alert('基本资料修改错误')
             }
@@ -359,11 +364,12 @@ qyfc.prototype.bindingSJ=function (){
             var ccc= $(this).prev('div').find('input[type=text]').attr('id');
             var ddd=document.getElementById(ccc);
             var uu =  new uploadUtil(bbb,dkh+"/upload/img",ddd,function (imgName){
+                kg=true;
                     eee.prev('div').find('.a1_gb_tj').css({"display":"inline-block"});
                     eee.prev('div').find('div').attr('data-url',imgName);//赋值URL
             });
             uu.init();
-            This.qr()           //提交方法
+            This.qr();           //提交方法
 
         }
 
@@ -530,8 +536,10 @@ $(function (){
     ogsdz.bindingSJ();
 
     var oqyfc=new qyfc();           //企业风采
-    oqyfc.init()
-    oqyfc.bindingSJ();
+    oqyfc.init();
+
+     oqyfc.bindingSJ();
+
 
     var ogstb=new gstb();           //公司图标
     ogstb.bindingSJ();
