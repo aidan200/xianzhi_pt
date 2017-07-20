@@ -263,9 +263,7 @@
     function removeMyInp(id) {
         $("#" + id).remove();
     }
-    function a(s) {
-        document.getElementById("educationLevel").value=s;
-    }
+
 </script>
 </body>
 </html>

@@ -539,7 +539,10 @@
   xz_job_exp j ON  r.resume_id = j.resume_id
   WHERE 1=1
   <if test="fieldName !=null and fieldName !=''">
-    AND  field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')
+    AND f.field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')
+  </if>
+  <if test="educationLevel !=null and educationLevel !=''">
+    AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
   </if>
   GROUP BY r.resume_id
   </select>
