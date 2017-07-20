@@ -3,12 +3,10 @@ package com.xzlcPT.service.impl;
 import com.amazonaws.services.dynamodbv2.xspec.NULL;
 import com.github.pagehelper.PageHelper;
 import com.util.PageBean;
-import com.xzlcPT.bean.XzCompany;
-import com.xzlcPT.bean.XzCompanyWelfare;
-import com.xzlcPT.bean.XzField;
-import com.xzlcPT.bean.XzPostion;
+import com.xzlcPT.bean.*;
 import com.xzlcPT.dao.XzCompanyMapper;
 import com.xzlcPT.dao.XzCompanyWelfareMapper;
+import com.xzlcPT.dao.XzShieldMapper;
 import com.xzlcPT.service.XzCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +24,8 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     private XzCompanyMapper companyMapper;
     @Autowired
     private XzCompanyWelfareMapper companyWelfareMapper;
+    @Autowired
+    private XzShieldMapper xzShieldMapper;
 
     @Override
     public int addCompany(XzCompany company) {
@@ -131,9 +131,17 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     }
 
     @Override
-    public PageBean<XzCompany> selByCompanyName(Integer page, Integer rows, String companyName) {
+    public PageBean<XzCompany> selByCompanyName(Integer page, Integer rows, String companyName,Long resumeId) {
         PageHelper.startPage(page,rows);
         List<XzCompany> dlist = companyMapper.selByCompanyName(companyName);
+        List<XzShield> slist=xzShieldMapper.selByResumeId(resumeId);
+        for (int i=0;i<dlist.size();i++){
+          for (int j=0;j<slist.size();j++){
+           if (dlist.get(i).getCompanyId()==slist.get(j).getCompanyId()){
+              dlist.get(i).setCompanyName("");
+           }
+          }
+        }
         PageBean<XzCompany> pb=new PageBean<XzCompany>(dlist);
         return pb;
     }

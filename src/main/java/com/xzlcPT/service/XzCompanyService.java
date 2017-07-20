@@ -21,5 +21,5 @@ public interface XzCompanyService {
 
     int updateCompanyPic(XzCompany xzCompany);
 
-    PageBean<XzCompany> selByCompanyName(Integer page,Integer rows,String companyName);
+    PageBean<XzCompany> selByCompanyName(Integer page,Integer rows,String companyName,Long resumeId);
 }

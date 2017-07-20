@@ -318,12 +318,11 @@ public class CompanyInfoController {
     }
     @ResponseBody
     @RequestMapping("selByCompanyName")
-    public Map selByCompanyName(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String companyName){
+    public Map selByCompanyName(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String companyName,Long resumeId){
     Map map=new HashMap();
-    PageBean<XzCompany> PageBean=companyService.selByCompanyName(page,rows,companyName);
+    PageBean<XzCompany> PageBean=companyService.selByCompanyName(page,rows,companyName,resumeId);
     List<XzCompany> plist=PageBean.getList();
     map.put("plist",plist);
-    System.out.println("--------------------aaasize="+plist.size());
     return map;
     }
 }
