@@ -66,9 +66,9 @@
                         <div class="r2_every">
                             <span>确认密码</span>&emsp;<input type="password" class="r1_g">
                         </div>
-                        <!--<div class="r2_every">-->
-                        <!--<span>邮&emsp;&emsp;箱</span>&emsp;<input type="text" class="r2_g">-->
-                        <!--</div>-->
+                        <div class="r2_every">
+                        <span>邮&emsp;&emsp;箱</span>&emsp;<input type="text" class="r1_g">
+                        </div>
 
                         <button class="r2_button">下一步</button>
                     </div>
@@ -91,21 +91,11 @@
             <div class="register2_in">
                 <div class="r2_left" style="margin-top: 50px">
                     <div class="r2_ne">
-                        <div class="r2_every">
-                            <span>公司名称</span>&emsp;<input type="text" placeholder="请填写公司营业执照上的公司名称全称" class="r2_g">
+                        <div class="register1_all">
+                            ${msg}
+                            <button onclick="remailgo()">前往邮箱完成验证</button>
+                            <button onclick="remailgoReplay()">重新发送验证邮件</button>
                         </div>
-                        <div class="r2_every">
-                            <span>公司地址</span>&emsp;<input type="text" class="r2_g">
-                        </div>
-                        <div class="r2_every">
-                            <span>公司电话</span>&emsp;<input type="text" class="r2_g">
-                        </div>
-                        <div class="r2_every">
-                            <span style="float: left">公司简介</span>&emsp;<textarea class="r2_g2"></textarea>
-                        </div>
-
-
-                        <button class="r2_button">下一步</button>
                     </div>
                 </div>
             </div>
@@ -126,14 +116,27 @@
             <div class="register2_in">
                 <div class="r2_left">
                     <div class="r2_ne">
-                        <div style="margin-top: 130px">
+                        <div class="r2_every">
+                            <span>公司名称</span>&emsp;<input type="text" placeholder="请填写公司营业执照上的公司名称全称" class="r2_g">
+                        </div>
+                        <div class="r2_every">
+                            <span>公司地址</span>&emsp;<input type="text" class="r2_g">
+                        </div>
+                        <div class="r2_every">
+                            <span>公司电话</span>&emsp;<input type="text" class="r2_g">
+                        </div>
+                        <div class="r2_every">
+                            <span style="float: left">公司简介</span>&emsp;<textarea class="r2_g2"></textarea>
+                        </div>
+
+
+
+                        <div>
                             <span class="r3_span" style="">营业执照&nbsp;</span>&emsp;
                             <input type="file" class="nicefile" style="float: left"/>
                         </div>
-                        <div class="r2_every" style="margin-left: 3px">
-                            <span>邮&emsp;&emsp;箱</span>&emsp;<input type="text" class="r3_g">
-                        </div>
                         <button class="r2_button">提 交</button>
+                        <button class="r2_button">跳 过</button>
                     </div>
 
                 </div>
@@ -157,7 +160,7 @@
                 <span>注册成功</span>
             </div>
             <button>进入官网首页</button>
-            <div class="reu_bo"><span id="test">3</span>秒后自动跳转</div>
+            <div class="reu_bo"><span id="test">5</span>秒后自动跳转</div>
         </div>
     </div>
 </div>
@@ -186,14 +189,14 @@
         $('.myTab').hide();
         $('#register_' + state).show();
         if (state == '4') {
-            var i = 2;
+            var i = 4;
             setInterval(function () {
                 if (i == 0) {
                     location.href = "${pageContext.request.contextPath}/";
                 }
                 document.getElementById("test").innerHTML = i--;
 
-            }, 800);
+            }, 1200);
         }
     });
 </script>
