@@ -61,18 +61,18 @@
                 <h2>招聘职位<span>&nbsp;( 共${xzCompany.pcount}个 )</span></h2>
                 <div>
                     <div class="zp_gsxq_zpzw_left">
-                        <select class="form-control" name="postionSpace">
+                        <select class="form-control" name="postionSpace" id="postionSpace">
                             <option value="">工作地点</option>
                             <c:forEach var="p2" items="${clist}">
                                 <c:if test="${p2.postionSpace!=null}">
-                                <option value="${p2.postionSpace}">${p2.postionSpace}</option>
+                                    <option value="${p2.postionSpace}"<c:if test="${p2.postionSpace==xzPostion.postionSpace}">selected="selected"</c:if> >${p2.postionSpace}</option>
                                 </c:if>
                             </c:forEach>
                         </select>
                     
                     </div>
                     <div class="zp_gsxq_zpzw_left" style="width: 250px">
-                        <input type="text"  name="postionName" class="form-control"placeholder="职位名称">
+                        <input type="text"  name="postionName" class="form-control"placeholder="职位名称" value="${xzPostion.postionName}">
                     </div>
                     <div class="zp_gsxq_zpzw_left" style="width:auto; float: right; margin-right: 0">
                         <button type="button" class="btn btn-primary" onclick="sel()">确定</button>
@@ -106,6 +106,7 @@
                                                 <li class="a"><a href="#">4</a></li>
                                                 <li class="a"><a href="#">5</a></li>
                                                 <li class="a"><a href="#">下一页</a></li>--%>
+                        <input id="forPostionSpace" type="hidden" name="forPostionSpace">
                         <input id="infPage" type="hidden" name="page" value="${page}">
                         <input id="companyId" type="hidden" name="companyId" value="${xzCompany.companyId}">
                         <myPage:paging length="4" page="${page}" pages="${pages}"/>
@@ -177,12 +178,11 @@
     function pToSub(page) {
         var infpage=parseInt(document.getElementById("infPage").value);
         if(page!=infpage&&page-infpage>0||page!=infpage&&page-infpage<0){
-            document.getElementById("infPage").value=page
+            document.getElementById("infPage").value=page;
             document.getElementById("f1").submit();
         }
     }
     function sel() {
-
         document.getElementById("infPage").value=1;
         document.getElementById("f1").submit();
     }

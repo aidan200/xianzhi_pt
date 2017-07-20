@@ -523,4 +523,5 @@
     ON  r.resume_id = s.resume_id WHERE
     r.resume_id = #{resumeId,jdbcType=BIGINT}
   </select>
+  <select id="selResumeBy"
 </mapper>

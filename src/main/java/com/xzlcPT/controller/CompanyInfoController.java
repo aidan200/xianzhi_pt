@@ -309,6 +309,7 @@ public class CompanyInfoController {
         XzCompany xzCompany=companyService.selCompanyInf(xzPostion.getCompanyId());
         mv.addObject("plist",plist);
         mv.addObject("clist",clist);
+        mv.addObject("xzPostion",xzPostion);
         mv.addObject("page",pageBean.getPageNum());
         mv.addObject("pages",pageBean.getPages());
         mv.addObject("rows",pageBean.getPageSize());
