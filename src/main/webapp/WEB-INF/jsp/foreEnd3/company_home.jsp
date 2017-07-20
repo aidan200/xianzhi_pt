@@ -12,10 +12,19 @@
 <html lang="en">
 <head>
     <jsp:include page="distforeEnd.jsp"/>
+    <script>
+        $(document).ready(function () {
+            $(".allboolean").fadeIn(2000);
+            $(".bremove").click(function () {
+                $(".allboolean").fadeOut(1000);
+            })
+        });
+    </script>
 </head>
 <body style="background-color: #F0F0F0">
 
 <jsp:include page="headerforeEnd.jsp"/>
+
 
 <div class="pup_container">
     <div class="pop_allin">
@@ -218,6 +227,17 @@
 
     </div>
 </div>
+
+<div class="allboolean">
+    <div class="b_out">
+        <div class="booleanin">
+            请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            <span class="fa fa-remove bremove"></span>
+        </div>
+    </div>
+</div>
+
+
 <div id="index_bb">
     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/dfdf.png" alt="" id="goTopBtn">
 </div>

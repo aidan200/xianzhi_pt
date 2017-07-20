@@ -4358,11 +4358,12 @@ input[type="button"].fileInputButton {
 }
 
 /*---------------------------------注册所有弹出框-----------------------------------*/
-.index_tan{
+.index_tan {
     width: 100%;
     height: 200px;
     margin-top: 50px;
 }
+
 .allregister {
     display: block;
     text-transform: uppercase;
@@ -4501,4 +4502,41 @@ input[type="button"].fileInputButton {
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0);
+}
+
+/*-------------气球-------------*/
+.allboolean {
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    top: 130px;
+    display: none;
+    background: url("../../../dist/foreEnd3/img/Boolean.png");
+    background-size: cover;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.b_out {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.booleanin {
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 240px;
+    color: #666666;
+}
+
+.bremove {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
 }
