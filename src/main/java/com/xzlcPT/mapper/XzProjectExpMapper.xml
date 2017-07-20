@@ -136,9 +136,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzProjectExp">
     update xz_project_exp
     <set>
-      <if test="resumeId != null">
-        resume_id = #{resumeId,jdbcType=BIGINT},
-      </if>
       <if test="proexpName != null">
         proexp_name = #{proexpName,jdbcType=VARCHAR},
       </if>
@@ -177,8 +174,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzProjectExp">
     update xz_project_exp
-    set resume_id = #{resumeId,jdbcType=BIGINT},
-      proexp_name = #{proexpName,jdbcType=VARCHAR},
+    set proexp_name = #{proexpName,jdbcType=VARCHAR},
       proexp_duty = #{proexpDuty,jdbcType=VARCHAR},
       proexp_begin_time = #{proexpBeginTime,jdbcType=TIMESTAMP},
       proexp_end_time = #{proexpEndTime,jdbcType=TIMESTAMP},

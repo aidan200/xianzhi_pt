@@ -61,8 +61,7 @@
     select
     <include refid="JobExpInfoList" />
     FROM xz_job_exp j LEFT JOIN xz_job_exp_domain d on j.jobexp_id = d.job_exp_id LEFT JOIN xz_field f on d.field_id = f.field_id
-    where f.field_type = 1 or f.field_type is null
-    and resume_id = #{resumeId,jdbcType=BIGINT}
+    where j.resume_id = #{resumeId,jdbcType=BIGINT} and (f.field_type = 1 or f.field_type is null)
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -231,9 +230,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzJobExp">
     update xz_job_exp
     <set>
-      <if test="resumeId != null">
-        resume_id = #{resumeId,jdbcType=BIGINT},
-      </if>
       <if test="jobexpCompanyName != null">
         jobexp_company_name = #{jobexpCompanyName,jdbcType=VARCHAR},
       </if>
@@ -293,8 +289,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzJobExp">
     update xz_job_exp
-    set resume_id = #{resumeId,jdbcType=BIGINT},
-      jobexp_company_name = #{jobexpCompanyName,jdbcType=VARCHAR},
+    set jobexp_company_name = #{jobexpCompanyName,jdbcType=VARCHAR},
       jobexp_field = #{jobexpField,jdbcType=VARCHAR},
       jobexp_postion = #{jobexpPostion,jdbcType=VARCHAR},
       jobexp_workspace = #{jobexpWorkspace,jdbcType=VARCHAR},
