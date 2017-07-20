@@ -183,7 +183,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                         $('.cd-popup').addClass('is-visible');
 
                         $('#xz_qwhy_qd').on('click',function (){                    //确认按钮
-                            //第一步获取所有选中的复选框
+
                             var attr_1=[];
                             $('#qwhy__').find('input[type=checkbox]:checked').each(function (index,ele){
                                 attr_1[index]={value:$(ele).attr('data-value'),fieldId:$(ele).attr('data-fieldId'),fieldtype:$(ele).attr('data-fieldtype')}
@@ -194,7 +194,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                                 str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
                             }
                             $('#dqhy_1').html(str_qwhy);        //赋值
-                            $('.cd-popup').removeClass('is-visible');
+                             $('.cd-popup').removeClass('is-visible');       //改变
                             sc();
                             $('#dqhy_1').css({
                                 "height":"auto",
@@ -211,7 +211,10 @@ obj_yhxx.prototype.bindingSJ=function (){
                             }
 
                         });
-
+                        //取消
+                        $('#xz_qwhy_qx').on('click',function (){
+                            $('.cd-popup').removeClass('is-visible');
+                        })
                     },error:function (){ //报错执行的
                         alert('报错了报错了')
                     }
@@ -644,8 +647,9 @@ obj_zyyx.prototype.bindingSJ=function (){
             });
             $('.cd-popup').on('click', function(event){                    //返回按钮
                 if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
-                    // event.preventDefault();
-                    // $(this).removeClass('is-visible');
+                     event.preventDefault();
+                    $('.cd-popup').removeClass('is-visible');
+
                 }
             });
             $(document).keyup(function(event){                            //键盘关闭
@@ -653,6 +657,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                     $('.cd-popup').removeClass('is-visible');
                 }
             });
+
             $('#xz_qwhy_qd').on('click',function (){                    //确认按钮
                 //第一步获取所有选中的复选框
                 var attr_1=[];
@@ -734,7 +739,7 @@ obj_zyyx.prototype.bindingSJ=function (){
 //工作经历开始
 function obj_gzjl(){
     this.gsmc='';               //公司名称
-    this.gshy='';               //公司行业
+    this.gshy='';               //公司领域
     this.zwmc2='';               //职位名称
     this.gzdd='';               //工作地点
     this.xxrs='';               //下属人数
@@ -746,16 +751,17 @@ function obj_gzjl(){
 obj_gzjl.prototype.init=function (){
          var str='';
          var _self=this;
+
         $.ajax({
         type: "get",//数据发送的方式（post 或者 get）
-        url: path+'JobExp/selByResumeId.do?resumeId='+1,//要发送的后台地址
+        url: path+'JobExp/selByResumeId.do?resumeId='+ID,//要发送的后台地址
         success: function (data) {//ajax请求成功后触发的方法
 
             _self.obj_s=[];                           //放赋值后对象的列表
             for(var i=0;i<data.jobExpList.length;i++){
                 var obj__gzjl=new obj_gzjl();       //循环创建对象
                 obj__gzjl.gsmc=data.jobExpList[i].jobexpCompanyName;       //公司名
-                obj__gzjl.gshy=data.jobExpList[i].jobexpField;             //公司行业
+                obj__gzjl.gshy=data.jobExpList[i].fields;             //公司行业
                 obj__gzjl.zwmc2=data.jobExpList[i].jobexpPostion;          //职位名称
                 obj__gzjl.gzdd=data.jobExpList[i].jobexpWorkspace;         //工作地点
                 obj__gzjl.xxrs=data.jobExpList[i].jobexpSubordinate;       //下属人数
@@ -777,7 +783,13 @@ obj_gzjl.prototype.init=function (){
                 str+='<p>工作地点：'+_self.obj_s[i].gzdd+' | 月薪：'+_self.obj_s[i].yx+'/月*12个月</p>'
                 str+='<p>'+_self.obj_s[i].zzyj+'</p>'
                 str+='</div>'
-                str+='<p class="zp_jianli_p1">公司行业：'+_self.obj_s[i].gshy+'</p>'
+                str+='<p class="zp_jianli_p1">公司行业：'
+                for(var j=0;j<_self.obj_s[i].gshy.length;j++){
+                    if(_self.obj_s[i].gshy[j].fieldType==1){        //1是公司
+                        str+='<span data-type="'+_self.obj_s[i].gshy[j].fieldType+'" data-id="'+_self.obj_s[i].gshy[j].fieldId+'">'+_self.obj_s[i].gshy[j].fieldName+'</span>&nbsp;&nbsp;&nbsp'
+                    }
+                }
+                str+='</p>'
                 str+='</div>'
             }
             $('#gzjl').after(str)          //插入简历
@@ -806,8 +818,18 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+=' <li>'
                 str+=' 公司名称<input type="text" value="'+_self.obj_s[index].gsmc+'" class="gsmc_input form-control zp_jianli_zl_3_input1">'
                 str+='</li>'
-                str+='<li>'
-                str+='公司行业<input type="text" value="'+_self.obj_s[index].gshy+'" class="gshy_input form-control zp_jianli_zl_3_input1 ">'
+
+                str+='<li class="li_03">'
+                str+='公司领域<div class="gsly_xg" >'
+                    for(var j=0;j<_self.obj_s[index].gshy.length;j++){
+                        if(_self.obj_s[index].gshy[j].fieldType==1){        //1是公司
+                            str+='<div><div data-fieldid="'+_self.obj_s[index].gshy[j].fieldId+'" data-fieldtype="'+_self.obj_s[index].gshy[j].fieldType+'">'+_self.obj_s[index].gshy[j].fieldName+'</div><a href="javascript:;">x</a></div>'
+                        }
+                    }
+
+
+                str+='</div>'
+                str+='<em class="em2"></em>'
                 str+='</li>'
                 str+='<li>'
                 str+='职位名称<input type="text" value="'+_self.obj_s[index].zwmc2+'" class="zwmc_input form-control zp_jianli_zl_3_input1 ">'
@@ -840,9 +862,99 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='</div>'
                 str+='</div>'
                 $('#gzjl').siblings('div').eq(index).after(str);  //插入
-                 $('#gzjl').siblings('div').eq(index).css({"display":"none"})
+                $('#gzjl').siblings('div').eq(index).css({"display":"none"})
+                function aaa(){
+                    if( $('.gsly_xg div').length==0){
+                        $('.li_03').css({"height":"30px"});
+                        $('.gsly_xg').css({
+                            "height":"30px",
+                            "line-height":"10px"
+                        }).html("请选择公司领域")
+
+                    }else{
+                        $('.li_03').css({"height":"auto"});
+                        $('.gsly_xg').css({
+                            "height":"auto",
+                            "line-height":"26px"
+                        })
+                    }
+                    $('.gsly_xg a').on('click',function (){
+                        $(this).parent().remove();
+                        if( $('.gsly_xg div').length==0){
+                            $('.li_03').css({"height":"30px"})
+                            $('.gsly_xg').css({
+                                "height":"30px",
+                                "line-height":"10px"
+                            }).html("请选择公司领域")
+
+                        }else{
+                            $('.li_03').css({"height":"auto"})
+                            $('.gsly_xg').css({
+                                "height":"auto",
+                                "line-height":"26px"
+                            })
+                        }
+                    })
+                }
+                aaa();
+
+
+
+
+
 
             }
+            $('.em2').on('click',function (){
+                var attr=[]
+                var str4=""
+                str4+='<tr>'
+                str4+='<td class="comd_td"><span>互联网·游戏·软件</span></td>'
+                str4+='<td>'
+                str4+='<ul class="comd_ul">'
+
+                for(var i=0;i<_self.obj_s[index].gshy.length;i++){
+                    if(_self.obj_s[index].gshy[i].fieldType==1){        //1是公司
+                        str4+='<li><input type="checkbox" data-value="'+_self.obj_s[index].gshy[i].fieldName+'" data-fieldid="'+_self.obj_s[index].gshy[i].fieldId+'" data-fieldtype="'+_self.obj_s[index].gshy[i].fieldType+'"/>'+_self.obj_s[index].gshy[i].fieldName+'</li>'
+                    }
+                }
+                str4+='</ul>'
+                str4+='</td>'
+                str4+='</tr>'
+
+                $('#hy_tab').html(str4);            //将后台提供的数据保存到列表中
+                $('#hy_tab').find('input[type=checkbox]').each(function (index,ele){        //验证是否选中
+                    var www= $(ele).attr('data-fieldid');
+                    $('.gsly_xg > div > div').each(function (index2,ele2){
+                        var rrr= $(ele2).attr('data-fieldid');
+                        if(www==rrr){
+                            $(ele).attr('checked','checked')
+                        }
+                    })
+                })
+
+                //取消
+                $('#xz_qwhy_qx').on('click',function (){
+                    $('.cd-popup').removeClass('is-visible');
+                })
+                $('#xz_qwhy_qd').on('click',function (){                    //确认按钮
+                    //第一步获取所有选中的复选框
+                    var attr_1=[];
+                    $('#qwhy__').find('input[type=checkbox]:checked').each(function (index,ele){
+                        attr_1[index]={value:$(ele).attr('data-value'),fieldId:$(ele).attr('data-fieldId'),fieldtype:$(ele).attr('data-fieldtype')}
+                    })
+
+                    var str_qwhy=''                 //所选的期望行业
+                    for(var i=0;i<attr_1.length;i++){
+                        str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
+                    }
+                    $('.gsly_xg').html(str_qwhy);
+                    $('.cd-popup').removeClass('is-visible');
+                    aaa();
+                });
+
+                event.preventDefault();
+                $('.cd-popup').addClass('is-visible');
+            })
             $('.zp_jianli_zl_4').find('button').eq(1).on('click',function (){
                 kg=true;                                        //一次只能修改一个简历
                 tj_kg=true;
@@ -853,15 +965,26 @@ obj_gzjl.prototype.bindingSJ=function (){
             $('.zp_jianli_zl_4').find('button').eq(0).on('click',function (){   //修改事件
                 var This=this;
                 var gzjl=$(This).parent().parent();
+                var aa=$(gzjl).find('.gsly_xg > div > div');
+                var attr=[];
+
+                aa.each(function (i,e) {
+                    attr[i] ={
+
+                        fieldId:aa.eq(i).attr('data-fieldid'),
+                        fieldType:aa.eq(i).attr('data-fieldtype'),
+                        fieldName:aa.eq(i).text(),
+                    }
+                })
                 var obj_gzjl={
                     resumeId:ID,
                     jobexpCompanyName:gzjl.find('input').eq(0).val(),         //公司名称
-                    jobexpField:gzjl.find('input').eq(1).val(),               //公司行业
-                    jobexpPostion:gzjl.find('input').eq(2).val(),             //职位名称
-                    jobexpWorkspace:gzjl.find('input').eq(3).val(),           //工作地点
-                    jobexpSubordinate:gzjl.find('input').eq(4).val(),         //下属人数
-                    jobexpBeginTime:gzjl.find('input').eq(5).val(),           //任职时间
-                    jobexpEndTime:gzjl.find('input').eq(6).val(),             //离职时间
+                    fields:attr,                                            //公司领域
+                    jobexpPostion:gzjl.find('input').eq(1).val(),             //职位名称
+                    jobexpWorkspace:gzjl.find('input').eq(2).val(),           //工作地点
+                    jobexpSubordinate:gzjl.find('input').eq(3).val(),         //下属人数
+                    jobexpBeginTime:gzjl.find('input').eq(4).val(),           //任职时间
+                    jobexpEndTime:gzjl.find('input').eq(5).val(),             //离职时间
                     jobexpDuty:gzjl.find('textarea').eq(0).val(),                //职责业绩
                     jobexpId:gzjl.attr('data-id')                             //工作经历ID
 
@@ -970,7 +1093,7 @@ obj_yyjl.prototype.init=function (){
     $.ajax({
         type: "get",//数据发送的方式（post 或者 get）
         url: path+'Education/selEducationByResumeId.do',//要发送的后台地址
-        data:{resumeId:1},                                      //传的参数
+        data:{resumeId:ID},                                      //传的参数
         success: function (data) {//ajax请求成功后触发的方法
             _self.obj_s=[];//接收对象的数组
             for(var i=0;i<data.educationList.length;i++){
@@ -1146,7 +1269,7 @@ obj_xmjy.prototype.init=function (){
     $.ajax({
         type:"get",    //提交方式
         async:true,  //是否异步
-        url:path+'ProjectExp/selByResumeId.do?resumeId=1',    //路径
+        url:path+'ProjectExp/selByResumeId.do?resumeId='+ID,    //路径
 
         success:function (data){//data 就是数据 json
             _self.obj_s=[];
