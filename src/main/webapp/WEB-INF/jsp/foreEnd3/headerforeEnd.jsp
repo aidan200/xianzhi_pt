@@ -52,19 +52,19 @@
                     <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"><span>登录</span></a>
                 </li>
                 <li class="register1">
-                    <a href="#0" class="cd-popup-trigger"><span>注册</span></a>
+                    <a href="#0" class="allregister"><span>注册</span></a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="cd-popup" role="alert">
-    <div class="cd-popup-container">
+<div class="allpop" role="alert">
+    <div class="all_container">
         <div class="index_tan">
             <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do">用户</a>
             <a href="#">企业</a>
         </div>
-        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
+        <a href="#0" class="all_close cmd_close"></a>
     </div>
 </div>
 </body>
