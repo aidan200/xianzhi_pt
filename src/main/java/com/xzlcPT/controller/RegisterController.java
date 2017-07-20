@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,7 +38,7 @@ import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/XzRegister")
-@SessionAttributes({"userLogin"})
+@SessionAttributes({"userLogin","registerKey"})
 public class RegisterController extends BaseController {
     @Autowired
     private RegisterService registerService;
@@ -72,7 +74,7 @@ public class RegisterController extends BaseController {
 
     //    用户注册
     @RequestMapping("Register.do")
-    public ModelAndView getRegister1(@Validated(XzLogin.Group.class) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
+    public ModelAndView getRegisterMember(@Validated(XzLogin.Group.class) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
         mv.addObject("xzLogin",xzLogin);
         mv.addObject("state",2);
@@ -83,47 +85,29 @@ public class RegisterController extends BaseController {
             xzLogin.setLoginActive(0);
                 //                发送激活邮件
                 try {
-                    String information = "呵呵哒";
-                    System.out.println("发邮件:" + xzLogin.getLoginEmail());
-                    long newTime = System.currentTimeMillis();
-                    String strMail = "?username=" + xzLogin.getLoginCount() + "&newTime=" + newTime;
-                    String user = "测试邮件:" + xzLogin.getLoginCount();
-                    String toMail = xzLogin.getLoginEmail();
-                    String email = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-                    EmailConf ec = new EmailConf("sina");
-                    MessageInfo mi = new MessageInfo("register");
-                    List<String> toMails =  new ArrayList<>();
-                    toMails.add(toMail);
-                    mi.setTo(toMails);
-                    mi.setMsg("<a href='" + email + "/XzRegister/activeCount.do" + strMail + "'>"+ email + "/XzRegister/activeCount.do" + strMail +"</a>：<b>" + user + "<br/>" + information + "</b>");
-                    MailUtilSSL.sslSend(mi,ec);
-                    mv.addObject("msg","发送成功巴拉巴拉");
-                    /*  写到service中
-                    int i = registerService.insertUser(xzLogin);
-                    int rs = 0;
-                    if(xzLogin.getLoginType()==0){
-                        rs = loginUserService.addUserForMember(xzLogin);
+                    sentEmail(xzLogin,"/XzRegister/activeCount.do","呵呵哒",request);
+                    int rs = loginUserService.addUserForMember(xzLogin);
+                    if(rs!=0){
+                        mv.addObject("msg","注册成功，请到邮箱中激活账号");
                     }else{
-                        //企业用户跳转到注册第二步---企业信息
-                        XzCompany company = loginUserService.addUserForCompany(xzLogin);
-                        mv.setViewName("foreEnd3/registerc_1");
-                        mv.addObject("xzCompany",company);
-                        return mv;
-                    }*/
+                        mv.addObject("msg","注册失败，请检查账号和邮箱");
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    System.out.println("发送失败!");
                     mv.addObject("msg","发送失败巴拉巴拉");
                 }
         }
         return mv;
     }
+    //企业注册
+
+
 
     //    激活账号
     @RequestMapping("activeCount.do")
     public ModelAndView activeCount(String username, String newTime) {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
-        mv.addObject("state",2);
+        mv.addObject("state",3);
         if (username != null) {
             XzLogin activeUser = selActiveUser(username);
             mv.addObject("xzLogin",activeUser);
@@ -137,7 +121,6 @@ public class RegisterController extends BaseController {
                     if(a!=1){
                         mv.addObject("msg","激活失败");
                     }else{
-                        mv.addObject("state",3);
                         mv.addObject("msg","激活成功");
                         //把登录成功后的用户加入session
                         Map map = new HashMap();
@@ -146,7 +129,6 @@ public class RegisterController extends BaseController {
                         mv.addObject("userLogin",loginUserService.selLoginForMOrCById(map));
                     }
                 } else {
-                    mv.addObject("state",3);
                     mv.addObject("msg","已经激活无需重复激活");
                 }
 
@@ -235,22 +217,20 @@ public class RegisterController extends BaseController {
     }
 
     //    发送邮件方法
-    private void sentEmail(XzLogin LoginUser, String email, String information, HttpServletRequest request) {
-        try {
-            System.out.println("发邮件:" + LoginUser.getLoginEmail());
-            long newTime = System.currentTimeMillis();
-            String strMail = "?username=" + LoginUser.getLoginCount() + "&newTime=" + newTime;
-            String user = "测试邮件:" + LoginUser.getLoginCount();
-            String toMail = LoginUser.getLoginEmail();
-            email = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + email;
-            MailUtil.sendMail("xianzhi_lc@sina.com", "xianzhi_lc@sina.com", "tt6403947",
-                    toMail,
-                    "测试邮件",
-                    "<a href='" + email + "" + strMail + "'>测试邮件</a>：<b>" + user + "<br/>" + information + "</b>");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("发送失败!");
-        }
+    private void sentEmail(XzLogin xzLogin, String callBack,String information, HttpServletRequest request) throws IOException, MessagingException {
+        System.out.println("发邮件:" + xzLogin.getLoginEmail());
+        long newTime = System.currentTimeMillis();
+        String args = "?username=" + xzLogin.getLoginCount() + "&newTime=" + newTime;
+        String user = "测试邮件:" + xzLogin.getLoginCount();
+        String toMail = xzLogin.getLoginEmail();
+        String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        EmailConf ec = new EmailConf("sina");
+        MessageInfo mi = new MessageInfo("register");
+        List<String> toMails =  new ArrayList<>();
+        toMails.add(toMail);
+        mi.setTo(toMails);
+        mi.setMsg("<a href='" + path + callBack + args + "'> 点我点我 </a>：<b>" + user + "<br/>" + information + "</b>");
+        MailUtilSSL.sslSend(mi,ec);
     }
 
     //    根据用户名查询
@@ -287,7 +267,7 @@ public class RegisterController extends BaseController {
         }
         if (newUser != null) {
             String sEmail = "/XzRegister/goUpdatePW.do";
-            sentEmail(newUser, sEmail, "", request);
+            //sentEmail(newUser, sEmail, "找回吧", request);
             mv.addObject("jumpInfo", "邮件已发送!");
 
         } else {
@@ -315,7 +295,7 @@ public class RegisterController extends BaseController {
                 String info = "邮件已超过24小时,请重新填写!";
                 mv.addObject("jumpInfo", info);
                 mv.addObject("jumpAddress", "goIndex.do");
-                sentEmail(newUser, sEmail, info, request);
+                //sentEmail(newUser, sEmail, info, request);
                 System.out.println("邮件已超过24小时!");
             }
         }

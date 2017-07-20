@@ -16,12 +16,12 @@ import org.springframework.stereotype.Service;
 public class RegisterServiceImpl implements RegisterService {
     @Autowired
     private RegisterMapper registerMapper;
-
-    /**
+/*
+    *//**
      * 用户注册方法
      * @param addUser
      * @return
-     */
+     *//*
     @Override
     public int insertUser(XzLogin addUser) {
         int a = 0;
@@ -29,7 +29,7 @@ public class RegisterServiceImpl implements RegisterService {
             a =  registerMapper.insertUser(addUser);
         }
         return a;
-    }
+    }*/
 
     /**
      * 用户激活方法

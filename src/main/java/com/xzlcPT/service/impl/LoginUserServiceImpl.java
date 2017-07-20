@@ -7,10 +7,7 @@ import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzMember;
 import com.xzlcPT.bean.XzResume;
-import com.xzlcPT.dao.LoginUserMapper;
-import com.xzlcPT.dao.XzCompanyMapper;
-import com.xzlcPT.dao.XzMemberMapper;
-import com.xzlcPT.dao.XzResumeMapper;
+import com.xzlcPT.dao.*;
 import com.xzlcPT.service.LoginUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +34,8 @@ public class LoginUserServiceImpl implements LoginUserService {
     private XzResumeMapper resumeMapper;
     @Autowired
     private XzCompanyMapper companyMapper;
+    @Autowired
+    private RegisterMapper registerMapper;
     /**
      *前台方法
      */
@@ -67,36 +66,36 @@ public class LoginUserServiceImpl implements LoginUserService {
     @Override
     public int addUserForMember(XzLogin xzLogin) {
         //添加用户个人基本信息
-        XzMember member = new XzMember();
-        member.setMemberName(xzLogin.getLoginCount());
-        member.setMemberEmail(xzLogin.getLoginEmail());
-        member.setLoginId(xzLogin.getLoginId());
-        int i = memberMapper.insert(member);
-        if(i==1){
-            //添加简历信息
-            XzResume resume = new XzResume();
-            resume.setMemberId(member.getMemberId());
-            resume.setResumeEmail(member.getMemberEmail());
-            i = resumeMapper.insert(resume);
-            if(i==1){
-                return i;
-            }else{
-                i = i/0;
+        int i1 = registerMapper.insertUser(xzLogin);
+        if(i1==1){
+            XzMember member = new XzMember();
+            member.setMemberName(xzLogin.getLoginCount());
+            member.setMemberEmail(xzLogin.getLoginEmail());
+            member.setLoginId(xzLogin.getLoginId());
+            int i2 = memberMapper.insert(member);
+            if(i2==1){
+                //添加简历信息
+                XzResume resume = new XzResume();
+                resume.setMemberId(member.getMemberId());
+                resume.setResumeEmail(member.getMemberEmail());
+                resumeMapper.insert(resume);
             }
-        }else{
-           i = i/0;
         }
-        return 0;
+        return i1;
     }
 
     @Override
     public XzCompany addUserForCompany(XzLogin xzLogin) {
         //添加企业基本信息
-        XzCompany company = new XzCompany();
-        company.setLoginId(xzLogin.getLoginId());
-        int i = companyMapper.addCompany(company);
-        if(i==1){
-            return company;
+        int i1 = registerMapper.insertUser(xzLogin);
+            if(i1==1){
+            XzCompany company = new XzCompany();
+            company.setLoginId(xzLogin.getLoginId());
+            int i2 = companyMapper.addCompany(company);
+            if(i2==1){
+                return company;
+            }
+            return null;
         }
         return null;
     }

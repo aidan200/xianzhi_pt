@@ -168,6 +168,8 @@
                     return b;
                 }
             }
+        }else{
+            $('#password2f').html("密码不能为空");
         }
         return b;
     }

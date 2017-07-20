@@ -12,7 +12,7 @@ import com.xzlcPT.bean.XzLogin;
 public interface RegisterService {
 
     //    添加用户
-    int insertUser(XzLogin addUser);
+    //int insertUser(XzLogin addUser);
 
     //    激活用户
     int updateActiveCount(XzLogin activeCount);
