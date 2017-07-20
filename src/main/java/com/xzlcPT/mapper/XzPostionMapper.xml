@@ -297,9 +297,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzPostion">
     update xz_postion
     <set>
-      <if test="companyId != null">
-        company_id = #{companyId,jdbcType=BIGINT},
-      </if>
       <if test="postionName != null">
         postion_name = #{postionName,jdbcType=VARCHAR},
       </if>
@@ -356,8 +353,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostion">
     update xz_postion
-    set company_id = #{companyId,jdbcType=BIGINT},
-      postion_name = #{postionName,jdbcType=VARCHAR},
+    set postion_name = #{postionName,jdbcType=VARCHAR},
       postion_company = #{postionCompany,jdbcType=VARCHAR},
       postion_ym = #{postionYm,jdbcType=INTEGER},
       postion_mm = #{postionMm,jdbcType=INTEGER},

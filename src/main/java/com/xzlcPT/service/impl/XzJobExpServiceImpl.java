@@ -42,6 +42,7 @@ public class XzJobExpServiceImpl implements XzJobExpService{
     @Override
     public int updateJobExp(XzJobExp jobExp) {
         int i = jobExpMapper.updateByPrimaryKeySelective(jobExp);
+        jobExpMapper.deleteDomainByJobId(jobExp.getJobexpId());
         if(i==1){
             updateDomain(jobExp);
         }

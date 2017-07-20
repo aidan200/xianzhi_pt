@@ -319,7 +319,7 @@
 
         <ul class="cd-buttons">
             <li><a href="#0" id="xz_qwhy_qd">确定</a></li>
-            <li><a href="#0" class="cd-popup-close">取消</a></li>
+            <li><a href="#0" id="xz_qwhy_qx" class="cd-popup-close">取消</a></li>
         </ul>
         <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
     </div>

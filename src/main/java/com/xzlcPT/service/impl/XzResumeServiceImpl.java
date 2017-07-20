@@ -12,6 +12,7 @@ import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Field;
 import java.util.*;
 
 /**
@@ -76,6 +77,22 @@ public class XzResumeServiceImpl implements XzResumeService{
         List<XzResume> resumeList=resumeMapper.selResumeByConditions(map);
         PageBean<XzResume> pageBean=new PageBean<>(resumeList);
         return pageBean;
+    }
+
+    @Override
+    public XzResume selectCompletionById(Long id) {
+        XzResume resume = resumeMapper.selResumeInformation(id);
+        System.out.println("------------------------------------------------------------");
+        System.out.println(resume);
+        Class c = XzResume.class;
+        Field [] fs = c.getDeclaredFields();
+
+        for (Field f : fs) {
+            System.out.println(f.getName());
+        }
+        System.out.println("------------------------------------------------------------");
+
+        return null;
     }
 
 }
