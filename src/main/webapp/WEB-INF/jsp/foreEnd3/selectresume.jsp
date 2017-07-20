@@ -16,33 +16,31 @@
 </head>
 <body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
+<form action="">
 <div class="ses_top">
     <div class="container ses_select">
         <div class="ses_selectl">
             <span>默认</span>
         </div>
         <div class="ses_selectr">
-            <form action="">
-                <input type="text" placeholder="请输入职位关键词：如 项目经理等">
+                <input type="text" placeholder="请输入领域关键词：如 IT等" name="fieldName">
                 <button type="submit">搜索</button>
-            </form>
         </div>
     </div>
 </div>
 
 <section class="ses_center">
-    <form action="" style="height: auto;overflow: hidden">
         <div class="ses_every">
             <div class="ses_one" id="name2">
                 <div class="pull-left" style="width: 70px">学&emsp;&emsp;历：</div>
                 <div class="pull-left" style="width: 840px">
                     <ul>
                         <li><a href="###" id="a1" class="divSmall5" rel="type1">本科</a></li>
-                        <li><a href="###" id="a2" class="divSmall5" rel="type11">硕士</a></li>
-                        <li><a href="###" id="a3" class="divSmall5" rel="type12">博士</a></li>
-                        <li><a href="###" id="a4" class="divSmall5" rel="type13">MBA/EMBA</a></li>
-                        <li><a href="###" id="a5" class="divSmall5" rel="type14">博士后</a></li>
-                        <li><a href="###" id="a6" class="divSmall5" rel="type15">大专</a></li>
+                        <li><a href="###" id="a2" class="divSmall5" rel="type1">硕士</a></li>
+                        <li><a href="###" id="a3" class="divSmall5" rel="type1">博士</a></li>
+                        <li><a href="###" id="a4" class="divSmall5" rel="type1">MBA/EMBA</a></li>
+                        <li><a href="###" id="a5" class="divSmall5" rel="type1">博士后</a></li>
+                        <li><a href="###" id="a6" class="divSmall5" rel="type1">大专</a></li>
                     </ul>
                 </div>
             </div>
@@ -154,7 +152,6 @@
             <option value="">按。。。</option>
             <option value="">按。。。</option>
         </select>
-    </form>
     <div style="clear: both"></div>
 
     <div class="comh_have">
@@ -280,7 +277,7 @@
     </div>
 
 </section>
-
+</form>
 
 <script type="text/javascript">
     $(document).ready(function () {
