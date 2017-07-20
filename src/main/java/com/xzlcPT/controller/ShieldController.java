@@ -36,7 +36,7 @@ public class ShieldController  extends BaseController{
     }
     @ResponseBody
     @RequestMapping("insertShield")
-    private int insertShield(@RequestBody XzShield xzShield){   //接收JSON对象 在实体类前加@RequestBody
+    private int insertShield(@RequestBody XzShield xzShield){
         int i=xzShieldService.insertShield(xzShield);
         return i;
     }
