@@ -81,17 +81,48 @@ public class XzResumeServiceImpl implements XzResumeService{
 
     @Override
     public XzResume selectCompletionById(Long id) {
+        System.out.println(id+"++++++++++++++++++++++");
         XzResume resume = resumeMapper.selResumeInformation(id);
         System.out.println("------------------------------------------------------------");
         System.out.println(resume);
         Class c = XzResume.class;
         Field [] fs = c.getDeclaredFields();
+        List<Field> fields = new ArrayList<>();
+        int count = 0;
+        int size = 0;
+        try {
+            for (Field f : fs) {
+                if(f.getName().startsWith("resume")||f.getType().equals(List.class)){
+                    if(!f.getName().equals("resumeId")){
+                        f.setAccessible(true);
+                        size++;
+                        if(f.getType().equals(List.class)){
+                            List ol = (List) f.get(resume);
+                            if(ol!=null&&ol.size()!=0){
+                                System.out.println(f.getName()+"----"+ol.size());
+                                count++;
+                            }
+                        }else{
+                            Object o = f.get(resume);
+                            if(o!=null){
+                                System.out.println(f.getName());
+                                count++;
+                            }
+                        }
+                        //fields.add(f);
+                    }
+                }
+            }
+            System.out.println("------------------------------------------------------------");
+            for (Field field : fields) {
+                System.out.println(field);
 
-        for (Field f : fs) {
-            System.out.println(f.getName());
+            }
+            System.out.println(count+"====="+size);
+            System.out.println("------------------------------------------------------------");
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        System.out.println("------------------------------------------------------------");
-
         return null;
     }
 

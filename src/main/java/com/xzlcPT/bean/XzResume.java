@@ -378,6 +378,10 @@ public class XzResume {
                 ", filed2='" + filed2 + '\'' +
                 ", filed3='" + filed3 + '\'' +
                 ", fields=" + fields +
+                ", jobExps=" + jobExps +
+                ", xzResumeEducations=" + xzResumeEducations +
+                ", xzProjectExps=" + xzProjectExps +
+                ", xzResumeSkills=" + xzResumeSkills +
                 '}';
     }
 }
