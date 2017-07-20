@@ -280,7 +280,7 @@ public class CompanyInfoController {
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
         PageBean<XzPostion> pageBean=xzPostionService.selectByCompanyId(page,rows,companyId);
         List<XzPostion> plist=pageBean.getList();
-        List<XzPostion> clist=xzPostionService.selectByComId(companyId);
+        List<XzPostion> clist=xzPostionService.selectCityByComId(companyId);
         XzCompany xzCompany=companyService.selCompanyInf(companyId);
         mv.addObject("plist",plist);
         mv.addObject("clist",clist);
@@ -305,7 +305,7 @@ public class CompanyInfoController {
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
         PageBean<XzPostion> pageBean=xzPostionService.selectByConditions(page,rows,xzPostion);
         List<XzPostion> plist=pageBean.getList();
-        List<XzPostion> clist=xzPostionService.selectByComId(xzPostion.getCompanyId());
+        List<XzPostion> clist=xzPostionService.selectCityByComId(xzPostion.getCompanyId());
         XzCompany xzCompany=companyService.selCompanyInf(xzPostion.getCompanyId());
         mv.addObject("plist",plist);
         mv.addObject("clist",clist);

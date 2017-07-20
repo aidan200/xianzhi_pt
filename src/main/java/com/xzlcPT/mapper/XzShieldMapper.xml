@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzShieldMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzShield">
+        <id column="shield_id" jdbcType="BIGINT" property="shieldId"/>
+        <result column="company_id" jdbcType="BIGINT" property="companyId"/>
+        <result column="resume_id" jdbcType="BIGINT" property="resumeId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        shield_id,company_id,resume_id
+    </sql>
+    <select id="selByResumeId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT
+       <include refid="Base_Column_List"/>
+        FROM xz_shield WHERE resume_id = #{resumeId,jdbcType=BIGINT}
+    </select>
+    <insert id="insertShield" parameterType="com.xzlcPT.bean.XzShield">
+        insert into xz_shield(resume_id,company_id) values(#{resumeId,jdbcType=BIGINT},#{companyId,jdbcType=BIGINT})
+    </insert>
+</mapper>

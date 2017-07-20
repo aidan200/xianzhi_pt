@@ -3130,21 +3130,25 @@ input[type="button"].fileInputButton {
     display: inline-block;
     color: #fc7169;
 }
-.reu_over{
+
+.reu_over {
     width: 700px;
     height: 350px;
     margin: 60px auto;
 }
-.reu_img3{
+
+.reu_img3 {
     width: 100px;
     height: 100px;
     margin-left: 100px;
 }
-.reu_b span{
+
+.reu_b span {
     font-size: 30px;
     margin-left: 50px;
 }
-.reu_over button{
+
+.reu_over button {
     width: 150px;
     height: 35px;
     background-color: #f8a91e;
@@ -3156,9 +3160,11 @@ input[type="button"].fileInputButton {
     margin-left: 230px;
     margin-top: 10px;
 }
-.reu_bo{
+
+.reu_bo {
     margin-left: 230px;
 }
+
 .r3_span {
     display: inline-block;
     float: left;
@@ -3169,6 +3175,7 @@ input[type="button"].fileInputButton {
     text-align: center;
     margin-top: 20px;
 }
+
 /*-----------详细--------------------------------------------------------*/
 .comd_topimg {
     width: 100%;
@@ -3707,11 +3714,11 @@ input[type="button"].fileInputButton {
     float: left;
 
 }
-.resume_many{
+
+.resume_many {
     display: inline-block;
     width: 600px;
 }
-
 
 .resume_every > span，.resume_every2 > span {
     margin-left: 10px;
@@ -3888,7 +3895,8 @@ input[type="button"].fileInputButton {
     color: #3D9CCC;
     font-size: 18px;
 }
-.nav-tabs > li> a:hover{
+
+.nav-tabs > li > a:hover {
     color: #3D9CCC;
 }
 
@@ -3928,11 +3936,13 @@ input[type="button"].fileInputButton {
     height: 150px;
     margin-top: 160px;
 }
+
 .comh_test2 {
     float: left;
     margin-left: 30px;
 }
-.comh_test2 h4{
+
+.comh_test2 h4 {
     color: #3d9ccc;
 }
 
@@ -3950,10 +3960,12 @@ input[type="button"].fileInputButton {
     margin-top: 10px;
     width: 380px;
 }
+
 .comh_in2 span {
     margin: 10px 10px;
     display: inline-block;
 }
+
 .triangle-right-bottom {
     width: 0;
     height: 0;
@@ -3961,14 +3973,16 @@ input[type="button"].fileInputButton {
     border-right: 45px solid #fec144;
     position: absolute;
     right: 0;
-    top:0;
+    top: 0;
     line-height: 25px;
 
 }
-.triangle-right-bottom b{
+
+.triangle-right-bottom b {
     color: #ffffff;
     margin-left: 23px;
 }
+
 /*------------------------公司主页-----------------------*/
 .comh_have {
     width: 100%;
@@ -4043,4 +4057,298 @@ input[type="button"].fileInputButton {
 
 .comh_rt {
     margin-top: 10px;
+}
+
+/*-------------------------搜索简历-----------------------------------*/
+.ses_top {
+    height: 80px;
+    background: #ffffff;
+    padding: 20px 0;
+}
+
+.ses_select {
+    width: 980px;
+    height: 40px;
+    background: #ffffff;
+    padding: 0;
+}
+
+.ses_selectl {
+    float: left;
+    height: 40px;
+    width: 65px;
+    border: 2px solid #3D9CCC;
+    box-sizing: border-box;
+    line-height: 40px;
+    text-align: center;
+}
+
+.ses_selectr {
+    float: left;
+    border: 2px solid #3D9CCC;
+    box-sizing: border-box;
+    border-left: none;
+    width: 915px;
+    height: 40px;
+}
+
+.ses_selectr > form {
+    height: 100%;
+}
+
+.ses_selectr > form > input {
+    float: left;
+    border: none;
+    width: 80%;
+    height: 100%;
+    padding-left: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.ses_selectr > form > button {
+    display: block;
+    outline: none;
+    border: none;
+    text-align: center;
+    line-height: 38px;
+    color: #ffffff;
+    font-size: 16px;
+    background: #3D9CCC;
+    width: 140px;
+    height: 100%;
+    float: right;
+}
+
+/*搜索结束了*/
+.ses_center {
+    width: 1000px;
+    margin: 20px auto;
+}
+
+.ses_every {
+    background: #ffffff;
+    border: 1px solid #F0F0F0;
+    padding: 15px 20px;
+    height: auto;
+    /*overflow: hidden;*/
+    position: relative;
+}
+
+.ses_every > .ses_one {
+    height: auto;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #cccccc;
+    overflow: hidden;
+
+}
+
+.ses_every > .ses_one > div {
+    height: auto;
+    margin-right: 20px;
+    line-height: 36px;
+    text-align: center;
+    overflow: hidden;
+    color: #999;
+}
+
+.ses_every > .ses_one > div > ul {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.ses_every > .ses_one > div > ul > li {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    margin-right: 25px;
+    padding: 6px 0;
+}
+
+.ses_every > .ses_one > div > ul > li > a {
+    padding: 0 10px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    line-height: 23px;
+    height: 24px;
+    border-radius: 3px;
+
+}
+
+.ses_every > .ses_one > div > ul > li > a:hover {
+    background: #3D9CCC;
+}
+
+.ses_every > .ses_two {
+    height: auto;
+    margin-bottom: 10px;
+    z-index: 1000;
+
+}
+
+.ses_every > .ses_two > div {
+    height: 36px;
+    margin-right: 20px;
+    line-height: 36px;
+    text-align: center;
+    color: #999;
+}
+
+.ses_every > .ses_two > div > ul {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.ses_every > .ses_two > div > ul > li {
+    float: left;
+    height: 100%;
+    margin-right: 15px;
+    padding: 6px 0;
+    width: 120px;
+    position: relative;
+
+}
+
+.ses_every > .ses_two > div > ul > li > a {
+    display: block;
+    background: #FFFFFF;
+    width: 100%;
+    border: 1px solid #CCCCCC;
+    font-size: 14px;
+    color: #666;
+    height: 100%;
+    text-align: left;
+    padding-left: 5px;
+    line-height: 23px;
+}
+
+.ses_every > .ses_two > div > ul > li > ul {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #CCCCCC;
+    border-top: none;
+    display: none;
+    z-index: 9999;
+    position: absolute;
+
+}
+
+.ses_every > .ses_two > div > ul > li > ul li {
+    height: 24px;
+    width: 100%;
+    background: #ffffff;
+    /*z-index: 9999;*/
+}
+
+.ses_every > .ses_two > div > ul > li > ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    margin: 0 auto;
+    font-size: 14px;
+    padding-left: 5px;
+    line-height: 23px;
+    color: #666;
+    /*z-index: 9999;*/
+}
+
+.ses_every > .ses_two > div > ul > li > ul li a:hover {
+    background: #3D9CCC;
+    color: #ffffff;
+}
+
+.ses_three {
+    background: #F2F2F2;
+    padding-left: 10px;
+    color: #999B9E;
+    height: auto;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.ses_tl {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+
+}
+
+.ses_tr {
+    padding: 10px 0;
+    float: left;
+    width: 740px;
+    min-height: 45px;
+}
+
+.ses_tr > a {
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 0 10px;
+    color: #ffffff;
+    background: #3D9CCC;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.ses_tr2 {
+    display: inline;
+    float: right;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+}
+
+.ses_tr2 > span {
+    color: #3D9CCC;
+}
+
+.comh_no2 {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+
+/*-------点击显示--------*/
+
+.divSmall5 {
+    width: auto;
+    height: 15px;
+    float: left;
+    margin-left: 4px;
+    margin-top: 2px;
+    background-color: #FFFFFF;
+    padding: 3px;
+    line-height: 15px;
+    cursor: pointer;
+    color: #666;
+}
+
+.divSmall5:hover {
+    color: #FFFFFF;
+}
+
+.divSmall6 {
+    background-color: #3D9CCC;
+    color: #FFFFFF;
+    border-radius: 3px;
+    width: auto;
+    /*height: 20px;*/
+    float: left;
+    margin-left: 5px;
+    margin-top: 4px;
+    line-height: 1px;
+    padding: 3px;
+    display: inline-block;
+}
+
+.image {
+    margin-left: 5px;
 }

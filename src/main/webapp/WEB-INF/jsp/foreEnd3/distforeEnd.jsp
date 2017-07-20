@@ -25,6 +25,7 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/lib/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
 </head>
 <body>
 
