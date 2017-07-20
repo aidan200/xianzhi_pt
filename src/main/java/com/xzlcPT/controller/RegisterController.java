@@ -12,6 +12,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -77,15 +78,16 @@ public class RegisterController extends BaseController {
     public ModelAndView getRegisterMember(@Validated(XzLogin.Group.class) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
         mv.addObject("xzLogin",xzLogin);
-        mv.addObject("state",2);
+        mv.addObject("state",1);
         if(!result.hasErrors()){
-            //加密
-            String strMd5 = MD5.md5(xzLogin.getLoginPassword());
-            xzLogin.setLoginPassword(strMd5);
-            xzLogin.setLoginActive(0);
-                //                发送激活邮件
+            mv.addObject("state",2);
+                // 发送激活邮件
                 try {
                     sentEmail(xzLogin,"/XzRegister/activeCount.do","呵呵哒",request);
+                    //加密
+                    String strMd5 = MD5.md5(xzLogin.getLoginPassword());
+                    xzLogin.setLoginPassword(strMd5);
+                    xzLogin.setLoginActive(0);
                     int rs = loginUserService.addUserForMember(xzLogin);
                     if(rs!=0){
                         mv.addObject("msg","注册成功，请到邮箱中激活账号");
@@ -99,7 +101,29 @@ public class RegisterController extends BaseController {
         }
         return mv;
     }
-    //企业注册
+    //重新发送邮件
+    @ResponseBody
+    @RequestMapping("mailgoReplay.do")
+    public Map mailgoReplay(Long loginId,String usertype,HttpServletRequest request){
+        System.out.println(loginId);
+        Map map = new HashMap();
+        map.put("usertype",usertype);
+        map.put("loginId",loginId);
+        XzLogin login =loginUserService.selLoginForMOrCById(map);
+        map = new HashMap();
+        if(login!=null){
+            try {
+                sentEmail(login,"/XzRegister/activeCount.do","呵呵哒",request);
+                map.put("msg","邮件发送成功，请到邮箱中激活账号");
+            } catch (Exception e) {
+                e.printStackTrace();
+                map.put("msg","邮件发送成功，请检查邮箱");
+            }
+        }else{
+            map.put("msg","不存在的用户，请重新注册");
+        }
+        return map;
+    }
 
 
 
@@ -108,8 +132,8 @@ public class RegisterController extends BaseController {
     public ModelAndView activeCount(String username, String newTime) {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
         mv.addObject("state",3);
-        if (username != null) {
-            XzLogin activeUser = selActiveUser(username);
+        XzLogin activeUser = selActiveUser(username);
+        if (activeUser != null) {
             mv.addObject("xzLogin",activeUser);
             long activeTime = System.currentTimeMillis() - Long.parseLong(newTime);
             System.out.println(activeTime);
@@ -167,17 +191,13 @@ public class RegisterController extends BaseController {
     public Map<String, Object> selByEmail(String str) {
         Map<String, Object> map = new HashMap<>();
         if (str != null) {
-
-            Pattern p = Pattern.compile("^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$");
+            Pattern p = Pattern.compile("^[\\w,\\.,-]*@[0-9A-Za-z]{1,20}((\\.com)|(\\.net)|(\\.com.cn)){1}$");
             Matcher m = p.matcher(str);
             boolean b = m.matches();
             if (b) {
-                System.out.println(str);
                 XzLogin loginU = new XzLogin(); //接收前台传入值
                 loginU.setLoginEmail(str);
-
-                XzLogin newUser = new XzLogin();
-                newUser = registerService.selectByEmail(loginU);
+                XzLogin newUser = registerService.selectByEmail(loginU);
                 if (newUser == null) {
                     map.put("selEmail", "√");
                     map.put("spanColor", "true");
@@ -238,8 +258,7 @@ public class RegisterController extends BaseController {
         XzLogin loginU = new XzLogin(); //接收前台传入值
         loginU.setLoginCount(str);
         Map<String, Object> map = new HashMap<>();
-        XzLogin newUser = new XzLogin();
-        newUser = registerService.selectByUser(loginU);
+        XzLogin newUser = registerService.selectByUser(loginU);
         return newUser;
     }
 

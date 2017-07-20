@@ -57,42 +57,18 @@ public class GoIndexController extends BaseController {
                                  @RequestParam(defaultValue = "1")Integer page2,
                                  @RequestParam(defaultValue = "6")Integer rows2, Item item) {
         ModelAndView mv = new ModelAndView("foreEnd3/index");
-        /*String s2 = (String) httpSession.getAttribute("userIndex");
-        if (s2 == null) {
-            model.addAttribute("userNull", "未登录");
-            model.addAttribute("userIndex", "");
-        }
-        XzLogin xzLogin = (XzLogin)httpSession.getAttribute("userLogin");
-        if (null==xzLogin||"".equals(xzLogin)){
-            model.addAttribute("userLogin", new XzLogin());
-        }*/
-        //行业动态
-        /*PageBean<News> pageBean = newsService.selectNewsAll(page,rows,news);
-        List<News> newsList = pageBean.getList();
-        mv.addObject("newsList",newsList);*/
-        //项目
-        /*PageBean<Item> pageBean2 = itemService.selectItemAll(page2,rows2,item);
-        List<Item>itemList = pageBean2.getList();
-        mv.addObject("itemList",itemList);
-        mv.addObject("item",item);*/
-        //活动
-        /*PageBean<Event> pageBean1 = eventService.selectEventAll(page1,rows1,event);
-        List<Event> eventList = pageBean1.getList();
-        mv.addObject("eventList",eventList);
-        mv.addObject("event",event);
-        mv.addObject("goIndexA","aaa");
-*/
+
         return mv;
     }
     @RequestMapping("zp_index")
     public ModelAndView goZpIndex(@ModelAttribute("userLogin") XzLogin userLogin){
-        ModelAndView mv = new ModelAndView("");
+        ModelAndView mv = new ModelAndView();
         if(userLogin.getLoginType()==0){
             mv.setViewName("foreEnd3/zp_index");
             XzResume resume = xzResumeService.selectByMemberId(userLogin.getMember().getMemberId());
             mv.addObject("resume",resume);
         }else{
-            mv.setViewName("foreEnd3/zp_indexgs");
+            mv.setViewName("foreEnd3/company_home");
         }
         return mv;
     }

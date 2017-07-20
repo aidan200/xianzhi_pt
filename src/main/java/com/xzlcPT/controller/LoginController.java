@@ -62,9 +62,16 @@ public class LoginController extends BaseController {
             mv.addObject("msg","用户密码错误");
         }else if(map.get("msg").equals("ok")){
             XzLogin login = (XzLogin) map.get("login");
-            if(login.getLoginActive()==2){
+            if(login.getLoginActive()==0){
                 //账号没激活
-                System.out.println("账号没激活");
+                if(login.getLoginType()==0){
+                    mv.setViewName("foreEnd3/registeru_1");
+                    mv.addObject("xzLogin",login);
+                    mv.addObject("state",2);
+                }else if (login.getLoginType()==1){
+                    mv.setViewName("");
+                }
+                mv.addObject("msg","账号未激活，请激活账号");
             }else{
                 mv.setViewName("redirect:/");
                 //session中存入当前用户

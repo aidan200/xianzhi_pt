@@ -105,6 +105,11 @@ public class LoginUserServiceImpl implements LoginUserService {
         return loginUserMapper.selLoginForMOrCById(map);
     }
 
+    @Override
+    public XzLogin selLoginForMOrCByName(Map map) {
+        return loginUserMapper.selLoginForMOrCByName(map);
+    }
+
     //修改个人信息
     public int updateLogin(XzLogin login){
 

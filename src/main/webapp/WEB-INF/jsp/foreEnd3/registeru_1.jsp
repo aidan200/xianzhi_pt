@@ -10,6 +10,7 @@
 <%@ page isELIgnored="false" %>
 <%--引入springMVC form--%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,7 +77,7 @@
                                 <span class="ru_s" style="font-size: 13px"><sf:errors path="loginPassword"/></span>
                             </div>
                             <div class="r2_every">
-                                <span>确认密码</span>&emsp;<input id="password2" type="text" class="r1_g" onblur="validatePass()">
+                                <span>确认密码</span>&emsp;<input id="password2" type="password" class="r1_g" onblur="validatePass()">
                                 <span class="ru_s" style="font-size: 13px" id="password2f"></span>
                             </div>
                             <div class="r2_every">
@@ -104,7 +105,7 @@
         <div class="register1_all">
             ${msg}
             <button onclick="remailgo()">前往邮箱完成验证</button>
-            <button onclick="remailgo()">重新发送验证邮件</button>
+            <button onclick="remailgoReplay()">重新发送验证邮件</button>
         </div>
     </div>
 
@@ -177,6 +178,18 @@
         var b = false;
         alert(validatePass(b));
         return validatePass(b);
+    }
+    function remailgoReplay() {
+        console.log('${xzLogin.loginId}');
+        $.ajax({
+            url:'${pageContext.request.contextPath}/XzRegister/mailgoReplay.do',
+            type:'post',
+            data:{loginId:'${xzLogin.loginId}',usertype:${xzLogin.loginType}},
+            dataType:'json',
+            success:function (data) {
+                alert(data);
+            }
+        })
     }
     function remailgo() {
         var email = '${xzLogin.loginEmail}';
