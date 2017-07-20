@@ -1,5 +1,6 @@
 package com.xzlcPT.controller;
 
+import com.util.PageBean;
 import com.xzlcPT.bean.XzField;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzResume;
@@ -55,6 +56,20 @@ public class ResumeController extends BaseController {
         ModelAndView mv=new ModelAndView("/foreEnd3/resume");
         XzResume xzResume=resumeService.selResumeInformation(resumeId);
         mv.addObject("xzResume",xzResume);
+        return mv;
+    }
+
+    @RequestMapping("selResumeByConditions")
+    public ModelAndView selResumeByConditions(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,Map map){
+        ModelAndView mv=new ModelAndView("/foreEnd3/selectresume");
+        PageBean<XzResume> pageBean=resumeService.selResumeByConditions(page,rows,map);
+        List<XzResume> resumeList=pageBean.getList();
+        mv.addObject("resumeList",resumeList);
+        mv.addObject("page",pageBean.getPageNum());
+        mv.addObject("pages",pageBean.getPages());
+        mv.addObject("rows",pageBean.getPageSize());
+        mv.addObject("total",pageBean.getTotal());
+        mv.addObject("map",map);
         return mv;
     }
 

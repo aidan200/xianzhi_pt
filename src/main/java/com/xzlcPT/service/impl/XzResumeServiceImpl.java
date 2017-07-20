@@ -1,5 +1,7 @@
 package com.xzlcPT.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.util.PageBean;
 import com.xzlcPT.bean.XzField;
 import com.xzlcPT.bean.XzResume;
 import com.xzlcPT.bean.XzResumeSkill;
@@ -66,6 +68,14 @@ public class XzResumeServiceImpl implements XzResumeService{
     public XzResume selResumeInformation(Long resumeId) {
        XzResume xzResume=resumeMapper.selResumeInformation(resumeId);
         return xzResume;
+    }
+
+    @Override
+    public PageBean<XzResume> selResumeByConditions(Integer page, Integer rows, Map map) {
+        PageHelper.startPage(page,rows);
+        List<XzResume> resumeList=resumeMapper.selResumeByConditions(map);
+        PageBean<XzResume> pageBean=new PageBean<>(resumeList);
+        return pageBean;
     }
 
 }

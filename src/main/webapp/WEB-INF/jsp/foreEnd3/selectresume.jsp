@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -153,7 +154,7 @@
             <option value="">按。。。</option>
         </select>
     <div style="clear: both"></div>
-
+    <c:forEach var="r1" items="${resumeList}">
     <div class="comh_have">
         <div class="comh_left">
             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt="" class="comh_head">
@@ -189,76 +190,7 @@
             </div>
         </div>
     </div>
-    <div class="comh_have">
-        <div class="comh_left">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt="" class="comh_head">
-            <div class="comh_test">
-                <h4>金泰妍</h4>
-                <div class="comh_in">
-                    <span>女</span>|
-                    <span>28</span>|
-                    <span>沈阳</span>|
-                    <span>本科</span>|
-                    <span>1年经验</span>
-                </div>
-                <div style="margin-top: 10px;margin-left: 10px;color: #fc6866">
-                    <span>web前端</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="comh_right" style="width: 460px">
-            <div class="comh_rt">
-                <span>2015-至今</span>|
-                <span>阿里巴巴有限公司</span>|
-                <span>资深产品经理</span>
-            </div>
-            <div class="comh_rt">
-                <span>2007-2011</span>|
-                <span>复旦大学</span>|
-                <span>信息管理与信息系统</span>|
-                <span>本科</span>
-            </div>
-            <div style="margin-top: 15px;margin-right: 10px;float: right;color: #a8a8a8">
-                <span><span>4</span>个小时前</span>
-            </div>
-        </div>
-    </div>
-    <div class="comh_have">
-        <div class="comh_left">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt="" class="comh_head">
-            <div class="comh_test">
-                <h4>金泰妍</h4>
-                <div class="comh_in">
-                    <span>女</span>|
-                    <span>28</span>|
-                    <span>沈阳</span>|
-                    <span>本科</span>|
-                    <span>1年经验</span>
-                </div>
-                <div style="margin-top: 10px;margin-left: 10px;color: #fc6866">
-                    <span>web前端</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="comh_right" style="width: 460px">
-            <div class="comh_rt">
-                <span>2015-至今</span>|
-                <span>阿里巴巴有限公司</span>|
-                <span>资深产品经理</span>
-            </div>
-            <div class="comh_rt">
-                <span>2007-2011</span>|
-                <span>复旦大学</span>|
-                <span>信息管理与信息系统</span>|
-                <span>本科</span>
-            </div>
-            <div style="margin-top: 15px;margin-right: 10px;float: right;color: #a8a8a8">
-                <span><span>4</span>个小时前</span>
-            </div>
-        </div>
-    </div>
+    </c:forEach>
 
     <%--分页--%>
     <div class="zp_botv">
@@ -279,19 +211,25 @@
 </section>
 </form>
 
+<form id="hidForm" action=""></form>
 <script type="text/javascript">
     $(document).ready(function () {
         $(".divSmall5").click(function () {
             var isAlreadyHave = false;
+            var inputAlreadyHave = false;
             var thisID = $(this).attr("id");
-            var classType = $(this).attr("rel")
+            var classType = $(this).attr("rel");
+            var inpName = $(this).attr("inpName");
+            var inpValue = $(this).attr("inpValue");
             $(".divSmall6").each(function () {
                 if ($(this).attr("rel") == thisID) {
                     isAlreadyHave = true;
+                    inputAlreadyHave = true;
                 }
                 if ($(this).attr("ttype") == classType) {
                     goBegin($(this).attr("rel"));
                     $(this).remove();
+                    removeMyInp($(this).attr("rel") + "inp")
                 }
             });
             if (!isAlreadyHave) {
@@ -299,18 +237,21 @@
                     "background-color": "#3D9CCC",
                     "color": "white"
                 });
-                writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"));
+                writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"), inpName, inpValue);
             }
         });
         $(".image").live('click', function () {
             goBegin($(this).parent().attr("rel"));
+            removeMyInp($(this).attr("rel"));
             $(this).parent().remove();
         });
     });
     //输出一个div
-    function writeDiv(name, id, classONE) {
+    function writeDiv(name, id, classONE, inpName, inpValue) {
         var divShow = "<div class='divSmall6' rel='" + id + "' ttype='" + classONE + "'>" + name + "<span class='image fa fa-remove'></span></div>";
+        var inputShow = "<input id='" + id + "inp'  type='hidden'  name='" + inpName + "' value='" + inpValue + "'/>";
         $("#mainSelect5").html($("#mainSelect5").html() + divShow);
+        $("#hidForm").html($("#hidForm").html() + inputShow);
     }
     function goBegin(ID) {
         $("#" + ID).css({
@@ -318,8 +259,9 @@
             "color": "#666666"
         });
     }
+    function removeMyInp(id) {
+        $("#" + id).remove();
+    }
 </script>
-
-
 </body>
 </html>
