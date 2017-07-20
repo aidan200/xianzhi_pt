@@ -45,7 +45,7 @@ public class JobExpController extends BaseController{
     }
     //修改工作经验
     @ResponseBody
-    @RequestMapping("uodateJobExp.do")
+    @RequestMapping("updateJobExp.do")
     public Map updateJobExp(@RequestBody XzJobExp jobExp){
         Map<String,Object> map = new HashMap<>();
         int i = jobExpService.updateJobExp(jobExp);

@@ -32,11 +32,11 @@ public class MessageInfo {
         this.sendDate = new Date();
         //注册
         if("register".equals(type)){
-
+            this.setSubject("欢迎加入先知平台");
         }
         //找回
         if("findBack".equals(type)){
-
+            this.setSubject("先知平台密码找回");
         }
     }
 

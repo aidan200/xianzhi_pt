@@ -2,6 +2,9 @@ package com.xzlcPT.controller;
 
 import com.util.MD5;
 import com.util.MailUtil;
+import com.util.MailUtilSSL;
+import com.util.bean.EmailConf;
+import com.util.bean.MessageInfo;
 import com.xzlcPT.bean.*;
 import com.xzlcPT.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -99,10 +104,13 @@ public class RegisterController extends BaseController {
                         String user = "测试邮件:" + xzLogin.getLoginCount();
                         String toMail = xzLogin.getLoginEmail();
                         String email = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-                        MailUtil.sendMail("xianzhi_lc@sina.com", "xianzhi_lc@sina.com", "tt6403947",
-                                toMail,
-                                "测试邮件",
-                                "<a href='" + email + "/XzRegister/activeCount.do" + strMail + "'>"+ email + "/XzRegister/activeCount.do" + strMail +"</a>：<b>" + user + "<br/>" + information + "</b>");
+                        EmailConf ec = new EmailConf("sina");
+                        MessageInfo mi = new MessageInfo("register");
+                        List<String> toMails =  new ArrayList<>();
+                        toMails.add(toMail);
+                        mi.setTo(toMails);
+                        mi.setMsg("<a href='" + email + "/XzRegister/activeCount.do" + strMail + "'>"+ email + "/XzRegister/activeCount.do" + strMail +"</a>：<b>" + user + "<br/>" + information + "</b>");
+                        MailUtilSSL.sslSend(mi,ec);
                         mv.addObject("msg","发送成功巴拉巴拉");
                     } catch (Exception e) {
                         e.printStackTrace();
