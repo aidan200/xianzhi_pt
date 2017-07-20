@@ -17,7 +17,7 @@
 </head>
 <body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
-<form action="">
+<form action="${pageContext.request.contextPath}/Resume/selResumeByConditions">
 <div class="ses_top">
     <div class="container ses_select">
         <div class="ses_selectl">
@@ -42,6 +42,7 @@
                         <li><a href="###" id="a4" class="divSmall5" rel="type1">MBA/EMBA</a></li>
                         <li><a href="###" id="a5" class="divSmall5" rel="type1">博士后</a></li>
                         <li><a href="###" id="a6" class="divSmall5" rel="type1">大专</a></li>
+                        <input type="hidden" id="educationLevel" name="educationLevel">
                     </ul>
                 </div>
             </div>
@@ -159,7 +160,7 @@
         <div class="comh_left">
             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt="" class="comh_head">
             <div class="comh_test">
-                <h4>金泰妍</h4>
+                <h4>${r1.resumeName}</h4>
                 <div class="comh_in">
                     <span>女</span>|
                     <span>28</span>|
@@ -261,6 +262,9 @@
     }
     function removeMyInp(id) {
         $("#" + id).remove();
+    }
+    function a(s) {
+        document.getElementById("educationLevel").value=s;
     }
 </script>
 </body>

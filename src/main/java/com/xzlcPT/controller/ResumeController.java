@@ -60,8 +60,11 @@ public class ResumeController extends BaseController {
     }
 
     @RequestMapping("selResumeByConditions")
-    public ModelAndView selResumeByConditions(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,Map map){
+    public ModelAndView selResumeByConditions(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String fieldName,String educationLevel ){
         ModelAndView mv=new ModelAndView("/foreEnd3/selectresume");
+        Map  map=new HashMap();
+        map.put("fieldName",fieldName);
+        System.out.println("111111111111111111111111111111111"+educationLevel);
         PageBean<XzResume> pageBean=resumeService.selResumeByConditions(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
         mv.addObject("resumeList",resumeList);
