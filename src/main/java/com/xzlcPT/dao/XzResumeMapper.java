@@ -3,6 +3,9 @@ package com.xzlcPT.dao;
 import com.xzlcPT.bean.XzEducation;
 import com.xzlcPT.bean.XzResume;
 
+import java.util.List;
+import java.util.Map;
+
 public interface XzResumeMapper {
     XzResume selectByMemberId(Long memberId);
 
@@ -19,4 +22,6 @@ public interface XzResumeMapper {
     int updateByPrimaryKey(XzResume record);
 
     XzResume selResumeInformation(Long resumeId);
+
+    List<XzResume> selResumeByConditions(Map map);
 }

@@ -4100,7 +4100,7 @@ input[type="button"].fileInputButton {
     height: 100%;
 }
 
-.ses_selectr > form > input {
+.ses_selectr > input {
     float: left;
     border: none;
     width: 80%;
@@ -4110,7 +4110,7 @@ input[type="button"].fileInputButton {
     outline: none;
 }
 
-.ses_selectr > form > button {
+.ses_selectr > button {
     display: block;
     outline: none;
     border: none;
