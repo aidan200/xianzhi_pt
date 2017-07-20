@@ -422,6 +422,7 @@ ul,li{
 }
 .zp_index_cont_right_middle li > span{
     float: left;
+
 }
 .zp_index_cont_right_middle li > div{
     width: 180px;
@@ -1483,17 +1484,18 @@ clear: both;
 .tjsc_div{
     text-align: center;
 }
-#pbqy > ul{
+#pbqy > div> ul{
     padding: 0;
     margin: 0;
     list-style: none;
 }
-#pbqy > ul > li{
+#pbqy > div> ul > li{
     height: 30px;
     line-height: 30px;
-    margin-bottom: 10px;
+   border-bottom: 1px solid #c0c0c0;
     background: #3b97c4;
     padding-right: 0;
+    margin-bottom: 0;
 }
 .li_sc{
     float: right;
@@ -1502,6 +1504,10 @@ clear: both;
     line-height: 30px;
     text-align: center;
     background: #00b95a;
+}
+#sy{
+    position: absolute;
+    width: 277px;
 }
 #sy > ul{
     padding: 0;
