@@ -4,6 +4,7 @@ import com.xzlcPT.bean.XzProjectExp;
 import com.xzlcPT.service.XzProjectExpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,7 +33,7 @@ public class ProjectExpController extends BaseController{
     //添加项目经验
     @ResponseBody
     @RequestMapping("insertProjectExp.do")
-    public Map addProjectExp(XzProjectExp projectExp){
+    public Map addProjectExp(@RequestBody XzProjectExp projectExp){
         Map<String,Object> map = new HashMap<>();
         int i = projectExpService.insertProjectExp(projectExp);
         if(i==1){
@@ -45,7 +46,7 @@ public class ProjectExpController extends BaseController{
     //修改项目经验
     @ResponseBody
     @RequestMapping("updateProjectExp.do")
-    public Map updateProjectExp(XzProjectExp projectExp){
+    public Map updateProjectExp(@RequestBody XzProjectExp projectExp){
         Map<String,Object> map = new HashMap<>();
         int i = projectExpService.updateProjectExp(projectExp);
         if(i==1){
