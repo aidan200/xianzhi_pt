@@ -189,18 +189,6 @@
                 <p><i></i>隐私设置</p>
                 <ul>
                     <li>
-                        <span>社交名片:</span>
-                        <div>
-                            <select class="form-control">
-                                <option>所有人都能看到</option>
-                                <option></option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </li>
-                    <li>
                         <span>求职简历:</span>
                         <div>
                             <select class="form-control">
@@ -213,7 +201,43 @@
                         </div>
                     </li>
                 </ul>
+                <div class="cksc">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title scay_ck" >
+                                    <a role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        查看我屏蔽的企业
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body" id="pbqy">
+                                    <div >
+                                        <ul>
+                                            <li><span>公司1</span><a href="" class="li_sc">x</a></li>
+                                            <li><span>公司2</span><a href="" class="li_sc">x</a></li>
+                                            <li><span>公司3</span><a href="" class="li_sc">x</a></li>
+                                            <li><span>公司4</span><a href="" class="li_sc">x</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <button type="button" class="btn btn-info">搜索公司</button>
+                                    <button type="button" style="display: none" class="btn btn-info">取消</button>
+                                    <input id="gs_ssk" type="text" style="display: none">
+                                    <button type="button" style="display: none" class="btn btn-info">确认</button>
+                                    <div id="sy">
+                                        <ul>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="zp_index_cont_right_bottom">
                 <div class="zp_index_cont_right_bottom_top">
                     <p>简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>

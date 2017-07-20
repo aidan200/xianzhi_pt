@@ -73,7 +73,7 @@
 <div class="cd-popup" role="alert">
     <div class="cd-popup-container">
         <div class="index_tan">
-            <a href="#">用户</a>
+            <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do">用户</a>
             <a href="#">企业</a>
         </div>
         <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>

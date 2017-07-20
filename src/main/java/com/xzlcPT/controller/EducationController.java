@@ -63,8 +63,8 @@ public class EducationController extends BaseController {
     }
 
     @ResponseBody
-    @RequestMapping("addEducation.do")
-    public Map<String,Object> addEducation(XzResumeEducation education){
+    @RequestMapping("insertEducation.do")
+    public Map<String,Object> addEducation(@RequestBody XzResumeEducation education){
         Map<String,Object> map = new HashMap<>();
         int i = resumeEducationService.insertEducation(education);
         if(i==1){
@@ -77,7 +77,7 @@ public class EducationController extends BaseController {
 
     @ResponseBody
     @RequestMapping("updateEducation.do")
-    public Map<String,Object> updateEducation(XzResumeEducation education){
+    public Map<String,Object> updateEducation(@RequestBody XzResumeEducation education){
         Map<String,Object> map = new HashMap<>();
         int i = resumeEducationService.updateEducation(education);
         if(i==1){

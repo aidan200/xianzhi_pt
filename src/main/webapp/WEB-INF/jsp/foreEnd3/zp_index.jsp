@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -16,7 +17,7 @@
     <title>首页</title>
     <jsp:include page="distforeEnd.jsp"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_index.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/loading.css">
 
     <script>//搜索框焦点事件
     $(function (){
@@ -52,8 +53,8 @@
         <div class="col-md-8 zp_index_cont_left">
             <div class="zp_index_cont_left_top">
                 <div class="zp_index_cont_wbk">
-                    <form action="">
-                        <input id="zp_index_xxk" type="text" placeholder="前端开发">
+                    <form action="${pageContext.request.contextPath}/Postion/selPostionIndex.do" onsubmit="toSerch()">
+                        <input id="zp_index_xxk" type="text" name="likeStr" placeholder="${resume.resumePosition}">
                         <div class="zp_index_arrow"></div>
                         <button class="zp_index_xxk_btn">
                             <span class="fa fa-search fa-2x" style="color: #ffffff"></span>
@@ -62,13 +63,13 @@
 
 
                 </div>
-                <p><span>默认条件:沈阳</span> <a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do">更多搜索条件</a></p>
+                <p><span>默认条件: ${resume.resumeWorkspace}</span><span> ${resume.resumePosition}</span> <a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do">更多搜索条件</a></p>
             </div>
             <div class="zp_index_cont_left_zwtj">
                 <h3>职位推荐&nbsp;&nbsp;<span class="fa fa-caret-down"></span></h3>
             </div>
             <div class="zp_index_cont_left_zwtj_cont">
-                <ul>
+                <ul id="postionRs">
                     <li>
                         <i><b>民</b></i>
                         <div class="zp_index_cont_left_zwtj_cont_left">
@@ -110,8 +111,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="zp_index_cont_left_zwtj_gdzw">
-                <a href="">查看更多职位</a>
+            <div id="serchPostionButton" class="zp_index_cont_left_zwtj_gdzw">
+                <a href="javascript:void(0)" onclick="serchPostion()">查看更多职位</a>
             </div>
         </div>
         <div class="col-md-4 zp_index_cont_right">
@@ -122,11 +123,31 @@
                     </div>
                     <div class="zp_index_cont_right_top_right">
                         <span>${resume.resumeName}</span>
-                        <p>前端开发</p>
-                        <p>沈阳先知蓝创</p>
+                        <p>${resume.resumePosition}</p>
+                        <p>${resume.resumeField}</p>
                     </div>
                 </div>
-                <p> <span>沈阳</span>&nbsp;|&nbsp;<span>互联网电商</span>&nbsp;|&nbsp;<span>工作3年</span></p>
+                <p>
+                    <c:if test="${resume.resumeWorkspace!=undefined}">
+                        <span>${resume.resumeWorkspace}</span>
+                    </c:if>
+                    <c:if test="${resume.resumeIntentYm!=undefined}">
+                        &nbsp;|&nbsp;<span>工作${resume.resumeIntentYm}年</span>
+                    </c:if>
+                </p>
+                <p>
+                    <c:if test="${resume.fields!=undefined}">
+                        <c:forEach items="${resume.fields}" varStatus="sss" var="f">
+                            <c:if test="${f.fieldType==2}">
+                                <span>${f.fieldName}</span>
+                            </c:if>
+                            <c:if test="${sss.index==5}">
+                                <c:set var="exitId" value="0"></c:set>
+                                <span>更多</span>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                </p>
                 <ul>
                     <li class="col-md-3"><a href=""><span>刷新简历</span></a></li>
                     <li class="col-md-3"><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html?resumId=${resume.resumeId}"><span>编辑简历</span></a></li>
@@ -137,7 +158,7 @@
             <div class="zp_index_cont_right_middle">
                 <p><i></i>隐私设置</p>
                 <ul>
-                    <li>
+                    <%--<li>
                         <span>社交名片:</span>
                         <div>
                             <select class="form-control">
@@ -148,16 +169,13 @@
                                 <option>5</option>
                             </select>
                         </div>
-                    </li>
+                    </li>--%>
                     <li>
                         <span>求职简历:</span>
                         <div>
-                            <select class="form-control">
-                                <option>开放简历</option>
-                                <option></option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" onchange="ysChange(this)">
+                                <option value="0">开放简历</option>
+                                <option value="1">隐藏简历</option>
                             </select>
                         </div>
                     </li>
@@ -218,9 +236,100 @@
     </div>
 </section>
 
-
-
-
-
 </body>
+<script>
+    var page;
+    function serchPostion() {
+        var aaa = $('#serchPostionButton').html();
+        $('#serchPostionButton').html('<div class="spinner">'+
+            '<div class="rect1"></div>'+
+            '<div class="rect2"></div>'+
+            '<div class="rect3"></div>'+
+            '<div class="rect4"></div>'+
+            '<div class="rect5"></div>'+
+            '</div>');
+        var serch = {};
+        if('${resume.resumeWorkspace}'){
+            serch.workspace = '${resume.resumeWorkspace}';
+        }
+        if('${resume.resumePosition}'){
+            serch.likeStr = '${resume.resumePosition}';
+        }
+        if(page){
+            serch.page = page;
+        }
+        $.ajax({
+            url:"${pageContext.request.contextPath}/Postion/selPostionIndexAjax.do",
+            data:serch,
+            dataType:"json",
+            success:function (data) {
+                for (var i=0;i<data.postionList.length;i++){
+                    var companyNature;//公司类别
+                    if(data.postionList[i].company.companyNature==1){
+                        companyNature = "国";
+                    }else if(data.postionList[i].company.companyNature==2){
+                        companyNature = "私";
+                    }else if(data.postionList[i].company.companyNature==3){
+                        companyNature = "外";
+                    }
+                    var salary;//薪资
+                    if(data.postionList[i].postionMm==-1){
+                        salary = '面议';
+                    }else if(data.postionList[i].postionMm==data.postionList[i].postionYm) {
+                        salary = ((data.postionList[i].postionMm*12/10000)+'').replace('.0','')+'万';
+                    }else{
+                        salary = ((data.postionList[i].postionMm*12/10000)+'').replace('.0','')+'万-'+((data.postionList[i].postionYm*12/10000)+'').replace('.0','')+'万';
+                    }
+                    var time;//发布时间
+                    var date = new Date(data.postionList[i].postionTime);
+                    time = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+                    var fields = '';//领域
+                    for(var j = 0;j<data.postionList[i].company.fields.length;j++){
+                        fields += data.postionList[i].company.fields[j].fieldName+"/";
+                    }
+                    var welfares = '';//福利
+                    for(var j = 0;j<data.postionList[i].company.welfares.length;j++){
+                        welfares += '<span>'+data.postionList[i].company.welfares[j].welfareName+"</span>";
+                    }
+
+                    $('#postionRs').append(
+                        '<li>'+
+                        '<i><b>'+companyNature+'</b></i>'+
+                        '<div class="zp_index_cont_left_zwtj_cont_left">'+
+                        '<h4>'+data.postionList[i].postionName+'</h4>'+
+                        '<p> <span>'+salary+'</span>&nbsp;&nbsp;|&nbsp;&nbsp;'+data.postionList[i].postionSpace+'&nbsp;&nbsp;|&nbsp;&nbsp;'+data.postionList[i].postionEducation+'及以上&nbsp;&nbsp;|&nbsp;&nbsp;'+data.postionList[i].postionExp+'</p>'+
+                        '<span>'+time+'</span>'+
+                        '</div>'+
+                        '<div class="zp_index_cont_left_zwtj_cont_right">'+
+                        '<p>'+data.postionList[i].company.companyName+'</p>'+
+                        '<p>'+fields+'</p>'+
+                        '<p class="zp_index_cont_bz">'+welfares+'</p>'+
+                        '</div>'+
+                        '</li>');
+
+                }
+                if(data.page==data.pages){
+                    $('#serchPostionButton').remove();
+                }else{
+                    page = data.page+1;
+                    $('#serchPostionButton').html(aaa);
+                }
+            }
+        });
+    }
+    function toSerch() {
+        if($('#zp_index_xxk').val()==''){
+            $('#zp_index_xxk').val($('#zp_index_xxk').attr('placeholder'));
+        }
+    }
+    function ysChange(ys) {
+        var dd = {resumeId:'${resume.resumeId}',resumeYm:ys.value};
+        $.ajax({
+            type:'post',
+            url:'${pageContext.request.contextPath}/Resume/updateResume.do',
+            contentType: "application/json",
+            data:JSON.stringify(dd)
+        });
+    }
+</script>
 </html>

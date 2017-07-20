@@ -1575,7 +1575,73 @@ obj_scjn.prototype.bindingSJ=function () {
     })
 
 };
+//公司收藏开始
+function obj_gssc(){
+    this.sc=''                  //公司收藏
+    this.kg=''                  //搜索框定时器开关
+}
+obj_gssc.prototype.bindingSJ=function (){
 
+    var This=this;
+    $('#pbqy').find('button').eq(0).on('click',function (){
+        $(this).css({'display':'none'})
+        $(this).siblings('input').css({"display":"inline-block"})
+        $('#pbqy').find('button').eq(1).css({"display":"inline-block"})
+        $('#sy').css({"display":"block"})
+    })
+    $('#pbqy').find('button').eq(1).on('click',function (){
+        $('#pbqy').find('button').eq(0).css({'display':'inline-block'})
+        $(this).siblings('input').css({"display":"none"})
+        $('#pbqy').find('button').eq(1).css({"display":"none"})
+        $('#sy').css({"display":"none"})
+    })
+
+    //模糊查询以及添加事件开始
+    $('#gs_ssk').on('keyup',function (){
+        clearTimeout(This.kg);
+        if($('#gs_ssk').val().length>=2){
+
+            This.kg=setTimeout(function (){
+                // 在这里发送AJAX
+                var val=$('#gs_ssk').val();
+                $.ajax({
+                    type:"post",    //提交方式
+                    async:true,  //是否异步
+                    data:{companyName:val},
+                    dataType:'json',
+                    url:path+'CompanyInfo/selByCompanyName',
+                    success:function (data){//data 就是数据 json
+                        //AJAX成功后执行的
+                        var str=''
+                        for(var i=0;i<data.plist.length;i++){
+                            str+='<li><span  data-id="'+data.plist[i].companyId+'">'+data.plist[i].companyName+'</span><a href="javascript:;" class="li_sc">o</a></li>'
+                        }
+                        $('#sy > ul').html(str);
+                        $('#sy > ul').find('li').on('click',function (){             //添加公司的事件
+                            $('#gs_ssk').val($(this).find('span').html());
+
+                            $('#pbqy').find('button').eq(2).css({"display":"inline-block"});
+                        })
+
+                    },error:function (){ //报错执行的
+                        alert('基本资料修改错误')
+                    }
+
+                })
+
+
+
+
+
+
+
+
+            },1000)
+        }
+    })
+    //提交添加开始
+
+}
 
 
 
@@ -1607,6 +1673,8 @@ $(function (){                              //入口函数
     var obj__scjn=new obj_scjn();           //擅长技能
     obj__scjn.init()
 
+    var obj__gssc=new obj_gssc();           //企业收藏开始
+    obj__gssc.bindingSJ();
 
 });
 

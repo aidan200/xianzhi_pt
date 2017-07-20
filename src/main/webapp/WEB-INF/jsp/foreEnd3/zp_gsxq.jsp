@@ -64,10 +64,12 @@
                         <select class="form-control" name="postionSpace">
                             <option value="">工作地点</option>
                             <c:forEach var="p2" items="${clist}">
+                                <c:if test="${p2.postionSpace!=null}">
                                 <option value="${p2.postionSpace}">${p2.postionSpace}</option>
+                                </c:if>
                             </c:forEach>
                         </select>
-
+                    
                     </div>
                     <div class="zp_gsxq_zpzw_left" style="width: 250px">
                         <input type="text"  name="postionName" class="form-control"placeholder="职位名称">
@@ -180,6 +182,7 @@
         }
     }
     function sel() {
+
         document.getElementById("infPage").value=1;
         document.getElementById("f1").submit();
     }

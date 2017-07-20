@@ -4,6 +4,7 @@ import com.xzlcPT.bean.XzJobExp;
 import com.xzlcPT.service.XzJobExpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,7 +33,7 @@ public class JobExpController extends BaseController{
     //添加工作经验
     @ResponseBody
     @RequestMapping("insertJobExp.do")
-    public Map addJobExp(XzJobExp jobExp){
+    public Map addJobExp(@RequestBody XzJobExp jobExp){
         Map<String,Object> map = new HashMap<>();
         int i = jobExpService.insertJobExp(jobExp);
         if(i==1){
@@ -45,7 +46,7 @@ public class JobExpController extends BaseController{
     //修改工作经验
     @ResponseBody
     @RequestMapping("uodateJobExp.do")
-    public Map updateJobExp(XzJobExp jobExp){
+    public Map updateJobExp(@RequestBody XzJobExp jobExp){
         Map<String,Object> map = new HashMap<>();
         int i = jobExpService.updateJobExp(jobExp);
         if(i==1){
