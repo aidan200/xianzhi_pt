@@ -138,7 +138,7 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         for (int i=0;i<dlist.size();i++){
           for (int j=0;j<slist.size();j++){
            if (dlist.get(i).getCompanyId()==slist.get(j).getCompanyId()){
-              dlist.get(i).setCompanyName("");
+               dlist.remove(i);
            }
           }
         }
