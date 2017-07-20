@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_jianli.css">
     <script>
         var path='${pageContext.request.contextPath}/';     //全局路径
-        var ID=1;                                          //ID
+        var ID='${param.resumId}';                                          //ID
         var memberId;
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_jianli.js"></script>
@@ -225,7 +225,8 @@
                                     <button type="button" class="btn btn-info">搜索公司</button>
                                     <button type="button" style="display: none" class="btn btn-info">取消</button>
                                     <input id="gs_ssk" type="text" style="display: none">
-                                    <button type="button" style="display: none" class="btn btn-info">确认</button>
+                                    <div id="gs_cont" style="display:none;"></div>
+                                    <button id="qr" type="button" style="display: none" class="btn btn-info">确认</button>
                                     <div id="sy">
                                         <ul>
 

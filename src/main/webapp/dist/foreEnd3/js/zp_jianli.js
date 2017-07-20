@@ -25,7 +25,7 @@ obj_yhxx.prototype.init=function (){
         async:true,  //是否异步
         url:path+'Resume/selResume.do',    //路径
         success:function (data){//data 就是数据 json
-            ID=data.resume.resumeId;                  //获取到ID
+
             memberId=data.resume.memberId;
             _self.name=data.resume.resumeName;         //姓名
             _self.gznf=data.resume.resumeWorkinglife; //工作年份
@@ -644,8 +644,8 @@ obj_zyyx.prototype.bindingSJ=function (){
             });
             $('.cd-popup').on('click', function(event){                    //返回按钮
                 if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
-                    event.preventDefault();
-                    $(this).removeClass('is-visible');
+                    // event.preventDefault();
+                    // $(this).removeClass('is-visible');
                 }
             });
             $(document).keyup(function(event){                            //键盘关闭
@@ -670,14 +670,14 @@ obj_zyyx.prototype.bindingSJ=function (){
             });
 
 
-            $('#jl_qwnx input').keyup(function (event){         //鼠标抬起事件
-                var aa_qwnx=$('#jl_qwnx').find('input').eq(0).val()*$('#jl_qwnx').find('input').eq(1).val(); //
-                $('#qwnx_cont').html(aa_qwnx/10000);       //期望年薪
-            })
-            $('#jl_mqnx input').keyup(function (event){         //鼠标抬起事件
-                var aa_qwnx=$('#jl_qwnx').find('input').eq(0).val()*$('#jl_qwnx').find('input').eq(1).val(); //
-                $('#qwnx_cont').html(aa_qwnx/10000);             //目前年薪
-            })
+            // $('#jl_qwnx input').keyup(function (event){         //鼠标抬起事件
+            //     var aa_qwnx=$('#jl_qwnx').find('input').eq(0).val()*$('#jl_qwnx').find('input').eq(1).val(); //
+            //     $('#qwnx_cont').html(aa_qwnx/10000);       //期望年薪
+            // })
+            // $('#jl_mqnx input').keyup(function (event){         //鼠标抬起事件
+            //     var aa_qwnx=$('#jl_qwnx').find('input').eq(0).val()*$('#jl_qwnx').find('input').eq(1).val(); //
+            //     $('#qwnx_cont').html(aa_qwnx/10000);             //目前年薪
+            // })
 
 
             $('.zp_jianli_zl_3').find('button').eq(1).on('click',function (){
@@ -851,9 +851,10 @@ obj_gzjl.prototype.bindingSJ=function (){
 
             })
             $('.zp_jianli_zl_4').find('button').eq(0).on('click',function (){   //修改事件
-
-                var gzjl=$(this).parent().parent();
+                var This=this;
+                var gzjl=$(This).parent().parent();
                 var obj_gzjl={
+                    resumeId:ID,
                     jobexpCompanyName:gzjl.find('input').eq(0).val(),         //公司名称
                     jobexpField:gzjl.find('input').eq(1).val(),               //公司行业
                     jobexpPostion:gzjl.find('input').eq(2).val(),             //职位名称
@@ -861,10 +862,30 @@ obj_gzjl.prototype.bindingSJ=function (){
                     jobexpSubordinate:gzjl.find('input').eq(4).val(),         //下属人数
                     jobexpBeginTime:gzjl.find('input').eq(5).val(),           //任职时间
                     jobexpEndTime:gzjl.find('input').eq(6).val(),             //离职时间
-                    jobexpDuty:gzjl.find('input').eq(7).val(),                //职责业绩
+                    jobexpDuty:gzjl.find('textarea').eq(0).val(),                //职责业绩
                     jobexpId:gzjl.attr('data-id')                             //工作经历ID
+
                 };
-                alert(obj_gzjl.jobexpId)
+                $.ajax({
+                    type:"post",    //提交方式
+                    async:true,  //是否异步
+                    contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                    data:JSON.stringify(obj_gzjl),        //转为JSON格式
+                    dataType:'text',                   //定义返回data类型
+                    url:path+'JobExp/updateJobExp.do',    //路径
+                    success:function (data){//data 就是数据 json
+                        $(This).parent().parent().prev().css({"display":"block"});
+                        $(This).parent().parent().remove();               //自杀
+                        $('#gzjl').siblings('div').remove();
+                        _self.init();
+
+
+
+                    },error:function (){ //报错执行的
+                        alert('基本资料修改错误')
+                    }
+
+                })
 
             })
 
@@ -923,6 +944,7 @@ obj_gzjl.prototype.bindingSJ=function (){
             //    在这里向后台提交表单
                 kg=true;
                 tj_kg=true;
+                alert('aaa')
 
 
             })
@@ -1589,16 +1611,35 @@ obj_gssc.prototype.bindingSJ=function (){
         $('#pbqy').find('button').eq(1).css({"display":"inline-block"})
         $('#sy').css({"display":"block"})
     })
-    $('#pbqy').find('button').eq(1).on('click',function (){
+    $('#pbqy').find('button').eq(1).on('click',function (){                 //这是取消按钮
         $('#pbqy').find('button').eq(0).css({'display':'inline-block'})
         $(this).siblings('input').css({"display":"none"})
         $('#pbqy').find('button').eq(1).css({"display":"none"})
         $('#sy').css({"display":"none"})
+        $('#qr').css({"display":"none"})
+        $('#sy > ul').html('');
+        $('#gs_ssk').val('').attr('data-id','')
     })
 
     //模糊查询以及添加事件开始
-    $('#gs_ssk').on('keyup',function (){
+    $('#gs_ssk').on('keyup',function (event){
         clearTimeout(This.kg);
+        function jtjp(){
+            $('#sy span').each(function (index,ele){                        //监听键盘
+                if($('#gs_ssk').val()==$(ele).html()){
+                    $('#pbqy').find('button').eq(2).css({"display":"inline-block"});
+                    $('#gs_ssk').val($(ele).html()).attr('data-id',$(ele).attr('data-id'));
+                    $('#sy > ul').html('')
+                }else{
+                    $('#gs_ssk').attr('data-id','');
+                    $('#pbqy').find('button').eq(2).css({"display":"none"});
+                }
+            });
+        }
+
+        if(event.which==8){
+             jtjp();
+        }
         if($('#gs_ssk').val().length>=2){
 
             This.kg=setTimeout(function (){
@@ -1607,7 +1648,7 @@ obj_gssc.prototype.bindingSJ=function (){
                 $.ajax({
                     type:"post",    //提交方式
                     async:true,  //是否异步
-                    data:{companyName:val},
+                    data:{companyName:val,resumeId:ID},
                     dataType:'json',
                     url:path+'CompanyInfo/selByCompanyName',
                     success:function (data){//data 就是数据 json
@@ -1618,10 +1659,14 @@ obj_gssc.prototype.bindingSJ=function (){
                         }
                         $('#sy > ul').html(str);
                         $('#sy > ul').find('li').on('click',function (){             //添加公司的事件
-                            $('#gs_ssk').val($(this).find('span').html());
-
+                            $('#gs_ssk').val($(this).find('span').html()).attr('data-id',$(this).find('span').attr('data-id'));
                             $('#pbqy').find('button').eq(2).css({"display":"inline-block"});
+                            $('#sy > ul').html('')
                         })
+
+                        jtjp()
+
+
 
                     },error:function (){ //报错执行的
                         alert('基本资料修改错误')
@@ -1630,16 +1675,35 @@ obj_gssc.prototype.bindingSJ=function (){
                 })
 
 
-
-
-
-
-
-
-            },1000)
+            },500)
+        }else{
+            $('#sy > ul').html('');     //清空
         }
     })
     //提交添加开始
+    $('#qr').on('click',function (){
+            var data={
+
+                resumeId:ID,
+                companyId:$('#gs_ssk').attr('data-id'),
+            }
+
+        $.ajax({
+            type:"post",    //提交方式
+            async:true,  //是否异步
+            contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+            data:JSON.stringify(data),        //转为JSON格式
+            dataType:'text',                   //定义返回data类型
+            url:path+'Shield/insertShield',    //路径
+            success:function (data){//data 就是数据 json
+                alert('aaa')
+            },error:function (){ //报错执行的
+                alert('基本资料修改错误')
+            }
+
+        })
+
+    })
 
 }
 
