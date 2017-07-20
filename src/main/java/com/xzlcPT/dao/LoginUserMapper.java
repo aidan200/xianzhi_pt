@@ -20,7 +20,8 @@ public interface LoginUserMapper {
     XzLogin loginNE(Map map);
     //按id和类型查询企业或个人信息
     XzLogin selLoginForMOrCById(Map map);
-
+    //按用户名和类型查询企业或个人信息
+    XzLogin selLoginForMOrCByName(Map map);
 
     //    后台
     //    查询登录表全部信息

@@ -66,6 +66,31 @@
         c.company_intro, c.company_scale, c.company_nature, c.licence, c.company_state, c.is_listing,
         c.domain, c.skill, c.financing
     </sql>
+    <select id="selLoginForMOrCByName" parameterType="Map" resultMap="CompanyOrMember">
+        select
+        <if test="usertype==0">
+            <include refid="userInfos"/>
+        </if>
+        <if test="usertype==1">
+            <include refid="companyInfos"/>
+        </if>
+        FROM
+        xz_login l
+        <if test="usertype==0">
+            ,xz_member m
+        </if>
+        <if test="usertype==1">
+            ,xz_company c
+        </if>
+        where l.delete_falt = 0
+        <if test="usertype==0">
+            and l.login_id = m.login_id
+        </if>
+        <if test="usertype==1">
+            and l.login_id = c.login_id
+        </if>
+        and l.login_count = #{loginCount,jdbcType=BIGINT}
+    </select>
     <select id="selLoginForMOrCById" parameterType="Map" resultMap="CompanyOrMember">
         select
         <if test="usertype==0">
