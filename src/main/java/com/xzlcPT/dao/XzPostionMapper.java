@@ -26,4 +26,6 @@ public interface XzPostionMapper {
     List<XzPostion> selectByCompanyId(Long companyId);
 
     List<XzPostion> selectByConditions(XzPostion record);
+
+    List<XzPostion> selectCityByComId(Long companyId);
 }
