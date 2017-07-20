@@ -4358,7 +4358,11 @@ input[type="button"].fileInputButton {
 }
 
 /*---------------------------------注册所有弹出框-----------------------------------*/
-
+.index_tan{
+    width: 100%;
+    height: 200px;
+    margin-top: 50px;
+}
 .allregister {
     display: block;
     text-transform: uppercase;
@@ -4409,6 +4413,7 @@ input[type="button"].fileInputButton {
     -webkit-transition-duration: 0.3s;
     -moz-transition-duration: 0.3s;
     transition-duration: 0.3s;
+    overflow: hidden;
 }
 
 .all_container p {

@@ -20,17 +20,6 @@
             width: 100%;
             box-shadow: none;
         }
-
-        .cd-popup-container {
-            height: 400px;
-            margin-top: 100px;
-            overflow: hidden;
-        }
-        .index_tan{
-            width: 100%;
-            height: 200px;
-            margin-top: 50px;
-        }
     </style>
     <!--轮播-->
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/lib/jquery/jquery.color.js"></script>
