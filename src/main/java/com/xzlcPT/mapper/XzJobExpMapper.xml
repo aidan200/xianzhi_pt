@@ -74,20 +74,31 @@
     delete from xz_job_exp
     where jobexp_id = #{jobexpId,jdbcType=BIGINT}
   </delete>
+  <delete id="deleteDomainByJobId" parameterType="java.lang.Long">
+    delete from xz_job_exp_domain
+    where job_exp_id = #{jobexpId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertJobDomain" parameterType="Map">
+    INSERT into xz_job_exp_domain (job_exp_id,field_id)
+    VALUES (#{jobexpId,jdbcType=BIGINT}, #{fieldId,jdbcType=BIGINT})
+  </insert>
   <insert id="insert" parameterType="com.xzlcPT.bean.XzJobExp">
-    insert into xz_job_exp (jobexp_id, resume_id, jobexp_company_name, 
-      jobexp_field, jobexp_postion, jobexp_workspace, 
-      jobexp_subordinate, jobexp_begin_time, jobexp_end_time, 
-      jobexp_duty, jobexp_dept, jobexp_company_scale, 
-      jobexp_company_type, jobexp_mm, jobexp_ym, 
-      create_time, delete_time, filed1, 
+    <selectKey keyProperty="jobexpId" resultType="long">
+      select LAST_INSERT_ID()
+    </selectKey>
+    insert into xz_job_exp (jobexp_id, resume_id, jobexp_company_name,
+      jobexp_field, jobexp_postion, jobexp_workspace,
+      jobexp_subordinate, jobexp_begin_time, jobexp_end_time,
+      jobexp_duty, jobexp_dept, jobexp_company_scale,
+      jobexp_company_type, jobexp_mm, jobexp_ym,
+      create_time, delete_time, filed1,
       filed2, filed3)
-    values (#{jobexpId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{jobexpCompanyName,jdbcType=VARCHAR}, 
-      #{jobexpField,jdbcType=VARCHAR}, #{jobexpPostion,jdbcType=VARCHAR}, #{jobexpWorkspace,jdbcType=VARCHAR}, 
-      #{jobexpSubordinate,jdbcType=INTEGER}, #{jobexpBeginTime,jdbcType=TIMESTAMP}, #{jobexpEndTime,jdbcType=TIMESTAMP}, 
-      #{jobexpDuty,jdbcType=VARCHAR}, #{jobexpDept,jdbcType=VARCHAR}, #{jobexpCompanyScale,jdbcType=VARCHAR}, 
-      #{jobexpCompanyType,jdbcType=VARCHAR}, #{jobexpMm,jdbcType=INTEGER}, #{jobexpYm,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, #{filed1,jdbcType=VARCHAR}, 
+    values (#{jobexpId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{jobexpCompanyName,jdbcType=VARCHAR},
+      #{jobexpField,jdbcType=VARCHAR}, #{jobexpPostion,jdbcType=VARCHAR}, #{jobexpWorkspace,jdbcType=VARCHAR},
+      #{jobexpSubordinate,jdbcType=INTEGER}, #{jobexpBeginTime,jdbcType=TIMESTAMP}, #{jobexpEndTime,jdbcType=TIMESTAMP},
+      #{jobexpDuty,jdbcType=VARCHAR}, #{jobexpDept,jdbcType=VARCHAR}, #{jobexpCompanyScale,jdbcType=VARCHAR},
+      #{jobexpCompanyType,jdbcType=VARCHAR}, #{jobexpMm,jdbcType=INTEGER}, #{jobexpYm,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, #{filed1,jdbcType=VARCHAR},
       #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzJobExp">

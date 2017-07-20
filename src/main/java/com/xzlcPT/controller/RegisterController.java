@@ -74,55 +74,47 @@ public class RegisterController extends BaseController {
     @RequestMapping("Register.do")
     public ModelAndView getRegister1(@Validated(XzLogin.Group.class) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
+        mv.addObject("xzLogin",xzLogin);
+        mv.addObject("state",2);
         if(!result.hasErrors()){
             //加密
             String strMd5 = MD5.md5(xzLogin.getLoginPassword());
             xzLogin.setLoginPassword(strMd5);
             xzLogin.setLoginActive(0);
-            int i = registerService.insertUser(xzLogin);
-            if(i==1){
-                int rs = 0;
-                if(xzLogin.getLoginType()==0){
-                    rs = loginUserService.addUserForMember(xzLogin);
-                }else{
-                    //企业用户跳转到注册第二步---企业信息
-                    XzCompany company = loginUserService.addUserForCompany(xzLogin);
-                    mv.setViewName("foreEnd3/registerc_1");
-                    mv.addObject("xzCompany",company);
-                    return mv;
-                }
-                if(rs==1){
-                    //第一步成功
-                    mv.addObject("state",2);
-                    mv.addObject("xzLogin",xzLogin);
+                //                发送激活邮件
+                try {
                     String information = "呵呵哒";
-                    //                发送激活邮件
-                    try {
-                        System.out.println("发邮件:" + xzLogin.getLoginEmail());
-                        long newTime = System.currentTimeMillis();
-                        String strMail = "?username=" + xzLogin.getLoginCount() + "&newTime=" + newTime;
-                        String user = "测试邮件:" + xzLogin.getLoginCount();
-                        String toMail = xzLogin.getLoginEmail();
-                        String email = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-                        EmailConf ec = new EmailConf("sina");
-                        MessageInfo mi = new MessageInfo("register");
-                        List<String> toMails =  new ArrayList<>();
-                        toMails.add(toMail);
-                        mi.setTo(toMails);
-                        mi.setMsg("<a href='" + email + "/XzRegister/activeCount.do" + strMail + "'>"+ email + "/XzRegister/activeCount.do" + strMail +"</a>：<b>" + user + "<br/>" + information + "</b>");
-                        MailUtilSSL.sslSend(mi,ec);
-                        mv.addObject("msg","发送成功巴拉巴拉");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        System.out.println("发送失败!");
-                        mv.addObject("msg","发送失败巴拉巴拉");
-                    }
-                }else{
-                    mv.addObject("msg","注册失败");
+                    System.out.println("发邮件:" + xzLogin.getLoginEmail());
+                    long newTime = System.currentTimeMillis();
+                    String strMail = "?username=" + xzLogin.getLoginCount() + "&newTime=" + newTime;
+                    String user = "测试邮件:" + xzLogin.getLoginCount();
+                    String toMail = xzLogin.getLoginEmail();
+                    String email = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+                    EmailConf ec = new EmailConf("sina");
+                    MessageInfo mi = new MessageInfo("register");
+                    List<String> toMails =  new ArrayList<>();
+                    toMails.add(toMail);
+                    mi.setTo(toMails);
+                    mi.setMsg("<a href='" + email + "/XzRegister/activeCount.do" + strMail + "'>"+ email + "/XzRegister/activeCount.do" + strMail +"</a>：<b>" + user + "<br/>" + information + "</b>");
+                    MailUtilSSL.sslSend(mi,ec);
+                    mv.addObject("msg","发送成功巴拉巴拉");
+                    /*  写到service中
+                    int i = registerService.insertUser(xzLogin);
+                    int rs = 0;
+                    if(xzLogin.getLoginType()==0){
+                        rs = loginUserService.addUserForMember(xzLogin);
+                    }else{
+                        //企业用户跳转到注册第二步---企业信息
+                        XzCompany company = loginUserService.addUserForCompany(xzLogin);
+                        mv.setViewName("foreEnd3/registerc_1");
+                        mv.addObject("xzCompany",company);
+                        return mv;
+                    }*/
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("发送失败!");
+                    mv.addObject("msg","发送失败巴拉巴拉");
                 }
-            }else{
-                mv.addObject("msg","注册失败");
-            }
         }
         return mv;
     }
