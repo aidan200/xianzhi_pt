@@ -85,7 +85,7 @@
                                  onKeyUp="value=value.replace(/(^\s*)|(\s*$)/g,'')"/>
                                 <span class="ru_s"style="font-size: 13px"><sf:errors path="loginEmail"/></span>
                             </div>
-                                <button class="r2_button" type="submit">下一步</button>
+                            <button class="r2_button" id="theFirstBtn">下一步</button>
                         </div>
                     </div>
                 </div>
@@ -106,6 +106,7 @@
             ${msg}
             <button onclick="remailgo()">前往邮箱完成验证</button>
             <button onclick="remailgoReplay()">重新发送验证邮件</button>
+                <span id="mailReMsg"></span>
         </div>
     </div>
 
@@ -114,10 +115,10 @@
             <div class="reu_over">
                 <div class="reu_b">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/success.png" alt="" class="reu_img3">
-                    <span>注册成功</span>
+                    <span>${msg}</span>
                 </div>
                 <button>进入官网首页</button>
-                <div class="reu_bo"><span id="test">3</span>秒后自动跳转</div>
+                <div class="reu_bo"><span id="test">5</span>秒后自动跳转</div>
             </div>
 
         </div>
@@ -176,8 +177,12 @@
     }
     function goSubMit() {
         var b = false;
-        alert(validatePass(b));
-        return validatePass(b);
+        //alert(validatePass(b));
+        var rs = validatePass(b);
+        if(rs){
+            $('#theFirstBtn').attr("disabled",true);
+        }
+        return rs;
     }
     function remailgoReplay() {
         console.log('${xzLogin.loginId}');
@@ -187,14 +192,12 @@
             data:{loginId:'${xzLogin.loginId}',usertype:${xzLogin.loginType}},
             dataType:'json',
             success:function (data) {
-                alert(data);
+                $('#mailReMsg').html(data.msg)
             }
         })
     }
     function remailgo() {
         var email = '${xzLogin.loginEmail}';
-        /*var remail = document.getElementById("remail");
-        var uurl = remail.innerText;*/
         var uurl = gotoEmail(email);
         if (uurl != "") {
             window.location.href = "http://"+uurl;

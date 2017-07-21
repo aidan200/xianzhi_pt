@@ -78,12 +78,6 @@ public class LoginUserServiceImpl implements LoginUserService {
                 XzResume resume = new XzResume();
                 resume.setMemberId(member.getMemberId());
                 resume.setResumeEmail(member.getMemberEmail());
-                resume.setResumeName("");
-                resume.setResumeSex(0);
-                resume.setResumeWorkspace("");
-                resume.setResumePosition("");
-                resume.setResumeMarriage("保密");
-                resume.setResumeCompletion(10);
                 resumeMapper.insert(resume);
             }
         }
@@ -91,19 +85,16 @@ public class LoginUserServiceImpl implements LoginUserService {
     }
 
     @Override
-    public XzCompany addUserForCompany(XzLogin xzLogin) {
+    public int addUserForCompany(XzLogin xzLogin) {
         //添加企业基本信息
         int i1 = registerMapper.insertUser(xzLogin);
-            if(i1==1){
+        if(i1==1){
             XzCompany company = new XzCompany();
             company.setLoginId(xzLogin.getLoginId());
             int i2 = companyMapper.addCompany(company);
-            if(i2==1){
-                return company;
-            }
-            return null;
+            return i2;
         }
-        return null;
+        return 0;
     }
 
     @Override

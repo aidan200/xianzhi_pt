@@ -21,6 +21,6 @@ public interface XzResumeService {
 
     PageBean<XzResume> selResumeByConditions(Integer page,Integer rows,Map map);
 
-    XzResume selectCompletionById(Long id);
+    //XzResume selectCompletionById(Long id);
 
 }
