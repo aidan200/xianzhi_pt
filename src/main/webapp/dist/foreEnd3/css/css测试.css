@@ -3401,7 +3401,7 @@ input[type="button"].fileInputButton {
 .pup_container {
     width: 100%;
     min-width: 1000px;
-    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
     height: auto;
     overflow: hidden;
 }
@@ -4998,4 +4998,18 @@ th {
     min-width: 1200px;
     height: 40px;
     background-color: rgba(134,134,134,0.54);
+}
+.nav_smallul{
+    float: left;
+    width: 600px;
+    margin-left: 150px;
+}
+.nav_smallul li{
+    float: left;
+}
+.nav_smallul li a{
+    display: inline-block;
+    padding: 9px;
+    margin-left: 20px;
+    color: #FFFFFF;
 }
