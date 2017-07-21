@@ -72,10 +72,6 @@ public class GoIndexController extends BaseController {
             }else{
                 //简历完善程度低
             }
-            //xzResumeService.updateCompletionById(resume.getResumeId());
-
-            //if(c.getDeclaredFields())
-
             mv.addObject("resume",resume);
         }else{
             mv.setViewName("foreEnd3/company_home");

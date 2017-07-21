@@ -16,17 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,7 +44,7 @@ public class RegisterController extends BaseController {
     private RegisterService registerService;
 
     @Autowired
-    private CompanyInfoService companyInfoService;
+    private XzCompanyService companyService;
 
     @Autowired
     private LoginUserService loginUserService;
@@ -109,6 +108,46 @@ public class RegisterController extends BaseController {
         }
         return mv;
     }
+
+    //企业信息完善
+    @RequestMapping("addCompanyByReg.do")
+    public ModelAndView addCompanyByReg(Long companyId, String companyName, MultipartFile file,HttpServletRequest request){
+        ModelAndView mv = new ModelAndView("foreEnd3/registerc_1");
+        mv.addObject("state",4);
+        if(file!=null){
+            String fileName = (file.getOriginalFilename());
+            System.out.println("开始");
+            String path = request.getSession().getServletContext().getRealPath("uploadImg");
+            String prefix=fileName.substring(fileName.lastIndexOf(".")+1);
+            fileName = new Date().getTime()+"."+prefix;
+            System.out.println(path);
+            File targetFile = new File(path, fileName);
+            if(!targetFile.exists()){
+                targetFile.mkdirs();
+            }
+            //保存
+            try {
+                file.transferTo(targetFile);
+                XzCompany company = new XzCompany();
+                company.setCompanyId(companyId);
+                company.setCompanyName(companyName);
+                company.setCompanyPicture(fileName);
+                int i = companyService.updateByPrimaryKeySelective(company);
+                if(i==1){
+                    mv.addObject("msg","保存企业信息成功");
+                }else{
+                    mv.addObject("msg","保存企业信息失败，请在企业信息中重新编辑");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                mv.addObject("msg","营业执照上传失败，请在企业信息中重新上传");
+            }
+            return mv;
+        }
+        return mv;
+    }
+
+
     //重新发送邮件
     @ResponseBody
     @RequestMapping("mailgoReplay.do")
@@ -237,7 +276,7 @@ public class RegisterController extends BaseController {
         XzCompany newCompanyInfo = new XzCompany();
         if (str != null && str != "") {
             System.out.println("公司名:" + str);
-            newCompanyInfo = companyInfoService.selectByCompany(str);
+            /*newCompanyInfo = companyService.selectByCompany(str);
             if (newCompanyInfo != null) {
                 System.out.println(newCompanyInfo.getCompanyName());
             }
@@ -247,7 +286,7 @@ public class RegisterController extends BaseController {
             } else {
                 map.put("selCompany", "ｘ 公司名已存在");
                 map.put("spanColor", "false");
-            }
+            }*/
         }
         return map;
     }
