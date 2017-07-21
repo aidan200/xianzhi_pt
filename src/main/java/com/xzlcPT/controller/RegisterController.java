@@ -114,6 +114,7 @@ public class RegisterController extends BaseController {
     public ModelAndView addCompanyByReg(Long companyId, String companyName, MultipartFile file,HttpServletRequest request){
         ModelAndView mv = new ModelAndView("foreEnd3/registerc_1");
         mv.addObject("state",4);
+        mv.addObject("xzLogin",new XzLogin());
         if(file!=null){
             String fileName = (file.getOriginalFilename());
             System.out.println("开始");
