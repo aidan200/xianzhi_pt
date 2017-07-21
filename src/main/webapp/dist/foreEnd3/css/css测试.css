@@ -3929,6 +3929,7 @@ input[type="button"].fileInputButton {
 
 .pop_allimg {
     text-align: center;
+
 }
 
 .pop_img {
@@ -4318,6 +4319,7 @@ input[type="button"].fileInputButton {
     width: 100%;
     margin-top: 10px;
     background-color: #ffffff;
+    margin-bottom: 50px;
 }
 
 /*-------点击显示--------*/
@@ -4544,7 +4546,7 @@ input[type="button"].fileInputButton {
 /*------------------------职位管理-----------------------*/
 .pom_top {
     width: 100%;
-    min-height: 550px;
+    min-height: 500px;
     background-color: #ffffff;
     overflow: hidden;
     height: 100%;
@@ -4602,15 +4604,19 @@ input[type="button"].fileInputButton {
     margin-bottom: 30px;
 }
 
+.pom_table > .table > tbody > tr > td {
+    line-height: 50px;
+}
+
 .pom_tr {
     background-color: #3D9CCC;
     color: #ffffff;
 }
-.pom_tr th{
+
+.pom_tr th {
     font-size: 13px;
     font-weight: normal;
 }
-
 
 .pom_s {
     margin: 0 5px;
@@ -4618,7 +4624,7 @@ input[type="button"].fileInputButton {
 
 .pom_h {
     height: 70px;
-    line-height: 50px;
+
 }
 
 .pom_bottom {
@@ -4646,8 +4652,14 @@ input[type="button"].fileInputButton {
     margin-top: 80px;
 }
 
-.pop_img2 {
+.pom_img2 {
     width: 150px;
     height: 150px;
     margin-top: 110px;
+}
+
+.pom_allimg {
+    text-align: center;
+    margin-bottom: 100px;
+
 }

@@ -90,9 +90,9 @@
                         </table>
                     </div>
                     <div class="comh_no2">
-                        <div class="pop_allimg">
+                        <div class="pom_allimg">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pom_img">
+                                 class="pom_img2">
                             <p>抱歉没有找到符合条件的职位</p>
                         </div>
                     </div>
@@ -134,9 +134,9 @@
                         </table>
                     </div>
                     <div class="comh_no2">
-                        <div class="pop_allimg">
+                        <div class="pom_allimg">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pom_img">
+                                 class="pom_img2">
                             <p>抱歉没有找到符合条件的职位</p>
                         </div>
                     </div>
@@ -316,9 +316,9 @@
 
                     </div>
                     <div class="comh_no2">
-                        <div class="pop_allimg">
+                        <div class="pom_allimg">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pop_img2">
+                                 class="pom_img2">
                             <p>抱歉没有找到符合条件的职位</p>
                         </div>
                     </div>
@@ -362,9 +362,9 @@
                                 </thead>
                             </table>
                         </div>
-                        <div class="pop_allimg">
+                        <div class="pom_allimg">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pop_img2">
+                                 class="pom_img2">
                             <p>抱歉没有找到符合条件的职位</p>
                         </div>
                     </div>
@@ -409,9 +409,9 @@
                     </div>
 
                     <div class="comh_no2">
-                        <div class="pop_allimg">
+                        <div class="pom_allimg">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pop_img2">
+                                 class="pom_img2">
                             <p>抱歉没有找到符合条件的职位</p>
                         </div>
                     </div>
@@ -458,9 +458,9 @@
                     </div>
 
                     <div class="comh_no2">
-                        <div class="pop_allimg">
+                        <div class="pom_allimg">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pop_img2">
+                                 class="pom_img2">
                             <p>抱歉没有找到符合条件的职位</p>
                         </div>
                     </div>
