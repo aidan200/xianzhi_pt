@@ -10,6 +10,7 @@
 <%@ page isELIgnored="false" %>
 
 <%@ taglib prefix="j" uri="/xianzhipt/jsonTag" %>
+<%@ taglib prefix="age" uri="/xianzhipt/ageTag"%>
 <html>
 <head>
     <title>Title</title>
@@ -26,5 +27,6 @@
         <input name="fields" value="555">
         <input type="submit">
     </form>
+    <age:getAge year="1987"/>
 </body>
 </html>
