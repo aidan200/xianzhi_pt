@@ -165,6 +165,7 @@
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="personnav.jsp"/>
 <div class="zp_lb_top">
     <div class="container zp_lb_ssk">
         <div class="zp_lb_ssk_left">

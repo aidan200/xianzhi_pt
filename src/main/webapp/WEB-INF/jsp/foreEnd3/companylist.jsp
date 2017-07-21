@@ -27,6 +27,8 @@
 <body>
 
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="personnav.jsp"/>
+<div style="clear: both"></div>
 <div id="companylist">
     <h4></h4>
     <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/v4.jpg');z-index:2"></div>

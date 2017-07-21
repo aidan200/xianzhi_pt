@@ -24,6 +24,7 @@
 <body style="background-color: #F0F0F0">
 
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="companynav.jsp"/>
 
 
 <div class="pup_container">

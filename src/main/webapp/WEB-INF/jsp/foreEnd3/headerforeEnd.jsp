@@ -58,24 +58,8 @@
         </div>
     </div>
 </nav>
-<nav class="nav_small">
-    <ul class="nav_smallul">
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/company_home.html">公司首页</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/publishposition.html">发职位</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/selectresume.html">找简历</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/position_management.html">职位管理</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/resume_manage.html">简历管理</a></li>
-    </ul>
-</nav>
-<nav class="nav_small">
-    <ul class="nav_smallul">
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/company_home.html">个人首页</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/publishposition.html">企业</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/selectresume.html">搜索职位</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/position_management.html">我的职位</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/resume_manage.html">简历</a></li>
-    </ul>
-</nav>
+
+
 <div class="allpop" role="alert">
     <div class="all_container">
         <div class="index_tan">

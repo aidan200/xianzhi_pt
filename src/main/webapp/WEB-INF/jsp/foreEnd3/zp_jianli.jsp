@@ -26,6 +26,7 @@
 <body>
 
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="personnav.jsp"/>
 <section class="container zp_jianli_cont">
     <div class="row">
         <div class="col-md-8 zp_jianli_cont_left">

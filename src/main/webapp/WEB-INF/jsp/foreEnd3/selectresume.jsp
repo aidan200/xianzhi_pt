@@ -19,6 +19,7 @@
 </head>
 <body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="companynav.jsp"/>
 <form action="${pageContext.request.contextPath}/Resume/selResumeByConditions">
 <div class="ses_top">
     <div class="container ses_select">
