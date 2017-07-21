@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzField;
 import com.xzlcPT.bean.XzResume;
+import com.xzlcPT.bean.XzResumeEducation;
 import com.xzlcPT.bean.XzResumeSkill;
 import com.xzlcPT.dao.XzFieldMapper;
 import com.xzlcPT.dao.XzResumeMapper;
@@ -72,10 +73,30 @@ public class XzResumeServiceImpl implements XzResumeService{
     }
 
     @Override
-    public PageBean<XzResume> selResumeByConditions(Integer page, Integer rows, Map map) {
+    public PageBean<XzResume> selectRcount(Integer page, Integer rows, Map map) {
         PageHelper.startPage(page,rows);
+        List<XzResume> rlist=resumeMapper.selectRcount(map);
+        PageBean<XzResume> pageBean=new PageBean<>(rlist);
+        List<XzResume> tlist=pageBean.getList();
+        List list=new ArrayList();
+        for (XzResume xzResume:rlist){
+            list.add(xzResume.getResumeId());
+        }
         List<XzResume> resumeList=resumeMapper.selResumeByConditions(map);
-        PageBean<XzResume> pageBean=new PageBean<>(resumeList);
+       List<XzResumeEducation> elist=new ArrayList<>();
+        for(int i=0;i<resumeList.size();i++){
+          if (resumeList.get(i).getXzResumeEducations().size()>1){
+              elist=resumeList.get(i).getXzResumeEducations().subList(0,1);
+              resumeList.get(i).setXzResumeEducations(elist);
+          }
+        }
+        for (int i=0;i<resumeList.size();i++){
+            List<XzResumeEducation> list1 =resumeList.get(i).getXzResumeEducations();
+            for (int j=0;j<list1.size();j++){
+                System.out.println("school:::::::::::::::::::::::::::"+list1.get(j).getEducationSchool()+j);
+            }
+        }
+        pageBean.setList(resumeList);
         return pageBean;
     }
 

@@ -66,7 +66,7 @@ public class ResumeController extends BaseController {
         map.put("fieldName",fieldName);
         map.put("educationLevel",educationLevel);
         System.out.println("111111111111111111111111111111111"+educationLevel);
-        PageBean<XzResume> pageBean=resumeService.selResumeByConditions(page,rows,map);
+        PageBean<XzResume> pageBean=resumeService.selectRcount(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
         mv.addObject("resumeList",resumeList);
         mv.addObject("page",pageBean.getPageNum());

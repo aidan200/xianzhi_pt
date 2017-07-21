@@ -56,7 +56,7 @@
                 </c:forEach>
                 <a class="link-more" href="javascript:;" style="display: block;">点击展开更多详情</a>
             </div>
-            <form id="f1" action="${pageContext.request.contextPath}/CompanyInfo/selectByConditions">
+            <form id="f1" action="${pageContext.request.contextPath}/CompanyInfo/selectByConditions.do">
             <div class="zp_gsxq_zpzw">
                 <h2>招聘职位<span>&nbsp;( 共${xzCompany.pcount}个 )</span></h2>
                 <div>

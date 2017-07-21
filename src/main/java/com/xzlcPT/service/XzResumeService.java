@@ -19,7 +19,7 @@ public interface XzResumeService {
 
     XzResume selResumeInformation(Long resumeId);
 
-    PageBean<XzResume> selResumeByConditions(Integer page,Integer rows,Map map);
+    PageBean<XzResume> selectRcount(Integer page,Integer rows,Map map);
 
     XzResume selectCompletionById(Long id);
 

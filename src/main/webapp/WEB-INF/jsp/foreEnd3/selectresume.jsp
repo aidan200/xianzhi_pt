@@ -10,6 +10,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="age" uri="/xianzhipt/ageTag" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -164,9 +165,9 @@
                 <h4>${r1.resumeName}</h4>
                 <div class="comh_in">
                     <span>${r1.resumeSex eq 0?'男':''}${r1.resumeSex eq 1?'女':''}</span>|
-                    <span><fmt:formatDate value="${r1.resumeBirth}" pattern="yy"/></span>|
+                    <span><age:getAge year="${r1.resumeBirth.year+1900}"/></span>|
                     <span>${r1.resumeWorkspace}</span>|
-                    <span>本科</span>|
+                    <span></span>|
                     <span>1年经验</span>
                 </div>
                 <div style="margin-top: 10px;margin-left: 10px;color: #fc6866">

@@ -239,7 +239,7 @@ public class CompanyInfoController {
         int b = loginUserService.updateLoginEnd(xzLogin);
         return b;
     }
-    @RequestMapping("selectAllJob")
+    @RequestMapping("selectAllJob.do")
     public ModelAndView selectAllJob(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "8") Integer rows, XzCompany xzCompany){
         ModelAndView mv =new ModelAndView("/foreEnd3/companylist");
         PageBean<XzCompany> pageBean=companyService.selectPcount(page, rows, xzCompany);
@@ -252,7 +252,7 @@ public class CompanyInfoController {
         mv.addObject("clist",clist);
         return mv;
     }
-    @RequestMapping("selectByDomain")
+    @RequestMapping("selectByDomain.do")
     public ModelAndView selectByDomain(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "8") Integer rows,XzCompany xzCompany, String[] fieldList){
         ModelAndView mv=new ModelAndView("/foreEnd3/test1");
             if (fieldList!=null){
@@ -275,7 +275,7 @@ public class CompanyInfoController {
             return mv;
     }
     @ResponseBody
-    @RequestMapping("selCompanyInf")
+    @RequestMapping("selCompanyInf.do")
     public ModelAndView selCompanyInf (@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,Long companyId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
         PageBean<XzPostion> pageBean=xzPostionService.selectByCompanyId(page,rows,companyId);
@@ -292,7 +292,7 @@ public class CompanyInfoController {
         return mv;
     }
     @ResponseBody
-    @RequestMapping("updateCompanyPic")
+    @RequestMapping("updateCompanyPic.do")
     public Map updateCompanyPic(@RequestBody XzCompany xzCompany){
        Map map=new HashMap();
         int i=companyService.updateCompanyPic(xzCompany);
@@ -300,7 +300,7 @@ public class CompanyInfoController {
         return map;
     }
     @ResponseBody
-    @RequestMapping("selectByConditions")
+    @RequestMapping("selectByConditions.do")
     public ModelAndView selectByConditions (@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,XzPostion xzPostion){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");
         PageBean<XzPostion> pageBean=xzPostionService.selectByConditions(page,rows,xzPostion);
@@ -318,7 +318,7 @@ public class CompanyInfoController {
         return mv;
     }
     @ResponseBody
-    @RequestMapping("selByCompanyName")
+    @RequestMapping("selByCompanyName.do")
     public Map selByCompanyName(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String companyName,Long resumeId){
     Map map=new HashMap();
     PageBean<XzCompany> PageBean=companyService.selByCompanyName(page,rows,companyName,resumeId);
