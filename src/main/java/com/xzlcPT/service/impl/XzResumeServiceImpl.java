@@ -63,6 +63,7 @@ public class XzResumeServiceImpl implements XzResumeService{
                 i = 0;
             }
         }
+        updateCompletionById(resume.getResumeId());
         return i;
     }
 
@@ -100,15 +101,15 @@ public class XzResumeServiceImpl implements XzResumeService{
         return pageBean;
     }
 
-    @Override
-    public XzResume selectCompletionById(Long id) {
-        System.out.println(id+"++++++++++++++++++++++");
+
+    //修改完成度
+    public XzResume updateCompletionById(Long id) {
+        //System.out.println(id+"++++++++++++++++++++++");
         XzResume resume = resumeMapper.selResumeInformation(id);
-        System.out.println("------------------------------------------------------------");
-        System.out.println(resume);
+        //System.out.println("------------------------------------------------------------");
+        //System.out.println(resume);
         Class c = XzResume.class;
         Field [] fs = c.getDeclaredFields();
-        List<Field> fields = new ArrayList<>();
         int count = 0;
         int size = 0;
         try {
@@ -120,27 +121,25 @@ public class XzResumeServiceImpl implements XzResumeService{
                         if(f.getType().equals(List.class)){
                             List ol = (List) f.get(resume);
                             if(ol!=null&&ol.size()!=0){
-                                System.out.println(f.getName()+"----"+ol.size());
+                               //System.out.println(f.getName()+"----"+ol.size());
                                 count++;
                             }
                         }else{
                             Object o = f.get(resume);
-                            if(o!=null){
-                                System.out.println(f.getName());
+                            if(o!=null&&!o.equals("")){
+                               //System.out.println(f.getName());
                                 count++;
                             }
                         }
-                        //fields.add(f);
                     }
                 }
             }
-            System.out.println("------------------------------------------------------------");
-            for (Field field : fields) {
-                System.out.println(field);
-
-            }
-            System.out.println(count+"====="+size);
-            System.out.println("------------------------------------------------------------");
+            //System.out.println("------------------------------------------------------------");
+            //System.out.println(count+"====="+size);
+            //System.out.println(new Double(Math.floor(count*1.0/size*100)).intValue());
+            resume.setResumeCompletion(new Double(Math.floor(count*1.0/size*100)).intValue());
+            resumeMapper.updateByPrimaryKeySelective(resume);
+            //System.out.println("------------------------------------------------------------");
         }catch (Exception e){
             e.printStackTrace();
         }

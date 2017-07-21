@@ -77,6 +77,9 @@ public class RegisterController extends BaseController {
     @RequestMapping("Register.do")
     public ModelAndView getRegisterMember(@Validated(XzLogin.Group.class) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
+        if(xzLogin.getLoginType()==1){
+            mv.setViewName("foreEnd3/registerc_1");
+        }
         mv.addObject("xzLogin",xzLogin);
         mv.addObject("state",1);
         if(!result.hasErrors()){
@@ -88,7 +91,12 @@ public class RegisterController extends BaseController {
                     String strMd5 = MD5.md5(xzLogin.getLoginPassword());
                     xzLogin.setLoginPassword(strMd5);
                     xzLogin.setLoginActive(0);
-                    int rs = loginUserService.addUserForMember(xzLogin);
+                    int rs = 0;
+                    if(xzLogin.getLoginType()==0){
+                        rs = loginUserService.addUserForMember(xzLogin);
+                    }else if(xzLogin.getLoginType()==1){
+                        rs = loginUserService.addUserForCompany(xzLogin);
+                    }
                     if(rs!=0){
                         mv.addObject("msg","注册成功，请到邮箱中激活账号");
                     }else{
@@ -135,6 +143,9 @@ public class RegisterController extends BaseController {
         XzLogin activeUser = selActiveUser(username);
         if (activeUser != null) {
             mv.addObject("xzLogin",activeUser);
+            if(activeUser.getLoginType()==1){
+                mv.setViewName("foreEnd3/registerc_1");
+            }
             long activeTime = System.currentTimeMillis() - Long.parseLong(newTime);
             System.out.println(activeTime);
             if (activeTime < 86400000) {
@@ -153,14 +164,19 @@ public class RegisterController extends BaseController {
                         mv.addObject("userLogin",loginUserService.selLoginForMOrCById(map));
                     }
                 } else {
+                    if(activeUser.getLoginType()==1){
+                        mv.addObject("state",4);
+                    }
                     mv.addObject("msg","已经激活无需重复激活");
                 }
 
             } else {
-                mv.addObject("msg", "邮件已超过24小时,请重新激活!");
+                mv.addObject("state",2);
+                mv.addObject("msg", "邮件已超过24小时,请重新发送邮件");
             }
+        }else{
+            mv.addObject("msg","激活路径有误请重新登陆激活");
         }
-        mv.addObject("msg","激活路径有误请重新登陆激活");
         return mv;
     }
 
