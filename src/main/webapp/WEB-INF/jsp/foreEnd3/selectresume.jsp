@@ -10,6 +10,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="age" uri="/xianzhipt/ageTag" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -164,13 +165,15 @@
                 <h4>${r1.resumeName}</h4>
                 <div class="comh_in">
                     <span>${r1.resumeSex eq 0?'男':''}${r1.resumeSex eq 1?'女':''}</span>|
-                    <span id="s1"><fmt:formatDate value="${r1.resumeBirth}" pattern="yyyy"/></span>|
-                    <span>沈阳</span>|
-                    <span>本科</span>|
-                    <span>1年经验</span>
+                    <span><age:getAge year="${r1.resumeBirth.year+1900}"/></span>|
+                    <span>${r1.resumeWorkspace}</span>|
+                    <c:forEach var="e1" items="${r1.xzResumeEducations}">
+                    <span>${e1.educationLevel}</span>|
+                    </c:forEach>
+                    <span><age:getAge year="${r1.resumeWorkinglife}"/>年经验</span>
                 </div>
                 <div style="margin-top: 10px;margin-left: 10px;color: #fc6866">
-                    <span>web前端</span>
+                    <span>${r1.resumeIntentPosition}</span>
                 </div>
             </div>
         </div>
@@ -265,14 +268,5 @@
         $("#" + id).remove();
     }
 </script>
-<script type="text/javascript">
-    $(function () {
-        var n=$("#s1").text();
-        var d=new Date();
-        var y=d.getYear();
-        $("#s1").text(parseInt(y)+1900-parseInt(n));
-    })
-</script>
-
 </body>
 </html>

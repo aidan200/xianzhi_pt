@@ -16,17 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,7 +44,7 @@ public class RegisterController extends BaseController {
     private RegisterService registerService;
 
     @Autowired
-    private CompanyInfoService companyInfoService;
+    private XzCompanyService companyService;
 
     @Autowired
     private LoginUserService loginUserService;
@@ -77,6 +76,9 @@ public class RegisterController extends BaseController {
     @RequestMapping("Register.do")
     public ModelAndView getRegisterMember(@Validated(XzLogin.Group.class) XzLogin xzLogin, BindingResult result, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("foreEnd3/registeru_1");
+        if(xzLogin.getLoginType()==1){
+            mv.setViewName("foreEnd3/registerc_1");
+        }
         mv.addObject("xzLogin",xzLogin);
         mv.addObject("state",1);
         if(!result.hasErrors()){
@@ -88,7 +90,12 @@ public class RegisterController extends BaseController {
                     String strMd5 = MD5.md5(xzLogin.getLoginPassword());
                     xzLogin.setLoginPassword(strMd5);
                     xzLogin.setLoginActive(0);
-                    int rs = loginUserService.addUserForMember(xzLogin);
+                    int rs = 0;
+                    if(xzLogin.getLoginType()==0){
+                        rs = loginUserService.addUserForMember(xzLogin);
+                    }else if(xzLogin.getLoginType()==1){
+                        rs = loginUserService.addUserForCompany(xzLogin);
+                    }
                     if(rs!=0){
                         mv.addObject("msg","注册成功，请到邮箱中激活账号");
                     }else{
@@ -101,6 +108,46 @@ public class RegisterController extends BaseController {
         }
         return mv;
     }
+
+    //企业信息完善
+    @RequestMapping("addCompanyByReg.do")
+    public ModelAndView addCompanyByReg(Long companyId, String companyName, MultipartFile file,HttpServletRequest request){
+        ModelAndView mv = new ModelAndView("foreEnd3/registerc_1");
+        mv.addObject("state",4);
+        if(file!=null){
+            String fileName = (file.getOriginalFilename());
+            System.out.println("开始");
+            String path = request.getSession().getServletContext().getRealPath("uploadImg");
+            String prefix=fileName.substring(fileName.lastIndexOf(".")+1);
+            fileName = new Date().getTime()+"."+prefix;
+            System.out.println(path);
+            File targetFile = new File(path, fileName);
+            if(!targetFile.exists()){
+                targetFile.mkdirs();
+            }
+            //保存
+            try {
+                file.transferTo(targetFile);
+                XzCompany company = new XzCompany();
+                company.setCompanyId(companyId);
+                company.setCompanyName(companyName);
+                company.setCompanyPicture(fileName);
+                int i = companyService.updateByPrimaryKeySelective(company);
+                if(i==1){
+                    mv.addObject("msg","保存企业信息成功");
+                }else{
+                    mv.addObject("msg","保存企业信息失败，请在企业信息中重新编辑");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                mv.addObject("msg","营业执照上传失败，请在企业信息中重新上传");
+            }
+            return mv;
+        }
+        return mv;
+    }
+
+
     //重新发送邮件
     @ResponseBody
     @RequestMapping("mailgoReplay.do")
@@ -135,6 +182,9 @@ public class RegisterController extends BaseController {
         XzLogin activeUser = selActiveUser(username);
         if (activeUser != null) {
             mv.addObject("xzLogin",activeUser);
+            if(activeUser.getLoginType()==1){
+                mv.setViewName("foreEnd3/registerc_1");
+            }
             long activeTime = System.currentTimeMillis() - Long.parseLong(newTime);
             System.out.println(activeTime);
             if (activeTime < 86400000) {
@@ -153,14 +203,19 @@ public class RegisterController extends BaseController {
                         mv.addObject("userLogin",loginUserService.selLoginForMOrCById(map));
                     }
                 } else {
+                    if(activeUser.getLoginType()==1){
+                        mv.addObject("state",4);
+                    }
                     mv.addObject("msg","已经激活无需重复激活");
                 }
 
             } else {
-                mv.addObject("msg", "邮件已超过24小时,请重新激活!");
+                mv.addObject("state",2);
+                mv.addObject("msg", "邮件已超过24小时,请重新发送邮件");
             }
+        }else{
+            mv.addObject("msg","激活路径有误请重新登陆激活");
         }
-        mv.addObject("msg","激活路径有误请重新登陆激活");
         return mv;
     }
 
@@ -221,7 +276,7 @@ public class RegisterController extends BaseController {
         XzCompany newCompanyInfo = new XzCompany();
         if (str != null && str != "") {
             System.out.println("公司名:" + str);
-            newCompanyInfo = companyInfoService.selectByCompany(str);
+            /*newCompanyInfo = companyService.selectByCompany(str);
             if (newCompanyInfo != null) {
                 System.out.println(newCompanyInfo.getCompanyName());
             }
@@ -231,7 +286,7 @@ public class RegisterController extends BaseController {
             } else {
                 map.put("selCompany", "ｘ 公司名已存在");
                 map.put("spanColor", "false");
-            }
+            }*/
         }
         return map;
     }

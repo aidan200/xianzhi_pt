@@ -131,6 +131,11 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     }
 
     @Override
+    public int updateByPrimaryKeySelective(XzCompany company) {
+        return companyMapper.updateByPrimaryKeySelective(company);
+    }
+
+    @Override
     public PageBean<XzCompany> selByCompanyName(Integer page, Integer rows, String companyName,Long resumeId) {
         PageHelper.startPage(page,rows);
         List<XzCompany> dlist = companyMapper.selByCompanyName(companyName);

@@ -21,7 +21,7 @@ public interface LoginUserService {
     //个人用户注册
     int addUserForMember(XzLogin xzLogin);
     //企业用户注册
-    XzCompany addUserForCompany(XzLogin xzLogin);
+    int addUserForCompany(XzLogin xzLogin);
     //按类型和id查询企业和个人信息
     XzLogin selLoginForMOrCById(Map map);
     //按类型和用户名查询企业和个人信息

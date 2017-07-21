@@ -26,4 +26,6 @@ public interface XzFieldMapper {
     int updateByPrimaryKeySelective(XzField record);
 
     int updateByPrimaryKey(XzField record);
+
+    XzField selectByFieldId(Map map);
 }

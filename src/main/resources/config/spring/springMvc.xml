@@ -41,36 +41,29 @@
     <mvc:resources mapping="/umeditor/**" location="/umeditor/"/>
     <mvc:resources mapping="/upload/**" location="/upload/"/>
     <mvc:resources mapping="/uploadImg/**" location="/uploadImg/"/>
-    <!--<mvc:interceptors>
+    <mvc:interceptors>
         <mvc:interceptor>
-            &lt;!&ndash; 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller &ndash;&gt;
+            <!--匹配的是url路径， 如果不配置或/**,将拦截所有的Controller-->
             <mvc:mapping path="/*/*.do*"/>
-            <mvc:mapping path="/UserInfo/*.do*" />
+            <mvc:mapping path="/zp_index"/>
+            <mvc:mapping path="/view/foreEnd3/*.html"/>
+            <!--<mvc:mapping path="/CompanyInfo/*.do*" />
             <mvc:mapping path="/Education/*.do*" />
-            <mvc:mapping path="/WorkE/*.do*" />
-            <mvc:mapping path="/ProjectE/*.do*" />
-            <mvc:mapping path="/*/interceptor*.do*" />
-            <mvc:mapping path="/XzVideo/*.do*" />
-            <mvc:mapping path="/Vip/*.do*" />
-
-            &lt;!&ndash; 需排除拦截的地址 &ndash;&gt;
+            <mvc:mapping path="/JobExp/*.do*" />
+            <mvc:mapping path="/Member/*.do*" />
+            <mvc:mapping path="/Postion/*.do*" />
+            <mvc:mapping path="/ProjectExp/*.do*" />
+            <mvc:mapping path="/Resume/*.do*" />-->
+            <!--需排除拦截的地址-->
+            <mvc:exclude-mapping path="/"/>
             <mvc:exclude-mapping path="/dist/**"/>
-            <mvc:exclude-mapping path="/XzLogin/**"/>
+            <mvc:exclude-mapping path="/XzLogin/Login.do"/>
             <mvc:exclude-mapping path="/XzRegister/**"/>
-            <mvc:exclude-mapping path="/XzVideo/goCourses.do"/>
-            <mvc:exclude-mapping path="/XzVideo/selectAllVideo.do"/>
-            <mvc:exclude-mapping path="/view/*/*Login.html"/>
-            <mvc:exclude-mapping path="/view/foreEnd/*.html"/>
-            <mvc:exclude-mapping path="/XzRecruit/selectRecruit.do"/>
-            <mvc:exclude-mapping path="/XzRecruit/goRecruitDetails.do"/>
-            <mvc:exclude-mapping path="/Blog/**"/>
-            <mvc:exclude-mapping path="/News/**"/>
-            <mvc:exclude-mapping path="/Event/**"/>
-            <mvc:exclude-mapping path="/Teacher/**"/>
-            <mvc:exclude-mapping path="/Discuss/selectDiscussAndReply.do"/>
-            <mvc:exclude-mapping path="/Resume/selectResumeAllIndex.do"/>
-            <bean class="com.Interceptor.CommonInterceptor"></bean>
+            <mvc:exclude-mapping path="/view/foreEnd3/registerc_1.html"/>
+            <mvc:exclude-mapping path="/view/foreEnd3/registeru_1.html"/>
+            <mvc:exclude-mapping path="/view/foreEnd3/login.html"/>
+            <bean class="com.Interceptor.ForeEndInterceptor"></bean>
         </mvc:interceptor>
-        &lt;!&ndash; 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 &ndash;&gt;
-    </mvc:interceptors>-->
+        <!--当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法-->
+    </mvc:interceptors>
 </beans>

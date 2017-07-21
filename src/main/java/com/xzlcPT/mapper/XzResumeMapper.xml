@@ -130,6 +130,7 @@
     </collection>
       <collection property="xzResumeSkills" ofType="com.xzlcPT.bean.XzResumeSkill">
         <id column="skill_id" jdbcType="BIGINT" property="skillId" />
+        <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
         <result column="skill_name" jdbcType="VARCHAR" property="skillName" />
         <result column="skill_type" jdbcType="INTEGER" property="skillType" />
         <result column="skill_value" jdbcType="VARCHAR" property="skillValue" />
@@ -157,7 +158,7 @@
     r.resume_field, r.resume_workspace, r.resume_mm, r.resume_ym,
     r.resume_position, r.resume_workinglife, r.resume_nationality, r.resume_state, r.resume_marriage,
     r.resume_flash, r.resume_intent_workspace, r.resume_intent_field, r.resume_intent_mm, r.resume_intent_ym,
-    r.resume_intent_position, r.resume_completion,r.filed1,r.filed2,
+    r.resume_intent_position, r.resume_completion,r.filed1,r.filed2,f.field_name,f.field_id,
     p.proexp_id, p.proexp_name, p.proexp_duty, p.proexp_begin_time, p.proexp_end_time,
     p.proexp_describe, p.proexp_postion,
     e.education_id, e.education_level, e.education_school, e.education_major, e.enrollment_date,
@@ -541,6 +542,25 @@
   <if test="educationLevel !=null and educationLevel !=''">
     AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
   </if>
-  GROUP BY r.resume_id
+
+   ORDER BY  e.graduate_date DESC
+
+  </select>
+  <select id="selectRcount" resultMap="ResumeInformation" parameterType="java.util.Map">
+    SELECT
+    r.resume_id
+    FROM xz_resume r LEFT JOIN
+    xz_resume_domain d ON r.resume_id = d.resume_id LEFT JOIN
+    xz_field f ON d.field_id = f.field_id LEFT JOIN
+    xz_resume_education e ON r.resume_id = e.resume_id LEFT JOIN
+    xz_job_exp j ON  r.resume_id = j.resume_id
+    WHERE 1=1
+    <if test="fieldName !=null and fieldName !=''">
+      AND f.field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="educationLevel !=null and educationLevel !=''">
+      AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
+    </if>
+    GROUP BY  r.resume_id
   </select>
 </mapper>
