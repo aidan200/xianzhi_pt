@@ -70,6 +70,16 @@ public class XzResumeServiceImpl implements XzResumeService{
     @Override
     public XzResume selResumeInformation(Long resumeId) {
        XzResume xzResume=resumeMapper.selResumeInformation(resumeId);
+        List<XzField> fieldList=xzResume.getFields();
+        Map map=new HashMap();
+        List<XzField> flist=new ArrayList<>();
+        for (int i=0;i<fieldList.size();i++){
+            Long fieldId=fieldList.get(i).getFieldId();
+            map.put("fieldId",fieldId);
+            XzField xzField=fieldMapper.selectByFieldId(map);
+            flist.add(xzField);
+        }
+        xzResume.setFields(flist);
         return xzResume;
     }
 

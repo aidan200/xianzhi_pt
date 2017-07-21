@@ -167,11 +167,13 @@
                     <span>${r1.resumeSex eq 0?'男':''}${r1.resumeSex eq 1?'女':''}</span>|
                     <span><age:getAge year="${r1.resumeBirth.year+1900}"/></span>|
                     <span>${r1.resumeWorkspace}</span>|
-                    <span></span>|
-                    <span>1年经验</span>
+                    <c:forEach var="e1" items="${r1.xzResumeEducations}">
+                    <span>${e1.educationLevel}</span>|
+                    </c:forEach>
+                    <span><age:getAge year="${r1.resumeWorkinglife}"/>年经验</span>
                 </div>
                 <div style="margin-top: 10px;margin-left: 10px;color: #fc6866">
-                    <span>web前端</span>
+                    <span>${r1.resumeIntentPosition}</span>
                 </div>
             </div>
         </div>

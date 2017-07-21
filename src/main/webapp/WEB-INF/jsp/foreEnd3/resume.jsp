@@ -89,7 +89,11 @@
                     <h4><span class="fa fa-map-signs"></span>职业意向</h4>
                     <div class="resume_two">
                         <div class="resume_every">
-                            期望行业：<span>${xzResume.resumeIntentField}</span>
+                            期望行业：<span>
+                            <c:forEach var="f1" items="${xzResume.fields}">
+                                ${f1.fieldName}/
+                            </c:forEach>
+                        </span>
                         </div>
                         <div class="resume_every">
                             期望地点：<span>${xzResume.resumeIntentWorkspace}</span>
