@@ -58,6 +58,7 @@
         </div>
     </div>
 </nav>
+<nav class="nav_small"></nav>
 <div class="allpop" role="alert">
     <div class="all_container">
         <div class="index_tan">

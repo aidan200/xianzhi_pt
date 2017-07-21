@@ -4030,7 +4030,7 @@ input[type="button"].fileInputButton {
 }
 
 .comh_left {
-    width: 470px;
+    width: 460px;
     height: auto;
     float: left;
     border-right: 1px dotted #cccccc;
@@ -4038,7 +4038,7 @@ input[type="button"].fileInputButton {
 
 .comh_test {
     float: left;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .comh_test h4 {
@@ -4057,9 +4057,9 @@ input[type="button"].fileInputButton {
 .comh_right {
     float: left;
     height: auto;
-    margin-left: 25px;
+    margin-left: 15px;
     margin-top: 20px;
-    width: 480px;
+    width: 470px;
 }
 
 .comh_rt span {
@@ -4990,4 +4990,12 @@ th {
     -webkit-transform: translate3d(0, -20px, 0) rotate(-270deg);
     transform: translate3d(0, -20px, 0) rotate(-270deg);
     transition-delay: 0.1s;
+}
+
+/*------------小导航------------*/
+.nav_small{
+    width: 100%;
+    min-width: 1200px;
+    height: 40px;
+    background-color: rgba(134,134,134,0.54);
 }
