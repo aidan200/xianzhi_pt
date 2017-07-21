@@ -1604,10 +1604,22 @@ function obj_zopj(){
 }
 obj_zopj.prototype.init=function (){
     var _self=this;
-    var data={cont:"我自我感觉良好你咋的？"};
-    _self.zopj=data.cont;               //自我评价
-    _self.bindingDOM();
-    _self.bindingSJ();
+    $.ajax({
+        type:"get",    //提交方式
+        async:true,  //是否异步
+        url:path+'Resume/selResume.do',
+        success:function (data){
+            _self.zopj=data.resume.filed1;               //自我评价
+            _self.bindingDOM();
+            _self.bindingSJ();
+        },error:function (){ //报错执行的
+            alert('错误的')
+        }
+    });
+
+
+
+
 };
 obj_zopj.prototype.bindingDOM=function (){
     var _self=this;
@@ -1654,10 +1666,19 @@ function obj_fjxx(){
 }
 obj_fjxx.prototype.init=function (){
     var _self=this;
-    var data={cont:"我自我感觉良好你23131231咋的？"};
-    _self.fjxx=data.cont;               //自我评价
-    _self.bindingDOM();
-    _self.bindingSJ();
+    $.ajax({
+        type:"get",    //提交方式
+        async:true,  //是否异步
+        url:path+'Resume/selResume.do',
+        success:function (data){
+            _self.fjxx=data.resume.filed2;               //自我评价
+            _self.bindingDOM();
+            _self.bindingSJ();
+        },error:function (){ //报错执行的
+            alert('错误的')
+        }
+    });
+
 };
 obj_fjxx.prototype.bindingDOM=function (){
     var _self=this;
@@ -2011,6 +2032,7 @@ obj_gssc.prototype.bindingSJ=function (){
 
 
 $(function (){                              //入口函数
+
     var obj__yhxx=new obj_yhxx();           //基本信息
     obj__yhxx.init();
 
