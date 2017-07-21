@@ -164,8 +164,8 @@
                 <h4>${r1.resumeName}</h4>
                 <div class="comh_in">
                     <span>${r1.resumeSex eq 0?'男':''}${r1.resumeSex eq 1?'女':''}</span>|
-                    <span id="s1"><fmt:formatDate value="${r1.resumeBirth}" pattern="yyyy"/></span>|
-                    <span>沈阳</span>|
+                    <span><fmt:formatDate value="${r1.resumeBirth}" pattern="yy"/></span>|
+                    <span>${r1.resumeWorkspace}</span>|
                     <span>本科</span>|
                     <span>1年经验</span>
                 </div>
@@ -265,14 +265,5 @@
         $("#" + id).remove();
     }
 </script>
-<script type="text/javascript">
-    $(function () {
-        var n=$("#s1").text();
-        var d=new Date();
-        var y=d.getYear();
-        $("#s1").text(parseInt(y)+1900-parseInt(n));
-    })
-</script>
-
 </body>
 </html>
