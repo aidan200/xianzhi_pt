@@ -162,7 +162,7 @@
             <div class="comh_test">
                 <h4>${r1.resumeName}</h4>
                 <div class="comh_in">
-                    <span>女</span>|
+                    <span></span>|
                     <span>28</span>|
                     <span>沈阳</span>|
                     <span>本科</span>|
