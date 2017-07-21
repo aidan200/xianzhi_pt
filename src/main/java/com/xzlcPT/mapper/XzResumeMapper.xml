@@ -96,7 +96,6 @@
     </collection>
     <collection property="jobExps" ofType="com.xzlcPT.bean.XzJobExp">
       <id column="jobexp_id" jdbcType="BIGINT" property="jobexpId" />
-      <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
       <result column="jobexp_company_name" jdbcType="VARCHAR" property="jobexpCompanyName" />
       <result column="jobexp_field" jdbcType="VARCHAR" property="jobexpField" />
       <result column="jobexp_postion" jdbcType="VARCHAR" property="jobexpPostion" />
@@ -113,7 +112,6 @@
     </collection>
     <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
       <id column="education_id" jdbcType="BIGINT" property="educationId" />
-      <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
       <result column="education_school" jdbcType="VARCHAR" property="educationSchool" />
       <result column="education_major" jdbcType="VARCHAR" property="educationMajor" />
@@ -123,7 +121,6 @@
     </collection>
     <collection property="xzProjectExps" ofType="com.xzlcPT.bean.XzProjectExp">
       <id column="proexp_id" jdbcType="BIGINT" property="proexpId" />
-      <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
       <result column="proexp_name" jdbcType="VARCHAR" property="proexpName" />
       <result column="proexp_duty" jdbcType="VARCHAR" property="proexpDuty" />
       <result column="proexp_begin_time" jdbcType="TIMESTAMP" property="proexpBeginTime" />
@@ -133,7 +130,6 @@
     </collection>
       <collection property="xzResumeSkills" ofType="com.xzlcPT.bean.XzResumeSkill">
         <id column="skill_id" jdbcType="BIGINT" property="skillId" />
-        <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
         <result column="skill_name" jdbcType="VARCHAR" property="skillName" />
         <result column="skill_type" jdbcType="INTEGER" property="skillType" />
         <result column="skill_value" jdbcType="VARCHAR" property="skillValue" />
@@ -540,7 +536,10 @@
   xz_job_exp j ON  r.resume_id = j.resume_id
   WHERE 1=1
   <if test="fieldName !=null and fieldName !=''">
-    AND  field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')
+    AND f.field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')
+  </if>
+  <if test="educationLevel !=null and educationLevel !=''">
+    AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
   </if>
   GROUP BY r.resume_id
   </select>

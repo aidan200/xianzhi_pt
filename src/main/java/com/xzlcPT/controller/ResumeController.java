@@ -64,6 +64,7 @@ public class ResumeController extends BaseController {
         ModelAndView mv=new ModelAndView("/foreEnd3/selectresume");
         Map  map=new HashMap();
         map.put("fieldName",fieldName);
+        map.put("educationLevel",educationLevel);
         System.out.println("111111111111111111111111111111111"+educationLevel);
         PageBean<XzResume> pageBean=resumeService.selResumeByConditions(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
