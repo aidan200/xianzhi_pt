@@ -1394,7 +1394,7 @@ ul,li{
     line-height:0;
     content:".";
 }
-#dqhy_1{
+.dqhy_1{
     display: inline-block;
     padding: 10px 10px 0;
     line-height: 26px;
@@ -1575,4 +1575,7 @@ clear: both;
     height: 0;
     line-height: 0;
     content: ".";
+}
+.jl_name:focus{
+    border-color: #FF4600;
 }

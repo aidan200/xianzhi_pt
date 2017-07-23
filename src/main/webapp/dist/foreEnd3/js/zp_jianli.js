@@ -42,10 +42,37 @@ obj_yhxx.prototype.init=function (){
 };
 obj_yhxx.prototype.bindingDOM=function (){ //个人信息绑定
     var _self=this;
-    _self.DOM.name.html(_self.name)           //名字
-    _self.DOM.zwmc.html(_self.zwmc)          //职位名称
-    _self.DOM.szgs.html(_self.szgs)         //所在公司
-    _self.DOM.dqcs.html(_self.dqcs)        //当前城市
+    if(_self.name!=''&&_self.name!=null){
+        _self.DOM.name.html(_self.name)           //名字
+        _self.DOM.name.css({"color":"#000"})
+    }else{
+        _self.DOM.name.html('你还没有填写姓名')           //名字
+        _self.DOM.name.css({"color":"red"})
+    }
+    if(_self.zwmc!=''&&_self.zwmc!=null){
+        _self.DOM.zwmc.html(_self.zwmc)          //职位名称
+         _self.DOM.zwmc.css({"color":"#000"})
+    }else{
+        _self.DOM.zwmc.html("你还没有填写职位名称")          //职位名称
+        _self.DOM.zwmc.css({"color":"red"})
+    }
+    if(_self.szgs!=''&&_self.szgs!=null){
+        _self.DOM.szgs.html(_self.szgs)         //所在公司
+        _self.DOM.szgs.css({"color":"#000"})
+    }else{
+        _self.DOM.szgs.html("你还没有填写所在公司")         //所在公司
+        _self.DOM.szgs.css({"color":"red"})
+    }
+    if(_self.dqcs!=''&&_self.dqcs!=null){
+        _self.DOM.dqcs.html(_self.dqcs)        //当前城市
+        _self.DOM.dqcs.css({"color":"#000"})
+    }else{
+        _self.DOM.dqcs.html("你还没有选择城市")        //当前城市
+        _self.DOM.dqcs.css({"color":"red"})
+    }
+
+
+
     var str='';
     for(var i=0;i<_self.dqhy.length;i++){
          if(_self.dqhy[i].fieldType=="2"){
@@ -85,7 +112,7 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</li>'
             str+='<li class="li_02" style="height:auto;">'
 
-            str+='当前行业 <div id="dqhy_1">'
+            str+='当前行业 <div id="dqhy_1" class="dqhy_1">'
             var qq=0;
             for(var i=0;i<_self.dqhy.length;i++){
                 if(_self.dqhy[i].fieldType=="2"&&_self.dqhy[i].fieldName!=''){
@@ -103,9 +130,7 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</div>'
             str+='<em class="em1"></em>'
             str+='</li>'
-            // str+='<li>'
-            // str+='工作年份&nbsp;&nbsp;&nbsp;<input id="jl_gznf" value="'+_self.gznf+'" type="text"  class="form-control zp_jianli_input3" style="margin-right: 27px" placeholder="请输入工作年份" >   职位名称&nbsp;&nbsp;&nbsp;<input id="jl_zwmc"  value="'+_self.zwmc+'" type="text" class="form-control zp_jianli_input3" placeholder="请输入职位名称" >'
-            // str+='</li>'
+
 
             str+='<li>'
             str+='工作年份&nbsp;&nbsp;&nbsp;'
@@ -121,7 +146,7 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</li>'
 
             str+='<li>'
-            str+='当前城市 <input id="jl_dqcs" value="'+_self.dqcs+'" type="text" class="form-control zp_jianli_input2" >'
+            str+='当前城市 <input id="jl_dqcs" value="'+_self.dqcs+'" type="text" class="form-control zp_jianli_input2" placeholder="请选择当前城市" >'
             str+='</li>'
             str+='</ul>'
             str+='<button type="button" id="zp_jianli_bd_1_qd" class="btn btn-primary ">确定</button>'
@@ -143,6 +168,13 @@ obj_yhxx.prototype.bindingSJ=function (){
                             "line-height":"10px",
                             "color":"#999999"
                         }).html('请选择当前行业')
+                        $('#dqhy_1').css({
+                            "border-color":"#FF4600"
+                        })
+                    }else{
+                        $('#dqhy_1').css({
+                            "border-color":"#cccccc"
+                        })
                     }
                 })
 
@@ -208,6 +240,13 @@ obj_yhxx.prototype.bindingSJ=function (){
                                         "color":"#999999"
                                     }).html('请选择当前行业')
                                 }
+                                $('#dqhy_1').css({
+                                    "border-color":"#FF4600"
+                                })
+                            }else{
+                                $('#dqhy_1').css({
+                                    "border-color":"#CCCCCC"
+                                })
                             }
 
                         });
@@ -226,6 +265,18 @@ obj_yhxx.prototype.bindingSJ=function (){
 
 
             })
+            function eee(obj){
+                $(obj).on('keyup',function (){
+                    if($(obj).val()==0){
+                        $(obj).addClass('jl_name');
+                    }else{
+                        $(obj).removeClass('jl_name')
+                    }
+                })
+            }
+            eee('#jl_name')
+            eee('#jl_zwmc')
+            eee('#jl_dqcs')
             //修改的事件
             $('.zp_jianli_zl_1').find('button').eq(1).on('click',function (){
                 kg=true;
@@ -233,7 +284,6 @@ obj_yhxx.prototype.bindingSJ=function (){
                 $('.zp_jianli_cont_left_top2_top').css({"display":"block"}); //显示
             })
             $('.zp_jianli_zl_1').find('button').eq(0).on('click',function (){
-
                 var xgk=$(this).parent().parent();               //修改框
                 var shuzu=[];                                   //存放的数组
                 var dqhy=$('#dqhy_1 > div > div');
@@ -244,29 +294,59 @@ obj_yhxx.prototype.bindingSJ=function (){
                     }
                 }
                 var resume={
-                    resumeName:$('#jl_name').val(),                 //姓名//性别
-                    resumeWorkinglife:$('#zp_select_time1').val(),          //工作年份
+                    resumeName:$('#jl_name').val(),                 //姓名                 已非空
+                    resumeWorkinglife:$('#zp_select_time1').val(),  //工作年份
                     fields:shuzu,                                   //当前行业
-                    resumePosition:$('#jl_zwmc').val(),              //当前职位
-                    resumeWorkspace:$('#jl_dqcs').val(),             //当前城市
+                    resumePosition:$('#jl_zwmc').val(),              //当前职位          已非空
+                    resumeWorkspace:$('#jl_dqcs').val(),             //当前城市         已非空
                     resumeId:ID
                 };
-                $.ajax({
-                    type:"post",    //提交方式
-                    async:true,  //是否异步
-                    data:JSON.stringify(resume),
-                    contentType: "application/json",
-                    url:path+'Resume/updateResume.do',    //路径
+                function www(){                 //验证信息
+                    if(resume.resumeName==''||resume.resumeName==null){ //姓名为空
+                        $('#jl_name').addClass('jl_name');
+                        $('#jl_name').focus()
+                        return
+                    }
+                    if(dqhy.length==0){
+                        $('#dqhy_1').css({
+                            "border-color":"#FF4600"
+                        })
 
-                    success:function (data){//data 就是数据 json
-                             xgk.remove();          //删除修改框
+                    }
+                    if(resume.resumePosition==''||resume.resumePosition==null){ //当前职位为空
+                        $('#jl_zwmc').addClass('jl_name');
+                        $('#jl_zwmc').focus()
+                        return
+                    }
+                    if(resume.resumeWorkspace==''||resume.resumeWorkspace==null){ //当前城市为空
+                        $('#jl_dqcs').addClass('jl_name');
+                        $('#jl_dqcs').focus();
+                        return
+                    }
+                }
+                www();
+
+
+                if(resume.resumeName!=''&&resume.resumeName!=null&&resume.resumePosition!=''&&resume.resumePosition!=null&&resume.resumeWorkspace!=''&&resume.resumeWorkspace!=null&&dqhy.length!=0){
+                    $(this).unbind('click')                           //清楚自身点击事件防止用户狂点
+                    $.ajax({
+                        type:"post",    //提交方式
+                        async:true,  //是否异步
+                        data:JSON.stringify(resume),
+                        contentType: "application/json",
+                        url:path+'Resume/updateResume.do',    //路径
+
+                        success:function (data){//data 就是数据 json
+                            xgk.remove();          //删除修改框
                             _self.init();           //重新加载数据
                             $('.zp_jianli_cont_left_top2_top').css({"display":"block"});//显示出来
 
-                    },error:function (){ //报错执行的
-                        alert('基本信息修改失败了')
-                    }
-                })
+                        },error:function (){ //报错执行的
+                            alert('基本信息修改失败了')
+                        }
+                    })
+                }
+
             })
         }else{
 
@@ -1654,7 +1734,13 @@ obj_zopj.prototype.bindingSJ=function (){
                 $('#zp_zopj').css({'display':"block"});
             })
             $('.zp_jianli_zl_8').find('button').eq(0).on('click',function (){
-                alert('ajax')
+                var aa = $(this).parent().siblings('textarea').val();
+                var resume={
+                    filed1:aa,
+                    resume:ID
+                }
+
+
             })
         }
     })
@@ -1712,7 +1798,11 @@ obj_fjxx.prototype.bindingSJ=function (){
                 $('#zp_fjxx').css({"display":"block"})
             })
             $('.zp_jianli_zl_9').find('button').eq(0).on('click',function (){
-                alert('ajax')
+                var aa = $(this).parent().siblings('textarea').val();
+                var resume={
+                    filed1:aa,
+                    resume:ID
+                }
             })
         }
     })
@@ -1757,14 +1847,15 @@ obj_scjn.prototype.bindingDOM=function (){
 };
 obj_scjn.prototype.bindingSJ=function () {
     var kg=true;
+    var _self=this;
     function jnzs(){                                 //技能自杀
         $('#jn_content > div > a').on('click',function (){
             $(this).parent().remove();              //自杀
         })
     }
-    var _self=this;
-    $('#jl_tjscjn').on('click',function (){
-        var _self=this;
+
+    $('#jl_tjscjn').unbind('click').on('click',function (){
+
         var str='';
         str+='<div class="zp_jianli_zl_10">'
         str+='<div class="scjn_top">'
@@ -1824,6 +1915,7 @@ obj_scjn.prototype.bindingSJ=function () {
                     othis.remove();
                     _self.init();
                     $('#scjn_cont').css({"display":"block"})
+                    $('.zp_jianli_xg').css({"display":"block"})
 
                 },error:function (){ //报错执行的
                     alert('擅长技能提交错误')
@@ -1837,7 +1929,7 @@ obj_scjn.prototype.bindingSJ=function () {
 
 
     })                      //添加按钮
-    $('#scjn').find('.zp_jianli_xg').on('click',function (){
+    $('#scjn').find('.zp_jianli_xg').unbind('click').on('click',function (){
         var str2='';
         if(kg){
             kg=false;
@@ -1885,12 +1977,18 @@ obj_scjn.prototype.bindingSJ=function () {
                 var othis= $(this).parent().parent();
                 var k=$('#jn_content > div > div');
                 var attr=[];
-                for(var i=0;i<k.length;i++){
-                    attr[i]={
-                        skillName:k.eq(i).text(),
-                        resumeId:ID,
+                if(k.length==0){
+                    //最后一个删除不掉
+
+                }else{
+                    for(var i=0;i<k.length;i++){
+                        attr[i]={
+                            skillName:k.eq(i).text(),
+                            resumeId:ID,
+                        }
                     }
                 }
+
                 $.ajax({
                     type:"post",    //提交方式
                     async:true,  //是否异步
