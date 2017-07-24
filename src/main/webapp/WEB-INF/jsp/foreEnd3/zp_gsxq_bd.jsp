@@ -27,6 +27,26 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_gsxq_bd.js"></script>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
     <style type="text/css">
+        /*.skilldivs{
+            display: inline-block;
+            padding: 10px 10px 0;
+            line-height: 26px;
+            border-radius: 3px;
+            border: 1px solid #CCCCCC;
+            width: 500px;
+        }
+        .skilldivs .em1 {
+            background: url(../img/zp_gsxq_hy_k.png);
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            background-repeat: no-repeat;
+            background-position: center;
+        }*/
+
         .skilldiv {
             border: 1px solid #E6E6E6;
             float: left;
@@ -69,62 +89,106 @@
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司名称：</label>
                 <div class="group-content valid-row relative">
-                    <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司"  value="${company.companyName}"><ul  class="ejob-list" style="display: none;"></ul>
-                    <span class="addtions text-muted">注：名称发布后不可以修改</span>
+                    <div class="_left">
+                        <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司"  value="${company.companyName}"><ul  class="ejob-list" style="display: none;"></ul>
+                    </div>
+                    <div class="_right">
+                        <span class="addtions text-muted">注：名称发布后不可以修改</span>
+                    </div>
+
+
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>领域：</label>
-                <div class="zp_gsxq_hy">
-                    <input id="gsxq_gshy" form="zp_gsxq_form" name="domain" type="text" placeholder="请输入或者选择领域">
-                    <em></em>
+                <div class="_left">
+                    <div class="zp_gsxq_hy">
+                        <div class='skilldiv'>
+                            <div>awadw</div>
+                            <a class="skillBtn">x</a>
+                            <input form='zp_gsxq_form' type="hidden" name="companySkill">
+                        </div>
+                        <em></em>
+                    </div>
                 </div>
+                <div class="_right"></div>
+
+
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>应用技术：</label>
-                <div class="group-content">
-                            <div class='skilldiv'>
-                                <div>awadw</div>
-                                <a class="skillBtn">x</a>
-                                <input form='zp_gsxq_form' type="hidden" name="companySkill">
-                            </div>
-                </div>
+                <div class="_left">
+                    <div class="group-content">
+                        <div class='skilldiv'>
+                            <div>awadw</div>
+                            <a class="skillBtn">x</a>
+                            <input form='zp_gsxq_form' type="hidden" name="companySkill">
+                        </div>
+                    </div>
                     <button class="addBut">+</button>
-                    <input />
+                    <input inpName="companySkill"/>
                     <span class="addtions text-muted">例：java，c++ 等</span>
+                </div>
+                <div class="_right"></div>
+
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司规模：</label>
-                <div class="zp_gsxq_gm">
-                    <select form="zp_gsxq_form" name="companyScale"  id="gsxq_gsgm">
-                        <option data-value="0">50-100人</option>
-                        <option data-value="1">100-500人</option>
-                        <option data-value="2">500-2000人</option>
-                        <option data-value="3">2000-1W人</option>
-                        <option data-value="4">1W人以上</option>
-                    </select>
+                <div class="_left">
+                    <div class="zp_gsxq_gm">
+                        <select form="zp_gsxq_form" name="companyScale"  id="gsxq_gsgm">
+                            <option data-value="0">50-100人</option>
+                            <option data-value="1">100-500人</option>
+                            <option data-value="2">500-2000人</option>
+                            <option data-value="3">2000-1W人</option>
+                            <option data-value="4">1W人以上</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="_right"></div>
+
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司待遇：</label>
-                <div class="group-content">
-                    <div class='skilldiv'>
-                        <div>awadw</div>
-                        <a class="skillBtn">x</a>
-                        <input form='zp_gsxq_form' type="hidden" name="companySkill">
+                <div class="_left">
+                    <div class="group-content">
+                        <div class='skilldiv'>
+                            <div>awadw</div>
+                            <a class="skillBtn">x</a>
+                            <input form='zp_gsxq_form' type="hidden" name="companyWelfare">
+                        </div>
+                    </div>
+                    <button class="addBut">+</button>
+                    <input inpName="companyWelfare"/>
+                    <span class="addtions text-muted">例：带薪年假，十三薪 等</span>
+                </div>
+                <div class="_right"></div>
+
+            </div>
+            <div class="control-group clearfix">
+                <label class="group-title"><span class="text-error">* </span>公司性质：</label>
+                <div class="_left">
+                    <div class="zp_gsxq_dz">
+                        <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
                     </div>
                 </div>
-                <button class="addBut">+</button>
-                <input />
-                <span class="addtions text-muted">例：电子商务， 等</span>
+                <div class="_right"></div>
+
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司地址：</label>
+
+
                 <div class="zp_gsxq_dz">
-                    <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
-                    <em></em>
-                    <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
-                    <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                    <div class="_left">
+                        <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
+                        <em></em>
+                        <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
+                        <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                    </div>
+                    <div class="_right"></div>
+
+
                 </div>
             </div>
             <div class="control-group clearfix">
@@ -206,93 +270,6 @@
     </div>
 </section>
 
-<div id='zp_gsxq_bd_tck'>
-    <div id='zp_gsxq_bd_tck_cont1'>
-        <div class="zp_gsxq_bd_tck_top">
-            <span class="pull-left">选择职能</span>
-            <a class="pull-right gb">x</a>
-        </div>
-        <div class="zp_gsxq_bd_tck_middle">
-            <p>通用职能</p>
-            <ul>
-                <li><a href="javascript:;">高级管理</a></li>
-                <li><a href="javascript:;">人力资源</a></li>
-                <li><a href="javascript:;">财务/审计/税务</a></li>
-                <li><a href="javascript:;">市场</a></li>
-            </ul>
-            <p>专业职能</p>
-            <ul>
-                <li><a href="javascript:;">IT/互联网/通信</a></li>
-                <li><a href="javascript:;">房地产/建筑/物业</a></li>
-                <li><a href="javascript:;">金融</a></li>
-                <li><a href="javascript:;">生产/制造</a></li>
-                <li><a href="javascript:;">质量管理/项目管理</a></li>
-                <li><a href="javascript:;">教育/咨询/翻译</a></li>
-                <li><a href="javascript:;">广告/传媒/设计</a></li>
-                <li><a href="javascript:;">市场</a></li>
-                <li><a href="javascript:;">高级管理</a></li>
-                <li><a href="javascript:;">人力资源</a></li>
-                <li><a href="javascript:;">财务/审计/税务</a></li>
-                <li><a href="javascript:;">市场</a></li>
-            </ul>
-        </div>
-        <div class="zp_gsxq_bd_tck_bottom">
-            <button type="button" class="btn btn-primary">取消</button>
-        </div>
-    </div>
-    <div id='zp_gsxq_bd_tck_cont2'>
-        <div class="zp_gsxq_bd_tck_top">
-            <span class="pull-left">选择职能</span>
-            <a class="pull-right gb">x</a>
-        </div>
-        <div class="zp_gsxq_bd_tck_cont2_cont">
-            <select name="pro" id="pro" onchange="change();">
-                <option value="">请选择省份</option>
-                <option value="1">北京市</option>
-                <option value="2">广东省</option>
-                <option value="3">山东省</option>
-                <option value="4">江苏省</option>
-                <option value="5">河南省</option>
-                <option value="6">上海市</option>
-                <option value="7">河北省</option>
-                <option value="8">浙江省</option>
-                <option value="9">香港特别行政区</option>
-                <option value="10">陕西省</option>
-                <option value="11">湖南省</option>
-                <option value="12">重庆市</option>
-                <option value="13">福建省</option>
-                <option value="14">天津市</option>
-                <option value="15">云南省</option>
-                <option value="16">四川省</option>
-                <option value="17">广西壮族自治区</option>
-                <option value="18">安徽省</option>
-                <option value="19">海南省</option>
-                <option value="20">江西省</option>
-                <option value="21">湖北省</option>
-                <option value="22">山西省</option>
-                <option value="23">辽宁省</option>
-                <option value="24">台湾省</option>
-                <option value="25">黑龙江</option>
-                <option value="26">内蒙古自治区</option>
-                <option value="27">澳门特别行政区</option>
-                <option value="28">贵州省</option>
-                <option value="29">甘肃省</option>
-                <option value="30">青海省</option>
-                <option value="31">新疆维吾尔自治区</option>
-                <option value="32">西藏区</option>
-                <option value="33">吉林省</option>
-                <option value="34">宁夏回族自治区</option>
-            </select>
-            <select name="city" id="city">
-                <option value="">请选择城市</option>
-            </select>
-        </div>
-        <div class="zp_gsxq_bd_tck_bottom">
-            <a class="btn btn-primary ">确定</a>
-            <button type="button" class="btn btn-primary">取消</button>
-        </div>
-    </div>
-</div>
 
 
 </body>

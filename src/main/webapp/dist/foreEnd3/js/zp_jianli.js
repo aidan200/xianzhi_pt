@@ -1133,7 +1133,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                 kg=false;
                 tj_kg=false;
                 var str='';
-                str+='<div class="zp_jianli_zl_4" data-id="'+_self.obj_s[index].gzjlID+'">'
+                str+='<div class="zp_jianli_zl_4 ttk_jl" data-id="'+_self.obj_s[index].gzjlID+'">'
                 str+='<ul>'
                 str+=' <li>'
                 str+=' 公司名称<input type="text" id="gsmc___" value="'+_self.obj_s[index].gsmc+'" class="gsmc_input form-control zp_jianli_zl_3_input1" placeholder="请输入公司名称">'
@@ -1187,6 +1187,9 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='</div>'
                 str+='</div>'
                 $('#gzjl').siblings('div').eq(index).after(str);  //插入
+                $('#ttk_jl').find('em').eq(0).on('click',function (){
+                    alert('aaa')
+                })
                 $('#gzjl').siblings('div').eq(index).css({"display":"none"});
 
 
