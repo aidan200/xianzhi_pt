@@ -13,13 +13,17 @@
 <html lang="zh-CN">
 <head>
     <title>简历编辑</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/jedate.css">
     <jsp:include page="distforeEnd.jsp"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_jianli.css">
+
     <script>
         var path='${pageContext.request.contextPath}/';     //全局路径
         var ID='${param.resumId}';                                          //ID
         var memberId;
+
     </script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_jianli.js"></script>
 
 </head>
@@ -27,6 +31,19 @@
 
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
+
+<input class="workinput wicon test1" id="test1" type="text" placeholder="请选择" readonly>
+<script>
+    jeDate({
+        dateCell:".test1",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format:"YYYY年MM月DD日 ",
+        isinitVal:true, //显示时间
+        isTime:true,
+        festival: true, //显示节日
+        minDate:"2014-09-19"
+    })
+</script>
+
 <section class="container zp_jianli_cont">
     <div class="row">
         <div class="col-md-8 zp_jianli_cont_left">
@@ -49,9 +66,9 @@
             <div class="zp_jianli_cont_left_top2">
                 <div class="zp_jianli_cont_left_top2_top jbxx2">
                     <div class="zp_jianli_cont_left_top2_left"></div>
-                    <h3><span id="grxx_name">谁谁谁</span> <a class="zp_jianli_xg" href="javascript:;"></a></h3>
-                    <p>职位名称：<span id="grxx_zwmc">前端开发</span>当前城市：<span id="grxx_dqcs">沈阳-苏家屯</span>工作年限：<span id="grxx_gznf">工作 3 年以上</span></p>
-                    <p>当前行业：<span id="grxx_dqhy">互联网/移动互联网/电子商务</span></p>
+                    <h3><span id="grxx_name"></span> <a class="zp_jianli_xg" href="javascript:;"></a></h3>
+                    <p>职位名称：<span id="grxx_zwmc"></span>当前城市：<span id="grxx_dqcs"></span>工作年限：<span id="grxx_gznf"></span></p>
+                    <p>当前行业：<span id="grxx_dqhy"></span></p>
                 </div>
 
             </div>
@@ -70,19 +87,19 @@
                             </div>
                             <div class="zp_jianli_cont_left_jbzl_csny">
 
-                                <div class="pull-left">&nbsp; 出生年份: &nbsp; <span id="csnf">1997年</span></div>
-                                <div class="pull-right">婚姻状况: &nbsp; <span id="hyzk">保密</span></div>
+                                <div class="pull-left">&nbsp; 出生年份: &nbsp; <span id="csnf"></span></div>
+                                <div class="pull-right">婚姻状况: &nbsp; <span id="hyzk"></span></div>
                             </div>
                             <div class="zp_jianli_cont_left_jbzl_sjh">
 
                                 <div>
-                                    手机：<span id="sj">	131****1497</span>
+                                    手机：<span id="sj">	</span>
                                 </div>
                                 <div>
-                                    邮箱：<span id="yx">11924****4@qq.com</span>
+                                    邮箱：<span id="yx"></span>
                                 </div>
                                 <div>
-                                    状态：<span id="zt">在职，看看新机会</span>
+                                    状态：<span id="zt"></span>
                                 </div>
 
                             </div>
