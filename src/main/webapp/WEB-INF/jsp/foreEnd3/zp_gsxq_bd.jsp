@@ -89,73 +89,106 @@
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司名称：</label>
                 <div class="group-content valid-row relative">
-                    <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司"  value="${company.companyName}"><ul  class="ejob-list" style="display: none;"></ul>
-                    <span class="addtions text-muted">注：名称发布后不可以修改</span>
+                    <div class="_left">
+                        <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司"  value="${company.companyName}"><ul  class="ejob-list" style="display: none;"></ul>
+                    </div>
+                    <div class="_right">
+                        <span class="addtions text-muted">注：名称发布后不可以修改</span>
+                    </div>
+
+
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>领域：</label>
-                <div class="zp_gsxq_hy">
+                <div class="_left">
+                    <div class="zp_gsxq_hy">
                         <div class='skilldiv'>
                             <div>awadw</div>
                             <a class="skillBtn">x</a>
                             <input form='zp_gsxq_form' type="hidden" name="companySkill">
                         </div>
                         <em></em>
+                    </div>
                 </div>
+                <div class="_right"></div>
+
 
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>应用技术：</label>
-                <div class="group-content">
-                            <div class='skilldiv'>
-                                <div>awadw</div>
-                                <a class="skillBtn">x</a>
-                                <input form='zp_gsxq_form' type="hidden" name="companySkill">
-                            </div>
-                </div>
+                <div class="_left">
+                    <div class="group-content">
+                        <div class='skilldiv'>
+                            <div>awadw</div>
+                            <a class="skillBtn">x</a>
+                            <input form='zp_gsxq_form' type="hidden" name="companySkill">
+                        </div>
+                    </div>
                     <button class="addBut">+</button>
                     <input inpName="companySkill"/>
                     <span class="addtions text-muted">例：java，c++ 等</span>
+                </div>
+                <div class="_right"></div>
+
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司规模：</label>
-                <div class="zp_gsxq_gm">
-                    <select form="zp_gsxq_form" name="companyScale"  id="gsxq_gsgm">
-                        <option data-value="0">50-100人</option>
-                        <option data-value="1">100-500人</option>
-                        <option data-value="2">500-2000人</option>
-                        <option data-value="3">2000-1W人</option>
-                        <option data-value="4">1W人以上</option>
-                    </select>
+                <div class="_left">
+                    <div class="zp_gsxq_gm">
+                        <select form="zp_gsxq_form" name="companyScale"  id="gsxq_gsgm">
+                            <option data-value="0">50-100人</option>
+                            <option data-value="1">100-500人</option>
+                            <option data-value="2">500-2000人</option>
+                            <option data-value="3">2000-1W人</option>
+                            <option data-value="4">1W人以上</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="_right"></div>
+
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司待遇：</label>
-                <div class="group-content">
-                    <div class='skilldiv'>
-                        <div>awadw</div>
-                        <a class="skillBtn">x</a>
-                        <input form='zp_gsxq_form' type="hidden" name="companyWelfare">
+                <div class="_left">
+                    <div class="group-content">
+                        <div class='skilldiv'>
+                            <div>awadw</div>
+                            <a class="skillBtn">x</a>
+                            <input form='zp_gsxq_form' type="hidden" name="companyWelfare">
+                        </div>
                     </div>
+                    <button class="addBut">+</button>
+                    <input inpName="companyWelfare"/>
+                    <span class="addtions text-muted">例：带薪年假，十三薪 等</span>
                 </div>
-                <button class="addBut">+</button>
-                <input inpName="companyWelfare"/>
-                <span class="addtions text-muted">例：带薪年假，十三薪 等</span>
+                <div class="_right"></div>
+
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司性质：</label>
-                <div class="zp_gsxq_dz">
-                    <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                <div class="_left">
+                    <div class="zp_gsxq_dz">
+                        <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                    </div>
                 </div>
+                <div class="_right"></div>
+
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司地址：</label>
+
+
                 <div class="zp_gsxq_dz">
-                    <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
-                    <em></em>
-                    <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
-                    <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                    <div class="_left">
+                        <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
+                        <em></em>
+                        <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
+                        <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                    </div>
+                    <div class="_right"></div>
+
+
                 </div>
             </div>
             <div class="control-group clearfix">
