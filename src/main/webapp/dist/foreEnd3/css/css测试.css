@@ -4514,21 +4514,36 @@ input[type="button"].fileInputButton {
 
 /*-------------气球-------------*/
 .allboolean {
-    width: 400px;
-    height: 500px;
+    width: 250px;
+    height: 550px;
     position: absolute;
-    top: 130px;
+    /*top: 130px;*/
+    bottom: 0;
+    left: 80px;
     display: none;
     background: url("../../../dist/foreEnd3/img/Boolean.png");
     background-size: cover;
     text-align: center;
     overflow: hidden;
     cursor: pointer;
+    z-index: 99999;
+    animation: myfirst 5s;
+    -webkit-animation: myfirst 5s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes myfirst {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: 200px
+    }
 }
 
 .b_out {
     position: relative;
-    width: 300px;
+    width: 240px;
     height: 400px;
     overflow: hidden;
     margin: 0 auto;
@@ -4536,17 +4551,17 @@ input[type="button"].fileInputButton {
 }
 
 .booleanin {
-    width: 200px;
+    width: 190px;
     height: auto;
     margin: 0 auto;
-    margin-top: 240px;
+    margin-top: 260px;
     color: #666666;
 }
 
 .bremove {
     position: absolute;
     bottom: 20px;
-    right: 50px;
+    right: 30px;
 }
 
 /*------------------------职位管理-----------------------*/
@@ -5017,6 +5032,7 @@ th {
     margin-left: 20px;
     color: #666;
 }
+
 @-webkit-keyframes hvr-wobble-bottom {
     16.65% {
         -webkit-transform: skew(-12deg);
@@ -5093,6 +5109,7 @@ th {
     -webkit-transform-origin: 100% 0;
     transform-origin: 100% 0;
 }
+
 .hvr-wobble-bottom:hover, .hvr-wobble-bottom:focus, .hvr-wobble-bottom:active {
     -webkit-animation-name: hvr-wobble-bottom;
     animation-name: hvr-wobble-bottom;

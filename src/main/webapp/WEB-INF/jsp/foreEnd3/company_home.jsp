@@ -21,7 +21,7 @@
         });
     </script>
 </head>
-<body style="background-color: #F0F0F0">
+<body style="background-color: #F0F0F0;position: relative">
 
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="companynav.jsp"/>
