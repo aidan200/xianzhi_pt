@@ -1187,22 +1187,22 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='</div>'
                 str+='</div>'
                 $('#gzjl').siblings('div').eq(index).after(str);  //插入
-                $('#ttk_jl').find('em').eq(0).on('click',function (){
+                $('#ttk_jl').find('.em3').eq(0).on('click',function (){
                     alert('aaa')
                 })
                 $('#gzjl').siblings('div').eq(index).css({"display":"none"});
 
 
-                $('.csny__ > em').on('click',function (){
-                    jeDate({
-                        dateCell:"#jl_cstime",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-                        format:"YYYY-MM-DD ",
-                        isinitVal:true, //显示时间
-                        isTime:true,
-                        festival: true, //显示节日
-                        minDate:"2014-09-19"
-                    })
-                })
+                // $('.csny__ > em').on('click',function (){
+                //     jeDate({
+                //         dateCell:"#jl_cstime",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                //         format:"YYYY-MM-DD ",
+                //         isinitVal:true, //显示时间
+                //         isTime:true,
+                //         festival: true, //显示节日
+                //         minDate:"2014-09-19"
+                //     })
+                // })
 
 
                 eee('#gsmc___')
