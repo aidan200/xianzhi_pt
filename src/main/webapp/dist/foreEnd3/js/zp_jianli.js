@@ -1168,10 +1168,10 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='<li>'
                 str+='任职时间'
                 str+='<div class="zp_jianli_zl_4_div2" style="position: relative" >'
-                str+='<input class="form-control rzsh_input " id="rzsj__" value="'+getNowFormatDate(_self.obj_s[index].rzsj)+'" placeholder="请输入任职时间"> '
-                str+='<em class="em3" style="left: 150px"></em>'
+                str+='<input class="form-control rzsh_input " id="rzsj__" value="'+getNowFormatDate(_self.obj_s[index].rzsj)+'" placeholder="请输入任职时间" readonly style="background-color: #ffffff"> '
+                str+='<em class="em3"  style="left: 150px"></em>'
                 str+='&nbsp;&nbsp;离职时间'
-                str+='<input class="form-control pull-right lzsj_input" id="lzsj__" value="'+getNowFormatDate(_self.obj_s[index].lzsj)+'"placeholder="请输入离职时间" > '
+                str+='<input class="form-control pull-right lzsj_input" id="lzsj__" value="'+getNowFormatDate(_self.obj_s[index].lzsj)+'"placeholder="请输入离职时间" readonly style="background-color: #ffffff"> '
                 str+='<em class="em3" ></em>'
                 str+='</div>'
                 str+='</li>'
@@ -1187,22 +1187,27 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='</div>'
                 str+='</div>'
                 $('#gzjl').siblings('div').eq(index).after(str);  //插入
-                $('#ttk_jl').find('.em3').eq(0).on('click',function (){
-                    alert('aaa')
+                $('.ttk_jl').find('.em3').eq(0).unbind().on('click',function (){
+                    jeDate({
+                        dateCell:"#rzsj__",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                        format:"YYYY-MM-DD ",
+                        isinitVal:true, //显示时间
+                        isTime:true,
+                        festival: true, //显示节日
+                        minDate:"2014-09-19"
+                    })
+                })
+                $('.ttk_jl').find('.em3').eq(1).unbind().on('click',function (){
+                    jeDate({
+                        dateCell:"#lzsj__",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                        format:"YYYY-MM-DD ",
+                        isinitVal:true, //显示时间
+                        isTime:true,
+                        festival: true, //显示节日
+                        minDate:"2014-09-19"
+                    })
                 })
                 $('#gzjl').siblings('div').eq(index).css({"display":"none"});
-
-
-                // $('.csny__ > em').on('click',function (){
-                //     jeDate({
-                //         dateCell:"#jl_cstime",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-                //         format:"YYYY-MM-DD ",
-                //         isinitVal:true, //显示时间
-                //         isTime:true,
-                //         festival: true, //显示节日
-                //         minDate:"2014-09-19"
-                //     })
-                // })
 
 
                 eee('#gsmc___')
@@ -1323,7 +1328,7 @@ obj_gzjl.prototype.bindingSJ=function (){
             tj_kg=false;
             kg=false;
             var str='';
-            str+='<div class="zp_jianli_zl_4">'
+            str+='<div class="zp_jianli_zl_4 ttk_jl">'
             str+='<ul>'
             str+=' <li>'
             str+=' 公司名称<input type="text"  class="form-control zp_jianli_zl_3_input1" placeholder="请输入公司名称">'
@@ -1343,17 +1348,19 @@ obj_gzjl.prototype.bindingSJ=function (){
             str+='<li>'
             str+='工作地点'
             str+='<div class="zp_jianli_zl_4_div1">'
-            str+='<input type="text"  class="form-control zp_jianli_zl_4_input2 "  placeholder="请输入工作地点">'
+            str+='<input type="text"  class="form-control zp_jianli_zl_4_input2 "  placeholder="请输入工作地点"  >'
             str+='下属人数'
             str+='<input type="text"  class="form-control zp_jianli_zl_4_input3"  placeholder="请输入下属人数">'
             str+='</div>'
             str+='</li>'
             str+='<li>'
             str+='任职时间'
-            str+='<div class="zp_jianli_zl_4_div2" >'
-            str+='<input class="form-control "  placeholder="请输入任职时间" > '
+            str+='<div class="zp_jianli_zl_4_div2" style="position: relative"  >'
+            str+='<input class="form-control "  id="rzsj__" placeholder="请输入任职时间"  readonly style="background-color: #ffffff"> '
+            str+='<em class="em3"  style="left: 150px"></em>'
             str+='&nbsp;&nbsp;离职时间'
-            str+='<input class="form-control pull-right"  placeholder="请输入离职时间" > '
+            str+='<input class="form-control pull-right" id="lzsj__"  placeholder="请输入离职时间"  readonly style="background-color: #ffffff"> '
+            str+='<em class="em3"></em>'
             str+='</div>'
             str+='</li>'
             str+='</ul>'
@@ -1368,6 +1375,27 @@ obj_gzjl.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $(this).before(str)//插入简历的空白模板
+            $('.ttk_jl').find('.em3').eq(0).unbind().on('click',function (){
+                jeDate({
+                    dateCell:"#rzsj__",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                    format:"YYYY-MM-DD ",
+                    isinitVal:true, //显示时间
+                    isTime:true,
+                    festival: true, //显示节日
+                    minDate:"2014-09-19"
+                })
+            })
+            $('.ttk_jl').find('.em3').eq(1).unbind().on('click',function (){
+                jeDate({
+                    dateCell:"#lzsj__",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                    format:"YYYY-MM-DD ",
+                    isinitVal:true, //显示时间
+                    isTime:true,
+                    festival: true, //显示节日
+                    minDate:"2014-09-19"
+                })
+            })
+
             aaa();              //判断行业是否为空
             bbb();              //加载全部的领域
 
@@ -1502,13 +1530,17 @@ obj_yyjl.prototype.bindingSJ=function (){
             if(kg){
                 tj_kg=false;
                 kg=false;
-                str+='<div class="zp_jianli_zl_5" data-id="'+_self.obj_s[index].jyjlID+'">'
+                str+='<div class="zp_jianli_zl_5" id="tck_jy" data-id="'+_self.obj_s[index].jyjlID+'">'
                     str+='<ul>'
                     str+='<li>学校名称 <input type="text" id="_xxmc_" value="'+_self.obj_s[index].xxmc+'" class="form-control " placeholder="请输入学校名称"></li>'
                     str+='<li>专业名称 <input type="text" id="_zymc_" value="'+_self.obj_s[index].zymc+'" class="form-control " placeholder="请输入专业名称"></li>'
 
-                    str+='<li>就读时间 <input type="text" id="_jdsj_" value="'+ getNowFormatDate(_self.obj_s[index].jdsj)+'" placeholder="请输入就读时间" class="form-control "></li>'
-                    str+='<li>毕业年份 <input type="text" id="_bynf_" value="'+getNowFormatDate(_self.obj_s[index].bynf)+'" placeholder="请输入毕业时间" class="form-control "></li>'
+                    str+='<li>就读时间 <input type="text" id="_jdsj_" value="'+ getNowFormatDate(_self.obj_s[index].jdsj)+'" placeholder="请输入就读时间" class="form-control "  readonly="" style="background-color: #ffffff">'
+                    str+='<em class="em3"></em>'
+                    str+='</li>'
+                    str+='<li>毕业年份 <input type="text" id="_bynf_" value="'+getNowFormatDate(_self.obj_s[index].bynf)+'" placeholder="请输入毕业时间" class="form-control "  readonly="" style="background-color: #ffffff">'
+                    str+='<em class="em3"></em>'
+                    str+='</li>'
                     str+='<li>'
                     str+='学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;&nbsp;&nbsp;&nbsp;'
                     str+='<select class="form-control">'
@@ -1533,6 +1565,27 @@ obj_yyjl.prototype.bindingSJ=function (){
                     str+='</div>'
                     str+='</div>'
                     $(this).parent().parent().after(str)     //插入进去
+                    $('#tck_jy').find('.em3').eq(0).unbind().on('click',function (){
+                        jeDate({
+                            dateCell:"#_jdsj_",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                            format:"YYYY-MM-DD ",
+                            isinitVal:true, //显示时间
+                            isTime:true,
+                            festival: true, //显示节日
+                            minDate:"2014-09-19"
+                        })
+                    })
+                    $('#tck_jy').find('.em3').eq(1).unbind().on('click',function (){
+                        jeDate({
+                            dateCell:"#_bynf_",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                            format:"YYYY-MM-DD ",
+                            isinitVal:true, //显示时间
+                            isTime:true,
+                            festival: true, //显示节日
+                            minDate:"2014-09-19"
+                        })
+                    })
+
                     eee('#_xxmc_');
                     eee('#_zymc_');
                     eee('#_jdsj_');
@@ -1628,12 +1681,16 @@ obj_yyjl.prototype.bindingSJ=function (){
         if(tj_kg){
             kg=false;
             tj_kg=false;
-            str+='<div class="zp_jianli_zl_5">'
+            str+='<div class="zp_jianli_zl_5" id="tck_jy">'
             str+='<ul>'
             str+='<li>学校名称 <input type="text"  class="form-control "></li>'
             str+='<li>专业名称 <input type="text"  class="form-control "></li>'
-            str+='<li>就读时间 <input type="text"  class="form-control "></li>'
-            str+='<li>毕业年份 <input type="text"  class="form-control "></li>'
+            str+='<li>就读时间 <input type="text" id="_jdsj_"  placeholder="请输入就读时间" class="form-control "  readonly="" style="background-color: #ffffff">'
+            str+='<em class="em3"></em>'
+            str+='</li>'
+            str+='<li>毕业年份 <input type="text" id="_bynf_"  placeholder="请输入毕业时间" class="form-control "  readonly="" style="background-color: #ffffff">'
+            str+='<em class="em3"></em>'
+            str+='</li>'
             str+='<li>'
             str+='学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;&nbsp;&nbsp;&nbsp;'
             str+='<select class="form-control">'
@@ -1654,6 +1711,27 @@ obj_yyjl.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $(this).before(str)
+            $('#tck_jy').find('.em3').eq(0).unbind().on('click',function (){
+                jeDate({
+                    dateCell:"#_jdsj_",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                    format:"YYYY-MM-DD ",
+                    isinitVal:true, //显示时间
+                    isTime:true,
+                    festival: true, //显示节日
+                    minDate:"2014-09-19"
+                })
+            })
+            $('#tck_jy').find('.em3').eq(1).unbind().on('click',function (){
+                jeDate({
+                    dateCell:"#_bynf_",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                    format:"YYYY-MM-DD ",
+                    isinitVal:true, //显示时间
+                    isTime:true,
+                    festival: true, //显示节日
+                    minDate:"2014-09-19"
+                })
+            })
+
             $('.zp_jianli_zl_5').find('button').eq(1).unbind('click').on('click',function (){
                 tj_kg=true;
                 kg=true;
@@ -1772,12 +1850,16 @@ obj_xmjy.prototype.bindingSJ=function (){
                 kg=false;
                 tj_kg=false;
                 var str='';
-                str+='<div class="zp_jianli_zl_7" data-id="'+_self.obj_s[index].xmjyID+'">'
+                str+='<div class="zp_jianli_zl_7" id="ttk_xmjy" data-id="'+_self.obj_s[index].xmjyID+'">'
                 str+='<ul>'
-                str+='<li>项目名称 <input type="text" value="'+_self.obj_s[index].xmmc+'"  class="form-control"></li>'
+                str+='<li>项目名称 <input type="text" value="'+_self.obj_s[index].xmmc+'"   class="form-control"></li>'
                 str+='<li>项目职务 <input type="text" value="'+_self.obj_s[index].xmzw+'" class="form-control"></li>'
-                str+='<li>开始时间 <input type="text" value="'+_self.obj_s[index].kssj+'" class="form-control"></li>'
-                str+='<li>结束时间 <input type="text" value="'+_self.obj_s[index].jssj+'" class="form-control"></li>'
+                str+='<li>开始时间 <input type="text" id="xmjy_kssj" value="'+_self.obj_s[index].kssj+'"  readonly="" style="background-color: #ffffff" class="form-control">'
+                str+='<em class="em3"></em>'
+                str+='</li>'
+                str+='<li>结束时间 <input type="text" id="xmjy_jssj" value="'+_self.obj_s[index].jssj+'"  readonly="" style="background-color: #ffffff" class="form-control">'
+                str+='<em class="em3"></em>'
+                str+='</li>'
                 str+=' </ul>'
                 str+='<div class="zp_zmjy">'
                 str+='<div>'
@@ -1803,6 +1885,26 @@ obj_xmjy.prototype.bindingSJ=function (){
                 str+='</div>'
                 str+=' </div>'
                 $(this).parent().after(str);//插入进去
+                $('#ttk_xmjy').find('.em3').eq(0).unbind().on('click',function (){
+                    jeDate({
+                        dateCell:"#xmjy_kssj",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                        format:"YYYY-MM-DD ",
+                        isinitVal:true, //显示时间
+                        isTime:true,
+                        festival: true, //显示节日
+                        minDate:"2014-09-19"
+                    })
+                })
+                $('#ttk_xmjy').find('.em3').eq(1).unbind().on('click',function (){
+                    jeDate({
+                        dateCell:"#xmjy_jssj",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                        format:"YYYY-MM-DD ",
+                        isinitVal:true, //显示时间
+                        isTime:true,
+                        festival: true, //显示节日
+                        minDate:"2014-09-19"
+                    })
+                })
                 $(this).parent().css({"display":"none"})
                 $('.zp_jianli_zl_7').find('button').eq(1).unbind('click').on('click',function (){    //取消按钮
                     kg=true;
@@ -1848,12 +1950,16 @@ obj_xmjy.prototype.bindingSJ=function (){
              tj_kg=false;
              kg=false;
              var str='';
-             str+='<div class="zp_jianli_zl_7">'
+             str+='<div class="zp_jianli_zl_7" id="ttk_xmjy">'
              str+='<ul>'
              str+='<li>项目名称 <input type="text"   class="form-control"></li>'
              str+='<li>项目职务 <input type="text"  class="form-control"></li>'
-             str+='<li>开始时间 <input type="text"  class="form-control"></li>'
-             str+='<li>结束时间 <input type="text"  class="form-control"></li>'
+             str+='<li>开始时间 <input type="text" id="xmjy_kssj"  readonly="" style="background-color: #ffffff" class="form-control">'
+             str+='<em class="em3"></em>'
+             str+='</li>'
+             str+='<li>结束时间 <input type="text" id="xmjy_jssj"  readonly="" style="background-color: #ffffff" class="form-control">'
+             str+='<em class="em3"></em>'
+             str+='</li>'
              str+=' </ul>'
              str+='<div class="zp_zmjy">'
              str+='<div>'
@@ -1879,6 +1985,26 @@ obj_xmjy.prototype.bindingSJ=function (){
              str+='</div>'
              str+=' </div>'
              $(this).before(str) //插入进去
+             $('#ttk_xmjy').find('.em3').eq(0).unbind().on('click',function (){
+                 jeDate({
+                     dateCell:"#xmjy_kssj",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                     format:"YYYY-MM-DD ",
+                     isinitVal:true, //显示时间
+                     isTime:true,
+                     festival: true, //显示节日
+                     minDate:"2014-09-19"
+                 })
+             })
+             $('#ttk_xmjy').find('.em3').eq(1).unbind().on('click',function (){
+                 jeDate({
+                     dateCell:"#xmjy_jssj",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                     format:"YYYY-MM-DD ",
+                     isinitVal:true, //显示时间
+                     isTime:true,
+                     festival: true, //显示节日
+                     minDate:"2014-09-19"
+                 })
+             })
              $('.zp_jianli_zl_7').find('button').eq(1).on('click',function (){
                  kg=true;
                  tj_kg=true;
@@ -2374,20 +2500,6 @@ obj_gssc.prototype.bindingSJ=function (){
 
 
 
-function eee(obj){
-    $(obj).on('keyup',function (){
-        if($(obj).val()==0){
-            $(obj).addClass('jl_name');
-        }else{
-            $(obj).removeClass('jl_name')
-        }
-    })
-}                               //改变颜色
-function trim(str) {                                //去掉首尾空格
-    return str.replace(/(^\s+)|(\s+$)/g, "");
-}
-
-
 $(function (){                              //入口函数
 
     var obj__yhxx=new obj_yhxx();           //基本信息
@@ -2422,8 +2534,18 @@ $(function (){                              //入口函数
 
 });
 
-
-
+function eee(obj){
+    $(obj).on('keyup',function (){
+        if($(obj).val()==0){
+            $(obj).addClass('jl_name');
+        }else{
+            $(obj).removeClass('jl_name')
+        }
+    })
+}                               //改变颜色
+function trim(str) {                                //去掉首尾空格
+    return str.replace(/(^\s+)|(\s+$)/g, "");
+}
 function getNowFormatDate(tt)       //时间格式函数
 {
     var day;
