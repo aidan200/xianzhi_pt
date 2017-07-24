@@ -28,7 +28,7 @@
 
 
 <div class="pup_container">
-    <div class="pop_allin">
+    <div class="comh_allin">
 
 
         <!--上面标签-->
@@ -43,7 +43,7 @@
             <li><a href="#pop_four" data-toggle="tab">面试快</a></li>
         </ul>
 
-        <div class="pop_top">
+        <div class="comh_alla">
             <div id="myTabContent" class="tab-content">
 
                 <!--新应聘简历-->
@@ -62,11 +62,11 @@
                                     <span>女</span>|
                                     <span>28</span>|
                                     <span>沈阳</span>|
-                                    <span>本科</span>|
-                                    <span>1年经验</span>
+                                    <span>本科</span>
                                 </div>
-                                <div style="margin-top: 10px;margin-left: 10px">
-                                    <span>web前端</span>
+                                <div style="margin-top: 10px" class="comh_in">
+                                    <span>web前端</span>|
+                                    <span>1年经验</span>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="comh_have">
                         <div class="comh_left">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
@@ -99,11 +98,11 @@
                                     <span>女</span>|
                                     <span>28</span>|
                                     <span>沈阳</span>|
-                                    <span>本科</span>|
-                                    <span>1年经验</span>
+                                    <span>本科</span>
                                 </div>
                                 <div style="margin-top: 10px;margin-left: 10px">
-                                    <span>web前端</span>
+                                    <span>web前端</span>|
+                                    <span>1年经验</span>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +124,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="comh_have">
                         <div class="comh_left">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
@@ -136,11 +134,11 @@
                                     <span>女</span>|
                                     <span>28</span>|
                                     <span>沈阳</span>|
-                                    <span>本科</span>|
-                                    <span>1年经验</span>
+                                    <span>本科</span>
                                 </div>
                                 <div style="margin-top: 10px;margin-left: 10px">
-                                    <span>web前端</span>
+                                    <span>web前端</span>|
+                                    <span>1年经验</span>
                                 </div>
                             </div>
                         </div>
@@ -224,6 +222,10 @@
                 </div>
 
             </div>
+        </div>
+        <div class="comh_rz">
+            <h4>近期投递简历次数</h4>
+
         </div>
 
     </div>

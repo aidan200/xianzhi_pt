@@ -3986,6 +3986,19 @@ input[type="button"].fileInputButton {
 }
 
 /*------------------------公司主页-----------------------*/
+.comh_allin {
+    /*width: 100%;*/
+    width: 1200px;
+    height: 100%;
+    margin: 40px auto;
+    overflow: hidden;
+}
+.comh_alla{
+    width: 900px;
+    float: left;
+    /*margin:  auto;*/
+}
+
 .comh_have {
     width: 100%;
     height: 160px;
@@ -4031,7 +4044,7 @@ input[type="button"].fileInputButton {
 }
 
 .comh_left {
-    width: 460px;
+    width: 360px;
     height: auto;
     float: left;
     border-right: 1px dotted #cccccc;
@@ -4046,11 +4059,6 @@ input[type="button"].fileInputButton {
     color: #3D9CCC;
 }
 
-/*.comh_in{*/
-/*width: 450px;*/
-/*height: auto;*/
-/*background-color: red;*/
-/*}*/
 .comh_in span {
     margin: 2px 10px;
 }
@@ -4070,6 +4078,74 @@ input[type="button"].fileInputButton {
 .comh_rt {
     margin-top: 10px;
 }
+
+.comh_rz{
+    width: 280px;
+    margin-left: 10px;
+    height: 500px;
+    background-color: rosybrown;
+    float: left;
+    margin-top: 20px;
+}
+
+.comh_rz h4{
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+
+
+/*------气球--------*/
+.allboolean {
+    width: 250px;
+    height: 550px;
+    position: absolute;
+    top: 750px;
+    left: 80px;
+    display: none;
+    background: url("../../../dist/foreEnd3/img/Boolean.png");
+    background-size: cover;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 99999;
+    animation: myfirst 5s;
+    -webkit-animation: myfirst 5s;
+    animation-fill-mode:forwards;
+}
+
+@keyframes myfirst {
+    0% {
+        top: 750px;
+    }
+    100% {
+        top: 130px
+    }
+}
+
+.b_out {
+    position: relative;
+    width: 240px;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.booleanin {
+    width: 190px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 260px;
+    color: #666666;
+}
+
+.bremove {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+}
+
 
 /*-------------------------搜索简历-----------------------------------*/
 .ses_top {
@@ -4513,57 +4589,8 @@ input[type="button"].fileInputButton {
     transform: translateY(0);
 }
 
-/*-------------气球-------------*/
-.allboolean {
-    width: 250px;
-    height: 550px;
-    position: absolute;
-    /*top: 130px;*/
-    bottom: -550px;
-    left: 80px;
-    display: none;
-    background: url("../../../dist/foreEnd3/img/Boolean.png");
-    background-size: cover;
-    text-align: center;
-    overflow: hidden;
-    cursor: pointer;
-    z-index: 99999;
-    animation: myfirst 5s;
-    -webkit-animation: myfirst 5s;
-    animation-fill-mode:forwards;
-}
 
-@keyframes myfirst {
-    0% {
-        bottom: -350px;
-    }
-    100% {
-        bottom: 200px
-    }
-}
 
-.b_out {
-    position: relative;
-    width: 240px;
-    height: 400px;
-    overflow: hidden;
-    margin: 0 auto;
-    margin-top: 100px;
-}
-
-.booleanin {
-    width: 190px;
-    height: auto;
-    margin: 0 auto;
-    margin-top: 260px;
-    color: #666666;
-}
-
-.bremove {
-    position: absolute;
-    bottom: 20px;
-    right: 30px;
-}
 
 /*------------------------职位管理-----------------------*/
 .pom_top {
@@ -5120,4 +5147,144 @@ th {
     animation-timing-function: ease-in-out;
     -webkit-animation-iteration-count: 1;
     animation-iteration-count: 1;
+}
+
+/*------------------------行业分类的弹出框------------------------*/
+.cd-popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    z-index: 999999;
+}
+
+.cd-popup.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.cd-popup-container {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 300px;
+    height: 300px;
+    background: #FFF;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-backface-visibility: hidden;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.cd-popup-container p {
+    padding: 1em 1em;
+}
+
+.cd-buttons {
+    margin-right: 50px;
+}
+
+.cd-popup-container .cd-buttons:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.cd-popup-container .cd-buttons li {
+    float: right;
+    width: 100px;
+    margin: 10px 10px 20px;
+}
+
+.cd-popup-container .cd-buttons a {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    color: #FFF;
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+}
+
+.cd-popup-container .cd-buttons li:first-child a {
+    background: #fc7169;
+    border-radius: 0 0 0 .15em;
+}
+
+.no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
+    background-color: #fc8982;
+}
+
+.cd-popup-container .cd-buttons li:last-child a {
+    background: #b6bece;
+    /*border-radius: 0 0 .25em 0;*/
+}
+
+.no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
+    background-color: #c5ccd8;
+}
+
+.cd-popup-container .cmd_close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.cd-popup-container .cmd_close::before, .cd-popup-container .cmd_close::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    width: 14px;
+    height: 3px;
+    background-color: #8f9cb5;
+}
+
+.cd-popup-container .cmd_close::before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 8px;
+}
+
+.cd-popup-container .cmd_close::after {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    right: 8px;
+}
+
+.is-visible .cd-popup-container {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
 }
