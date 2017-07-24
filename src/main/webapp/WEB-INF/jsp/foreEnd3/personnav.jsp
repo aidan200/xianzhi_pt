@@ -14,14 +14,16 @@
     <title>Title</title>
 </head>
 <body>
+
 <nav class="nav_small">
     <ul class="nav_smallul" style="margin-bottom: 0">
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_index.html">个人首页</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/companylist.html">企业</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_gslb.html">搜索职位</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/postposition.html">我的职位</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html">简历</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_index.html" class="hvr-wobble-bottom">个人首页</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/companylist.html" class="hvr-wobble-bottom">企业</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_gslb.html" class="hvr-wobble-bottom">搜索职位</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/postposition.html" class="hvr-wobble-bottom">我的职位</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html" class="hvr-wobble-bottom">简历</a></li>
     </ul>
 </nav>
+
 </body>
 </html>
