@@ -152,13 +152,13 @@ ul {
 .zp_gsxq_dz  em{
     position: absolute;
     top: 0px;
-    left: 315px;
+    left: 265px;
     width: 28px;
-    height: 50%;
+    height: 32px;
     overflow: hidden;
     z-index: 1;
     cursor: pointer;
-    background: url("../img/zp_gsxq_hy_k.png");
+    background: url(../img/zp_gsxq_hy_k.png);
     background-repeat: no-repeat;
     background-position: center;
 }
