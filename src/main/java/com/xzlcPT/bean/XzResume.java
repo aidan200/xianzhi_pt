@@ -345,6 +345,7 @@ public class XzResume {
         return xzResumeSkills;
     }
 
+
     @Override
     public String toString() {
         return "XzResume{" +

@@ -59,7 +59,6 @@
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <collection property="fields" ofType="com.xzlcPT.bean.XzField">
-      <id column="field_id" jdbcType="BIGINT" property="fieldId" />
       <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
       <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
     </collection>
@@ -92,12 +91,10 @@
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <collection property="fields" ofType="com.xzlcPT.bean.XzField">
-      <id column="field_id" jdbcType="BIGINT" property="fieldId" />
       <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
       <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
     </collection>
     <collection property="jobExps" ofType="com.xzlcPT.bean.XzJobExp">
-      <id column="jobexp_id" jdbcType="BIGINT" property="jobexpId" />
       <result column="jobexp_company_name" jdbcType="VARCHAR" property="jobexpCompanyName" />
       <result column="jobexp_field" jdbcType="VARCHAR" property="jobexpField" />
       <result column="jobexp_postion" jdbcType="VARCHAR" property="jobexpPostion" />
@@ -113,7 +110,6 @@
       <result column="jobexp_ym" jdbcType="INTEGER" property="jobexpYm" />
     </collection>
     <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
-      <id column="education_id" jdbcType="BIGINT" property="educationId" />
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
       <result column="education_school" jdbcType="VARCHAR" property="educationSchool" />
       <result column="education_major" jdbcType="VARCHAR" property="educationMajor" />
@@ -122,7 +118,6 @@
       <result column="education_entrance" jdbcType="INTEGER" property="educationEntrance" />
     </collection>
     <collection property="xzProjectExps" ofType="com.xzlcPT.bean.XzProjectExp">
-      <id column="proexp_id" jdbcType="BIGINT" property="proexpId" />
       <result column="proexp_name" jdbcType="VARCHAR" property="proexpName" />
       <result column="proexp_duty" jdbcType="VARCHAR" property="proexpDuty" />
       <result column="proexp_begin_time" jdbcType="TIMESTAMP" property="proexpBeginTime" />
@@ -131,7 +126,6 @@
       <result column="proexp_postion" jdbcType="VARCHAR" property="proexpPostion" />
     </collection>
       <collection property="xzResumeSkills" ofType="com.xzlcPT.bean.XzResumeSkill">
-        <id column="skill_id" jdbcType="BIGINT" property="skillId" />
         <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
         <result column="skill_name" jdbcType="VARCHAR" property="skillName" />
         <result column="skill_type" jdbcType="INTEGER" property="skillType" />
@@ -544,8 +538,11 @@
   <if test="educationLevel !=null and educationLevel !=''">
     AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
   </if>
+  <if test="resumePosition !=null and resumePosition!=''">
+    AND r.resume_position = #{resumePosition,jdbcType=VARCHAR}
+  </if>
 
-   ORDER BY  e.graduate_date DESC
+   ORDER BY  e.graduate_date,j.jobexp_end_time DESC
 
   </select>
   <select id="selectRcount" resultMap="ResumeInformation" parameterType="java.util.Map">
