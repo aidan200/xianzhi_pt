@@ -419,6 +419,13 @@ cpjx.prototype.bindingSJ=function (){
 };
 
 function gsdz(){                    //公司地址
+    this.x;
+    this.y;
+    this.local;
+    this.map;
+    this.address;
+    this.city;
+
     this.gsdz={}
 }
 gsdz.prototype.init=function (){
@@ -529,8 +536,43 @@ gsdz.prototype.bindingSJ=function (){
 
 
 $(function (){
-    var ojbxx=new jbxx();           //公司基本信息
-    ojbxx.init();
+    $('.skillBtn').on('click',function () {
+        $(this).parent().remove();
+    })
+    $('.addBut').next().hide();
+    $('.addBut').next().blur(function () {
+        addVal($(this).prev().prev(),$(this).val(),$(this).attr("inpName"));
+        $(this).hide();
+        $(this).val("");
+        $('.skillBtn').on('click',function () {
+            $(this).parent().remove();
+        })
+    })
+    $('.addBut').next().keyup(function (e) {
+        if(e.keyCode==13){
+            $(this).blur();
+        }
+    });
+    function addVal(nodeBox,val,name) {
+        if(val!=undefined&&val!=""){
+            var nodes = nodeBox.html();
+            nodeBox.html(nodes+"<div class='skilldiv'>"+
+                "<div>"+val+"</div>"+
+                "<a class='skillBtn'>x</a>"+
+                "<input type='hidden' form='zp_gsxq_form' name='"+name+"' value='"+val+"'>"+
+                "</div>");
+        }
+    }
+    $('.addBut').on('click',function () {
+        $(this).next().show();
+        $(this).next().focus();
+    })
+
+
+
+
+    //var ojbxx=new jbxx();           //公司基本信息
+    //ojbxx.init();
 
     var ogsdz=new gsdz();           //公司地址
     ogsdz.bindingSJ();

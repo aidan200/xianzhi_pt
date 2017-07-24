@@ -48,12 +48,13 @@ public class CompanyInfoController {
         //companyService.addCompany(company);
         return mv;
     }
-
+    //按公司id查询公司详情
     @RequestMapping("selCompanyInfo.do")
-    public ModelAndView selCompanyInfo(){
-        ModelAndView mv = new ModelAndView();
-        XzCompany c = companyInfoService.selCompanyInfo(2L);
-        System.out.println(c);
+    public ModelAndView selCompanyInfo(Long companyId){
+        ModelAndView mv = new ModelAndView("foreEnd3/zp_gsxq_bd");
+        XzCompany xzCompany = companyService.selCompanyInf(companyId);
+        System.out.println(xzCompany);
+        mv.addObject("company",xzCompany);
         return mv;
     }
 

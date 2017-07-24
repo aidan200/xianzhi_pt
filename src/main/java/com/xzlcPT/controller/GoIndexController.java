@@ -33,7 +33,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes("userLogin")
+@SessionAttributes({"userLogin","resumeId"})
 public class GoIndexController extends BaseController {
 
     @Autowired
@@ -72,6 +72,7 @@ public class GoIndexController extends BaseController {
             }else{
                 //简历完善程度低
             }
+            mv.addObject("resumeId",resume.getResumeId());
             mv.addObject("resume",resume);
         }else{
             mv.setViewName("foreEnd3/company_home");

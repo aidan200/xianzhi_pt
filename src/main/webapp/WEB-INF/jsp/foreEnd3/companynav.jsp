@@ -16,11 +16,11 @@
 <body>
 <nav class="nav_small">
     <ul class="nav_smallul" style="margin-bottom: 0">
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/company_home.html">公司首页</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/publishposition.html">发职位</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/selectresume.html">找简历</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/position_management.html">职位管理</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/resume_manage.html">简历管理</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/company_home.html" class="hvr-wobble-bottom">公司首页</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/publishposition.html" class="hvr-wobble-bottom">发职位</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/selectresume.html" class="hvr-wobble-bottom">找简历</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/position_management.html" class="hvr-wobble-bottom">职位管理</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/resume_manage.html" class="hvr-wobble-bottom">简历管理</a></li>
     </ul>
 </nav>
 </body>
