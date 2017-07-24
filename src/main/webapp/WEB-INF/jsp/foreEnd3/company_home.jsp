@@ -62,7 +62,7 @@
                                 <div class="comh_in">
                                     <span>女</span>|
                                     <span>28</span>|
-                                    <span>沈阳</span>|
+                                    <span>呼和浩特</span>|
                                     <span>本科</span>
                                 </div>
                                 <div style="margin-top: 10px" class="comh_in">
@@ -89,78 +89,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="comh_have">
-                        <div class="comh_left">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                 class="comh_head">
-                            <div class="comh_test">
-                                <h4>金泰妍</h4>
-                                <div class="comh_in">
-                                    <span>女</span>|
-                                    <span>28</span>|
-                                    <span>沈阳</span>|
-                                    <span>本科</span>
-                                </div>
-                                <div style="margin-top: 10px;margin-left: 10px">
-                                    <span>web前端</span>|
-                                    <span>1年经验</span>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="comh_right">
-                            <div class="comh_rt">
-                                <span>2015-至今</span>|
-                                <span>阿里巴巴有限公司</span>|
-                                <span>资深产品经理</span>
-                            </div>
-                            <div class="comh_rt">
-                                <span>2007-2011</span>|
-                                <span>复旦大学</span>|
-                                <span>信息管理与信息系统</span>|
-                                <span>本科</span>
-                            </div>
-                            <div style="margin-top: 15px;margin-right: 10px;float: right;color: #a8a8a8">
-                                <span><span>4</span>个小时前</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comh_have">
-                        <div class="comh_left">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                 class="comh_head">
-                            <div class="comh_test">
-                                <h4>金泰妍</h4>
-                                <div class="comh_in">
-                                    <span>女</span>|
-                                    <span>28</span>|
-                                    <span>沈阳</span>|
-                                    <span>本科</span>
-                                </div>
-                                <div style="margin-top: 10px;margin-left: 10px">
-                                    <span>web前端</span>|
-                                    <span>1年经验</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="comh_right">
-                            <div class="comh_rt">
-                                <span>2015-至今</span>|
-                                <span>阿里巴巴有限公司</span>|
-                                <span>资深产品经理</span>
-                            </div>
-                            <div class="comh_rt">
-                                <span>2007-2011</span>|
-                                <span>复旦大学</span>|
-                                <span>信息管理与信息系统</span>|
-                                <span>本科</span>
-                            </div>
-                            <div style="margin-top: 15px;margin-right: 10px;float: right;color: #a8a8a8">
-                                <span><span>4</span>个小时前</span>
-                            </div>
-                        </div>
-                    </div>
 
 
                     <div class="zp_botv">
@@ -233,14 +162,14 @@
     </div>
 </div>
 
-<div class="allboolean">
-    <div class="b_out">
-        <div class="booleanin">
-            请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
-            <span class="fa fa-remove bremove"></span>
-        </div>
-    </div>
-</div>
+<%--<div class="allboolean">--%>
+    <%--<div class="b_out">--%>
+        <%--<div class="booleanin">--%>
+            <%--请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈--%>
+            <%--<span class="fa fa-remove bremove"></span>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
 
 <div id="index_bb">
