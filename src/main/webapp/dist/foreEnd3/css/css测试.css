@@ -4518,7 +4518,7 @@ input[type="button"].fileInputButton {
     height: 550px;
     position: absolute;
     /*top: 130px;*/
-    bottom: 0;
+    bottom: -550px;
     left: 80px;
     display: none;
     background: url("../../../dist/foreEnd3/img/Boolean.png");
@@ -4534,7 +4534,7 @@ input[type="button"].fileInputButton {
 
 @keyframes myfirst {
     0% {
-        bottom: 0;
+        bottom: -350px;
     }
     100% {
         bottom: 200px
