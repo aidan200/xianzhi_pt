@@ -119,6 +119,12 @@
                 <span class="addtions text-muted">例：带薪年假，十三薪 等</span>
             </div>
             <div class="control-group clearfix">
+                <label class="group-title"><span class="text-error">* </span>公司性质：</label>
+                <div class="zp_gsxq_dz">
+                    <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                </div>
+            </div>
+            <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司地址：</label>
                 <div class="zp_gsxq_dz">
                     <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
@@ -294,7 +300,37 @@
     </div>
 </div>
 
+<%--<div class="cd-popup" id="qwhy__" role="alert">
+    <div class="cd-popup-container">
+        <p>选择行业分类</p>
 
+        <div class="comd_table">
+            <table class="table table-bordered comd_in">
+                <tbody id="hy_tab">
+                <tr>
+                    <td class="comd_td"><span>互联网·游戏·软件</span></td>
+                    <td>
+                        <ul class="comd_ul">
+                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网/电子商务" />互联网/移动互联网/电子商务</li>
+                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏" />网络游戏</li>
+                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件" />计算机软件</li>
+                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成" />IT服务/系统集成</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+        <ul class="cd-buttons">
+            <li><a href="#0" id="xz_qwhy_qd">确定</a></li>
+            <li><a href="#0" id="xz_qwhy_qx" class="cd-popup-close">取消</a></li>
+        </ul>
+        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
+    </div>
+</div>--%>
 </body>
 
 </html>

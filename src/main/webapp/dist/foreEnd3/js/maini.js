@@ -1,9 +1,4 @@
 jQuery(document).ready(function($){
-	//open popup
-	$('.cd-popup-trigger').on('click', function(event){
-		event.preventDefault();
-		$('.cd-popup').addClass('is-visible');
-	});
 	
 	//close popup
 	$('.cd-popup').on('click', function(event){
@@ -17,9 +12,6 @@ jQuery(document).ready(function($){
     	if(event.which=='27'){
     		$('.cd-popup').removeClass('is-visible');
 	    }
-    });
-    $('.hotCity').on('click', function (event) {
-        got2($(this).html());
     });
 
 //所有页的注册
