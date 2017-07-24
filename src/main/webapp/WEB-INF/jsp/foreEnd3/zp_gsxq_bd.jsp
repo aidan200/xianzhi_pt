@@ -179,12 +179,12 @@
                 <label class="group-title"><span class="text-error">* </span>公司地址：</label>
 
 
-                <div class="zp_gsxq_dz">
+                <div class="zp_gsxq_dz gsdd__">
                     <div class="_left">
                         <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
                         <em></em>
                         <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
-                        <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                        <input  form="zp_gsxq_form" style="float: right" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
                     </div>
                     <div class="_right"></div>
 
@@ -270,125 +270,8 @@
     </div>
 </section>
 
-<div id='zp_gsxq_bd_tck'>
-    <div id='zp_gsxq_bd_tck_cont1'>
-        <div class="zp_gsxq_bd_tck_top">
-            <span class="pull-left">选择职能</span>
-            <a class="pull-right gb">x</a>
-        </div>
-        <div class="zp_gsxq_bd_tck_middle">
-            <p>通用职能</p>
-            <ul>
-                <li><a href="javascript:;">高级管理</a></li>
-                <li><a href="javascript:;">人力资源</a></li>
-                <li><a href="javascript:;">财务/审计/税务</a></li>
-                <li><a href="javascript:;">市场</a></li>
-            </ul>
-            <p>专业职能</p>
-            <ul>
-                <li><a href="javascript:;">IT/互联网/通信</a></li>
-                <li><a href="javascript:;">房地产/建筑/物业</a></li>
-                <li><a href="javascript:;">金融</a></li>
-                <li><a href="javascript:;">生产/制造</a></li>
-                <li><a href="javascript:;">质量管理/项目管理</a></li>
-                <li><a href="javascript:;">教育/咨询/翻译</a></li>
-                <li><a href="javascript:;">广告/传媒/设计</a></li>
-                <li><a href="javascript:;">市场</a></li>
-                <li><a href="javascript:;">高级管理</a></li>
-                <li><a href="javascript:;">人力资源</a></li>
-                <li><a href="javascript:;">财务/审计/税务</a></li>
-                <li><a href="javascript:;">市场</a></li>
-            </ul>
-        </div>
-        <div class="zp_gsxq_bd_tck_bottom">
-            <button type="button" class="btn btn-primary">取消</button>
-        </div>
-    </div>
-    <div id='zp_gsxq_bd_tck_cont2'>
-        <div class="zp_gsxq_bd_tck_top">
-            <span class="pull-left">选择职能</span>
-            <a class="pull-right gb">x</a>
-        </div>
-        <div class="zp_gsxq_bd_tck_cont2_cont">
-            <select name="pro" id="pro" onchange="change();">
-                <option value="">请选择省份</option>
-                <option value="1">北京市</option>
-                <option value="2">广东省</option>
-                <option value="3">山东省</option>
-                <option value="4">江苏省</option>
-                <option value="5">河南省</option>
-                <option value="6">上海市</option>
-                <option value="7">河北省</option>
-                <option value="8">浙江省</option>
-                <option value="9">香港特别行政区</option>
-                <option value="10">陕西省</option>
-                <option value="11">湖南省</option>
-                <option value="12">重庆市</option>
-                <option value="13">福建省</option>
-                <option value="14">天津市</option>
-                <option value="15">云南省</option>
-                <option value="16">四川省</option>
-                <option value="17">广西壮族自治区</option>
-                <option value="18">安徽省</option>
-                <option value="19">海南省</option>
-                <option value="20">江西省</option>
-                <option value="21">湖北省</option>
-                <option value="22">山西省</option>
-                <option value="23">辽宁省</option>
-                <option value="24">台湾省</option>
-                <option value="25">黑龙江</option>
-                <option value="26">内蒙古自治区</option>
-                <option value="27">澳门特别行政区</option>
-                <option value="28">贵州省</option>
-                <option value="29">甘肃省</option>
-                <option value="30">青海省</option>
-                <option value="31">新疆维吾尔自治区</option>
-                <option value="32">西藏区</option>
-                <option value="33">吉林省</option>
-                <option value="34">宁夏回族自治区</option>
-            </select>
-            <select name="city" id="city">
-                <option value="">请选择城市</option>
-            </select>
-        </div>
-        <div class="zp_gsxq_bd_tck_bottom">
-            <a class="btn btn-primary ">确定</a>
-            <button type="button" class="btn btn-primary">取消</button>
-        </div>
-    </div>
-</div>
 
-<%--<div class="cd-popup" id="qwhy__" role="alert">
-    <div class="cd-popup-container">
-        <p>选择行业分类</p>
 
-        <div class="comd_table">
-            <table class="table table-bordered comd_in">
-                <tbody id="hy_tab">
-                <tr>
-                    <td class="comd_td"><span>互联网·游戏·软件</span></td>
-                    <td>
-                        <ul class="comd_ul">
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网/电子商务" />互联网/移动互联网/电子商务</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏" />网络游戏</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件" />计算机软件</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成" />IT服务/系统集成</li>
-                        </ul>
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-
-        <ul class="cd-buttons">
-            <li><a href="#0" id="xz_qwhy_qd">确定</a></li>
-            <li><a href="#0" id="xz_qwhy_qx" class="cd-popup-close">取消</a></li>
-        </ul>
-        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
-    </div>
-</div>--%>
 </body>
 
 </html>

@@ -1133,7 +1133,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                 kg=false;
                 tj_kg=false;
                 var str='';
-                str+='<div class="zp_jianli_zl_4" data-id="'+_self.obj_s[index].gzjlID+'">'
+                str+='<div class="zp_jianli_zl_4 ttk_jl" data-id="'+_self.obj_s[index].gzjlID+'">'
                 str+='<ul>'
                 str+=' <li>'
                 str+=' 公司名称<input type="text" id="gsmc___" value="'+_self.obj_s[index].gsmc+'" class="gsmc_input form-control zp_jianli_zl_3_input1" placeholder="请输入公司名称">'
@@ -1187,19 +1187,22 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='</div>'
                 str+='</div>'
                 $('#gzjl').siblings('div').eq(index).after(str);  //插入
+                $('#ttk_jl').find('.em3').eq(0).on('click',function (){
+                    alert('aaa')
+                })
                 $('#gzjl').siblings('div').eq(index).css({"display":"none"});
 
 
-                $('.csny__ > em').on('click',function (){
-                    jeDate({
-                        dateCell:"#jl_cstime",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-                        format:"YYYY-MM-DD ",
-                        isinitVal:true, //显示时间
-                        isTime:true,
-                        festival: true, //显示节日
-                        minDate:"2014-09-19"
-                    })
-                })
+                // $('.csny__ > em').on('click',function (){
+                //     jeDate({
+                //         dateCell:"#jl_cstime",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+                //         format:"YYYY-MM-DD ",
+                //         isinitVal:true, //显示时间
+                //         isTime:true,
+                //         festival: true, //显示节日
+                //         minDate:"2014-09-19"
+                //     })
+                // })
 
 
                 eee('#gsmc___')

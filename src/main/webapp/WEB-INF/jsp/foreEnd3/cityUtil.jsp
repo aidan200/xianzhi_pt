@@ -21,14 +21,12 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
     <script>
         $(function () {
-            var width = $(window).width();
-            //var height = $(window).height();
             //   省市联动开始
             $("#this_space").on('click', function () {                            //点击事件
+                var width = $(window).width();
                 $('#zp_gsxq_bd_tck').css({
                     "display": "block",
                     "width": width,
-//                    "height": height
                 });
                 $("#zp_gsxq_bd_tck_cont2").css({
                     "display": "block"
@@ -90,7 +88,6 @@
             });
         })
             function got(sheng,t, i) {
-            //alert(sheng);
                 var div6 = document.getElementById("div6");
                 div6.innerHTML = sheng+"-"+map[t][i];
                 $('.cd-popup').removeClass('is-visible');
