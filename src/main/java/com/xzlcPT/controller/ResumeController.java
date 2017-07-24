@@ -64,8 +64,16 @@ public class ResumeController extends BaseController {
         ModelAndView mv=new ModelAndView("/foreEnd3/selectresume");
         Map  map=new HashMap();
         map.put("fieldName",fieldName);
-        map.put("educationLevel",educationLevel);
-        System.out.println("111111111111111111111111111111111"+educationLevel);
+        map.put("educationLevel","本科");
+        map.put("resumePosition","程序员");
+        map.put("resumeMmMin",20);
+        map.put("resumeMmMax",30);
+        map.put("resumeIntentYm",3);
+        map.put("resumeBirthMin",20);
+        map.put("resumeBirthMax",23);
+        map.put("resumeSex",0);
+        map.put("createTime",30);
+        map.put("resumeState","在职");
         PageBean<XzResume> pageBean=resumeService.selectRcount(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
         mv.addObject("resumeList",resumeList);

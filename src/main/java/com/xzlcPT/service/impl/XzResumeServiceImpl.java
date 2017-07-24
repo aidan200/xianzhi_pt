@@ -41,7 +41,7 @@ public class XzResumeServiceImpl implements XzResumeService{
         //刷新简历
         resume.setResumeFlash(new Date());
         int i = resumeMapper.updateByPrimaryKeySelective(resume);
-        if(resume.getFields()!=null){
+        if(resume.getFields()!=null&&resume.getFields().size()!=0){
             Map map = new HashMap<>();
             map.put("resumeId",resume.getResumeId());
             map.put("fieldType",resume.getFields().get(0).getFieldType());
@@ -106,9 +106,9 @@ public class XzResumeServiceImpl implements XzResumeService{
                 System.out.println("size::::::::::::::::"+resumeList.get(i).getJobExps().size());
             }
         }
-
-
-
+        for (int i=0;i<resumeList.size();i++){
+            System.out.println("name::::::::::::::::::::"+resumeList.get(i).getResumeName());
+        }
         pageBean.setList(resumeList);
         return pageBean;
     }

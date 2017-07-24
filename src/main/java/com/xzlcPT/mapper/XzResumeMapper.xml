@@ -532,16 +532,39 @@
   xz_resume_education e ON r.resume_id = e.resume_id LEFT JOIN
   xz_job_exp j ON  r.resume_id = j.resume_id
   WHERE 1=1
-  <if test="fieldName !=null and fieldName !=''">
-    AND f.field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')
-  </if>
-  <if test="educationLevel !=null and educationLevel !=''">
-    AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
-  </if>
-  <if test="resumePosition !=null and resumePosition!=''">
-    AND r.resume_position = #{resumePosition,jdbcType=VARCHAR}
-  </if>
-
+  <!--<if test="fieldName !=null and fieldName !=''">-->
+    <!--AND f.field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')-->
+  <!--</if>-->
+  <!--<if test="educationLevel !=null and educationLevel !=''">-->
+    <!--AND e.education_level = #{educationLevel,jdbcType=VARCHAR}-->
+  <!--</if>-->
+  <!--<if test="resumePosition !=null and resumePosition!=''">-->
+    <!--AND r.resume_position = #{resumePosition,jdbcType=VARCHAR}-->
+  <!--</if>-->
+  <!--<if test="resumeMmMin !=null and resumeMmMin !=''">-->
+    <!--AND r.resume_mm > #{resumeMmMin,jdbcType=INTEGER}-->
+  <!--</if>-->
+    <!--<if test="resumeMmMax !=null and jobexpMmMax !=''">-->
+      <!--AND r.resume_mm < #{resumeMmMax,jdbcType=INTEGER}-->
+    <!--</if>-->
+    <!--<if test="resumeIntentYm !=null and resumeIntentYm!=''">-->
+      <!--AND r.resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER}-->
+    <!--</if>-->
+    <!--<if test="resumeBirthMin !=null and resumeBirthMin != ''">-->
+      <!--AND 2017-YEAR(r.resume_birth) > #{resumeBirthMin,jdbcType=INTEGER}-->
+    <!--</if>-->
+    <!--<if test="resumeBirthMax !=null and resumeBirthMax !=''">-->
+      <!--AND 2017-YEAR(r.resume_birth) < #{resumeBirthMax,jdbcType=INTEGER}-->
+    <!--</if>-->
+    <!--<if test="resumeSex !=null and resumeSex !=''">-->
+      <!--AND r.resume_sex = #{resumeSex,jdbcType=INTEGER}-->
+    <!--</if>-->
+    <!--<if test="createTime !=null and createTime != ''">-->
+      <!--AND TO_DAYS(NOW()) - TO_DAYS(r.create_time) <= #{createTime,jdbcType=INTEGER}-->
+    <!--</if>-->
+    <!--<if test="resumeState !=null and resumeState !=''">-->
+      <!--AND resume_state = #{resumeState,jdbcType=VARCHAR}-->
+    <!--</if>-->
    ORDER BY  e.graduate_date,j.jobexp_end_time DESC
 
   </select>
