@@ -109,7 +109,7 @@ ul {
 }
 .zp_gsxq_bd_cont_1 >div > div .group-content {
     line-height: 28px;
-    margin-left: 120px;
+
 }
 .zp_gsxq_bd_cont_1 >div > div  input[type='text']{
     border: 1px solid #ccc;
@@ -651,4 +651,15 @@ ul {
 }
 .comd_ul li input{
     margin-right: 3px;
+}
+._left{
+    float: left;
+    width: 455px;
+}
+._right{
+    float: right;
+
+    width: 180px;
+    /*width: 30px;*/
+    /*background: #00A1CB;*/
 }

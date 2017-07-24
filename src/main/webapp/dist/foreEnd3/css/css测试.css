@@ -3988,13 +3988,14 @@ input[type="button"].fileInputButton {
 /*------------------------公司主页-----------------------*/
 .comh_allin {
     /*width: 100%;*/
-    width: 1200px;
+    width: 1100px;
     height: 100%;
     margin: 40px auto;
     overflow: hidden;
 }
-.comh_alla{
-    width: 900px;
+
+.comh_alla {
+    width: 920px;
     float: left;
     /*margin:  auto;*/
 }
@@ -4079,21 +4080,23 @@ input[type="button"].fileInputButton {
     margin-top: 10px;
 }
 
-.comh_rz{
-    width: 280px;
+.comh_rz {
+    width: 240px;
     margin-left: 10px;
-    height: 500px;
-    background-color: rosybrown;
+    height: auto;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
     float: left;
     margin-top: 20px;
+    border: 1px solid #d9d9d9;
 }
 
-.comh_rz h4{
+.comh_rz h4 {
     font-size: 16px;
-    padding: 10px 20px;
+    margin: 20px 20px 10px 25px;
+    border-left: 5px solid #3fb1e3;
+    padding-left: 5px;
 }
-
-
 
 /*------气球--------*/
 .allboolean {
@@ -4111,7 +4114,7 @@ input[type="button"].fileInputButton {
     z-index: 99999;
     animation: myfirst 5s;
     -webkit-animation: myfirst 5s;
-    animation-fill-mode:forwards;
+    animation-fill-mode: forwards;
 }
 
 @keyframes myfirst {
@@ -4145,7 +4148,6 @@ input[type="button"].fileInputButton {
     bottom: 20px;
     right: 30px;
 }
-
 
 /*-------------------------搜索简历-----------------------------------*/
 .ses_top {
@@ -4588,9 +4590,6 @@ input[type="button"].fileInputButton {
     -o-transform: translateY(0);
     transform: translateY(0);
 }
-
-
-
 
 /*------------------------职位管理-----------------------*/
 .pom_top {
@@ -5041,7 +5040,7 @@ th {
     min-width: 1200px;
     height: 40px;
     background-color: rgb(255, 255, 255);
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
 }
 
 .nav_smallul {

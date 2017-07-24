@@ -1579,3 +1579,14 @@ clear: both;
 .jl_name:focus{
     border-color: #FF4600;
 }
+.em3{
+    background: url(../img/zp_gsxq_hy_k.png);
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+}
