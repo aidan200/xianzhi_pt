@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_jianli.css">
 
     <script>
-        var path='${pageContext.request.contextPath}/';     //全局路径
-        var ID='${param.resumId}';                                          //ID
+        var path = '${pageContext.request.contextPath}/';     //全局路径
+        var ID = '${param.resumId}';                                          //ID
         var memberId;
 
     </script>
@@ -35,12 +35,12 @@
 <input class="workinput wicon test1" id="test1" type="text" placeholder="请选择" readonly>
 <script>
     jeDate({
-        dateCell:".test1",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-        format:"YYYY年MM月DD日 ",
-        isinitVal:true, //显示时间
-        isTime:true,
+        dateCell: ".test1",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
+        format: "YYYY年MM月DD日 ",
+        isinitVal: true, //显示时间
+        isTime: true,
         festival: true, //显示节日
-        minDate:"2014-09-19"
+        minDate: "2014-09-19"
     })
 </script>
 
@@ -49,16 +49,17 @@
         <div class="col-md-8 zp_jianli_cont_left">
             <div class="zp_jianli_cont_left_top">
                 <div>
-                    <div  class="zp_jianli_mc">
+                    <div class="zp_jianli_mc">
                         <em title="中文简历_20170704">中文简历_201...</em>
-                        <a href="javascript:;" class="icons16 icons16-redit" ></a>
+                        <a href="javascript:;" class="icons16 icons16-redit"></a>
                     </div>
                     <div class="zp_jianli_wcd">
                         <span>完成度60%</span>
                         <div></div>
                     </div>
                     <div class="zp_jianli_yl">
-                        &nbsp;<a href="">预览</a> &nbsp;<span>|</span> &nbsp;<a href="">下载</a> &nbsp;<span>|</span> &nbsp;<a href="">刷新</a>
+                        &nbsp;<a href="">预览</a> &nbsp;<span>|</span> &nbsp;<a href="">下载</a> &nbsp;<span>|</span> &nbsp;<a
+                            href="">刷新</a>
                     </div>
 
                 </div>
@@ -67,7 +68,8 @@
                 <div class="zp_jianli_cont_left_top2_top jbxx2">
                     <div class="zp_jianli_cont_left_top2_left"></div>
                     <h3><span id="grxx_name"></span> <a class="zp_jianli_xg" href="javascript:;"></a></h3>
-                    <p>职位名称：<span id="grxx_zwmc"></span>当前城市：<span id="grxx_dqcs"></span>工作年限：<span id="grxx_gznf"></span></p>
+                    <p>职位名称：<span id="grxx_zwmc"></span>当前城市：<span id="grxx_dqcs"></span>工作年限：<span
+                            id="grxx_gznf"></span></p>
                     <p>当前行业：<span id="grxx_dqhy"></span></p>
                 </div>
 
@@ -76,7 +78,8 @@
                 <div class="zp_jianli_cont_left_jbzl">
                     <div class="zp_jianli_cont_left_jbzl_yl">
                         <div class="zp_jianli_cont_left_jbzl_top">
-                            <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                            <div class="zp_jianli_cont_left_jbzl_top_bg"
+                                 style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                             <span>基本资料</span>
                             <em class="tips-required">必填<i></i></em>
                             <a class="zp_jianli_xg" href="javascript:;"></a>
@@ -109,7 +112,8 @@
                 <div class="zp_jianli_cont_left_zyyx">
                     <div class="zp_jianli_cont_left_zyyx_yl">
                         <div class="zp_jianli_cont_left_jbzl_top">
-                            <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                            <div class="zp_jianli_cont_left_jbzl_top_bg"
+                                 style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                             <span>职业意向</span>
                             <em class="tips-required">必填<i></i></em>
                             <a class="zp_jianli_xg" href="javascript:;"></a>
@@ -125,7 +129,8 @@
                     <div>
                         <div class="zp_jianli_cont_left_gzjl_yl">
                             <div class="zp_jianli_cont_left_jbzl_top" id="gzjl">
-                                <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                                <div class="zp_jianli_cont_left_jbzl_top_bg"
+                                     style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                                 <span>工作经历</span>
                                 <em class="tips-required">必填<i></i></em>
 
@@ -139,7 +144,8 @@
                 </div>
                 <div class="zp_jianli_cont_left_xl">
                     <div id="zp_jyjl" class="zp_jianli_cont_left_jbzl_top">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg"
+                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                         <span>教育经历</span>
                         <em class="tips-required">必填<i></i></em>
                     </div>
@@ -150,7 +156,8 @@
                 </div>
                 <div class="zp_jianli_cont_left_xmjy">
                     <div class="zp_jianli_cont_left_jbzl_top" id="zp_xmjy">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg"
+                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                         <span>项目经验</span>
                     </div>
 
@@ -162,7 +169,8 @@
                 <div class="zp_jianli_cont_left_zopj">
                     <a class="zp_jianli_xg" href="javascript:;"></a>
                     <div class="zp_jianli_cont_left_jbzl_top">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg"
+                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                         <span>自我评价</span>
 
                     </div>
@@ -175,7 +183,8 @@
                 <div class="zp_jianli_cont_left_fjxx">
                     <a class="zp_jianli_xg" href="javascript:;"></a>
                     <div class="zp_jianli_cont_left_jbzl_top">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg"
+                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                         <span>附加信息</span>
                     </div>
                     <p class="zp_index_p_left zp_index_p_2" id="zp_fjxx"></p>
@@ -186,7 +195,8 @@
                 </div>
                 <div class="zp_jianli_cont_left_scjn">
                     <div class="zp_jianli_cont_left_jbzl_top" id="scjn">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg"
+                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
                         <span>擅长技能</span>
                         <a class="zp_jianli_xg" href="javascript:;"></a>
                     </div>
@@ -223,15 +233,17 @@
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingOne">
-                                <h4 class="panel-title scay_ck" >
-                                    <a role="button"  data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h4 class="panel-title scay_ck">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                       aria-expanded="true" aria-controls="collapseOne">
                                         查看我屏蔽的企业
                                     </a>
                                 </h4>
                             </div>
-                            <div id="collapseOne" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+                            <div id="collapseOne" class="panel-collapse collapse " role="tabpanel"
+                                 aria-labelledby="headingOne">
                                 <div class="panel-body" id="pbqy">
-                                    <div >
+                                    <div>
                                         <ul>
                                             <li><span>公司1</span><a href="" class="li_sc">x</a></li>
                                             <li><span>公司2</span><a href="" class="li_sc">x</a></li>
@@ -311,35 +323,26 @@
     </div>
 </section>
 
-<div class="cd-popup" id="qwhy__" role="alert">
-    <div class="cd-popup-container">
-        <p>选择行业分类</p>
+<div class="cd-popuph" id="qwhy__" role="alert">
+    <div class="cd-popup-containerh">
+        <p style="font-size: 16px">选择行业分类</p>
 
         <div class="comd_table">
-            <table class="table table-bordered comd_in">
-                <tbody id="hy_tab">
-                <tr>
-                    <td class="comd_td"><span>互联网·游戏·软件</span></td>
-                    <td>
-                        <ul class="comd_ul">
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网/电子商务" />互联网/移动互联网/电子商务</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏" />网络游戏</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件" />计算机软件</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成" />IT服务/系统集成</li>
-                        </ul>
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-
+            <h4>IT行业</h4>
+            <ul class="zp_ulu">
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网"/>互联网/移动互联网
+                </li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏"/>网络游戏</li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件"/>计算机软件</li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成"/>IT服务/系统集成</li>
+            </ul>
         </div>
 
-        <ul class="cd-buttons">
+        <ul class="cd-buttonsh">
+            <li><a href="#0"  class="cd-popup-closeh">取消</a></li>
             <li><a href="#0" id="xz_qwhy_qd">确定</a></li>
-            <li><a href="#0" id="xz_qwhy_qx" class="cd-popup-close">取消</a></li>
         </ul>
-        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
+        <a href="#0" class="cd-popup-closeh cmd_closeh fa fa-remove"></a>
     </div>
 </div>
 </body>

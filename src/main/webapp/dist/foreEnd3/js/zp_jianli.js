@@ -229,7 +229,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                             })
                         })
                         event.preventDefault();
-                        $('.cd-popup').addClass('is-visible');
+                        $('.cd-popuph').addClass('is-visible');
 
                         $('#xz_qwhy_qd').on('click',function (){                    //确认按钮
 
@@ -243,7 +243,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                                 str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
                             }
                             $('#dqhy_1').html(str_qwhy);        //赋值
-                             $('.cd-popup').removeClass('is-visible');       //改变
+                             $('.cd-popuph').removeClass('is-visible');       //改变
                             sc();
                             $('#dqhy_1').css({
                                 "height":"auto",
@@ -268,8 +268,8 @@ obj_yhxx.prototype.bindingSJ=function (){
 
                         });
                         //取消
-                        $('#xz_qwhy_qx').on('click',function (){
-                            $('.cd-popup').removeClass('is-visible');
+                        $('.cd-popup-closeh').on('click',function (){
+                            $('.cd-popuph').removeClass('is-visible');
                         })
                     },error:function (){ //报错执行的
                         alert('报错了报错了')
