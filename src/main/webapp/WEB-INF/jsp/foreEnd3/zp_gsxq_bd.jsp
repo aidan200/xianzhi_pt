@@ -26,7 +26,34 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/uploadUtil.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_gsxq_bd.js"></script>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
+    <style type="text/css">
+        .skilldiv {
+            border: 1px solid #E6E6E6;
+            float: left;
+            height: 30px;
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
 
+        .skilldiv > div {
+            line-height: 30px;
+            padding: 0 15px;
+            height: 28px;
+            float: left;
+            text-align: center;
+        }
+
+        .skilldiv > a{
+            float: left;
+            display: inline-block;
+            width: 20px;
+            height: 28px;
+            background: #E9F1F5;
+            text-align: center;
+            line-height: 28px;
+            color: #85B4CC;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
@@ -42,7 +69,7 @@
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司名称：</label>
                 <div class="group-content valid-row relative">
-                    <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司"  value=""><ul  class="ejob-list" style="display: none;"></ul>
+                    <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司"  value="${company.companyName}"><ul  class="ejob-list" style="display: none;"></ul>
                     <span class="addtions text-muted">注：名称发布后不可以修改</span>
                 </div>
             </div>
@@ -55,10 +82,16 @@
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>应用技术：</label>
-                <div class="group-content valid-row relative">
-                    <input id="gsxq_yyjs" form="zp_gsxq_form" class="text" size="60" type="text" name="skill" maxlength="70" placeholder="如：大数据" validate-title="职位名称" validate-rules="[['required','请填写$'],['reallength',{'max':140},'$1长度不能大于70个字'],['repeat',{'max':5},'请准确填写您的$1信息'],['not',{'type':['email','mobile']},'请勿在$里填写手机号码、QQ、MSN等联系方式']]" value=""><ul data-selector="ejob-list" class="ejob-list" style="display: none;"></ul>
-                    <span class="addtions text-muted">注：应用技术</span>
+                <div class="group-content">
+                            <div class='skilldiv'>
+                                <div>awadw</div>
+                                <a class="skillBtn">x</a>
+                                <input form='zp_gsxq_form' type="hidden" name="companySkill">
+                            </div>
                 </div>
+                    <button class="addBut">+</button>
+                    <input inpName="companySkill"/>
+                    <span class="addtions text-muted">例：java，c++ 等</span>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司规模：</label>
@@ -74,68 +107,21 @@
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司待遇：</label>
-                <div class="zp_gsxq_dy"  id="gsxq_gsdy">
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox"  data-value="0"> 绩效奖金
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox"   data-value="1"> 带薪年假
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox"   data-value="2"> 交通补助
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox"  data-value="3"> 定期体检
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="4"> 年度旅游
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="5"> 免费班车
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="6"> 管理规范
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="7"> 技能培训
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="8"> 岗位晋升
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="9"> 五险一金
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="10"> 生育补贴
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input  form="zp_gsxq_form" type="checkbox" data-value="11"> 上市公司
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="12"> 形态多样
-                    </label>
-                    &nbsp;
-                    <label>
-                        <input form="zp_gsxq_form" type="checkbox" data-value="13"> 平台广阔
-                    </label>
+                <div class="group-content">
+                    <div class='skilldiv'>
+                        <div>awadw</div>
+                        <a class="skillBtn">x</a>
+                        <input form='zp_gsxq_form' type="hidden" name="companyWelfare">
+                    </div>
                 </div>
+                <button class="addBut">+</button>
+                <input inpName="companyWelfare"/>
+                <span class="addtions text-muted">例：带薪年假，十三薪 等</span>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司地址：</label>
                 <div class="zp_gsxq_dz">
-                    <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" placeholder="请选择省/市/区"><br>
+                    <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
                     <em></em>
                     <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
                     <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
@@ -310,4 +296,5 @@
 
 
 </body>
+
 </html>
