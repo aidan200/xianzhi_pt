@@ -56,6 +56,8 @@
     <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
     <result column="resume_intent_position" jdbcType="VARCHAR" property="resumeIntentPosition" />
     <result column="resume_completion" jdbcType="INTEGER" property="resumeCompletion" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <collection property="fields" ofType="com.xzlcPT.bean.XzField">
       <id column="field_id" jdbcType="BIGINT" property="fieldId" />
       <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
@@ -150,7 +152,7 @@
     r.resume_field, r.resume_workspace, r.resume_mm, r.resume_ym,
     r.resume_position, r.resume_workinglife, r.resume_nationality, r.resume_state, r.resume_marriage,
     r.resume_flash, r.resume_intent_workspace, r.resume_intent_field, r.resume_intent_mm, r.resume_intent_ym,
-    r.resume_intent_position, r.resume_completion,
+    r.resume_intent_position, r.resume_completion,r.filed1,r.filed2,
     f.field_id,f.field_name,f.field_type
   </sql>
   <sql id="ResumeInformationList">

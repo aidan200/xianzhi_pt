@@ -119,21 +119,22 @@
 </div>
 <div class="myTab" id="register_3">
     <div class="register1_all">
-        <form action="">
+        <form action="${pageContext.request.contextPath}/XzRegister/addCompanyByReg.do" method="post" enctype="multipart/form-data">
             <div class="register2_in">
                 <div class="r2_left">
                     <div class="r2_ne">
                         <div>
                             ${msg}
                         </div>
+                        <input type="hidden" name="companyId" value="${userLogin.company.companyId}">
                         <div class="r2_every">
                             <span>公司名称</span>&emsp;<input type="text" name="companyName" placeholder="请填写公司营业执照上的公司名称全称" class="r2_g">
                         </div>
                         <div>
                             <span class="r3_span" style="">营业执照&nbsp;</span>&emsp;
-                            <input type="file" class="nicefile" style="float: left"/>
+                            <input type="file" name="file" class="nicefile" style="float: left"/>
                         </div>
-                        <button class="r2_button">提 交</button>
+                        <button class="r2_button" type="submit">提 交</button>
                         <button type="button" class="r2_button" onclick="toTag(4)">跳 过</button>
                     </div>
 

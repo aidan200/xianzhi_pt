@@ -165,6 +165,7 @@
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="personnav.jsp"/>
 <div class="zp_lb_top">
     <div class="container zp_lb_ssk">
         <div class="zp_lb_ssk_left">
@@ -323,7 +324,7 @@
                             <span><fmt:formatDate value="${p.postionTime}" pattern="yyyy-MM-dd"/></span>
                         </div>
                         <div class="zp_index_cont_left_zwtj_cont_right">
-                            <p><a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf?companyId=${p.company.companyId}">${p.company.companyName}</a></p>
+                            <p><a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${p.company.companyId}">${p.company.companyName}</a></p>
                             <p>
                                 <c:forEach items="${p.company.fields}" var="f">
                                     ${f.fieldName}

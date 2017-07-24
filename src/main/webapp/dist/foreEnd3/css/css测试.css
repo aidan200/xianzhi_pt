@@ -3401,7 +3401,7 @@ input[type="button"].fileInputButton {
 .pup_container {
     width: 100%;
     min-width: 1000px;
-    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
     height: auto;
     overflow: hidden;
 }
@@ -4030,7 +4030,7 @@ input[type="button"].fileInputButton {
 }
 
 .comh_left {
-    width: 470px;
+    width: 460px;
     height: auto;
     float: left;
     border-right: 1px dotted #cccccc;
@@ -4038,7 +4038,7 @@ input[type="button"].fileInputButton {
 
 .comh_test {
     float: left;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .comh_test h4 {
@@ -4057,9 +4057,9 @@ input[type="button"].fileInputButton {
 .comh_right {
     float: left;
     height: auto;
-    margin-left: 25px;
+    margin-left: 15px;
     margin-top: 20px;
-    width: 480px;
+    width: 470px;
 }
 
 .comh_rt span {
@@ -4666,6 +4666,350 @@ input[type="button"].fileInputButton {
 
 .pom_allimg {
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 110px;
 
+}
+
+/*-------------------------简历管理------------------------*/
+.rem_top {
+    width: 100%;
+    min-height: 550px;
+    background-color: #ffffff;
+    overflow: hidden;
+    height: 100%;
+}
+
+.rem_cen {
+    width: 90%;
+    height: 70px;
+    background-color: #fafafa;
+    border: 1px dashed #d9d9d9;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.rem_input {
+    width: 170px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #cccccc;
+    padding-left: 10px;
+}
+
+.rem_input1 {
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #cccccc;
+    padding-left: 10px;
+}
+
+.rem_input2 {
+    width: 50px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #cccccc;
+    padding-left: 10px;
+}
+
+.rem_input3 {
+    width: 120px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #cccccc;
+    padding-left: 10px;
+}
+
+.rem_input4 {
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #cccccc;
+    padding-left: 10px;
+}
+
+.rem_b {
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid #fc6866;
+    background-color: #fc6866;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.rem_b1 {
+    width: 80px;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid #fc6866;
+    background-color: #ffffff;
+    color: #fc6866;
+    margin-top: 10px;
+}
+
+.rem_table {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.rem_tr {
+    background-color: #3D9CCC;
+    color: #ffffff;
+}
+
+.rem_tr th {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+th {
+    text-align: center;
+}
+
+.rem_s {
+    margin: 0 5px;
+}
+
+.rem_h {
+    height: 70px;
+    line-height: 50px;
+}
+
+.rem_bottom {
+    width: 100%;
+    height: 50px;
+    background-color: #edf6fd;
+    margin-top: 50px;
+    padding-left: 20px;
+}
+
+.rem_bottom button {
+    width: 60px;
+    height: 25px;
+    border: 1px solid #fc6866;
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #fc6866;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.rem_no2 {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+
+.rem_allimg {
+    text-align: center;
+    margin-bottom: 90px;
+}
+
+.rem_img {
+    width: 350px;
+    height: 350px;
+    margin-top: 50px;
+}
+
+.rem_cen2 {
+    width: 90%;
+    height: 70px;
+    background-color: #fafafa;
+    border-left: 1px dashed #d9d9d9;
+    border-right: 1px dashed #d9d9d9;
+    border-bottom: 1px dashed #d9d9d9;
+    margin: 0 auto;
+    padding-top: 18px;
+    display: none;
+}
+
+.rem_blue {
+    width: 100%;
+    height: 36px;
+    background-color: #3D9CCC;
+
+}
+
+.rem_blue a {
+    display: inline-block;
+    background-color: #78bbdd;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 3px 5px;
+    margin-left: 10px;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.rem_bb {
+    width: 100%;
+    height: 50px;
+    background-color: #edf6fc;
+}
+
+.rem_bb button {
+    width: 80px;
+    background-color: #fff;
+    color: #78bbdd;
+    border: 1px solid #78bbdd;
+    border-radius: 3px;
+    outline: none;
+    padding: 2px 4px;
+    margin: 10px 6px;
+}
+
+.all_p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+.rem_allin {
+    width: 1100px;
+    height: 100%;
+    margin: 40px auto;
+    overflow: hidden;
+}
+.rem_container {
+    width: 100%;
+    min-width: 1000px;
+    background-color: #f0f0f0;
+    height: auto;
+    overflow: hidden;
+}
+
+
+/*汉堡按钮*/
+
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    transition-property: opacity, -webkit-filter;
+    transition-property: opacity, filter;
+    transition-property: opacity, filter, -webkit-filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    overflow: visible;
+    float: right;
+    margin-top: 15px;
+    margin-right: 25px;
+
+
+}
+
+.hamburger:hover {
+    opacity: 0.7;
+}
+
+.hamburger-box {
+    width: 40px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    width: 30px;
+    height: 2px;
+    background-color: #666;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: -webkit-transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+    content: "";
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -10px;
+}
+
+.hamburger-inner::after {
+    bottom: -10px;
+}
+
+/*
+ * Elastic
+ */
+.hamburger--elastic .hamburger-inner {
+    top: 0;
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hamburger--elastic .hamburger-inner::before {
+    top: 10px;
+    transition: opacity 0.15s 0.4s ease;
+}
+
+.hamburger--elastic .hamburger-inner::after {
+    top: 20px;
+    transition: -webkit-transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), -webkit-transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hamburger--elastic.is-active .hamburger-inner {
+    -webkit-transform: translate3d(0, 10px, 0) rotate(135deg);
+    transform: translate3d(0, 10px, 0) rotate(135deg);
+    transition-delay: 0.1s;
+}
+
+.hamburger--elastic.is-active .hamburger-inner::before {
+    transition-delay: 0s;
+    opacity: 0;
+}
+
+.hamburger--elastic.is-active .hamburger-inner::after {
+    -webkit-transform: translate3d(0, -20px, 0) rotate(-270deg);
+    transform: translate3d(0, -20px, 0) rotate(-270deg);
+    transition-delay: 0.1s;
+}
+
+/*------------小导航------------*/
+.nav_small{
+    width: 100%;
+    min-width: 1200px;
+    height: 40px;
+    background-color: rgba(134,134,134,0.54);
+}
+.nav_smallul{
+    float: left;
+    width: 600px;
+    margin-left: 150px;
+}
+.nav_smallul li{
+    float: left;
+}
+.nav_smallul li a{
+    display: inline-block;
+    padding: 9px;
+    margin-left: 20px;
+    color: #FFFFFF;
 }

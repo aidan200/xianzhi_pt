@@ -13,9 +13,10 @@
 <head>
     <jsp:include page="distforeEnd.jsp"/>
 </head>
-<body>
+<body style="background-color: #f0f0f0">
 
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="companynav.jsp"/>
 
 <div class="pup_container">
     <div class="pup_allin">
