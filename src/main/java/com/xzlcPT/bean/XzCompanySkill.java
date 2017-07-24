@@ -11,7 +11,7 @@ import com.amazonaws.services.dynamodbv2.xspec.L;
 public class XzCompanySkill {
     private Long skillId;
 
-    private Long comppanyId;
+    private Long companyId;
 
     private String skillName;
 
@@ -23,12 +23,12 @@ public class XzCompanySkill {
         return skillId;
     }
 
-    public void setComppanyId(Long comppanyId) {
-        this.comppanyId = comppanyId;
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 
-    public Long getComppanyId() {
-        return comppanyId;
+    public Long getCompanyId() {
+        return companyId;
     }
 
     public void setSkillName(String skillName) {
