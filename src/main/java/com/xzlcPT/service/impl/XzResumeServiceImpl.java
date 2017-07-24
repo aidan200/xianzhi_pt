@@ -106,9 +106,9 @@ public class XzResumeServiceImpl implements XzResumeService{
                 System.out.println("size::::::::::::::::"+resumeList.get(i).getJobExps().size());
             }
         }
-
-
-
+        for (int i=0;i<resumeList.size();i++){
+            System.out.println("name::::::::::::::::::::"+resumeList.get(i).getResumeName());
+        }
         pageBean.setList(resumeList);
         return pageBean;
     }

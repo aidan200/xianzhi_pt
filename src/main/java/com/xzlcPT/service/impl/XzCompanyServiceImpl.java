@@ -121,6 +121,9 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         XzCompany xzCompany=companyMapper.selCompanyInf(companyId);
         int i=xzCompany.getPostions().size();
         xzCompany.setPcount(i);
+        for (int j=0;j<xzCompany.getSkills().size();j++){
+            System.out.println("skillname:::::::::::::::::"+xzCompany.getSkills().get(j).getSkillName());
+        }
         return xzCompany;
     }
 

@@ -45,6 +45,7 @@ public class XzCompany {
     private List<Image> images;//公司风采
     private List<XzCompanyMien> miens;//公司风采
     private List<XzPostion> postions;//公司职位
+    private List<XzCompanySkill> skills;//公司技能
     private Date deleteCompanyDate;//删除日期
     private int deleteFalt;//删除类型
     private String filed1;//备用列1
@@ -298,6 +299,14 @@ public class XzCompany {
 
     public List<XzCompanyMien> getMiens() {
         return miens;
+    }
+
+    public void setSkills(List<XzCompanySkill> skills) {
+        this.skills = skills;
+    }
+
+    public List<XzCompanySkill> getSkills() {
+        return skills;
     }
 
     @Override
