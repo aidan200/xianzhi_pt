@@ -570,6 +570,27 @@ $(function (){
 
 
 
+    //显示
+    //event.preventDefault();
+    $('.cd-popup').addClass('is-visible');
+
+
+    //隐藏
+    $('.cd-popup').on('click', function(event){                    //返回按钮
+        if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
+            event.preventDefault();
+            $('.cd-popup').removeClass('is-visible');
+
+        }
+    });
+
+    //键盘关闭
+    $(document).keyup(function(event){                            //键盘关闭
+        if(event.which=='27'){
+            $('.cd-popup').removeClass('is-visible');
+        }
+    });
+
 
     //var ojbxx=new jbxx();           //公司基本信息
     //ojbxx.init();
