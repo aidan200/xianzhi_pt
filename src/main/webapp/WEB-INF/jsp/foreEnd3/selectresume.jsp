@@ -180,16 +180,20 @@
 
         <div class="comh_right" style="width: 460px">
             <div class="comh_rt">
-                <span>2015-至今</span>|
-                <span>阿里巴巴有限公司</span>|
-                <span>资深产品经理</span>
+                <c:forEach var="j3" items="${r1.jobExps}">
+                <span><fmt:formatDate value="${j3.jobexpBeginTime}" pattern="yyyy.MM"/>-<fmt:formatDate value="${j3.jobexpEndTime}" pattern="yyyy.MM"/></span>|
+                <span>${j3.jobexpCompanyName}</span>|
+                <span>${j3.jobexpPostion}</span>
+                </c:forEach>
             </div>
+            <c:forEach var="e2" items="${r1.xzResumeEducations}">
             <div class="comh_rt">
-                <span>2007-2011</span>|
-                <span>复旦大学</span>|
-                <span>信息管理与信息系统</span>|
-                <span>本科</span>
+                <span><fmt:formatDate value="${e2.enrollmentDate}" pattern="yyyy.MM"/>-<fmt:formatDate value="${e2.graduateDate}" pattern="yyyy.MM"/></span>|
+                <span>${e2.educationSchool}</span>|
+                <span>${e2.educationMajor}</span>|
+                <span>${e2.educationLevel}</span>
             </div>
+            </c:forEach>
             <div style="margin-top: 15px;margin-right: 10px;float: right;color: #a8a8a8">
                 <span><span>4</span>个小时前</span>
             </div>
@@ -267,6 +271,7 @@
     function removeMyInp(id) {
         $("#" + id).remove();
     }
+
 </script>
 </body>
 </html>

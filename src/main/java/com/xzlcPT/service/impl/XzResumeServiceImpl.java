@@ -2,10 +2,7 @@ package com.xzlcPT.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.util.PageBean;
-import com.xzlcPT.bean.XzField;
-import com.xzlcPT.bean.XzResume;
-import com.xzlcPT.bean.XzResumeEducation;
-import com.xzlcPT.bean.XzResumeSkill;
+import com.xzlcPT.bean.*;
 import com.xzlcPT.dao.XzFieldMapper;
 import com.xzlcPT.dao.XzResumeMapper;
 import com.xzlcPT.dao.XzResumeSkillMapper;
@@ -101,12 +98,17 @@ public class XzResumeServiceImpl implements XzResumeService{
               resumeList.get(i).setXzResumeEducations(elist);
           }
         }
+        List<XzJobExp> jlist=new ArrayList<>();
         for (int i=0;i<resumeList.size();i++){
-            List<XzResumeEducation> list1 =resumeList.get(i).getXzResumeEducations();
-            for (int j=0;j<list1.size();j++){
-                System.out.println("school:::::::::::::::::::::::::::"+list1.get(j).getEducationSchool()+j);
+            if (resumeList.get(i).getJobExps().size()>1){
+                jlist=resumeList.get(i).getJobExps().subList(0,1);
+                resumeList.get(i).setJobExps(jlist);
+                System.out.println("size::::::::::::::::"+resumeList.get(i).getJobExps().size());
             }
         }
+
+
+
         pageBean.setList(resumeList);
         return pageBean;
     }

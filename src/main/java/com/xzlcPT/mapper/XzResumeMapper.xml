@@ -542,8 +542,11 @@
   <if test="educationLevel !=null and educationLevel !=''">
     AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
   </if>
+  <if test="resumePosition !=null and resumePosition!=''">
+    AND r.resume_position = #{resumePosition,jdbcType=VARCHAR}
+  </if>
 
-   ORDER BY  e.graduate_date DESC
+   ORDER BY  e.graduate_date,j.jobexp_end_time DESC
 
   </select>
   <select id="selectRcount" resultMap="ResumeInformation" parameterType="java.util.Map">

@@ -48,13 +48,11 @@
     <result column="skill" jdbcType="VARCHAR" property="skill" />
     <result column="financing" jdbcType="VARCHAR" property="financing" />
     <collection property="products" ofType="com.xzlcPT.bean.XzCompanyProduct">
-      <id column="product_id" jdbcType="BIGINT" property="productId" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="product_Intro" jdbcType="VARCHAR" property="productIntro" />
       <result column="product_url" jdbcType="VARCHAR" property="productUrl" />
     </collection>
     <collection property="images" ofType="com.xzlcPT.bean.XzCompanyImage">
-      <id column="image_id" jdbcType="BIGINT" property="imageId" />
       <result column="image_type" jdbcType="VARCHAR" property="imageType" />
       <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
@@ -87,18 +85,15 @@
     <result column="delete_falt" jdbcType="BIGINT" property="deleteFalt" />
     <result column="pcount" jdbcType="INTEGER" property="pcount"/>
     <collection property="images" ofType="com.xzlcPT.bean.XzCompanyImage">
-      <id column="image_id" jdbcType="BIGINT" property="imageId" />
       <result column="image_type" jdbcType="VARCHAR" property="imageType" />
       <result column="image_path" jdbcType="VARCHAR" property="imagePath" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
     </collection>
     <collection property="welfares" ofType="com.xzlcPT.bean.XzCompanyWelfare">
-      <id column="welfare_id" jdbcType="BIGINT" property="welfareId" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="welfare_name" jdbcType="VARCHAR" property="welfareName" />
     </collection>
     <collection property="postions" ofType="com.xzlcPT.bean.XzPostion">
-      <id column="postion_id" jdbcType="BIGINT" property="postionId" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
       <result column="postion_company" jdbcType="VARCHAR" property="postionCompany" />
@@ -144,7 +139,6 @@
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="pcount" jdbcType="INTEGER" property="pcount"/>
     <collection property="products" ofType="com.xzlcPT.bean.XzCompanyProduct">
-      <id column="product_id" jdbcType="BIGINT" property="productId" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="product_Intro" jdbcType="VARCHAR" property="productIntro" />
       <result column="product_url" jdbcType="VARCHAR" property="productUrl" />
@@ -152,17 +146,14 @@
       <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
     </collection>
     <collection property="welfares" ofType="com.xzlcPT.bean.XzCompanyWelfare">
-      <id column="welfare_id" jdbcType="BIGINT" property="welfareId" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="welfare_name" jdbcType="VARCHAR" property="welfareName" />
     </collection>
       <collection property="fields" ofType="com.xzlcPT.bean.XzField">
-        <id column="field_id" jdbcType="BIGINT" property="fieldId" />
         <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
         <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
       </collection>
     <collection property="postions" ofType="com.xzlcPT.bean.XzPostion">
-      <id column="postion_id" jdbcType="BIGINT" property="postionId" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
       <result column="postion_company" jdbcType="VARCHAR" property="postionCompany" />
@@ -183,7 +174,6 @@
       <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     </collection>
     <collection property="miens" ofType="com.xzlcPT.bean.XzCompanyMien">
-      <id column="mien_id" jdbcType="BIGINT" property="mienId" />
       <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="mien_Intro" jdbcType="VARCHAR" property="mienIntro" />
       <result column="mien_url" jdbcType="VARCHAR" property="mienUrl" />
