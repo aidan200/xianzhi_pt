@@ -27,26 +27,6 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_gsxq_bd.js"></script>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
     <style type="text/css">
-        /*.skilldivs{
-            display: inline-block;
-            padding: 10px 10px 0;
-            line-height: 26px;
-            border-radius: 3px;
-            border: 1px solid #CCCCCC;
-            width: 500px;
-        }
-        .skilldivs .em1 {
-            background: url(../img/zp_gsxq_hy_k.png);
-            width: 30px;
-            height: 30px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            cursor: pointer;
-            background-repeat: no-repeat;
-            background-position: center;
-        }*/
-
         .skilldiv {
             border: 1px solid #E6E6E6;
             float: left;
@@ -96,14 +76,9 @@
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>领域：</label>
                 <div class="zp_gsxq_hy">
-                        <div class='skilldiv'>
-                            <div>awadw</div>
-                            <a class="skillBtn">x</a>
-                            <input form='zp_gsxq_form' type="hidden" name="companySkill">
-                        </div>
-                        <em></em>
+                    <input id="gsxq_gshy" form="zp_gsxq_form" name="domain" type="text" placeholder="请输入或者选择领域">
+                    <em></em>
                 </div>
-
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>应用技术：</label>
@@ -115,7 +90,7 @@
                             </div>
                 </div>
                     <button class="addBut">+</button>
-                    <input inpName="companySkill"/>
+                    <input />
                     <span class="addtions text-muted">例：java，c++ 等</span>
             </div>
             <div class="control-group clearfix">
@@ -136,18 +111,12 @@
                     <div class='skilldiv'>
                         <div>awadw</div>
                         <a class="skillBtn">x</a>
-                        <input form='zp_gsxq_form' type="hidden" name="companyWelfare">
+                        <input form='zp_gsxq_form' type="hidden" name="companySkill">
                     </div>
                 </div>
                 <button class="addBut">+</button>
-                <input inpName="companyWelfare"/>
-                <span class="addtions text-muted">例：带薪年假，十三薪 等</span>
-            </div>
-            <div class="control-group clearfix">
-                <label class="group-title"><span class="text-error">* </span>公司性质：</label>
-                <div class="zp_gsxq_dz">
-                    <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
-                </div>
+                <input />
+                <span class="addtions text-muted">例：电子商务， 等</span>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司地址：</label>
@@ -325,37 +294,7 @@
     </div>
 </div>
 
-<%--<div class="cd-popup" id="qwhy__" role="alert">
-    <div class="cd-popup-container">
-        <p>选择行业分类</p>
 
-        <div class="comd_table">
-            <table class="table table-bordered comd_in">
-                <tbody id="hy_tab">
-                <tr>
-                    <td class="comd_td"><span>互联网·游戏·软件</span></td>
-                    <td>
-                        <ul class="comd_ul">
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网/电子商务" />互联网/移动互联网/电子商务</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏" />网络游戏</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件" />计算机软件</li>
-                            <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成" />IT服务/系统集成</li>
-                        </ul>
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-
-        <ul class="cd-buttons">
-            <li><a href="#0" id="xz_qwhy_qd">确定</a></li>
-            <li><a href="#0" id="xz_qwhy_qx" class="cd-popup-close">取消</a></li>
-        </ul>
-        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
-    </div>
-</div>--%>
 </body>
 
 </html>

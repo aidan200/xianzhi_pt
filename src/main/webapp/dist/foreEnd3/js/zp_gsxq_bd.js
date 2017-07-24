@@ -568,7 +568,7 @@ $(function (){
         $(this).next().focus();
     })
 
-
+/*
 
     //显示
     //event.preventDefault();
@@ -589,7 +589,7 @@ $(function (){
         if(event.which=='27'){
             $('.cd-popup').removeClass('is-visible');
         }
-    });
+    });*/
 
 
     //var ojbxx=new jbxx();           //公司基本信息
