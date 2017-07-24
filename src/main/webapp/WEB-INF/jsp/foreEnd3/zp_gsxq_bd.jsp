@@ -179,12 +179,12 @@
                 <label class="group-title"><span class="text-error">* </span>公司地址：</label>
 
 
-                <div class="zp_gsxq_dz">
+                <div class="zp_gsxq_dz gsdd__">
                     <div class="_left">
                         <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
                         <em></em>
                         <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
-                        <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                        <input  form="zp_gsxq_form" style="float: right" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
                     </div>
                     <div class="_right"></div>
 
