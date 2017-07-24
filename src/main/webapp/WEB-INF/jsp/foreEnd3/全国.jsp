@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/7/3
-  Time: 18:35
+  User: SYHT
+  Date: 2017/7/24
+  Time: 13:00
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,7 +18,7 @@
 <html lang="zh-CN">
 <head>
     <jsp:include page="distforeEnd.jsp"/>
-    <title>公司列表</title>
+    <title>全国</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_lb.css">
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
@@ -27,7 +27,7 @@
             var width = $(window).width();
             var height = $(window).height();
 //   省市联动开始
-            $(".zp_lb_ssk_left div").on('click', function () {                            //点击事件
+            $("#this_space").on('click', function () {                            //点击事件
                 $('#zp_gsxq_bd_tck').css({
                     "display": "block",
                     "width": width,
@@ -162,299 +162,516 @@
             $('#workspace').val(str);
         }
     </script>
+    <style>
+        .divClass {
+            float: left;
+            margin-top: 2px;
+            font-weight: bolder;
+        }
+
+        .divSmall {
+            width: auto;
+            height: 15px;
+            float: left;
+            margin-left: 4px;
+            margin-top: 2px;
+            /*background-color: #FFFFFF;*/
+            padding: 3px;
+            line-height: 15px;
+            cursor: pointer;
+        }
+
+        .divSmall:hover {
+            color: #FFFFFF;
+        }
+
+        .divSmall2 {
+            background-color: rgb(255, 165, 0);
+            color: #FFFFFF;
+            border-radius: 3px;
+            width: auto;
+            height: 20px;
+            float: left;
+            margin-left: 4px;
+            line-height: 12px;
+            padding: 4px;
+            /*margin-top: -5px;*/
+            margin-top: 4px;
+
+        }
+
+        .zp_img {
+            float: right;
+            display: inline-block;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .zp_rt {
+            width: 100%;
+            height: auto;
+            border: 1px solid #D9D9D9;
+            overflow: hidden;
+            padding: 20px 20px 10px 20px;
+            margin-bottom: 10px;
+
+        }
+
+        .zp_rt h4 {
+            font-size: 15px;
+            border-left: 5px solid rgb(255, 165, 0);
+            padding-left: 5px;
+        }
+
+        .zp_rt ul {
+            padding-left: 5px;
+            padding-right: 5px;
+            margin-top: 5px;
+        }
+
+        .zp_rt ul li div {
+            border-bottom: 1px dashed #D9D9D9;
+            display: block;
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .zp_na {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+            height: 24px;
+            overflow: hidden;
+
+        }
+
+        .zp_na2 a{
+            display: block;
+            margin-top: 5px;
+            font-size: 12px;
+            width: 100%;
+            height: 15px;
+            overflow: hidden;
+            color: #949494;
+        }
+
+        .zp_na2 a {
+            float: right;
+            overflow: hidden;
+            height: 15px;
+            display: block;
+            text-align: right;
+        }
+
+        .zp_botv {
+            width: 100%;
+            text-align: center;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .zp_pa {
+            margin-top: 20px;
+            float: left;
+        }
+
+        .zp_pl {
+            width: 620px;
+            margin: 0 auto;
+            height: auto;
+        }
+
+        .zp_page {
+            width: 120px;
+            height: 38px;
+            float: left;
+            margin-top: 20px;
+            line-height: 38px;
+
+        }
+
+        .zp_pa > .active > a {
+            background-color: rgb(255, 165, 0);
+            border: 1px solid rgb(255, 165, 0);
+        }
+
+        .zp_pa > .active > a:hover {
+            background-color: rgb(255, 165, 0);
+            border: 1px solid rgb(255, 165, 0);
+        }
+
+        .zp_pa > li > a {
+            color: #666666;
+            padding: 5px 10px;
+        }
+
+        .zp_pa > li > a:hover, .zp_pa > li > span:hover, .zp_pa > li > a:focus, .zp_pa > li > span:focus {
+            /*border: 1px solid rgb(255, 165, 0);*/
+        }
+
+        .zp_pa > li > a, .zp_pa > li > span {
+            border: 1px solid #EEEEEE;
+            margin: 3px;
+        }
+
+        .zp_pa > .a > a:hover {
+            background-color: rgb(255, 165, 0);
+            color: #FFFFFF;
+            border: 1px solid rgb(255, 165, 0);
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        /*不能点击class b*/
+        .zp_pa > .b > a {
+            /*background-color: #f8f8f8;*/
+            cursor: default;
+            color: #cacaca;
+        }
+
+        .zp_pa > .b > a:hover {
+            color: #cacaca;
+            /*background-color: #f8f8f8;*/
+            border: 1px solid #EEEEEE;
+
+        }
+
+        /*自定义*/
+        .zp_owner:hover {
+            color: #FFFFFF;
+        }
+
+        .zp_ospan {
+            display: none;
+        }
+
+        /*---全国----*/
+        #zp_gsxq_bd_tck {
+            display: none;
+            width: 0;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 1111111111;
+        }
+
+        #zp_gsxq_bd_tck > div {
+            position: relative;
+            width: 0px;
+            height: 0px;
+            margin: 60px auto;
+            background: #ffffff;
+        }
+
+        .zp_gsxq_bd_tck_top {
+            height: 40px;
+            padding: 0 20px;
+            line-height: 40px;
+            border-bottom: 1px solid #EDEDED;
+        }
+
+        .zp_gsxq_bd_tck_cont2_cont {
+            /*width: 60%;*/
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+
+        .gb {
+            display: block;
+            width: 40px;
+            height: 40px;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .zp_gsxq_bd_tck_cont2_cont {
+            /*width: 60%;*/
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            /*margin-top: 100px;*/
+        }
+
+        .zp_gsxq_bd_tck_cont2_cont select {
+            width: 49%;
+        }
+
+        .zp_gsxq_bd_tck_bottom {
+            height: 50px;
+            border-top: 1px solid #EDEDED;
+            margin-top: 20px;
+            text-align: right;
+            line-height: 50px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding-right: 40px;
+        }
+
+        .zp_gsxq_bd_tck_bottom > button {
+            margin-right: 10px;
+        }
+
+        .zp_ul, .zp_ul1 {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 15px;
+            padding-top: 10px;
+            margin-top: 5px;
+            background-color: #fcfcfc;
+            cursor: pointer;
+        }
+
+        .zp_ul li {
+            float: left;
+            display: inline-block;
+            margin-right: 10px;
+            width: 140px;
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        .zp_ul1 li {
+            float: left;
+            display: inline-block;
+            margin-right: 10px;
+            width: 140px;
+            padding-left: 25px;
+            margin-top: 5px;
+        }
+
+        .zp_button1 {
+            width: 80px;
+            height: 30px;
+            outline: none;
+            border: 1px solid #FC9A2F;
+            background-color: #FFFFFF;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            color: #FC9A2F;
+            margin-right: 15px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .zp_button1:hover {
+            width: 80px;
+            height: 30px;
+            outline: none;
+            border: 1px solid #FC9A2F;
+            background-color: #FC9A2F;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            color: #FFFFFF;
+            margin-right: 15px;
+        }
+
+        .zp_button {
+            width: 80px;
+            height: 30px;
+            outline: none;
+            border: none;
+            background-color: #FC9A2F;
+            text-align: center;
+            line-height: 30px;
+            overflow: hidden;
+            color: #FFFFFF;
+            border-radius: 3px;
+        }
+
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+            border: none;
+        }
+
+        .nav-tabs {
+            border-bottom: none;
+        }
+
+        .nav-tabs > li > a {
+            border: none;
+        }
+
+        .zp_one {
+            margin-left: 35px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .zp_one span {
+            display: inline-block;
+            background-color: #FFFFFF;
+            color: #FFFFFF;
+            padding: 3px 15px;
+            border-radius: 3px;
+        }
+
+        /*2*/
+        .img-replace {
+            /* replace text with an image */
+            display: inline-block;
+            overflow: hidden;
+            text-indent: 100%;
+            color: transparent;
+            white-space: nowrap;
+        }
+
+        .cd-popup {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            visibility: hidden;
+            -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+            -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+            transition: opacity 0.3s 0s, visibility 0s 0.3s;
+            z-index: 999999;
+        }
+
+        .cd-popup.is-visible {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+            -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+            transition: opacity 0.3s 0s, visibility 0s 0s;
+        }
+
+        .cd-popup-container {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            margin-top: 305px;
+            height: 405px;
+            background: #FFF;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            -webkit-transform: translateY(-40px);
+            -moz-transform: translateY(-40px);
+            -ms-transform: translateY(-40px);
+            -o-transform: translateY(-40px);
+            transform: translateY(-40px);
+            /* Force Hardware Acceleration in WebKit */
+            -webkit-backface-visibility: hidden;
+            -webkit-transition-property: -webkit-transform;
+            -moz-transition-property: -moz-transform;
+            transition-property: transform;
+            -webkit-transition-duration: 0.3s;
+            -moz-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+        }
+
+        .cd-popup-container p {
+            padding: 1em 1em;
+        }
+
+        .cd-buttons {
+            margin-right: 50px;
+        }
+
+        .cd-popup-container .cd-buttons:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .cd-popup-container .cd-buttons li {
+            float: right;
+            width: 100px;
+            margin: 10px 10px 20px;
+        }
+
+        .cd-popup-container .cd-buttons a {
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            text-transform: uppercase;
+            color: #FFF;
+            -webkit-transition: background-color 0.2s;
+            -moz-transition: background-color 0.2s;
+            transition: background-color 0.2s;
+        }
+
+        .cd-popup-container .cd-buttons li:first-child a {
+            background: #fc7169;
+            border-radius: 0 0 0 .15em;
+        }
+
+        .no-touch .cd-popup-container .cd-buttons li:first-child a:hover {
+            background-color: #fc8982;
+        }
+
+        .cd-popup-container .cd-buttons li:last-child a {
+            background: #b6bece;
+            /*border-radius: 0 0 .25em 0;*/
+        }
+
+        .no-touch .cd-popup-container .cd-buttons li:last-child a:hover {
+            background-color: #c5ccd8;
+        }
+
+        .cd-popup-container .cmd_close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .cd-popup-container .cmd_close::before, .cd-popup-container .cmd_close::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            width: 14px;
+            height: 3px;
+            background-color: #8f9cb5;
+        }
+
+        .cd-popup-container .cmd_close::before {
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            left: 8px;
+        }
+
+        .cd-popup-container .cmd_close::after {
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            right: 8px;
+        }
+
+        .is-visible .cd-popup-container {
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+    </style>
 </head>
 <body>
-<jsp:include page="headerforeEnd.jsp"/>
-<jsp:include page="personnav.jsp"/>
-<div class="zp_lb_top">
-    <div class="container zp_lb_ssk">
-        <div class="zp_lb_ssk_left">
-            <div id="this_space" style="cursor: pointer">全国</div>
-        </div>
-        <div class="zp_lb_ssk_right">
-            <form action="">
-                <input id="workspace" form="hidForm" type="hidden" name="workspace" value="" >
-                <input id="likeStr" form="hidForm" type="text" name="likeStr" placeholder="请输入职位关键词：如 项目经理等">
-                <button form="hidForm"  type="submit">搜索</button>
-            </form>
-        </div>
-    </div>
-</div>
-<section class="container zp_lb_cont">
-    <form action="">
-        <div class="row zp_lb_cont_top">
-
-            <div class="zp_lb_cont_top_0">
-                <div class="pull-left" style="width: 42px;color: #999">行业：</div>
-                <div class="pull-left" style="width: 766px">
-                    <ul>
-                        <li><a  rel="aspect" id="教育培训" inpName="fields" inpValue="教育培训" class="divSmall">
-                            教育培训</a></li>
-                        <li><a  rel="aspect2" id="游戏开发" inpName="fields" inpValue="游戏开发"
-                                class="divSmall">游戏开发</a></li>
-                        <li><a  rel="aspect3" id="政府医疗" inpName="fields" inpValue="政府医疗"
-                                class="divSmall">政府医疗</a></li>
-                        <li><a  rel="aspect4" id="电子商务" inpName="fields" inpValue="电子商务"
-                                class="divSmall">电子商务</a></li>
-                        <li><a  rel="aspect5" id="社交通讯" inpName="fields" inpValue="社交通讯"
-                                class="divSmall">社交通讯</a></li>
-                        <li><a  rel="aspect6" id="新闻资讯" inpName="fields" inpValue="新闻资讯"
-                                class="divSmall">新闻资讯</a></li>
-                        <li><a  rel="aspect7" id="金融财务" inpName="fields" inpValue="金融财务"
-                                class="divSmall">金融财务</a></li>
-                        <li><a  rel="aspect8" id="娱乐应用" inpName="fields" inpValue="娱乐应用"
-                                class="divSmall">娱乐应用</a></li>
-                        <li><a  rel="aspect9" id="企业管理" inpName="fields" inpValue="企业管理"
-                                class="divSmall">企业管理</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="clear: both"></div>
-            <div class="zp_lb_cont_top_1">
-                <div class="pull-left" style="width: 42px;color: #999">薪资：</div>
-                <div class="pull-left" style="width: 766px">
-                    <ul>
-                        <li><a  rel="type" id="s_x_10000" inpName="salary" inpValue="s_x_10000"
-                                class="divSmall">12万以下</a></li>
-                        <li><a  rel="type" id="s_10000_25000" inpName="salary" inpValue="s_10000_25000"
-                                class="divSmall">12-30万</a></li>
-                        <li><a  rel="type" id="s_25000_50000" inpName="salary" inpValue="s_25000_50000"
-                                class="divSmall">30-60万</a></li>
-                        <li><a  rel="type" id="s_50000_100000" inpName="salary" inpValue="s_50000_100000"
-                                class="divSmall">60-120万</a></li>
-                        <li><a  rel="type" id="s_100000_x" inpName="salary" inpValue="s_100000_x"
-                                class="divSmall">120万以上</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="zp_lb_cont_top_2">
-                <div class="pull-left" style="width: 42px;color: #999">更多：</div>
-                <div class="pull-left" style="width: 766px">
-                    <ul>
-                        <li class="zp_lb_li">
-                            <a>发布时间</a>
-                            <ul>
-                                <li><a  rel="one" id="d_1" inpName="fadate" inpValue="d_1" class="divSmall">一天以内</a>
-                                </li>
-                                <li><a  rel="one" id="d_3" inpName="fadate" inpValue="d_3" class="divSmall">三天以内</a>
-                                </li>
-                                <li><a  rel="one" id="d_7" inpName="fadate" inpValue="d_7" class="divSmall">一周以内</a>
-                                </li>
-                                <li><a  rel="one" id="d_30" inpName="fadate" inpValue="d_30" class="divSmall">一个月以内</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="zp_lb_li">
-                            <a>企业规模</a>
-                            <ul>
-                                <li><a  rel="three" id="g_0-50" inpName="company_scale" inpValue="g_0-50"
-                                        class="divSmall">50人以下</a></li>
-                                <li><a  rel="three" id="g_50-500" inpName="company_scale" inpValue="g_50-500"
-                                        class="divSmall">50-500人</a></li>
-                                <li><a  rel="three" id="g_500-1000" inpName="company_scale"
-                                        inpValue="g_500-1000" class="divSmall">500-1000人</a></li>
-                                <li><a  rel="three" id="g_1000以上" inpName="company_scale" inpValue="g_1000以上"
-                                        class="divSmall">1000人以上</a></li>
-                            </ul>
-                        </li>
-                        <li class="zp_lb_li">
-                            <a>企业性质</a>
-                            <ul>
-                                <li><a  rel="four" id="n_1" inpName="company_nature" inpValue="n_1"
-                                        class="divSmall">国企</a></li>
-                                <li><a  rel="four" id="n_2" inpName="company_nature" inpValue="n_2"
-                                        class="divSmall">民营</a></li>
-                                <li><a  rel="four" id="n_3" inpName="company_nature" inpValue="n_3"
-                                        class="divSmall">外企</a></li>
-                                <li><a  rel="four" id="n_4" inpName="company_nature" inpValue="n_4"
-                                        class="divSmall">政府</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="zp_lb_cont_top_3">
-                <div class="zp_lb_cont_top_3_left">
-                    <span>已选条件：</span>
-                </div>
-                <div class="zp_lb_cont_top_3_right" id="mainSelect">
-                    <%--<a href="">三天之内&nbsp;&nbsp;<span>x</span></a>--%>
-                    <%--<a href="">三天之内&nbsp;&nbsp;<span>x</span></a>--%>
-                    <%--<a href="">三天之内&nbsp;&nbsp;<span>x</span></a>--%>
-                </div>
-                <div class="zp_lb_cont_top_3_right2">
-                    共找到 <span>10000+</span>职位
-                </div>
-            </div>
-        </div>
-    </form>
-    <div class="row zp_lb_cont_middle">
-        <div class="col-md-9 zp_lb_cont_middle_left">
-            <ul class="zp_u">
-                <c:forEach items="${postionList}" var="p">
-                    <li>
-                        <i><b>
-                            <c:choose>
-                                <c:when test="${p.company.companyNature=='1'}">
-                                    国
-                                </c:when>
-                                <c:when test="${p.company.companyNature=='2'}">
-                                    私
-                                </c:when>
-                                <c:when test="${p.company.companyNature=='3'}'">
-                                    外
-                                </c:when>
-                            </c:choose>
-                        </b></i>
-                        <div class="zp_index_cont_left_zwtj_cont_left">
-                            <h4>${p.postionName}</h4>
-                            <p> <span>
-                                <c:choose>
-                                    <c:when test="${p.postionMm==p.postionYm}">
-                                        ${fn:replace((p.postionMm*12/10000),".0","")}万
-                                    </c:when>
-                                    <c:otherwise>
-                                        ${fn:replace((p.postionMm*12/10000),".0","")}万-${fn:replace((p.postionYm*12/10000),".0","")}万
-                                    </c:otherwise>
-                                </c:choose>
-                            </span>&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionExp}
-                            </p>
-                            <span><fmt:formatDate value="${p.postionTime}" pattern="yyyy-MM-dd"/></span>
-                        </div>
-                        <div class="zp_index_cont_left_zwtj_cont_right">
-                            <p><a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${p.company.companyId}">${p.company.companyName}</a></p>
-                            <p>
-                                <c:forEach items="${p.company.fields}" var="f">
-                                    ${f.fieldName}
-                                    <c:choose>
-                                        <c:when test="${status.index==2}">
-
-                                        </c:when>
-                                        <c:otherwise>
-                                            ,
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:forEach>
-                            </p>
-                            <p class="zp_index_cont_bz">
-                                <c:forEach items="${p.company.welfares}" var="w">
-                                    <span>${w.welfareName}</span>
-                                    <c:if test="${status.index==2}">
-                                        <c:set var="exitId" value="0"></c:set>
-                                    </c:if>
-                                </c:forEach>
-                            </p>
-                        </div>
-                    </li>
-                </c:forEach>
-                <%--<li>
-                    <i><b>国</b></i>
-                    <div class="zp_index_cont_left_zwtj_cont_left">
-                        <h4>WEB前端研发工程师</h4>
-                        <p> <span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验</p>
-                        <span>2017-06-08</span>
-                    </div>
-                    <div class="zp_index_cont_left_zwtj_cont_right">
-                        <p>东软集团</p>
-                        <p>互联网/移动互联网/电子商务,IT服务/系统集成,计算机软件</p>
-                        <p class="zp_index_cont_bz"><span>带薪年假</span><span>交通补助</span><span>定期体检</span></p>
-                    </div>
-                </li>
-                <li>
-                    <i><b>外</b></i>
-                    <div class="zp_index_cont_left_zwtj_cont_left">
-                        <h4>WEB前端研发工程师</h4>
-                        <p> <span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验</p>
-                        <span>2017-06-08</span>
-                    </div>
-                    <div class="zp_index_cont_left_zwtj_cont_right">
-                        <p>东软集团</p>
-                        <p>互联网/移动互联网/电子商务,IT服务/系统集成,计算机软件</p>
-                        <p class="zp_index_cont_bz"><span>带薪年假</span><span>交通补助</span><span>定期体检</span></p>
-                    </div>
-                </li>--%>
-            </ul>
-            <div class="zp_botv">
-                <div class="zp_pl">
-                    <ul class="pagination zp_pa">
-                        <%--                        <li class="b"><a href="#">上一页</a></li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li class="a"><a href="#">2</a></li>
-                                                <li class="a"><a href="#">3</a></li>
-                                                <li class="a"><a href="#">4</a></li>
-                                                <li class="a"><a href="#">5</a></li>
-                                                <li class="a"><a href="#">下一页</a></li>--%>
-                        <myPage:paging length="10" page="${page}" pages="${pages}"/>
-                    </ul>
-                    <div class="zp_page">共 <span>38</span> 页</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 zp_lb_cont_middle_right " style="padding-left: 15px;">
-            <div class="zp_rt">
-                <h4>最近浏览</h4>
-                <ul>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
 
 
-                </ul>
+<div id="this_space" style="cursor: pointer">全国</div>
 
-            </div>
-            <ul>
-                <li style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_lb_gb1.png')"></li>
-                <li style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_lb_gb2.png')"></li>
-                <li style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_lb_gb3.png')"></li>
-                <li style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_lb_gb4.png')"></li>
-                <li style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_lb_gb1.png')"></li>
-                <li style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_lb_gb2.png')"></li>
-            </ul>
-        </div>
-    </div>
-    <form id="hidForm" action="${pageContext.request.contextPath}/Postion/selPostionIndex.do"></form>
-</section>
+
 
 
 <div id='zp_gsxq_bd_tck'>
@@ -629,14 +846,14 @@
         <c:forEach items="${queryPostion.alist}" var="al">
         $('#${al}').click();
         </c:forEach>
-        if('${queryPostion.workspace}'){
+        if ('${queryPostion.workspace}') {
             $("#div6").css("background-color", "#FC9A2F");
             var str = '${queryPostion.workspace}';
             $("#div6").html(str);
             $('#this_space').text(str);
             $('#workspace').val(str);
         }
-        if('${queryPostion.likeStr}'){
+        if ('${queryPostion.likeStr}') {
             $('#likeStr').val('${queryPostion.likeStr}');
         }
     });
