@@ -1147,7 +1147,6 @@ obj_gzjl.prototype.bindingSJ=function (){
                         }
                     }
 
-
                 str+='</div>'
                 str+='<em class="em2"></em>'
                 str+='</li>'
