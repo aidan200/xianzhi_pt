@@ -325,8 +325,6 @@ public class CompanyInfoController {
     @RequestMapping("selByCompanyName.do")
     public Map selByCompanyName(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String companyName,Long resumeId){
     Map map=new HashMap();
-        System.out.println("companyName::::::::::::::::::::::::"+companyName);
-        System.out.println("resumeId:::::::::::::::::::::::::::"+resumeId);
     PageBean<XzCompany> PageBean=companyService.selByCompanyName(page,rows,companyName,resumeId);
     List<XzCompany> plist=PageBean.getList();
     map.put("plist",plist);

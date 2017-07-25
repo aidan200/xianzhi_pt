@@ -44,6 +44,8 @@ public class ShieldController  extends BaseController{
             }
             List<XzCompany> clist = xzCompanyService.selByCompanyIdList(companyIdList);
             map.put("clist", clist);
+        }else {
+            map.put("aaa","aaa");
         }
         return map;
     }

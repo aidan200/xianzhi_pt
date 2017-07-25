@@ -587,8 +587,8 @@
     where company_id = #{companyId,jdbcType=BIGINT}
   </update>
   <select id="selByCompanyName" parameterType="java.util.Map" resultMap="BaseResultMap">
-    select company_id,company_name from xz_company  WHERE
-    company_name LIKE CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')and c.company_id not in (
+    select c.company_id,c.company_name from xz_company c WHERE
+    c.company_name LIKE CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')and c.company_id not in (
 	select company_id FROM xz_shield where resume_id = #{resumeId,jdbcType=BIGINT})
   </select>
   <select id="selByCompanyIdList" parameterType="java.util.List" resultMap="BaseResultMap">
