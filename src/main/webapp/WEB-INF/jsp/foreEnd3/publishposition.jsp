@@ -93,7 +93,9 @@
                     </div>
                     <div class="pup_form">
                         <span style="float: left"> <span class="pup_span1">*</span>职位描述：</span>
-                        <textarea class="pup_textarea"></textarea>
+                        <textarea id="status" class="pup_textarea" name="status" onkeydown="countChar('status','counter');" onkeyup="countChar('status','counter');"></textarea>
+                        已经输入<span id="counter">0</span>字
+                            <%--<textarea class="pup_textarea"></textarea>--%>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>职位亮点：</span>
@@ -229,6 +231,10 @@
     </div>
 </div>
 
-
+<script language="javascript">
+    function countChar(textareaNamezzjs,spanName){
+        document.getElementById(spanName).innerHTML=document.getElementById(textareaNamezzjs).value.length;
+    }
+</script>
 </body>
 </html>

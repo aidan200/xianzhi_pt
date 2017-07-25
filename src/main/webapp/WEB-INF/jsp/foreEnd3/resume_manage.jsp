@@ -123,7 +123,7 @@
                             </div>
                             <table class="table fa-border table-striped" style="width: 100%;border-top:none ">
                                 <thead>
-                                <tr class="rem_tr1">
+                                <tr class="rem_tr">
                                     <th width="50"></th>
                                     <th width="100">姓名</th>
                                     <th width="60">性别</th>
