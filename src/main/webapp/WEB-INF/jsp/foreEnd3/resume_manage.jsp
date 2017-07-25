@@ -17,6 +17,8 @@
             background-color: #ffffff;
         }
     </style>
+
+    <%--汉堡小按钮--%>
     <script>
         $(document).ready(function () {
             $(".hamburger").click(function () {
@@ -42,7 +44,6 @@
                     经理人应聘
                 </a>
             </li>
-            <li><a href="#rem_two" data-toggle="tab">推荐简历</a></li>
             <li><a href="#rem_three" data-toggle="tab">主动下载</a></li>
             <li><a href="#rem_four" data-toggle="tab">我的收藏</a></li>
             <li><a href="#rem_five" data-toggle="tab">意向沟通</a></li>
@@ -134,42 +135,6 @@
                         </div>
                     </div>
 
-                </div>
-
-                <!--推荐简历-->
-                <div class="tab-pane fade" id="rem_two">
-                    <div class="rem_cen">
-                        <span style="margin-left: 20px">查看</span>
-                        <select name="" id="" class="rem_input1">
-                            <option value="">全部职位</option>
-                            <option value=""></option>
-                        </select>
-
-                        <span style="margin-left: 10px">简历编号</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">姓名</span>
-                        <input type="text" class="rem_input4">
-                        <span style="margin-left: 10px">目前任职</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">目前公司</span>
-                        <input type="text" class="rem_input3">
-                        <button class="rem_b">搜索</button>
-
-                    </div>
-                    <div class="rem_table">
-                        <div class="rem_blue">
-                            <a href="">待处理 (<span>0</span>)</a>
-                            <a href="">满意 (<span>0</span>)</a>
-                            <a href="">暂不满意 (<span>0</span>)</a>
-                            <a href="">全部推荐简历 (<span>0</span>)</a>
-                        </div>
-                    </div>
-                    <div class="rem_no2">
-                        <div class="rem_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt="" class="rem_img">
-                            <p class="all_p">抱歉没有找到符合条件的职位</p>
-                        </div>
-                    </div>
                 </div>
 
                 <!--主动下载-->
@@ -412,6 +377,8 @@
         </div>
     </div>
 </div>
+
+<%--汉堡小按钮--%>
 <script>
     var forEach = function (t, o, r) {
         if ("[object Object]" === Object.prototype.toString.call(t))for (var c in t)Object.prototype.hasOwnProperty.call(t, c) && o.call(r, t[c], c, t); else for (var e = 0, l = t.length; l > e; e++)o.call(r, t[e], e, t)
