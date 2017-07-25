@@ -16,5 +16,5 @@ public interface XzShieldMapper {
 
     int insertShield(XzShield xzShield);
 
-    int deleteByShieldId(Long shieldId);
+    int deleteById(XzShield xzShield);
 }

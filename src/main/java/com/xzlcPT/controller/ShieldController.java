@@ -52,9 +52,9 @@ public class ShieldController  extends BaseController{
         return i;
     }
     @ResponseBody
-    @RequestMapping("deleteByShieldId")
-    private  int deleteByShieldId(@RequestBody Long shieldId){
-        int i=xzShieldService.deleteByShieldId(shieldId);
+    @RequestMapping("deleteById")
+    private  int deleteById(@RequestBody XzShield xzShield){
+        int i=xzShieldService.deleteById(xzShield);
         return i;
     }
 

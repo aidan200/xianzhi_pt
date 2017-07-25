@@ -32,8 +32,9 @@ public class XzShieldServiceImpl  implements XzShieldService{
     }
 
     @Override
-    public int deleteByShieldId(Long shieldId) {
-       int i=xzShieldMapper.deleteByShieldId(shieldId);
+    public int deleteById(XzShield xzShield) {
+       int i=xzShieldMapper.deleteById(xzShield);
         return i;
     }
+
 }
