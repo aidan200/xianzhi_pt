@@ -2317,6 +2317,8 @@ footer {
     font-size: 14px;
     margin-left: 10px;
     margin-right: 10px;
+    display: inline-block;
+    margin-top: 1px;
 }
 
 .login_remember {

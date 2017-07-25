@@ -55,28 +55,44 @@
                     </c:if>
                 </div>
 
-                <div style="margin-top: 15px;">
+                <div style="margin-top: 15px;overflow: hidden">
                     <a class="login_forget" href="###">忘记密码?</a>
                     <span class="login_remember">
-                        <input type="checkbox" name="remember" value="true"> 记住我
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="login1" name="remember" value="true">
+                            <label for="login1" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                记住我
+                            </label>
+                        </div>
                     </span>
 
                 </div>
                 <button type="submit" class="login_button">登 录</button>
-                <a href="#0" class="login_re cd-popup-trigger">没有账号？ 立即注册</a>
+                <a href="#0" class="login_re allregister">没有账号？ 立即注册</a>
             </div>
         </form>
     </div>
 
 </div>
 
-<div class="cd-popup" role="alert">
-    <div class="cd-popup-container">
+<div class="allpop" role="alert">
+    <div class="all_container">
         <div class="index_tan">
             <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do">用户</a>
             <a href="${pageContext.request.contextPath}/XzRegister/goRegisterC.do">企业</a>
         </div>
-        <a href="#0" class="cd-popup-close cmd_close img-replace">Close</a>
+        <a href="#0" class="all_close cmd_close"></a>
     </div>
 </div>
 
