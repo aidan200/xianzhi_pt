@@ -60,7 +60,7 @@ public class ResumeController extends BaseController {
         return mv;
     }
 
-    @RequestMapping("selResumeByConditions")
+    @RequestMapping("selResumeByConditions.do")
     public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,String fieldName,String educationLevel,
                                                 String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String createTime,String resumeState){
         ModelAndView mv=new ModelAndView("/foreEnd3/selectresume");

@@ -88,12 +88,10 @@ public class XzResumeServiceImpl implements XzResumeService{
             int resumeMmMin = Integer.parseInt(resumeMms[0].toString());
             int a=resumeMmMin*10000/12;
             map.put("resumeMmMin", a);
-            System.out.println("a:::::::::::::::::"+a);
             if (resumeMmMin!=100) {
                 int resumeMmMax = Integer.parseInt(resumeMms[1].toString());
                 int b=resumeMmMax*10000/12;
                 map.put("resumeMmMax", b);
-                System.out.println("b:::::::::::::::::::"+b);
             }
         }
         if (map.get("resumeBirth")!=null){
@@ -106,9 +104,9 @@ public class XzResumeServiceImpl implements XzResumeService{
         }
         if (map.get("resumeSex")!=null){
             String resumeSex=map.get("resumeSex").toString();
-            if (resumeSex=="男"){
+            if (resumeSex.equals("男")){
                 map.put("resumeSex",0);
-            }else if (resumeSex=="女"){
+            }else if (resumeSex.equals("女")){
                 map.put("resumeSex",1);
             }
         }
