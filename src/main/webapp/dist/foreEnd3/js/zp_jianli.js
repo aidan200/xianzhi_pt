@@ -2817,18 +2817,19 @@ obj_gssc.prototype.init=function (){
         dataType:'json',                   //定义返回data类型
         url:path+'Shield/selByResumeId',    //路径
         success:function (data){//data 就是数据 json
-
             This.pb=data
-            if(This.pb.clist.length!=undefined){
+            if(This.pb.aaa){
+                $('#pb_gs').html('')
+                This.bindingSJ();
+            }else{
                 var str=''
                 for(var i=0;i<This.pb.clist.length;i++){
                     str+='<li><span data-id="'+This.pb.clist[i].companyId+'">'+This.pb.clist[i].companyName+'</span><a href="javascript:;" class="li_sc">x</a></li>'
                 }
                 $('#pb_gs').html(str);
                 This.bindingSJ();
-            }else{
-                This.bindingSJ();
             }
+
         },error:function (){ //报错执行的
             alert('公司屏蔽错误')
         }
