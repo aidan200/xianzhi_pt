@@ -59,6 +59,7 @@
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <collection property="fields" ofType="com.xzlcPT.bean.XzField">
+      <id column="field_id" jdbcType="BIGINT" property="fieldId" />
       <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
       <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
     </collection>
@@ -91,6 +92,7 @@
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <collection property="fields" ofType="com.xzlcPT.bean.XzField">
+      <id column="field_id" jdbcType="BIGINT" property="fieldId" />
       <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
       <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
     </collection>
@@ -532,57 +534,89 @@
   xz_resume_education e ON r.resume_id = e.resume_id LEFT JOIN
   xz_job_exp j ON  r.resume_id = j.resume_id
   WHERE 1=1
-  <!--<if test="fieldName !=null and fieldName !=''">-->
-    <!--AND f.field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')-->
-  <!--</if>-->
-  <!--<if test="educationLevel !=null and educationLevel !=''">-->
-    <!--AND e.education_level = #{educationLevel,jdbcType=VARCHAR}-->
-  <!--</if>-->
-  <!--<if test="resumePosition !=null and resumePosition!=''">-->
-    <!--AND r.resume_position = #{resumePosition,jdbcType=VARCHAR}-->
-  <!--</if>-->
-  <!--<if test="resumeMmMin !=null and resumeMmMin !=''">-->
-    <!--AND r.resume_mm > #{resumeMmMin,jdbcType=INTEGER}-->
-  <!--</if>-->
-    <!--<if test="resumeMmMax !=null and jobexpMmMax !=''">-->
-      <!--AND r.resume_mm < #{resumeMmMax,jdbcType=INTEGER}-->
-    <!--</if>-->
-    <!--<if test="resumeIntentYm !=null and resumeIntentYm!=''">-->
-      <!--AND r.resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER}-->
-    <!--</if>-->
-    <!--<if test="resumeBirthMin !=null and resumeBirthMin != ''">-->
-      <!--AND 2017-YEAR(r.resume_birth) > #{resumeBirthMin,jdbcType=INTEGER}-->
-    <!--</if>-->
-    <!--<if test="resumeBirthMax !=null and resumeBirthMax !=''">-->
-      <!--AND 2017-YEAR(r.resume_birth) < #{resumeBirthMax,jdbcType=INTEGER}-->
-    <!--</if>-->
-    <!--<if test="resumeSex !=null and resumeSex !=''">-->
-      <!--AND r.resume_sex = #{resumeSex,jdbcType=INTEGER}-->
-    <!--</if>-->
-    <!--<if test="createTime !=null and createTime != ''">-->
-      <!--AND TO_DAYS(NOW()) - TO_DAYS(r.create_time) <= #{createTime,jdbcType=INTEGER}-->
-    <!--</if>-->
-    <!--<if test="resumeState !=null and resumeState !=''">-->
-      <!--AND resume_state = #{resumeState,jdbcType=VARCHAR}-->
-    <!--</if>-->
+  <if test="resumePosition !=null and resumePosition !=''">
+    AND r.resume_position LIKE CONCAT('%',#{resumePosition,jdbcType=VARCHAR},'%')
+  </if>
+  <if test="educationLevel !=null and educationLevel !=''">
+    AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
+  </if>
+  <if test="fieldName !=null and fieldName!=''">
+    AND f.field_name = #{fieldName,jdbcType=VARCHAR}
+  </if>
+  <if test="resumeMmMin !=null and resumeMmMin !=''">
+    AND r.resume_mm &gt;= #{resumeMmMin,jdbcType=INTEGER}
+  </if>
+    <if test="resumeMmMax !=null and jobexpMmMax !=''">
+      AND r.resume_mm &lt;= #{resumeMmMax,jdbcType=INTEGER}
+    </if>
+    <if test="resumeIntentYm !=null and resumeIntentYm!=''">
+      AND r.resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER}
+    </if>
+    <if test="resumeBirthMin !=null and resumeBirthMin != ''">
+      AND 2017-YEAR(r.resume_birth) &gt;= #{resumeBirthMin,jdbcType=INTEGER}
+    </if>
+    <if test="resumeBirthMax !=null and resumeBirthMax !=''">
+      AND 2017-YEAR(r.resume_birth) &lt;= #{resumeBirthMax,jdbcType=INTEGER}
+    </if>
+    <if test="resumeSex !=null and resumeSex !=''">
+      AND r.resume_sex = #{resumeSex,jdbcType=INTEGER}
+    </if>
+    <if test="createTime !=null and createTime != ''">
+      AND TO_DAYS(NOW()) - TO_DAYS(r.create_time) &lt;= #{createTime,jdbcType=INTEGER}
+    </if>
+    <if test="resumeState !=null and resumeState !=''">
+      AND r.resume_state = #{resumeState,jdbcType=VARCHAR}
+    </if>
+    <if test="list.size>0">
+      and r.resume_id in
+      <foreach collection="list" item="resume_id" open="(" close=")" separator="," >
+        #{resume_id,jdbcType=BIGINT}
+      </foreach>
+    </if>
    ORDER BY  e.graduate_date,j.jobexp_end_time DESC
 
   </select>
   <select id="selectRcount" resultMap="ResumeInformation" parameterType="java.util.Map">
     SELECT
-    r.resume_id
+    DISTINCT r.resume_id
     FROM xz_resume r LEFT JOIN
     xz_resume_domain d ON r.resume_id = d.resume_id LEFT JOIN
     xz_field f ON d.field_id = f.field_id LEFT JOIN
     xz_resume_education e ON r.resume_id = e.resume_id LEFT JOIN
     xz_job_exp j ON  r.resume_id = j.resume_id
     WHERE 1=1
-    <if test="fieldName !=null and fieldName !=''">
-      AND f.field_name LIKE CONCAT('%',#{fieldName,jdbcType=VARCHAR},'%')
+    <if test="resumePosition !=null and resumePosition !=''">
+      AND r.resume_position LIKE CONCAT('%',#{resumePosition,jdbcType=VARCHAR},'%')
     </if>
     <if test="educationLevel !=null and educationLevel !=''">
       AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
     </if>
-    GROUP BY  r.resume_id
+    <if test="fieldName !=null and fieldName!=''">
+      AND f.field_name = #{fieldName,jdbcType=VARCHAR}
+    </if>
+    <if test="resumeMmMin !=null and resumeMmMin !=''">
+      AND r.resume_mm &gt;= #{resumeMmMin,jdbcType=INTEGER}
+    </if>
+    <if test="resumeMmMax !=null and jobexpMmMax !=''">
+      AND r.resume_mm &lt;= #{resumeMmMax,jdbcType=INTEGER}
+    </if>
+    <if test="resumeIntentYm !=null and resumeIntentYm!=''">
+      AND r.resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER}
+    </if>
+    <if test="resumeBirthMin !=null and resumeBirthMin != ''">
+      AND 2017-YEAR(r.resume_birth) &gt;= #{resumeBirthMin,jdbcType=INTEGER}
+    </if>
+    <if test="resumeBirthMax !=null and resumeBirthMax !=''">
+      AND 2017-YEAR(r.resume_birth) &lt;= #{resumeBirthMax,jdbcType=INTEGER}
+    </if>
+    <if test="resumeSex !=null and resumeSex !=''">
+      AND r.resume_sex = #{resumeSex,jdbcType=INTEGER}
+    </if>
+    <if test="createTime !=null and createTime != ''">
+      AND TO_DAYS(NOW()) - TO_DAYS(r.create_time) &lt;= #{createTime,jdbcType=INTEGER}
+    </if>
+    <if test="resumeState !=null and resumeState !=''">
+      AND r.resume_state = #{resumeState,jdbcType=VARCHAR}
+    </if>
   </select>
 </mapper>

@@ -2,6 +2,7 @@ package com.xzlcPT.dao;/**
  * Created by Administrator on 2017/7/20.
  */
 
+import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzShield;
 
 import java.util.List;
@@ -12,5 +13,8 @@ import java.util.List;
  **/
 public interface XzShieldMapper {
     List<XzShield> selByResumeId(Long resumeId);
+
     int insertShield(XzShield xzShield);
+
+    int deleteById(XzShield xzShield);
 }

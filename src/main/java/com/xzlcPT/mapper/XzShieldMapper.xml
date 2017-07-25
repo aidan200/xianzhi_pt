@@ -17,4 +17,7 @@
     <insert id="insertShield" parameterType="com.xzlcPT.bean.XzShield">
         insert into xz_shield(resume_id,company_id) values(#{resumeId,jdbcType=BIGINT},#{companyId,jdbcType=BIGINT})
     </insert>
+    <delete id="deleteById" parameterType="com.xzlcPT.bean.XzShield">
+        delete from  xz_shield where  resume_id=#{resumeId,jdbcType=BIGINT} AND company_id=#{companyId,jdbcType=BIGINT}
+    </delete>
 </mapper>

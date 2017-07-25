@@ -82,14 +82,47 @@ public class XzResumeServiceImpl implements XzResumeService{
 
     @Override
     public PageBean<XzResume> selectRcount(Integer page, Integer rows, Map map) {
+        if (map.get("resumeMm")!=null) {
+            String resumeMm = map.get("resumeMm").toString();
+            String[] resumeMms = resumeMm.split("-|万|以上");
+            int resumeMmMin = Integer.parseInt(resumeMms[0].toString());
+            int a=resumeMmMin*10000/12;
+            map.put("resumeMmMin", a);
+            System.out.println("a:::::::::::::::::"+a);
+            if (resumeMmMin!=100) {
+                int resumeMmMax = Integer.parseInt(resumeMms[1].toString());
+                int b=resumeMmMax*10000/12;
+                map.put("resumeMmMax", b);
+                System.out.println("b:::::::::::::::::::"+b);
+            }
+        }
+        if (map.get("resumeBirth")!=null){
+            String resumeBirth=map.get("resumeBirth").toString();
+            String[] resumeBirths=resumeBirth.split("-");
+            int resumeBirthMin=Integer.parseInt(resumeBirths[0]);
+            int resumeBirthMax=Integer.parseInt(resumeBirths[1]);
+            map.put("resumeBirthMin",resumeBirthMin);
+            map.put("resumeBirthMax",resumeBirthMax);
+            System.out.println("resumeBirthMin:::::::::::::::::"+resumeBirthMin);
+            System.out.println("resumeBirthMax:::::::::::::::::"+resumeBirthMax);
+        }
+        if (map.get("resumeSex")!=null){
+            String resumeSex=map.get("resumeSex").toString();
+            if (resumeSex.equals("男")){
+                map.put("resumeSex",0);
+            }else {
+                map.put("resumeSex",1);
+            }
+        }
         PageHelper.startPage(page,rows);
         List<XzResume> rlist=resumeMapper.selectRcount(map);
         PageBean<XzResume> pageBean=new PageBean<>(rlist);
         List<XzResume> tlist=pageBean.getList();
-        List list=new ArrayList();
-        for (XzResume xzResume:rlist){
+        List list=new ArrayList<>();
+        for (XzResume xzResume :tlist){
             list.add(xzResume.getResumeId());
         }
+        map.put("list",list);
         List<XzResume> resumeList=resumeMapper.selResumeByConditions(map);
        List<XzResumeEducation> elist=new ArrayList<>();
         for(int i=0;i<resumeList.size();i++){
@@ -103,13 +136,12 @@ public class XzResumeServiceImpl implements XzResumeService{
             if (resumeList.get(i).getJobExps().size()>1){
                 jlist=resumeList.get(i).getJobExps().subList(0,1);
                 resumeList.get(i).setJobExps(jlist);
-                System.out.println("size::::::::::::::::"+resumeList.get(i).getJobExps().size());
             }
         }
-        for (int i=0;i<resumeList.size();i++){
-            System.out.println("name::::::::::::::::::::"+resumeList.get(i).getResumeName());
-        }
         pageBean.setList(resumeList);
+        System.out.println("rlist++++++++++++++++++++++++++"+rlist.size());
+        System.out.println("page:::::::::::::::::::::::::::"+page);
+        System.out.println("rows:::::::::::::::::::::::::::"+rows);
         return pageBean;
     }
 

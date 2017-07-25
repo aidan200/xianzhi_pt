@@ -110,6 +110,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                 str2+=_self.dqhy[i].fieldName+'/'
             }
         }
+
         var str3 = str2.substr(0,str2.length-1);
         if(kg){
             kg=false;
@@ -138,7 +139,7 @@ obj_yhxx.prototype.bindingSJ=function (){
             for(var i=0;i<_self.dqhy.length;i++){
                 if(_self.dqhy[i].fieldType=="2"&&_self.dqhy[i].fieldName!=''){
                     qq++;        //检测有几个当前行业
-                    str+='<div><div data-fieldId='+_self.dqhy[i].fieldId+' data-fieldtype='+_self.dqhy[i].fieldType+'>'+_self.dqhy[i].fieldName+'</div><a href="javascript:;">x</a></div>'
+                    str+='<div><div data-fieldid='+_self.dqhy[i].fieldId+' data-fieldtype='+_self.dqhy[i].fieldType+'>'+_self.dqhy[i].fieldName+'</div><a href="javascript:;">x</a></div>'
                 }
             }
 
@@ -241,16 +242,16 @@ obj_yhxx.prototype.bindingSJ=function (){
                         event.preventDefault();
                         $('.cd-popuph').addClass('is-visible');
 
-                        $('#xz_qwhy_qd').on('click',function (){                    //确认按钮
+                        $('#xz_qwhy_qd').unbind().on('click',function (){                    //确认按钮
 
                             var attr_1=[];
                             $('#qwhy__').find('input[type=checkbox]:checked').each(function (index,ele){
-                                attr_1[index]={value:$(ele).attr('data-value'),fieldId:$(ele).attr('data-fieldId'),fieldtype:$(ele).attr('data-fieldtype')}
+                                attr_1[index]={value:$(ele).attr('data-value'),fieldId:$(ele).attr('data-fieldid'),fieldtype:$(ele).attr('data-fieldtype')}
                             })
 
                             var str_qwhy=''                 //所选的当前行业
                             for(var i=0;i<attr_1.length;i++){
-                                str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
+                                str_qwhy+='<div><div data-fieldid='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
                             }
                             $('#dqhy_1').html(str_qwhy);        //赋值
                              $('.cd-popuph').removeClass('is-visible');       //改变
@@ -277,7 +278,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                             }
                         });
                         //取消
-                        $('.cd-popup-closeh').on('click',function (){
+                        $('.cd-popup-closeh').unbind().on('click',function (){
                             $('.cd-popuph').removeClass('is-visible');
                         })
                         $(document).keyup(function(event){                            //键盘关闭
@@ -290,7 +291,6 @@ obj_yhxx.prototype.bindingSJ=function (){
                     }
 
                 })
-
 
 
 
@@ -316,6 +316,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                         fieldType:$(dqhy).eq(i).attr('data-fieldtype'),
                     }
                 }
+
                 var resume={
                     resumeName:trim($('#jl_name').val()),                  //姓名                 已非空
                     resumeWorkinglife:trim($('#zp_select_time1').val()),  //工作年份
@@ -865,7 +866,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                     str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
                 }
                 $('#zp_qwhy').html(str_qwhy);        //赋值
-                $('.cd-popup').removeClass('is-visible');
+                $('.cd-popuph').removeClass('is-visible');
                 if(attr_1.length==0){
                     $('#zp_qwhy').css({
                         "border-color":"#FF4600",
@@ -1113,15 +1114,16 @@ obj_gzjl.prototype.bindingSJ=function (){
                     event.preventDefault();
                     $('.cd-popuph').addClass('is-visible');
 
-                    $('.cd-popup-closeh').on('click',function (){
+                    $('.cd-popup-closeh').unbind().on('click',function (){
                         $('.cd-popuph').removeClass('is-visible');
                     })
+
                     $(document).keyup(function(event){                            //键盘关闭
                         if(event.which=='27'){
                             $('.cd-popuph').removeClass('is-visible');
                         }
                     });
-                    $('#xz_qwhy_qd').on('click',function (){                    //确认按钮
+                    $('#xz_qwhy_qd').unbind().on('click',function (){                    //确认按钮
                         //第一步获取所有选中的复选框
                         var attr_1=[];
                         $('#qwhy__').find('input[type=checkbox]:checked').each(function (index,ele){
@@ -1133,7 +1135,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                             str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
                         }
                         $('.gsly_xg').html(str_qwhy);
-                        $('.cd-popup').removeClass('is-visible');
+                        $('.cd-popuph').removeClass('is-visible');
                         aaa();
                     });
 
@@ -1153,7 +1155,7 @@ obj_gzjl.prototype.bindingSJ=function (){
 
             if(kg){
                 kg=false;
-                tj_kg=false;
+
                 var str='';
                 str+='<div class="zp_jianli_zl_4 ttk_jl" data-id="'+_self.obj_s[index].gzjlID+'">'
                 str+='<ul>'
@@ -1347,28 +1349,35 @@ obj_gzjl.prototype.bindingSJ=function (){
     }); //修改弹出框事件
     $('#gzjl').siblings('div').find('.zp_jianli_sc').each(function (i,e){
         $(e).on('click',function (){
-            var aa = $(e).parent().parent().parent().attr('data-id');
-           var aaa=confirm('你确认要删除吗？')
-            if(aaa){
-                $.ajax({
-                    type:"post",
-                    async:true,
-                    data:{jobExpId:aa},
-                    dataType:'json',
-                    url:path+'JobExp/deleteJobExp.do',
-                    success:function (data){
-                        $('#gzjl').siblings('div').remove();
-                        _self.init()
-                    },error:function (){ //报错执行的
-                        alert('工作经历删除错误')
-                    }
-                })
+            if(kg){
+                kg=false
+                var aa = $(e).parent().parent().parent().attr('data-id');
+                var aaa=confirm('你确认要删除吗？')
+                if(aaa){
+                    $.ajax({
+                        type:"post",
+                        async:true,
+                        data:{jobExpId:aa},
+                        dataType:'json',
+                        url:path+'JobExp/deleteJobExp.do',
+                        success:function (data){
+                            $('#gzjl').siblings('div').remove();
+                            kg=true;
+                            _self.init()
+                        },error:function (){ //报错执行的
+                            alert('工作经历删除错误')
+                        }
+                    })
+                }else{
+                    kg=true;
+                }
             }
+
 
         })
     })
     $('#tj_gzjl').unbind('click').on('click',function (){
-        if(tj_kg){
+        if(kg){
             tj_kg=false;
             kg=false;
             var str='';
@@ -1617,13 +1626,13 @@ obj_yyjl.prototype.init=function (){
 obj_yyjl.prototype.bindingSJ=function (){
     var _self=this;
     var kg=true;//这是修改开关
-    var tj_kg=true;//   这是添开关
+
 
     $('.zp_jianli_cont_left_xl').find('.zp_jianli_xg').each(function (index,ele){
         $(ele).unbind('click').on('click',function (){
             var str='';
             if(kg){
-                tj_kg=false;
+
                 kg=false;
                 str+='<div class="zp_jianli_zl_5" id="tck_jy" data-id="'+_self.obj_s[index].jyjlID+'">'
                     str+='<ul>'
@@ -1694,14 +1703,14 @@ obj_yyjl.prototype.bindingSJ=function (){
                        }
                    })
                    $('.zp_jianli_zl_5').find('button').eq(1).on('click',function (){    //取消按钮
-                       tj_kg=true;
+
                        kg=true;
                        $(this).parent().parent().prev().css({"display":"block"})
                        $(this).parent().parent().remove();
                    })
                     $('.zp_jianli_zl_5').find('button').eq(0).on('click',function (){    //修改按钮事件
                            var This=this
-                            tj_kg=true;
+
                             kg=true;
                             var patent2=$(this).parent().parent();
 
@@ -1773,33 +1782,35 @@ obj_yyjl.prototype.bindingSJ=function (){
     })
     $('.zp_jianli_cont_left_xl').find('.zp_jianli_sc').each(function (index,ele){
         $(ele).on('click',function (){
-            var aa=$(ele).parent().parent().attr('data-id');
-            var aaa=confirm('你确认要删除吗？')
-            if(aaa){
-                $.ajax({
-                    type:"post",
-                    async:true,
-                    data:{educationId:aa},
-                    dataType:'json',
-                    url:path+'Education/deleteEducation.do',
-                    success:function (data){
-                    var ee=$('#gzjl_parent > div')
-                    for(var i=1;i<ee.length-1;i++){
-                        ee.eq(i).remove();
-                    }
-                    _self.init()
-                    },error:function (){ //报错执行的
-                        alert('工作经历删除错误')
-                    }
-                })
+            if(kg){
+                var aa=$(ele).parent().parent().attr('data-id');
+                var aaa=confirm('你确认要删除吗？')
+                if(aaa){
+                    $.ajax({
+                        type:"post",
+                        async:true,
+                        data:{educationId:aa},
+                        dataType:'json',
+                        url:path+'Education/deleteEducation.do',
+                        success:function (data){
+                            var ee=$('#gzjl_parent > div')
+                            for(var i=1;i<ee.length-1;i++){
+                                ee.eq(i).remove();
+                            }
+                            _self.init()
+                        },error:function (){ //报错执行的
+                            alert('工作经历删除错误')
+                        }
+                    })
+                }
             }
+
         })
     })
     $('#zp_tjjyjl').unbind('click').on('click',function (){
         var str='';
-        if(tj_kg){
+        if(kg){
             kg=false;
-            tj_kg=false;
             str+='<div class="zp_jianli_zl_5" id="tck_jy">'
             str+='<ul>'
             str+='<li>学校名称 <input type="text" id="_xxmc_" class="form-control " placeholder="请输入学校名称"></li>'
@@ -1856,12 +1867,12 @@ obj_yyjl.prototype.bindingSJ=function (){
             })
 
             $('.zp_jianli_zl_5').find('button').eq(1).unbind('click').on('click',function (){
-                tj_kg=true;
+
                 kg=true;
                 $(this).parent().parent().remove()
             })
             $('.zp_jianli_zl_5').find('button').eq(0).unbind('click').on('click',function (){
-                tj_kg=true;
+
                 kg=true;
                 var This=this;
                 var patent2=$(this).parent().parent();
@@ -1993,13 +2004,13 @@ obj_xmjy.prototype.init=function (){
 obj_xmjy.prototype.bindingSJ=function (){
     var _self=this;
     var kg=true;
-    var tj_kg=true;
+
 
     $('.zp_jianli_cont_left_xmjy').find('.zp_jianli_xg').each(function (index,ele){
         $(ele).on('click',function (){
             if(kg){
                 kg=false;
-                tj_kg=false;
+
                 var str='';
                 str+='<div class="zp_jianli_zl_7" id="ttk_xmjy" data-id="'+_self.obj_s[index].xmjyID+'">'
                 str+='<ul>'
@@ -2063,7 +2074,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                 $(this).parent().css({"display":"none"})
                 $('.zp_jianli_zl_7').find('button').eq(1).unbind('click').on('click',function (){    //取消按钮
                     kg=true;
-                    tj_kg=true;
+
                     $(this).parent().parent().prev().css({"display":"block"})
                     $(this).parent().parent().remove();
                 })
@@ -2139,32 +2150,34 @@ obj_xmjy.prototype.bindingSJ=function (){
     })
     $('.zp_jianli_cont_left_xmjy').find('.zp_jianli_sc').each(function (index,ele){
         $(ele).on('click',function (){
-           var aa= $(ele).parent().attr('data-id')
-            var aaa=confirm('你确认要删除吗？')
-            if(aaa){
-                $.ajax({
-                    type:"post",
-                    async:true,
-                    data:{projectExpId:aa},
-                    dataType:'json',
-                    url:path+'ProjectExp/deleteProjectExp.do',
-                    success:function (data){
-                        var ee=$('#xmjy_parent > div')
-                        for(var i=1;i<ee.length-1;i++){
-                            ee.eq(i).remove();
+            if(kg){
+                var aa= $(ele).parent().attr('data-id')
+                var aaa=confirm('你确认要删除吗？')
+                if(aaa){
+                    $.ajax({
+                        type:"post",
+                        async:true,
+                        data:{projectExpId:aa},
+                        dataType:'json',
+                        url:path+'ProjectExp/deleteProjectExp.do',
+                        success:function (data){
+                            var ee=$('#xmjy_parent > div')
+                            for(var i=1;i<ee.length-1;i++){
+                                ee.eq(i).remove();
+                            }
+                            _self.init()
+                        },error:function (){ //报错执行的
+                            alert('工作经历删除错误')
                         }
-                        _self.init()
-                    },error:function (){ //报错执行的
-                        alert('工作经历删除错误')
-                    }
-                })
+                    })
+                }
             }
+
 
         })
     })
     $('#zp_tjxmjy').unbind().on('click',function (){
-         if(tj_kg){
-             tj_kg=false;
+         if(kg){
              kg=false;
              var str='';
              str+='<div class="zp_jianli_zl_7" id="ttk_xmjy">'
@@ -2228,7 +2241,7 @@ obj_xmjy.prototype.bindingSJ=function (){
              })
              $('.zp_jianli_zl_7').find('button').eq(1).on('click',function (){
                  kg=true;
-                 tj_kg=true;
+
                  $(this).parent().parent().remove()
              })
              $('.zp_jianli_zl_7').find('button').eq(0).on('click',function (){
@@ -2790,21 +2803,49 @@ obj_scjn.prototype.bindingSJ=function () {
     })
 
 };
-//公司收藏开始
+//公司屏蔽开始
 function obj_gssc(){
-    this.sc=''                  //公司收藏
+    this.pb=''                  //公司屏蔽
     this.kg=''                  //搜索框定时器开关
 }
+obj_gssc.prototype.init=function (){
+    var This=this;
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:{resumeId:ID},        //转为JSON格式
+        dataType:'json',                   //定义返回data类型
+        url:path+'Shield/selByResumeId',    //路径
+        success:function (data){//data 就是数据 json
+            This.pb=data
+            if(This.pb.aaa){
+                $('#pb_gs').html('')
+                This.bindingSJ();
+            }else{
+                var str=''
+                for(var i=0;i<This.pb.clist.length;i++){
+                    str+='<li><span data-id="'+This.pb.clist[i].companyId+'">'+This.pb.clist[i].companyName+'</span><a href="javascript:;" class="li_sc">x</a></li>'
+                }
+                $('#pb_gs').html(str);
+                This.bindingSJ();
+            }
+
+        },error:function (){ //报错执行的
+            alert('公司屏蔽错误')
+        }
+    })
+}
+
 obj_gssc.prototype.bindingSJ=function (){
 
     var This=this;
-    $('#pbqy').find('button').eq(0).on('click',function (){
+    $('#pbqy').find('button').eq(0).unbind().on('click',function (){
         $(this).css({'display':'none'})
         $(this).siblings('input').css({"display":"inline-block"})
         $('#pbqy').find('button').eq(1).css({"display":"inline-block"})
         $('#sy').css({"display":"block"})
     })
-    $('#pbqy').find('button').eq(1).on('click',function (){                 //这是取消按钮
+    $('#pbqy').find('button').eq(1).unbind().on('click',function (){                 //这是取消按钮
         $('#pbqy').find('button').eq(0).css({'display':'inline-block'})
         $(this).siblings('input').css({"display":"none"})
         $('#pbqy').find('button').eq(1).css({"display":"none"})
@@ -2813,7 +2854,30 @@ obj_gssc.prototype.bindingSJ=function (){
         $('#sy > ul').html('');
         $('#gs_ssk').val('').attr('data-id','')
     })
+    $('#pb_gs a').unbind().on('click',function (){
+        var aa=confirm('你确定要解除屏蔽吗？')
+        if(aa){
+            var aaa=$(this).siblings('span').attr('data-id');
+            var www={
+                resumeId:ID,
+                companyId:aaa
+            }
+            $.ajax({
+                type:"post",    //提交方式
+                async:true,  //是否异步
+                contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                data:JSON.stringify(www),        //转为JSON格式
+                dataType:'text',                   //定义返回data类型
+                url:path+'Shield/deleteById',    //路径
+                success:function (data){//data 就是数据 json
+                    This.init()
+                },error:function (){ //报错执行的
+                    alert('删除错误')
+                }
 
+            })
+        }
+    })
     //模糊查询以及添加事件开始
     $('#gs_ssk').on('keyup',function (event){
         clearTimeout(This.kg);
@@ -2875,6 +2939,7 @@ obj_gssc.prototype.bindingSJ=function (){
     })
     //提交添加开始
     $('#qr').on('click',function (){
+        var btn=$(this)
             var data={
                 resumeId:ID,
                 companyId:$('#gs_ssk').attr('data-id'),
@@ -2887,7 +2952,8 @@ obj_gssc.prototype.bindingSJ=function (){
             dataType:'text',                   //定义返回data类型
             url:path+'Shield/insertShield',    //路径
             success:function (data){//data 就是数据 json
-
+                btn.css({"display":"none"})
+                    This.init()
             },error:function (){ //报错执行的
                 alert('基本资料修改错误')
             }
@@ -2930,7 +2996,7 @@ $(function (){                              //入口函数
     obj__scjn.init()
 
     var obj__gssc=new obj_gssc();           //企业收藏开始
-    obj__gssc.bindingSJ();
+     obj__gssc.init();
 
 });
 
