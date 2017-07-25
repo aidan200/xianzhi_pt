@@ -235,10 +235,7 @@
                                 <div class="panel-body" id="pbqy">
                                     <div>
                                         <ul id="pb_gs">
-                                            <%--<li><span>公司1</span><a href="" class="li_sc">x</a></li>--%>
-                                            <%--<li><span>公司2</span><a href="" class="li_sc">x</a></li>--%>
-                                            <%--<li><span>公司3</span><a href="" class="li_sc">x</a></li>--%>
-                                            <%--<li><span>公司4</span><a href="" class="li_sc">x</a></li>--%>
+
                                         </ul>
                                     </div>
 

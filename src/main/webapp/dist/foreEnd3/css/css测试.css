@@ -3335,50 +3335,50 @@ input[type="button"].fileInputButton {
 
 /*----------------*/
 /*.comd_choose {*/
-    /*width: 1000px;*/
-    /*margin: 0 auto;*/
-    /*height: auto;*/
-    /*padding: 20px;*/
-    /*overflow: hidden;*/
+/*width: 1000px;*/
+/*margin: 0 auto;*/
+/*height: auto;*/
+/*padding: 20px;*/
+/*overflow: hidden;*/
 /*}*/
 
 /*.comd_table {*/
-    /*width: 630px;*/
-    /*height: 530px;*/
-    /*overflow-y: scroll;*/
-    /*margin: 0 auto;*/
+/*width: 630px;*/
+/*height: 530px;*/
+/*overflow-y: scroll;*/
+/*margin: 0 auto;*/
 /*}*/
 
 /*.comd_in {*/
-    /*margin: 10px auto;*/
-    /*width: 600px;*/
-    /*height: 500px;*/
-    /*!*overflow-y: scroll;*!*/
+/*margin: 10px auto;*/
+/*width: 600px;*/
+/*height: 500px;*/
+/*!*overflow-y: scroll;*!*/
 /*}*/
 
 /*.comd_td {*/
-    /*width: 150px;*/
-    /*line-height: 50px;*/
+/*width: 150px;*/
+/*line-height: 50px;*/
 /*}*/
 
 /*.comd_td span {*/
-    /*margin-top: 20px;*/
-    /*display: inline-block;*/
+/*margin-top: 20px;*/
+/*display: inline-block;*/
 /*}*/
 
 /*.comd_ul {*/
-    /*width: 450px;*/
+/*width: 450px;*/
 /*}*/
 
 /*.comd_ul li {*/
-    /*width: 50%;*/
-    /*text-align: left;*/
-    /*float: left;*/
-    /*padding: 5px;*/
+/*width: 50%;*/
+/*text-align: left;*/
+/*float: left;*/
+/*padding: 5px;*/
 /*}*/
 
 /*.comd_ul li input {*/
-    /*margin-right: 3px;*/
+/*margin-right: 3px;*/
 /*}*/
 
 .comd_input1 {
@@ -4594,6 +4594,20 @@ input[type="button"].fileInputButton {
 }
 
 /*------------------------职位管理-----------------------*/
+.pom_container {
+    width: 100%;
+    min-width: 1000px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.pom_allin {
+    width: 1100px;
+    height: 100%;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
 .pom_top {
     width: 100%;
     min-height: 500px;
@@ -4639,13 +4653,6 @@ input[type="button"].fileInputButton {
     margin-top: 10px;
 }
 
-/*.pom_bottom{*/
-/*width: 90%;*/
-/*height: 40px;*/
-/*background-color: #3D9CCC;*/
-/*margin: 0 auto;*/
-/*margin-top: 30px;*/
-/*}*/
 
 .pom_table {
     width: 90%;
@@ -4655,7 +4662,7 @@ input[type="button"].fileInputButton {
 }
 
 .pom_table > .table > tbody > tr > td {
-    line-height: 50px;
+    line-height: 40px;
 }
 
 .pom_tr {
@@ -4663,9 +4670,18 @@ input[type="button"].fileInputButton {
     color: #ffffff;
 }
 
+.all_no {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+}
+
+
 .pom_tr th {
     font-size: 13px;
     font-weight: normal;
+    text-align: left;
 }
 
 .pom_s {
@@ -4673,7 +4689,7 @@ input[type="button"].fileInputButton {
 }
 
 .pom_h {
-    height: 70px;
+    height: 50px;
 
 }
 
@@ -5304,31 +5320,35 @@ th {
     height: 420px;
     margin: 0 auto;
 }
-.comd_table h4{
+
+.comd_table h4 {
     margin-top: 50px;
     font-size: 15px;
 }
-.zp_ulu{
+
+.zp_ulu {
     width: 100%;
     margin-top: 20px;
     height: auto;
 }
-.zp_ulu li{
+
+.zp_ulu li {
     width: 210px;
     float: left;
     text-align: left;
     margin-top: 10px;
     line-height: 20px;
 }
-.zp_ulu li input{
+
+.zp_ulu li input {
     margin-right: 10px;
     float: left;
 }
 
 /*-----------------------------复选框---------------------------------------*/
 /*-------------Checkbox-----------------*/
-.checkboxWrapper{
-    display:inline-block;
+.checkboxWrapper {
+    display: inline-block;
     margin-left: 10px;
 }
 
@@ -5338,7 +5358,7 @@ th {
 
 .checkboxWrapper input[type="checkbox"] + label {
     cursor: pointer;
-    display:block;
+    display: block;
 }
 
 .checkboxWrapper input[type="checkbox"] + label i {
@@ -5360,70 +5380,52 @@ th {
 .checkboxWrapper input[type="checkbox"]:checked + label path {
     stroke-dashoffset: 0;
 }
+
 /*---------------Themes-------------------*/
-/* Turquoise theme */
-.theme1{
-    stroke:#1ABC9C;
+.theme1 {
+    stroke: #1ABC9C;
 }
-/**/
-
-/* Emerald theme */
-.theme2{
-    stroke:#2ECC71;
+.theme2 {
+    stroke: #2ECC71;
 }
-/**/
-
-/* Peterriver theme */
-.theme3{
-    stroke:#3498DB;
+.theme3 {
+    stroke: #2185c5;
 }
-/**/
-
-/* Amethyst theme */
-.theme4{
-    stroke:#9B59B6;
+.theme4 {
+    stroke: #9B59B6;
 }
-/**/
-
-/* Wet Asphalt theme */
-.theme5{
-    stroke:#34495E;
+.theme5 {
+    stroke: #34495E;
 }
-/**/
-
-/* Carrot theme */
-.theme6{
-    stroke:#E67E22;
+.theme6 {
+    stroke: rgb(255, 165, 0);
 }
-/**/
-/* Alizarin theme */
-.theme7{
-    stroke:#E74C3C;
+.theme7 {
+    stroke: #E74C3C;
 }
-/**/
 
 /*---------------Sizes-------------------*/
-.extraSmallCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg{
-    width:20px;
-    height:20px;
+.extraSmallCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg {
+    width: 20px;
+    height: 20px;
 }
 
-.smallCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg{
-    width:30px;
-    height:30px;
+.smallCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg {
+    width: 30px;
+    height: 30px;
 }
 
-.mediumCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg{
-    width:40px;
-    height:40px;
+.mediumCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg {
+    width: 40px;
+    height: 40px;
 }
 
-.largeCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg{
-    width:50px;
-    height:50px;
+.largeCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg {
+    width: 50px;
+    height: 50px;
 }
 
-.extraLargeCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg{
-    width:60px;
-    height:60px;
+.extraLargeCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg {
+    width: 60px;
+    height: 60px;
 }
