@@ -4,6 +4,7 @@ import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzField;
 
 import java.util.List;
+import java.util.Map;
 
 public interface XzCompanyMapper {
 
@@ -33,7 +34,7 @@ public interface XzCompanyMapper {
 
     int updateCompanyPic(XzCompany record);
 
-    List<XzCompany> selByCompanyName(String companyName);
+    List<XzCompany> selByCompanyName(Map map);
 
     List<XzCompany> selByCompanyIdList(List list);
 

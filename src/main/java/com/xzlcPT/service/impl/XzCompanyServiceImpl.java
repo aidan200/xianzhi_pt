@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/7/6.
@@ -141,15 +143,10 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     @Override
     public PageBean<XzCompany> selByCompanyName(Integer page, Integer rows, String companyName,Long resumeId) {
         PageHelper.startPage(page,rows);
-        List<XzCompany> dlist = companyMapper.selByCompanyName(companyName);
-        List<XzShield> slist=xzShieldMapper.selByResumeId(resumeId);
-        for (int i=0;i<dlist.size();i++){
-          for (int j=0;j<slist.size();j++){
-           if (dlist.get(i).getCompanyId()==slist.get(j).getCompanyId()){
-               dlist.remove(i);
-           }
-          }
-        }
+        Map map=new HashMap();
+        map.put("companyName",companyName);
+        map.put("resumeId",resumeId);
+        List<XzCompany> dlist = companyMapper.selByCompanyName(map);
         PageBean<XzCompany> pb=new PageBean<XzCompany>(dlist);
         return pb;
     }
