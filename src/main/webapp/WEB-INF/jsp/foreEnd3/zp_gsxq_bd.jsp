@@ -149,6 +149,7 @@
                             <div>awadw</div>
                             <a class="skillBtn">x</a>
                             <input form='zp_gsxq_form' type="hidden" name="companyWelfare">
+
                         </div>
                     </div>
                     <button class="addBut">+</button>
