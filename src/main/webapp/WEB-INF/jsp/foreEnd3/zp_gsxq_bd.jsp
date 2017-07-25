@@ -60,7 +60,11 @@
             position: absolute;
         }
         .addBut{
+            float: left;
             margin-bottom: 0px;
+            position: relative;
+            top:-10px;
+            left:-10px;
         }
     </style>
 </head>
