@@ -59,6 +59,7 @@
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <collection property="fields" ofType="com.xzlcPT.bean.XzField">
+      <id column="field_id" jdbcType="BIGINT" property="fieldId" />
       <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
       <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
     </collection>
@@ -91,6 +92,7 @@
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <collection property="fields" ofType="com.xzlcPT.bean.XzField">
+      <id column="field_id" jdbcType="BIGINT" property="fieldId" />
       <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
       <result column="field_type" jdbcType="VARCHAR" property="fieldType" />
     </collection>
