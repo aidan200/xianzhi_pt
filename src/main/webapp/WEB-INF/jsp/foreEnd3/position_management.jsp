@@ -314,12 +314,12 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="all_no">
                                         <span>技术总监</span>
                                     </td>
-                                    <td>2017-07-19</td>
-                                    <td>2017-07-19</td>
-                                    <td><a href="">修改</a>
+                                    <td class="all_no">2017-07-19</td>
+                                    <td class="all_no">2017-07-19</td>
+                                    <td class="all_no"><a href="">修改</a>
                                         <a href="">预览</a>
                                         <a href="">发布</a>
                                         <a href="">删除</a>
@@ -406,13 +406,13 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>Java工程师</td>
-                                    <td>10</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>2</td>
-                                    <td>2017-07-19</td>
-                                    <td>
+                                    <td class="all_no">Java工程师</td>
+                                    <td class="all_no">10</td>
+                                    <td class="all_no">2</td>
+                                    <td class="all_no">4</td>
+                                    <td class="all_no">2</td>
+                                    <td class="all_no">2017-07-19</td>
+                                    <td class="all_no">
                                         <a href="">修改</a>
                                         <a href="">预览</a>
                                         <a href="">发布</a>
@@ -499,14 +499,14 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>Java工程师</td>
-                                    <td>10</td>
-                                    <td>2</td>
-                                    <td>4</td>
-                                    <td>2</td>
-                                    <td>5</td>
-                                    <td>2017-07-19</td>
-                                    <td>
+                                    <td class="all_no">Java工程师</td>
+                                    <td class="all_no">10</td>
+                                    <td class="all_no">2</td>
+                                    <td class="all_no">4</td>
+                                    <td class="all_no">2</td>
+                                    <td class="all_no">5</td>
+                                    <td class="all_no">2017-07-19</td>
+                                    <td class="all_no">
                                         <a href="">预览</a>
                                         <a href="">删除</a>
                                     </td>
@@ -590,13 +590,13 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>Java工程师</td>
-                                    <td>已结束</td>
-                                    <td>4</td>
-                                    <td>2</td>
-                                    <td>5</td>
-                                    <td>6</td>
-                                    <td>
+                                    <td class="all_no">Java工程师</td>
+                                    <td class="all_no">已结束</td>
+                                    <td class="all_no">4</td>
+                                    <td class="all_no">2</td>
+                                    <td class="all_no">5</td>
+                                    <td class="all_no">6</td>
+                                    <td class="all_no">
                                         <a href="">预览</a>
                                         <a href="">删除</a>
                                     </td>
