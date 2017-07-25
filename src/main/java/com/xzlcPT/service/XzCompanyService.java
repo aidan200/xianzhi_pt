@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface XzCompanyService {
 
+    int editCompany(XzCompany company,String[] welfares,String[] domains,String[] skills);
+
     int addCompany(XzCompany company);
 
     PageBean<XzCompany> selectPcount(Integer page, Integer rows, XzCompany xzCompany);

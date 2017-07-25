@@ -29,6 +29,12 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     @Autowired
     private XzShieldMapper xzShieldMapper;
 
+
+    @Override
+    public int editCompany(XzCompany company, String[] welfares, String[] domains, String[] skills) {
+        return 0;
+    }
+
     @Override
     public int addCompany(XzCompany company) {
         int i = companyMapper.addCompany(company);

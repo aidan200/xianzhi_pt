@@ -39,13 +39,16 @@ public class CompanyInfoController {
     @Autowired
     private XzPostionService xzPostionService;
 
-    @RequestMapping("addCompany.do")
-    public ModelAndView addCompany(XzCompany company){
-        ModelAndView mv = new ModelAndView();
-
+    @RequestMapping("editCompany.do")
+    public ModelAndView editCompany(XzCompany company, String[] welfares, String[] domains, String[] skills){
+        ModelAndView mv = new ModelAndView("zp_index");
+        int i = companyService.editCompany(company,welfares,domains,skills);
+        if(i==1){
+            mv.addObject("msg","ok");
+        }else{
+            mv.addObject("msg","err");
+        }
         System.out.println("cccc----"+company);
-
-        //companyService.addCompany(company);
         return mv;
     }
     //按公司id查询公司详情

@@ -234,7 +234,9 @@ gstb.prototype.bindingSJ=function (){
     var  ogstb_bg=document.getElementById('gstb_bg');
     var  Ogstb_inp1=document.getElementById('gstb_inp1');
     var uu =  new uploadUtil(ogstb_bg,dkh+"/upload/img",Ogstb_inp1,function (imgName){
-                alert('aaa')
+                console.log(imgName);
+                Ogstb_inp1.value = imgName;
+                console.log(Ogstb_inp1)
     });
     uu.init();
 }
@@ -268,119 +270,6 @@ cpjx.prototype.bindingSJ=function (){
     })
 };
 
-/*function gsdz(){                    //公司地址
-    this.x;
-    this.y;
-    this.local;
-    this.map;
-    this.address;
-    this.city;
-
-    this.gsdz={}
-}
-gsdz.prototype.init=function (){
-    var This=this
-    var aa={
-        gsdz:{point:{lng:116.404,lat:39.915}}                   //假设后台传过来的地址
-    }
-    This.gsdz=aa;
-}
-gsdz.prototype.bindingSJ=function (){
-    function init() {
-        if (navigator.geolocation)
-        {
-            //获取当前位置，分别传入了成功和失败的两个函数
-            navigator.geolocation.getCurrentPosition(showPosition,showError);
-        }
-        //如果不支持，则进行提示
-        else{alert("Geolocation is not supported by this browser.");}
-    }
-    function showError(error) {
-        //console.log("错误");
-        //initMaps();
-        switch(error.code) {
-            case error.PERMISSION_DENIED:
-                alert("定位失败,用户拒绝请求地理定位");
-                break;
-            case error.POSITION_UNAVAILABLE:
-                alert("定位失败,位置信息是不可用");
-                break;
-            case error.TIMEOUT:
-                alert("定位失败,请求获取用户位置超时");
-                break;
-            case error.UNKNOWN_ERROR:
-                alert("定位失败,定位系统失效");
-                break;
-        }
-        initMaps(position);
-    }
-
-    function showPosition(position) {
-        console.log("成功");
-        initMaps(position);
-    }
-
-
-    var address;
-    var map;
-    var city = "沈阳市-和平区";           //区选择
-    var x = 116.404;                      //经度
-    var y = 39.915;                       //纬度
-    function initMaps(position) {
-        if(position){
-            x = position.coords.latitude;
-            y = position.coords.longitude;
-        }
-        map = new BMap.Map("gsdz");
-        map.centerAndZoom(city);
-
-        map.addControl(new BMap.NavigationControl());
-        map.enableScrollWheelZoom();
-
-
-        //创建搜索服务对象
-        var autocomplete = new BMap.Autocomplete({location:"沈阳市",input:"gsdz_ssk"});
-
-        //搜索对象
-        var localSearch = new BMap.LocalSearch(map);
-        localSearch.setSearchCompleteCallback(function (searchResult) {
-            var poi = searchResult.getPoi(0);
-            setPoint(poi);
-        });
-        //搜索对象选中回调
-        autocomplete.addEventListener('onconfirm',function (rs) {
-            //alert(rs);
-            address = document.getElementById("gsdz_ssk").value;
-            console.log(address);
-            map.setZoom(14);
-            //触发坐标搜索
-            localSearch.search(address);
-        });
-        //map点击事件
-        map.addEventListener('click',function (rs) {
-            setPoint(rs);
-             x=rs.point.lng;                //重新获取用户X轴向
-             y=rs.point.lat;                //重新获取用户Y轴向
-        });
-    }
-    //设置坐标
-    function setPoint(rs) {
-        console.log(rs);
-        map.clearOverlays();//清空原来的标注
-        var ppt = new BMap.Point(rs.point.lng, rs.point.lat);
-        x=rs.point.lng;
-        y=rs.point.lat;
-        var marker = new BMap.Marker(ppt);  // 创建标注，为要查询的地址对应的经纬度
-        map.addOverlay(marker);
-        map.panTo(ppt);
-    }
-    initMaps();
-}*/
-
-
-
-
-
 
 
 
@@ -413,7 +302,12 @@ $(function (){
                 "</div>");
         }
     }
-    $('.addBut').on('click',function () {
+    $('.addBut').on('click',function (e) {
+        var xx = e.originalEvent.x || e.originalEvent.layerX || 0;
+        var yy = e.originalEvent.y || e.originalEvent.layerY || 0;
+        console.log(xx+"----"+yy);
+        $(this).next().css("top",yy);
+        $(this).next().css("left",xx);
         $(this).next().show();
         $(this).next().focus();
     })

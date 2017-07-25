@@ -161,7 +161,7 @@
                                     国
                                 </c:when>
                                 <c:when test="${p.company.companyNature=='2'}">
-                                    私
+                                    民
                                 </c:when>
                                 <c:when test="${p.company.companyNature=='3'}'">
                                     外
