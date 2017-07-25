@@ -2,6 +2,7 @@ package com.xzlcPT.dao;/**
  * Created by Administrator on 2017/7/20.
  */
 
+import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzShield;
 
 import java.util.List;
