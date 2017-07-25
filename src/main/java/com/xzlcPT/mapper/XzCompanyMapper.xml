@@ -588,7 +588,7 @@
   </update>
   <select id="selByCompanyName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select company_id,company_name from xz_company  WHERE
-    company_name LIKE CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')
+    company_name LIKE CONCAT('%',#{companyName,jdbcType=VARCHAR},'%') AND
   </select>
   <select id="selByCompanyIdList" parameterType="java.util.List" resultMap="BaseResultMap">
     SELECT company_name,company_id FROM  xz_company

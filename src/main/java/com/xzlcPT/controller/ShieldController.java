@@ -37,12 +37,14 @@ public class ShieldController  extends BaseController{
     private Map selByResumeId(Long resumeId){
         Map map=new HashMap();
         List<XzShield> xzShield=xzShieldService.selByResumeId(resumeId);
-        List<Long> companyIdList=new ArrayList<>();
-        for (int i=0;i<xzShield.size();i++){
-            companyIdList.add(xzShield.get(i).getCompanyId());
+        if (xzShield.size()>0) {
+            List<Long> companyIdList = new ArrayList<>();
+            for (int i = 0; i < xzShield.size(); i++) {
+                companyIdList.add(xzShield.get(i).getCompanyId());
+            }
+            List<XzCompany> clist = xzCompanyService.selByCompanyIdList(companyIdList);
+            map.put("clist", clist);
         }
-        List<XzCompany> clist =xzCompanyService.selByCompanyIdList(companyIdList);
-        map.put("clist",clist);
         return map;
     }
     @ResponseBody
