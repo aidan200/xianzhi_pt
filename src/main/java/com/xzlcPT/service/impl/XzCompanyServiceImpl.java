@@ -155,8 +155,8 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     }
 
     @Override
-    public List<XzCompany> selByCompanyIdList(List companyIdList) {
-        List<XzCompany> nlist=companyMapper.selByCompanyIdList(companyIdList);
+    public List<XzCompany> selByCompanyIdList(List list) {
+        List<XzCompany> nlist=companyMapper.selByCompanyIdList(list);
         return nlist;
     }
 

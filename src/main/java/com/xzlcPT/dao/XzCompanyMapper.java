@@ -35,6 +35,6 @@ public interface XzCompanyMapper {
 
     List<XzCompany> selByCompanyName(String companyName);
 
-    List<XzCompany> selByCompanyIdList(List companyIdList);
+    List<XzCompany> selByCompanyIdList(List list);
 
 }

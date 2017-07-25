@@ -25,5 +25,5 @@ public interface XzCompanyService {
 
     PageBean<XzCompany> selByCompanyName(Integer page,Integer rows,String companyName,Long resumeId);
 
-    List<XzCompany> selByCompanyIdList(List companyIdList);
+    List<XzCompany> selByCompanyIdList(List list);
 }

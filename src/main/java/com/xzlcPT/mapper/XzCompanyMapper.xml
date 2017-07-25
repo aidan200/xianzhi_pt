@@ -592,9 +592,9 @@
   </select>
   <select id="selByCompanyIdList" parameterType="java.util.List" resultMap="BaseResultMap">
     SELECT company_name FROM  xz_company
-    <if test="companyIdList.size>0">
+    <if test="list.size>0">
       WHERE company_id in
-      <foreach collection="companyIdList" item="company_id" open="(" close=")" separator="," >
+      <foreach collection="list" item="company_id" open="(" close=")" separator="," >
         #{company_id,jdbcType=BIGINT}
       </foreach>
     </if>
