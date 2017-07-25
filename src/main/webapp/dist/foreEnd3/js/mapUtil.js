@@ -40,7 +40,7 @@ myMap.prototype.init = function () {
     //创建搜索服务对象
     if(_self.point){
         //节点搜索范围
-        _self.map.centerAndZoom(_self.point,10);
+        _self.map.centerAndZoom(_self.point,14);
         _self.map.enableScrollWheelZoom(true);
         _self.autocomplete = new BMap.Autocomplete({location:_self.point,input:_self.inputId});
         var rs = {point:_self.point};
@@ -77,7 +77,7 @@ myMap.prototype.init = function () {
 myMap.prototype.setPoint = function (rs) {
     var _slef = this;
     _slef.map.clearOverlays();//清空原来的标注
-    var ppt = new BMap.Point(rs.point.lat,rs.point.lng);
+    var ppt = new BMap.Point(rs.point.lng,rs.point.lat);
     var marker = new BMap.Marker(ppt);  // 创建标注，为要查询的地址对应的经纬度
     _slef.map.addOverlay(marker);
     _slef.map.panTo(ppt);

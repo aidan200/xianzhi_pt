@@ -29,6 +29,12 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     @Autowired
     private XzShieldMapper xzShieldMapper;
 
+
+    @Override
+    public int editCompany(XzCompany company, String[] welfares, String[] domains, String[] skills) {
+        return 0;
+    }
+
     @Override
     public int addCompany(XzCompany company) {
         int i = companyMapper.addCompany(company);
@@ -123,9 +129,6 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         XzCompany xzCompany=companyMapper.selCompanyInf(companyId);
         int i=xzCompany.getPostions().size();
         xzCompany.setPcount(i);
-        for (int j=0;j<xzCompany.getSkills().size();j++){
-            System.out.println("skillname:::::::::::::::::"+xzCompany.getSkills().get(j).getSkillName());
-        }
         return xzCompany;
     }
 

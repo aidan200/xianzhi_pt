@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -54,11 +55,22 @@
             line-height: 28px;
             color: #85B4CC;
         }
+        .addInpt{
+            display: block;
+            position: absolute;
+        }
+        .addBut{
+            float: left;
+            margin-bottom: 0px;
+            position: relative;
+            top:-10px;
+            left:-10px;
+        }
     </style>
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
-<form action="${pageContext.request.contextPath}/CompanyInfo/addCompany.do" id="zp_gsxq_form" enctype="multipart/form-data" method="post"></form>
+<form action="${pageContext.request.contextPath}/CompanyInfo/editCompany.do" id="zp_gsxq_form" method="get"></form>
 
 <section class="container zp_gsxq_bd_cont">
     <div class="zp_gsxq_bd_js">
@@ -107,10 +119,11 @@
                         </div>
                     </div>
                     <button class="addBut">+</button>
-                    <input inpName="companySkill"/>
+                    <input class="addInpt" inpName="companySkill"/>
+                </div>
+                <div class="_right">
                     <span class="addtions text-muted">例：java，c++ 等</span>
                 </div>
-                <div class="_right"></div>
 
             </div>
             <div class="control-group clearfix">
@@ -118,11 +131,10 @@
                 <div class="_left">
                     <div class="zp_gsxq_gm">
                         <select form="zp_gsxq_form" name="companyScale"  id="gsxq_gsgm">
-                            <option data-value="0">50-100人</option>
-                            <option data-value="1">100-500人</option>
-                            <option data-value="2">500-2000人</option>
-                            <option data-value="3">2000-1W人</option>
-                            <option data-value="4">1W人以上</option>
+                            <option value="0-50">0-50人</option>
+                            <option value="50-500">50-500人</option>
+                            <option value="500-1000">500-1000人</option>
+                            <option value="1000以上">1000人以上</option>
                         </select>
                     </div>
                 </div>
@@ -141,16 +153,32 @@
                     </div>
                     <button class="addBut">+</button>
                     <input inpName="companyWelfare"/>
+                </div>
+                <div class="_right">
                     <span class="addtions text-muted">例：带薪年假，十三薪 等</span>
                 </div>
-                <div class="_right"></div>
 
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司性质：</label>
                 <div class="_left">
                     <div class="zp_gsxq_dz">
-                        <input  form="zp_gsxq_form" name="filed1" type="text" placeholder="请填写公司性质">
+                        <div class="zp_gsxq_gm">
+                            <select form="zp_gsxq_form" name="financing"  id="gsxq_rzqk">
+                                <option data-value="种子轮">种子轮</option>
+                                <option data-value="天使轮">天使轮</option>
+                                <option data-value="A轮">A轮</option>
+                                <option data-value="B轮">B轮</option>
+                                <option data-value="C轮">C轮</option>
+                                <option data-value="D轮及以上">D轮及以上</option>
+                                <option data-value="未融资">未融资</option>
+                            </select>
+                            <select form="zp_gsxq_form" name="companyNature"  id="gsxq_gsxz">
+                                <option value="1">国企</option>
+                                <option value="2">民营</option>
+                                <option value="3">外企</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="_right"></div>
@@ -162,9 +190,10 @@
 
                 <div class="zp_gsxq_dz gsdd__">
                     <div class="_left">
-                        <input  id="this_space" form="zp_gsxq_form" name="companyLocation" type="text" value="${company.companyCity}" placeholder="请选择省/市/区" readonly="readonly"><em></em><br>
-                        <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
-                        <input  form="zp_gsxq_form" style="float: right" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
+                        <input  id="this_space" form="zp_gsxq_form" name="companyCity" type="text" value="${company.companyCity}" placeholder="请选择省/市/区"><em></em>
+                        <input  id="gsdh" form="zp_gsxq_form" style="float: right" name="companyPhone" type="text" value="${company.companyPhone}" placeholder="公司座机电话">
+                        <input  id="gsdz_ssk" form="zp_gsxq_form" name="companyLocation" type="text" value="${company.companyLocation}" placeholder="请输入大致区域如：同方广场">
+                        <input  form="zp_gsxq_form" style="float: right" name="companySpace" type="text" value="${company.companySpace}" placeholder="请填写街道、楼宇详细地址">
                     </div>
                     <div class="_right"></div>
 
@@ -172,18 +201,20 @@
                 </div>
             </div>
             <div class="control-group clearfix">
-                <label class="group-title"><span class="text-error">* </span>企业地址：</label>
+                <label class="group-title">地图定位：</label>
+                <div class="_left">
                 <input id="companyX" form="zp_gsxq_form" name="companyX" value="${company.companyX}" type="hidden">
                 <input id="companyY" form="zp_gsxq_form" name="companyY" value="${company.companyY}" type="hidden">
                 <div id="gsdz" class="ditu"></div>
+                </div>
+                <div class="_right"><span class="addtions text-muted">注：如搜索不能准确定位，可手动点击地图定位公司地点</span></div>
             </div>
-
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司图标：</label>
                 <div class="zp_gsxq_logo gstb">
                     <p>请您上传一张公司标志图片作为公司展示头像</p>
-                    <div id="gstb_bg"></div>
-                    <input id="gstb_inp1" form="zp_gsxq_form" type="text" style="display: none">
+                    <div id="gstb_bg" <c:if test="${company.companyPicture!=undefined}">style="background-image: url("${pageContext.request.contextPath}/uploadImg/${company.companyPicture}")" </c:if> ></div>
+                    <input id="gstb_inp1" form="zp_gsxq_form" type="hidden" name="companyPicture" value="${company.companyPicture}" >
                 </div>
             </div>
             <div class="control-group clearfix">
@@ -273,8 +304,8 @@
     postion.y = $('#companyY').val();
     postion.rollback = function (rs) {
         ///console.log(rs);
-        $('#companyX').val(rs.point.lat);
-        $('#companyY').val(rs.point.lng);
+        $('#companyX').val(rs.point.lng);
+        $('#companyY').val(rs.point.lat);
     };
     console.log(postion);
     var myMap = new myMap(postion);
