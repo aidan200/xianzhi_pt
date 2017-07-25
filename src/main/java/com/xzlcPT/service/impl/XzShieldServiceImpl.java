@@ -30,4 +30,11 @@ public class XzShieldServiceImpl  implements XzShieldService{
         int i=xzShieldMapper.insertShield(xzShield);
         return i;
     }
+
+    @Override
+    public int deleteById(XzShield xzShield) {
+       int i=xzShieldMapper.deleteById(xzShield);
+        return i;
+    }
+
 }

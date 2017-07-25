@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +52,7 @@ public class ResumeController extends BaseController {
         return map;
     }
 
-    @RequestMapping("selResumeInformation")
+    @RequestMapping("selResumeInformation.do")
     public ModelAndView selResumeInformation(Long resumeId){
         ModelAndView mv=new ModelAndView("/foreEnd3/resume");
         XzResume xzResume=resumeService.selResumeInformation(resumeId);
@@ -60,22 +61,51 @@ public class ResumeController extends BaseController {
     }
 
     @RequestMapping("selResumeByConditions")
-    public ModelAndView selResumeByConditions(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String fieldName,String educationLevel ){
+    public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,String fieldName,String educationLevel,
+                                                String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String createTime,String resumeState){
         ModelAndView mv=new ModelAndView("/foreEnd3/selectresume");
         Map  map=new HashMap();
         map.put("fieldName",fieldName);
-        map.put("educationLevel","本科");
-        map.put("resumePosition","程序员");
-        map.put("resumeMmMin",20);
-        map.put("resumeMmMax",30);
-        map.put("resumeIntentYm",3);
-        map.put("resumeBirthMin",20);
-        map.put("resumeBirthMax",23);
-        map.put("resumeSex",0);
-        map.put("createTime",30);
-        map.put("resumeState","在职");
+        map.put("educationLevel",educationLevel);
+        map.put("resumePosition",resumePosition);
+        map.put("resumeMm",resumeMm);
+        map.put("resumeIntentYm",resumeIntentYm);
+        map.put("resumeBirth",resumeBirth);
+        map.put("resumeSex",resumeSex);
+        map.put("createTime",createTime);
+        map.put("resumeState",resumeState);
+        List<String> flist=new ArrayList<>();
+        if (fieldName!=null){
+            flist.add(fieldName);
+        }
+        if (educationLevel!=null){
+            flist.add(educationLevel);
+        }
+        if (resumePosition!=null&&resumePosition!=""){
+            flist.add(resumePosition);
+        }
+        if (resumeMm!=null){
+            flist.add(resumeMm);
+        }
+        if (resumeIntentYm!=null){
+            flist.add(resumeIntentYm.toString());
+        }
+        if (resumeBirth!=null){
+            flist.add(resumeBirth);
+        }
+        if (resumeSex!=null){
+            flist.add(resumeSex);
+        }
+        if (createTime!=null){
+            flist.add(createTime);
+        }
+        if (resumeState!=null){
+            flist.add(resumeState);
+        }
+        System.out.println("resumePosition::::::::::::::::::::::::::::::"+resumePosition);
         PageBean<XzResume> pageBean=resumeService.selectRcount(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
+        mv.addObject("flist",flist);
         mv.addObject("resumeList",resumeList);
         mv.addObject("page",pageBean.getPageNum());
         mv.addObject("pages",pageBean.getPages());
