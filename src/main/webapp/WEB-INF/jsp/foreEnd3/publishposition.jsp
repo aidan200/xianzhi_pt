@@ -20,7 +20,7 @@
 
 <div class="pup_container">
     <div class="pup_allin">
-        <form action="">
+        <form action="" class="ac-boxfill">
             <div class="pup_alltop">
                 <h4>职位发布</h4>
                 <p> 您可同时运作 <span>0</span> 个职位，当前还可以发布 <span>0</span> 个职位，职位有效期 <span>0</span> 天</p>
@@ -53,7 +53,24 @@
                         <span> <span class="pup_span1">*</span>职位月薪：</span>
                         <input type="text" class="pup_input" style="width: 120px">千元至
                         <input type="text" class="pup_input" style="width: 120px">千元
-                        <input type="checkbox" style="margin-left: 10px"> 显示为面议
+                        <%--checkbox--%>
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="pupnum1">
+                            <label for="pupnum1" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                面议
+                            </label>
+                        </div>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>发放月数：</span>
@@ -62,7 +79,23 @@
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>工作年限：</span>
                         <input type="text" class="pup_input" style="width: 180px">以上
-                        <input type="checkbox" style="margin-left: 10px"> 不限
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="pupnum2">
+                            <label for="pupnum2" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                不限
+                            </label>
+                        </div>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>学历要求：</span>
@@ -96,16 +129,111 @@
                 <div class="pup_center1">
                     <div class="pup_form">
                         <span> 基本要求：</span>
-                        <input type="checkbox" style="margin-left: 20px"> 只允许完全符合以下条件人选投递
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="pupnum3">
+                            <label for="pupnum3" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                只允许完全符合以下条件人选投递
+                            </label>
+                        </div>
                     </div>
                     <div class="pup_form">
                         <span>语言要求：</span>
-                        <input type="checkbox" style="margin-left: 20px"> 英语
-                        <input type="checkbox" style="margin-left: 20px"> 日语
-                        <input type="checkbox" style="margin-left: 20px"> 法语
-                        <input type="checkbox" style="margin-left: 20px"> 普通话
-                        <input type="checkbox" style="margin-left: 20px"> 粤语
-                        <input type="checkbox" style="margin-left: 20px"> 其他
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="pupnum4">
+                            <label for="pupnum4" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                英语
+                            </label>
+                        </div>
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="pupnum5">
+                            <label for="pupnum5" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                日语
+                            </label>
+                        </div>
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="pupnum6">
+                            <label for="pupnum6" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                法语
+                            </label>
+                        </div>
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="pupnum7">
+                            <label for="pupnum7" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                普通话
+                            </label>
+                        </div>
+                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
+                            <input type="checkbox" id="pupnum8">
+                            <label for="pupnum8" style="font-weight: normal;margin-bottom: 0">
+                                <i>
+                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="50px" height="50px" viewBox="0 0 50 50"
+                                         enable-background="new 0 0 50 50" xml:space="preserve">
+							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
+                                    cy="24.883" r="23.519"/>
+                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
+							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
+			            </svg>
+                                </i>
+                                粤语
+                            </label>
+                        </div>
                     </div>
                     <div class="pup_form">
                         <span>专业要求：</span>
@@ -180,5 +308,7 @@
         </form>
     </div>
 </div>
+
+
 </body>
 </html>

@@ -213,7 +213,6 @@
             {
                 name:'投递简历次数',
                 type:'line',
-                smooth:'true',
                 symbol:'emptyCircle',
                 symbolSize : function (v){
                     return 8 + v/100

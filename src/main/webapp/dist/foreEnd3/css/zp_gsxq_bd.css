@@ -114,9 +114,11 @@ ul {
 .zp_gsxq_bd_cont_1 >div > div  input[type='text']{
     border: 1px solid #ccc;
     padding: 0 .7em;
+    margin-bottom: 10px;
+    width: 49%;
     line-height: 30px;
     border-radius: 3px;
-    margin-bottom: 3px;
+
 }
 .zp_gsxq_bd_cont_1 >div > div  span{
     margin-left: 10px;
@@ -152,7 +154,7 @@ ul {
 .zp_gsxq_dz  em{
     position: absolute;
     top: 0px;
-    left: 265px;
+    left: 310px;
     width: 28px;
     height: 32px;
     overflow: hidden;
@@ -377,7 +379,6 @@ ul {
     background-position: center;
     background-size: contain;
 }
-
 .zp_gsxq_cpjs_cp_right{
     border-left: 1px solid #ccc;
     padding-top: 20px;
@@ -482,4 +483,7 @@ ul {
     float: right;
     width: 180px;
 
+}
+.gsdd__ input{
+    width: 49%;
 }
