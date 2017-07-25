@@ -51,6 +51,12 @@ public class ShieldController  extends BaseController{
         int i=xzShieldService.insertShield(xzShield);
         return i;
     }
+    @ResponseBody
+    @RequestMapping("deleteByShieldId")
+    private  int deleteByShieldId(@RequestBody Long shieldId){
+        int i=xzShieldService.deleteByShieldId(shieldId);
+        return i;
+    }
 
 
 }

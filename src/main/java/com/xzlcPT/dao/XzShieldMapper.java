@@ -13,5 +13,8 @@ import java.util.List;
  **/
 public interface XzShieldMapper {
     List<XzShield> selByResumeId(Long resumeId);
+
     int insertShield(XzShield xzShield);
+
+    int deleteByShieldId(Long shieldId);
 }

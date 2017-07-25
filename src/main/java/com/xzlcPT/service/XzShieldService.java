@@ -12,5 +12,8 @@ import java.util.List;
  **/
 public interface XzShieldService {
     List<XzShield> selByResumeId(Long resumeId);
+
     int insertShield(XzShield xzShield);
+
+    int deleteByShieldId(Long shieldId);
 }
