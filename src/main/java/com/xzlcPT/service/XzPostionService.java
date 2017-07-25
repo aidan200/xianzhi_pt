@@ -23,4 +23,6 @@ public interface XzPostionService {
 
     List<XzPostion> selectCityByComId(Long companyId);
 
+    XzPostion selPostionInfo(Long postionId);
+
 }

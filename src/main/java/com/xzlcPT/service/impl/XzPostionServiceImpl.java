@@ -69,4 +69,11 @@ public class XzPostionServiceImpl implements XzPostionService{
         List<XzPostion> clist=postionMapper.selectCityByComId(companyId);
         return clist;
     }
+
+    @Override
+    public XzPostion selPostionInfo(Long postionId) {
+        XzPostion xzPostion=postionMapper.selPostionInfo(postionId);
+        System.out.println("xzage:::::::::::::::::"+xzPostion.getPostionAge());
+        return xzPostion;
+    }
 }

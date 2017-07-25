@@ -59,13 +59,20 @@
   </resultMap>
   <resultMap id="selPostionList" type="com.xzlcPT.bean.XzPostion">
     <id column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
     <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
+    <result column="postion_company" jdbcType="VARCHAR" property="postionCompany" />
     <result column="postion_ym" jdbcType="INTEGER" property="postionYm" />
     <result column="postion_mm" jdbcType="INTEGER" property="postionMm" />
     <result column="postion_space" jdbcType="VARCHAR" property="postionSpace" />
     <result column="postion_time" jdbcType="TIMESTAMP" property="postionTime" />
     <result column="postion_education" jdbcType="VARCHAR" property="postionEducation" />
     <result column="postion_exp" jdbcType="VARCHAR" property="postionExp" />
+    <result column="postion_age" jdbcType="VARCHAR" property="postionAge" />
+    <result column="postion_description" jdbcType="VARCHAR" property="postionDescription" />
+    <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
     <association property="company" javaType="com.xzlcPT.bean.XzCompany">
       <id column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="company_name" jdbcType="VARCHAR" property="companyName" />
@@ -86,7 +93,8 @@
   </resultMap>
 
   <sql id="Postion_index_list">
-    p.postion_id, p.postion_name, p.postion_ym, p.postion_mm,p.postion_space, p.postion_time, p.postion_education, p.postion_exp, p.create_time,
+    p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
+    p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
     c.company_id, c.company_name, c.company_picture, c.company_scale, c.company_nature, c.domain, c.skill,
     w.welfare_id, w.welfare_name, f.field_id, f.field_name
   </sql>
@@ -390,5 +398,12 @@
   </select>
   <select id="selectCityByComId" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select DISTINCT (postion_space) FROM  xz_postion WHERE company_id=#{companyId,jdbcType=BIGINT}
+  </select>
+  <select id="selPostionInfo" parameterType="java.lang.Long" resultMap="selPostionList">
+    select
+    <include refid="Postion_index_list"/>
+    FROM xz_postion p LEFT JOIN xz_company_welfare w ON p.company_id = w.company_id LEFT JOIN
+    xz_company c ON p.company_id = c.company_id LEFT JOIN xz_company_domain d on c.company_id = d.company_id
+    LEFT JOIN xz_field f on d.field_id = f.field_id WHERE p.postion_id=#{postionId,jdbcType=BIGINT}
   </select>
 </mapper>
