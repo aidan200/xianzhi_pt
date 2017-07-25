@@ -26,27 +26,8 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/uploadUtil.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_gsxq_bd.js"></script>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/mapUtil.js" type="text/javascript"></script>
     <style type="text/css">
-        /*.skilldivs{
-            display: inline-block;
-            padding: 10px 10px 0;
-            line-height: 26px;
-            border-radius: 3px;
-            border: 1px solid #CCCCCC;
-            width: 500px;
-        }
-        .skilldivs .em1 {
-            background: url(../img/zp_gsxq_hy_k.png);
-            width: 30px;
-            height: 30px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            cursor: pointer;
-            background-repeat: no-repeat;
-            background-position: center;
-        }*/
-
         .skilldiv {
             border: 1px solid #E6E6E6;
             float: left;
@@ -181,8 +162,7 @@
 
                 <div class="zp_gsxq_dz gsdd__">
                     <div class="_left">
-                        <input  id="gsxq_gsdz" form="zp_gsxq_form" name="companyLocation" type="text" value="" placeholder="请选择省/市/区"><br>
-                        <em></em>
+                        <input  id="this_space" form="zp_gsxq_form" name="companyLocation" type="text" value="${company.companyCity}" placeholder="请选择省/市/区"><em></em><br>
                         <input  id="gsdz_ssk" form="zp_gsxq_form" name="filed1" type="text" placeholder="请输入大致区域如：同方广场">
                         <input  form="zp_gsxq_form" style="float: right" name="filed1" type="text" placeholder="请填写街道、楼宇详细地址">
                     </div>
@@ -193,6 +173,8 @@
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>企业地址：</label>
+                <input id="companyX" form="zp_gsxq_form" name="companyX" value="${company.companyX}" type="hidden">
+                <input id="companyY" form="zp_gsxq_form" name="companyY" value="${company.companyY}" type="hidden">
                 <div id="gsdz" class="ditu"></div>
             </div>
 
@@ -273,5 +255,29 @@
 
 
 </body>
+<jsp:include page="cityUtil.jsp"/>
+<script>
+    cityRollBack = function () {
+        var postion = {};
+        postion.city = $('#this_space').val();
+        postion.input = "gsdz_ssk";
+        postion.container = "gsdz";
+        myMap.setCity(postion);
+    }
 
+    var postion = {};
+    postion.city = $('#this_space').val();
+    postion.input = "gsdz_ssk";
+    postion.container = "gsdz";
+    postion.x = $('#companyX').val();
+    postion.y = $('#companyY').val();
+    postion.rollback = function (rs) {
+        ///console.log(rs);
+        $('#companyX').val(rs.point.lat);
+        $('#companyY').val(rs.point.lng);
+    };
+    console.log(postion);
+    var myMap = new myMap(postion);
+    myMap.init();
+</script>
 </html>

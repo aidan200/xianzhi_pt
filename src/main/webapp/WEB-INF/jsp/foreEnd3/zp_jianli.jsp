@@ -32,17 +32,7 @@
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 
-<input class="workinput wicon test1" id="test1" type="text" placeholder="请选择" readonly>
-<script>
-    jeDate({
-        dateCell: ".test1",  //目标元素。由于jedate.js封装了一个轻量级的选择器，因此dateCell还允许你传入class、tag这种方式 '#id .class'
-        format: "YYYY年MM月DD日 ",
-        isinitVal: true, //显示时间
-        isTime: true,
-        festival: true, //显示节日
-        minDate: "2014-09-19"
-    })
-</script>
+
 
 <section class="container zp_jianli_cont">
     <div class="row">
@@ -127,7 +117,7 @@
                 </div>
                 <div class="zp_jianli_cont_left_gzjl">
                     <div>
-                        <div class="zp_jianli_cont_left_gzjl_yl">
+                        <div class="zp_jianli_cont_left_gzjl_yl" >
                             <div class="zp_jianli_cont_left_jbzl_top" id="gzjl">
                                 <div class="zp_jianli_cont_left_jbzl_top_bg"
                                      style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
@@ -142,7 +132,7 @@
                         添加工作经历
                     </div>
                 </div>
-                <div class="zp_jianli_cont_left_xl">
+                <div class="zp_jianli_cont_left_xl" id="gzjl_parent">
                     <div id="zp_jyjl" class="zp_jianli_cont_left_jbzl_top">
                         <div class="zp_jianli_cont_left_jbzl_top_bg"
                              style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
@@ -154,7 +144,7 @@
                         添加教育经历
                     </div>
                 </div>
-                <div class="zp_jianli_cont_left_xmjy">
+                <div class="zp_jianli_cont_left_xmjy" id="xmjy_parent">
                     <div class="zp_jianli_cont_left_jbzl_top" id="zp_xmjy">
                         <div class="zp_jianli_cont_left_jbzl_top_bg"
                              style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
@@ -327,11 +317,10 @@
     <div class="cd-popup-containerh">
         <p style="font-size: 16px">选择行业分类</p>
 
-        <div class="comd_table">
+        <div class="comd_table" id="hy_tab">
             <h4>IT行业</h4>
             <ul class="zp_ulu">
-                <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网"/>互联网/移动互联网
-                </li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网"/>互联网/移动互联网 </li>
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏"/>网络游戏</li>
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件"/>计算机软件</li>
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成"/>IT服务/系统集成</li>

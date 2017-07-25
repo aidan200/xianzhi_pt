@@ -175,11 +175,25 @@ ul,li{
     height: 15px;
     background:url("../img/zp_jianli_img3.png");
     background-size: cover;
+    margin-left: 5px;
 }
 .zp_jianli_xg:hover{
     background:url("../img/zp_jianli_img4.png");
     background-size: contain;
 }
+.zp_jianli_sc{
+
+    float: right;
+    display: block;
+    width: 15px;
+    height: 15px;
+    color: #A4CADE;
+}
+.zp_jianli_sc:hover{
+    color: #3D9CCC;
+}
+
+
 .zp_jianli_cont_left_middle{
     padding: 20px;
     border: 1px solid #D9D9D9;

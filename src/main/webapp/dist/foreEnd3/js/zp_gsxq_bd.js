@@ -2,83 +2,9 @@
  * Created by Administrator on 2017/7/3.
  */
 $(function (){                          //页面功能
-    var width=$(window).width();
-    var height=$(window).height();
     
-    $('.zp_gsxq_hy em').on('click',function (){
-        $('#zp_gsxq_bd_tck').css({
-            "display":"block",
-            "width":width,
-            "height":height
-        });
-        $("#zp_gsxq_bd_tck_cont1").css({
-            "display":"block"
-        });
-        $('#zp_gsxq_bd_tck_cont1').animate({
-            "width":"700",
-            "height":"450"
-        })
-    });
-    $('.zp_gsxq_bd_tck_middle a').on("click",function (){//选择行业
-        $('.zp_gsxq_hy > input').val($(this).html())
-        $('#zp_gsxq_bd_tck').css({
-            "display":"none"
-        });
-        $(this).parent().parent().parent().parent().css({
-            "display":"none",
-            "width":"0",
-            "height":"0"
-        })
-    });
-    $('.zp_gsxq_bd_tck_bottom button').on('click',function (){//关闭按钮
-        $('#zp_gsxq_bd_tck').css({
-            "display":"none"
-        });
-        $(this).parent().parent().css({
-            "display":"none",
-            "width":"0",
-            "height":"0"
-        })
-
-    });
-    $('.gb').on("click",function (){//关闭按钮
-        $('#zp_gsxq_bd_tck').css({
-            "display":"none"
-        });
-        $(this).parent().parent().css({
-            "display":"none",
-            "width":"0",
-            "height":"0"
-        })
-    });
-
-//   省市联动开始
-    $(".zp_gsxq_dz em").on('click',function (){
-        $('#zp_gsxq_bd_tck').css({
-            "display":"block",
-            "width":width,
-            "height":height
-        });
-        $("#zp_gsxq_bd_tck_cont2").css({
-            "display":"block"
-        });
-        $('#zp_gsxq_bd_tck_cont2').animate({
-            "width":"700",
-            "height":"300"
-        })
-    });
-    $('.zp_gsxq_bd_tck_bottom > a').on("click",function (){
-        var a=$('.zp_gsxq_bd_tck_cont2_cont select').eq(0).find("option:selected").text();
-        var b=$('.zp_gsxq_bd_tck_cont2_cont select').eq(1).find("option:selected").text();
-        $('.zp_gsxq_dz > input').eq(0).val(a+"/"+b);
-        $('#zp_gsxq_bd_tck').css({
-            "display":"none"
-        });
-        $(this).parent().parent().css({
-            "display":"none",
-            "width":"0",
-            "height":"0"
-        })
+    $('.zp_gsxq_dz em').on('click',function (){
+        $(this).prev().click();
     });
 });
 
@@ -342,7 +268,7 @@ cpjx.prototype.bindingSJ=function (){
     })
 };
 
-function gsdz(){                    //公司地址
+/*function gsdz(){                    //公司地址
     this.x;
     this.y;
     this.local;
@@ -449,7 +375,7 @@ gsdz.prototype.bindingSJ=function (){
         map.panTo(ppt);
     }
     initMaps();
-}
+}*/
 
 
 
@@ -492,40 +418,18 @@ $(function (){
         $(this).next().focus();
     })
 
-/*
-
-    //显示
-    //event.preventDefault();
-    $('.cd-popup').addClass('is-visible');
-
-
-    //隐藏
-    $('.cd-popup').on('click', function(event){                    //返回按钮
-        if( $(event.target).is('.cd-popup-close') || $(event.target).is('.cd-popup') ) {
-            event.preventDefault();
-            $('.cd-popup').removeClass('is-visible');
-
-        }
-    });
-
-    //键盘关闭
-    $(document).keyup(function(event){                            //键盘关闭
-        if(event.which=='27'){
-            $('.cd-popup').removeClass('is-visible');
-        }
-    });*/
 
 
     //var ojbxx=new jbxx();           //公司基本信息
     //ojbxx.init();
 
-    var ogsdz=new gsdz();           //公司地址
-    ogsdz.bindingSJ();
+    //var ogsdz=new gsdz();           //公司地址
+    //ogsdz.bindingSJ();
 
-    var oqyfc=new qyfc();           //企业风采
-    oqyfc.init();
+    //var oqyfc=new qyfc();           //企业风采
+    //oqyfc.init();
 
-     oqyfc.bindingSJ();
+     //oqyfc.bindingSJ();
 
 
     var ogstb=new gstb();           //公司图标
