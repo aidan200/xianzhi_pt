@@ -65,6 +65,12 @@
             position: relative;
             top:-10px;
             left:-10px;
+            width: 21px;
+            height: 21px;
+            background-color: transparent;
+            outline: none;
+            border-radius: 50px;
+            border: 2px solid #3c9ccc;
         }
     </style>
 </head>
@@ -118,7 +124,10 @@
                             <input form='zp_gsxq_form' type="hidden" name="companySkill">
                         </div>
                     </div>
-                    <button class="addBut">+</button>
+                    <button class="addBut">
+                        <span class="fa fa-plus" style="color: #3c9ccc;position: relative;left: -7px;top:-1px">
+                        </span>
+                    </button>
                     <input class="addInpt" inpName="companySkill"/>
                 </div>
                 <div class="_right">
@@ -152,7 +161,8 @@
 
                         </div>
                     </div>
-                    <button class="addBut">+</button>
+                    <button class="addBut"><span class="fa fa-plus" style="color: #3c9ccc;position: relative;left: -7px;top:-1px">
+                        </span></button>
                     <input inpName="companyWelfare"/>
                 </div>
                 <div class="_right">
