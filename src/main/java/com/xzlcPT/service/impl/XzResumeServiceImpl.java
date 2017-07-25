@@ -103,17 +103,16 @@ public class XzResumeServiceImpl implements XzResumeService{
             int resumeBirthMax=Integer.parseInt(resumeBirths[1]);
             map.put("resumeBirthMin",resumeBirthMin);
             map.put("resumeBirthMax",resumeBirthMax);
-            System.out.println("resumeBirthMin:::::::::::::::::"+resumeBirthMin);
-            System.out.println("resumeBirthMax:::::::::::::::::"+resumeBirthMax);
         }
         if (map.get("resumeSex")!=null){
             String resumeSex=map.get("resumeSex").toString();
-            if (resumeSex.equals("男")){
+            if (resumeSex=="男"){
                 map.put("resumeSex",0);
-            }else {
+            }else if (resumeSex=="女"){
                 map.put("resumeSex",1);
             }
         }
+
         PageHelper.startPage(page,rows);
         List<XzResume> rlist=resumeMapper.selectRcount(map);
         PageBean<XzResume> pageBean=new PageBean<>(rlist);
@@ -139,9 +138,6 @@ public class XzResumeServiceImpl implements XzResumeService{
             }
         }
         pageBean.setList(resumeList);
-        System.out.println("rlist++++++++++++++++++++++++++"+rlist.size());
-        System.out.println("page:::::::::::::::::::::::::::"+page);
-        System.out.println("rows:::::::::::::::::::::::::::"+rows);
         return pageBean;
     }
 

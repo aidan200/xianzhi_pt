@@ -102,7 +102,6 @@ public class ResumeController extends BaseController {
         if (resumeState!=null){
             flist.add(resumeState);
         }
-        System.out.println("resumePosition::::::::::::::::::::::::::::::"+resumePosition);
         PageBean<XzResume> pageBean=resumeService.selectRcount(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
         mv.addObject("flist",flist);
