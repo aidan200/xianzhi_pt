@@ -1,5 +1,6 @@
 package com.xzlcPT.controller;
 
+import com.amazonaws.services.dynamodbv2.xspec.M;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzAccessPostion;
 import com.xzlcPT.bean.XzLogin;
@@ -119,8 +120,14 @@ public class PostionController extends BaseController{
     @RequestMapping("selPostionById.do")
     public ModelAndView selPostionById(Long postionId){
         ModelAndView mv = new ModelAndView();
-
-
+        return mv;
+    }
+    @RequestMapping("selPostionInfo")
+    public ModelAndView selPostionInfo(Long postionId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/zp_zwxq");
+        XzPostion xzPostion=postionService.selPostionInfo(postionId);
+        System.out.println("age::::::::::::::::::::"+xzPostion.getPostionAge());
+        mv.addObject("xzPostion",xzPostion);
         return mv;
     }
 

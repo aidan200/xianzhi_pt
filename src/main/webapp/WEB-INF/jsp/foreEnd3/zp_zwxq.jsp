@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -24,15 +27,15 @@
         <div class="col-md-8 zp_zwxq_cont_left">
             <div class="zp_zwxq_cont_left_top">
                 <div>
-                    <h1>前端开发工程师</h1>
-                    <h3>东软集团</h3>
+                    <h1>${xzPostion.postionName}</h1>
+                    <h3>${xzPostion.company.companyName}</h3>
                     <span class="triangle"></span>
                 </div>
             </div>
             <div class="zp_zwxq_cont_left_middle">
-                <h3>8-14万 <span>72小时反馈</span> <a href="">我感兴趣 请联系我</a></h3>
-                <p><span>沈阳</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>2017-06-08</span><a href="" s>收藏</a></p>
-                <div><span style="border-left: none">统招本科</span><span>2年以上经验</span><span>普通话</span><span>年龄不限</span></div>
+                <h3>${fn:replace((xzPostion.postionMm*12/10000),".0","")}-${fn:replace((xzPostion.postionYm*12/10000),".0","")}万 <span>72小时反馈</span> <a href="">我感兴趣 请联系我</a></h3>
+                <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span><a href="" s>收藏</a></p>
+                <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>普通话</span><span>${xzPostion.postionAge}</span></div>
             </div>
             <div class="zp_zwxq_cont_left_bottom">
                 <span class="tag" title="带薪年假">带薪年假</span>
