@@ -591,7 +591,7 @@
     company_name LIKE CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')
   </select>
   <select id="selByCompanyIdList" parameterType="java.util.List" resultMap="BaseResultMap">
-    SELECT company_name FROM  xz_company
+    SELECT company_name,company_id FROM  xz_company
     <if test="list.size>0">
       WHERE company_id in
       <foreach collection="list" item="company_id" open="(" close=")" separator="," >
