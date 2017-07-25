@@ -57,6 +57,8 @@
                 <!--经理人应聘-->
                 <div class="tab-pane fade in active" id="rem_one">
                     <form action="">
+
+                        <%--条件搜索--%>
                         <div class="rem_cen">
                             <span style="margin-left: 20px">职位</span>
                             <select name="" id="" class="rem_input1">
@@ -92,6 +94,7 @@
                             </div>
                         </div>
 
+                        <%--条件处理--%>
                         <div class="rem_cen2">
                             <span style="margin-left: 20px">所在地</span>
                             <input type="text" class="rem_input3">
@@ -109,270 +112,608 @@
                             <input type="text" class="rem_input3">
                         </div>
 
-                    </form>
-                    <div class="rem_table">
-                        <div class="rem_blue">
-                            <a href="">未处理</a>
-                            <a href="">目标人选</a>
-                            <a href="">待定</a>
-                            <a href="">不合适</a>
-                            <a href="">被过滤的简历</a>
-                        </div>
+                        <%--表格--%>
+                        <div class="rem_table">
+                            <div class="rem_blue">
+                                <a href="">未处理</a>
+                                <a href="">目标人选</a>
+                                <a href="">待定</a>
+                                <a href="">不合适</a>
+                                <a href="">被过滤的简历</a>
+                            </div>
+                            <table class="table fa-border table-striped" style="width: 100%;border-top:none ">
+                                <thead>
+                                <tr class="rem_tr1">
+                                    <th width="50"></th>
+                                    <th width="100">姓名</th>
+                                    <th width="60">性别</th>
+                                    <th width="60">年龄</th>
+                                    <th width="70">学历</th>
+                                    <th width="90">工作年限</th>
+                                    <th width="130">目前职位</th>
+                                    <th width="130">目前公司</th>
+                                    <th width="100">应聘职位</th>
+                                    <th width="160">操作</th>
+                                </tr>
+                                </thead>
 
-                        <div class="rem_no2">
-                            <div class="rem_allimg">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt="" class="rem_img">
-                                <p class="all_p"> 你暂时没有未处理的简历</p>
+                                <tbody>
+                                <tr class="pom_h">
+                                    <td>
+                                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
+                                            <input type="checkbox" id="rem101" class="choose2">
+                                            <label for="rem101" style="font-weight: normal;margin-bottom: 0">
+                                                <jsp:include page="checksvg.jsp"/>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="all_no">郑秀妍</td>
+                                    <td class="all_no">女</td>
+                                    <td class="all_no">28</td>
+                                    <td class="all_no">本科</td>
+                                    <td class="all_no">5</td>
+                                    <td class="all_no">设计师发生尽快答复哈经费和巴基二环附近爱的嘎哈反抗军</td>
+                                    <td class="all_no">小除号</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">
+                                        <a href="">过滤</a>
+                                        <a href="">待定</a>
+                                        <a href="">不合适</a>
+                                        <a href="">目标</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <%--全选删除--%>
+                            <div class="rem_bb">
+                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
+                                <button>导出简历</button>
+                                <button>浏览简历</button>
+                                <button>删除简历</button>
+                                <button>收藏简历</button>
+                                <button>批量标记</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>简历</span>
+                            </div>
+
+                            <%--分页--%>
+                            <div class="zp_botv">
+                                <div class="zp_pl">
+                                    <ul class="pagination zp_pa">
+                                        <li class="b"><a href="#">上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="a"><a href="#">2</a></li>
+                                        <li class="a"><a href="#">3</a></li>
+                                        <li class="a"><a href="#">4</a></li>
+                                        <li class="a"><a href="#">5</a></li>
+                                        <li class="a"><a href="#">下一页</a></li>
+                                    </ul>
+                                    <div class="zp_page">共 <span>38</span> 页</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="rem_bb">
-                            <input type="checkbox" style="margin-left: 20px">
-                            <button>导出简历</button>
-                            <button>浏览简历</button>
-                            <button>删除简历</button>
-                            <button>收藏简历</button>
-                            <button>批量标记</button>
-                        </div>
-                    </div>
+                    </form>
+
+                    <%--<div class="rem_no2">--%>
+                    <%--<div class="rem_allimg">--%>
+                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
+                    <%--class="rem_img">--%>
+                    <%--<p class="all_p"> 你暂时没有未处理的简历</p>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
 
                 </div>
 
                 <!--主动下载-->
                 <div class="tab-pane fade" id="rem_three">
-                    <div class="rem_cen">
-                        <span style="margin-left: 20px">查看</span>
-                        <select name="" id="" class="rem_input3">
-                            <option value="">下载时间由近到远</option>
-                            <option value="">下载时间由远到近</option>
-                            <option value="">更新时间从近到远</option>
-                            <option value="">更新时间从远到近</option>
-                            <option value="">年龄从大到小</option>
-                            <option value="">年龄从小到大</option>
-                            <option value="">工作年限从长到短</option>
-                            <option value="">工作年限从短到长</option>
+                    <form action="">
 
-                        </select>
+                        <%--条件查询--%>
+                        <div class="rem_cen">
+                            <span style="margin-left: 20px">查看</span>
+                            <select name="" id="" class="rem_input3">
+                                <option value="">下载时间由近到远</option>
+                                <option value="">下载时间由远到近</option>
+                                <option value="">更新时间从近到远</option>
+                                <option value="">更新时间从远到近</option>
+                                <option value="">年龄从大到小</option>
+                                <option value="">年龄从小到大</option>
+                                <option value="">工作年限从长到短</option>
+                                <option value="">工作年限从短到长</option>
 
-                        <span style="margin-left: 10px">简历编号</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">姓名</span>
-                        <input type="text" class="rem_input4">
-                        <span style="margin-left: 10px">目前任职</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">目前公司</span>
-                        <input type="text" class="rem_input3">
-                        <button class="rem_b">搜索</button>
+                            </select>
 
-                    </div>
-                    <div class="rem_table">
-                        <table class="table fa-border">
-                            <div class="rem_blue">
+                            <span style="margin-left: 10px">简历编号</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">姓名</span>
+                            <input type="text" class="rem_input4">
+                            <span style="margin-left: 10px">目前任职</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">目前公司</span>
+                            <input type="text" class="rem_input3">
+                            <button class="rem_b">搜索</button>
 
-                            </div>
-                        </table>
-                    </div>
-                    <div class="rem_no2">
-                        <div class="rem_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt="" class="rem_img">
-                            <p class="all_p">抱歉没有找到符合条件的职位</p>
                         </div>
-                    </div>
+
+                            <%--表格--%>
+                        <div class="rem_table">
+                            <table class="table fa-border table-striped" style="width: 100%;border-top:none ">
+                                <thead>
+                                <tr class="rem_tr">
+                                    <th width="50"></th>
+                                    <th width="100">姓名</th>
+                                    <th width="60">性别</th>
+                                    <th width="60">年龄</th>
+                                    <th width="70">学历</th>
+                                    <th width="130">目前职位</th>
+                                    <th width="200">目前公司</th>
+                                    <th width="100">应聘职位</th>
+                                    <th width="150">操作</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr class="pom_h">
+                                    <td>
+                                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
+                                            <input type="checkbox" id="rem201" class="choose2">
+                                            <label for="rem201" style="font-weight: normal;margin-bottom: 0">
+                                                <jsp:include page="checksvg.jsp"/>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="all_no">郑秀妍</td>
+                                    <td class="all_no">女</td>
+                                    <td class="all_no">28</td>
+                                    <td class="all_no">本科</td>
+                                    <td class="all_no">设计师发生尽快答复哈经费和巴基二环附近爱的嘎哈反抗军</td>
+                                    <td class="all_no">小除号</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">
+                                        <a href="">哈哈</a>
+                                        <a href="">哈哈</a>
+                                        <a href="">哈哈</a>
+                                        <a href="">哈哈</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <%--全选删除--%>
+                            <div class="rem_bb">
+                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
+                                <button>导出简历</button>
+                                <button>浏览简历</button>
+                                <button>删除简历</button>
+                                <button>收藏简历</button>
+                                <button>批量标记</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>简历</span>
+                            </div>
+
+                            <%--分页--%>
+                            <div class="zp_botv">
+                                <div class="zp_pl">
+                                    <ul class="pagination zp_pa">
+                                        <li class="b"><a href="#">上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="a"><a href="#">2</a></li>
+                                        <li class="a"><a href="#">3</a></li>
+                                        <li class="a"><a href="#">4</a></li>
+                                        <li class="a"><a href="#">5</a></li>
+                                        <li class="a"><a href="#">下一页</a></li>
+                                    </ul>
+                                    <div class="zp_page">共 <span>38</span> 页</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <!--我的收藏-->
                 <div class="tab-pane fade" id="rem_four">
-                    <div class="rem_cen">
-                        <span style="margin-left: 20px">查看</span>
-                        <select name="" id="" class="rem_input3">
-                            <option value="">下载时间由近到远</option>
-                            <option value="">下载时间由远到近</option>
-                            <option value="">更新时间从近到远</option>
-                            <option value="">更新时间从远到近</option>
-                            <option value="">年龄从大到小</option>
-                            <option value="">年龄从小到大</option>
-                            <option value="">工作年限从长到短</option>
-                            <option value="">工作年限从短到长</option>
+                    <form action="">
 
-                        </select>
+                        <%--条件搜索--%>
+                        <div class="rem_cen">
+                            <span style="margin-left: 20px">查看</span>
+                            <select name="" id="" class="rem_input3">
+                                <option value="">下载时间由近到远</option>
+                                <option value="">下载时间由远到近</option>
+                                <option value="">更新时间从近到远</option>
+                                <option value="">更新时间从远到近</option>
+                                <option value="">年龄从大到小</option>
+                                <option value="">年龄从小到大</option>
+                                <option value="">工作年限从长到短</option>
+                                <option value="">工作年限从短到长</option>
 
-                        <span style="margin-left: 10px">简历编号</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">姓名</span>
-                        <input type="text" class="rem_input4">
-                        <span style="margin-left: 10px">目前任职</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">目前公司</span>
-                        <input type="text" class="rem_input3">
-                        <button class="rem_b">搜索</button>
+                            </select>
 
-                    </div>
-                    <div class="rem_table">
-                        <table class="table fa-border">
-                            <thead>
-                            <tr class="rem_tr">
-                                <th width="50"><input type="checkbox"/></th>
-                                <th width="100">姓名</th>
-                                <th width="80">性别</th>
-                                <th width="80">年龄</th>
-                                <th width="100">学历</th>
-                                <th width="130">目前职位</th>
-                                <th width="220">目前公司</th>
-                                <th width="100">收藏时间</th>
-                                <th width="80">操作</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="rem_no2">
-                        <div class="rem_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt="" class="rem_img">
-                            <p class="all_p">抱歉没有找到符合条件的职位</p>
+                            <span style="margin-left: 10px">简历编号</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">姓名</span>
+                            <input type="text" class="rem_input4">
+                            <span style="margin-left: 10px">目前任职</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">目前公司</span>
+                            <input type="text" class="rem_input3">
+                            <button class="rem_b">搜索</button>
+
                         </div>
-                    </div>
+
+                        <%--表格--%>
+                        <div class="rem_table">
+                            <table class="table fa-border table-striped" style="width: 100%">
+                                <thead>
+                                <tr class="rem_tr">
+                                    <th width="50"></th>
+                                    <th width="100">姓名</th>
+                                    <th width="60">性别</th>
+                                    <th width="60">年龄</th>
+                                    <th width="100">学历</th>
+                                    <th width="130">目前职位</th>
+                                    <th width="200">目前公司</th>
+                                    <th width="100">收藏时间</th>
+                                    <th width="150">操作</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr class="pom_h">
+                                    <td>
+                                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
+                                            <input type="checkbox" id="rem301" class="choose2">
+                                            <label for="rem301" style="font-weight: normal;margin-bottom: 0">
+                                                <jsp:include page="checksvg.jsp"/>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="all_no">郑秀妍</td>
+                                    <td class="all_no">女</td>
+                                    <td class="all_no">28</td>
+                                    <td class="all_no">本科</td>
+                                    <td class="all_no">设计师发生尽快答复哈经费和巴基二环附近爱的嘎哈反抗军</td>
+                                    <td class="all_no">小除号</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">
+                                        <a href="">预览</a>
+                                        <a href="">删除</a>
+                                        <a href="">这个</a>
+                                        <a href="">那个</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <%--全选删除--%>
+                            <div class="rem_bb">
+                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
+                                <button>导出简历</button>
+                                <button>浏览简历</button>
+                                <button>删除简历</button>
+                                <button>收藏简历</button>
+                                <button>批量标记</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                            </div>
+
+                            <%--分页--%>
+                            <div class="zp_botv">
+                                <div class="zp_pl">
+                                    <ul class="pagination zp_pa">
+                                        <li class="b"><a href="#">上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="a"><a href="#">2</a></li>
+                                        <li class="a"><a href="#">3</a></li>
+                                        <li class="a"><a href="#">4</a></li>
+                                        <li class="a"><a href="#">5</a></li>
+                                        <li class="a"><a href="#">下一页</a></li>
+                                    </ul>
+                                    <div class="zp_page">共 <span>38</span> 页</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <!--意向沟通-->
                 <div class="tab-pane fade" id="rem_five">
-                    <div class="rem_cen">
-                        <span style="margin-left: 20px">查看</span>
-                        <select name="" id="" class="rem_input1">
-                            <option value="">全部职位</option>
-                            <option value=""></option>
-                        </select>
+                    <form action="">
+                        <div class="rem_cen">
+                            <span style="margin-left: 20px">查看</span>
+                            <select name="" id="" class="rem_input1">
+                                <option value="">全部职位</option>
+                                <option value=""></option>
+                            </select>
 
-                        <span style="margin-left: 10px">简历编号</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">姓名</span>
-                        <input type="text" class="rem_input4">
-                        <span style="margin-left: 10px">目前任职</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">目前公司</span>
-                        <input type="text" class="rem_input3">
-                        <button class="rem_b">搜索</button>
+                            <span style="margin-left: 10px">简历编号</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">姓名</span>
+                            <input type="text" class="rem_input4">
+                            <span style="margin-left: 10px">目前任职</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">目前公司</span>
+                            <input type="text" class="rem_input3">
+                            <button class="rem_b">搜索</button>
 
-                    </div>
-                    <div class="rem_table">
-                        <table class="table fa-border">
-                            <thead>
-                            <tr class="rem_tr">
-                                <th width="150">意向人选编号</th>
-                                <th width="80">姓名</th>
-                                <th width="80">性别</th>
-                                <th width="80">年龄</th>
-                                <th width="150">目前职位</th>
-                                <th width="150">目前公司</th>
-                                <th width="100">沟通职位</th>
-                                <th width="100">职位地点</th>
-                                <th width="200">意向度</th>
-                                <th width="100">沟通时间</th>
-                                <th width="80">操作</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="rem_no2">
-                        <div class="rem_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt="" class="rem_img">
-                            <p class="all_p">抱歉没有找到符合条件的职位</p>
                         </div>
-                    </div>
+
+                        <div class="rem_table">
+                            <table class="table fa-border table-striped" style="width: 100%">
+                                <thead>
+                                <tr class="rem_tr">
+                                    <th width="50"></th>
+                                    <th width="80">人选编号</th>
+                                    <th width="80">姓名</th>
+                                    <th width="50">性别</th>
+                                    <th width="50">年龄</th>
+                                    <th width="110">目前职位</th>
+                                    <th width="110">目前公司</th>
+                                    <th width="110">沟通职位</th>
+                                    <th width="60">意向度</th>
+                                    <th width="90">沟通时间</th>
+                                    <th width="150">操作</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr class="pom_h">
+                                    <td>
+                                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
+                                            <input type="checkbox" id="res401" class="choose2">
+                                            <label for="res401" style="font-weight: normal;margin-bottom: 0">
+                                                <jsp:include page="checksvg.jsp"/>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="all_no">001</td>
+                                    <td class="all_no">郑秀妍</td>
+                                    <td class="all_no">女</td>
+                                    <td class="all_no">28</td>
+                                    <td class="all_no">设计师发生尽快答复哈经费和巴基二环附近爱的嘎哈反抗军</td>
+                                    <td class="all_no">小除号</td>
+                                    <td class="all_no">设计师</td>
+                                    <td class="all_no">10</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">
+                                        <a href="">预览</a>
+                                        <a href="">删除</a>
+                                        <a href="">这个</a>
+                                        <a href="">那个</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <%--全选删除--%>
+                            <div class="rem_bb">
+                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
+                                <button>导出简历</button>
+                                <button>浏览简历</button>
+                                <button>删除简历</button>
+                                <button>收藏简历</button>
+                                <button>批量标记</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                            </div>
+
+                            <%--分页--%>
+                            <div class="zp_botv">
+                                <div class="zp_pl">
+                                    <ul class="pagination zp_pa">
+                                        <li class="b"><a href="#">上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="a"><a href="#">2</a></li>
+                                        <li class="a"><a href="#">3</a></li>
+                                        <li class="a"><a href="#">4</a></li>
+                                        <li class="a"><a href="#">5</a></li>
+                                        <li class="a"><a href="#">下一页</a></li>
+                                    </ul>
+                                    <div class="zp_page">共 <span>38</span> 页</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <!--面试快-->
                 <div class="tab-pane fade" id="rem_six">
-                    <div class="rem_cen">
-                        <span style="margin-left: 20px">查看</span>
-                        <select name="" id="" class="rem_input1">
-                            <option value="">全部职位</option>
-                            <option value=""></option>
-                        </select>
+                    <form action="">
+                        <%--条件搜索--%>
+                        <div class="rem_cen">
+                            <span style="margin-left: 20px">查看</span>
+                            <select name="" id="" class="rem_input1">
+                                <option value="">全部职位</option>
+                                <option value=""></option>
+                            </select>
 
-                        <span style="margin-left: 10px">简历编号</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">姓名</span>
-                        <input type="text" class="rem_input4">
-                        <span style="margin-left: 10px">目前任职</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">目前公司</span>
-                        <input type="text" class="rem_input3">
-                        <button class="rem_b">搜索</button>
+                            <span style="margin-left: 10px">简历编号</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">姓名</span>
+                            <input type="text" class="rem_input4">
+                            <span style="margin-left: 10px">目前任职</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">目前公司</span>
+                            <input type="text" class="rem_input3">
+                            <button class="rem_b">搜索</button>
 
-                    </div>
-                    <div class="rem_table">
-                        <table class="table fa-border">
-                            <thead>
-                            <tr class="rem_tr">
-                                <th width="100">人选编号</th>
-                                <th width="80">姓名</th>
-                                <th width="80">性别</th>
-                                <th width="80">年龄</th>
-                                <th width="100">学历</th>
-                                <th width="130">目前职位</th>
-                                <th width="130">目前公司</th>
-                                <th width="130">面试职位</th>
-                                <th width="130">职位地点</th>
-                                <th width="100">状态</th>
-                                <th width="100">推荐日期</th>
-                                <th width="80">操作</th>
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="rem_no2">
-                        <div class="rem_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt="" class="rem_img">
-                            <p class="all_p">抱歉没有找到符合条件的职位</p>
                         </div>
-                    </div>
+
+                        <%--表格--%>
+                        <div class="rem_table">
+                            <table class="table fa-border table-striped" style="width: 100%">
+                                <thead>
+                                <tr class="rem_tr">
+                                    <th width="50"></th>
+                                    <th width="70">人选编号</th>
+                                    <th width="70">姓名</th>
+                                    <th width="50">性别</th>
+                                    <th width="50">年龄</th>
+                                    <th width="50">学历</th>
+                                    <th width="100">目前职位</th>
+                                    <th width="100">目前公司</th>
+                                    <th width="100">面试职位</th>
+                                    <th width="50">状态</th>
+                                    <th width="80">推荐日期</th>
+                                    <th width="150">操作</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr class="pom_h">
+                                    <td>
+                                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
+                                            <input type="checkbox" id="rem501" class="choose2">
+                                            <label for="rem501" style="font-weight: normal;margin-bottom: 0">
+                                                <jsp:include page="checksvg.jsp"/>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="all_no">001</td>
+                                    <td class="all_no">郑秀妍</td>
+                                    <td class="all_no">女</td>
+                                    <td class="all_no">28</td>
+                                    <td class="all_no">本科</td>
+                                    <td class="all_no">设计师发生尽快答复哈经费和巴基二环附近爱的嘎哈反抗军</td>
+                                    <td class="all_no">小除号</td>
+                                    <td class="all_no">设计师</td>
+                                    <td class="all_no">在职</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">
+                                        <a href="">预览</a>
+                                        <a href="">删除</a>
+                                        <a href="">这个</a>
+                                        <a href="">那个</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <%--全选删除--%>
+                            <div class="rem_bb">
+                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
+                                <button>导出简历</button>
+                                <button>浏览简历</button>
+                                <button>删除简历</button>
+                                <button>收藏简历</button>
+                                <button>批量标记</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                            </div>
+
+                            <%--分页--%>
+                            <div class="zp_botv">
+                                <div class="zp_pl">
+                                    <ul class="pagination zp_pa">
+                                        <li class="b"><a href="#">上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="a"><a href="#">2</a></li>
+                                        <li class="a"><a href="#">3</a></li>
+                                        <li class="a"><a href="#">4</a></li>
+                                        <li class="a"><a href="#">5</a></li>
+                                        <li class="a"><a href="#">下一页</a></li>
+                                    </ul>
+                                    <div class="zp_page">共 <span>38</span> 页</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <!--面试通知-->
                 <div class="tab-pane fade" id="rem_seven">
-                    <div class="rem_cen">
-                        <span style="margin-left: 20px">查看</span>
-                        <select name="" id="" class="rem_input1">
-                            <option value="">全部职位</option>
-                            <option value=""></option>
-                        </select>
+                    <form action="">
+                        <div class="rem_cen">
+                            <span style="margin-left: 20px">查看</span>
+                            <select name="" id="" class="rem_input1">
+                                <option value="">全部职位</option>
+                                <option value=""></option>
+                            </select>
 
-                        <span style="margin-left: 10px">简历编号</span>
-                        <input type="text" class="rem_input3">
-                        <span style="margin-left: 10px">姓名</span>
-                        <input type="text" class="rem_input4">
-                        <span style="margin-left: 10px">面试时间</span>
-                        <input type="text" class="rem_input">
-                        <button class="rem_b">搜索</button>
+                            <span style="margin-left: 10px">简历编号</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">姓名</span>
+                            <input type="text" class="rem_input4">
+                            <span style="margin-left: 10px">面试时间</span>
+                            <input type="text" class="rem_input">
+                            <button class="rem_b">搜索</button>
 
-                    </div>
-                    <div class="rem_table">
-                        <table class="table fa-border">
-                            <thead>
-                            <tr class="rem_tr">
-                                <th width="80">姓名</th>
-                                <th width="80">性别</th>
-                                <th width="80">年龄</th>
-                                <th width="80">学历</th>
-                                <th width="100">工作年限</th>
-                                <th width="120">目前职位</th>
-                                <th width="120">目前公司</th>
-                                <th width="120">面试职位</th>
-                                <th width="120">职位地点</th>
-                                <th width="120">发送时间</th>
-                                <th width="120">面试时间</th>
-                                <th width="80">操作</th>
-
-                            </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    <div class="rem_no2">
-                        <div class="rem_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt="" class="rem_img">
-                            <p class="all_p">抱歉没有找到符合条件的职位</p>
                         </div>
-                    </div>
-                </div>
+                        <div class="rem_table">
+                            <table class="table fa-border table-striped" style="width: 100%">
+                                <thead>
+                                <tr class="rem_tr">
+                                    <th width="50"></th>
+                                    <th width="80">姓名</th>
+                                    <th width="50">性别</th>
+                                    <th width="50">年龄</th>
+                                    <th width="50">学历</th>
+                                    <th width="70">工作年限</th>
+                                    <th width="100">目前职位</th>
+                                    <th width="110">目前公司</th>
+                                    <th width="100">面试职位</th>
+                                    <th width="90">发送时间</th>
+                                    <th width="90">面试时间</th>
+                                    <th width="150">操作</th>
+                                </tr>
+                                </thead>
 
+                                <tbody>
+                                <tr class="pom_h">
+                                    <td>
+                                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
+                                            <input type="checkbox" id="rem501" class="choose2">
+                                            <label for="rem501" style="font-weight: normal;margin-bottom: 0">
+                                                <jsp:include page="checksvg.jsp"/>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="all_no">郑秀妍</td>
+                                    <td class="all_no">女</td>
+                                    <td class="all_no">28</td>
+                                    <td class="all_no">本科</td>
+                                    <td class="all_no">5</td>
+                                    <td class="all_no">设计师发生尽快答复哈经费和巴基二环附近爱的嘎哈反抗军</td>
+                                    <td class="all_no">小除号</td>
+                                    <td class="all_no">设计师</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">
+                                        <a href="">预览</a>
+                                        <a href="">删除</a>
+                                        <a href="">这个</a>
+                                        <a href="">那个</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <%--全选删除--%>
+                            <div class="rem_bb">
+                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
+                                <button>导出简历</button>
+                                <button>浏览简历</button>
+                                <button>删除简历</button>
+                                <button>收藏简历</button>
+                                <button>批量标记</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                            </div>
+
+                            <%--分页--%>
+                            <div class="zp_botv">
+                                <div class="zp_pl">
+                                    <ul class="pagination zp_pa">
+                                        <li class="b"><a href="#">上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="a"><a href="#">2</a></li>
+                                        <li class="a"><a href="#">3</a></li>
+                                        <li class="a"><a href="#">4</a></li>
+                                        <li class="a"><a href="#">5</a></li>
+                                        <li class="a"><a href="#">下一页</a></li>
+                                    </ul>
+                                    <div class="zp_page">共 <span>38</span> 页</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -393,22 +734,21 @@
         });
     }
 </script>
-<!--<script>-->
-<!--function DoCheck3(n) {-->
-<!--// alert(n);-->
-<!--var p1 = n.parentNode.parentNode;-->
-<!--var ch = p1.getElementsByClassName("choose2");-->
-<!--if (n.checked == true) {-->
-<!--for (var i = 0; i < ch.length; i++) {-->
-<!--ch[i].checked = true;-->
-<!--}-->
-<!--} else {-->
-<!--for (var i = 0; i < ch.length; i++) {-->
-<!--ch[i].checked = false;-->
-<!--}-->
-<!--}-->
-<!--}-->
-<!--</script>-->
-
+<script>
+    function DoCheck3(n) {
+        // alert(n);
+        var p1 = n.parentNode.parentNode;
+        var ch = p1.getElementsByClassName("choose2");
+        if (n.checked == true) {
+            for (var i = 0; i < ch.length; i++) {
+                ch[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < ch.length; i++) {
+                ch[i].checked = false;
+            }
+        }
+    }
+</script>
 </body>
 </html>

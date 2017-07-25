@@ -58,23 +58,8 @@
                 <div style="margin-top: 15px;overflow: hidden">
                     <a class="login_forget" href="###">忘记密码?</a>
                     <span class="login_remember">
-                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
-                            <input type="checkbox" id="login1" name="remember" value="true">
-                            <label for="login1" style="font-weight: normal;margin-bottom: 0">
-                                <i>
-                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                         width="50px" height="50px" viewBox="0 0 50 50"
-                                         enable-background="new 0 0 50 50" xml:space="preserve">
-							<circle fill="none" stroke="#B7B7B7" stroke-width="3" stroke-miterlimit="10" cx="25.11"
-                                    cy="24.883" r="23.519"/>
-                                        <path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,25c0,12.998-10.537,23.534-23.534,23.534
-							S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>
-			            </svg>
-                                </i>
-                                记住我
-                            </label>
-                        </div>
+                            <input type="checkbox" name="remember" value="true">
+                        记住我
                     </span>
 
                 </div>
