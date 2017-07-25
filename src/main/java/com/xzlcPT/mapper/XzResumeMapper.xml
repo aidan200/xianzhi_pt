@@ -609,7 +609,7 @@
     <if test="resumeBirthMax !=null and resumeBirthMax !=''">
       AND 2017-YEAR(r.resume_birth) &lt;= #{resumeBirthMax,jdbcType=INTEGER}
     </if>
-    <if test="resumeSex !=null and resumeSex !=''">
+    <if test="resumeSex !=null">
       AND r.resume_sex = #{resumeSex,jdbcType=INTEGER}
     </if>
     <if test="createTime !=null and createTime != ''">

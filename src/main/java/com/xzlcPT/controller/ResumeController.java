@@ -60,7 +60,7 @@ public class ResumeController extends BaseController {
         return mv;
     }
 
-    @RequestMapping("selResumeByConditions")
+    @RequestMapping("selResumeByConditions.do")
     public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,String fieldName,String educationLevel,
                                                 String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String createTime,String resumeState){
         ModelAndView mv=new ModelAndView("/foreEnd3/selectresume");
@@ -102,7 +102,6 @@ public class ResumeController extends BaseController {
         if (resumeState!=null){
             flist.add(resumeState);
         }
-        System.out.println("resumePosition::::::::::::::::::::::::::::::"+resumePosition);
         PageBean<XzResume> pageBean=resumeService.selectRcount(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
         mv.addObject("flist",flist);
