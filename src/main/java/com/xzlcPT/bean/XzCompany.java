@@ -315,7 +315,11 @@ public class XzCompany {
                 "companyId=" + companyId +
                 ", loginId=" + loginId +
                 ", companyName='" + companyName + '\'' +
+                ", companyCity='" + companyCity + '\'' +
+                ", companySpace='" + companySpace + '\'' +
                 ", companyLocation='" + companyLocation + '\'' +
+                ", companyY=" + companyY +
+                ", companyX=" + companyX +
                 ", companyPhone='" + companyPhone + '\'' +
                 ", companyPicture='" + companyPicture + '\'' +
                 ", companyIntro='" + companyIntro + '\'' +
@@ -331,11 +335,15 @@ public class XzCompany {
                 ", fields=" + fields +
                 ", products=" + products +
                 ", images=" + images +
+                ", miens=" + miens +
+                ", postions=" + postions +
+                ", skills=" + skills +
                 ", deleteCompanyDate=" + deleteCompanyDate +
                 ", deleteFalt=" + deleteFalt +
                 ", filed1='" + filed1 + '\'' +
                 ", filed2='" + filed2 + '\'' +
                 ", filed3='" + filed3 + '\'' +
+                ", pcount=" + pcount +
                 '}';
     }
 

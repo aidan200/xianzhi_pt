@@ -20,6 +20,7 @@
     <title>全国</title>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
     <script>
+        var cityRollBack;
         $(function () {
             //   省市联动开始
             $("#this_space").on('click', function () {                            //点击事件
@@ -89,7 +90,8 @@
         })
             function got(sheng,t, i) {
                 var div6 = document.getElementById("div6");
-                div6.innerHTML = sheng+"-"+map[t][i];
+                //div6.innerHTML = sheng+"-"+map[t][i];
+                div6.innerHTML = map[t][i];
                 $('.cd-popup').removeClass('is-visible');
                 div6.style.background = '#FC9A2F';
             }
@@ -103,16 +105,19 @@
                 if(space.tagName=="INPUT"){
                     space.value = val;
                 }else{
-                    if(val.split("-").length>1){
+                    /*if(val.split("-").length>1){
                         space.innerHTML = val.split("-")[1];
                     }else{
-                        space.innerHTML = val;
-                    }
+                    }*/
+                    space.innerHTML = val;
                     $('#workspace').val(val);
                 }
                 var div6 = document.getElementById("div6")
                 div6.style.background = '#FC9A2F';
                 div6.innerHTML = val;
+                if(cityRollBack){
+                    cityRollBack();
+                }
             }
 
     </script>
