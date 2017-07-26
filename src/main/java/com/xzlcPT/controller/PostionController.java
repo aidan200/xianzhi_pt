@@ -122,15 +122,24 @@ public class PostionController extends BaseController{
         ModelAndView mv = new ModelAndView();
         return mv;
     }
-    @RequestMapping("selPostionInfo")
+    //职位详情
+    @RequestMapping("selPostionInfo.do")
     public ModelAndView selPostionInfo(Long postionId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_zwxq");
         XzPostion xzPostion=postionService.selPostionInfo(postionId);
-        List<XzPostion> plist=postionService.selInfoByName(xzPostion.getPostionName());
-        List<XzPostion> cplist=postionService.selInfoByComId(xzPostion);
+        List<XzPostion> plist=postionService.selInfoByName(xzPostion.getPostionName());//可能感兴趣的职位
+        List<XzPostion> cplist=postionService.selInfoByComId(xzPostion);//该公司相似职位
         mv.addObject("cplist",cplist);
         mv.addObject("plist",plist);
         mv.addObject("xzPostion",xzPostion);
+        return mv;
+    }
+    //按职位名模糊查询
+    @RequestMapping("selPostionByname.do")
+    public ModelAndView selPostionByname(String postionName){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        List<XzPostion> plist=postionService.selInfoByName(postionName);
+        mv.addObject("plist",plist);
         return mv;
     }
 }
