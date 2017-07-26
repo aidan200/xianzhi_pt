@@ -15,6 +15,7 @@
 <head>
     <title>nav</title>
 </head>
+
 <body>
 <nav class="navbar navbar-bottom" role="navigation">
 
@@ -36,7 +37,8 @@
                     <a href="blog_home.html" class="sim-button button01"><span data-hover="先知社区">&nbsp;先知社区&nbsp;</span></a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/zp_index" class="sim-button button01"><span data-hover="招聘中心">&nbsp;招聘中心&nbsp;</span></a>
+                    <a href="${pageContext.request.contextPath}/zp_index" class="sim-button button01"><span
+                            data-hover="招聘中心">&nbsp;招聘中心&nbsp;</span></a>
                 </li>
                 <li>
                     <a href="#" class="sim-button button01"><span data-hover="活动中心">&nbsp;活动中心&nbsp;</span></a>
@@ -44,15 +46,29 @@
             </ul>
             <ul class="nav nav_1">
                 <c:if test="${userLogin!=undefined}">
+                    <a href="" style="">
                     <li class="login1">
-                        <a><span>${userLogin.loginCount}${userLogin.member.memberId}</span></a>
-                    </li>
+                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
+                             class="allheader">
+                            <ul class="head-menu">
+                                <li>
+                                    <span>郑秀妍</span>
+                                    <span><a href="" style="float: right">注销</a></span>
+                                </li>
+                                <li><a href="#">我的简历</a></li>
+                                <li><a href="#">查看职位信息</a></li>
+                                <li><a href="#">balabala</a></li>
+                            </ul>
+
+                            <%--<a><span>${userLogin.loginCount}${userLogin.member.memberId}</span></a>--%>
+                    </li></a>
                 </c:if>
+
                 <li class="register1">
-                    <a href="#0" class="allregister"><span>注册</span></a>
+                <a href="#0" class="allregister" style="margin-top: 13px"><span>注册</span></a>
                 </li>
                 <li class="login1">
-                    <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"><span>登录</span></a>
+                <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"style="margin-top: 13px"><span>登录</span></a>
                 </li>
 
             </ul>
@@ -70,5 +86,15 @@
         <a href="#0" class="all_close cmd_close"></a>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('nav li').hover(function () {
+            $(this).find('.head-menu').css('display', 'block');
+        }, function () {
+            $(this).find('.head-menu').css('display', 'none');
+        });
+    });
+</script>
+
 </body>
 </html>

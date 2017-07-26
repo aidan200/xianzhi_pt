@@ -66,7 +66,7 @@ ul {
     border-radius: 0;
 }
 
-.nav_2 li a,.nav_1 li a {
+.nav_2 li a, .nav_1 li a {
     color: #ffffff;
     font-size: 15px;
 }
@@ -81,9 +81,11 @@ ul {
     width: 220px;
     height: auto;
 }
-.nav_1 li{
+
+.nav_1 li {
     float: right;
 }
+
 /**/
 .nav_2 a {
     text-transform: uppercase;
@@ -126,9 +128,9 @@ ul {
     margin-top: 10px;
 }
 
-.nav_1 li a {
-    margin-top: 13px;
-}
+/*.nav_1 li a {*/
+/*margin-top: 13px;*/
+/*}*/
 
 /*新改的导航*/
 
@@ -5459,4 +5461,42 @@ th {
 .extraLargeCheckboxSize.checkboxWrapper input[type="checkbox"] + label i svg {
     width: 60px;
     height: 60px;
+}
+
+/*------主页头像------*/
+.allheader {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-right: 40px;
+    margin-left: 20px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.head-menu {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #c0c0c0;
+    border-top: none;
+    z-index: 1;
+    height: auto;
+    width: 160px;
+}
+
+.head-menu li a {
+    color: #666666;
+    font-size: 13px;
+}
+
+.head-menu li {
+    display: block;
+    float: none;
+    padding: 10px;
+}
+.navbar{
+    border: none;
 }
