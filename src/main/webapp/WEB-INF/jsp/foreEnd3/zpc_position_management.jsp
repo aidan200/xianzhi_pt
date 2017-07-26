@@ -146,8 +146,8 @@
 
                             <%--全选删除--%>
                             <div class="pom_bottom">
-                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
-                                <button>删除</button>
+                                <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
+                                <button class="scan" type="button">删除</button>
                                 <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
                             </div>
 
