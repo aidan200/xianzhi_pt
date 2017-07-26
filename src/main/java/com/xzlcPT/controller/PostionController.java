@@ -39,10 +39,23 @@ public class PostionController extends BaseController{
     //公司发布职位查询
     @ResponseBody
     @RequestMapping("/selPostionSend.do")
-    public Map selPostionSend(Long companyId){
+    public Map selPostionSend(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
+                              Long companyId,String postionName,String postionSpace,String postionWelfare,Date beginDate,Date endDate){
+        Map searchMap = new HashMap();
+        searchMap.put("companyId",companyId);
+        searchMap.put("postionName",postionName);
+        searchMap.put("postionSpace",postionSpace);
+        searchMap.put("postionWelfare",postionWelfare);
+        searchMap.put("beginDate",beginDate);
+        searchMap.put("endDate",endDate);
         Map map = new HashMap();
-        List<XzPostion> postions = postionService.selPostionSendList(companyId);
-        map.put("postionList",postions);
+        PageBean<XzPostion> pb = postionService.selPostionSendList(searchMap,page,rows);
+        map.put("postionList",pb.getList());
+        map.put("searchMap",searchMap);
+        map.put("page",pb.getPageNum());
+        map.put("pages",pb.getPages());
+        map.put("total",pb.getTotal());
+        map.put("size",pb.getSize());
         return map;
     }
 
@@ -151,6 +164,14 @@ public class PostionController extends BaseController{
         ModelAndView mv=new ModelAndView("/foreEnd3/test2");
         List<XzPostion> plist=postionService.selInfoByName(postionName);
         mv.addObject("plist",plist);
+        return mv;
+    }
+    //添加职位信息
+    @RequestMapping("insertPostion")
+    public ModelAndView insertPostion(XzPostion xzPostion){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        int i=postionService.insertPostion(xzPostion);
+        mv.addObject("i",i);
         return mv;
     }
 }

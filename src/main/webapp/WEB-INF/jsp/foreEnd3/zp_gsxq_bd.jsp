@@ -21,7 +21,6 @@
         var ID=2;
         var dkh="http://localhost:8080";        //端口号
         var path="${pageContext.request.contextPath}/"
-
     </script>
 
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/template-web.js"></script>
@@ -271,16 +270,16 @@
 
 
                     <script id="tj_gscp" type="text/html">
-                        <div class="zp_gsxq_cpjs_cp">
+                        <div class="zp_gsxq_cpjs_cp" data-id="{{productId}}">
                             <div class="zp_gsxq_cpjs_cp_left">
                                 <h3>请上传一张产品图片</h3>
                                 <div id=cpjs_{{index}} class="zp_gsxq_ttbg cpjs_bg"></div>
-                                <input id=cpjs_inp{{index}} type="text" style="display: none">
+                                <input id=cpjs_inp{{index}}  type="text" style="display: none">
                             </div>
-                            <div class="zp_gsxq_cpjs_cp_right"><input form="zp_gsxq_form" type="text" placeholder="请输入产品名称">
-                                <textarea form="zp_gsxq_form">请输入产品信息</textarea>
+                            <div class="zp_gsxq_cpjs_cp_right"><input class="_gsmc" form="zp_gsxq_form" value="{{filed1}}" type="text" placeholder="请输入产品名称">
+                                <textarea form="zp_gsxq_form">{{productIntro}}</textarea>
                             </div>
-                            <div style="clear:both"></div><span>X</span>
+                            <div style="clear:both"></div><a>O</a><span>X</span>
                         </div>
                     </script>
 
@@ -347,6 +346,10 @@
         $('#companyY').val(rs.point.lat);
     };
     var myMap = new myMap(postion);
+    var theFiels = new Array();
+    <c:forEach items="${company.fields}" var="f">
+        theFiels.push('${f.fieldId}');
+    </c:forEach>
     $(function () {
         myMap.init();
     })

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface XzPostionMapper {
 
-    List<XzPostion> selPostionSendList(Long companyId);
+    List<XzPostion> selPostionSendList(Map map);
 
     List<XzPostion> selPostionList(Map map);
 
@@ -34,4 +34,6 @@ public interface XzPostionMapper {
     List<XzPostion> selInfoByName(String postionName);
 
     List<XzPostion> selInfoByComId(XzPostion xzPostion);
+
+    int insertPostion(XzPostion xzPostion);
 }

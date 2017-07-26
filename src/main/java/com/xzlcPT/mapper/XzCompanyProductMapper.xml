@@ -162,6 +162,9 @@
       <if test="productUrl != null">
         product_url,
       </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="companyId != null">
@@ -172,6 +175,9 @@
       </if>
       <if test="productUrl != null">
         #{productUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -185,7 +191,10 @@
       product_Intro = #{productIntro,jdbcType=VARCHAR},
       </if>
       <if test="productUrl != null and productUrl != ''">
-      product_url = #{productUrl,jdbcType=VARCHAR}
+      product_url = #{productUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="filed1 != null and filed !=''">
+        filed1 = #{filed1,jdbcType=VARCHAR}
       </if>
     </set>
     where product_id = #{productId,jdbcType=BIGINT}

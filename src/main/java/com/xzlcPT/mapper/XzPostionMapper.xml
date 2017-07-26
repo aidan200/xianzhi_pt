@@ -144,7 +144,7 @@
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
     p.delete_flat,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty
   </sql>
-  <select id="selPostionSendList" resultMap="PostionSendList" parameterType="java.lang.Long">
+  <select id="selPostionSendList" resultMap="PostionSendList" parameterType="Map">
     SELECT p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
 	count(CASE ps.send_state WHEN '0' THEN 1 ELSE null END ) wcl,
     count(CASE ps.send_state WHEN '1' THEN 1 ELSE null END ) dd,
@@ -153,6 +153,24 @@
 	count(CASE ps.send_type WHEN '1' THEN ps.send_type ELSE null END ) zdxz
     FROM xz_postion p LEFT JOIN xz_postion_send ps on p.postion_id = ps.postion_id
     where p.company_id = #{companyId,jdbcType=BIGINT}
+    <if test="postionName!=null and postionName!=''">
+      and postion_name like CONCAT('%',#{postionName},'%')
+    </if>
+    <if test="postionSpace!=null and postionSpace!=''">
+      and postion_space like CONCAT('%',#{postionSpace},'%')
+    </if>
+    <if test="postionWelfare!=null and postionWelfare!=''">
+      and p.postion_welfare = #{postionWelfare,jdbcType=VARCHAR}
+    </if>
+    <if test="beginDate!=null and endDate!=null">
+      and p.publish_time BETWEEN #{beginDate,jdbcType=TIMESTAMP} and #{endDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="beginDate!=null and endDate==null">
+      and p.publish_time &gt; #{beginDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="beginDate==null and endDate!=null">
+      and p.publish_time &lt; #{endDate,jdbcType=TIMESTAMP}
+    </if>
     GROUP BY p.postion_id;
   </select>
   <select id="selPostionByListId" resultMap="selPostionList" parameterType="java.util.List">
@@ -379,6 +397,133 @@
       </if>
       <if test="filed3 != null">
         #{filed3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertPostion" parameterType="com.xzlcPT.bean.XzPostion">
+    insert into xz_postion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="postionName != null">
+        postion_name,
+      </if>
+      <if test="postionCompany != null">
+        postion_company,
+      </if>
+      <if test="postionYm != null">
+        postion_ym,
+      </if>
+      <if test="postionMm != null">
+        postion_mm,
+      </if>
+      <if test="postionSpace != null">
+        postion_space,
+      </if>
+      <if test="postionTime != null">
+        postion_time,
+      </if>
+      <if test="postionEducation != null">
+        postion_education,
+      </if>
+      <if test="postionExp != null">
+        postion_exp,
+      </if>
+      <if test="postionAge != null">
+        postion_age,
+      </if>
+      <if test="postionDescription != null">
+        postion_description,
+      </if>
+      <if test="postionWelfare != null">
+        postion_welfare,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="overTime != null">
+        over_time,
+      </if>
+      <if test="postionDepartment != null">
+        postion_department,
+      </if>
+      <if test="peopleNumber != null">
+        people_number,
+      </if>
+      <if test="postionSpecialty != null">
+        postion_specialty,
+      </if>
+      <if test="deleteFlat != null">
+        delete_flat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="postionName != null">
+        #{postionName,jdbcType=VARCHAR},
+      </if>
+      <if test="postionCompany != null">
+        #{postionCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="postionYm != null">
+        #{postionYm,jdbcType=INTEGER},
+      </if>
+      <if test="postionMm != null">
+        #{postionMm,jdbcType=INTEGER},
+      </if>
+      <if test="postionSpace != null">
+        #{postionSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="postionTime != null">
+        #{postionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionEducation != null">
+        #{postionEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="postionExp != null">
+        #{postionExp,jdbcType=VARCHAR},
+      </if>
+      <if test="postionAge != null">
+        #{postionAge,jdbcType=VARCHAR},
+      </if>
+      <if test="postionDescription != null">
+        #{postionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="postionWelfare != null">
+        #{postionWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null">
+        #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionDepartment != null">
+        #{postionDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleNumber != null">
+        #{peopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="postionSpecialty != null">
+        #{postionSpecialty,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlat != null">
+        #{deleteFlat,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
