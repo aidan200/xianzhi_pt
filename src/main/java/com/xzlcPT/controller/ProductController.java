@@ -55,7 +55,7 @@ public class ProductController extends BaseController{
         return map;
     }
     @ResponseBody
-    @RequestMapping("selectByCompanyId")
+    @RequestMapping("selByCompanyId")
     public Map selectByCompanyId(Long companyId) {
         Map map = new HashMap();
         List<XzCompanyProduct> productList = xzProductService.selectByCompanyId(companyId);
