@@ -50,12 +50,12 @@
       <result column="skill" jdbcType="VARCHAR" property="skill" />
       <result column="financing" jdbcType="VARCHAR" property="financing" />
     </association>
-    <collection property="postionMsgs" ofType="com.xzlcPT.bean.XzPostionMsg">
+    <!--<collection property="postionMsgs" ofType="com.xzlcPT.bean.XzPostionMsg">
       <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
       <result column="postion_id" jdbcType="BIGINT" property="postionId" />
       <result column="pmsg_name" jdbcType="VARCHAR" property="pmsgName" />
       <result column="pmsg_value" jdbcType="VARCHAR" property="pmsgValue" />
-    </collection>
+    </collection>-->
   </resultMap>
   <resultMap id="selPostionList" type="com.xzlcPT.bean.XzPostion">
     <id column="postion_id" jdbcType="BIGINT" property="postionId" />
