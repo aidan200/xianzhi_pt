@@ -14,8 +14,6 @@ svn_btn+='<path fill="none" stroke-width="3" stroke-miterlimit="10" d="M48.659,2
 svn_btn+='S1.591,37.998,1.591,25S12.127,1.466,25.125,1.466c9.291,0,17.325,5.384,21.151,13.203L19,36l-9-14"/>'
 svn_btn+='</svg>'
 svn_btn+='</i>'
-
-
 /*
 * 正在招聘
 * */
@@ -30,6 +28,7 @@ svn_btn+='</i>'
 
 //正在招聘开始
 function Zzzp(){
+    this.id=0;
     this.name='',             //1.职位名称
     this.yprx=0,              //2.应聘人选
     this.wcl=0,               //3.未处理
@@ -52,6 +51,7 @@ Zzzp.prototype.load=function (){
             zs:10,
             cont:[
                 {
+                    id:1,
                     name:"前端",
                     yprx:"前端",
                     wcl:"前端",
@@ -63,6 +63,7 @@ Zzzp.prototype.load=function (){
 
                 },
                 {
+                    id:2,
                     name:"前端",
                     yprx:"前端",
                     wcl:"前端",
@@ -85,11 +86,12 @@ Zzzp.prototype.load=function (){
             zzzp.msk=data.cont[i].msk;
             zzzp.sxsj=data.cont[i].sxsj;
             zzzp.jssj=data.cont[i].jssj;
+            zzzp.id=data.cont[i].id;
             This.cont[i]=zzzp;
         }
         var str=''
         for(var i=0;i<This.cont.length;i++){
-            str+='<tr>'
+            str+='<tr data-id="'+This.cont[i].id+'">'
             str+='<td>'
             str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
             str+='<input type="checkbox" id="pom10'+i+'" class="choose2">'
@@ -107,23 +109,26 @@ Zzzp.prototype.load=function (){
             str+='<td class="all_no">'+This.cont[i].sxsj+'</td>'
             str+='<td class="all_no">'+This.cont[i].jssj+'</td>'
             str+='<td class="all_no">'
-            str+=' <a href="">修改</a> '
-            str+=' <a href="">删除</a> '
+            str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
+            str+=' <a href="javascript:;" class="dg_sc">结束</a> '
             str+='</td>'
             str+='</tr>'
         }
         $('#zzzp_tbody').html(str)      //输出到页面上
     }
-    del();                              //默认载入第一个页面
+     del();                              //默认载入第一个页面
     var on=$('#myTab a').eq(0).unbind().on('click',function (){
         var xxk=$('#xxk_01').parent().parent();  //选择到搜索框父级
         if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(0).val()==''){
             del();                               //当选中我时候载入界面
+
         }
     })
+
 }
 //初始化载入方法结束
-Zzzp.prototype.seek=function (){        //搜索框方法
+//搜索框方法
+Zzzp.prototype.seek=function (){
     $('#xxk_01').on('click',function (){
         var parent=$(this).parent().parent()
         var data={
@@ -132,39 +137,71 @@ Zzzp.prototype.seek=function (){        //搜索框方法
             ksrq:parent.find('input').eq(1).val(),         // 获取到开始日期
             jsrq:parent.find('input').eq(2).val(),         // 获取到截止日期
         }
-        $.ajax({
-            type:"post",
-            async:true,
-            contentType: "application/json",
-            data:JSON.stringify(data),
-            dataType:'json',
-            url:path+'Resume/updateResume.do',
-            success:function (data){
-
-
-            },error:function (){ //报错执行的
-                alert('搜索框方法错误')
-            }
-
-        })
+        alert(data.gjz)
+        // $.ajax({
+        //     type:"post",
+        //     async:true,
+        //     contentType: "application/json",
+        //     data:JSON.stringify(data),
+        //     dataType:'json',
+        //     url:path+'Resume/updateResume.do',
+        //     success:function (data){
+        //
+        //
+        //     },error:function (){ //报错执行的
+        //         alert('搜索框方法错误')
+        //     }
+        //
+        // })
 
 
 
     })
 }
-Zzzp.prototype.updata=function (){      //单条数据操作方法
+Zzzp.prototype.definition=function(obj){            //正在招聘暂停方法
+    var This=this;
+    $(obj).unbind().on('click',function (){
+        var othis=this
+        var parent=$(othis).parent().parent()
+        var data={
+            companyId:companyId,            //公司ID
+            zwID:parent.attr('data-id')     //职位ID
+        }
+        // $.ajax({
+        //     type:"post",
+        //     async:true,
+        //     contentType: "application/json",
+        //     data:JSON.stringify(data),
+        //     dataType:'json',
+        //     url:path+'Resume/updateResume.do',
+        //     success:function (data){
+        //
+        //        This.init()           //重新载入页面
+        //     },error:function (){ //报错执行的
+        //         alert('搜索框方法错误')
+        //     }
+        //
+        // })
+
+    })
+}
+Zzzp.prototype.updata=function (){      //正在招聘业务逻辑方法
+    var This=this
+    //在加载完成数据库后执行
+    This.definition('#zzzp_tbody  .dg_xg')       //单个修改事件
 
 }
 Zzzp.prototype.allupdata=function (){   //全选删除方法
 
 }
-Zzzp.prototype.updata=function (){      //分页方法
+Zzzp.prototype.updata2=function (){      //分页方法
 
 }
 Zzzp.prototype.init=function (){        //初始化方法
     var This=this
     This.load()
     This.seek()
+    This.updata()
 
 }
 

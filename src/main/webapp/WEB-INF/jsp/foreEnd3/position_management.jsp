@@ -17,12 +17,14 @@
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
             background-color: #ffffff;
         }
-
         table {
             table-layout: fixed;
         }
 
     </style>
+    <script>
+        var companyId=1;        //公司Id
+    </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/position_management.js"></script>
 
@@ -73,7 +75,7 @@
                             <input type="text" class="pom_input">
                         </span>
                             <span>
-                        <button class="pom_b" id="xxk_01">搜索</button></span>
+                        <button class="pom_b" id="xxk_01" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -112,8 +114,8 @@
                                     <td class="all_no">0725</td>
                                     <td class="all_no">0726</td>
                                     <td class="all_no">
-                                        <a href="">修改</a>
-                                        <a href="">删除</a>
+                                        <a href="javascript:" class="dg_xg">暂停</a>
+                                        <a href="javascript:" class="dg_sc">结束</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -134,8 +136,8 @@
                                     <td class="all_no">0725</td>
                                     <td class="all_no">0726</td>
                                     <td class="all_no">
-                                        <a href="">修改</a>
-                                        <a href="">删除</a>
+                                        <a href="javascript:;">修改</a>
+                                        <a href="javascript:;">删除</a>
                                     </td>
                                 </tr>
 
@@ -200,7 +202,7 @@
                             <input type="text" class="pom_input">
                         </span>
                             <span>
-                        <button class="pom_b">搜索</button></span>
+                        <button class="pom_b" type="button">搜索</button></span>
 
                         </div>
 
@@ -237,8 +239,8 @@
                                     <td class="all_no">5</td>
                                     <td class="all_no">2</td>
                                     <td class="all_no">
-                                        <a href="">修改</a>
-                                        <a href="">删除</a>
+                                        <a href="javascript:;">修改</a>
+                                        <a href="javascript:;">删除</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -291,7 +293,7 @@
                             <input type="text" class="pom_input">
                         </span>
                             <span>
-                        <button class="pom_b">搜索</button></span>
+                        <button class="pom_b" type="button">搜索</button></span>
 
                         </div>
 
@@ -380,7 +382,7 @@
                             <input type="text" class="pom_input">
                         </span>
                             <span>
-                        <button class="pom_b">搜索</button></span>
+                        <button class="pom_b" type="button">搜索</button></span>
 
                         </div>
 
@@ -472,7 +474,7 @@
                             <input type="text" class="pom_input">
                         </span>
                             <span>
-                        <button class="pom_b">搜索</button></span>
+                        <button class="pom_b" type="button">搜索</button></span>
 
                         </div>
 
@@ -511,8 +513,8 @@
                                     <td class="all_no">5</td>
                                     <td class="all_no">2017-07-19</td>
                                     <td class="all_no">
-                                        <a href="">预览</a>
-                                        <a href="">删除</a>
+                                        <a href="javascript:;">预览</a>
+                                        <a href="javascript:;">删除</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -564,7 +566,7 @@
                             <input type="text" class="pom_input">
                         </span>
                             <span>
-                        <button class="pom_b">搜索</button></span>
+                        <button class="pom_b" type="button">搜索</button></span>
 
                         </div>
 
@@ -601,8 +603,8 @@
                                     <td class="all_no">5</td>
                                     <td class="all_no">6</td>
                                     <td class="all_no">
-                                        <a href="">预览</a>
-                                        <a href="">删除</a>
+                                        <a href="javascript:;">预览</a>
+                                        <a href="javascript:;">删除</a>
                                     </td>
                                 </tr>
                                 </tbody>
