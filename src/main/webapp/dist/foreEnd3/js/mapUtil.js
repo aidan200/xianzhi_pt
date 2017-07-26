@@ -17,6 +17,7 @@ function myMap(postion) {
     this.x = postion.x;
     this.y = postion.y;
     this.autocomplete;
+    this.location = postion.location;
     if(postion.city){
         this.city = postion.city;
     }else{
@@ -71,7 +72,9 @@ myMap.prototype.init = function () {
     _self.map.addEventListener('click',function (rs) {
             _self.setPoint(rs);
     })
-
+    if(_self.location){
+        _self.autocomplete.setInputValue(_self.location);
+    }
 }
 //设置坐标
 myMap.prototype.setPoint = function (rs) {
