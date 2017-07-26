@@ -186,7 +186,6 @@
     </collection>
     <collection property="skills" ofType="com.xzlcPT.bean.XzCompanySkill">
       <id column="skill_id" jdbcType="BIGINT" property="skillId"/>
-      <result column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="skill_name" jdbcType="VARCHAR" property="skillName"/>
     </collection>
   </resultMap>
@@ -224,7 +223,7 @@
     s.postion_id,s.company_id,s.postion_name,s.postion_company,s.postion_ym,s.postion_mm,s.postion_space,s.postion_time,
     s.postion_education,s.postion_exp,s.postion_age,s.postion_description,s.postion_welfare,s.create_time,s.delete_time,
     m.mien_id,m.company_id, m.mien_Intro, m.mien_url,
-    k.company_id,k.skill_name
+    k.skill_id,k.company_id,k.skill_name
 </sql>
 
   <select id="selCompanyInfo" resultMap="CompanyInfo" parameterType="java.lang.Long">
@@ -575,12 +574,15 @@
   <select id="selCompanyInf" resultMap="selectInf" parameterType="java.lang.Long">
     select
     <include refid="selInfList"/>
-    from xz_company c LEFT JOIN xz_company_welfare w on c.company_id = w.company_id
-    LEFT JOIN xz_company_product p on c.company_id = p.company_id  LEFT JOIN xz_company_domain d ON
-    c.company_id=d.company_id LEFT JOIN xz_field f ON f.field_id=d.field_id LEFT JOIN xz_postion s ON
-    s.company_id=c.company_id LEFT JOIN xz_company_mien m ON c.company_id=m.company_id LEFT JOIN
-    xz_company_skill k ON c.company_id=k.company_id where
-    c.company_id = #{companyId,jdbcType=BIGINT}
+    from xz_company c
+    LEFT JOIN xz_company_welfare w on c.company_id = w.company_id
+    LEFT JOIN xz_company_product p on c.company_id = p.company_id
+    LEFT JOIN xz_company_skill k ON c.company_id=k.company_id
+    LEFT JOIN xz_company_domain d ON c.company_id=d.company_id
+    LEFT JOIN xz_field f ON f.field_id=d.field_id
+    LEFT JOIN xz_postion s ON s.company_id=c.company_id
+    LEFT JOIN xz_company_mien m ON c.company_id=m.company_id
+    where c.company_id = #{companyId,jdbcType=BIGINT}
   </select>
   <update id="updateCompanyPic"  parameterType="com.xzlcPT.bean.XzCompany">
     update xz_company

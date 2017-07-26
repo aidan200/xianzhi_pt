@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzCompanySkillMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzCompanySkill">
+    <id column="skill_id" jdbcType="BIGINT" property="skillId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="skill_name" jdbcType="VARCHAR" property="skillName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    skill_id, company_id, skill_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_company_skill
+    where skill_id = #{skillId,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByCompanyId" parameterType="java.lang.Long">
+    delete from xz_company_skill
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_company_skill
+    where skill_id = #{skillId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzCompanySkill">
+    insert into xz_company_skill (skill_id, company_id, skill_name
+      )
+    values (#{skillId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{skillName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzCompanySkill">
+    insert into xz_company_skill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="skillId != null">
+        skill_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="skillName != null">
+        skill_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="skillId != null">
+        #{skillId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="skillName != null">
+        #{skillName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzCompanySkill">
+    update xz_company_skill
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="skillName != null">
+        skill_name = #{skillName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where skill_id = #{skillId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzCompanySkill">
+    update xz_company_skill
+    set company_id = #{companyId,jdbcType=BIGINT},
+      skill_name = #{skillName,jdbcType=VARCHAR}
+    where skill_id = #{skillId,jdbcType=BIGINT}
+  </update>
+</mapper>

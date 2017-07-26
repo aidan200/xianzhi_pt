@@ -11,6 +11,10 @@ public interface XzFieldMapper {
 
     int insertByResumeDomain(Map map);
 
+    int deleteByCompanyDomain(Long companyId);
+
+    int insertByCompanyDomain(Map map);
+
     List<XzField> selectByType(int fieldType);
 
     List<XzField> selectSkillByResumeId(Long resumeId);
