@@ -88,15 +88,7 @@
         <a href="#0" class="all_close cmd_close"></a>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('nav li').hover(function () {
-            $(this).find('.head-menu').css('display', 'block');
-        }, function () {
-            $(this).find('.head-menu').css('display', 'none');
-        });
-    });
-</script>
+
 
 </body>
 </html>
