@@ -3931,55 +3931,76 @@ input[type="button"].fileInputButton {
     border: none;
 }
 
-.pop_top {
-    /*width: 100%;*/
-    /*height: 500px;*/
-    /*box-shadow: 0 4px 8px 0 rgba(7, 17, 27, .1);*/
-    /*margin-top: 10px;*/
-    /*background-color: #ffffff;*/
+.pop_top2 {
+    width: 100%;
+    height: 50px;
+    background-color: #3D9CCC;
+    border: 1px dashed #d9d9d9;
+    margin-top: 20px;
+    line-height: 50px;
+    color: #ffffff;
+}
+.pop_span {
+    float: right;
+    margin-right: 20px;
 }
 
 .pop_allimg {
     text-align: center;
+    margin-bottom: 90px;
 
 }
 
-.pop_img {
-    width: 150px;
-    height: 150px;
-    margin-top: 160px;
+/*.pop_img {*/
+    /*width: 150px;*/
+    /*height: 150px;*/
+    /*margin-top: 160px;*/
+/*}*/
+.pop_head {
+    width: 100px;
+    height: 100px;
+    border-radius: 150px;
+    margin-left: 20px;
+    float: left;
+    margin-top: 10px;
 }
-
-.comh_test2 {
+.pop_test2 {
     float: left;
     margin-left: 30px;
 }
 
-.comh_test2 h4 {
+.pop_test2 h4 {
     color: #3d9ccc;
 }
 
-.comh_left2 {
-    width: 530px;
+.pop_left2 {
+    width: 510px;
     height: auto;
     float: left;
     border-right: 1px dotted #cccccc;
 }
 
-.comh_right2 {
+.pop_right2 {
     float: left;
     height: auto;
     margin-left: 45px;
     margin-top: 10px;
     width: 380px;
 }
+.pop_rt span {
+    margin: 3px 8px;
+}
 
-.comh_in2 span {
+.pop_rt {
+    margin-top: 10px;
+}
+
+.pop_in2 span {
     margin: 10px 10px;
     display: inline-block;
 }
 
-.triangle-right-bottom {
+.pop-right-bottom {
     width: 0;
     height: 0;
     border-bottom: 45px solid transparent;
@@ -3991,10 +4012,30 @@ input[type="button"].fileInputButton {
 
 }
 
-.triangle-right-bottom b {
+.pop-right-bottom b {
     color: #ffffff;
     margin-left: 23px;
 }
+.pop_have {
+    width: 100%;
+    height: 160px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid #d9d9d9;
+    position: relative;
+}
+
+.pop_no {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    overflow: hidden;
+}
+
+
 
 /*------------------------公司主页-----------------------*/
 .comh_allin {
