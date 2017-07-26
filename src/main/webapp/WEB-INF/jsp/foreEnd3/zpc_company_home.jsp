@@ -62,11 +62,11 @@
                                 <div class="comh_in">
                                     <span>女</span>|
                                     <span>28</span>|
-                                    <span>呼和浩特</span>|
+                                    <span class="comh_more" style="max-width: 83px">呼和浩特哈哈哈哈</span>|
                                     <span>本科</span>
                                 </div>
-                                <div style="margin-top: 10px" class="comh_in">
-                                    <span>web前端</span>|
+                                <div class="comh_in">
+                                    <span class="comh_more" style="max-width: 130px">web前端hahahahahahfkj</span>|
                                     <span>1年经验</span>
                                 </div>
                             </div>
@@ -75,20 +75,21 @@
                         <div class="comh_right">
                             <div class="comh_rt">
                                 <span>2015-至今</span>|
-                                <span>阿里巴巴有限公司</span>|
-                                <span>资深产品经理</span>
+                                <span class="comh_more" style="max-width: 185px">阿里巴巴有限公司ahtsrtgfkajfhkadf</span>|
+                                <span class="comh_more" style="max-width: 135px">资深产品经理adsertssfasd</span>
                             </div>
                             <div class="comh_rt">
                                 <span>2007-2011</span>|
-                                <span>复旦大学</span>|
-                                <span>信息管理与信息系统</span>|
+                                <span class="comh_more" style="max-width: 133px">复旦大学aewrwerfdfadfadfad</span>|
+                                <span class="comh_more" style="max-width: 131px">信息管理werfweaewe与信息系统a</span>|
                                 <span>本科</span>
                             </div>
-                            <div style="margin-top: 15px;margin-right: 10px;float: right;color: #a8a8a8">
+                            <div style="margin-top: 10px;margin-right: 3px;float: right;color: #a8a8a8">
                                 <span><span>4</span>个小时前</span>
                             </div>
                         </div>
                     </div>
+
 
 
 
@@ -154,7 +155,7 @@
             </div>
         </div>
         <div class="comh_rz">
-            <h4>近期投递简历次数</h4>
+            <h4>近七天投递简历次数</h4>
             <div id="mapall" style="width: 230px;height: 300px"></div>
 
         </div>
@@ -162,14 +163,14 @@
     </div>
 </div>
 
-<%--<div class="allboolean">--%>
-    <%--<div class="b_out">--%>
-        <%--<div class="booleanin">--%>
-            <%--请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈--%>
-            <%--<span class="fa fa-remove bremove"></span>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
+<div class="allboolean">
+    <div class="b_out">
+        <div class="booleanin">
+            请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            <span class="fa fa-remove bremove"></span>
+        </div>
+    </div>
+</div>
 
 
 <div id="index_bb">
@@ -203,7 +204,7 @@
             type: 'category',
             boundaryGap: false,
             data: ['0718','0719','0720','0721','0722','0723','0724'],
-            show : false,
+            show : true,
         }],
         yAxis: [{
             type: 'value',

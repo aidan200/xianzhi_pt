@@ -3678,6 +3678,28 @@ input[type="button"].fileInputButton {
     margin-left: 10px;
 }
 
+.resume_out1 {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+}
+
+.resume_xun {
+    width: 170px;
+    height: 160px;
+}
+
+.resume_is {
+    position: absolute;
+    left: 25px;
+    top: 60px;
+    width: 120px;
+    height: auto;
+    display: inline-block;
+    font-size: 16px;
+    text-align: center;
+}
+
 .resume_center {
     width: 800px;
     height: auto;
@@ -3969,8 +3991,6 @@ input[type="button"].fileInputButton {
     margin-left: 30px;
 }
 
-
-
 .pop_test2 h4 {
     color: #3d9ccc;
 }
@@ -4006,8 +4026,9 @@ input[type="button"].fileInputButton {
     margin: 10px 10px;
     display: inline-block;
 }
+
 .pop_in3 span {
-    margin: 0 10px 10px ;
+    margin: 0 10px 10px;
     display: inline-block;
 }
 
@@ -4120,26 +4141,38 @@ input[type="button"].fileInputButton {
 
 .comh_test h4 {
     color: #3D9CCC;
+    margin-bottom: 6px;
 }
 
 .comh_in span {
     margin: 2px 10px;
+    display: inline-block;
+}
+
+.comh_more {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    top: 6px;
 }
 
 .comh_right {
     float: left;
     height: auto;
     margin-left: 15px;
-    margin-top: 20px;
+    margin-top: 31px;
     width: 470px;
 }
 
 .comh_rt span {
     margin: 3px 8px;
+    display: inline-block;
 }
 
 .comh_rt {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+
 }
 
 .comh_rz {
