@@ -104,7 +104,7 @@
                 <a href="" class="zp_zwxq_cont_a_right"></a>
             </div>
             <div class="zp_zwxq_cont_left_ss">
-                <form action="${pageContext.request.contextPath}/Postion/selPostionByname">
+                <form action="${pageContext.request.contextPath}/Postion/selPostionByname.do">
                     <input type="text" placeholder="搜索其他职位，如：总经理秘书" name="postionName">
                     <button class="btn btn-primary" type="submit">
                         <span>搜索</span>
