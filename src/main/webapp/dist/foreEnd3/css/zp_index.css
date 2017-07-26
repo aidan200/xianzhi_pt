@@ -419,7 +419,8 @@ ul,li{
     float: left;
     width: 20px;
     height: 20px;
-    background: #FA9A36;
+    /*background: #FA9A36;*/
+    color: rgba(128,128,128,0.91);
     margin-right: 3px;
 }
 .zp_index_cont_right_bottom_right{

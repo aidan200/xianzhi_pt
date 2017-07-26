@@ -24,24 +24,24 @@
             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/LOGO1.png" alt="" class="alllogo">
             <ul class="nav nav_2">
                 <li>
-                    <a href="index.html" class="sim-button button01"><span data-hover="先知首页">&nbsp;先知首页&nbsp;</span></a>
+                    <a href="/" class="sim-button button01"><span data-hover="先知首页">&nbsp;先知首页&nbsp;</span></a>
                 </li>
                 <li>
-                    <a href="video_home.html" class="sim-button button01"><span
+                    <a href="###" class="sim-button button01"><span
                             data-hover="在线直播">&nbsp;在线直播&nbsp;</span></a>
                 </li>
                 <li>
-                    <a href="#" class="sim-button button01"><span data-hover="会员中心">&nbsp;会员中心&nbsp;</span></a>
+                    <a href="###" class="sim-button button01"><span data-hover="会员中心">&nbsp;会员中心&nbsp;</span></a>
                 </li>
                 <li>
-                    <a href="blog_home.html" class="sim-button button01"><span data-hover="先知社区">&nbsp;先知社区&nbsp;</span></a>
+                    <a href="###" class="sim-button button01"><span data-hover="先知社区">&nbsp;先知社区&nbsp;</span></a>
                 </li>
                 <li>
                     <a href="${pageContext.request.contextPath}/zp_index" class="sim-button button01"><span
                             data-hover="招聘中心">&nbsp;招聘中心&nbsp;</span></a>
                 </li>
                 <li>
-                    <a href="#" class="sim-button button01"><span data-hover="活动中心">&nbsp;活动中心&nbsp;</span></a>
+                    <a href="###" class="sim-button button01"><span data-hover="活动中心">&nbsp;活动中心&nbsp;</span></a>
                 </li>
             </ul>
             <ul class="nav nav_1">

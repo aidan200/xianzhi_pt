@@ -23,13 +23,13 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
 </head>
-<body>
+<body style="background-color: #EEEEEE">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 <div class="zp_lb_top">
     <div class="container zp_lb_ssk">
         <div class="zp_lb_ssk_left">
-            <div id="this_space" style="cursor: pointer">全国</div>
+            <div id="this_space" style="cursor: pointer" class="zp_gslc">全国</div>
         </div>
         <div class="zp_lb_ssk_right">
             <form action="">
@@ -88,6 +88,7 @@
                     </ul>
                 </div>
             </div>
+            <div style="clear: both"></div>
             <div class="zp_lb_cont_top_2">
                 <div class="pull-left" style="width: 42px;color: #999">更多：</div>
                 <div class="pull-left" style="width: 766px">
@@ -135,9 +136,10 @@
                     </ul>
                 </div>
             </div>
+            <div style="clear: both"></div>
             <div class="zp_lb_cont_top_3">
                 <div class="zp_lb_cont_top_3_left">
-                    <span>已选条件：</span>
+                    <span style="color: #ffffff">已选条件：</span>
                 </div>
                 <div class="zp_lb_cont_top_3_right" id="mainSelect">
                     <%--<a href="">三天之内&nbsp;&nbsp;<span>x</span></a>--%>
@@ -308,7 +310,7 @@
 
             if (!isAlreadyHave) {
                 $(this).css({
-                    "background-color": "#FFA500",
+                    "background-color": "#ccc",
                     "color": "white"
                 });
                 writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"), inpName, inpValue);
