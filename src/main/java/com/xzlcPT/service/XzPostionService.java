@@ -25,4 +25,6 @@ public interface XzPostionService {
 
     XzPostion selPostionInfo(Long postionId);
 
+    int updateByPrimaryKeySelective(XzPostion xzPostion);
+
 }

@@ -73,7 +73,12 @@ public class XzPostionServiceImpl implements XzPostionService{
     @Override
     public XzPostion selPostionInfo(Long postionId) {
         XzPostion xzPostion=postionMapper.selPostionInfo(postionId);
-        System.out.println("xzage:::::::::::::::::"+xzPostion.getPostionAge());
         return xzPostion;
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(XzPostion xzPostion) {
+       int i=postionMapper.updateByPrimaryKeySelective(xzPostion);
+        return i;
     }
 }
