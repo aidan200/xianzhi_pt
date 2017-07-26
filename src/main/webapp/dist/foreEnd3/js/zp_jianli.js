@@ -456,7 +456,7 @@ obj_zbzl.prototype.bindingDOM=function (){//绑定基本信息
     }else if(_self.zt==2){
         _self.DOM.zt.html("保密");
     }else{
-        _self.DOM.zt.html("adad");
+        _self.DOM.zt.html("");
     }
 
 };

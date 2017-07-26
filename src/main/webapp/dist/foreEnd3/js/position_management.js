@@ -44,7 +44,7 @@ function Zzzp(){
     }
 }
 //初始化载入方法开始
-Zzzp.prototype.load=function (){
+Zzzp.prototype.load=function (){    //初始化载入方法结束
     var This=this
     var del=function (){
         var data={
@@ -124,12 +124,9 @@ Zzzp.prototype.load=function (){
 
         }
     })
-
 }
-//初始化载入方法结束
-//搜索框方法
-Zzzp.prototype.seek=function (){
-    $('#xxk_01').on('click',function (){
+Zzzp.prototype.seek=function (){    //搜索框方法
+    $('#xxk_01').unbind().on('click',function (){
         var parent=$(this).parent().parent()
         var data={
             gjz:parent.find('select').val(),                //获取到关键字类型
@@ -167,6 +164,35 @@ Zzzp.prototype.definition=function(obj){            //正在招聘暂停方法
             companyId:companyId,            //公司ID
             zwID:parent.attr('data-id')     //职位ID
         }
+        alert('aaa')
+        // $.ajax({
+        //     type:"post",
+        //     async:true,
+        //     contentType: "application/json",
+        //     data:JSON.stringify(data),
+        //     dataType:'json',
+        //     url:path+'Resume/updateResume.do',
+        //     success:function (data){
+        //
+                This.init()           //重新载入页面
+        //     },error:function (){ //报错执行的
+        //         alert('搜索框方法错误')
+        //     }
+        //
+        // })
+
+    })
+}
+Zzzp.prototype.operateEnd=function(obj){            //正在招聘暂停方法
+    var This=this;
+    $(obj).unbind().on('click',function (){
+        var othis=this
+        var parent=$(othis).parent().parent()
+        var data={
+            companyId:companyId,            //公司ID
+            zwID:parent.attr('data-id')     //职位ID
+        }
+        alert('我是删除')
         // $.ajax({
         //     type:"post",
         //     async:true,
@@ -185,13 +211,13 @@ Zzzp.prototype.definition=function(obj){            //正在招聘暂停方法
 
     })
 }
-Zzzp.prototype.updata=function (){      //正在招聘业务逻辑方法
+Zzzp.prototype.updata=function (){                  //正在招聘业务逻辑方法
     var This=this
     //在加载完成数据库后执行
     This.definition('#zzzp_tbody  .dg_xg')       //单个修改事件
-
+    This.operateEnd('#zzzp_tbody  .dg_sc')       //单个删除事件
 }
-Zzzp.prototype.allupdata=function (){   //全选删除方法
+Zzzp.prototype.allupdata=function (){   //全选删除方法以及单个删除方法
 
 }
 Zzzp.prototype.updata2=function (){      //分页方法
@@ -207,7 +233,7 @@ Zzzp.prototype.init=function (){        //初始化方法
 
 
 $(function (){
-    var zzzp=new Zzzp();
+    var zzzp=new Zzzp();                    //正在招聘页
     zzzp.init();
 
 
