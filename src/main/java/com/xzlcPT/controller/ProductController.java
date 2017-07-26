@@ -25,22 +25,29 @@ public class ProductController extends BaseController{
     @Autowired
     private XzProductService xzProductService;
 
-    @RequestMapping("insertProduct")
-    public ModelAndView insertProduct(XzCompanyProduct xzCompanyProduct){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test1");
+    @ResponseBody
+    @RequestMapping("insertProduct.do")
+        public Map insertProduct(@RequestBody XzCompanyProduct xzCompanyProduct){
+        Map map=new HashMap();
         int i=xzProductService.insertProduct(xzCompanyProduct);
-        mv.addObject("i",i);
-        return mv;
+        map.put("i",i);
+        return map;
     }
-    @RequestMapping("updateProduct")
-    public  ModelAndView updateProduct(XzCompanyProduct xzCompanyProduct){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test1");
+
+    @ResponseBody
+    @RequestMapping("updateProduct.do")
+    public  Map updateProduct(@RequestBody XzCompanyProduct xzCompanyProduct){
+      Map map=new HashMap();
         int i=xzProductService.updateProduct(xzCompanyProduct);
-        mv.addObject("i",i);
-        return mv;
+     if (i>0){
+         map.put("msg","true");
+     }else {
+         map.put("msg","err");
+     }
+        return map;
     }
     @ResponseBody
-    @RequestMapping("selectByPrimaryKey")
+    @RequestMapping("selectByPrimaryKey.do")
     public Map selectByPrimaryKey(Long productId){
         Map map = new HashMap();
         XzCompanyProduct xzCompanyProduct=xzProductService.selectByPrimaryKey(productId);
@@ -48,14 +55,13 @@ public class ProductController extends BaseController{
         return map;
     }
     @ResponseBody
-    @RequestMapping("selectByCompanyId")
+    @RequestMapping("selByCompanyId.do")
     public Map selectByCompanyId(Long companyId) {
         Map map = new HashMap();
         List<XzCompanyProduct> productList = xzProductService.selectByCompanyId(companyId);
-        for (int i=0;i<productList.size();i++){
-            XzCompanyProduct xzCompanyProduct=productList.get(i);
-            map.put("xzCompanyProduct",xzCompanyProduct);
-        }
+        map.put("productList",productList);
         return map;
     }
+
+
 }
