@@ -19,8 +19,6 @@ public interface XzPostionMapper {
 
     XzPostion selectByPrimaryKey(Long postionId);
 
-    int updateByPrimaryKeySelective(XzPostion record);
-
     int updateByPrimaryKey(XzPostion record);
 
     List<XzPostion> selectByCompanyId(Long companyId);
@@ -30,4 +28,8 @@ public interface XzPostionMapper {
     List<XzPostion> selectCityByComId(Long companyId);
 
     XzPostion selPostionInfo(Long postionId);
+
+    List<XzPostion> selInfoByName(String postionName);
+
+    List<XzPostion> selInfoByComId(XzPostion xzPostion);
 }

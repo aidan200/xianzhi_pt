@@ -26,6 +26,15 @@
 
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('nav li').hover(function () {
+                $(this).find('.head-menu').css('display', 'block');
+            }, function () {
+                $(this).find('.head-menu').css('display', 'none');
+            });
+        });
+    </script>
 </head>
 <body>
 

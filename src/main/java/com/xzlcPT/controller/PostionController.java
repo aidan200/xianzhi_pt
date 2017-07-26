@@ -126,15 +126,11 @@ public class PostionController extends BaseController{
     public ModelAndView selPostionInfo(Long postionId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_zwxq");
         XzPostion xzPostion=postionService.selPostionInfo(postionId);
+        List<XzPostion> plist=postionService.selInfoByName(xzPostion.getPostionName());
+        List<XzPostion> cplist=postionService.selInfoByComId(xzPostion);
+        mv.addObject("cplist",cplist);
+        mv.addObject("plist",plist);
         mv.addObject("xzPostion",xzPostion);
-        return mv;
-    }
-    //测试用
-    @RequestMapping("updateByPrimaryKeySelective")
-    public ModelAndView updateByPrimaryKeySelective(XzPostion xzPostion){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
-        int i=postionService.updateByPrimaryKeySelective(xzPostion);
-        mv.addObject("i",i);
         return mv;
     }
 }

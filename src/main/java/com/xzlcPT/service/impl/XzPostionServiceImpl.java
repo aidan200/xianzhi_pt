@@ -77,8 +77,14 @@ public class XzPostionServiceImpl implements XzPostionService{
     }
 
     @Override
-    public int updateByPrimaryKeySelective(XzPostion xzPostion) {
-       int i=postionMapper.updateByPrimaryKeySelective(xzPostion);
-        return i;
+    public List<XzPostion> selInfoByName(String postionName) {
+       List<XzPostion> plist = postionMapper.selInfoByName(postionName);
+        return plist;
+    }
+
+    @Override
+    public List<XzPostion> selInfoByComId(XzPostion xzPostion) {
+        List<XzPostion> cplist=postionMapper.selInfoByComId(xzPostion);
+        return cplist;
     }
 }

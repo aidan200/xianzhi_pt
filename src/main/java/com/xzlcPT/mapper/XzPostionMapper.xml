@@ -73,6 +73,9 @@
     <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <association property="company" javaType="com.xzlcPT.bean.XzCompany">
       <id column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="company_name" jdbcType="VARCHAR" property="companyName" />
@@ -99,6 +102,7 @@
   <sql id="Postion_index_list">
     p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
+    p.filed1,p.filed2,p.filed3,
     c.company_id, c.company_name, c.company_picture, c.company_scale, c.company_nature, c.domain, c.skill,
     c.company_intro,c.company_space,
     w.welfare_id, w.welfare_name, f.field_id, f.field_name
@@ -307,63 +311,6 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzPostion">
-    update xz_postion
-    <set>
-      <if test="postionName != null">
-        postion_name = #{postionName,jdbcType=VARCHAR},
-      </if>
-      <if test="postionCompany != null">
-        postion_company = #{postionCompany,jdbcType=VARCHAR},
-      </if>
-      <if test="postionYm != null">
-        postion_ym = #{postionYm,jdbcType=INTEGER},
-      </if>
-      <if test="postionMm != null">
-        postion_mm = #{postionMm,jdbcType=INTEGER},
-      </if>
-      <if test="postionSpace != null">
-        postion_space = #{postionSpace,jdbcType=VARCHAR},
-      </if>
-      <if test="postionTime != null">
-        postion_time = #{postionTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="postionEducation != null">
-        postion_education = #{postionEducation,jdbcType=VARCHAR},
-      </if>
-      <if test="postionExp != null">
-        postion_exp = #{postionExp,jdbcType=VARCHAR},
-      </if>
-      <if test="postionAge != null">
-        postion_age = #{postionAge,jdbcType=VARCHAR},
-      </if>
-      <if test="postionDescription != null">
-        postion_description = #{postionDescription,jdbcType=VARCHAR},
-      </if>
-      <if test="postionWelfare != null">
-        postion_welfare = #{postionWelfare,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleteTime != null">
-        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="deleteFlat != null">
-        delete_flat = #{deleteFlat,jdbcType=INTEGER},
-      </if>
-      <if test="filed1 != null">
-        filed1 = #{filed1,jdbcType=VARCHAR},
-      </if>
-      <if test="filed2 != null">
-        filed2 = #{filed2,jdbcType=VARCHAR},
-      </if>
-      <if test="filed3 != null">
-        filed3 = #{filed3,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where postion_id = #{postionId,jdbcType=BIGINT}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostion">
     update xz_postion
     set postion_name = #{postionName,jdbcType=VARCHAR},
@@ -410,5 +357,19 @@
     FROM xz_postion p LEFT JOIN xz_company_welfare w ON p.company_id = w.company_id LEFT JOIN
     xz_company c ON p.company_id = c.company_id LEFT JOIN xz_company_domain d on c.company_id = d.company_id
     LEFT JOIN xz_field f on d.field_id = f.field_id WHERE p.postion_id=#{postionId,jdbcType=BIGINT}
+  </select>
+  <select id="selInfoByName" parameterType="java.lang.String" resultMap="selPostionList">
+    select
+    <include refid="Postion_index_list"/>
+    FROM xz_postion p LEFT JOIN xz_company_welfare w ON p.company_id = w.company_id LEFT JOIN
+    xz_company c ON p.company_id = c.company_id LEFT JOIN xz_company_domain d on c.company_id = d.company_id
+    LEFT JOIN xz_field f on d.field_id = f.field_id  WHERE  p.postion_name LIKE CONCAT('%',#{postionName,jdbcType=VARCHAR},'%')
+  </select>
+  <select id="selInfoByComId" parameterType="com.xzlcPT.bean.XzPostion" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_postion p
+    where company_id = #{companyId,jdbcType=BIGINT} AND
+    postion_name LIKE CONCAT('%',#{postionName,jdbcType=VARCHAR},'%')
   </select>
 </mapper>
