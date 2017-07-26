@@ -1,10 +1,8 @@
 package com.xzlcPT.controller;
 
 import com.util.PageBean;
-import com.xzlcPT.bean.XzField;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzResume;
-import com.xzlcPT.bean.XzResumeSkill;
 import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,7 +60,7 @@ public class ResumeController extends BaseController {
 
     @RequestMapping("selResumeInformation.do")
     public ModelAndView selResumeInformation(Long resumeId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/resume");
+        ModelAndView mv=new ModelAndView("foreEnd3/zp_resume");
         XzResume xzResume=resumeService.selResumeInformation(resumeId);
         mv.addObject("xzResume",xzResume);
         return mv;
@@ -71,7 +69,7 @@ public class ResumeController extends BaseController {
     @RequestMapping("selResumeByConditions.do")
     public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,String fieldName,String educationLevel,
                                                 String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String createTime,String resumeState){
-        ModelAndView mv=new ModelAndView("/foreEnd3/selectresume");
+        ModelAndView mv=new ModelAndView("foreEnd3/zpc_selectresume");
         Map  map=new HashMap();
         map.put("fieldName",fieldName);
         map.put("educationLevel",educationLevel);

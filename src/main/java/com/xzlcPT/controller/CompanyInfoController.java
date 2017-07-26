@@ -1,7 +1,5 @@
 package com.xzlcPT.controller;
 
-import com.amazonaws.services.dynamodbv2.xspec.L;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.util.MobileAndPersonID;
 import com.util.PageBean;
 import com.util.SavePicture;
@@ -16,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -41,7 +37,7 @@ public class CompanyInfoController {
 
     @RequestMapping("editCompany.do")
     public ModelAndView editCompany(XzCompany company, String[] welfaress, String[] domains, String[] skillss){
-        ModelAndView mv = new ModelAndView("foreEnd3/company_home");
+        ModelAndView mv = new ModelAndView("foreEnd3/zpc_company_home");
         int i = companyService.editCompany(company,welfaress,domains,skillss);
         if(i==1){
             mv.addObject("msg","ok");
@@ -245,7 +241,7 @@ public class CompanyInfoController {
     }
     @RequestMapping("selectAllJob.do")
     public ModelAndView selectAllJob(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "8") Integer rows, XzCompany xzCompany){
-        ModelAndView mv =new ModelAndView("/foreEnd3/companylist");
+        ModelAndView mv =new ModelAndView("foreEnd3/zp_companylist");
         PageBean<XzCompany> pageBean=companyService.selectPcount(page, rows, xzCompany);
         List<XzCompany> clist=pageBean.getList();
         mv.addObject("page", pageBean.getPageNum());
