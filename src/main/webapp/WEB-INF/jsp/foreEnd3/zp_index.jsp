@@ -151,7 +151,7 @@
                 </p>
                 <ul>
                     <li class="col-md-3"><a href=""><span>刷新简历</span></a></li>
-                    <li class="col-md-3"><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html?resumId=${resume.resumeId}"><span>编辑简历</span></a></li>
+                    <li class="col-md-3"><a href="${pageContext.request.contextPath}/Resume/goEditResume.do"><span>编辑简历</span></a></li>
                     <li class="col-md-3"><a href=""><span>账号设置</span></a></li>
                     <li class="col-md-3"><a href=""><span>金卡服务</span></a></li>
                 </ul>

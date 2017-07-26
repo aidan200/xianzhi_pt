@@ -26,6 +26,14 @@ public class ResumeController extends BaseController {
 
     @Autowired
     private XzResumeService resumeService;
+    //跳转到个人简历编辑
+    @RequestMapping("goEditResume.do")
+    public ModelAndView goEditResume(@ModelAttribute("userLogin")XzLogin userLogin){
+        ModelAndView mv = new ModelAndView("foreEnd3/zp_jianli");
+        XzResume resume = resumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        mv.addObject("resumeId",resume.getResumeId());
+        return mv;
+    }
 
     //个人编辑页查询个人简历
     @ResponseBody
