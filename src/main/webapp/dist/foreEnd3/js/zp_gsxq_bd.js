@@ -94,7 +94,6 @@ qyfc.prototype.init=function (){
         dataType:'json',
         success:function (data){//data 就是数据 json
             This.qyfc=data;
-            alert(This.qyfc.arr.length)
             for(var i=0;i<This.qyfc.arr.length;i++){                     //页面初始化
                 This.qyfc.arr[i].dkh=dkh;
                 This.qyfc.arr[i].path=path+'uploadImg/';
@@ -115,6 +114,7 @@ qyfc.prototype.init=function (){
             }
             This.qr();          //修改和键盘监听
             This.sc();          //删除事件
+            This.bindingSJ()
 
         },error:function (){ //报错执行的
             alert('企业风采查询错误')
@@ -127,20 +127,22 @@ qyfc.prototype.qr=function (){                  //修改方法
 
     var This=this;
     $('.a1_gb_tj').on('click',function (){  //确认提交事件
+                                                    //开关
         var obj=$(this).parent().siblings('div'); //获取到你要提交的企业风采照片
         var oms=$(this).parent().siblings('textarea').val();
 
             var aaa={
-                    mienId:obj.attr('data-id'),      //要提交的ID
+                     mienId:obj.attr('data-id'),      //要提交的ID
                     mienUrl:obj.attr('data-url'),    //将你的图片路径传进来
                     mienIntro:oms,                   //描述
             };
+
             $.ajax({
                 type:"post",    //提交方式
                 async:true,  //是否异步
                 contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
                 data:JSON.stringify(aaa),        //转为JSON格式
-                url:path+'Mien/updateMien',    //路径
+                url:path+'Mien/updateMien.do',    //路径
                 success:function (data){//data 就是数据 json
                     $('.qyfc').find('div').remove();
                     This.init();
@@ -180,7 +182,7 @@ qyfc.prototype.sc=function (){                  //删除方法
             async:true,  //是否异步
             data:{mienId:sc_id},
             dataType:'text',
-            url:path+'Mien/deleteMien',
+            url:path+'Mien/deleteMien.do',
             success:function (data){
                 $('#tj_gsfc').siblings('div').remove();
                 This.init();
@@ -195,7 +197,7 @@ qyfc.prototype.sc=function (){                  //删除方法
 qyfc.prototype.bindingSJ=function (){
     var This=this;
     var kg=true;
-    This.DOM.tj_gsfc.on('click',function (){   //添加按钮的事件
+    This.DOM.tj_gsfc.unbind().on('click',function (){   //添加按钮的事件
         if(kg){
             kg=false;
             var obj={
@@ -214,13 +216,43 @@ qyfc.prototype.bindingSJ=function (){
             var ccc= $(this).prev('div').find('input[type=text]').attr('id');
             var ddd=document.getElementById(ccc);
             var uu =  new uploadUtil(bbb,dkh+"/upload/img",ddd,function (imgName){
-                kg=true;
                     eee.prev('div').find('.a1_gb_tj').css({"display":"inline-block"});
                     eee.prev('div').find('div').attr('data-url',imgName);//赋值URL
             });
             uu.init();
-            This.qr();           //提交方法
+            // This.qr(kg);           //提交方法
+            $('.a1_gb_tj').parent().parent().each(function (i,e){
+                if($(e).attr('data-id')==''){
+                    $(e).find('.a1_gb_tj').unbind().on('click',function (){
+                        var obj=$(this).parent().siblings('div'); //获取到你要提交的企业风采照片
+                        var oms=$(this).parent().siblings('textarea').val();
+                        var aaa={
+                            companyId:ID,
+                            mienUrl:obj.attr('data-url'),    //将你的图片路径传进来
+                            mienIntro:oms,                   //描述
+                        };
+                        $.ajax({
+                            type:"post",    //提交方式
+                            async:true,  //是否异步
+                            contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                            data:JSON.stringify(aaa),        //转为JSON格式
+                            url:path+'Mien/insertMien.do',    //路径
+                            success:function (data){//data 就是数据 json
+                                $('.qyfc').find('div').remove();
+                                This.init();
 
+                            },error:function (){ //报错执行的
+                                alert('企业风采修改错误')
+                            }
+
+                        })
+
+
+
+
+                    })
+                }
+            })
         }
 
 
@@ -244,9 +276,17 @@ gstb.prototype.bindingSJ=function (){
 function cpjx(){
     this.cpjs=''
 }
-cpjx.prototype.init=function (){
 
-};
+cpjx.prototype.init=function (){
+    var data={
+        conat:[{},{},{}]
+    }
+    this.cpjs=data;
+    var tjcpjs_html  = template('tj_gscp',data);
+
+
+
+}
 cpjx.prototype.bindingSJ=function (){
     var ww=0;
     $('#tjcpjs').on('click',function (){        //添加商品
@@ -364,17 +404,10 @@ $(function (){
     })
 
 
-    //var ojbxx=new jbxx();           //公司基本信息
-    //ojbxx.init();
 
-    //var ogsdz=new gsdz();           //公司地址
-    //ogsdz.bindingSJ();
 
-    //var oqyfc=new qyfc();           //企业风采
-    //oqyfc.init();
-
-     //oqyfc.bindingSJ();
-
+    var oqyfc=new qyfc();           //企业风采
+    oqyfc.init();
 
 
     var ocpjx=new cpjx();           //产品介绍

@@ -89,7 +89,6 @@
                                     <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">面试快</th>
                                     <th width="80">刷新时间</th>
                                     <th width="80">结束时间</th>
                                     <th width="100">操作</th>
@@ -110,7 +109,6 @@
                                     <td class="all_no">5</td>
                                     <td class="all_no">3</td>
                                     <td class="all_no">5</td>
-                                    <td class="all_no">1</td>
                                     <td class="all_no">0725</td>
                                     <td class="all_no">0726</td>
                                     <td class="all_no">
@@ -132,7 +130,6 @@
                                     <td class="all_no">5</td>
                                     <td class="all_no">3</td>
                                     <td class="all_no">5</td>
-                                    <td class="all_no">1</td>
                                     <td class="all_no">0725</td>
                                     <td class="all_no">0726</td>
                                     <td class="all_no">
@@ -212,12 +209,9 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="300">职位名称</th>
-                                    <th width="100">应聘人选</th>
-                                    <th width="100">主动下载</th>
-                                    <th width="100">推荐简历</th>
-                                    <th width="100">意向沟通</th>
-                                    <th width="100">面试快</th>
+                                    <th width="150">职位名称</th>
+                                    <th width="100">审核时间</th>
+                                    <th width="400">未通过原因</th>
                                     <th width="100">操作</th>
                                 </tr>
                                 </thead>
@@ -233,11 +227,8 @@
                                         </div>
                                     </td>
                                     <td class="all_no"><a href="">java</a></td>
-                                    <td class="all_no">10</td>
-                                    <td class="all_no">5</td>
-                                    <td class="all_no">3</td>
-                                    <td class="all_no">5</td>
-                                    <td class="all_no">2</td>
+                                    <td class="all_no">2017-07-26</td>
+                                    <td class="all_no">工资太少了</td>
                                     <td class="all_no">
                                         <a href="javascript:;">修改</a>
                                         <a href="javascript:;">删除</a>
@@ -396,7 +387,6 @@
                                     <th width="80">应聘人选</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">面试快</th>
                                     <th width="100">暂停时间</th>
                                     <th width="150">操作</th>
                                 </tr>
@@ -416,7 +406,6 @@
                                     <td class="all_no">10</td>
                                     <td class="all_no">2</td>
                                     <td class="all_no">4</td>
-                                    <td class="all_no">2</td>
                                     <td class="all_no">2017-07-19</td>
                                     <td class="all_no">
                                         <a href="">修改</a>
@@ -489,7 +478,6 @@
                                     <th width="80">主动下载</th>
                                     <th width="80">推荐简历</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">面试快</th>
                                     <th width="100">结束时间</th>
                                     <th width="150">操作</th>
                                 </tr>
@@ -509,7 +497,6 @@
                                     <td class="all_no">10</td>
                                     <td class="all_no">2</td>
                                     <td class="all_no">4</td>
-                                    <td class="all_no">2</td>
                                     <td class="all_no">5</td>
                                     <td class="all_no">2017-07-19</td>
                                     <td class="all_no">
@@ -581,7 +568,6 @@
                                     <th width="100">应聘人选</th>
                                     <th width="100">主动下载</th>
                                     <th width="100">意向沟通</th>
-                                    <th width="100">面试快</th>
                                     <th width="150">操作</th>
                                 </tr>
                                 </thead>
@@ -600,7 +586,6 @@
                                     <td class="all_no">已结束</td>
                                     <td class="all_no">4</td>
                                     <td class="all_no">2</td>
-                                    <td class="all_no">5</td>
                                     <td class="all_no">6</td>
                                     <td class="all_no">
                                         <a href="javascript:;">预览</a>

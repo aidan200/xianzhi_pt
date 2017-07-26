@@ -47,8 +47,10 @@ ul {
 /****************************************************88*/
 .zp_lb_top {
     height: 80px;
-    background: #F0F0F0;
+    /*background: #F0F0F0;*/
     padding: 20px 0;
+    margin-top: 20px;
+
 }
 
 .zp_lb_ssk {
@@ -58,11 +60,18 @@ ul {
     padding: 0;
 }
 
+.zp_gslc {
+    width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .zp_lb_ssk_left {
     float: left;
     height: 40px;
-    width: 65px;
-    border: 2px solid #FC9A2F;
+    width: 80px;
+    border: 2px solid #FFA500;
     box-sizing: border-box;
     line-height: 40px;
     text-align: center;
@@ -77,10 +86,10 @@ ul {
 
 .zp_lb_ssk_right {
     float: left;
-    border: 2px solid #FC9A2F;
+    border: 2px solid #FFA500;
     box-sizing: border-box;
     border-left: none;
-    width: 915px;
+    width: 900px;
     height: 40px;
 }
 
@@ -106,7 +115,7 @@ ul {
     line-height: 38px;
     color: #ffffff;
     font-size: 16px;
-    background: #FC9A2F;
+    background: #FFA500;
     width: 140px;
     height: 100%;
     float: right;
@@ -120,7 +129,7 @@ ul {
 
 .zp_lb_cont_top {
     height: auto;
-    background: #f8f8f8;
+    background: #FFFFFF;
     border: 1px solid #F0F0F0;
     padding: 15px 20px;
 }
@@ -130,7 +139,7 @@ ul {
     height: auto;
     overflow: hidden;
     margin-bottom: 10px;
-
+    border-bottom: 1px dashed #c0c0c0;
 }
 
 .zp_lb_cont_top > .zp_lb_cont_top_0 > div {
@@ -174,7 +183,7 @@ ul {
 .zp_lb_cont_top > .zp_lb_cont_top_1 {
     height: 36px;
     margin-bottom: 10px;
-
+    border-bottom: 1px dashed #c0c0c0;
 }
 
 .zp_lb_cont_top > .zp_lb_cont_top_1 > div {
@@ -215,10 +224,11 @@ ul {
 }
 
 .zp_lb_cont_top > .zp_lb_cont_top_2 {
-    height: 36px;
-    margin-bottom: 10px;
+    height: auto;
+    padding-bottom: 10px;
     z-index: 1000;
 
+    /*overflow: hidden;*/
 }
 
 .zp_lb_cont_top > .zp_lb_cont_top_2 > div {
@@ -255,6 +265,7 @@ ul {
     text-align: left;
     padding-left: 5px;
     line-height: 23px;
+    cursor: pointer;
 }
 
 .zp_lb_cont_top > .zp_lb_cont_top_2 > div > ul > li > ul {
@@ -295,11 +306,14 @@ ul {
 }
 
 .zp_lb_cont_top_3 {
-    background: #F2F2F2;
+    background: #3d9ccc;
     /*padding: 0 10px;*/
     color: #999B9E;
     height: auto;
     z-index: -1;
+    overflow: hidden;
+    padding: 5px 15px 10px 15px;
+    margin-top: 10px;
 }
 
 .zp_lb_cont_top_3_left {
@@ -334,11 +348,11 @@ ul {
     float: right;
     height: 30px;
     line-height: 30px;
-
+    color: #FFFFFF;
 }
 
 .zp_lb_cont_top_3_right2 > span {
-    color: #FC9A2F;
+    color: #FFFFFF;
 }
 
 .zp_lb_cont_middle {
@@ -560,7 +574,7 @@ ul {
 }
 
 .divSmall2 {
-    background-color: rgb(255, 165, 0);
+    background-color: #78bbdd;
     color: #FFFFFF;
     border-radius: 3px;
     width: auto;
@@ -588,6 +602,7 @@ ul {
     overflow: hidden;
     padding: 20px 20px 10px 20px;
     margin-bottom: 10px;
+    background-color: #FFFFFF;
 
 }
 
@@ -841,8 +856,8 @@ ul {
     width: 80px;
     height: 30px;
     outline: none;
-    border: 1px solid #FC9A2F;
-    background-color: #FC9A2F;
+    border: 1px solid #3d9ccc;
+    background-color: #3d9ccc;
     display: inline-block;
     text-align: center;
     line-height: 30px;

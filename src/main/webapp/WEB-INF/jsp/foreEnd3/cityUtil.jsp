@@ -85,7 +85,7 @@
                 var div6 = document.getElementById("div6");
                 div6.innerHTML = $(this).html();
                 $('.cd-popup').removeClass('is-visible');
-                div6.style.background = '#FC9A2F';
+                div6.style.background = '#ffa500';
             });
         })
             function got(sheng,t, i) {
@@ -93,7 +93,7 @@
                 //div6.innerHTML = sheng+"-"+map[t][i];
                 div6.innerHTML = map[t][i];
                 $('.cd-popup').removeClass('is-visible');
-                div6.style.background = '#FC9A2F';
+                div6.style.background = '#ffa500';
             }
             function theEnter() {
                 var div6 = document.getElementById("div6");
@@ -113,7 +113,7 @@
                     $('#workspace').val(val);
                 }
                 var div6 = document.getElementById("div6")
-                div6.style.background = '#FC9A2F';
+                div6.style.background = '#ffa500';
                 div6.innerHTML = val;
                 if(cityRollBack){
                     cityRollBack();

@@ -25,22 +25,23 @@ public class MienController extends BaseController {
     @Autowired
     private XzMienService xzMienService;
 
-    @RequestMapping("insertMien.do")
-    public ModelAndView insertMien(XzCompanyMien xzCompanyMien){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    @ResponseBody
+    @RequestMapping("insertMien")
+    public Map insertMien(@RequestBody XzCompanyMien xzCompanyMien){
+        Map map = new HashMap();
         int i=xzMienService.insertMien(xzCompanyMien);
-        mv.addObject("i",i);
-        return mv;
+        map.put("i",i);
+        return map;
     }
     @ResponseBody
-    @RequestMapping("updateMien.do")
+    @RequestMapping("updateMien")
     public  Map updateMien(@RequestBody XzCompanyMien xzCompanyMien){
         Map map=new HashMap();
         int i=xzMienService.updateMien(xzCompanyMien);
         map.put("i",i);
         return map;
     }
-    @RequestMapping("selectByMienId.do")
+    @RequestMapping("selectByMienId")
     public ModelAndView selectByMienId(Long mienId){
         ModelAndView mv=new ModelAndView("/foreEnd3/test2");
         XzCompanyMien xzCompanyMien=xzMienService.selectByMienId(mienId);
@@ -48,7 +49,7 @@ public class MienController extends BaseController {
         return mv;
     }
     @ResponseBody
-    @RequestMapping("selectByCompanyId.do")
+    @RequestMapping("selectByCompanyId")
     public Map selectByCompanyId(Long companyId){
         List<XzCompanyMien> MienList=xzMienService.selectByCompanyId(companyId);
         int j=MienList.size();
@@ -62,7 +63,7 @@ public class MienController extends BaseController {
         return map;
     }
     @ResponseBody
-    @RequestMapping("updateMienPicture.do")
+    @RequestMapping("updateMienPicture")
     public Map updateMienPicture(@RequestBody XzCompanyMien xzCompanyMien){
         Map map=new HashMap();
         int i=xzMienService.updateMienPicture(xzCompanyMien);
@@ -70,7 +71,7 @@ public class MienController extends BaseController {
         return map;
     }
     @ResponseBody
-    @RequestMapping("deleteMien.do")
+    @RequestMapping("deleteMien")
     public Map deleteMien(Long mienId){
         Map map=new HashMap();
         int i =xzMienService.deleteMien(mienId);

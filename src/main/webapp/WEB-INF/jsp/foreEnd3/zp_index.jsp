@@ -23,24 +23,24 @@
     $(function () {
         $('#zp_index_xxk').on('focus', function () {
             $(this).css({
-                "borderColor": "#46BEF2",
+                "borderColor": "#ff6363",
                 "borderWidth": "2"
             })
             $(".zp_index_arrow").css({
-                "borderColor": "#46BEF2",
+                "borderColor": "#ff6363",
                 "border-bottom-width": "2px",
                 "border-left-width": "2px"
             })
         });
         $('#zp_index_xxk').on('blur', function () {
             $(this).css({
-                "borderColor": "#3689B3",
-                "borderWidth": "1"
+                "borderColor": "#ffa500",
+                "borderWidth": "2"
             })
             $(".zp_index_arrow").css({
-                "borderColor": "#3689B3",
-                "border-bottom-width": "1px",
-                "border-left-width": "1px"
+                "borderColor": "#ffa500",
+                "border-bottom-width": "2px",
+                "border-left-width": "2px"
             })
         })
     })
@@ -135,7 +135,7 @@
                         <p>${resume.resumeField}</p>
                     </div>
                 </div>
-                <p>
+                <p style="display: inline-block">
                     <c:if test="${resume.resumeWorkspace!=undefined}">
                         <span>${resume.resumeWorkspace}</span>
                     </c:if>
@@ -143,7 +143,7 @@
                         &nbsp;|&nbsp;<span>工作${resume.resumeIntentYm}年</span>
                     </c:if>
                 </p>
-                <p>
+                <p style="display: inline-block;margin-left: 10px">
                     <c:if test="${resume.fields!=undefined}">
                         <c:forEach items="${resume.fields}" varStatus="sss" var="f">
                             <c:if test="${f.fieldType==2}">
@@ -165,20 +165,20 @@
                     </li>
                     <li class="zp_small">
                         <a href="${pageContext.request.contextPath}/Resume/goEditResume.do">
-                            <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
+                            <span class="fa fa-pencil-square-o" style="font-size: 20px;color: #FFA500"></span>
                             <span style="margin-top: 5px">编辑简历</span>
                         </a>
                     </li>
                     <li class="zp_small">
                         <a href="">
-                            <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
+                            <span class="fa fa-gear" style="font-size: 20px;color: #FFA500"></span>
                             <span style="margin-top: 5px">账号设置</span>
                         </a>
                     </li>
                     <li class="zp_small">
                         <a href="">
-                            <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
-                            <span style="margin-top: 5px">金卡服务</span>
+                            <span class="fa fa-diamond" style="font-size: 20px;color: #FFA500"></span>
+                            <span style="margin-top: 5px">钻石服务</span>
                         </a>
                     </li>
                 </ul>
@@ -192,10 +192,10 @@
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
-                                <li>2</li>
-                                <li>2</li>
-                                <li>2</li>
-                                <li>2</li>
+                                <li><span class="fa fa-eye"></span></li>
+                                <li><span class="fa fa-download"></span></li>
+                                <li><span class="fa fa-refresh"></span></li>
+                                <li><span class="fa fa-pencil"></span></li>
                             </ul>
                         </div>
                     </div>
@@ -236,12 +236,12 @@
                     </ul>
                 </div>
                 <div class="zp_index_cont_right_bottom_bottom">
-                    <p><span>谁看过我的简历</span></p>
+                    <p><span>每日投递数量</span></p>
                     <div>
                         <div class="zp_index_ww1"><span>0</span></div>
                         <div class="zp_index_ww2">
-                            <p><a href=""><span>0</span>家企业HR查看过</a></p>
-                            <p><span>0</span>刷新简历能增加被查看概率</p>
+                            <p><a href="">今日已投递<span>0</span>个职位</a></p>
+                            <p><span>0</span>每天最多投递50个</p>
 
                         </div>
                     </div>

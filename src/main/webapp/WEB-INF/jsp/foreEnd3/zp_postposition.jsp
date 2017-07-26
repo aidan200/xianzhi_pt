@@ -48,8 +48,10 @@
                                 <h4>网站美工/网页设计师</h4>
                                 <div class="pop_in2">
                                     <span style="color: #fc6866">10万</span>|
-                                    <span>沈阳</span>|
-                                    <span>大专及以上</span>|
+                                    <span class="pop_sp">都有什么市呀哈哈</span>|
+                                    <span>大专及以上</span>
+                                </div>
+                                <div class="pop_in3">
                                     <span>1年经验</span>
                                 </div>
 
