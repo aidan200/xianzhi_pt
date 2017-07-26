@@ -278,13 +278,87 @@ function cpjx(){
 }
 
 cpjx.prototype.init=function (){
-    var data={
-        conat:[{},{},{}]
-    }
-    this.cpjs=data;
-    var tjcpjs_html  = template('tj_gscp',data);
+    var This=this;
+
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:{companyId:ID},        //转为JSON格式
+        dataType:'json',                   //定义返回data类型
+        url:path+'Product/selByCompanyId.do',    //路径
+        success:function (data){//data 就是数据 json
+            This.cpjs=data;
+            for(var i=0;i<This.cpjs.productList.length;i++){                    //页面载入方法
+                var tjcpjs_html  = template('tj_gscp',This.cpjs.productList[i]);
+                $('#tjcpjs').before(tjcpjs_html);        //插入元素
+            }
+            This.xg();
+            This.xgCont();
+
+        },error:function (){ //报错执行的
+            alert('基本资料修改错误')
+        }
+
+    })
 
 
+
+}
+cpjx.prototype.xg=function (){                          //修改按钮
+    var This=this;
+    $('#gsxq_cpjs').find('textarea').each(function (index,ele){
+        $(ele).unbind().on('keyup',function (){
+            var ms_yl= This.cpjs.productList[index].productIntro;     //原来的数据
+            var ms_sx=$(ele).val();
+            if(ms_yl==ms_sx){
+                $(this).parent().siblings('a').css({"display":"none"}); //如果等于原来的关闭提交按钮
+            }else{
+                $(this).parent().siblings('a').css({"display":"block"}); //如果等于原来的关闭提交按钮
+            }
+        })
+    })
+    $('#gsxq_cpjs').find('._gsmc').each(function (index,ele){
+        $(ele).unbind().on('keyup',function (){
+            var ms_yl= This.cpjs.productList[index].filed1;     //原来的数据
+            var ms_sx=$(ele).val();
+            if(ms_yl==ms_sx){
+                $(this).parent().siblings('a').css({"display":"none"}); //如果等于原来的关闭提交按钮
+            }else{
+                $(this).parent().siblings('a').css({"display":"block"}); //如果等于原来的关闭提交按钮
+            }
+        })
+    })
+}
+cpjx.prototype.xgCont=function (){                          //修改
+    var This=this;
+     $('#gsxq_cpjs a').each(function (i,e){
+            $(e).unbind().on('click',function (){
+                var parent=$(e).parent()
+                var data1={
+                    productId:parent.attr('data-id'),
+                    productIntro:parent.find('textarea').val(),
+                    filed1:parent.find('._gsmc').val()
+                }
+                $.ajax({
+                    type:"post",    //提交方式
+                    async:true,  //是否异步
+                    contentType: "application/json",
+                    data:JSON.stringify(data1),
+                    dataType:'json',
+                    url:path+'Product/updateProduct',
+                    success:function (data){
+
+
+
+                    },error:function (){ //报错执行的
+                        alert('基本资料修改错误')
+                    }
+
+                })
+
+
+            })
+     })
 
 }
 cpjx.prototype.bindingSJ=function (){
@@ -411,6 +485,7 @@ $(function (){
 
 
     var ocpjx=new cpjx();           //产品介绍
+    ocpjx.init();
     ocpjx.bindingSJ();
 
 
