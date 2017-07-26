@@ -104,8 +104,8 @@
                 <a href="" class="zp_zwxq_cont_a_right"></a>
             </div>
             <div class="zp_zwxq_cont_left_ss">
-                <form action="">
-                    <input type="text" placeholder="搜索其他职位，如：总经理秘书">
+                <form action="${pageContext.request.contextPath}/Postion/selPostionByname">
+                    <input type="text" placeholder="搜索其他职位，如：总经理秘书" name="postionName">
                     <button class="btn btn-primary" type="submit">
                         <span>搜索</span>
                     </button>
@@ -173,7 +173,7 @@
                             <li>
                                 <a href="">${cp.postionName}</a>
                                 <span class="zp_zwxq_span1">${cp.postionSpace}</span>
-                                <span class="zp_zwxq_span2">${fn:replace((cp.postionMm*12/10000),".0","")}-${fn:replace((cp.postionMm*12/10000),".0","")}万</span>
+                                <span class="zp_zwxq_span2">${fn:replace((cp.postionMm*12/10000),".0","")}-${fn:replace((cp.postionYm*12/10000),".0","")}万</span>
                             </li>
                             </c:forEach>
                         </ul>
