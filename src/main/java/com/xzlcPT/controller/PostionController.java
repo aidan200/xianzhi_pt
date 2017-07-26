@@ -153,4 +153,12 @@ public class PostionController extends BaseController{
         mv.addObject("plist",plist);
         return mv;
     }
+    //添加职位信息
+    @RequestMapping("insertPostion")
+    public ModelAndView insertPostion(XzPostion xzPostion){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        int i=postionService.insertPostion(xzPostion);
+        mv.addObject("i",i);
+        return mv;
+    }
 }

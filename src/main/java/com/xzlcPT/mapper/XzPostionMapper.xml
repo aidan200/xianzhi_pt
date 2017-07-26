@@ -382,6 +382,133 @@
       </if>
     </trim>
   </insert>
+  <insert id="insertPostion" parameterType="com.xzlcPT.bean.XzPostion">
+    insert into xz_postion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="postionName != null">
+        postion_name,
+      </if>
+      <if test="postionCompany != null">
+        postion_company,
+      </if>
+      <if test="postionYm != null">
+        postion_ym,
+      </if>
+      <if test="postionMm != null">
+        postion_mm,
+      </if>
+      <if test="postionSpace != null">
+        postion_space,
+      </if>
+      <if test="postionTime != null">
+        postion_time,
+      </if>
+      <if test="postionEducation != null">
+        postion_education,
+      </if>
+      <if test="postionExp != null">
+        postion_exp,
+      </if>
+      <if test="postionAge != null">
+        postion_age,
+      </if>
+      <if test="postionDescription != null">
+        postion_description,
+      </if>
+      <if test="postionWelfare != null">
+        postion_welfare,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="overTime != null">
+        over_time,
+      </if>
+      <if test="postionDepartment != null">
+        postion_department,
+      </if>
+      <if test="peopleNumber != null">
+        people_number,
+      </if>
+      <if test="postionSpecialty != null">
+        postion_specialty,
+      </if>
+      <if test="deleteFlat != null">
+        delete_flat,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="postionName != null">
+        #{postionName,jdbcType=VARCHAR},
+      </if>
+      <if test="postionCompany != null">
+        #{postionCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="postionYm != null">
+        #{postionYm,jdbcType=INTEGER},
+      </if>
+      <if test="postionMm != null">
+        #{postionMm,jdbcType=INTEGER},
+      </if>
+      <if test="postionSpace != null">
+        #{postionSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="postionTime != null">
+        #{postionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionEducation != null">
+        #{postionEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="postionExp != null">
+        #{postionExp,jdbcType=VARCHAR},
+      </if>
+      <if test="postionAge != null">
+        #{postionAge,jdbcType=VARCHAR},
+      </if>
+      <if test="postionDescription != null">
+        #{postionDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="postionWelfare != null">
+        #{postionWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null">
+        #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionDepartment != null">
+        #{postionDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleNumber != null">
+        #{peopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="postionSpecialty != null">
+        #{postionSpecialty,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlat != null">
+        #{deleteFlat,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
   <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostion">
    update xz_postion set company_id = #{companyId,jdbcType=BIGINT},
    postion_name = #{postionName,jdbcType=VARCHAR},

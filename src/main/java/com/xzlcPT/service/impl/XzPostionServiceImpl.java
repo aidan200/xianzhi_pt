@@ -92,4 +92,10 @@ public class XzPostionServiceImpl implements XzPostionService{
         List<XzPostion> cplist=postionMapper.selInfoByComId(xzPostion);
         return cplist;
     }
+
+    @Override
+    public int insertPostion(XzPostion xzPostion) {
+        int i=postionMapper.insertPostion(xzPostion);
+        return i;
+    }
 }

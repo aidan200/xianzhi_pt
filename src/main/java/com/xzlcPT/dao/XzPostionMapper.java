@@ -34,4 +34,6 @@ public interface XzPostionMapper {
     List<XzPostion> selInfoByName(String postionName);
 
     List<XzPostion> selInfoByComId(XzPostion xzPostion);
+
+    int insertPostion(XzPostion xzPostion);
 }

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
 
 <div class="pup_container">
     <div class="pup_allin">
-        <form action="" class="ac-boxfill">
+        <form action="${pageContext.request.contextPath}/Postion/insertPostion" class="ac-boxfill">
             <div class="pup_alltop">
                 <h4>职位发布</h4>
                 <p> 您可同时运作 <span>0</span> 个职位，当前还可以发布 <span>0</span> 个职位，职位有效期 <span>0</span> 天</p>
@@ -32,27 +33,22 @@
                 <div class="pup_center1">
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>职位名称：</span>
-                        <input type="text" class="pup_input" style="width: 380px">
+                        <input type="text" class="pup_input" style="width: 380px" name="postionName">
                         <span>注：职位发布后职位名称不可以修改</span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>工作地址：</span>
-                        <input type="text" class="pup_input" style="width: 250px">
-                        <input type="text" class="pup_input" style="width: 250px" placeholder="请填写街道、楼宇详细地址">
+                        <input type="text" class="pup_input" style="width: 380px" name="postionSpace">
                         <div class="pup_text">注：1.职位发布后省/市/区不可以修改。2.填写街道、楼宇详细地址，有利于职位曝光。</div>
                     </div>
                     <div class="pup_form">
-                        <span> <span class="pup_span1">*</span>职能分类：</span>
-                        <input type="text" class="pup_input" style="width: 380px" placeholder="请输入或选择职能">
-                    </div>
-                    <div class="pup_form">
                         <span> <span class="pup_span1">*</span>所属部门：</span>
-                        <input type="text" class="pup_input" style="width: 380px">
+                        <input type="text" class="pup_input" style="width: 380px" name="postionDepartment">
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>职位月薪：</span>
-                        <input type="text" class="pup_input" style="width: 120px">千元至
-                        <input type="text" class="pup_input" style="width: 120px">千元
+                        <input type="text" class="pup_input" style="width: 120px" name="postionMm">千元至
+                        <input type="text" class="pup_input" style="width: 120px" name="postionYm">千元
                         <%--checkbox--%>
                         <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
                             <input type="checkbox" id="pupnum1">
@@ -64,10 +60,10 @@
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>发放月数：</span>
-                        <input type="text" class="pup_input" style="width: 180px" value="12">个月
+                        <input type="text" class="pup_input" style="width: 180px">个月
                     </div>
                     <div class="pup_form">
-                        <span> <span class="pup_span1">*</span>工作年限：</span>
+                        <span> <span class="pup_span1">*</span>工作经验：</span>
                         <input type="text" class="pup_input" style="width: 180px">以上
                         <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
                             <input type="checkbox" id="pupnum2">
@@ -81,15 +77,15 @@
                         <span> <span class="pup_span1">*</span>学历要求：</span>
                         <select name="" id="" class="pup_input" style="width: 200px">
                             <option value="">请选择</option>
-                            <option value="">不限</option>
-                            <option value="">博士</option>
-                            <option value="">硕士</option>
-                            <option value="">本科</option>
-                            <option value="">大专</option>
+                            <option value="不限">不限</option>
+                            <option value="博士">博士</option>
+                            <option value="硕士">硕士</option>
+                            <option value="本科">本科</option>
+                            <option value="大专">大专</option>
                         </select>
                         是否是全日制统招：
                         <input type="radio" name="education" value="是">是
-                        <input type="radio" name="education" value checked="checked" style="margin-left: 20px">不限
+                        <input type="radio" name="education" value checked="checked" style="margin-left: 20px" value="不限">不限
                     </div>
                     <div class="pup_form">
                         <span style="float: left"> <span class="pup_span1">*</span>职位描述：</span>
@@ -119,44 +115,44 @@
                             </label>
                         </div>
                     </div>
-                    <div class="pup_form">
-                        <span>语言要求：</span>
-                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
-                            <input type="checkbox" id="pupnum4">
-                            <label for="pupnum4" style="font-weight: normal;margin-bottom: 0">
-                                <jsp:include page="checksvg.jsp"/>
-                                英语
-                            </label>
-                        </div>
-                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
-                            <input type="checkbox" id="pupnum5">
-                            <label for="pupnum5" style="font-weight: normal;margin-bottom: 0">
-                                <jsp:include page="checksvg.jsp"/>
-                                日语
-                            </label>
-                        </div>
-                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
-                            <input type="checkbox" id="pupnum6">
-                            <label for="pupnum6" style="font-weight: normal;margin-bottom: 0">
-                                <jsp:include page="checksvg.jsp"/>
-                                法语
-                            </label>
-                        </div>
-                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
-                            <input type="checkbox" id="pupnum7">
-                            <label for="pupnum7" style="font-weight: normal;margin-bottom: 0">
-                                <jsp:include page="checksvg.jsp"/>
-                                普通话
-                            </label>
-                        </div>
-                        <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
-                            <input type="checkbox" id="pupnum8">
-                            <label for="pupnum8" style="font-weight: normal;margin-bottom: 0">
-                                <jsp:include page="checksvg.jsp"/>
-                                粤语
-                            </label>
-                        </div>
-                    </div>
+                    <%--<div class="pup_form">--%>
+                        <%--<span>语言要求：</span>--%>
+                        <%--<div class="checkboxWrapper theme3 extraSmallCheckboxSize">--%>
+                            <%--<input type="checkbox" id="pupnum4">--%>
+                            <%--<label for="pupnum4" style="font-weight: normal;margin-bottom: 0">--%>
+                                <%--<jsp:include page="checksvg.jsp"/>--%>
+                                <%--英语--%>
+                            <%--</label>--%>
+                        <%--</div>--%>
+                        <%--<div class="checkboxWrapper theme7 extraSmallCheckboxSize">--%>
+                            <%--<input type="checkbox" id="pupnum5">--%>
+                            <%--<label for="pupnum5" style="font-weight: normal;margin-bottom: 0">--%>
+                                <%--<jsp:include page="checksvg.jsp"/>--%>
+                                <%--日语--%>
+                            <%--</label>--%>
+                        <%--</div>--%>
+                        <%--<div class="checkboxWrapper theme7 extraSmallCheckboxSize">--%>
+                            <%--<input type="checkbox" id="pupnum6">--%>
+                            <%--<label for="pupnum6" style="font-weight: normal;margin-bottom: 0">--%>
+                                <%--<jsp:include page="checksvg.jsp"/>--%>
+                                <%--法语--%>
+                            <%--</label>--%>
+                        <%--</div>--%>
+                        <%--<div class="checkboxWrapper theme7 extraSmallCheckboxSize">--%>
+                            <%--<input type="checkbox" id="pupnum7">--%>
+                            <%--<label for="pupnum7" style="font-weight: normal;margin-bottom: 0">--%>
+                                <%--<jsp:include page="checksvg.jsp"/>--%>
+                                <%--普通话--%>
+                            <%--</label>--%>
+                        <%--</div>--%>
+                        <%--<div class="checkboxWrapper theme7 extraSmallCheckboxSize">--%>
+                            <%--<input type="checkbox" id="pupnum8">--%>
+                            <%--<label for="pupnum8" style="font-weight: normal;margin-bottom: 0">--%>
+                                <%--<jsp:include page="checksvg.jsp"/>--%>
+                                <%--粤语--%>
+                            <%--</label>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
                     <div class="pup_form">
                         <span>专业要求：</span>
                         <input type="text" class="pup_input" style="width: 280px" placeholder="不限">
@@ -207,15 +203,15 @@
                     <!--<span> 应聘简历发送至：</span>-->
                     <!--<input type="text" style="width: 380px" class="pup_input">-->
                     <!--</div>-->
-                    <div class="pup_form">
-                        <span>自动回复应聘者：</span>
-                        <input type="radio" style="margin-left: 20px" value="是" name="answer"> 是
-                        <input type="radio" style="margin-left: 20px" value="否" checked="checked" name="answer"> 否
-                    </div>
-                    <div class="pup_form">
-                        <span>应聘反馈时长：</span>
-                        <input type="text" class="pup_input" style="width: 180px" placeholder="请填写数字">个工作日
-                    </div>
+                    <%--<div class="pup_form">--%>
+                        <%--<span>自动回复应聘者：</span>--%>
+                        <%--<input type="radio" style="margin-left: 20px" value="是" name="answer"> 是--%>
+                        <%--<input type="radio" style="margin-left: 20px" value="否" checked="checked" name="answer"> 否--%>
+                    <%--</div>--%>
+                    <%--<div class="pup_form">--%>
+                        <%--<span>应聘反馈时长：</span>--%>
+                        <%--<input type="text" class="pup_input" style="width: 180px" placeholder="请填写数字">个工作日--%>
+                    <%--</div>--%>
                 </div>
             </div>
             <div class="pup_bottom">
