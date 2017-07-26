@@ -35,6 +35,17 @@ public class PostionController extends BaseController{
 
         return mv;
     }
+
+    //公司发布职位查询
+    @ResponseBody
+    @RequestMapping("/selPostionSend.do")
+    public Map selPostionSend(Long companyId){
+        Map map = new HashMap();
+        List<XzPostion> postions = postionService.selPostionSendList(companyId);
+        map.put("postionList",postions);
+        return map;
+    }
+
     //职位列表查询
     @RequestMapping("/selPostionIndex.do")
     public ModelAndView selPostionIndex( @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,

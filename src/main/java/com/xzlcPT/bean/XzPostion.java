@@ -56,6 +56,52 @@ public class XzPostion {
 
     private List<XzField> fields;
 
+    private Integer wcl;
+    private Integer dd;
+    private Integer yxgt;
+    private Integer ms;
+    private Integer zdxz;
+
+    public Integer getWcl() {
+        return wcl;
+    }
+
+    public void setWcl(Integer wcl) {
+        this.wcl = wcl;
+    }
+
+    public Integer getDd() {
+        return dd;
+    }
+
+    public void setDd(Integer dd) {
+        this.dd = dd;
+    }
+
+    public Integer getYxgt() {
+        return yxgt;
+    }
+
+    public void setYxgt(Integer yxgt) {
+        this.yxgt = yxgt;
+    }
+
+    public Integer getMs() {
+        return ms;
+    }
+
+    public void setMs(Integer ms) {
+        this.ms = ms;
+    }
+
+    public Integer getZdxz() {
+        return zdxz;
+    }
+
+    public void setZdxz(Integer zdxz) {
+        this.zdxz = zdxz;
+    }
+
     public List<XzField> getFields() {
         return fields;
     }

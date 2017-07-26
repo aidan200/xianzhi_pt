@@ -27,6 +27,29 @@
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
   </resultMap>
+
+  <resultMap id="PostionSendList" type="com.xzlcPT.bean.XzPostion">
+    <id column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
+    <result column="postion_company" jdbcType="VARCHAR" property="postionCompany" />
+    <result column="postion_time" jdbcType="TIMESTAMP" property="postionTime" />
+    <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime"/>
+    <result column="over_time" jdbcType="TIMESTAMP" property="overTime"/>
+    <result column="delete_flat" jdbcType="INTEGER" property="deleteFlat" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    <!--<collection property="sends" ofType="com.xzlcPT.bean.XzPostionSend">
+      <id column="send_id" jdbcType="BIGINT" property="sendId" />
+      <result column="send_state" jdbcType="INTEGER" property="sendState" />
+      <result column="send_type" jdbcType="INTEGER" property="sendType" />
+    </collection>-->
+  </resultMap>
+
   <resultMap id="selPostionInfo" type="com.xzlcPT.bean.XzPostion">
     <id column="postion_id" jdbcType="BIGINT" property="postionId" />
     <result column="company_id" jdbcType="BIGINT" property="companyId" />
@@ -60,12 +83,6 @@
       <result column="skill" jdbcType="VARCHAR" property="skill" />
       <result column="financing" jdbcType="VARCHAR" property="financing" />
     </association>
-    <!--<collection property="postionMsgs" ofType="com.xzlcPT.bean.XzPostionMsg">
-      <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
-      <result column="postion_id" jdbcType="BIGINT" property="postionId" />
-      <result column="pmsg_name" jdbcType="VARCHAR" property="pmsgName" />
-      <result column="pmsg_value" jdbcType="VARCHAR" property="pmsgValue" />
-    </collection>-->
   </resultMap>
   <resultMap id="selPostionList" type="com.xzlcPT.bean.XzPostion">
     <id column="postion_id" jdbcType="BIGINT" property="postionId" />
@@ -127,6 +144,17 @@
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
     p.delete_flat,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty
   </sql>
+  <select id="selPostionSendList" resultMap="PostionSendList" parameterType="java.lang.Long">
+    SELECT p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
+	count(CASE ps.send_state WHEN '0' THEN 1 ELSE null END ) wcl,
+    count(CASE ps.send_state WHEN '1' THEN 1 ELSE null END ) dd,
+    count(CASE ps.send_state WHEN '2' THEN 1 ELSE null END ) yxgt,
+    count(CASE ps.send_state WHEN '3' THEN 1 ELSE null END ) ms,
+	count(CASE ps.send_type WHEN '1' THEN ps.send_type ELSE null END ) zdxz
+    FROM xz_postion p LEFT JOIN xz_postion_send ps on p.postion_id = ps.postion_id
+    where p.company_id = #{companyId,jdbcType=BIGINT}
+    GROUP BY p.postion_id;
+  </select>
   <select id="selPostionByListId" resultMap="selPostionList" parameterType="java.util.List">
     select
     <include refid="Postion_index_list" />
