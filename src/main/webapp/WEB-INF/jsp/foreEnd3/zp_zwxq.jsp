@@ -11,6 +11,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="age" uri="/xianzhipt/ageTag" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -45,29 +46,15 @@
             <div class="zp_zwxq_cont_left_zwms">
                 <h3>职位描述：</h3>
                 <div>
-                    职位名称：${xzPostion.postionName}<br>
-                    工作地点：${xzPostion.postionSpace}<br>    工作职责：<br>
-                   ${xzPostion.postionDescription}
-                    <br><br>
-                    任职资格：<br>
-                    1、2年以上前端开发经验；<br>
-                    2、精通HTML5、CSS、javascript跨平台开发经验，有es2015、CSS3、Node JS方面经验者优先，有前端自动化测试、单元测试方面经验者优先；<br>
-                    3、熟悉各移动场景下的前端技术实现（如微信平台内嵌，移动站点，hybrid开发等），并有实际项目经验；<br>
-                    4、深刻理解 Web 标准、HTML 语义化标签，对符合 Web 标准的网站重构有丰富经验；<br>
-                    5、理解并掌握 Javascript 语言核心技术，熟悉至少一种主流 Javascript 框架( 如Zepto/JQuery/Vue等 ；<br>
-                    6、熟悉OO、MVC、MVVM等编程思想，熟练使用至少一种前端架构（如ReactJS/AngularJS/Vue等）；<br>
-                    7、至少了解一门服务器端相关技术；<br>    8、能够熟练使用linux；<br>
-                    9、对软件工程相关概念及流程、敏捷开发概念及流程有所了解；<br>
-                    10、学习能力强，积极主动，且具备良好的沟通协调能力和强烈的责任心。
+                    <textarea cols="110" rows="20" readonly="readonly" style="BORDER-BOTTOM-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none;overflow-y:hidden;border:0;outline:none;font-size:10pt;">${xzPostion.postionDescription}</textarea>
                 </div>
             </div>
             <div class="zp_zwxq_cont_left_qtxx">
                 <h3>其他信息：</h3>
                 <ul>
-                    <li><span>所属部门：</span><label>先行产品研发事业部</label></li>
-                    <li><span>专业要求：</span><label>不限</label></li>
-                    <li><span>汇报对象：</span><label>无</label></li>
-                    <li><span>下属人数：</span><label>0人</label></li>
+                    <li><span>所属部门：</span><label>${xzPostion.filed1}</label></li>
+                    <li><span>专业要求：</span><label>${xzPostion.filed3}</label></li>
+                    <li><span>下属人数：</span><label>${xzPostion.filed2}人</label></li>
                 </ul>
             </div>
             <div class="zp_zwxq_cont_left_qyjs">
@@ -82,304 +69,24 @@
                 <div>
                     <div>
                         <ul>
+                            <c:forEach items="${plist}" var="p1">
                             <li>
                                 <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
+                                    <a href="" class="zp_zwxq_a1">${p1.postionName}</a>
+                                    <span class="zp_zwxq_span1">${fn:replace((p1.postionMm*12/10000),".0","")}-${fn:replace((p1.postionYm*12/10000),".0","")}万</span>
+                                    <a href="" class="zp_zwxq_a2">${p1.company.companyName}</a>
                                 </p>
                                 <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
+                                    <span class="edu">${p1.postionEducation} |${p1.postionExp}工作经验</span>
+                                    <span class="place" title="${p1.postionSpace}">${p1.postionSpace}</span>
+                                    <span class="industry" title="房地产开发/建筑/建材/工程">
+                                        <c:forEach items="${p1.company.fields}" var="f1">
+                                       ${f1.fieldName}/
+                                        </c:forEach>
+                                            </span>
                                 </p>
                             </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">总经理秘书</a>
-                                    <span class="zp_zwxq_span1">6-10万</span>
-                                    <a href="" class="zp_zwxq_a2">美加置业</a>
-                                </p>
-                                <p>
-                                    <span class="edu">统招本科 |3年工作经验</span>
-                                    <span class="place" title="武汉">武汉</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">房地产开发/建筑/建材/工程</span>
-                                </p>
-                            </li>
+                            </c:forEach>
                         </ul>
 
 
