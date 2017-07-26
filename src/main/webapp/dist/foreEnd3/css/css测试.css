@@ -4736,6 +4736,15 @@ input[type="button"].fileInputButton {
     border: 1px solid #cccccc;
 }
 
+.pom_input8 {
+    width: 150px;
+    height: 30px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #cccccc;
+    padding-left: 10px;
+}
+
 .pom_b {
     width: 100px;
     height: 30px;
@@ -5586,3 +5595,4 @@ th {
 .navbar {
     border: none;
 }
+

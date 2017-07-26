@@ -11,23 +11,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/jedate.css">
+    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/jedate.css">--%>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/Time.css">
     <jsp:include page="distforeEnd.jsp"/>
     <style>
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
             background-color: #ffffff;
         }
+
         table {
             table-layout: fixed;
         }
 
     </style>
     <script>
-        var companyId=1;        //公司Id
+        var companyId = 1;        //公司Id
+    </script>
+    <%--汉堡小按钮--%>
+    <script>
+        $(document).ready(function () {
+            $(".hamburger").click(function () {
+                $(".rem_cen2").slideToggle(500);
+            });
+
+        });
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/position_management.js"></script>
-
 
 </head>
 <body style="background-color: #F0F0F0">
@@ -45,6 +55,7 @@
                     正在招聘
                 </a>
             </li>
+            <li><a href="#pom_eight" data-toggle="tab">审核中</a></li>
             <li><a href="#pom_two" data-toggle="tab">审核未通过</a></li>
             <li><a href="#pom_three" data-toggle="tab">草稿职位</a></li>
             <li><a href="#pom_five" data-toggle="tab">已暂停</a></li>
@@ -61,21 +72,42 @@
                         <%--上面查询条件--%>
                         <div class="pom_cen">
                         <span style="margin-left: 20px">
-                        <span>关键字</span>
-                        <select name="" id="" class="pom_input1">
-                            <option value="职位名称">职位名称</option>
-                            <option value="工作地点">工作地点</option>
-                        </select>
-                        <input type="text" placeholder="关键字" class="pom_input">
+                            关键词
+                            <input type="text" placeholder="职位名称" class="pom_input">
+                        <input type="text" placeholder="工作地点" class="pom_input">
                         </span>
 
                             <span>
                         <span style="margin-left: 10px">发布日期</span>
-                        <input type="text" class="pom_input">
-                            <input type="text" class="pom_input">
+                        <input type="text" class="pom_input8 datainp" id="indate" placeholder="请选择" readonly>
+
+                         <input type="text" class="pom_input8 datainp" id="indate2" placeholder="请选择" readonly>
                         </span>
                             <span>
                         <button class="pom_b" id="xxk_01" type="button">搜索</button></span>
+                            <div class="hamburger hamburger--elastic">
+                                <div class="hamburger-box">
+                                    <div class="hamburger-inner"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%--条件处理--%>
+                        <div class="rem_cen2">
+                            <span style="margin-left: 20px">所在地</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 10px">年龄</span>
+                            <input type="text" class="rem_input2">
+                            <span>至</span>
+                            <input type="text" class="rem_input2">
+                            <span style="margin-left: 10px">工作年限</span>
+                            <input type="text" class="rem_input2">
+                            <span>至</span>
+                            <input type="text" class="rem_input2">
+                            <span style="margin-left: 20px">目前公司</span>
+                            <input type="text" class="rem_input3">
+                            <span style="margin-left: 20px">目前职位</span>
+                            <input type="text" class="rem_input3">
                         </div>
 
                         <%--表格--%>
@@ -178,6 +210,86 @@
 
                 </div>
 
+                <!--审核中-->
+                <div class="tab-pane fade" id="pom_eight">
+                    <form action="">
+
+                        <%--条件查询--%>
+                        <div class="pom_cen">
+                        <span style="margin-left: 20px">
+                            关键词
+                            <input type="text" placeholder="职位名称" class="pom_input">
+                        <input type="text" placeholder="工作地点" class="pom_input">
+                        </span>
+
+                            <span>
+                        <span style="margin-left: 10px">发布日期</span>
+                        <input type="text" class="pom_input8 datainp" id="indate3" placeholder="请选择" readonly>
+                        <input type="text" class="pom_input8 datainp" id="indate4" placeholder="请选择" readonly>
+                        </span>
+                            <span>
+                        <button class="pom_b" id="" type="button">搜索</button></span>
+                        </div>
+
+                        <%--表格--%>
+                        <div class="pom_table">
+                            <table class="fa-border table table-striped" style="width: 100%">
+                                <thead>
+                                <tr class="pom_tr">
+                                    <th width="50"></th>
+                                    <th width="350">职位名称</th>
+                                    <th width="100">审核时间</th>
+                                    <th width="200">审核状态</th>
+                                    <th width="100">操作</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
+                                            <input type="checkbox" id="pom801" class="choose2">
+                                            <label for="pom801" style="font-weight: normal;margin-bottom: 0">
+                                                <jsp:include page="checksvg.jsp"/>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="all_no"><a href="">java</a></td>
+                                    <td class="all_no">2017-07-26</td>
+                                    <td class="all_no">工资太少了</td>
+                                    <td class="all_no">
+                                        <a href="javascript:;">撤回到草稿箱</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <%--全选删除--%>
+                            <div class="pom_bottom">
+                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
+                                <button>删除</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                            </div>
+
+                            <%--分页--%>
+                            <div class="zp_botv">
+                                <div class="zp_pl">
+                                    <ul class="pagination zp_pa">
+                                        <li class="b"><a href="#">上一页</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li class="a"><a href="#">2</a></li>
+                                        <li class="a"><a href="#">3</a></li>
+                                        <li class="a"><a href="#">4</a></li>
+                                        <li class="a"><a href="#">5</a></li>
+                                        <li class="a"><a href="#">下一页</a></li>
+                                    </ul>
+                                    <div class="zp_page">共 <span>38</span> 页</div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
                 <!--审核未通过-->
                 <div class="tab-pane fade" id="pom_two">
                     <form action="">
@@ -185,22 +297,18 @@
                         <%--条件查询--%>
                         <div class="pom_cen">
                         <span style="margin-left: 20px">
-                        <span>关键字</span>
-                        <select name="" id="" class="pom_input1">
-                            <option value="">职位名称</option>
-                            <option value="">工作地点</option>
-                        </select>
-                        <input type="text" placeholder="关键字" class="pom_input">
+                            关键词
+                            <input type="text" placeholder="职位名称" class="pom_input">
+                        <input type="text" placeholder="工作地点" class="pom_input">
                         </span>
 
                             <span>
                         <span style="margin-left: 10px">发布日期</span>
-                        <input type="text" class="pom_input">
-                            <input type="text" class="pom_input">
+                        <input type="text" class="pom_input8 datainp" id="indate5" placeholder="请选择" readonly>
+                                <input type="text" class="pom_input8 datainp" id="indate6" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" type="button">搜索</button></span>
-
+                        <button class="pom_b" id="" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -270,22 +378,18 @@
                         <%--条件查询--%>
                         <div class="pom_cen">
                         <span style="margin-left: 20px">
-                        <span>关键字</span>
-                        <select name="" id="" class="pom_input1">
-                            <option value="">职位名称</option>
-                            <option value="">工作地点</option>
-                        </select>
-                        <input type="text" placeholder="关键字" class="pom_input">
+                            关键词
+                            <input type="text" placeholder="职位名称" class="pom_input">
+                        <input type="text" placeholder="工作地点" class="pom_input">
                         </span>
 
                             <span>
                         <span style="margin-left: 10px">发布日期</span>
-                        <input type="text" class="pom_input">
-                            <input type="text" class="pom_input">
+                        <input type="text" class="pom_input8 datainp" id="indate7" placeholder="请选择" readonly>
+                                <input type="text" class="pom_input8 datainp" id="indate8" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" type="button">搜索</button></span>
-
+                        <button class="pom_b" id="" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -351,7 +455,6 @@
                     </form>
                 </div>
 
-
                 <!--已暂停-->
                 <div class="tab-pane fade" id="pom_five">
                     <form action="">
@@ -359,22 +462,18 @@
                         <%--条件查询--%>
                         <div class="pom_cen">
                         <span style="margin-left: 20px">
-                        <span>关键字</span>
-                        <select name="" id="" class="pom_input1">
-                            <option value="">职位名称</option>
-                            <option value="">工作地点</option>
-                        </select>
-                        <input type="text" placeholder="关键字" class="pom_input">
+                            关键词
+                            <input type="text" placeholder="职位名称" class="pom_input">
+                        <input type="text" placeholder="工作地点" class="pom_input">
                         </span>
 
                             <span>
                         <span style="margin-left: 10px">发布日期</span>
-                        <input type="text" class="pom_input">
-                            <input type="text" class="pom_input">
+                       <input type="text" class="pom_input8 datainp" id="indate9" placeholder="请选择" readonly>
+                                <input type="text" class="pom_input8 datainp" id="indate10" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" type="button">搜索</button></span>
-
+                        <button class="pom_b" id="" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -449,22 +548,18 @@
                         <%--条件查询--%>
                         <div class="pom_cen">
                         <span style="margin-left: 20px">
-                        <span>关键字</span>
-                        <select name="" id="" class="pom_input1">
-                            <option value="">职位名称</option>
-                            <option value="">工作地点</option>
-                        </select>
-                        <input type="text" placeholder="关键字" class="pom_input">
+                            关键词
+                            <input type="text" placeholder="职位名称" class="pom_input">
+                        <input type="text" placeholder="工作地点" class="pom_input">
                         </span>
 
                             <span>
                         <span style="margin-left: 10px">发布日期</span>
-                        <input type="text" class="pom_input">
-                            <input type="text" class="pom_input">
+                       <input type="text" class="pom_input8 datainp" id="indate11" placeholder="请选择" readonly>
+                                <input type="text" class="pom_input8 datainp" id="indate12" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" type="button">搜索</button></span>
-
+                        <button class="pom_b" id="" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -539,24 +634,19 @@
                         <%--条件查询--%>
                         <div class="pom_cen">
                         <span style="margin-left: 20px">
-                        <span>关键字</span>
-                        <select name="" id="" class="pom_input1">
-                            <option value="">职位名称</option>
-                            <option value="">工作地点</option>
-                        </select>
-                        <input type="text" placeholder="关键字" class="pom_input">
+                            关键词
+                            <input type="text" placeholder="职位名称" class="pom_input">
+                        <input type="text" placeholder="工作地点" class="pom_input">
                         </span>
 
                             <span>
                         <span style="margin-left: 10px">发布日期</span>
-                        <input type="text" class="pom_input">
-                            <input type="text" class="pom_input">
+                        <input type="text" class="pom_input8 datainp" id="indate13" placeholder="请选择" readonly>
+                                <input type="text" class="pom_input8 datainp" id="indate14" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" type="button">搜索</button></span>
-
+                        <button class="pom_b" id="" type="button">搜索</button></span>
                         </div>
-
                         <%--表格--%>
                         <div class="pom_table">
                             <table class="table fa-border table-striped" style="width: 100%">
@@ -625,6 +715,23 @@
     </div>
 </div>
 
+
+<%--汉堡小按钮--%>
+<script>
+    var forEach = function (t, o, r) {
+        if ("[object Object]" === Object.prototype.toString.call(t))for (var c in t)Object.prototype.hasOwnProperty.call(t, c) && o.call(r, t[c], c, t); else for (var e = 0, l = t.length; l > e; e++)o.call(r, t[e], e, t)
+    };
+
+    var hamburgers = document.querySelectorAll(".hamburger");
+    if (hamburgers.length > 0) {
+        forEach(hamburgers, function (hamburger) {
+            hamburger.addEventListener("click", function () {
+                this.classList.toggle("is-active");
+            }, false);
+        });
+    }
+</script>
+<%--多选--%>
 <script>
     function DoCheck3(n) {
         // alert(n);
@@ -640,6 +747,98 @@
             }
         }
     }
+</script>
+<script type="text/javascript">
+    jeDate({
+        dateCell: "#indate",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate2",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate3",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate4",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate5 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate6 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate7 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate8 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate9 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+    jeDate({
+        dateCell: "#indate10 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+
+    jeDate({
+        dateCell: "#indate11 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+
+    jeDate({
+        dateCell: "#indate12 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+
+    jeDate({
+        dateCell: "#indate13 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+
+    jeDate({
+        dateCell: "#indate14 ",
+        format: "YYYY-MM-DD",
+        isTime: false, //isClear:false,
+        minDate: "2000-01-01 00:00:00"
+    })
+
+
 </script>
 
 </body>

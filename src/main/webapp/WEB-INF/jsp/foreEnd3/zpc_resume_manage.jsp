@@ -658,8 +658,8 @@
                                 <tr class="pom_h">
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
-                                            <input type="checkbox" id="rem501" class="choose2">
-                                            <label for="rem501" style="font-weight: normal;margin-bottom: 0">
+                                            <input type="checkbox" id="rem601" class="choose2">
+                                            <label for="rem601" style="font-weight: normal;margin-bottom: 0">
                                                 <jsp:include page="checksvg.jsp"/>
                                             </label>
                                         </div>
