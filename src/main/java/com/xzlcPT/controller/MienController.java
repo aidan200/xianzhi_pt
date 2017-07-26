@@ -25,12 +25,13 @@ public class MienController extends BaseController {
     @Autowired
     private XzMienService xzMienService;
 
+    @ResponseBody
     @RequestMapping("insertMien")
-    public ModelAndView insertMien(XzCompanyMien xzCompanyMien){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public Map insertMien(@RequestBody XzCompanyMien xzCompanyMien){
+        Map map = new HashMap();
         int i=xzMienService.insertMien(xzCompanyMien);
-        mv.addObject("i",i);
-        return mv;
+        map.put("i",i);
+        return map;
     }
     @ResponseBody
     @RequestMapping("updateMien")
