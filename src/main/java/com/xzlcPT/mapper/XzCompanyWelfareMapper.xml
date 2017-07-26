@@ -15,6 +15,10 @@
     from xz_company_welfare
     where welfare_id = #{welfareId,jdbcType=BIGINT}
   </select>
+  <delete id="deleteByCompanyId" parameterType="java.lang.Long">
+    delete from xz_company_welfare
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </delete>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from xz_company_welfare
     where welfare_id = #{welfareId,jdbcType=BIGINT}

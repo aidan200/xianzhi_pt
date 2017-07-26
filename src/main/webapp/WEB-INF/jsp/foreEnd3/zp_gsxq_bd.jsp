@@ -16,6 +16,7 @@
     <title>企业登录首页</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_gsxq_bd.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/fileUpload.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/css测试.css">
     <script>
         var ID=2;
         var dkh="http://localhost:8080";        //端口号
@@ -56,7 +57,6 @@
             color: #85B4CC;
         }
         .addInpt{
-            display: block;
             position: absolute;
         }
         .addBut{
@@ -89,7 +89,8 @@
                 <label class="group-title"><span class="text-error">* </span>公司名称：</label>
                 <div class="group-content valid-row relative">
                     <div class="_left">
-                        <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司"  value="${company.companyName}"><ul  class="ejob-list" style="display: none;"></ul>
+                        <input type="hidden" form="zp_gsxq_form" name="companyId" value="${company.companyId}">
+                        <input id="gsxq_gsmc" form="zp_gsxq_form" class="text" size="60" type="text" name="companyName" maxlength="70" placeholder="如：沈阳先知蓝创有限公司" <c:if test="${company.companyName!=undefined}">readonly</c:if>  value="${company.companyName}"><ul  class="ejob-list" style="display: none;"></ul>
                     </div>
                     <div class="_right">
                         <span class="addtions text-muted">注：名称发布后不可以修改</span>
@@ -99,16 +100,18 @@
                 </div>
             </div>
             <div class="control-group clearfix">
-                <label class="group-title"><span class="text-error">* </span>领域：</label>
+                <label class="group-title"><span class="text-error">* </span>经营行业：</label>
                 <div class="_left">
-                    <div class="zp_gsxq_hy">
-                        <div class='skilldiv'>
-                            <div>awadw</div>
-                            <a class="skillBtn">x</a>
-                            <input form='zp_gsxq_form' type="hidden" name="companySkill">
-                        </div>
-                        <em></em>
+                    <div id="gslyBox" class="zp_gsxq_hy">
+                        <c:forEach items="${company.fields}" var="f">
+                            <div class='skilldiv'>
+                                <div>${f.fieldName}</div>
+                                <a class="skillBtn">x</a>
+                                <input form='zp_gsxq_form' type="hidden" name="domains" value="${f.fieldId}">
+                            </div>
+                        </c:forEach>
                     </div>
+                    <a id="gslyEdit">edit</a>
                 </div>
                 <div class="_right"></div>
 
@@ -118,17 +121,19 @@
                 <label class="group-title"><span class="text-error">* </span>应用技术：</label>
                 <div class="_left">
                     <div class="group-content">
-                        <div class='skilldiv'>
-                            <div>awadw</div>
-                            <a class="skillBtn">x</a>
-                            <input form='zp_gsxq_form' type="hidden" name="companySkill">
-                        </div>
+                        <c:forEach items="${company.skills}" var="s">
+                            <div class='skilldiv'>
+                                <div>${s.skillName}</div>
+                                <a class="skillBtn">x</a>
+                                <input form='zp_gsxq_form' type="hidden" name="skillss" value="${s.skillName}">
+                            </div>
+                        </c:forEach>
                     </div>
                     <button class="addBut">
                         <span class="fa fa-plus" style="color: #3c9ccc;position: relative;left: -7px;top:-1px">
                         </span>
                     </button>
-                    <input class="addInpt" inpName="companySkill"/>
+                    <input class="addInpt" inpName="skillss"/>
                 </div>
                 <div class="_right">
                     <span class="addtions text-muted">例：java，c++ 等</span>
@@ -140,10 +145,10 @@
                 <div class="_left">
                     <div class="zp_gsxq_gm">
                         <select form="zp_gsxq_form" name="companyScale"  id="gsxq_gsgm">
-                            <option value="0-50">0-50人</option>
-                            <option value="50-500">50-500人</option>
-                            <option value="500-1000">500-1000人</option>
-                            <option value="1000以上">1000人以上</option>
+                            <option <c:if test="${company.companyScale=='0-50'}">selected</c:if> value="0-50">0-50人</option>
+                            <option <c:if test="${company.companyScale=='50-500'}">selected</c:if> value="50-500">50-500人</option>
+                            <option <c:if test="${company.companyScale=='500-1000'}">selected</c:if> value="500-1000">500-1000人</option>
+                            <option <c:if test="${company.companyScale=='1000以上'}">selected</c:if> value="1000以上">1000人以上</option>
                         </select>
                     </div>
                 </div>
@@ -154,16 +159,17 @@
                 <label class="group-title"><span class="text-error">* </span>公司待遇：</label>
                 <div class="_left">
                     <div class="group-content">
-                        <div class='skilldiv'>
-                            <div>awadw</div>
-                            <a class="skillBtn">x</a>
-                            <input form='zp_gsxq_form' type="hidden" name="companyWelfare">
-
-                        </div>
+                        <c:forEach items="${company.welfares}" var="w">
+                            <div class='skilldiv'>
+                                <div>${w.welfareName}</div>
+                                <a class="skillBtn">x</a>
+                                <input form='zp_gsxq_form' type="hidden" name="welfaress" value="${w.welfareName}">
+                            </div>
+                        </c:forEach>
                     </div>
                     <button class="addBut"><span class="fa fa-plus" style="color: #3c9ccc;position: relative;left: -7px;top:-1px">
                         </span></button>
-                    <input inpName="companyWelfare"/>
+                    <input class="addInpt" inpName="welfaress"/>
                 </div>
                 <div class="_right">
                     <span class="addtions text-muted">例：带薪年假，十三薪 等</span>
@@ -176,18 +182,18 @@
                     <div class="zp_gsxq_dz">
                         <div class="zp_gsxq_gm">
                             <select form="zp_gsxq_form" name="financing"  id="gsxq_rzqk">
-                                <option data-value="种子轮">种子轮</option>
-                                <option data-value="天使轮">天使轮</option>
-                                <option data-value="A轮">A轮</option>
-                                <option data-value="B轮">B轮</option>
-                                <option data-value="C轮">C轮</option>
-                                <option data-value="D轮及以上">D轮及以上</option>
-                                <option data-value="未融资">未融资</option>
+                                <option <c:if test="${company.financing=='未融资'}">selected</c:if> value="未融资">未融资</option>
+                                <option <c:if test="${company.financing=='种子轮'}">selected</c:if> value="种子轮">种子轮</option>
+                                <option <c:if test="${company.financing=='天使轮'}">selected</c:if> value="天使轮">天使轮</option>
+                                <option <c:if test="${company.financing=='A轮'}">selected</c:if> value="A轮">A轮</option>
+                                <option <c:if test="${company.financing=='B轮'}">selected</c:if> value="B轮">B轮</option>
+                                <option <c:if test="${company.financing=='C轮'}">selected</c:if> value="C轮">C轮</option>
+                                <option <c:if test="${company.financing=='D轮及以上'}">selected</c:if> value="D轮及以上">D轮及以上</option>
                             </select>
                             <select form="zp_gsxq_form" name="companyNature"  id="gsxq_gsxz">
-                                <option value="1">国企</option>
-                                <option value="2">民营</option>
-                                <option value="3">外企</option>
+                                <option <c:if test="${company.companyNature=='1'}">selected</c:if> value="1">国企</option>
+                                <option <c:if test="${company.companyNature=='2'}">selected</c:if> value="2">民营</option>
+                                <option <c:if test="${company.companyNature=='3'}">selected</c:if> value="3">外企</option>
                             </select>
                         </div>
                     </div>
@@ -224,7 +230,7 @@
                 <label class="group-title"><span class="text-error">* </span>公司图标：</label>
                 <div class="zp_gsxq_logo gstb">
                     <p>请您上传一张公司标志图片作为公司展示头像</p>
-                    <div id="gstb_bg" <c:if test="${company.companyPicture!=undefined}">style="background-image: url("${pageContext.request.contextPath}/uploadImg/${company.companyPicture}")" </c:if> ></div>
+                    <div id="gstb_bg" <c:if test="${company.companyPicture!=undefined}">style="background-image: url('${pageContext.request.contextPath}/uploadImg/${company.companyPicture}')" </c:if> ></div>
                     <input id="gstb_inp1" form="zp_gsxq_form" type="hidden" name="companyPicture" value="${company.companyPicture}" >
                 </div>
             </div>
@@ -294,7 +300,27 @@
     </div>
 </section>
 
+<div class="cd-popuph" id="qwhy__" role="alert">
+    <div class="cd-popup-containerh">
+        <p style="font-size: 16px">选择行业分类</p>
 
+        <div class="comd_table" id="hy_tab">
+            <h4>IT行业</h4>
+            <ul class="zp_ulu" id="gshyBox">
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网"/>互联网/移动互联网 </li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏"/>网络游戏</li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件"/>计算机软件</li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成"/>IT服务/系统集成</li>
+            </ul>
+        </div>
+
+        <ul class="cd-buttonsh">
+            <li><a href="#0"  class="cd-popup-closeh">取消</a></li>
+            <li><a href="#0" id="xz_qwhy_qd">确定</a></li>
+        </ul>
+        <a href="#0" class="cd-popup-closeh cmd_closeh fa fa-remove"></a>
+    </div>
+</div>
 
 </body>
 <jsp:include page="cityUtil.jsp"/>
@@ -318,8 +344,9 @@
         $('#companyX').val(rs.point.lng);
         $('#companyY').val(rs.point.lat);
     };
-    console.log(postion);
     var myMap = new myMap(postion);
-    myMap.init();
+    $(function () {
+        myMap.init();
+    })
 </script>
 </html>

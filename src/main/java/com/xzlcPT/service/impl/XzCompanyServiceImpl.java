@@ -4,9 +4,7 @@ import com.amazonaws.services.dynamodbv2.xspec.NULL;
 import com.github.pagehelper.PageHelper;
 import com.util.PageBean;
 import com.xzlcPT.bean.*;
-import com.xzlcPT.dao.XzCompanyMapper;
-import com.xzlcPT.dao.XzCompanyWelfareMapper;
-import com.xzlcPT.dao.XzShieldMapper;
+import com.xzlcPT.dao.*;
 import com.xzlcPT.service.XzCompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,12 +25,45 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     @Autowired
     private XzCompanyWelfareMapper companyWelfareMapper;
     @Autowired
+    private XzFieldMapper fieldMapper;
+    @Autowired
+    private XzCompanySkillMapper companySkillMapper;
+    @Autowired
     private XzShieldMapper xzShieldMapper;
 
 
     @Override
-    public int editCompany(XzCompany company, String[] welfares, String[] domains, String[] skills) {
-        return 0;
+    public int editCompany(XzCompany company, String[] welfaress, String[] domains, String[] skills) {
+        int i = companyMapper.updateByPrimaryKeySelective(company);
+        company.setCompanyName(null);
+        if(welfaress!=null&&welfaress.length>0){
+        companyWelfareMapper.deleteByCompanyId(company.getCompanyId());
+            for (String welfare : welfaress) {
+                XzCompanyWelfare w = new XzCompanyWelfare();
+                w.setCompanyId(company.getCompanyId());
+                w.setWelfareName(welfare);
+                companyWelfareMapper.insert(w);
+            }
+        }
+        if(domains!=null&&domains.length>0){
+            fieldMapper.deleteByCompanyDomain(company.getCompanyId());
+            for (String domain : domains) {
+                Map map = new HashMap();
+                map.put("companyId",company.getCompanyId());
+                map.put("fieldId",Long.parseLong(domain));
+                fieldMapper.insertByCompanyDomain(map);
+            }
+        }
+        if(skills!=null&&skills.length>0){
+            companySkillMapper.deleteByCompanyId(company.getCompanyId());
+            for (String skill : skills) {
+                XzCompanySkill companySkill = new XzCompanySkill();
+                companySkill.setCompanyId(company.getCompanyId());
+                companySkill.setSkillName(skill);
+                companySkillMapper.insert(companySkill);
+            }
+        }
+        return i;
     }
 
     @Override

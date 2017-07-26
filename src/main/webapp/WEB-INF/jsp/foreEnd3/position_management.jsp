@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/jedate.css">
     <jsp:include page="distforeEnd.jsp"/>
     <style>
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -20,13 +21,18 @@
         table {
             table-layout: fixed;
         }
+
     </style>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/position_management.js"></script>
+
 
 </head>
 <body style="background-color: #F0F0F0">
 
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="companynav.jsp"/>
+
 <div class="pom_container">
     <div class="pom_allin">
 
@@ -55,8 +61,8 @@
                         <span style="margin-left: 20px">
                         <span>关键字</span>
                         <select name="" id="" class="pom_input1">
-                            <option value="">职位名称</option>
-                            <option value="">工作地点</option>
+                            <option value="职位名称">职位名称</option>
+                            <option value="工作地点">工作地点</option>
                         </select>
                         <input type="text" placeholder="关键字" class="pom_input">
                         </span>
@@ -67,8 +73,7 @@
                             <input type="text" class="pom_input">
                         </span>
                             <span>
-                        <button class="pom_b">搜索</button></span>
-
+                        <button class="pom_b" id="xxk_01">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -88,8 +93,7 @@
                                     <th width="100">操作</th>
                                 </tr>
                                 </thead>
-
-                                <tbody>
+                                <tbody id="zzzp_tbody">
                                 <tr>
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">

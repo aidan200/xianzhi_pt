@@ -5,6 +5,9 @@ import com.xzlcPT.bean.XzCompanyWelfare;
 import java.util.List;
 
 public interface XzCompanyWelfareMapper {
+
+    int deleteByCompanyId(Long companyId);
+
     int deleteByPrimaryKey(Long welfareId);
 
     int insertAll(List<XzCompanyWelfare> list);
