@@ -1,7 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
-//简历投递
+
 public class XzPostionSend {
     private Long sendId;
 
@@ -15,7 +15,15 @@ public class XzPostionSend {
 
     private Integer sendState;
 
+    private Integer sendVisual;
+
     private String sendMsg;
+
+    private Date sendTime1;
+
+    private Date rsTime1;
+
+    private Integer sendType;
 
     private Date createTime;
 
@@ -77,12 +85,44 @@ public class XzPostionSend {
         this.sendState = sendState;
     }
 
+    public Integer getSendVisual() {
+        return sendVisual;
+    }
+
+    public void setSendVisual(Integer sendVisual) {
+        this.sendVisual = sendVisual;
+    }
+
     public String getSendMsg() {
         return sendMsg;
     }
 
     public void setSendMsg(String sendMsg) {
         this.sendMsg = sendMsg == null ? null : sendMsg.trim();
+    }
+
+    public Date getSendTime1() {
+        return sendTime1;
+    }
+
+    public void setSendTime1(Date sendTime1) {
+        this.sendTime1 = sendTime1;
+    }
+
+    public Date getRsTime1() {
+        return rsTime1;
+    }
+
+    public void setRsTime1(Date rsTime1) {
+        this.rsTime1 = rsTime1;
+    }
+
+    public Integer getSendType() {
+        return sendType;
+    }
+
+    public void setSendType(Integer sendType) {
+        this.sendType = sendType;
     }
 
     public Date getCreateTime() {

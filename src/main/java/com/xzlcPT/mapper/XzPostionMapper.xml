@@ -17,6 +17,11 @@
     <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime"/>
+    <result column="over_time" jdbcType="TIMESTAMP" property="overTime"/>
+    <result column="postion_department" jdbcType="VARCHAR" property="postionDepartment"/>
+    <result column="people_number" jdbcType="INTEGER" property="peopleNumber"/>
+    <result column="postion_specialty" jdbcType="VARCHAR" property="postionSpecialty"/>
     <result column="delete_flat" jdbcType="INTEGER" property="deleteFlat" />
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
@@ -36,6 +41,11 @@
     <result column="postion_age" jdbcType="VARCHAR" property="postionAge" />
     <result column="postion_description" jdbcType="VARCHAR" property="postionDescription" />
     <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime"/>
+    <result column="over_time" jdbcType="TIMESTAMP" property="overTime"/>
+    <result column="postion_department" jdbcType="VARCHAR" property="postionDepartment"/>
+    <result column="people_number" jdbcType="INTEGER" property="peopleNumber"/>
+    <result column="postion_specialty" jdbcType="VARCHAR" property="postionSpecialty"/>
     <association property="company" javaType="com.xzlcPT.bean.XzCompany">
       <id column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="company_name" jdbcType="VARCHAR" property="companyName" />
@@ -50,12 +60,12 @@
       <result column="skill" jdbcType="VARCHAR" property="skill" />
       <result column="financing" jdbcType="VARCHAR" property="financing" />
     </association>
-    <collection property="postionMsgs" ofType="com.xzlcPT.bean.XzPostionMsg">
+    <!--<collection property="postionMsgs" ofType="com.xzlcPT.bean.XzPostionMsg">
       <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
       <result column="postion_id" jdbcType="BIGINT" property="postionId" />
       <result column="pmsg_name" jdbcType="VARCHAR" property="pmsgName" />
       <result column="pmsg_value" jdbcType="VARCHAR" property="pmsgValue" />
-    </collection>
+    </collection>-->
   </resultMap>
   <resultMap id="selPostionList" type="com.xzlcPT.bean.XzPostion">
     <id column="postion_id" jdbcType="BIGINT" property="postionId" />
@@ -73,6 +83,11 @@
     <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime"/>
+    <result column="over_time" jdbcType="TIMESTAMP" property="overTime"/>
+    <result column="postion_department" jdbcType="VARCHAR" property="postionDepartment"/>
+    <result column="people_number" jdbcType="INTEGER" property="peopleNumber"/>
+    <result column="postion_specialty" jdbcType="VARCHAR" property="postionSpecialty"/>
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
@@ -102,7 +117,7 @@
   <sql id="Postion_index_list">
     p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
-    p.filed1,p.filed2,p.filed3,
+    p.filed1,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty,
     c.company_id, c.company_name, c.company_picture, c.company_scale, c.company_nature, c.domain, c.skill,
     c.company_intro,c.company_space,
     w.welfare_id, w.welfare_name, f.field_id, f.field_name
@@ -110,7 +125,7 @@
   <sql id="Base_Column_List">
     p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
-    p.delete_flat
+    p.delete_flat,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty
   </sql>
   <select id="selPostionByListId" resultMap="selPostionList" parameterType="java.util.List">
     select
@@ -175,20 +190,18 @@
     where postion_id = #{postionId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.xzlcPT.bean.XzPostion">
-    insert into xz_postion (postion_id, company_id, postion_name, 
-      postion_company, postion_ym, postion_mm, 
-      postion_space, postion_time, postion_education, 
-      postion_exp, postion_age, postion_description, 
-      postion_welfare, create_time, delete_time, 
-      delete_flat, filed1, filed2, 
-      filed3)
-    values (#{postionId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{postionName,jdbcType=VARCHAR}, 
-      #{postionCompany,jdbcType=VARCHAR}, #{postionYm,jdbcType=INTEGER}, #{postionMm,jdbcType=INTEGER}, 
-      #{postionSpace,jdbcType=VARCHAR}, #{postionTime,jdbcType=TIMESTAMP}, #{postionEducation,jdbcType=VARCHAR}, 
-      #{postionExp,jdbcType=VARCHAR}, #{postionAge,jdbcType=VARCHAR}, #{postionDescription,jdbcType=VARCHAR}, 
-      #{postionWelfare,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
-      #{deleteFlat,jdbcType=INTEGER}, #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, 
-      #{filed3,jdbcType=VARCHAR})
+   insert into xz_postion (postion_id, company_id, postion_name, postion_company, postion_ym,
+   postion_mm, postion_space, postion_time, postion_education, postion_exp, postion_age,
+   postion_description, postion_welfare, create_time, delete_time, publish_time, over_time,
+   postion_department, people_number, postion_specialty, delete_flat, filed1, filed2, filed3 )
+   values (#{postionId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{postionName,jdbcType=VARCHAR},
+    #{postionCompany,jdbcType=VARCHAR}, #{postionYm,jdbcType=INTEGER}, #{postionMm,jdbcType=INTEGER},
+    #{postionSpace,jdbcType=VARCHAR}, #{postionTime,jdbcType=TIMESTAMP}, #{postionEducation,jdbcType=VARCHAR},
+    #{postionExp,jdbcType=VARCHAR}, #{postionAge,jdbcType=VARCHAR}, #{postionDescription,jdbcType=VARCHAR},
+    #{postionWelfare,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP},
+    #{publishTime,jdbcType=TIMESTAMP}, #{overTime,jdbcType=TIMESTAMP}, #{postionDepartment,jdbcType=VARCHAR},
+   #{peopleNumber,jdbcType=INTEGER}, #{postionSpecialty,jdbcType=VARCHAR}, #{deleteFlat,jdbcType=INTEGER},
+    #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR} )
   </insert>
   <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostion">
     insert into xz_postion
@@ -237,6 +250,21 @@
       </if>
       <if test="deleteTime != null">
         delete_time,
+      </if>
+      <if test="publishTime != null">
+        publish_time,
+      </if>
+      <if test="overTime != null">
+        over_time,
+      </if>
+      <if test="postionDepartment != null">
+        postion_department,
+      </if>
+      <if test="peopleNumber != null">
+        people_number,
+      </if>
+      <if test="postionSpecialty != null">
+        postion_specialty,
       </if>
       <if test="deleteFlat != null">
         delete_flat,
@@ -297,6 +325,21 @@
       <if test="deleteTime != null">
         #{deleteTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overTime != null">
+        #{overTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionDepartment != null">
+        #{postionDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleNumber != null">
+        #{peopleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="postionSpecialty != null">
+        #{postionSpecialty,jdbcType=VARCHAR},
+      </if>
       <if test="deleteFlat != null">
         #{deleteFlat,jdbcType=INTEGER},
       </if>
@@ -312,25 +355,30 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostion">
-    update xz_postion
-    set postion_name = #{postionName,jdbcType=VARCHAR},
-      postion_company = #{postionCompany,jdbcType=VARCHAR},
-      postion_ym = #{postionYm,jdbcType=INTEGER},
-      postion_mm = #{postionMm,jdbcType=INTEGER},
-      postion_space = #{postionSpace,jdbcType=VARCHAR},
-      postion_time = #{postionTime,jdbcType=TIMESTAMP},
-      postion_education = #{postionEducation,jdbcType=VARCHAR},
-      postion_exp = #{postionExp,jdbcType=VARCHAR},
-      postion_age = #{postionAge,jdbcType=VARCHAR},
-      postion_description = #{postionDescription,jdbcType=VARCHAR},
-      postion_welfare = #{postionWelfare,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
-      delete_flat = #{deleteFlat,jdbcType=INTEGER},
-      filed1 = #{filed1,jdbcType=VARCHAR},
-      filed2 = #{filed2,jdbcType=VARCHAR},
-      filed3 = #{filed3,jdbcType=VARCHAR}
-    where postion_id = #{postionId,jdbcType=BIGINT}
+   update xz_postion set company_id = #{companyId,jdbcType=BIGINT},
+   postion_name = #{postionName,jdbcType=VARCHAR},
+    postion_company = #{postionCompany,jdbcType=VARCHAR},
+    postion_ym = #{postionYm,jdbcType=INTEGER},
+    postion_mm = #{postionMm,jdbcType=INTEGER},
+    postion_space = #{postionSpace,jdbcType=VARCHAR},
+    postion_time = #{postionTime,jdbcType=TIMESTAMP},
+    postion_education = #{postionEducation,jdbcType=VARCHAR},
+    postion_exp = #{postionExp,jdbcType=VARCHAR},
+    postion_age = #{postionAge,jdbcType=VARCHAR},
+    postion_description = #{postionDescription,jdbcType=VARCHAR},
+    postion_welfare = #{postionWelfare,jdbcType=VARCHAR},
+    create_time = #{createTime,jdbcType=TIMESTAMP},
+    delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+    publish_time = #{publishTime,jdbcType=TIMESTAMP},
+    over_time = #{overTime,jdbcType=TIMESTAMP},
+    postion_department = #{postionDepartment,jdbcType=VARCHAR},
+    people_number = #{peopleNumber,jdbcType=INTEGER},
+    postion_specialty = #{postionSpecialty,jdbcType=VARCHAR},
+    delete_flat = #{deleteFlat,jdbcType=INTEGER},
+    filed1 = #{filed1,jdbcType=VARCHAR},
+    filed2 = #{filed2,jdbcType=VARCHAR},
+    filed3 = #{filed3,jdbcType=VARCHAR} where
+    postion_id = #{postionId,jdbcType=BIGINT}
   </update>
   <select id="selectByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
     SELECT
@@ -369,7 +417,7 @@
     select
     <include refid="Base_Column_List" />
     from xz_postion p
-    where company_id = #{companyId,jdbcType=BIGINT} AND
-    postion_name LIKE CONCAT('%',#{postionName,jdbcType=VARCHAR},'%')
+    where p.company_id = #{companyId,jdbcType=BIGINT} AND
+    p.postion_name LIKE CONCAT('%',#{postionName,jdbcType=VARCHAR},'%')
   </select>
 </mapper>

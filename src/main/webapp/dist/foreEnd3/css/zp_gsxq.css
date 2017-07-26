@@ -342,7 +342,7 @@ ul {
 .zp_spxq_cont_right_top > div > div > h3{
     margin: 0;
 }
-.zp_spxq_cont_right_middle{
+.zp_spxq_cont_right_middle span{
 
 }
 .zp_spxq_cont_right_middle h2{
@@ -370,6 +370,11 @@ ul {
 .zp_spxq_cont_right_middle ul > li{
     height: 30px;
     line-height: 30px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 235px;
 }
 .zp_spxq_dt{
     height: 250px;

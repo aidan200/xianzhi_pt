@@ -188,7 +188,7 @@
                         <div class="zp_index_cont_left_zwtj_cont_right">
                             <p><a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${p.company.companyId}">${p.company.companyName}</a></p>
                             <p>
-                                <c:forEach items="${p.company.fields}" var="f">
+                                <c:forEach items="${p.company.fields}" var="f" varStatus="status">
                                     ${f.fieldName}
                                     <c:choose>
                                         <c:when test="${status.index==2}">

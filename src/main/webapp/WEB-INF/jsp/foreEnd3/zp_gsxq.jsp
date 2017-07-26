@@ -18,6 +18,8 @@
     <jsp:include page="distforeEnd.jsp"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_gsxq.css">
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/mapUtil.js" type="text/javascript"></script>
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
@@ -137,16 +139,20 @@
                         基本信息<hr>
                     </h2>
                     <ul>
-                        <li>行业：
-                            <c:forEach  var="po" items="${xzCompany.postions}">
-                                <span>${po.postionName}/</span>
+                        <li style="overflow: visible">行业：
+                            <c:forEach  var="f" items="${xzCompany.fields}" varStatus="s">
+                                <span>${f.fieldName}</span>
+                                <c:if test="${(s.index+1)%3==0}">
+                                    <br>
+                                </c:if>
                             </c:forEach></li>
-                        <li>领域：<span>IT</span></li>
                         <li>融资：<span>${xzCompany.financing}</span></li>
                         <li>规模：<span>${xzCompany.companyScale}人</span></li>
-                        <li style="height: auto">地址：<span>${xzCompany.companyLocation}</span></li>
+                        <li style="height: auto">地址：<span>${xzCompany.companyCity}</span><br>
+                            <span>${xzCompany.companyLocation}</span><br>
+                            <span>${xzCompany.companySpace}</span></li>
                     </ul>
-                    <div class="zp_spxq_dt" style="background-image: url('img/zp_gsxq_dt.png')">
+                    <div id="zp_spxq_dts" class="zp_spxq_dt">
                     </div>
                 </div>
                 <div class="zp_spxq_cont_right_bottom">
@@ -186,7 +192,15 @@
         document.getElementById("infPage").value=1;
         document.getElementById("f1").submit();
     }
-
+    var postion = {};
+    postion.container = "zp_spxq_dts";
+    postion.x = '${xzCompany.companyX}';
+    postion.y = '${xzCompany.companyY}';
+    console.log(postion);
+    var myMap = new myMap(postion);
+    $(function () {
+        myMap.init();
+    })
 </script>
 
 

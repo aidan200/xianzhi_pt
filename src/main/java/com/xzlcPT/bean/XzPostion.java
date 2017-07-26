@@ -34,6 +34,16 @@ public class XzPostion {
 
     private Date deleteTime;
 
+    private Date publishTime;
+
+    private Date overTime;
+
+    private String postionDepartment;
+
+    private Integer peopleNumber;
+
+    private String postionSpecialty;
+
     private Integer deleteFlat;
 
     private String filed1;
@@ -212,6 +222,46 @@ public class XzPostion {
 
     public void setFiled3(String filed3) {
         this.filed3 = filed3 == null ? null : filed3.trim();
+    }
+
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
+    }
+
+    public Date getPublishTime() {
+        return publishTime;
+    }
+
+    public void setOverTime(Date overTime) {
+        this.overTime = overTime;
+    }
+
+    public Date getOverTime() {
+        return overTime;
+    }
+
+    public void setPeopleNumber(Integer peopleNumber) {
+        this.peopleNumber = peopleNumber;
+    }
+
+    public Integer getPeopleNumber() {
+        return peopleNumber;
+    }
+
+    public void setPostionDepartment(String postionDepartment) {
+        this.postionDepartment = postionDepartment;
+    }
+
+    public String getPostionDepartment() {
+        return postionDepartment;
+    }
+
+    public void setPostionSpecialty(String postionSpecialty) {
+        this.postionSpecialty = postionSpecialty;
+    }
+
+    public String getPostionSpecialty() {
+        return postionSpecialty;
     }
 
     @Override
