@@ -127,6 +127,8 @@ public class PostionController extends BaseController{
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_zwxq");
         XzPostion xzPostion=postionService.selPostionInfo(postionId);
         List<XzPostion> plist=postionService.selInfoByName(xzPostion.getPostionName());
+        List<XzPostion> cplist=postionService.selInfoByComId(xzPostion);
+        mv.addObject("cplist",cplist);
         mv.addObject("plist",plist);
         mv.addObject("xzPostion",xzPostion);
         return mv;

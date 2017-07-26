@@ -169,21 +169,13 @@
                             <a href="" class="pull-right">更多>></a>
                         </p>
                         <ul>
+                            <c:forEach items="${cplist}" var="cp">
                             <li>
-                                <a href="">总经理助理</a>
-                                <span class="zp_zwxq_span1">武汉-蔡甸区</span>
-                                <span class="zp_zwxq_span2">4-6万</span>
+                                <a href="">${cp.postionName}</a>
+                                <span class="zp_zwxq_span1">${cp.postionSpace}</span>
+                                <span class="zp_zwxq_span2">${fn:replace((cp.postionMm*12/10000),".0","")}-${fn:replace((cp.postionMm*12/10000),".0","")}万</span>
                             </li>
-                            <li>
-                                <a href="">总经理助理</a>
-                                <span class="zp_zwxq_span1">武汉-蔡甸区</span>
-                                <span class="zp_zwxq_span2">4-6万</span>
-                            </li>
-                            <li>
-                                <a href="">总经理助理</a>
-                                <span class="zp_zwxq_span1">武汉-蔡甸区</span>
-                                <span class="zp_zwxq_span2">4-6万</span>
-                            </li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>

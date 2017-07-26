@@ -30,4 +30,6 @@ public interface XzPostionMapper {
     XzPostion selPostionInfo(Long postionId);
 
     List<XzPostion> selInfoByName(String postionName);
+
+    List<XzPostion> selInfoByComId(XzPostion xzPostion);
 }
