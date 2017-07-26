@@ -26,7 +26,7 @@ public class ProductController extends BaseController{
     private XzProductService xzProductService;
 
     @ResponseBody
-    @RequestMapping("insertProduct")
+    @RequestMapping("insertProduct.do")
         public Map insertProduct(@RequestBody XzCompanyProduct xzCompanyProduct){
         Map map=new HashMap();
         int i=xzProductService.insertProduct(xzCompanyProduct);
@@ -35,7 +35,7 @@ public class ProductController extends BaseController{
     }
 
     @ResponseBody
-    @RequestMapping("updateProduct")
+    @RequestMapping("updateProduct.do")
     public  Map updateProduct(@RequestBody XzCompanyProduct xzCompanyProduct){
       Map map=new HashMap();
         int i=xzProductService.updateProduct(xzCompanyProduct);
@@ -47,7 +47,7 @@ public class ProductController extends BaseController{
         return map;
     }
     @ResponseBody
-    @RequestMapping("selectByPrimaryKey")
+    @RequestMapping("selectByPrimaryKey.do")
     public Map selectByPrimaryKey(Long productId){
         Map map = new HashMap();
         XzCompanyProduct xzCompanyProduct=xzProductService.selectByPrimaryKey(productId);
@@ -55,13 +55,11 @@ public class ProductController extends BaseController{
         return map;
     }
     @ResponseBody
-    @RequestMapping("selByCompanyId")
+    @RequestMapping("selByCompanyId.do")
     public Map selectByCompanyId(Long companyId) {
-        System.out.println("companyId::::::::::::::::::::::::::"+companyId);
         Map map = new HashMap();
         List<XzCompanyProduct> productList = xzProductService.selectByCompanyId(companyId);
         map.put("productList",productList);
-        System.out.println("size:::::::::::::::::::::"+productList.size());
         return map;
     }
 
