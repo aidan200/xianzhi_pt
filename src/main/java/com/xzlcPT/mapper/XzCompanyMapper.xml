@@ -431,7 +431,7 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzCompany">
     update xz_company
     <set>
-      <if test="loginId != null">
+      <if test="loginId != null and loginId !=0">
         login_id = #{loginId,jdbcType=BIGINT},
       </if>
       <if test="companyName != null">

@@ -8,7 +8,11 @@
     <result column="postion_id" jdbcType="BIGINT" property="postionId" />
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
     <result column="send_state" jdbcType="INTEGER" property="sendState" />
+    <result column="send_visual" jdbcType="INTEGER" property="sendVisual" />
     <result column="send_msg" jdbcType="VARCHAR" property="sendMsg" />
+    <result column="send_time1" jdbcType="TIMESTAMP" property="sendTime1" />
+    <result column="rs_time1" jdbcType="TIMESTAMP" property="rsTime1" />
+    <result column="send_type" jdbcType="INTEGER" property="sendType" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
     <result column="field1" jdbcType="VARCHAR" property="field1" />
@@ -17,8 +21,9 @@
     <result column="delete_falt" jdbcType="TIMESTAMP" property="deleteFalt" />
   </resultMap>
   <sql id="Base_Column_List">
-    send_id, resume_id, company_id, postion_id, send_time, send_state, send_msg, create_time, 
-    delete_time, field1, field2, field3, delete_falt
+    send_id, resume_id, company_id, postion_id, send_time, send_state, send_visual, send_msg, 
+    send_time1, rs_time1, send_type, create_time, delete_time, field1, field2, field3, 
+    delete_falt
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -33,14 +38,16 @@
   <insert id="insert" parameterType="com.xzlcPT.bean.XzPostionSend">
     insert into xz_postion_send (send_id, resume_id, company_id, 
       postion_id, send_time, send_state, 
-      send_msg, create_time, delete_time, 
-      field1, field2, field3, 
-      delete_falt)
+      send_visual, send_msg, send_time1, 
+      rs_time1, send_type, create_time, 
+      delete_time, field1, field2, 
+      field3, delete_falt)
     values (#{sendId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, 
       #{postionId,jdbcType=BIGINT}, #{sendTime,jdbcType=TIMESTAMP}, #{sendState,jdbcType=INTEGER}, 
-      #{sendMsg,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, 
-      #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, #{field3,jdbcType=VARCHAR}, 
-      #{deleteFalt,jdbcType=TIMESTAMP})
+      #{sendVisual,jdbcType=INTEGER}, #{sendMsg,jdbcType=VARCHAR}, #{sendTime1,jdbcType=TIMESTAMP}, 
+      #{rsTime1,jdbcType=TIMESTAMP}, #{sendType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{deleteTime,jdbcType=TIMESTAMP}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, 
+      #{field3,jdbcType=VARCHAR}, #{deleteFalt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostionSend">
     insert into xz_postion_send
@@ -63,8 +70,20 @@
       <if test="sendState != null">
         send_state,
       </if>
+      <if test="sendVisual != null">
+        send_visual,
+      </if>
       <if test="sendMsg != null">
         send_msg,
+      </if>
+      <if test="sendTime1 != null">
+        send_time1,
+      </if>
+      <if test="rsTime1 != null">
+        rs_time1,
+      </if>
+      <if test="sendType != null">
+        send_type,
       </if>
       <if test="createTime != null">
         create_time,
@@ -104,8 +123,20 @@
       <if test="sendState != null">
         #{sendState,jdbcType=INTEGER},
       </if>
+      <if test="sendVisual != null">
+        #{sendVisual,jdbcType=INTEGER},
+      </if>
       <if test="sendMsg != null">
         #{sendMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime1 != null">
+        #{sendTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsTime1 != null">
+        #{rsTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendType != null">
+        #{sendType,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -145,8 +176,20 @@
       <if test="sendState != null">
         send_state = #{sendState,jdbcType=INTEGER},
       </if>
+      <if test="sendVisual != null">
+        send_visual = #{sendVisual,jdbcType=INTEGER},
+      </if>
       <if test="sendMsg != null">
         send_msg = #{sendMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime1 != null">
+        send_time1 = #{sendTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rsTime1 != null">
+        rs_time1 = #{rsTime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendType != null">
+        send_type = #{sendType,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -176,7 +219,11 @@
       postion_id = #{postionId,jdbcType=BIGINT},
       send_time = #{sendTime,jdbcType=TIMESTAMP},
       send_state = #{sendState,jdbcType=INTEGER},
+      send_visual = #{sendVisual,jdbcType=INTEGER},
       send_msg = #{sendMsg,jdbcType=VARCHAR},
+      send_time1 = #{sendTime1,jdbcType=TIMESTAMP},
+      rs_time1 = #{rsTime1,jdbcType=TIMESTAMP},
+      send_type = #{sendType,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       delete_time = #{deleteTime,jdbcType=TIMESTAMP},
       field1 = #{field1,jdbcType=VARCHAR},

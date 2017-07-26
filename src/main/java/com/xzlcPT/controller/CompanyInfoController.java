@@ -274,7 +274,6 @@ public class CompanyInfoController {
             mv.addObject("dlist", dlist);
             return mv;
     }
-    @ResponseBody
     @RequestMapping("selCompanyInf.do")
     public ModelAndView selCompanyInf (@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,Long companyId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_gsxq");

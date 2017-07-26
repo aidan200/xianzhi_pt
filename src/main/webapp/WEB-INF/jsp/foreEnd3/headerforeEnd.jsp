@@ -65,9 +65,9 @@
                     </a>
                 </c:if>
 
-                <li class="register1">
-                    <a href="#0" class="allregister" style="margin-top: 13px"><span>注册</span></a>
-                </li>
+                <%--<li class="register1">--%>
+                    <%--<a href="#0" class="allregister" style="margin-top: 13px"><span>注册</span></a>--%>
+                <%--</li>--%>
                 <li class="login1">
                     <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"
                        style="margin-top: 13px"><span>登录</span></a>
