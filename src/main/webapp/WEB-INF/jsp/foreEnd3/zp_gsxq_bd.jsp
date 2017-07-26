@@ -76,7 +76,7 @@
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
-<form action="${pageContext.request.contextPath}/CompanyInfo/editCompany.do" id="zp_gsxq_form" method="get"></form>
+<form action="${pageContext.request.contextPath}/CompanyInfo/editCompany.do" id="zp_gsxq_form" method="post" onsubmit="return makeText()"></form>
 
 <section class="container zp_gsxq_bd_cont">
     <div class="zp_gsxq_bd_js">
@@ -260,7 +260,7 @@
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司介绍：</label>
                 <div class="zp_gsxq_js">
-                    <textarea  id="gsxq_gsjs" form="zp_gsxq_form"></textarea>
+                    <textarea  id="gsxq_gsjs" form="zp_gsxq_form" name="companyIntro">${company.companyIntro}</textarea>
                     <p>注：职位描述中请勿填写涉及歧视的内容，例如：女性优先，只招男士，残疾，乙肝等</p>
                 </div>
             </div>
@@ -337,6 +337,7 @@
     postion.city = $('#this_space').val();
     postion.input = "gsdz_ssk";
     postion.container = "gsdz";
+    postion.location = '${company.companyLocation}';
     postion.x = $('#companyX').val();
     postion.y = $('#companyY').val();
     postion.rollback = function (rs) {

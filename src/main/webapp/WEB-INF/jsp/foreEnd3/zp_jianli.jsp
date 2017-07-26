@@ -19,7 +19,7 @@
 
     <script>
         var path = '${pageContext.request.contextPath}/';     //全局路径
-        var ID = '${resumId}';                                          //ID
+        var ID = '${resumeId}';                                          //ID
         var memberId;
 
     </script>

@@ -164,7 +164,7 @@
                         </a>
                     </li>
                     <li class="zp_small">
-                        <a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html?resumId=${resume.resumeId}">
+                        <a href="${pageContext.request.contextPath}/Resume/goEditResume.do">
                             <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
                             <span style="margin-top: 5px">编辑简历</span>
                         </a>

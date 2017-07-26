@@ -35,7 +35,10 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     @Override
     public int editCompany(XzCompany company, String[] welfaress, String[] domains, String[] skills) {
         int i = companyMapper.updateByPrimaryKeySelective(company);
-        company.setCompanyName(null);
+        XzCompany c = companyMapper.selectByPrimaryKey(company.getCompanyId());
+        if(c.getCompanyName()!=null&&!c.getCompanyName().equals("")){
+            company.setCompanyName(null);
+        }
         if(welfaress!=null&&welfaress.length>0){
         companyWelfareMapper.deleteByCompanyId(company.getCompanyId());
             for (String welfare : welfaress) {
