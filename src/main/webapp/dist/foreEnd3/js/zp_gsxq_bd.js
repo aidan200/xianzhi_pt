@@ -288,10 +288,30 @@ cpjx.prototype.init=function (){
         url:path+'Product/selByCompanyId.do',    //路径
         success:function (data){//data 就是数据 json
             This.cpjs=data;
+
             for(var i=0;i<This.cpjs.productList.length;i++){                    //页面载入方法
+                This.cpjs.productList[i].dkh=dkh;
+                This.cpjs.productList[i].path=path+'uploadImg/';
+                This.cpjs.productList[i].index=i
                 var tjcpjs_html  = template('tj_gscp',This.cpjs.productList[i]);
                 $('#tjcpjs').before(tjcpjs_html);        //插入元素
             }
+            $('#gsxq_cpjs > .zp_gsxq_cpjs_cp').each(function (i,e){
+                var aaa=$(e).find(' .cpjs_bg').attr('id')
+                var bbb=$(e).find(' .cpjs_bg + input').attr('id');
+                alert(aaa)
+                alert(bbb)
+                var ccc=document.getElementById(aaa);
+                var ddd=document.getElementById(bbb)
+                var uu =  new uploadUtil(ccc,dkh+"/upload/img",ddd,function (imgName){
+                    $(e).find(' .cpjs_bg').attr('data-url',imgName)
+
+                });
+                uu.init()
+            })
+
+
+
             This.xg();
             This.xgCont();
 
@@ -334,24 +354,31 @@ cpjx.prototype.xgCont=function (){                          //修改
      $('#gsxq_cpjs a').each(function (i,e){
             $(e).unbind().on('click',function (){
                 var parent=$(e).parent()
+                uu.init();
                 var data1={
                     productId:parent.attr('data-id'),
                     productIntro:parent.find('textarea').val(),
-                    filed1:parent.find('._gsmc').val()
+                    filed1:parent.find('._gsmc').val(),
+                    productUrl:""
                 }
+                alert(data1.filed1)
                 $.ajax({
                     type:"post",    //提交方式
                     async:true,  //是否异步
                     contentType: "application/json",
                     data:JSON.stringify(data1),
-                    dataType:'json',
-                    url:path+'Product/updateProduct',
+                    dataType:'text',
+                    url:path+'Product/updateProduct.do',
                     success:function (data){
-
+                        var aa=$('#gsxq_cpjs > div')
+                    for(var i=0;i<aa.length-1;i++){
+                        aa.eq(i).remove();
+                    }
+                    This.init()
 
 
                     },error:function (){ //报错执行的
-                        alert('基本资料修改错误')
+                        alert('修改错误')
                     }
 
                 })
