@@ -21,7 +21,6 @@
         var ID=2;
         var dkh="http://localhost:8080";        //端口号
         var path="${pageContext.request.contextPath}/"
-
     </script>
 
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/template-web.js"></script>
@@ -347,6 +346,10 @@
         $('#companyY').val(rs.point.lat);
     };
     var myMap = new myMap(postion);
+    var theFiels = new Array();
+    <c:forEach items="${company.fields}" var="f">
+        theFiels.push('${f.fieldId}');
+    </c:forEach>
     $(function () {
         myMap.init();
     })

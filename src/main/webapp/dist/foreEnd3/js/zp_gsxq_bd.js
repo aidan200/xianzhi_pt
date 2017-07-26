@@ -447,10 +447,17 @@ $(function (){
         dataType:'json',                   //定义返回data类型
         url:path+'Field/selByType',    //路径
         success:function (data){//data 就是数据 json
-            $('#gshyBox').html("");
+            var ccHtml="";
             for(var i = 0;i < data.fieldList.length;i++){
-                $('#gshyBox').append('<li><input class="gshychechBox" type="checkbox" data-fieldId="'+data.fieldList[i].fieldId+'" data-value="'+data.fieldList[i].fieldName+'"/>'+data.fieldList[i].fieldName+' </li>');
+                ccHtml+='<li><input class="gshychechBox" type="checkbox" ';
+                for(var j = 0;j<theFiels.length;j++){
+                            if(theFiels[j]==data.fieldList[i].fieldId){
+                                ccHtml+= 'checked';
+                            }
+                }
+                ccHtml+=' data-fieldId="'+data.fieldList[i].fieldId+'" data-value="'+data.fieldList[i].fieldName+'"/>'+data.fieldList[i].fieldName+' </li>';
             }
+            $('#gshyBox').html(ccHtml);
             $('#xz_qwhy_qd').on('click',function () {
                 $('#gslyBox').html("");
                 $('.gshychechBox').each(function (i,e) {
