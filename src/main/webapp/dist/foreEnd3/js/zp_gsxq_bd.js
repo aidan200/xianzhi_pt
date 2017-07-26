@@ -275,6 +275,20 @@ cpjx.prototype.bindingSJ=function (){
 
 
 $(function (){
+
+    //关闭
+    $('.cd-popup-closeh').unbind().on('click',function (){
+        $('.cd-popuph').removeClass('is-visible');
+    })
+    //键盘关闭
+    $(document).keyup(function(event){
+        if(event.which=='27'){
+            $('.cd-popuph').removeClass('is-visible');
+        }
+    });
+
+
+    //公司应用技术，待遇
     $('.skillBtn').on('click',function () {
         $(this).parent().remove();
     })
@@ -302,16 +316,52 @@ $(function (){
                 "</div>");
         }
     }
-    $('.addBut').on('click',function (e) {
-        var xx = e.originalEvent.x || e.originalEvent.layerX || 0;
-        var yy = e.originalEvent.y || e.originalEvent.layerY || 0;
-        console.log(xx+"----"+yy);
-        $(this).next().css("top",yy);
-        $(this).next().css("left",xx);
+    $('.addBut').on('click',function () {
+        $(this).next().css("top",$(this).offset().top+$(this).height()/2+3);
+        $(this).next().css("left",$(this).offset().left+$(this).width()/2+3);
         $(this).next().show();
         $(this).next().focus();
     })
-
+    var ogstb=new gstb();           //公司图标
+    ogstb.bindingSJ();
+    //公司领域
+    $('#gslyEdit').on('click',function () {
+        //event.preventDefault();
+        $.ajax({
+            type:"post",    //提交方式
+            async:true,  //是否异步
+            data:{type:1},
+            dataType:'json',                   //定义返回data类型
+            url:path+'Field/selByType',    //路径
+            success:function (data){//data 就是数据 json
+                $('#gshyBox').html("");
+                for(var i = 0;i < data.fieldList.length;i++){
+                    $('#gshyBox').append('<li><input class="gshychechBox" type="checkbox" data-fieldId="'+data.fieldList[i].fieldId+'" data-value="'+data.fieldList[i].fieldName+'"/>'+data.fieldList[i].fieldName+' </li>');
+                }
+                $('#xz_qwhy_qd').on('click',function () {
+                    $('#gslyBox').html("");
+                    $('.gshychechBox').each(function (i,e) {
+                        if($(e).attr("checked")){
+                            var id = $(e).attr('data-fieldId');
+                            var val = $(e).attr('data-value');
+                            $('#gslyBox').append("<div class='skilldiv'>"+
+                                "<div>"+val+"</div>"+
+                                "<a class='skillBtn'>x</a>"+
+                                "<input type='hidden' form='zp_gsxq_form' name='domains' value='"+id+"'>"+
+                                "</div>");
+                        }
+                    })
+                    $('.skillBtn').on('click',function () {
+                        $(this).parent().remove();
+                    })
+                    $('.cd-popuph').removeClass('is-visible');
+                })
+                $('.cd-popuph').addClass('is-visible');
+            },error:function (){ //报错执行的
+                alert('行业查找失败');
+            }
+        })
+    })
 
 
     //var ojbxx=new jbxx();           //公司基本信息
@@ -326,8 +376,6 @@ $(function (){
      //oqyfc.bindingSJ();
 
 
-    var ogstb=new gstb();           //公司图标
-    ogstb.bindingSJ();
 
     var ocpjx=new cpjx();           //产品介绍
     ocpjx.bindingSJ();

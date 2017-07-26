@@ -126,9 +126,15 @@ public class PostionController extends BaseController{
     public ModelAndView selPostionInfo(Long postionId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_zwxq");
         XzPostion xzPostion=postionService.selPostionInfo(postionId);
-        System.out.println("age::::::::::::::::::::"+xzPostion.getPostionAge());
         mv.addObject("xzPostion",xzPostion);
         return mv;
     }
-
+    //测试用
+    @RequestMapping("updateByPrimaryKeySelective")
+    public ModelAndView updateByPrimaryKeySelective(XzPostion xzPostion){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        int i=postionService.updateByPrimaryKeySelective(xzPostion);
+        mv.addObject("i",i);
+        return mv;
+    }
 }

@@ -20,7 +20,7 @@
         <li><a href="${pageContext.request.contextPath}/view/foreEnd3/companylist.html" class="hvr-wobble-bottom">企业</a></li>
         <li><a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do" class="hvr-wobble-bottom">搜索职位</a></li>
         <li><a href="${pageContext.request.contextPath}/view/foreEnd3/postposition.html" class="hvr-wobble-bottom">我的职位</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html?resumId=${resumeId}" class="hvr-wobble-bottom">简历</a></li>
+        <li><a href="${pageContext.request.contextPath}/Resume/goEditResume.do" class="hvr-wobble-bottom">简历</a></li>
     </ul>
 </nav>
 </body>

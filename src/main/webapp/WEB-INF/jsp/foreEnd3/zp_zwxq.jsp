@@ -38,33 +38,16 @@
                 <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>普通话</span><span>${xzPostion.postionAge}</span></div>
             </div>
             <div class="zp_zwxq_cont_left_bottom">
-                <span class="tag" title="带薪年假">带薪年假</span>
-
-                <span class="tag" title="交通补助">交通补助</span>
-
-                <span class="tag" title="定期体检">定期体检</span>
-
-                <span class="tag" title="年度旅游">年度旅游</span>
-
-                <span class="tag" title="领导好">领导好</span>
-
-                <span class="tag" title="五险一金">五险一金</span>
-
-                <span class="tag" title="团队聚餐">团队聚餐</span>
-
-                <span class="tag" title="上市公司">上市公司</span>
+                <c:forEach items="${xzPostion.company.welfares}" var="w1">
+                <span class="tag" title="${w1.welfareName}">${w1.welfareName}</span>
+                </c:forEach>
             </div>
             <div class="zp_zwxq_cont_left_zwms">
                 <h3>职位描述：</h3>
                 <div>
-                    10、职位名称：前端开发工程师<br>
-                    工作地点：沈阳<br>    工作职责：<br>
-                    1、负责移动和平台前端部分的设计和开发，确保产品具有一流的用户体验；<br>
-                    2、了解产品后端技术实现，提供对应的前端解决方案，并配合后端工程师完成数据接口的开发和调试；<br>
-                    3、负责前端架构在业务线的落地实施，并结合各产品线实际情况，参与部分前端架构开发工作；<br>
-                    4、负责解决前端产品在不同设备及不同版本下的兼容问题；<br>
-                    5、负责前端产品性能和代码优化的实施；<br>
-                    6、负责前端领域通用技术的建设。
+                    职位名称：${xzPostion.postionName}<br>
+                    工作地点：${xzPostion.postionSpace}<br>    工作职责：<br>
+                   ${xzPostion.postionDescription}
                     <br><br>
                     任职资格：<br>
                     1、2年以上前端开发经验；<br>
@@ -90,9 +73,7 @@
             <div class="zp_zwxq_cont_left_qyjs">
                 <h3>企业介绍：</h3>
                 <div>
-                    东软是中国最大的IT解决方案与服务供应商。目前，拥有员工20000余名，在中国建立了6个软件研发基地，8个区域总部，
-                    在40多个城市建立营销与服务网络；在美国、日本、欧洲、中东设有子公司。 东软以软件技术为核心，提供行业解决方案、
-                    产品工程解决方案以及相关产品、平台及服务。行业解决方案涵盖领域包括：电信、能源、金融、政府（社会保障、财政、税务、公共安全、国土资源
+                   ${xzPostion.company.companyIntro}
                     <a href="javascript:;">[展开]</a>
                 </div>
             </div>
@@ -435,11 +416,7 @@
                         <div>
                             <p><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zp_zwxq_yhtx.gif" alt=""></p>
                             <p>
-                                <span>陈主任</span>
-                                <em class="muted">/ 人事主管</em>
-                            </p>
-                            <p>
-                                武汉阅景汇投资发展有限公司
+                                ${xzPostion.company.companyName}
                             </p>
                             <p>
                                 <a class="btn btn-primary"  href="javascript:;">立即沟通</a>
@@ -459,15 +436,24 @@
                     <div class="zp_zwxq_cont_right_cont_middle">
                         <h3>企业简介</h3>
                         <h4>
-                            <a href="" class="zp_zwxq_cont_right_cont_middle_a1"> 武汉阅景汇投资发展有限公司</a>
+                            <a href="" class="zp_zwxq_cont_right_cont_middle_a1">  ${xzPostion.company.companyName}</a>
                             <a href="javascript:;" class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
                         </h4>
                         <ul>
-                            <li><a href="">房地产开发/建筑/建材/工程</a></li>
-                            <li>100-499人</li>
-                            <li>私营·民营企业</li>
+                            <li>
+                                <c:forEach items="${xzPostion.company.fields}" var="f1">
+                                <a href="">${f1.fieldName}/</a>
+                                </c:forEach>
+                            </li>
+                            <li>${xzPostion.company.companyScale}人</li>
+                            <li>
+                            ${xzPostion.company.companyNature eq 1?"国企":''}
+                            ${xzPostion.company.companyNature eq 2?"民营":''}
+                            ${xzPostion.company.companyNature eq 3?"外企":''}
+                            ${xzPostion.company.companyNature eq 4?"政府":''}
+                            </li>
                         </ul>
-                        <p>武汉市蔡甸区大集街天星村一号(文岭小学/世茂龙湾正门口对面)</p>
+                        <p>${xzPostion.company.companySpace}</p>
                         <div class="zp_zwxq_dt" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_zwxq_dt.png')"></div>
                     </div>
                     <div class="zp_zwxq_cont_right_cont_bottom">

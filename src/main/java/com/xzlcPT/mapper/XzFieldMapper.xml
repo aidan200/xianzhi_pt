@@ -44,9 +44,17 @@
         ) a
     )
   </delete>
+  <delete id="deleteByCompanyDomain" parameterType="java.lang.Long">
+    delete from xz_company_domain
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </delete>
   <insert id="insertByResumeDomain" parameterType="Map">
     insert into xz_resume_domain (resume_id, field_id)
     VALUES (#{resumeId,jdbcType=BIGINT},#{fieldId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertByCompanyDomain" parameterType="Map">
+    insert into xz_company_domain (company_id, field_id)
+    VALUES (#{companyId,jdbcType=BIGINT},#{fieldId,jdbcType=BIGINT})
   </insert>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from xz_field

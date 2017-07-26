@@ -215,7 +215,7 @@
 </section>
 
 
-<form id="hidForm" action="${pageContext.request.contextPath}/Resume/selResumeByConditions">
+<form id="hidForm" action="${pageContext.request.contextPath}/Resume/selResumeByConditions.do">
     <input id="infPage" type="hidden" name="page" value="${page}">
     <input id="Position" type="hidden" name="resumePosition">
 </form>

@@ -40,9 +40,9 @@ public class CompanyInfoController {
     private XzPostionService xzPostionService;
 
     @RequestMapping("editCompany.do")
-    public ModelAndView editCompany(XzCompany company, String[] welfares, String[] domains, String[] skills){
-        ModelAndView mv = new ModelAndView("zp_index");
-        int i = companyService.editCompany(company,welfares,domains,skills);
+    public ModelAndView editCompany(XzCompany company, String[] welfaress, String[] domains, String[] skillss){
+        ModelAndView mv = new ModelAndView("foreEnd3/company_home");
+        int i = companyService.editCompany(company,welfaress,domains,skillss);
         if(i==1){
             mv.addObject("msg","ok");
         }else{

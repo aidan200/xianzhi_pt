@@ -79,6 +79,10 @@
       <result column="company_picture" jdbcType="VARCHAR" property="companyPicture" />
       <result column="company_scale" jdbcType="VARCHAR" property="companyScale" />
       <result column="company_nature" jdbcType="INTEGER" property="companyNature" />
+      <result column="company_intro" jdbcType="VARCHAR" property="companyIntro"/>
+      <result column="company_space" jdbcType="VARCHAR" property="companySpace"/>
+      <result column="company_y" jdbcType="DOUBLE" property="companyY"/>
+      <result column="company_x" jdbcType="DOUBLE" property="companyX"/>
       <result column="domain" jdbcType="VARCHAR" property="domain" />
       <result column="skill" jdbcType="VARCHAR" property="skill" />
       <collection property="welfares" ofType="com.xzlcPT.bean.XzCompanyWelfare">
@@ -96,6 +100,7 @@
     p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
     c.company_id, c.company_name, c.company_picture, c.company_scale, c.company_nature, c.domain, c.skill,
+    c.company_intro,c.company_space,
     w.welfare_id, w.welfare_name, f.field_id, f.field_name
   </sql>
   <sql id="Base_Column_List">
