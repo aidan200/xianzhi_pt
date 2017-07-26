@@ -20,27 +20,27 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/loading.css">
 
     <script>//搜索框焦点事件
-    $(function (){
-        $('#zp_index_xxk').on('focus',function (){
+    $(function () {
+        $('#zp_index_xxk').on('focus', function () {
             $(this).css({
-                "borderColor":"#46BEF2",
-                "borderWidth":"2"
+                "borderColor": "#46BEF2",
+                "borderWidth": "2"
             })
             $(".zp_index_arrow").css({
-                "borderColor":"#46BEF2",
-                "border-bottom-width":"2px",
-                "border-left-width":"2px"
+                "borderColor": "#46BEF2",
+                "border-bottom-width": "2px",
+                "border-left-width": "2px"
             })
         });
-        $('#zp_index_xxk').on('blur',function (){
+        $('#zp_index_xxk').on('blur', function () {
             $(this).css({
-                "borderColor":"#3689B3",
-                "borderWidth":"1"
+                "borderColor": "#3689B3",
+                "borderWidth": "1"
             })
             $(".zp_index_arrow").css({
-                "borderColor":"#3689B3",
-                "border-bottom-width":"1px",
-                "border-left-width":"1px"
+                "borderColor": "#3689B3",
+                "border-bottom-width": "1px",
+                "border-left-width": "1px"
             })
         })
     })
@@ -49,9 +49,10 @@
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
-<section class="container zp_index_cont">
-    <div class="row">
-        <div class="col-md-8 zp_index_cont_left">
+<section class="zp_indextop">
+    <div class="zp_index_cont">
+
+        <div class="zp_index_cont_left">
             <div class="zp_index_cont_left_top">
                 <div class="zp_index_cont_wbk">
                     <form action="${pageContext.request.contextPath}/Postion/selPostionIndex.do" onsubmit="toSerch()">
@@ -64,10 +65,11 @@
 
 
                 </div>
-                <p><span>默认条件: ${resume.resumeWorkspace}</span><span> ${resume.resumePosition}</span> <a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do">更多搜索条件</a></p>
+                <p><span>默认条件: ${resume.resumeWorkspace}</span><span> ${resume.resumePosition}</span> <a
+                        href="${pageContext.request.contextPath}/Postion/selPostionIndex.do">更多搜索条件</a></p>
             </div>
             <div class="zp_index_cont_left_zwtj">
-                <h3>职位推荐&nbsp;&nbsp;<span class="fa fa-caret-down"></span></h3>
+                <h3 style="font-size: 20px;letter-spacing: 1px">职位推荐&nbsp;&nbsp;<span class="fa fa-caret-down"></span></h3>
             </div>
             <div class="zp_index_cont_left_zwtj_cont">
                 <ul id="postionRs">
@@ -75,7 +77,8 @@
                         <i><b>民</b></i>
                         <div class="zp_index_cont_left_zwtj_cont_left">
                             <h4>WEB前端研发工程师</h4>
-                            <p> <span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验</p>
+                            <p><span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验
+                            </p>
                             <span>2017-06-08</span>
                         </div>
                         <div class="zp_index_cont_left_zwtj_cont_right">
@@ -88,7 +91,8 @@
                         <i><b>国</b></i>
                         <div class="zp_index_cont_left_zwtj_cont_left">
                             <h4>WEB前端研发工程师</h4>
-                            <p> <span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验</p>
+                            <p><span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验
+                            </p>
                             <span>2017-06-08</span>
                         </div>
                         <div class="zp_index_cont_left_zwtj_cont_right">
@@ -101,7 +105,8 @@
                         <i><b>外</b></i>
                         <div class="zp_index_cont_left_zwtj_cont_left">
                             <h4>WEB前端研发工程师</h4>
-                            <p> <span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验</p>
+                            <p><span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验
+                            </p>
                             <span>2017-06-08</span>
                         </div>
                         <div class="zp_index_cont_left_zwtj_cont_right">
@@ -113,14 +118,16 @@
                 </ul>
             </div>
             <div id="serchPostionButton" class="zp_index_cont_left_zwtj_gdzw">
-                <a href="javascript:void(0)" onclick="serchPostion()">查看更多职位</a>
+                <a href="javascript:void(0)" onclick="serchPostion()" style="color: rgba(128,128,128,0.91)">查看更多职位</a>
             </div>
         </div>
-        <div class="col-md-4 zp_index_cont_right">
+
+        <div class="zp_index_cont_right">
             <div class="zp_index_cont_right_top">
                 <div>
                     <div class="zp_index_cont_right_top_left">
-                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" width="100%" height="100%">
+                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" width="100%"
+                             height="100%">
                     </div>
                     <div class="zp_index_cont_right_top_right">
                         <span>${resume.resumeName}</span>
@@ -150,41 +157,35 @@
                     </c:if>
                 </p>
                 <ul>
-                    <li class="col-md-3"><a href=""><span>刷新简历</span></a></li>
-                    <li class="col-md-3"><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html?resumId=${resume.resumeId}"><span>编辑简历</span></a></li>
-                    <li class="col-md-3"><a href=""><span>账号设置</span></a></li>
-                    <li class="col-md-3"><a href=""><span>金卡服务</span></a></li>
-                </ul>
-            </div>
-            <div class="zp_index_cont_right_middle">
-                <p><i></i>隐私设置</p>
-                <ul>
-                    <%--<li>
-                        <span>社交名片:</span>
-                        <div>
-                            <select class="form-control">
-                                <option>所有人都能看到</option>
-                                <option></option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </li>--%>
-                    <li>
-                        <span>求职简历:</span>
-                        <div>
-                            <select class="form-control" onchange="ysChange(this)">
-                                <option value="0">开放简历</option>
-                                <option value="1">隐藏简历</option>
-                            </select>
-                        </div>
+                    <li class="zp_small">
+                        <a href="">
+                            <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
+                            <span style="margin-top: 5px">刷新简历</span>
+                        </a>
+                    </li>
+                    <li class="zp_small">
+                        <a href="${pageContext.request.contextPath}/view/foreEnd3/zp_jianli.html?resumId=${resume.resumeId}">
+                            <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
+                            <span style="margin-top: 5px">编辑简历</span>
+                        </a>
+                    </li>
+                    <li class="zp_small">
+                        <a href="">
+                            <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
+                            <span style="margin-top: 5px">账号设置</span>
+                        </a>
+                    </li>
+                    <li class="zp_small">
+                        <a href="">
+                            <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
+                            <span style="margin-top: 5px">金卡服务</span>
+                        </a>
                     </li>
                 </ul>
             </div>
             <div class="zp_index_cont_right_bottom">
                 <div class="zp_index_cont_right_bottom_top">
-                    <p>简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>
+                    <p>简&emsp;历</p>
                     <div>
                         <div class="col-lg-7">
                             <h4>60%&nbsp;&nbsp;<span>06-29&nbsp;13:07</span></h4>
@@ -198,6 +199,20 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div class="zp_index_cont_right_middle" style="border: none;border-bottom: 1px solid #e5e5e5">
+                    <p><span> 隐私设置</span></p>
+                    <ul>
+                        <li>
+                            <span>求职简历:</span>
+                            <div>
+                                <select class="form-control" onchange="ysChange(this)">
+                                    <option value="0">开放简历</option>
+                                    <option value="1">隐藏简历</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <div class="zp_index_cont_right_bottom_middle">
                     <p><span>谁看过我的简历</span></p>
@@ -242,94 +257,94 @@
     var page;
     function serchPostion() {
         var aaa = $('#serchPostionButton').html();
-        $('#serchPostionButton').html('<div class="spinner">'+
-            '<div class="rect1"></div>'+
-            '<div class="rect2"></div>'+
-            '<div class="rect3"></div>'+
-            '<div class="rect4"></div>'+
-            '<div class="rect5"></div>'+
+        $('#serchPostionButton').html('<div class="spinner">' +
+            '<div class="rect1"></div>' +
+            '<div class="rect2"></div>' +
+            '<div class="rect3"></div>' +
+            '<div class="rect4"></div>' +
+            '<div class="rect5"></div>' +
             '</div>');
         var serch = {};
-        if('${resume.resumeWorkspace}'){
+        if ('${resume.resumeWorkspace}') {
             serch.workspace = '${resume.resumeWorkspace}';
         }
-        if('${resume.resumePosition}'){
+        if ('${resume.resumePosition}') {
             serch.likeStr = '${resume.resumePosition}';
         }
-        if(page){
+        if (page) {
             serch.page = page;
         }
         $.ajax({
-            url:"${pageContext.request.contextPath}/Postion/selPostionIndexAjax.do",
-            data:serch,
-            dataType:"json",
-            success:function (data) {
-                for (var i=0;i<data.postionList.length;i++){
+            url: "${pageContext.request.contextPath}/Postion/selPostionIndexAjax.do",
+            data: serch,
+            dataType: "json",
+            success: function (data) {
+                for (var i = 0; i < data.postionList.length; i++) {
                     var companyNature;//公司类别
-                    if(data.postionList[i].company.companyNature==1){
+                    if (data.postionList[i].company.companyNature == 1) {
                         companyNature = "国";
-                    }else if(data.postionList[i].company.companyNature==2){
+                    } else if (data.postionList[i].company.companyNature == 2) {
                         companyNature = "私";
-                    }else if(data.postionList[i].company.companyNature==3){
+                    } else if (data.postionList[i].company.companyNature == 3) {
                         companyNature = "外";
                     }
                     var salary;//薪资
-                    if(data.postionList[i].postionMm==-1){
+                    if (data.postionList[i].postionMm == -1) {
                         salary = '面议';
-                    }else if(data.postionList[i].postionMm==data.postionList[i].postionYm) {
-                        salary = ((data.postionList[i].postionMm*12/10000)+'').replace('.0','')+'万';
-                    }else{
-                        salary = ((data.postionList[i].postionMm*12/10000)+'').replace('.0','')+'万-'+((data.postionList[i].postionYm*12/10000)+'').replace('.0','')+'万';
+                    } else if (data.postionList[i].postionMm == data.postionList[i].postionYm) {
+                        salary = ((data.postionList[i].postionMm * 12 / 10000) + '').replace('.0', '') + '万';
+                    } else {
+                        salary = ((data.postionList[i].postionMm * 12 / 10000) + '').replace('.0', '') + '万-' + ((data.postionList[i].postionYm * 12 / 10000) + '').replace('.0', '') + '万';
                     }
                     var time;//发布时间
                     var date = new Date(data.postionList[i].postionTime);
-                    time = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+                    time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
                     var fields = '';//领域
-                    for(var j = 0;j<data.postionList[i].company.fields.length;j++){
-                        fields += data.postionList[i].company.fields[j].fieldName+"/";
+                    for (var j = 0; j < data.postionList[i].company.fields.length; j++) {
+                        fields += data.postionList[i].company.fields[j].fieldName + "/";
                     }
                     var welfares = '';//福利
-                    for(var j = 0;j<data.postionList[i].company.welfares.length;j++){
-                        welfares += '<span>'+data.postionList[i].company.welfares[j].welfareName+"</span>";
+                    for (var j = 0; j < data.postionList[i].company.welfares.length; j++) {
+                        welfares += '<span>' + data.postionList[i].company.welfares[j].welfareName + "</span>";
                     }
 
                     $('#postionRs').append(
-                        '<li>'+
-                        '<i><b>'+companyNature+'</b></i>'+
-                        '<div class="zp_index_cont_left_zwtj_cont_left">'+
-                        '<h4>'+data.postionList[i].postionName+'</h4>'+
-                        '<p> <span>'+salary+'</span>&nbsp;&nbsp;|&nbsp;&nbsp;'+data.postionList[i].postionSpace+'&nbsp;&nbsp;|&nbsp;&nbsp;'+data.postionList[i].postionEducation+'及以上&nbsp;&nbsp;|&nbsp;&nbsp;'+data.postionList[i].postionExp+'</p>'+
-                        '<span>'+time+'</span>'+
-                        '</div>'+
-                        '<div class="zp_index_cont_left_zwtj_cont_right">'+
-                        '<p>'+data.postionList[i].company.companyName+'</p>'+
-                        '<p>'+fields+'</p>'+
-                        '<p class="zp_index_cont_bz">'+welfares+'</p>'+
-                        '</div>'+
+                        '<li>' +
+                        '<i><b>' + companyNature + '</b></i>' +
+                        '<div class="zp_index_cont_left_zwtj_cont_left">' +
+                        '<h4>' + data.postionList[i].postionName + '</h4>' +
+                        '<p> <span>' + salary + '</span>&nbsp;&nbsp;|&nbsp;&nbsp;' + data.postionList[i].postionSpace + '&nbsp;&nbsp;|&nbsp;&nbsp;' + data.postionList[i].postionEducation + '及以上&nbsp;&nbsp;|&nbsp;&nbsp;' + data.postionList[i].postionExp + '</p>' +
+                        '<span>' + time + '</span>' +
+                        '</div>' +
+                        '<div class="zp_index_cont_left_zwtj_cont_right">' +
+                        '<p>' + data.postionList[i].company.companyName + '</p>' +
+                        '<p>' + fields + '</p>' +
+                        '<p class="zp_index_cont_bz">' + welfares + '</p>' +
+                        '</div>' +
                         '</li>');
 
                 }
-                if(data.page==data.pages){
+                if (data.page == data.pages) {
                     $('#serchPostionButton').remove();
-                }else{
-                    page = data.page+1;
+                } else {
+                    page = data.page + 1;
                     $('#serchPostionButton').html(aaa);
                 }
             }
         });
     }
     function toSerch() {
-        if($('#zp_index_xxk').val()==''){
+        if ($('#zp_index_xxk').val() == '') {
             $('#zp_index_xxk').val($('#zp_index_xxk').attr('placeholder'));
         }
     }
     function ysChange(ys) {
-        var dd = {resumeId:'${resume.resumeId}',resumeYm:ys.value};
+        var dd = {resumeId: '${resume.resumeId}', resumeYm: ys.value};
         $.ajax({
-            type:'post',
-            url:'${pageContext.request.contextPath}/Resume/updateResume.do',
+            type: 'post',
+            url: '${pageContext.request.contextPath}/Resume/updateResume.do',
             contentType: "application/json",
-            data:JSON.stringify(dd)
+            data: JSON.stringify(dd)
         });
     }
 </script>

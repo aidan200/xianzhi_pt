@@ -19,9 +19,9 @@
 <nav class="navbar navbar-bottom" role="navigation">
 
     <div id="two">
-        <div style="min-width:1200px">
+        <div>
             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/LOGO1.png" alt="" class="alllogo">
-            <ul class="nav navbar-nav nav_2">
+            <ul class="nav nav_2">
                 <li>
                     <a href="index.html" class="sim-button button01"><span data-hover="先知首页">&nbsp;先知首页&nbsp;</span></a>
                 </li>
@@ -42,18 +42,19 @@
                     <a href="#" class="sim-button button01"><span data-hover="活动中心">&nbsp;活动中心&nbsp;</span></a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav nav_1">
+            <ul class="nav nav_1">
                 <c:if test="${userLogin!=undefined}">
                     <li class="login1">
                         <a><span>${userLogin.loginCount}${userLogin.member.memberId}</span></a>
                     </li>
                 </c:if>
-                <li class="login1">
-                    <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"><span>登录</span></a>
-                </li>
                 <li class="register1">
                     <a href="#0" class="allregister"><span>注册</span></a>
                 </li>
+                <li class="login1">
+                    <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"><span>登录</span></a>
+                </li>
+
             </ul>
         </div>
     </div>
