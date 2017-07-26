@@ -52,9 +52,9 @@
             <div class="zp_zwxq_cont_left_qtxx">
                 <h3>其他信息：</h3>
                 <ul>
-                    <li><span>所属部门：</span><label>${xzPostion.filed1}</label></li>
-                    <li><span>专业要求：</span><label>${xzPostion.filed3}</label></li>
-                    <li><span>下属人数：</span><label>${xzPostion.filed2}人</label></li>
+                    <li><span>所属部门：</span><label>${xzPostion.postionDepartment}</label></li>
+                    <li><span>专业要求：</span><label>${xzPostion.postionSpecialty}</label></li>
+                    <li><span>下属人数：</span><label>${xzPostion.peopleNumber}人</label></li>
                 </ul>
             </div>
             <div class="zp_zwxq_cont_left_qyjs">
@@ -88,8 +88,6 @@
                             </li>
                             </c:forEach>
                         </ul>
-
-
                     </div>
                 </div>
                 <p>
@@ -104,7 +102,7 @@
                 <a href="" class="zp_zwxq_cont_a_right"></a>
             </div>
             <div class="zp_zwxq_cont_left_ss">
-                <form action="${pageContext.request.contextPath}/Postion/selPostionByname">
+                <form action="${pageContext.request.contextPath}/Postion/selPostionByname.do">
                     <input type="text" placeholder="搜索其他职位，如：总经理秘书" name="postionName">
                     <button class="btn btn-primary" type="submit">
                         <span>搜索</span>
