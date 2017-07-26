@@ -13,6 +13,8 @@ import java.util.Map;
  */
 public interface XzPostionService {
 
+    List<XzPostion> selPostionSendList(Long companyId);
+
     PageBean<XzPostion> selPostionIndex(int page, int rows, Map map);
 
     PageBean<XzPostion> selectByCompanyId(int page,int rows, Long companyId);

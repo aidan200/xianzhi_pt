@@ -24,6 +24,11 @@ public class XzPostionServiceImpl implements XzPostionService{
 
 
     @Override
+    public List<XzPostion> selPostionSendList(Long companyId) {
+        return postionMapper.selPostionSendList(companyId);
+    }
+
+    @Override
     public PageBean<XzPostion> selPostionIndex(int page, int rows, Map map) {
         PageHelper.startPage(page,rows);
         List<XzPostion> postion1 = postionMapper.selPostionList(map);
