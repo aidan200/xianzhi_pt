@@ -33,15 +33,14 @@
 <jsp:include page="personnav.jsp"/>
 
 
-
-<section class="container zp_jianli_cont">
-    <div class="row">
-        <div class="col-md-8 zp_jianli_cont_left">
+<section class="zp_jianli_tt">
+    <div class="zp_jianli_cont">
+        <div class="zp_jianli_cont_left">
             <div class="zp_jianli_cont_left_top">
                 <div>
                     <div class="zp_jianli_mc">
                         <em title="中文简历_20170704">中文简历_201...</em>
-                        <a href="javascript:;" class="icons16 icons16-redit"></a>
+                        <a href="javascript:;" class="fa fa-edit"></a>
                     </div>
                     <div class="zp_jianli_wcd">
                         <span>完成度60%</span>
@@ -57,10 +56,13 @@
             <div class="zp_jianli_cont_left_top2">
                 <div class="zp_jianli_cont_left_top2_top jbxx2">
                     <div class="zp_jianli_cont_left_top2_left"></div>
-                    <h3><span id="grxx_name"></span> <a class="zp_jianli_xg" href="javascript:;"></a></h3>
-                    <p>职位名称：<span id="grxx_zwmc"></span>当前城市：<span id="grxx_dqcs"></span>工作年限：<span
-                            id="grxx_gznf"></span></p>
-                    <p>当前行业：<span id="grxx_dqhy"></span></p>
+                    <h3><span id="grxx_name"></span> <a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a></h3>
+                    <p>职位名称：<span id="grxx_zwmc" style="margin-right: 15px"></span>
+                        当前城市：<span id="grxx_dqcs"></span>
+                    </p>
+                    <p>当前行业：<span id="grxx_dqhy" style="margin-right: 15px"></span>
+                        工作年限：<span id="grxx_gznf"></span>
+                    </p>
                 </div>
 
             </div>
@@ -68,33 +70,36 @@
                 <div class="zp_jianli_cont_left_jbzl">
                     <div class="zp_jianli_cont_left_jbzl_yl">
                         <div class="zp_jianli_cont_left_jbzl_top">
-                            <div class="zp_jianli_cont_left_jbzl_top_bg"
-                                 style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                            <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-user-circle-o"></div>
                             <span>基本资料</span>
                             <em class="tips-required">必填<i></i></em>
-                            <a class="zp_jianli_xg" href="javascript:;"></a>
+                            <a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>
                         </div>
                         <div class="zp_jianli_cont_left_jbzl_middle">
                             <div class="xb">
-                                性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:<span id="xb"></span>
-                            </div>
-                            <div class="zp_jianli_cont_left_jbzl_csny">
+                                <span class="every_test">
+                                性&emsp;&emsp;别：<span id="xb"></span>
+                                </span>
 
-                                <div class="pull-left">&nbsp; 出生年份: &nbsp; <span id="csnf"></span></div>
-                                <div class="pull-right">婚姻状况: &nbsp; <span id="hyzk"></span></div>
-                            </div>
-                            <div class="zp_jianli_cont_left_jbzl_sjh">
+                                <span class="every_test">
+                                出生年份：<span id="csnf"></span>
+                                </span>
 
-                                <div>
-                                    手机：<span id="sj">	</span>
-                                </div>
-                                <div>
-                                    邮箱：<span id="yx"></span>
-                                </div>
-                                <div>
-                                    状态：<span id="zt"></span>
-                                </div>
+                                <span class="every_test">
+                                    婚姻状况： &nbsp; <span id="hyzk"></span>
+                                </span>
 
+                                <span class="every_test">
+                                状态：<span id="zt"></span>
+                                </span>
+
+                                <span class="every_test">
+                                手机：<span id="sj">	</span>
+                                </span>
+
+                                <span class="every_test">
+                                邮箱：<span id="yx"></span>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -102,11 +107,10 @@
                 <div class="zp_jianli_cont_left_zyyx">
                     <div class="zp_jianli_cont_left_zyyx_yl">
                         <div class="zp_jianli_cont_left_jbzl_top">
-                            <div class="zp_jianli_cont_left_jbzl_top_bg"
-                                 style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                            <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-map-signs"></div>
                             <span>职业意向</span>
                             <em class="tips-required">必填<i></i></em>
-                            <a class="zp_jianli_xg" href="javascript:;"></a>
+                            <a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>
                         </div>
                         <div id="zyyx_cont">
                             <p>期望地点：沈阳</p>
@@ -117,10 +121,9 @@
                 </div>
                 <div class="zp_jianli_cont_left_gzjl">
                     <div>
-                        <div class="zp_jianli_cont_left_gzjl_yl" >
+                        <div class="zp_jianli_cont_left_gzjl_yl">
                             <div class="zp_jianli_cont_left_jbzl_top" id="gzjl">
-                                <div class="zp_jianli_cont_left_jbzl_top_bg"
-                                     style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                                <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-calendar-minus-o"></div>
                                 <span>工作经历</span>
                                 <em class="tips-required">必填<i></i></em>
 
@@ -134,8 +137,7 @@
                 </div>
                 <div class="zp_jianli_cont_left_xl" id="gzjl_parent">
                     <div id="zp_jyjl" class="zp_jianli_cont_left_jbzl_top">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg"
-                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-graduation-cap"></div>
                         <span>教育经历</span>
                         <em class="tips-required">必填<i></i></em>
                     </div>
@@ -146,8 +148,7 @@
                 </div>
                 <div class="zp_jianli_cont_left_xmjy" id="xmjy_parent">
                     <div class="zp_jianli_cont_left_jbzl_top" id="zp_xmjy">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg"
-                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-map-signs"></div>
                         <span>项目经验</span>
                     </div>
 
@@ -159,8 +160,7 @@
                 <div class="zp_jianli_cont_left_zopj">
                     <a class="zp_jianli_xg" href="javascript:;"></a>
                     <div class="zp_jianli_cont_left_jbzl_top">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg"
-                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-pencil-square-o"></div>
                         <span>自我评价</span>
 
                     </div>
@@ -173,8 +173,7 @@
                 <div class="zp_jianli_cont_left_fjxx">
                     <a class="zp_jianli_xg" href="javascript:;"></a>
                     <div class="zp_jianli_cont_left_jbzl_top">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg"
-                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-tags"></div>
                         <span>附加信息</span>
                     </div>
                     <p class="zp_index_p_left zp_index_p_2" id="zp_fjxx"></p>
@@ -185,10 +184,9 @@
                 </div>
                 <div class="zp_jianli_cont_left_scjn">
                     <div class="zp_jianli_cont_left_jbzl_top" id="scjn">
-                        <div class="zp_jianli_cont_left_jbzl_top_bg"
-                             style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_jianli_img5.png')"></div>
+                        <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-motorcycle"></div>
                         <span>擅长技能</span>
-                        <a class="zp_jianli_xg" href="javascript:;"></a>
+                        <a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>
                     </div>
 
                     <div class="zp_index_p_left zp_index_p_2" id="scjn_cont">
@@ -202,7 +200,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 zp_index_cont_right">
+        <div class="zp_index_cont_right">
             <div class="zp_index_cont_right_middle">
                 <p><i></i>隐私设置</p>
                 <ul>
@@ -238,14 +236,17 @@
 
                                         </ul>
                                     </div>
-
-                                    <button type="button" class="btn btn-info">搜索公司</button>
-                                    <button type="button" style="display: none" class="btn btn-info">取消</button>
-                                    <input id="gs_ssk" type="text" style="display: none">
+                                    <%--<div>搜索公司</div>--%>
+                                    <span style="display: inline-block;margin-top: 10px">
+                                    <button type="button" class="jianli_s"><span class="fa fa-search"
+                                                                                 style="color: #3d9ccc"></span> 搜索</button>
+                                    <button type="button" class="jianli_s2"><span class="fa fa-times"
+                                                                                  style="color: #3d9ccc"></span> 取消</button>
+                                    <input id="gs_ssk" type="text" style="display: none;padding-left: 10px">
                                     <div id="gs_cont" style="display:none;"></div>
-                                    <button id="qr" type="button" style="display: none" class="btn btn-info">确认</button>
+                                    <button id="qr" type="button" class="jianli_s3"><span class="fa fa-check" style="color: #fc6866"></span>确认</button></span>
                                     <div id="sy">
-                                        <ul>
+                                        <ul class="jianli_ul" style="margin-left: 48px">
 
                                         </ul>
                                     </div>
@@ -258,17 +259,17 @@
 
             <div class="zp_index_cont_right_bottom">
                 <div class="zp_index_cont_right_bottom_top">
-                    <p>简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>
+                    <p>简&emsp;历</p>
                     <div>
                         <div class="col-lg-7">
                             <h4>60%&nbsp;&nbsp;<span>06-29&nbsp;13:07</span></h4>
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
-                                <li>2</li>
-                                <li>2</li>
-                                <li>2</li>
-                                <li>2</li>
+                                <li><a href=""><span class="fa fa-eye" style="color: rgba(128,128,128,0.91)"></span></a></li>
+                                <li><a href=""><span class="fa fa-download" style="color: rgba(128,128,128,0.91)"></span></a></li>
+                                <li><a href=""><span class="fa fa-refresh" style="color: rgba(128,128,128,0.91)"></span></a></li>
+                                <li><a href=""><span class="fa fa-pencil" style="color: rgba(128,128,128,0.91)"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -295,12 +296,12 @@
                     </ul>
                 </div>
                 <div class="zp_index_cont_right_bottom_bottom">
-                    <p><span>谁看过我的简历</span></p>
+                    <p><span>每日投递数量</span></p>
                     <div>
                         <div class="zp_index_ww1"><span>0</span></div>
                         <div class="zp_index_ww2">
-                            <p><a href=""><span>0</span>家企业HR查看过</a></p>
-                            <p><span>0</span>刷新简历能增加被查看概率</p>
+                            <p><a href="">今日已投递<span>0</span>个职位</a></p>
+                            <p><span>0</span>每天最多投递50个</p>
 
                         </div>
                     </div>
@@ -317,7 +318,7 @@
         <div class="comd_table" id="hy_tab">
             <h4>IT行业</h4>
             <ul class="zp_ulu">
-                <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网"/>互联网/移动互联网 </li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网"/>互联网/移动互联网</li>
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏"/>网络游戏</li>
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件"/>计算机软件</li>
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成"/>IT服务/系统集成</li>
@@ -325,7 +326,7 @@
         </div>
 
         <ul class="cd-buttonsh">
-            <li><a href="#0"  class="cd-popup-closeh">取消</a></li>
+            <li><a href="#0" class="cd-popup-closeh">取消</a></li>
             <li><a href="#0" id="xz_qwhy_qd">确定</a></li>
         </ul>
         <a href="#0" class="cd-popup-closeh cmd_closeh fa fa-remove"></a>

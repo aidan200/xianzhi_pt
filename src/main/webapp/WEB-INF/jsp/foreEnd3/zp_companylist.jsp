@@ -31,7 +31,7 @@
 <div style="clear: both"></div>
 <div id="companylist">
     <h4></h4>
-    <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/lvlv2.jpg');z-index:2;background-size: cover"></div>
+    <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/lvlv2.jpg');z-index:2"></div>
     <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/nbnb2.jpg');z-index:2"></div>
     <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/lvlv2.jpg');z-index:2"></div>
 

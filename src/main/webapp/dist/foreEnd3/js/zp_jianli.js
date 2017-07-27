@@ -172,8 +172,8 @@ obj_yhxx.prototype.bindingSJ=function (){
             }
             str+='</li>'
             str+='</ul>'
-            str+='<button type="button" id="zp_jianli_bd_1_qd" class="btn btn-primary ">确定</button>'
-            str+='<button class="btn btn-default" id="zp_jianli_bd_1_qx" type="button">取消</button>'
+            str+='<button type="button" id="zp_jianli_bd_1_qd" class="allyes">确定</button>'
+            str+='<button class="allno" id="zp_jianli_bd_1_qx" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_top2_top').after(str);              //插入
@@ -526,8 +526,8 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
             str+='</div>'
             str+='<div style="clear: both;"></div>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default" id="jbzl_2_qx"  type="button">取消</button>'
+            str+='<button type="button" class="allyes">确定</button>'
+            str+='<button class="allno" id="jbzl_2_qx"  type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_jbzl_yl').after(str);
@@ -764,8 +764,8 @@ obj_zyyx.prototype.bindingSJ=function (){
             str+='</li>'
             str+='</ul>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default" id="zp_jianli_zl_3_qx" type="button">取消</button>'
+            str+='<button type="button" class="allyes">确定</button>'
+            str+='<button class="allno" id="zp_jianli_zl_3_qx" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_zyyx_yl').after(str);
@@ -1206,8 +1206,8 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='<div style="clear: both;"></div>'
                 str+='</div>'
                 str+='<div class="zp_jianli_zl_2_bottom">'
-                str+='<button type="button" class="btn btn-primary">确定</button>'
-                str+='<button class="btn btn-default" id="jbzl_4_qx" type="button">取消</button>'
+                str+='<button type="button" class="allyes">确定</button>'
+                str+='<button class="allno" id="jbzl_4_qx" type="button">取消</button>'
                 str+='</div>'
                 str+='</div>'
                 $('#gzjl').siblings('div').eq(index).after(str);  //插入
@@ -1423,8 +1423,8 @@ obj_gzjl.prototype.bindingSJ=function (){
             str+='<div style="clear: both;"></div>'
             str+='</div>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default" id="jbzl_4_qx" type="button">取消</button>'
+            str+='<button type="button" class="allyes"">确定</button>'
+            str+='<button class="allno" id="jbzl_4_qx" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $(this).before(str)//插入简历的空白模板
@@ -1664,8 +1664,8 @@ obj_yyjl.prototype.bindingSJ=function (){
                     str+='</li>'
                     str+='</ul>'
                     str+='<div class="zp_jianli_zl_2_bottom">'
-                    str+='<button type="button" class="btn btn-primary">确定</button>'
-                    str+='<button class="btn btn-default"  type="button">取消</button>'
+                    str+='<button type="button" class="allyes">确定</button>'
+                    str+='<button class="allno"  type="button">取消</button>'
                     str+='</div>'
                     str+='</div>'
                     $(this).parent().parent().after(str)     //插入进去
@@ -1836,8 +1836,8 @@ obj_yyjl.prototype.bindingSJ=function (){
             str+='</li>'
             str+='</ul>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default"  type="button">取消</button>'
+            str+='<button type="button" class="allyes">确定</button>'
+            str+='<button class="allno"  type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $(this).before(str)
@@ -2210,8 +2210,8 @@ obj_xmjy.prototype.bindingSJ=function (){
              str+='</div>'
              str+='</div>'
              str+='<div class="zp_jianli_zl_2_bottom">'
-             str+='<button type="button" class="btn btn-primary">确定</button>'
-             str+='<button class="btn btn-default"  type="button">取消</button>'
+             str+='<button type="button" class="allyes">确定</button>'
+             str+='<button class="allno"  type="button">取消</button>'
              str+='</div>'
              str+=' </div>'
              $(this).before(str) //插入进去
@@ -2373,8 +2373,8 @@ obj_zopj.prototype.bindingSJ=function (){
             }
             str+='<p>你还可以输入<span>600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default" type="button">取消</button>'
+            str+='<button type="button" class="allyes">确定</button>'
+            str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_zopj').after(str);
@@ -2420,8 +2420,8 @@ obj_zopj.prototype.bindingSJ=function (){
             str+='<textarea class="form-control" rows="3"  placeholder="请填写自我评价"></textarea>'
             str+='<p>你还可以输入<span>600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default" type="button">取消</button>'
+            str+='<button type="button" class="allyes">确定</button>'
+            str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_zopj').after(str);
@@ -2556,8 +2556,8 @@ obj_fjxx.prototype.bindingSJ=function (){
             str+='<textarea class="form-control" rows="3" placeholder="请填写附加信息"></textarea>'
             str+='<p>你还可以输入<span>600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default" type="button">取消</button>'
+            str+='<button type="button" class="allyes">确定</button>'
+            str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_fjxx').after(str);
@@ -2657,8 +2657,8 @@ obj_scjn.prototype.bindingSJ=function () {
         str+='<p>请输入你擅长的技能：<input type="text" class="form-control"><span style="color:#FF7F00 ;">请按回车键添加</span></p>'
         str+='</div>'
         str+='<div class="zp_jianli_zl_2_bottom">'
-        str+='<button type="button" class="btn btn-primary">确定</button>'
-        str+='<button class="btn btn-default"  type="button">取消</button>'
+        str+='<button type="button" class="allyes">确定</button>'
+        str+='<button class="allno"  type="button">取消</button>'
         str+='</div>'
         str+='</div>'
 
@@ -2736,8 +2736,8 @@ obj_scjn.prototype.bindingSJ=function () {
             str2+='<p>请输入你擅长的技能：<input type="text" class="form-control"> <span style="color:#FF7F00 ;">请按回车键添加</span></p>'
             str2+='</div>'
             str2+='<div class="zp_jianli_zl_2_bottom">'
-            str2+='<button type="button" class="btn btn-primary">确定</button>'
-            str2+='<button class="btn btn-default"  type="button">取消</button>'
+            str2+='<button type="button" class="allyes">确定</button>'
+            str2+='<button class="allno"  type="button">取消</button>'
             str2+='</div>'
             str2+='</div>'
             $('#scjn_cont').after(str2);                                 //插入
@@ -2824,7 +2824,7 @@ obj_gssc.prototype.init=function (){
             }else{
                 var str=''
                 for(var i=0;i<This.pb.clist.length;i++){
-                    str+='<li><span data-id="'+This.pb.clist[i].companyId+'">'+This.pb.clist[i].companyName+'</span><a href="javascript:;" class="li_sc">x</a></li>'
+                    str+='<li><span data-id="'+This.pb.clist[i].companyId+'">'+This.pb.clist[i].companyName+'</span><a href="javascript:;" class="li_sc"><span class="fa fa-times"></span></a></li>'
                 }
                 $('#pb_gs').html(str);
                 This.bindingSJ();
@@ -2912,7 +2912,7 @@ obj_gssc.prototype.bindingSJ=function (){
                         //AJAX成功后执行的
                         var str=''
                         for(var i=0;i<data.plist.length;i++){
-                            str+='<li><span  data-id="'+data.plist[i].companyId+'">'+data.plist[i].companyName+'</span><a href="javascript:;" class="li_sc">o</a></li>'
+                            str+='<li><span  data-id="'+data.plist[i].companyId+'">'+data.plist[i].companyName+'</span><a href="javascript:;" class="li_sc"> <span class="fa fa-check" style="color: #FFFFff"></span></a></li>'
                         }
                         $('#sy > ul').html(str);
                         $('#sy > ul').find('li').on('click',function (){             //添加公司的事件
