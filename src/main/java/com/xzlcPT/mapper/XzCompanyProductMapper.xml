@@ -193,7 +193,7 @@
       <if test="productUrl != null and productUrl != ''">
       product_url = #{productUrl,jdbcType=VARCHAR},
       </if>
-      <if test="filed1 != null and filed !=''">
+      <if test="filed1 != null and filed1 !=''">
         filed1 = #{filed1,jdbcType=VARCHAR}
       </if>
     </set>

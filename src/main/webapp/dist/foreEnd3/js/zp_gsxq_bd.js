@@ -354,14 +354,12 @@ cpjx.prototype.xgCont=function (){                          //修改
      $('#gsxq_cpjs a').each(function (i,e){
             $(e).unbind().on('click',function (){
                 var parent=$(e).parent()
-                uu.init();
                 var data1={
                     productId:parent.attr('data-id'),
                     productIntro:parent.find('textarea').val(),
                     filed1:parent.find('._gsmc').val(),
-                    productUrl:""
+                    productUrl:parent.find('.zp_gsxq_cpjs_cp_left > div').attr('data-url')
                 }
-                alert(data1.filed1)
                 $.ajax({
                     type:"post",    //提交方式
                     async:true,  //是否异步
