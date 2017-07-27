@@ -299,13 +299,11 @@ cpjx.prototype.init=function (){
             $('#gsxq_cpjs > .zp_gsxq_cpjs_cp').each(function (i,e){
                 var aaa=$(e).find(' .cpjs_bg').attr('id')
                 var bbb=$(e).find(' .cpjs_bg + input').attr('id');
-                alert(aaa)
-                alert(bbb)
                 var ccc=document.getElementById(aaa);
                 var ddd=document.getElementById(bbb)
                 var uu =  new uploadUtil(ccc,dkh+"/upload/img",ddd,function (imgName){
                     $(e).find(' .cpjs_bg').attr('data-url',imgName)
-
+                    $(e).find('a').css({"display":"block"})
                 });
                 uu.init()
             })
@@ -314,6 +312,7 @@ cpjx.prototype.init=function (){
 
             This.xg();
             This.xgCont();
+            This.sc()
 
         },error:function (){ //报错执行的
             alert('基本资料修改错误')
@@ -387,27 +386,99 @@ cpjx.prototype.xgCont=function (){                          //修改
 
 }
 cpjx.prototype.bindingSJ=function (){
-    var ww=0;
+    var This=this;
+    var kg=true;
+
     $('#tjcpjs').on('click',function (){        //添加商品
-        var aaa={
-            index:ww++
+        if(kg){
+            kg=false
+
+            var tjcpjs_html  = template('tj_gscp');
+            $('#tjcpjs').before(tjcpjs_html);        //插入元素
+            $('.zp_gsxq_cpjs_cp > span').on('click',function (){
+                $(this).parent().remove();          //自杀
+            })
+            var oID=$('#tjcpjs').prev('div').find('.zp_gsxq_cpjs_cp_left').find('div').attr('id')
+            var oinput=$('#tjcpjs').prev('div').find('.zp_gsxq_cpjs_cp_left').find('input').attr('id')
+            var aa=document.getElementById(oID);
+            var bb=document.getElementById(oinput);
+            alert($(aa).attr('id'))
+            var uu =  new uploadUtil(aa,dkh+"/upload/img",bb,function (imgName){
+                    $('#gsxq_cpjs > .zp_gsxq_cpjs_cp').each(function (i,e){
+                        if($(e).find('.zp_gsxq_cpjs_cp_left >div').attr('id')=='cpjs_'){
+                            $(e).find('.zp_gsxq_cpjs_cp_left >div').attr('data-url',imgName)
+                            $(e).find('a').css({"display":"block"})
+                            $(e).find('a').on('click',function (){
+                                var othis=this
+                                    var data={
+                                        filed1:$(othis).siblings('.zp_gsxq_cpjs_cp_right').find(' ._gsmc').val(),
+                                        productUrl:$(othis).siblings('.zp_gsxq_cpjs_cp_left').find('#cpjs_').attr('data-url'),
+                                        productIntro:$(othis).siblings('.zp_gsxq_cpjs_cp_right').find('textarea').val(),
+                                        companyId:ID
+                                    }
+                                $.ajax({
+                                    type:"post",
+                                    async:true,
+                                    contentType: "application/json",
+                                    data:JSON.stringify(data),
+                                    dataType:'json',
+                                    url:path+'Product/insertProduct.do',
+                                    success:function (data){
+                                        kg=true;
+                                        var aa=$('#gsxq_cpjs > div')
+                                        for(var i=0;i<aa.length-1;i++){
+                                            aa.eq(i).remove();
+                                        }
+                                        This.init()
+
+                                    },error:function (){ //报错执行的
+                                        alert('基本资料修改错误')
+                                    }
+
+                                })
+
+
+
+                            })
+
+                        }
+                    })
+            });
+
+            uu.init();
         }
-        var tjcpjs_html  = template('tj_gscp',aaa);
-        $('#tjcpjs').before(tjcpjs_html);        //插入元素
-        $('.zp_gsxq_cpjs_cp > span').on('click',function (){
-            $(this).parent().remove();          //自杀
-        })
-        var oID=$('#tjcpjs').prev('div').find('.zp_gsxq_cpjs_cp_left').find('div').attr('id')
-        var oinput=$('#tjcpjs').prev('div').find('.zp_gsxq_cpjs_cp_left').find('input').attr('id')
-        var aa=document.getElementById(oID);
-        var bb=document.getElementById(oinput);
-        var uu =  new uploadUtil(aa,dkh+"/upload/img",bb,function (imgName){
-
-        });
-        uu.init();
-
     })
 };
+cpjx.prototype.sc=function (){
+    var This=this;
+    $('#gsxq_cpjs .zp_gsxq_cpjs_cp').each(function (i,e){
+        $(e).find('span').on('click',function (){
+            var data={
+                companyId:ID,
+                productId:$(e).attr('data-id')
+            }
+            $.ajax({
+                type:"post",
+                async:true,
+                data:{productId:$(e).attr('data-id')},
+                dataType:'text',
+                url:path+'',
+                success:function (data){//data 就是数据 json
+                    kg=true;
+                    var aa=$('#gsxq_cpjs > div')
+                    for(var i=0;i<aa.length-1;i++){
+                        aa.eq(i).remove();
+                    }
+                    This.init()
+
+                },error:function (){ //报错执行的
+                    alert('基本资料修改错误')
+                }
+
+            })
+        })
+    })
+}
 
 
 
