@@ -277,7 +277,7 @@
                                 <input id=cpjs_inp{{index}}  type="text" style="display: none">
                             </div>
                             <div class="zp_gsxq_cpjs_cp_right"><input class="_gsmc" form="zp_gsxq_form" value="{{filed1}}" type="text" placeholder="请输入产品名称">
-                                <textarea form="zp_gsxq_form">{{productIntro}}</textarea>
+                                <textarea form="zp_gsxq_form" placeholder="请输入产品描述">{{productIntro}}</textarea>
                             </div>
                             <div style="clear:both"></div><a>O</a><span>X</span>
                         </div>

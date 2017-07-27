@@ -25,7 +25,8 @@
 
     </style>
     <script>
-        var companyId = 1;        //公司Id
+        var companyId = '${userLogin.company.companyId}';
+        var path = '${pageContext.request.contextPath}/';     //全局路径
     </script>
     <%--汉堡小按钮--%>
     <script>
