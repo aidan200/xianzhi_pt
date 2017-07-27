@@ -181,7 +181,7 @@
     <if test="beginDate==null and endDate!=null">
       and p.publish_time &lt; #{endDate,jdbcType=TIMESTAMP}
     </if>
-    GROUP BY p.postion_id;
+    GROUP BY p.postion_id
   </select>
   <select id="selPostionByListId" resultMap="selPostionList" parameterType="java.util.List">
     select
