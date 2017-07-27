@@ -50,6 +50,10 @@ public class XzPostion {
 
     private Integer deleteFlat;
 
+    private String forceAge;
+
+    private String forceSpecialty;
+
     private String filed1;
 
     private String filed2;
@@ -337,6 +341,22 @@ public class XzPostion {
 
     public Integer getPublishMonth() {
         return publishMonth;
+    }
+
+    public void setForceAge(String forceAge) {
+        this.forceAge = forceAge;
+    }
+
+    public String getForceAge() {
+        return forceAge;
+    }
+
+    public void setForceSpecialty(String forceSpecialty) {
+        this.forceSpecialty = forceSpecialty;
+    }
+
+    public String getForceSpecialty() {
+        return forceSpecialty;
     }
 
     @Override
