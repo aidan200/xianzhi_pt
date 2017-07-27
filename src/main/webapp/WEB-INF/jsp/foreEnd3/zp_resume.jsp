@@ -78,7 +78,7 @@
                             <fmt:formatDate value="${xzResume.resumeBirth}" pattern="yyyy-MM-dd"/></span>
                         </div>
                         <div class="resume_every">
-                            婚姻状况： <span>${xzResume.resumeMarriage}</span>
+                            婚姻状况： <span>${xzResume.resumeMarriage eq 0?'已婚':''}${xzResume.resumeMarriage eq 1?'未婚':''}</span>
                         </div>
                         <div class="resume_every">
                             目前状态： <span>${xzResume.resumeState}</span>

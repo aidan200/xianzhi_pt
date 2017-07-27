@@ -19,7 +19,7 @@
     <jsp:include page="distforeEnd.jsp"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_index.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/loading.css">
-
+    <script type="application/javascript" src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script>//搜索框焦点事件
     $(function () {
         $('#zp_index_xxk').on('focus', function () {
@@ -148,11 +148,11 @@
                     <p>简&emsp;历</p>
                     <div>
                         <div class="col-lg-7">
-                            <h4>${resume.resumeCompletion}%&nbsp;&nbsp;<span><fmt:formatDate value="${resume.resumeFlash}" pattern="MM-dd hh:mm"/></span></h4>
+                            <h4>${resume.resumeCompletion}%&nbsp;&nbsp;<span id="theFlash"><fmt:formatDate value="${resume.resumeFlash}" pattern="MM-dd HH:mm"/></span></h4>
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
-                                <li><span class="fa fa-eye"></span></li>
+                                <li><a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}" target="_blank"><span class="fa fa-eye"></span></a></li>
                                 <li><span class="fa fa-download"></span></li>
                                 <li><span class="fa fa-refresh"></span></li>
                                 <li><span class="fa fa-pencil"></span></li>
@@ -310,12 +310,15 @@
     }
     function flashResume() {
         $.ajax({
-            type: 'post',
+            type: 'get',
             url: '${pageContext.request.contextPath}/Resume/flashResume.do',
             contentType: "application/json",
             data: {resumeId: '${resume.resumeId}'},
             success:function (data) {
                 if(data.msg=='ok'){
+                    var date = new Date(data.resumeFlash);//刷新简历时间
+                    var completion = data.resumeCompletion;//完成度
+                    $('#theFlash').html(getNowFormatDateSS(date));
                     alert("简历刷新成功");
                 }
             }
