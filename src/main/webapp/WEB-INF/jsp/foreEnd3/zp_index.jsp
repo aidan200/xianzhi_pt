@@ -316,7 +316,8 @@
             data: {resumeId: '${resume.resumeId}'},
             success:function (data) {
                 if(data.msg=='ok'){
-                    var date = new Date(data.resumeFlash);
+                    var date = new Date(data.resumeFlash);//刷新简历时间
+                    var completion = data.resumeCompletion;//完成度
                     $('#theFlash').html(getNowFormatDateSS(date));
                     alert("简历刷新成功");
                 }

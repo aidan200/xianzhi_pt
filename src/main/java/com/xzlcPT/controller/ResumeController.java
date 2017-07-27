@@ -45,8 +45,7 @@ public class ResumeController extends BaseController {
     @RequestMapping("flashResume.do")
     public Map<String,Object> flashResume(Long resumeId){
         Map<String,Object> map = new HashMap<>();
-        XzResume resume = resumeService.selectById(resumeId);
-        resume.setResumeFlash(new Date());
+        XzResume resume = resumeService.selResumeInformation(resumeId);
         int i = resumeService.updateResumeByFore(resume);
         if(i==1){
             map.put("msg","ok");

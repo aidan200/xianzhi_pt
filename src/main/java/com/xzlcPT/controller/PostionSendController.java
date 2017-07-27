@@ -20,6 +20,7 @@ public class PostionSendController extends BaseController{
     @Autowired
     private XzPostionSendService postionSendService;
 
+    //企业职位管理查询
     @ResponseBody
     @RequestMapping("count7.do")
     public Map count7(Long selId,Integer type){
@@ -35,5 +36,13 @@ public class PostionSendController extends BaseController{
         return map;
     }
 
+    //简历投递
+    @ResponseBody
+    @RequestMapping("sendPostion.do")
+    public Map sendPostion(Long postionId){
+        Map map = new HashMap();
 
+
+        return map;
+    }
 }
