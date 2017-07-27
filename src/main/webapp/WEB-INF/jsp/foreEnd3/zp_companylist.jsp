@@ -31,9 +31,9 @@
 <div style="clear: both"></div>
 <div id="companylist">
     <h4></h4>
-    <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/v4.jpg');z-index:2"></div>
-    <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/index_1.jpg');z-index:2"></div>
-    <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/index_1.jpg');z-index:2"></div>
+    <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/lvlv2.jpg');z-index:2"></div>
+    <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/nbnb2.jpg');z-index:2"></div>
+    <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/lvlv2.jpg');z-index:2"></div>
 
     <!--列表菜单-->
     <section class="com_list">
@@ -93,7 +93,29 @@
         <!--隐藏的列表-->
         <div class="com_moreu1">
             <ul>
-                <li>
+                <li class="com_eli">
+                    <h4><b>开发</b></h4>
+                    <ul class="com_morein">
+                        <li><a >Java</a></li>
+                        <li><a >Php</a></li>
+                        <li><a >Python</a></li>
+                        <li><a >Ruby</a></li>
+                        <li><a >Node.JS</a></li>
+                        <li><a >.NET</a></li>
+                        <li><a >ASP</a></li>
+                        <li><a >C#</a></li>
+                        <li><a >C++</a></li>
+                        <li><a >C</a></li>
+                        <li><a >Delphi</a></li>
+                        <li><a >数据挖掘</a></li>
+                        <li><a >自然语言处理</a></li>
+                        <li><a >推荐系统</a></li>
+                        <li><a >搜索引擎</a></li>
+                        <li><a >全栈工程师</a></li>
+                    </ul>
+                    <div style="clear: both"></div>
+                </li>
+                <li class="com_eli">
                     <h4><b>开发</b></h4>
                     <ul class="com_morein">
                         <li><a >Java</a></li>
@@ -124,72 +146,6 @@
                         <li><a >Ruby</a></li>
                         <li><a >Node.JS</a></li>
                         <li><a >.NET</a></li>
-                        <li><a >ASP</a></li>
-                        <li><a >C#</a></li>
-                        <li><a >C++</a></li>
-                        <li><a >C</a></li>
-                        <li><a >Delphi</a></li>
-                        <li><a >数据挖掘</a></li>
-                        <li><a >自然语言处理</a></li>
-                        <li><a >推荐系统</a></li>
-                        <li><a >搜索引擎</a></li>
-                        <li><a >全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a >Java</a></li>
-                        <li><a >Php</a></li>
-                        <li><a >Python</a></li>
-                        <li><a >Ruby</a></li>
-                        <li><a >Node.JS</a></li>
-                        <li><a >.NET</a></li>
-                        <li><a >ASP</a></li>
-                        <li><a >C#</a></li>
-                        <li><a >C++</a></li>
-                        <li><a >C</a></li>
-                        <li><a >Delphi</a></li>
-                        <li><a >数据挖掘</a></li>
-                        <li><a >自然语言处理</a></li>
-                        <li><a >推荐系统</a></li>
-                        <li><a >搜索引擎</a></li>
-                        <li><a >全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a >Java</a></li>
-                        <li><a >Php</a></li>
-                        <li><a >Python</a></li>
-                        <li><a >Ruby</a></li>
-                        <li><a >Node.JS</a></li>
-                        <li><a >.NET</a></li>
-                        <li><a href="###">ASP</a></li>
-                        <li><a href="###">C#</a></li>
-                        <li><a href="###">C++</a></li>
-                        <li><a href="###">C</a></li>
-                        <li><a href="###">Delphi</a></li>
-                        <li><a href="###">数据挖掘</a></li>
-                        <li><a href="###">自然语言处理</a></li>
-                        <li><a href="###">推荐系统</a></li>
-                        <li><a href="###">搜索引擎</a></li>
-                        <li><a href="###">全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a href="###">Java</a></li>
-                        <li><a href="###">Php</a></li>
-                        <li><a href="###">Python</a></li>
-                        <li><a href="###">Ruby</a></li>
-                        <li><a href="###">Node.JS</a></li>
-                        <li><a href="###">.NET</a></li>
                         <li><a href="###">ASP</a></li>
                         <li><a href="###">C#</a></li>
                         <li><a href="###">C++</a></li>
@@ -207,7 +163,91 @@
         </div>
         <div class="com_moreu2">
             <ul>
+                <li class="com_eli">
+                    <h4><b>开发</b></h4>
+                    <ul class="com_morein">
+                        <li><a href="###">Java</a></li>
+                        <li><a href="###">Php</a></li>
+                        <li><a href="###">Python</a></li>
+                        <li><a href="###">Ruby</a></li>
+                        <li><a href="###">Node.JS</a></li>
+                        <li><a href="###">.NET</a></li>
+                        <li><a href="###">ASP</a></li>
+                        <li><a href="###">C#</a></li>
+                        <li><a href="###">C++</a></li>
+                        <li><a href="###">C</a></li>
+                        <li><a href="###">Delphi</a></li>
+                        <li><a href="###">数据挖掘</a></li>
+                        <li><a href="###">自然语言处理</a></li>
+                        <li><a href="###">推荐系统</a></li>
+                        <li><a href="###">搜索引擎</a></li>
+                        <li><a href="###">全栈工程师</a></li>
+                    </ul>
+                    <div style="clear: both"></div>
+                </li>
+                <li class="com_eli">
+                    <h4><b>开发</b></h4>
+                    <ul class="com_morein">
+                        <li><a href="###">Java</a></li>
+                        <li><a href="###">Php</a></li>
+                        <li><a href="###">Python</a></li>
+                        <li><a href="###">Ruby</a></li>
+                        <li><a href="###">Node.JS</a></li>
+                        <li><a href="###">.NET</a></li>
+                        <li><a href="###">ASP</a></li>
+                        <li><a href="###">C#</a></li>
+                        <li><a href="###">C++</a></li>
+                        <li><a href="###">C</a></li>
+                        <li><a href="###">Delphi</a></li>
+                        <li><a href="###">数据挖掘</a></li>
+                        <li><a href="###">自然语言处理</a></li>
+                        <li><a href="###">推荐系统</a></li>
+                        <li><a href="###">搜索引擎</a></li>
+                        <li><a href="###">全栈工程师</a></li>
+                    </ul>
+                    <div style="clear: both"></div>
+                </li>
                 <li>
+                    <h4><b>开发</b></h4>
+                    <ul class="com_morein">
+                        <li><a href="###">Java</a></li>
+                        <li><a href="###">Php</a></li>
+                        <li><a href="###">Python</a></li>
+                        <li><a href="###">Ruby</a></li>
+                        <li><a href="###">Node.JS</a></li>
+                        <li><a href="###">.NET</a></li>
+                        <li><a href="###">ASP</a></li>
+                        <li><a href="###">C#</a></li>
+                    </ul>
+                    <div style="clear: both"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="com_moreu3">
+            <ul>
+                <li class="com_eli">
+                    <h4><b>开发</b></h4>
+                    <ul class="com_morein">
+                        <li><a href="###">Java</a></li>
+                        <li><a href="###">Php</a></li>
+                        <li><a href="###">Python</a></li>
+                        <li><a href="###">Ruby</a></li>
+                        <li><a href="###">Node.JS</a></li>
+                        <li><a href="###">.NET</a></li>
+                        <li><a href="###">ASP</a></li>
+                        <li><a href="###">C#</a></li>
+                        <li><a href="###">C++</a></li>
+                        <li><a href="###">C</a></li>
+                        <li><a href="###">Delphi</a></li>
+                        <li><a href="###">数据挖掘</a></li>
+                        <li><a href="###">自然语言处理</a></li>
+                        <li><a href="###">推荐系统</a></li>
+                        <li><a href="###">搜索引擎</a></li>
+                        <li><a href="###">全栈工程师</a></li>
+                    </ul>
+                    <div style="clear: both"></div>
+                </li>
+                <li class="com_eli">
                     <h4><b>开发</b></h4>
                     <ul class="com_morein">
                         <li><a href="###">Java</a></li>
@@ -248,113 +288,37 @@
                         <li><a href="###">推荐系统</a></li>
                         <li><a href="###">搜索引擎</a></li>
                         <li><a href="###">全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a href="###">Java</a></li>
-                        <li><a href="###">Php</a></li>
-                        <li><a href="###">Python</a></li>
-                        <li><a href="###">Ruby</a></li>
-                        <li><a href="###">Node.JS</a></li>
-                        <li><a href="###">.NET</a></li>
-                        <li><a href="###">ASP</a></li>
-                        <li><a href="###">C#</a></li>
                     </ul>
                     <div style="clear: both"></div>
                 </li>
 
             </ul>
         </div>
-        <div class="com_moreu3">
-            <ul>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a href="###">Java</a></li>
-                        <li><a href="###">Php</a></li>
-                        <li><a href="###">Python</a></li>
-                        <li><a href="###">Ruby</a></li>
-                        <li><a href="###">Node.JS</a></li>
-                        <li><a href="###">.NET</a></li>
-                        <li><a href="###">ASP</a></li>
-                        <li><a href="###">C#</a></li>
-                        <li><a href="###">C++</a></li>
-                        <li><a href="###">C</a></li>
-                        <li><a href="###">Delphi</a></li>
-                        <li><a href="###">数据挖掘</a></li>
-                        <li><a href="###">自然语言处理</a></li>
-                        <li><a href="###">推荐系统</a></li>
-                        <li><a href="###">搜索引擎</a></li>
-                        <li><a href="###">全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a href="###">Java</a></li>
-                        <li><a href="###">Php</a></li>
-                        <li><a href="###">Python</a></li>
-                        <li><a href="###">Ruby</a></li>
-                        <li><a href="###">Node.JS</a></li>
-                        <li><a href="###">.NET</a></li>
-                        <li><a href="###">ASP</a></li>
-                        <li><a href="###">C#</a></li>
-                        <li><a href="###">C++</a></li>
-                        <li><a href="###">C</a></li>
-                        <li><a href="###">Delphi</a></li>
-                        <li><a href="###">数据挖掘</a></li>
-                        <li><a href="###">自然语言处理</a></li>
-                        <li><a href="###">推荐系统</a></li>
-                        <li><a href="###">搜索引擎</a></li>
-                        <li><a href="###">全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a href="###">Java</a></li>
-                        <li><a href="###">Php</a></li>
-                        <li><a href="###">Python</a></li>
-                        <li><a href="###">Ruby</a></li>
-                        <li><a href="###">Node.JS</a></li>
-                        <li><a href="###">.NET</a></li>
-                        <li><a href="###">ASP</a></li>
-                        <li><a href="###">C#</a></li>
-                        <li><a href="###">C++</a></li>
-                        <li><a href="###">C</a></li>
-                        <li><a href="###">Delphi</a></li>
-                        <li><a href="###">数据挖掘</a></li>
-                        <li><a href="###">自然语言处理</a></li>
-                        <li><a href="###">推荐系统</a></li>
-                        <li><a href="###">搜索引擎</a></li>
-                        <li><a href="###">全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a href="###">Java</a></li>
-                        <li><a href="###">Php</a></li>
-                        <li><a href="###">Python</a></li>
-                        <li><a href="###">Ruby</a></li>
-                        <li><a href="###">Node.JS</a></li>
-                        <li><a href="###">.NET</a></li>
-                        <li><a href="###">ASP</a></li>
-                        <li><a href="###">C#</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-            </ul>
-        </div>
         <div class="com_moreu4">
             <ul>
-                <li>
+                <li class="com_eli">
+                    <h4><b>开发</b></h4>
+                    <ul class="com_morein">
+                        <li><a href="###">Java</a></li>
+                        <li><a href="###">Php</a></li>
+                        <li><a href="###">Python</a></li>
+                        <li><a href="###">Ruby</a></li>
+                        <li><a href="###">Node.JS</a></li>
+                        <li><a href="###">.NET</a></li>
+                        <li><a href="###">ASP</a></li>
+                        <li><a href="###">C#</a></li>
+                        <li><a href="###">C++</a></li>
+                        <li><a href="###">C</a></li>
+                        <li><a href="###">Delphi</a></li>
+                        <li><a href="###">数据挖掘</a></li>
+                        <li><a href="###">自然语言处理</a></li>
+                        <li><a href="###">推荐系统</a></li>
+                        <li><a href="###">搜索引擎</a></li>
+                        <li><a href="###">全栈工程师</a></li>
+                    </ul>
+                    <div style="clear: both"></div>
+                </li>
+                <li class="com_eli">
                     <h4><b>开发</b></h4>
                     <ul class="com_morein">
                         <li><a href="###">Java</a></li>
@@ -395,43 +359,6 @@
                         <li><a href="###">推荐系统</a></li>
                         <li><a href="###">搜索引擎</a></li>
                         <li><a href="###">全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a href="###">Java</a></li>
-                        <li><a href="###">Php</a></li>
-                        <li><a href="###">Python</a></li>
-                        <li><a href="###">Ruby</a></li>
-                        <li><a href="###">Node.JS</a></li>
-                        <li><a href="###">.NET</a></li>
-                        <li><a href="###">ASP</a></li>
-                        <li><a href="###">C#</a></li>
-                        <li><a href="###">C++</a></li>
-                        <li><a href="###">C</a></li>
-                        <li><a href="###">Delphi</a></li>
-                        <li><a href="###">数据挖掘</a></li>
-                        <li><a href="###">自然语言处理</a></li>
-                        <li><a href="###">推荐系统</a></li>
-                        <li><a href="###">搜索引擎</a></li>
-                        <li><a href="###">全栈工程师</a></li>
-                    </ul>
-                    <div style="clear: both"></div>
-                </li>
-                <li>
-                    <h4><b>开发</b></h4>
-                    <ul class="com_morein">
-                        <li><a href="###">Java</a></li>
-                        <li><a href="###">Php</a></li>
-                        <li><a href="###">Python</a></li>
-                        <li><a href="###">Ruby</a></li>
-                        <li><a href="###">Node.JS</a></li>
-                        <li><a href="###">.NET</a></li>
-                        <li><a href="###">ASP</a></li>
-                        <li><a href="###">C#</a></li>
-                        <li><a href="###">C++</a></li>
                     </ul>
                     <div style="clear: both"></div>
                 </li>

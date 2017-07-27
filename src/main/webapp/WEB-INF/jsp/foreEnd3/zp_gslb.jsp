@@ -147,7 +147,14 @@
                     <%--<a href="">三天之内&nbsp;&nbsp;<span>x</span></a>--%>
                 </div>
                 <div class="zp_lb_cont_top_3_right2">
-                    共找到 <span>10000+</span>职位
+                    共找到 <span>
+                    <c:if test="${total<1000}">
+                        ${total}
+                    </c:if>
+                    <c:if test="${total>10000}">
+                        ${total}+
+                    </c:if>
+                    </span>职位
                 </div>
             </div>
         </div>
@@ -171,9 +178,12 @@
                             </c:choose>
                         </b></i>
                         <div class="zp_index_cont_left_zwtj_cont_left">
-                            <h4>${p.postionName}</h4>
+                            <h4><a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p.postionId}">${p.postionName}</a></h4>
                             <p> <span>
                                 <c:choose>
+                                    <c:when test="${p.postionMm<0}">
+                                        面议
+                                    </c:when>
                                     <c:when test="${p.postionMm==p.postionYm}">
                                         ${fn:replace((p.postionMm*12/10000),".0","")}万
                                     </c:when>
@@ -188,24 +198,21 @@
                         <div class="zp_index_cont_left_zwtj_cont_right">
                             <p><a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${p.company.companyId}">${p.company.companyName}</a></p>
                             <p>
-                                <c:forEach items="${p.company.fields}" var="f" varStatus="status">
-                                    ${f.fieldName}
-                                    <c:choose>
-                                        <c:when test="${status.index==2}">
-
-                                        </c:when>
-                                        <c:otherwise>
-                                            ,
-                                        </c:otherwise>
-                                    </c:choose>
+                                <c:forEach items="${p.company.fields}" var="f" varStatus="status" end="2">
+                                    <c:if test="${status.index<=2}">
+                                        ${f.fieldName}
+                                    </c:if>
+                                    <c:if test="${status.index<=1}">
+                                        ,
+                                    </c:if>
+                                    <c:if test="${status.index==2&&status.count>2}">
+                                        ...
+                                    </c:if>
                                 </c:forEach>
                             </p>
                             <p class="zp_index_cont_bz">
-                                <c:forEach items="${p.company.welfares}" var="w">
+                                <c:forEach items="${p.company.welfares}" var="w" varStatus="status">
                                     <span>${w.welfareName}</span>
-                                    <c:if test="${status.index==2}">
-                                        <c:set var="exitId" value="0"></c:set>
-                                    </c:if>
                                 </c:forEach>
                             </p>
                         </div>
@@ -217,7 +224,7 @@
                     <ul class="pagination zp_pa">
                         <myPage:paging length="10" page="${page}" pages="${pages}"/>
                     </ul>
-                    <div class="zp_page">共 <span>38</span> 页</div>
+                    <div class="zp_page">共 <span>${pages}</span> 页</div>
                 </div>
             </div>
         </div>
@@ -282,7 +289,9 @@
             </ul>
         </div>
     </div>
-    <form id="hidForm" action="${pageContext.request.contextPath}/Postion/selPostionIndex.do"></form>
+    <form id="hidForm" action="${pageContext.request.contextPath}/Postion/selPostionIndex.do">
+        <input id="thePage" type="hidden" name="page" value="${page}">
+    </form>
 </section>
 
 <%--添加上面一堆标签--%>
@@ -354,7 +363,10 @@
             $('#likeStr').val('${queryPostion.likeStr}');
         }
     });
-
+    function pToSub(page) {
+        $('#thePage').val(page);
+        $('#hidForm').submit();
+    }
 </script>
 </body>
 </html>

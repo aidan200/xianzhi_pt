@@ -392,8 +392,10 @@ cpjx.prototype.bindingSJ=function (){
     $('#tjcpjs').on('click',function (){        //添加商品
         if(kg){
             kg=false
-
-            var tjcpjs_html  = template('tj_gscp');
+            var obj={
+                productUrl:path+'dist/foreEnd3/img/timg.png',
+            }
+            var tjcpjs_html  = template('tj_gscp',obj);
             $('#tjcpjs').before(tjcpjs_html);        //插入元素
             $('.zp_gsxq_cpjs_cp > span').on('click',function (){
                 $(this).parent().remove();          //自杀
@@ -402,7 +404,6 @@ cpjx.prototype.bindingSJ=function (){
             var oinput=$('#tjcpjs').prev('div').find('.zp_gsxq_cpjs_cp_left').find('input').attr('id')
             var aa=document.getElementById(oID);
             var bb=document.getElementById(oinput);
-            alert($(aa).attr('id'))
             var uu =  new uploadUtil(aa,dkh+"/upload/img",bb,function (imgName){
                     $('#gsxq_cpjs > .zp_gsxq_cpjs_cp').each(function (i,e){
                         if($(e).find('.zp_gsxq_cpjs_cp_left >div').attr('id')=='cpjs_'){
@@ -454,7 +455,6 @@ cpjx.prototype.sc=function (){
     $('#gsxq_cpjs .zp_gsxq_cpjs_cp').each(function (i,e){
         $(e).find('span').on('click',function (){
             var data={
-                companyId:ID,
                 productId:$(e).attr('data-id')
             }
             $.ajax({
@@ -462,7 +462,7 @@ cpjx.prototype.sc=function (){
                 async:true,
                 data:{productId:$(e).attr('data-id')},
                 dataType:'text',
-                url:path+'',
+                url:path+'Product/deleteByPrimaryKey.do',
                 success:function (data){//data 就是数据 json
                     kg=true;
                     var aa=$('#gsxq_cpjs > div')

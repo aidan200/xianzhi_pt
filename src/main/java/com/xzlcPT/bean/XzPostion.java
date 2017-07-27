@@ -69,6 +69,15 @@ public class XzPostion {
     private Integer yxgt;
     private Integer ms;
     private Integer zdxz;
+    private Integer alls;
+
+    public Integer getAlls() {
+        return alls;
+    }
+
+    public void setAlls(Integer alls) {
+        this.alls = alls;
+    }
 
     public Integer getWcl() {
         return wcl;
