@@ -106,7 +106,6 @@ public class PostionController extends BaseController{
         mv.addObject("postionList",pageBean.getList());
         mv.addObject("page", pageBean.getPageNum());
         mv.addObject("pages", pageBean.getPages());
-        mv.addObject("rows", pageBean.getPageSize());
         mv.addObject("total", pageBean.getTotal());
 
 

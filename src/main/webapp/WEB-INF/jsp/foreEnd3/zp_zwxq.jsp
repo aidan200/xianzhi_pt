@@ -19,6 +19,8 @@
     <title>职位详情</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_zwxq.css">
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/mapUtil.js" type="text/javascript"></script>
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
@@ -34,9 +36,22 @@
                 </div>
             </div>
             <div class="zp_zwxq_cont_left_middle">
-                <h3>${fn:replace((xzPostion.postionMm*12/10000),".0","")}-${fn:replace((xzPostion.postionYm*12/10000),".0","")}万 <span>72小时反馈</span> <a href="">我感兴趣 请联系我</a></h3>
+                <h3>
+                    <c:choose>
+                        <c:when test="${xzPostion.postionMm<0}">
+                            面议
+                        </c:when>
+                        <c:when test="${xzPostion.postionMm==xzPostion.postionYm}">
+                            ${fn:replace((xzPostion.postionMm*12/10000),".0","")}万
+                        </c:when>
+                        <c:otherwise>
+                            ${fn:replace((xzPostion.postionMm*12/10000),".0","")}万-${fn:replace((xzPostion.postionYm*12/10000),".0","")}万
+                        </c:otherwise>
+                    </c:choose>
+                    <span>72小时反馈</span>
+                    <a href="">我感兴趣 请联系我</a></h3>
                 <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span><a href="" s>收藏</a></p>
-                <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>普通话</span><span>${xzPostion.postionAge}</span></div>
+                <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>${xzPostion.postionAge}岁</span></div>
             </div>
             <div class="zp_zwxq_cont_left_bottom">
                 <c:forEach items="${xzPostion.company.welfares}" var="w1">
@@ -102,14 +117,14 @@
                 <a href="" class="zp_zwxq_cont_a_right"></a>
             </div>
             <div class="zp_zwxq_cont_left_ss">
-                <form action="${pageContext.request.contextPath}/Postion/selPostionByname.do">
-                    <input type="text" placeholder="搜索其他职位，如：总经理秘书" name="postionName">
+                <form action="${pageContext.request.contextPath}/Postion/selPostionIndex.do" method="post">
+                    <input type="text" placeholder="搜索其他职位，如：总经理秘书" name="likeStr">
                     <button class="btn btn-primary" type="submit">
                         <span>搜索</span>
                     </button>
                 </form>
                 <div>
-                    <a href="">岗位职责</a>&nbsp;&nbsp;<a href="">更多职位</a>
+                    <a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do">更多职位</a>
                 </div>
             </div>
         </div>
@@ -147,7 +162,7 @@
                         <ul>
                             <li>
                                 <c:forEach items="${xzPostion.company.fields}" var="f1">
-                                <a href="">${f1.fieldName}/</a>
+                                ${f1.fieldName}/
                                 </c:forEach>
                             </li>
                             <li>${xzPostion.company.companyScale}人</li>
@@ -158,8 +173,10 @@
                             ${xzPostion.company.companyNature eq 4?"政府":''}
                             </li>
                         </ul>
+                        <p>${xzPostion.company.companyCity}</p>
+                        <p>${xzPostion.company.companyLocation}</p>
                         <p>${xzPostion.company.companySpace}</p>
-                        <div class="zp_zwxq_dt" style="background-image: url('${pageContext.request.contextPath}/dist/foreEnd3/img/zp_zwxq_dt.png')"></div>
+                        <div id="zp_zwxq_dt" class="zp_zwxq_dt"></div>
                     </div>
                     <div class="zp_zwxq_cont_right_cont_bottom">
                         <p>
@@ -169,9 +186,21 @@
                         <ul>
                             <c:forEach items="${cplist}" var="cp">
                             <li>
-                                <a href="">${cp.postionName}</a>
+                                <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${cp.postionId}">${cp.postionName}</a>
                                 <span class="zp_zwxq_span1">${cp.postionSpace}</span>
-                                <span class="zp_zwxq_span2">${fn:replace((cp.postionMm*12/10000),".0","")}-${fn:replace((cp.postionYm*12/10000),".0","")}万</span>
+                                <span class="zp_zwxq_span2">
+                                    <c:choose>
+                                        <c:when test="${cp.postionMm<0}">
+                                            面议
+                                        </c:when>
+                                        <c:when test="${cp.postionMm==cp.postionYm}">
+                                            ${fn:replace((cp.postionMm*12/10000),".0","")}万
+                                        </c:when>
+                                        <c:otherwise>
+                                            ${fn:replace((cp.postionMm*12/10000),".0","")}万-${fn:replace((cp.postionYm*12/10000),".0","")}万
+                                        </c:otherwise>
+                                    </c:choose>
+                                </span>
                             </li>
                             </c:forEach>
                         </ul>
@@ -197,7 +226,17 @@
 
 
 
-
+<script>
+    var postion = {};
+    postion.container = "zp_zwxq_dt";
+    postion.x = '${xzPostion.company.companyX}';
+    postion.y = '${xzPostion.company.companyY}';
+    console.log(postion);
+    var myMap = new myMap(postion);
+    $(function () {
+        myMap.init();
+    })
+</script>
 
 </body>
 </html>

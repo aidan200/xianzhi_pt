@@ -123,6 +123,8 @@
       <result column="company_scale" jdbcType="VARCHAR" property="companyScale" />
       <result column="company_nature" jdbcType="INTEGER" property="companyNature" />
       <result column="company_intro" jdbcType="VARCHAR" property="companyIntro"/>
+      <result column="company_city" jdbcType="VARCHAR" property="companyCity"/>
+      <result column="company_location" jdbcType="VARCHAR" property="companyLocation"/>
       <result column="company_space" jdbcType="VARCHAR" property="companySpace"/>
       <result column="company_y" jdbcType="DOUBLE" property="companyY"/>
       <result column="company_x" jdbcType="DOUBLE" property="companyX"/>
@@ -145,7 +147,7 @@
     p.filed1,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty,p.publish_month,
     p.education_entrance,
     c.company_id, c.company_name, c.company_picture, c.company_scale, c.company_nature, c.domain, c.skill,
-    c.company_intro,c.company_space,
+    c.company_location,c.company_city,c.company_x,c.company_y,c.company_intro,c.company_space,
     w.welfare_id, w.welfare_name, f.field_id, f.field_name
   </sql>
   <sql id="Base_Column_List">
@@ -156,6 +158,7 @@
   </sql>
   <select id="selPostionSendList" resultMap="PostionSendList" parameterType="Map">
     SELECT p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
+    count(p.company_id) alls,
 	count(CASE ps.send_state WHEN '0' THEN 1 ELSE null END ) wcl,
     count(CASE ps.send_state WHEN '1' THEN 1 ELSE null END ) dd,
     count(CASE ps.send_state WHEN '2' THEN 1 ELSE null END ) yxgt,
@@ -181,7 +184,7 @@
     <if test="beginDate==null and endDate!=null">
       and p.publish_time &lt; #{endDate,jdbcType=TIMESTAMP}
     </if>
-    GROUP BY p.postion_id;
+    GROUP BY p.postion_id
   </select>
   <select id="selPostionByListId" resultMap="selPostionList" parameterType="java.util.List">
     select
@@ -193,7 +196,7 @@
     <foreach collection="list" item="pid" index="index" open="(" close=")" separator=",">
       #{pid}
     </foreach>
-    ORDER BY d.domain_id,p.create_time DESC
+    ORDER BY p.publish_time DESC,d.domain_id
   </select>
   <select id="selPostionList" resultMap="BaseResultMap" parameterType="Map">
     select DISTINCT

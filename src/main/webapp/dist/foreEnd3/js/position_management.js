@@ -47,6 +47,7 @@ function Zzzp(){
 Zzzp.prototype.load=function (){    //初始化载入方法结束
     var This=this
     var xxk=$('#xxk_01').parent().parent();  //选择到搜索框父级
+
     var del=function (){
         var data={
             zs:10,
@@ -117,6 +118,21 @@ Zzzp.prototype.load=function (){    //初始化载入方法结束
         }
         $('#zzzp_tbody').html(str)      //输出到页面上
     }
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:{companyId:companyId},
+        dataType:'json',
+        url:path+'Postion/selPostionSend.do',
+        success:function (data){
+            alert('aa')
+
+        },error:function (){ //报错执行的
+            alert('基本资料修改错误')
+        }
+
+    })
+
     if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
         del();//默认载入第一个页面
     }
@@ -138,16 +154,15 @@ Zzzp.prototype.seekCont=function (){                    //搜索框方法
             ksrq:parent.find('input').eq(1).val(),         // 获取到开始日期
             jsrq:parent.find('input').eq(2).val(),         // 获取到截止日期
         }
-        alert(data.gjz)
+        // alert(data.gjz)
         // $.ajax({
         //     type:"post",
         //     async:true,
-        //     contentType: "application/json",
-        //     data:JSON.stringify(data),
+        //     data:{companyId:companyId},
         //     dataType:'json',
-        //     url:path+'Resume/updateResume.do',
+        //     url:path+'Postion/selPostionSend.do',
         //     success:function (data){
-        //
+        //         alert('aa')
         //
         //     },error:function (){ //报错执行的
         //         alert('搜索框方法错误')
