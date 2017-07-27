@@ -43,4 +43,10 @@ public class XzProductServiceImpl implements XzProductService {
         List<XzCompanyProduct> productList=xzCompanyProductMapper.selectByCompanyId(companyId);
         return productList;
     }
+
+    @Override
+    public int deleteByPrimaryKey(Long productId) {
+       int i=xzCompanyProductMapper.deleteByPrimaryKey(productId);
+        return i;
+    }
 }

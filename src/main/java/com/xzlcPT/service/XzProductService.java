@@ -19,4 +19,6 @@ public interface XzProductService {
     XzCompanyProduct selectByPrimaryKey(Long productId);
 
     List<XzCompanyProduct> selectByCompanyId(Long companyId);
+
+    int deleteByPrimaryKey(Long productId);
 }
