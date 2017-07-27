@@ -273,7 +273,7 @@
                         <div class="zp_gsxq_cpjs_cp" data-id="{{productId}}">
                             <div class="zp_gsxq_cpjs_cp_left">
                                 <h3>请上传一张产品图片</h3>
-                                <div id=cpjs_{{index}} class="zp_gsxq_ttbg cpjs_bg"></div>
+                                <div id=cpjs_{{index}} class="zp_gsxq_ttbg cpjs_bg" style="background-image: url('{{dkh}}{{path}}{{productUrl}}')"></div>
                                 <input id=cpjs_inp{{index}}  type="text" style="display: none">
                             </div>
                             <div class="zp_gsxq_cpjs_cp_right"><input class="_gsmc" form="zp_gsxq_form" value="{{filed1}}" type="text" placeholder="请输入产品名称">

@@ -168,8 +168,9 @@ public class PostionController extends BaseController{
     }
     //添加职位信息
     @RequestMapping("insertPostion")
-    public ModelAndView insertPostion(XzPostion xzPostion){
+    public ModelAndView insertPostion(Map map){
         ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        XzPostion xzPostion=new XzPostion();
         int i=postionService.insertPostion(xzPostion);
         mv.addObject("i",i);
         return mv;

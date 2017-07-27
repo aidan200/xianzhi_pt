@@ -37,6 +37,16 @@ public class XzPostionSend {
 
     private Date deleteFalt;
 
+    private Integer ct;
+
+    public Integer getCt() {
+        return ct;
+    }
+
+    public void setCt(Integer ct) {
+        this.ct = ct;
+    }
+
     public Long getSendId() {
         return sendId;
     }

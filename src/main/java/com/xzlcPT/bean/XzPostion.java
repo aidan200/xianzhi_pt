@@ -44,6 +44,10 @@ public class XzPostion {
 
     private String postionSpecialty;
 
+    private Integer publishMonth;
+
+    private Integer educationEntrance;
+
     private Integer deleteFlat;
 
     private String filed1;
@@ -308,6 +312,22 @@ public class XzPostion {
 
     public String getPostionSpecialty() {
         return postionSpecialty;
+    }
+
+    public void setEducationEntrance(Integer educationEntrance) {
+        this.educationEntrance = educationEntrance;
+    }
+
+    public Integer getEducationEntrance() {
+        return educationEntrance;
+    }
+
+    public void setPublishMonth(Integer publishMonth) {
+        this.publishMonth = publishMonth;
+    }
+
+    public Integer getPublishMonth() {
+        return publishMonth;
     }
 
     @Override
