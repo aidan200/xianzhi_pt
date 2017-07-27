@@ -205,7 +205,6 @@
                         myDate2 = new Date(send[j].sendTime);
                         dateTemp2 = (myDate2.getMonth()+1)+"-"+myDate2.getDate();
                         if(dateTemp2==dateTemp){
-                            alert(dateTemp2);
                             datas[i] = send[j].ct;
                         }
                     }
