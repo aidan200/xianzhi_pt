@@ -255,7 +255,7 @@ ul, li {
     line-height: 16px;
     padding: 2px 4px;
     position: relative;
-    background-color: #fc6866;
+    background-color: #FFA500;
     margin-left: 8px;
     font-style: inherit;
 }
@@ -267,7 +267,7 @@ ul, li {
     width: 0;
     height: 0;
     border: 5px solid transparent;
-    border-top: 5px solid #ff7f00;
+    border-top: 5px solid #FFA500;
 }
 
 .zp_jianli_cont_left_jbzl_middle {
@@ -320,7 +320,7 @@ ul, li {
     font-size: 14px;
     height: 27px;
     line-height: 26px;
-    background: #e3e3e3;
+    background: #F3F4F5;
     color: #333;
     margin-bottom: 20px;
 }
@@ -1835,9 +1835,9 @@ ul, li {
 .allyes {
     width: 80px;
     height: 30px;
-    background-color: #FFA500;
+    background-color: #fc6866;
     margin-right: 20px;
-    border: 1px solid #FFA500;
+    border: 1px solid #fc6866;
     outline: none;
     border-radius: 3px;
     color: #FFFFff;
@@ -1848,10 +1848,10 @@ ul, li {
     height: 30px;
     background-color: #FFFFff;
     margin-right: 20px;
-    border: 1px solid #FFA500;
+    border: 1px solid #fc6866;
     outline: none;
     border-radius: 3px;
-    color: #FFA500;
+    color: #fc6866;
 }
 
 .every_test {
@@ -1888,7 +1888,7 @@ ul, li {
 }
 .panel-default > .panel-heading {
     color: #666;
-    background-color: #ffffff;
+    background-color: #F3F4F5;
     border:none;
 }
 .panel-heading {
@@ -1896,5 +1896,5 @@ ul, li {
     border-top-right-radius: 0;
 }
 .panel-default {
-    border: 1px solid transparent;
+    border: 1px solid #EEEEEE;
 }

@@ -5363,8 +5363,8 @@ th {
 
 .cd-popup-containerh .cd-buttonsh a {
     display: block;
-    height: 40px;
-    line-height: 40px;
+    height: 35px;
+    line-height: 35px;
     text-transform: uppercase;
     color: #FFF;
     -webkit-transition: background-color 0.2s;
