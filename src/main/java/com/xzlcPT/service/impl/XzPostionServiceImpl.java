@@ -97,8 +97,18 @@ public class XzPostionServiceImpl implements XzPostionService{
     }
 
     @Override
-    public int insertPostion(XzPostion xzPostion) {
-        int i=postionMapper.insertPostion(xzPostion);
+    public int insertPostion(Map map) {
+       String str1=map.get("postionAgeMin").toString();
+       String str2=map.get("postionAgeMax").toString();
+       String str3="-";
+       String postionAge=str1+str3+str2;
+        map.put("postionAge",postionAge);
+        String string1=map.get("forceAgeMin").toString();
+        String string2=map.get("forceAgeMax").toString();
+        String string3="-";
+        String forceAge=string1+string3+string2;
+        map.put("forceAge",forceAge);
+        int i=postionMapper.insertPostion(map);
         return i;
     }
 }

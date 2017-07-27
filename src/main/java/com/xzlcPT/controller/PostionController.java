@@ -167,11 +167,39 @@ public class PostionController extends BaseController{
         return mv;
     }
     //添加职位信息
-    @RequestMapping("insertPostion")
-    public ModelAndView insertPostion(Map map){
+    @RequestMapping("insertPostion.do")
+    public ModelAndView insertPostion(String postionName,String postionSpace,String postionDepartment,Integer peopleNumber,
+                                      Integer postionMm,Integer postionYm,Integer publishMonth,String postionExp,String postionEducation,Integer educationEntrance,
+                                        String postionDescription,String postionSpecialty,String postionAgeMin,String postionAgeMax,Integer companyId,Integer check){
         ModelAndView mv=new ModelAndView("/foreEnd3/test2");
-        XzPostion xzPostion=new XzPostion();
-        int i=postionService.insertPostion(xzPostion);
+        Map map=new HashMap();
+        map.put("postionName",postionName);
+        map.put("postionSpace",postionSpace);
+        map.put("postionDepartment",postionDepartment);
+        map.put("peopleNumber",peopleNumber);
+        if (postionMm==null&&postionYm==null){
+            postionYm=0;
+        }
+        map.put("postionMm",postionMm);
+        map.put("postionYm",postionYm);
+        map.put("publishMonth",publishMonth);
+        if (postionExp==null) {
+           postionExp="不限";
+        }
+        map.put("postionExp", postionExp);
+        map.put("postionEducation",postionEducation);
+        map.put("postionDescription",postionDescription);
+        map.put("postionSpecialty",postionSpecialty);
+        map.put("postionAgeMin",postionAgeMin);
+        map.put("postionAgeMax",postionAgeMax);
+        map.put("companyId",companyId);
+        map.put("educationEntrance",educationEntrance);
+        if (check==1){
+            map.put("forceAgeMax",postionAgeMax);
+            map.put("forceAgeMin",postionAgeMin);
+            map.put("forceSpecialty",postionSpecialty);
+        }
+        int i=postionService.insertPostion(map);
         mv.addObject("i",i);
         return mv;
     }
