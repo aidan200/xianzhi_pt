@@ -25,7 +25,7 @@
 <div class="ses_top">
     <div class="container ses_select">
         <div class="ses_selectl">
-            <span>默认</span>
+            <span id="this_space">默认</span>
         </div>
         <div class="ses_selectr">
                 <input type="text" placeholder="请输入职能关键词：如 项目经理等" id="resumePosition">
@@ -40,11 +40,11 @@
                 <div class="pull-left" style="width: 70px">学&emsp;&emsp;历：</div>
                 <div class="pull-left" style="width: 840px">
                     <ul>
-                        <li><a href="###" id="本科" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="本科">本科</a></li>
-                        <li><a href="###" id="硕士" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="硕士">硕士</a></li>
-                        <li><a href="###" id="博士" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="博士">博士</a></li>
-                        <li><a href="###" id="博士后" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="博士后">博士后</a></li>
-                        <li><a href="###" id="大专" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="大专">大专</a></li>
+                        <li><a  id="本科" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="本科">本科</a></li>
+                        <li><a  id="硕士" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="硕士">硕士</a></li>
+                        <li><a  id="博士" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="博士">博士</a></li>
+                        <li><a  id="博士后" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="博士后">博士后</a></li>
+                        <li><a  id="大专" class="divSmall5" rel="type1" inpName="educationLevel" inpValue="大专">大专</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,12 +52,12 @@
                 <div class="pull-left" style="width: 70px">领&emsp;&emsp;域：</div>
                 <div class="pull-left" style="width: 840px">
                     <ul>
-                        <li><a href="###" id="教育培训" class="divSmall5" rel="type2" inpName="fieldName" inpValue="教育培训" >教育培训</a></li>
-                        <li><a href="###" id="游戏开发" class="divSmall5" rel="type2" inpName="fieldName" inpValue="游戏开发" >游戏开发</a></li>
-                        <li><a href="###" id="政府医疗" class="divSmall5" rel="type2"inpName="fieldName" inpValue="政府医疗" >政府医疗</a></li>
-                        <li><a href="###" id="电子商务" class="divSmall5" rel="type2"inpName="fieldName" inpValue="电子商务" >电子商务</a></li>
-                        <li><a href="###" id="社交通讯" class="divSmall5" rel="type2"inpName="fieldName" inpValue="社交通讯" >社交通讯</a></li>
-                        <li><a href="###" id="新闻资讯" class="divSmall5" rel="type2"inpName="fieldName" inpValue="新闻资讯" >新闻资讯</a></li>
+                        <li><a  id="教育培训" class="divSmall5" rel="type2" inpName="fieldName" inpValue="教育培训" >教育培训</a></li>
+                        <li><a  id="游戏开发" class="divSmall5" rel="type2" inpName="fieldName" inpValue="游戏开发" >游戏开发</a></li>
+                        <li><a  id="政府医疗" class="divSmall5" rel="type2"inpName="fieldName" inpValue="政府医疗" >政府医疗</a></li>
+                        <li><a  id="电子商务" class="divSmall5" rel="type2"inpName="fieldName" inpValue="电子商务" >电子商务</a></li>
+                        <li><a  id="社交通讯" class="divSmall5" rel="type2"inpName="fieldName" inpValue="社交通讯" >社交通讯</a></li>
+                        <li><a  id="新闻资讯" class="divSmall5" rel="type2"inpName="fieldName" inpValue="新闻资讯" >新闻资讯</a></li>
                     </ul>
                 </div>
             </div>
@@ -65,11 +65,11 @@
                 <div class="pull-left" style="width: 70px">年&emsp;&emsp;薪：</div>
                 <div class="pull-left" style="width: 840px">
                     <ul>
-                        <li><a href="###" id="10-15万" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="10-15万">10-15万</a></li>
-                        <li><a href="###" id="15-20万" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="15-20万">15-20万</a></li>
-                        <li><a href="###" id="20-30万" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="20-30万">20-30万</a></li>
-                        <li><a href="###" id="50-100万" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="50-100万">50-100万</a></li>
-                        <li><a href="###" id="100万以上" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="100万以上">100万以上</a></li>
+                        <li><a  id="10-15万" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="10-15万">10-15万</a></li>
+                        <li><a  id="15-20万" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="15-20万">15-20万</a></li>
+                        <li><a  id="20-30万" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="20-30万">20-30万</a></li>
+                        <li><a  id="50-100万" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="50-100万">50-100万</a></li>
+                        <li><a  id="100万以上" class="divSmall5" rel="type3" inpName="resumeMm" inpValue="100万以上">100万以上</a></li>
                     </ul>
                 </div>
             </div>
@@ -82,47 +82,47 @@
                         <li class="zp_lb_li">
                             <a>工作年限</a>
                             <ul>
-                                <%--<li><a href="###" id="d1" class="divSmall5" rel="type4">不限</a></li>--%>
-                                <li><a href="###" id="1" class="divSmall5" rel="type4" inpName="resumeIntentYm" inpValue="1" >一年</a></li>
-                                <li><a href="###" id="3" class="divSmall5" rel="type4" inpName="resumeIntentYm" inpValue="3">三年</a></li>
-                                <li><a href="###" id="5" class="divSmall5" rel="type4" inpName="resumeIntentYm" inpValue="5">五年</a></li>
+                                <%--<li><a  id="d1" class="divSmall5" rel="type4">不限</a></li>--%>
+                                <li><a  id="1" class="divSmall5" rel="type4" inpName="resumeIntentYm" inpValue="1" >一年</a></li>
+                                <li><a  id="3" class="divSmall5" rel="type4" inpName="resumeIntentYm" inpValue="3">三年</a></li>
+                                <li><a  id="5" class="divSmall5" rel="type4" inpName="resumeIntentYm" inpValue="5">五年</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>年龄</a>
                             <ul>
-                                <%--<li><a href="###" id="e1" class="divSmall5" rel="type5">不限</a></li>--%>
-                                <li><a href="###" id="18-22" class="divSmall5" rel="type5"  inpName="resumeBirth" inpValue="18-22">18-22</a></li>
-                                <li><a href="###" id="23-30" class="divSmall5" rel="type5"  inpName="resumeBirth" inpValue="23-30">23-30</a></li>
-                                <li><a href="###" id="31-40" class="divSmall5" rel="type5"  inpName="resumeBirth" inpValue="31-40">31-40</a></li>
-                                <li><a href="###" id="41-50" class="divSmall5" rel="type5"  inpName="resumeBirth" inpValue="41-50">41-50</a></li>
+                                <%--<li><a  id="e1" class="divSmall5" rel="type5">不限</a></li>--%>
+                                <li><a  id="18-22" class="divSmall5" rel="type5"  inpName="resumeBirth" inpValue="18-22">18-22</a></li>
+                                <li><a  id="23-30" class="divSmall5" rel="type5"  inpName="resumeBirth" inpValue="23-30">23-30</a></li>
+                                <li><a  id="31-40" class="divSmall5" rel="type5"  inpName="resumeBirth" inpValue="31-40">31-40</a></li>
+                                <li><a  id="41-50" class="divSmall5" rel="type5"  inpName="resumeBirth" inpValue="41-50">41-50</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>性别</a>
                             <ul>
-                                <%--<li><a href="###" id="f1" class="divSmall5" rel="type6">不限</a></li>--%>
-                                <li><a href="###" id="男" class="divSmall5" rel="type6"  inpName="resumeSex" inpValue="男">男</a></li>
-                                <li><a href="###" id="女" class="divSmall5" rel="type6"  inpName="resumeSex" inpValue="女">女</a></li>
+                                <%--<li><a  id="f1" class="divSmall5" rel="type6">不限</a></li>--%>
+                                <li><a  id="男" class="divSmall5" rel="type6"  inpName="resumeSex" inpValue="男">男</a></li>
+                                <li><a  id="女" class="divSmall5" rel="type6"  inpName="resumeSex" inpValue="女">女</a></li>
 
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>更新时间</a>
                             <ul>
-                                <%--<li><a href="###" id="g1" class="divSmall5" rel="type7">不限</a></li>--%>
-                                <li><a href="###" id="1天" class="divSmall5" rel="type7" inpName="createTime" inpValue="1天">一天以内</a></li>
-                                <li><a href="###" id="3天" class="divSmall5" rel="type7" inpName="createTime" inpValue="3天">三天以内</a></li>
-                                <li><a href="###" id="7天" class="divSmall5" rel="type7" inpName="createTime" inpValue="7天">一周以内</a></li>
-                                <li><a href="###" id="30天" class="divSmall5" rel="type7" inpName="createTime" inpValue="30天">一个月以内</a></li>
+                                <%--<li><a  id="g1" class="divSmall5" rel="type7">不限</a></li>--%>
+                                <li><a  id="1天" class="divSmall5" rel="type7" inpName="createTime" inpValue="1天">一天以内</a></li>
+                                <li><a  id="3天" class="divSmall5" rel="type7" inpName="createTime" inpValue="3天">三天以内</a></li>
+                                <li><a  id="7天" class="divSmall5" rel="type7" inpName="createTime" inpValue="7天">一周以内</a></li>
+                                <li><a  id="30天" class="divSmall5" rel="type7" inpName="createTime" inpValue="30天">一个月以内</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
                             <a>求职状态</a>
                             <ul>
-                                <%--<li><a href="###" id="h1" class="divSmall5" rel="type8">不限</a></li>--%>
-                                <li><a href="###" id="在职" class="divSmall5" rel="type8" inpName="resumeState" inpValue="在职">在职</a></li>
-                                <li><a href="###" id="离职" class="divSmall5" rel="type8" inpName="resumeState" inpValue="离职">离职</a></li>
+                                <%--<li><a  id="h1" class="divSmall5" rel="type8">不限</a></li>--%>
+                                <li><a  id="在职" class="divSmall5" rel="type8" inpName="resumeState" inpValue="在职">在职</a></li>
+                                <li><a  id="离职" class="divSmall5" rel="type8" inpName="resumeState" inpValue="离职">离职</a></li>
 
                             </ul>
                         </li>
@@ -218,6 +218,7 @@
 <form id="hidForm" action="${pageContext.request.contextPath}/Resume/selResumeByConditions.do">
     <input id="infPage" type="hidden" name="page" value="${page}">
     <input id="Position" type="hidden" name="resumePosition">
+    <input id="workspace" form="hidForm" type="hidden" name="workspace" value="" >
 </form>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -294,6 +295,17 @@
         }
     }
 
+</script>
+<jsp:include page="cityUtil.jsp"></jsp:include>
+<script>
+    $(document).ready(function () {
+        if('${queryPostion.workspace}'){
+            cityBoxInit('${queryPostion.workspace}');
+        }
+        if('后台的值'){
+            $('#').val()
+        }
+    });
 </script>
 </body>
 </html>
