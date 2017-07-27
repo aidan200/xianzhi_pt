@@ -51,6 +51,11 @@
             </div>
         </div>
 
+        <div class="resume_out1">
+            <div style="position: relative">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/xun.png" alt="" class="resume_xun">
+                <span class="resume_is">${xzResume.resumePosition}</span></div>
+        </div>
 
         <div class="resume_center">
             <!--基本资料-->
@@ -65,7 +70,8 @@
                             手&emsp;&emsp;机：<span>${xzResume.resumePhone}</span>
                         </div>
                         <div class="resume_every">
-                            年&emsp;&emsp;龄：<span id="s1"><fmt:formatDate value="${xzResume.resumeBirth}" pattern="yyyy"/></span>
+                            年&emsp;&emsp;龄：<span id="s1"><fmt:formatDate value="${xzResume.resumeBirth}"
+                                                                         pattern="yyyy"/></span>
                         </div>
                         <div class="resume_every">
                             出生日期： <span>
@@ -122,9 +128,12 @@
                         <c:forEach var="je" items="${xzResume.jobExps}">
                         <div class="resume_self">
 
-                            <span style="padding-left: 20px"><fmt:formatDate value="${je.jobexpBeginTime}" pattern="yyyy-MM-dd"/></span>-<span id="s2"><fmt:formatDate value="${je.jobexpEndTime}" pattern="yyyy-MM-dd"/></span>
+                            <span style="padding-left: 20px"><fmt:formatDate value="${je.jobexpBeginTime}"
+                                                                             pattern="yyyy-MM-dd"/></span>-<span
+                                id="s2"><fmt:formatDate value="${je.jobexpEndTime}" pattern="yyyy-MM-dd"/></span>
                             <span style="padding-left: 20px">${je.jobexpCompanyName}</span>
-                        </div></b>
+                        </div>
+                    </b>
                     <div class="resume_two">
                         <div class="resume_every">
                             公司性质：<span>${je.jobexpCompanyType}</span>
@@ -165,22 +174,24 @@
                 <div class="resume_more">
                     <h4><span class="fa fa-graduation-cap"></span>教育经历</h4>
                     <c:forEach var="e1" items="${xzResume.xzResumeEducations}">
-                    <div class="resume_two">
-                        <div class="resume_every3">
-                            <b><span>${e1.educationSchool}</span><span style="margin-left: 20px"><fmt:formatDate value="${e1.enrollmentDate}" pattern="yyyy-MM-dd"/>-<fmt:formatDate value="${e1.graduateDate}" pattern="yyyy-MM-dd"/></span></b>
-                        </div>
-                        <div class="resume_every2">
-                            专业名称：<span>${e1.educationMajor}</span>
-                        </div>
-                        <div class="resume_every2">
-                            学历：<span>${e1.educationLevel}</span>
-                        </div>
-                        <div class="resume_every2">
-                            是否是统招：<span>${e1.educationEntrance eq 1?'统招':''}${e1.educationEntrance eq 0?'非统招':''}
-                        </span>
-                        </div>
+                        <div class="resume_two">
+                            <div class="resume_every3">
+                                <b><span>${e1.educationSchool}</span><span style="margin-left: 20px"><fmt:formatDate
+                                        value="${e1.enrollmentDate}" pattern="yyyy-MM-dd"/>-<fmt:formatDate
+                                        value="${e1.graduateDate}" pattern="yyyy-MM-dd"/></span></b>
+                            </div>
+                            <div class="resume_every2">
+                                专业名称：<span>${e1.educationMajor}</span>
+                            </div>
+                            <div class="resume_every2">
+                                学历：<span>${e1.educationLevel}</span>
+                            </div>
+                            <div class="resume_every2">
+                                是否是统招：<span>${e1.educationEntrance eq 1?'统招':''}${e1.educationEntrance eq 0?'非统招':''}
+                            </span>
+                            </div>
 
-                    </div>
+                        </div>
                     </c:forEach>
 
                 </div>
@@ -193,23 +204,23 @@
                 <div class="resume_more">
                     <h4><span class="fa fa-map-signs"></span>项目经验</h4>
                     <c:forEach var="e2" items="${xzResume.xzProjectExps}">
-                    <div class="resume_two">
-                        <div class="resume_every3">
-                            项目名称：<span>${e2.proexpName}</span>
+                        <div class="resume_two">
+                            <div class="resume_every3">
+                                项目名称：<span>${e2.proexpName}</span>
+                            </div>
+                            <div class="resume_every3">
+                                <span style="display: inline-block;float: left">项目职务：</span>
+                                <span class="resume_many">${e2.proexpPostion}</span>
+                            </div>
+                            <div class="resume_every3">
+                                <span style="display: inline-block;float: left">项目职责：</span>
+                                <span class="resume_many">${e2.proexpDuty}</span>
+                            </div>
+                            <div class="resume_every3">
+                                <span style="display: inline-block;float: left">项目描述：</span>
+                                <span class="resume_many">${e2.proexpDescribe}</span>
+                            </div>
                         </div>
-                        <div class="resume_every3">
-                            <span style="display: inline-block;float: left">项目职务：</span>
-                            <span class="resume_many">${e2.proexpPostion}</span>
-                        </div>
-                        <div class="resume_every3">
-                            <span style="display: inline-block;float: left">项目职责：</span>
-                            <span class="resume_many">${e2.proexpDuty}</span>
-                        </div>
-                        <div class="resume_every3">
-                            <span style="display: inline-block;float: left">项目描述：</span>
-                            <span class="resume_many">${e2.proexpDescribe}</span>
-                        </div>
-                    </div>
                     </c:forEach>
                 </div>
 
@@ -219,7 +230,7 @@
             <!--自我评价-->
             <div class="r_out">
                 <div class="resume_more">
-                    <h4> <span class="fa fa-pencil-square-o"></span>自我评价</h4>
+                    <h4><span class="fa fa-pencil-square-o"></span>自我评价</h4>
                     <div class="resume_two">
                         ${xzResume.filed1}
                     </div>
@@ -247,7 +258,7 @@
                     <h4><span class="fa fa-motorcycle"></span>擅长技能</h4>
                     <div class="resume_two">
                         <c:forEach var="s1" items="${xzResume.xzResumeSkills}">
-                        <span class="res_sp">${s1.skillName}</span>
+                            <span class="res_sp">${s1.skillName}</span>
                         </c:forEach>
                     </div>
                 </div>
@@ -265,16 +276,16 @@
 
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>
 <script>
-    $(function(){
-        var n=$("#s1").text();
-        var date=new Date();
+    $(function () {
+        var n = $("#s1").text();
+        var date = new Date();
         var year = date.getYear();
-        var c=parseInt(year)+1900-parseInt(n);
+        var c = parseInt(year) + 1900 - parseInt(n);
         $("#s1").text(c);
     });
-    $(function(){
-        var s=$("#s2").text();
-        if (s==""||s==null){
+    $(function () {
+        var s = $("#s2").text();
+        if (s == "" || s == null) {
             $("#s2").text("至今");
         }
     });
