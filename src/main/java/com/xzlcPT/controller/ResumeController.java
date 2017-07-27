@@ -70,7 +70,7 @@ public class ResumeController extends BaseController {
         }
         return map;
     }
-
+    //查询简历具体信息
     @RequestMapping("selResumeInformation.do")
     public ModelAndView selResumeInformation(Long resumeId){
         ModelAndView mv=new ModelAndView("foreEnd3/zp_resume");
