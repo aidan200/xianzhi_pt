@@ -2557,8 +2557,10 @@ footer {
     height: 46px;
     outline: none;
     padding-left: 10px;
-    border: 2px solid #f8a91e;
+    border: 3px solid #FFA500;
     border-radius: 3px;
+    background-color: transparent;
+    color: #FFFFFF;
 }
 
 .com_ia > button {
@@ -2566,7 +2568,7 @@ footer {
     height: 42px;
     outline: none;
     border: none;
-    background-color: #f8a91e;
+    background-color: #FFA500;
     color: #ffffff;
     position: absolute;
     right: 0;
@@ -2581,13 +2583,17 @@ footer {
 
 .com_moreu1 {
     width: 680px;
-    height: 460px;
+    height: 310px;
     background-color: #ffffff;
     position: absolute;
     top: 0;
     left: 300px;
     display: none;
     padding: 5px 20px;
+}
+.com_eli{
+    border-bottom: 1px dashed #c0c0c0;
+    padding-bottom: 12px;
 }
 
 .com_moreu1 h4, .com_moreu2 h4, .com_moreu3 h4, .com_moreu4 h4 {
@@ -2603,7 +2609,7 @@ footer {
 
 .com_moreu2 {
     width: 680px;
-    height: 260px;
+    height: 290px;
     background-color: #ffffff;
     position: absolute;
     top: 115px;
@@ -2614,7 +2620,7 @@ footer {
 
 .com_moreu3 {
     width: 680px;
-    height: 345px;
+    height: 310px;
     background-color: #ffffff;
     position: absolute;
     top: 115px;
@@ -2625,10 +2631,10 @@ footer {
 
 .com_moreu4 {
     width: 680px;
-    height: 345px;
+    height: 320px;
     background-color: #ffffff;
     position: absolute;
-    top: 115px;
+    bottom: 0;
     left: 300px;
     display: none;
     padding: 5px 20px;
