@@ -128,8 +128,6 @@
                                         class="divSmall">民营</a></li>
                                 <li><a  rel="four" id="n_3" inpName="company_nature" inpValue="n_3"
                                         class="divSmall">外企</a></li>
-                                <li><a  rel="four" id="n_4" inpName="company_nature" inpValue="n_4"
-                                        class="divSmall">政府</a></li>
                             </ul>
                         </li>
 
@@ -232,50 +230,14 @@
             <div class="zp_rt">
                 <h4>最近浏览</h4>
                 <ul>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="" class="zp_na">WEB前端</a>
-                            <span class="zp_na2"><a href="">上海融链科技有限公司</a></span>
-                        </div>
-                    </li>
-
-
+                    <c:forEach items="${postionBrowses}" var="pb">
+                        <li>
+                            <div>
+                                <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${pb.postionId}" class="zp_na">${pb.postionName}</a>
+                                <span class="zp_na2"><a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${pb.companyId}">${pb.companyName}</a></span>
+                            </div>
+                        </li>
+                    </c:forEach>
                 </ul>
 
             </div>

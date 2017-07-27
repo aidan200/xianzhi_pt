@@ -1,11 +1,10 @@
 package com.xzlcPT.controller;
 
-import com.amazonaws.services.dynamodbv2.xspec.M;
 import com.util.PageBean;
-import com.xzlcPT.bean.XzAccessPostion;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzPostion;
-import com.xzlcPT.service.XzAccessPostionService;
+import com.xzlcPT.bean.XzPostionBrowse;
+import com.xzlcPT.service.XzPostionBrowseService;
 import com.xzlcPT.service.XzPostionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,8 +24,7 @@ public class PostionController extends BaseController{
     @Autowired
     private XzPostionService postionService;
     @Autowired
-    private XzAccessPostionService accessPostionService;
-
+    private XzPostionBrowseService postionBrowseService;
 
     @RequestMapping("/addPostion.do")
     public ModelAndView addPostion(String[] filed2){
@@ -61,15 +59,8 @@ public class PostionController extends BaseController{
 
     //职位列表查询
     @RequestMapping("/selPostionIndex.do")
-    public ModelAndView selPostionIndex( @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
+    public ModelAndView selPostionIndex( @ModelAttribute("userLogin") XzLogin userLogin,@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "10") Integer rows,
                                         String[] fields, String salary, String fadate, String company_scale, String company_nature, String workspace,String likeStr){
-        /*System.out.println(fields);
-        System.out.println(salary);
-        System.out.println(fadate);
-        System.out.println(company_scale);
-        System.out.println(company_nature);
-        System.out.println(workspace);
-        System.out.println(likeStr);*/
         Map map = new HashMap();
         if(workspace!=null&&!workspace.equals("全国")){
             map.put("workspace",workspace);
@@ -102,8 +93,10 @@ public class PostionController extends BaseController{
 
         ModelAndView mv = new ModelAndView("foreEnd3/zp_gslb");
         PageBean<XzPostion> pageBean = postionService.selPostionIndex(page,rows,map);
+        List<XzPostionBrowse> postionBrowses = postionBrowseService.selPostionBrowse(userLogin.getMember().getMemberId());//查询浏览记录
 
         mv.addObject("postionList",pageBean.getList());
+        mv.addObject("postionBrowses",postionBrowses);
         mv.addObject("page", pageBean.getPageNum());
         mv.addObject("pages", pageBean.getPages());
         mv.addObject("total", pageBean.getTotal());
@@ -123,7 +116,7 @@ public class PostionController extends BaseController{
     //类表查询异步
     @ResponseBody
     @RequestMapping("selPostionIndexAjax.do")
-    public Map selPostionIndexAjax(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "2") Integer rows,
+    public Map selPostionIndexAjax(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "6") Integer rows,
                                             String workspace, String likeStr){
         Map map = new HashMap();
         if(workspace!=null&&!workspace.equals("全国")){
@@ -133,7 +126,13 @@ public class PostionController extends BaseController{
             map.put("likeStr",likeStr);
         }
         PageBean<XzPostion> pageBean = postionService.selPostionIndex(page,rows,map);
-        map.put("postionList",pageBean.getList());
+        if(pageBean.getTotal()>=10){
+            map.put("postionList",pageBean.getList());
+        }else{
+            Map noMap = new HashMap();
+            pageBean = postionService.selPostionIndex(page,rows,noMap);
+            map.put("postionList",pageBean.getList());
+        }
         map.put("page", pageBean.getPageNum());
         map.put("pages", pageBean.getPages());
         return map;
@@ -147,11 +146,12 @@ public class PostionController extends BaseController{
     }
     //职位详情
     @RequestMapping("selPostionInfo.do")
-    public ModelAndView selPostionInfo(Long postionId){
+    public ModelAndView selPostionInfo(@ModelAttribute("userLogin") XzLogin userLogin,Long postionId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_zwxq");
         XzPostion xzPostion=postionService.selPostionInfo(postionId);
         List<XzPostion> plist=postionService.selInfoByName(xzPostion.getPostionName());//可能感兴趣的职位
         List<XzPostion> cplist=postionService.selInfoByComId(xzPostion);//该公司相似职位
+        postionBrowseService.insertPostionBrowse(postionId,userLogin.getMember().getMemberId());//职位浏览记录
         mv.addObject("cplist",cplist);
         mv.addObject("plist",plist);
         mv.addObject("xzPostion",xzPostion);

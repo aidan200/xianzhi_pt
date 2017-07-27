@@ -26,6 +26,11 @@ public class XzResumeServiceImpl implements XzResumeService{
     private XzResumeSkillMapper resumeSkillMapper;
 
     @Override
+    public XzResume selectById(Long resumeId) {
+        return resumeMapper.selectByPrimaryKey(resumeId);
+    }
+
+    @Override
     public XzResume selectByMemberId(Long memberId) {
         return resumeMapper.selectByMemberId(memberId);
     }

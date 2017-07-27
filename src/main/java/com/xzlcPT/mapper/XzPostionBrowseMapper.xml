@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzPostionBrowseMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzPostionBrowse">
+    <id column="browse_id" jdbcType="BIGINT" property="browseId" />
+    <result column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="browse_time" jdbcType="TIMESTAMP" property="browseTime" />
+    <result column="postion_name" jdbcType="VARCHAR" property="postionName" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    browse_id, postion_id, member_id, browse_time, postion_name, company_name, company_id
+  </sql>
+  <select id="selPCinfo" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select p.company_id,p.postion_id,p.postion_name,c.company_name
+    from xz_postion p,xz_company c
+    where p.company_id = c.company_id
+    and p.postion_id = #{memberId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByMemberId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    FROM xz_postion_browse
+    where member_id = #{memberId,jdbcType=BIGINT}
+    order by browse_time desc
+  </select>
+  <select id="selectCountByMemberId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    select
+    count(*)
+    FROM xz_postion_browse
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </select>
+  <delete id="delLast" parameterType="java.lang.Long">
+    delete FROM
+    xz_postion_browse
+    where  browse_time =
+    (select a.tr from
+    (select Min(browse_time) tr
+    from xz_postion_browse
+    where member_id = #{memberId,jdbcType=BIGINT}
+    ) a
+    )
+  </delete>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_postion_browse
+    where browse_id = #{browseId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_postion_browse
+    where browse_id = #{browseId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzPostionBrowse">
+    insert into xz_postion_browse (browse_id, postion_id, member_id, 
+      browse_time, postion_name, company_name, 
+      company_id)
+    values (#{browseId,jdbcType=BIGINT}, #{postionId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, 
+      #{browseTime,jdbcType=TIMESTAMP}, #{postionName,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostionBrowse">
+    insert into xz_postion_browse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="browseId != null">
+        browse_id,
+      </if>
+      <if test="postionId != null">
+        postion_id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="browseTime != null">
+        browse_time,
+      </if>
+      <if test="postionName != null">
+        postion_name,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="browseId != null">
+        #{browseId,jdbcType=BIGINT},
+      </if>
+      <if test="postionId != null">
+        #{postionId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="browseTime != null">
+        #{browseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionName != null">
+        #{postionName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzPostionBrowse">
+    update xz_postion_browse
+    <set>
+      <if test="postionId != null">
+        postion_id = #{postionId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="browseTime != null">
+        browse_time = #{browseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="postionName != null">
+        postion_name = #{postionName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where browse_id = #{browseId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostionBrowse">
+    update xz_postion_browse
+    set postion_id = #{postionId,jdbcType=BIGINT},
+      member_id = #{memberId,jdbcType=BIGINT},
+      browse_time = #{browseTime,jdbcType=TIMESTAMP},
+      postion_name = #{postionName,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=BIGINT}
+    where browse_id = #{browseId,jdbcType=BIGINT}
+  </update>
+</mapper>

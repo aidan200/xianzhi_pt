@@ -204,7 +204,7 @@
     from xz_postion p LEFT JOIN xz_company c on p.company_id = c.company_id LEFT JOIN xz_company_domain d on c.company_id = d.company_id LEFT JOIN xz_field f on d.field_id = f.field_id
     where p.delete_flat = 0 and (f.field_type = 1 or f.field_type is null)
     <if test="workspace!=null and workspace!=''">
-      and p.postion_space like CONCAT('%',#{workspace,jdbcType=VARCHAR})
+      and p.postion_space like CONCAT('%',#{workspace,jdbcType=VARCHAR},'%')
     </if>
     <if test="likeStr!=null and likeStr!=''">
       and p.postion_name like CONCAT('%',#{likeStr,jdbcType=VARCHAR},'%')

@@ -13,6 +13,9 @@ import java.util.Map;
  * Created by Administrator on 2017/7/10.
  */
 public interface XzResumeService {
+
+    XzResume selectById(Long resumeId);
+
     XzResume selectByMemberId(Long memberId);
 
     int updateResumeByFore(XzResume resume);

@@ -9,6 +9,7 @@
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -73,48 +74,7 @@
             </div>
             <div class="zp_index_cont_left_zwtj_cont">
                 <ul id="postionRs">
-                    <li>
-                        <i><b>民</b></i>
-                        <div class="zp_index_cont_left_zwtj_cont_left">
-                            <h4>WEB前端研发工程师</h4>
-                            <p><span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验
-                            </p>
-                            <span>2017-06-08</span>
-                        </div>
-                        <div class="zp_index_cont_left_zwtj_cont_right">
-                            <p>东软集团</p>
-                            <p>互联网/移动互联网/电子商务,IT服务/系统集成,计算机软件</p>
-                            <p class="zp_index_cont_bz"><span>带薪年假</span><span>交通补助</span><span>定期体检</span></p>
-                        </div>
-                    </li>
-                    <li>
-                        <i><b>国</b></i>
-                        <div class="zp_index_cont_left_zwtj_cont_left">
-                            <h4>WEB前端研发工程师</h4>
-                            <p><span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验
-                            </p>
-                            <span>2017-06-08</span>
-                        </div>
-                        <div class="zp_index_cont_left_zwtj_cont_right">
-                            <p>东软集团</p>
-                            <p>互联网/移动互联网/电子商务,IT服务/系统集成,计算机软件</p>
-                            <p class="zp_index_cont_bz"><span>带薪年假</span><span>交通补助</span><span>定期体检</span></p>
-                        </div>
-                    </li>
-                    <li>
-                        <i><b>外</b></i>
-                        <div class="zp_index_cont_left_zwtj_cont_left">
-                            <h4>WEB前端研发工程师</h4>
-                            <p><span>面议</span>&nbsp;&nbsp;|&nbsp;&nbsp;沈阳&nbsp;&nbsp;|&nbsp;&nbsp;本科&nbsp;&nbsp;及以上&nbsp;&nbsp;|&nbsp;&nbsp;3年经验
-                            </p>
-                            <span>2017-06-08</span>
-                        </div>
-                        <div class="zp_index_cont_left_zwtj_cont_right">
-                            <p>东软集团</p>
-                            <p>互联网/移动互联网/电子商务,IT服务/系统集成,计算机软件</p>
-                            <p class="zp_index_cont_bz"><span>带薪年假</span><span>交通补助</span><span>定期体检</span></p>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
             <div id="serchPostionButton" class="zp_index_cont_left_zwtj_gdzw">
@@ -158,7 +118,7 @@
                 </p>
                 <ul>
                     <li class="zp_small">
-                        <a href="">
+                        <a onclick="flashResume()">
                             <span class="fa fa-refresh" style="font-size: 20px;color: #FFA500"></span>
                             <span style="margin-top: 5px">刷新简历</span>
                         </a>
@@ -188,7 +148,7 @@
                     <p>简&emsp;历</p>
                     <div>
                         <div class="col-lg-7">
-                            <h4>60%&nbsp;&nbsp;<span>06-29&nbsp;13:07</span></h4>
+                            <h4>${resume.resumeCompletion}%&nbsp;&nbsp;<span><fmt:formatDate value="${resume.resumeFlash}" pattern="MM-dd hh:mm"/></span></h4>
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
@@ -207,8 +167,8 @@
                             <span>求职简历:</span>
                             <div>
                                 <select class="form-control" onchange="ysChange(this)">
-                                    <option value="0">开放简历</option>
-                                    <option value="1">隐藏简历</option>
+                                    <option value="0" <c:if test="${resume.resumeYm=='0'}"> selected </c:if> >开放简历</option>
+                                    <option value="1" <c:if test="${resume.resumeYm=='1'}"> selected </c:if> >隐藏简历</option>
                                 </select>
                             </div>
                         </li>
@@ -284,7 +244,7 @@
                     if (data.postionList[i].company.companyNature == 1) {
                         companyNature = "国";
                     } else if (data.postionList[i].company.companyNature == 2) {
-                        companyNature = "私";
+                        companyNature = "民";
                     } else if (data.postionList[i].company.companyNature == 3) {
                         companyNature = "外";
                     }
@@ -340,6 +300,7 @@
     }
     function ysChange(ys) {
         var dd = {resumeId: '${resume.resumeId}', resumeYm: ys.value};
+        console.log(dd);
         $.ajax({
             type: 'post',
             url: '${pageContext.request.contextPath}/Resume/updateResume.do',
@@ -347,5 +308,21 @@
             data: JSON.stringify(dd)
         });
     }
+    function flashResume() {
+        $.ajax({
+            type: 'post',
+            url: '${pageContext.request.contextPath}/Resume/flashResume.do',
+            contentType: "application/json",
+            data: {resumeId: '${resume.resumeId}'},
+            success:function (data) {
+                if(data.msg=='ok'){
+                    alert("简历刷新成功");
+                }
+            }
+        });
+    }
+    $(function () {
+        serchPostion();
+    })
 </script>
 </html>

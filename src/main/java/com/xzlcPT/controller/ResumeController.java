@@ -9,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/7/10.
@@ -43,6 +40,22 @@ public class ResumeController extends BaseController {
 
         return map;
     }
+    //刷新简历方法
+    @ResponseBody
+    @RequestMapping("flashResume.do")
+    public Map<String,Object> flashResume(Long resumeId){
+        Map<String,Object> map = new HashMap<>();
+        XzResume resume = resumeService.selectById(resumeId);
+        resume.setResumeFlash(new Date());
+        int i = resumeService.updateResumeByFore(resume);
+        if(i==1){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
+    }
+
 
     //基本资料修改
     @ResponseBody
