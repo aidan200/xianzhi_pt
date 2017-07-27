@@ -63,5 +63,12 @@ public class ProductController extends BaseController{
         return map;
     }
 
-
+    @ResponseBody
+    @RequestMapping("deleteByPrimaryKey")
+    public  Map deleteByPrimaryKey(Long productId){
+        Map map=new HashMap();
+        int i=xzProductService.deleteByPrimaryKey(productId);
+        map.put("i",i);
+        return map;
+    }
 }
