@@ -64,7 +64,7 @@ public class ProductController extends BaseController{
     }
 
     @ResponseBody
-    @RequestMapping("deleteByPrimaryKey")
+    @RequestMapping("deleteByPrimaryKey.do")
     public  Map deleteByPrimaryKey(Long productId){
         Map map=new HashMap();
         int i=xzProductService.deleteByPrimaryKey(productId);

@@ -31,6 +31,6 @@ public interface XzPostionService {
 
     List<XzPostion> selInfoByComId(XzPostion xzPostion);
 
-    int insertPostion(XzPostion xzPostion);
+    int insertPostion(Map map);
 
 }

@@ -24,6 +24,8 @@
     <result column="postion_specialty" jdbcType="VARCHAR" property="postionSpecialty"/>
     <result column="publish_month" jdbcType="INTEGER" property="publishMonth"/>
     <result column="education_entrance" jdbcType="INTEGER" property="educationEntrance"/>
+    <result column="force_specialty" jdbcType="VARCHAR" property="forceSpecialty"/>
+    <result column="force_age" jdbcType="VARCHAR" property="forceAge"/>
     <result column="delete_flat" jdbcType="INTEGER" property="deleteFlat" />
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
@@ -43,6 +45,8 @@
     <result column="over_time" jdbcType="TIMESTAMP" property="overTime"/>
     <result column="publish_month" jdbcType="INTEGER" property="publishMonth"/>
     <result column="education_entrance" jdbcType="INTEGER" property="educationEntrance"/>
+    <result column="force_specialty" jdbcType="VARCHAR" property="forceSpecialty"/>
+    <result column="force_age" jdbcType="VARCHAR" property="forceAge"/>
     <result column="delete_flat" jdbcType="INTEGER" property="deleteFlat" />
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
@@ -75,6 +79,8 @@
     <result column="postion_specialty" jdbcType="VARCHAR" property="postionSpecialty"/>
     <result column="publish_month" jdbcType="INTEGER" property="publishMonth"/>
     <result column="education_entrance" jdbcType="INTEGER" property="educationEntrance"/>
+    <result column="force_specialty" jdbcType="VARCHAR" property="forceSpecialty"/>
+    <result column="force_age" jdbcType="VARCHAR" property="forceAge"/>
     <association property="company" javaType="com.xzlcPT.bean.XzCompany">
       <id column="company_id" jdbcType="BIGINT" property="companyId" />
       <result column="company_name" jdbcType="VARCHAR" property="companyName" />
@@ -113,6 +119,8 @@
     <result column="postion_specialty" jdbcType="VARCHAR" property="postionSpecialty"/>
     <result column="publish_month" jdbcType="INTEGER" property="publishMonth"/>
     <result column="education_entrance" jdbcType="INTEGER" property="educationEntrance"/>
+    <result column="force_specialty" jdbcType="VARCHAR" property="forceSpecialty"/>
+    <result column="force_age" jdbcType="VARCHAR" property="forceAge"/>
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
@@ -145,7 +153,7 @@
     p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
     p.filed1,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty,p.publish_month,
-    p.education_entrance,
+    p.education_entrance,p.force_age,p.force_specialty,
     c.company_id, c.company_name, c.company_picture, c.company_scale, c.company_nature, c.domain, c.skill,
     c.company_location,c.company_city,c.company_x,c.company_y,c.company_intro,c.company_space,
     w.welfare_id, w.welfare_name, f.field_id, f.field_name
@@ -154,7 +162,7 @@
     p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
     p.delete_flat,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty,p.publish_month,
-    p.education_entrance
+    p.force_age,p.force_specialty,p.education_entrance
   </sql>
   <select id="selPostionSendList" resultMap="PostionSendList" parameterType="Map">
     SELECT p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
@@ -331,6 +339,12 @@
       <if test="educationEntrance != null">
         education_entrance,
       </if>
+      <if test="forceSpecialty != null">
+        force_specialty,
+      </if>
+      <if test="forceAge != null">
+        force_age,
+      </if>
       <if test="deleteFlat != null">
         delete_flat,
       </if>
@@ -406,10 +420,16 @@
         #{postionSpecialty,jdbcType=VARCHAR},
       </if>
       <if test="publishMonth != null">
-        #{publishMonth,jdbcType=INTEGER}
+        #{publishMonth,jdbcType=INTEGER},
       </if>
       <if test="educationEntrance != null">
-        #{educationEntrance,jdbcType=INTEGER}
+        #{educationEntrance,jdbcType=INTEGER},
+      </if>
+      <if test="forceSpecialty != null">
+        #{forceSpecialty,jdbcType=VARCHAR},
+      </if>
+      <if test="forceAge != null">
+        #{forceAge,jdbcType=VARCHAR},
       </if>
       <if test="deleteFlat != null">
         #{deleteFlat,jdbcType=INTEGER},
@@ -425,7 +445,7 @@
       </if>
     </trim>
   </insert>
-  <insert id="insertPostion" parameterType="com.xzlcPT.bean.XzPostion">
+  <insert id="insertPostion" parameterType="java.util.Map">
     insert into xz_postion
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="companyId != null">
@@ -490,6 +510,12 @@
       </if>
       <if test="educationEntrance != null">
         education_entrance,
+      </if>
+      <if test="forceSpecialty != null">
+        force_specialty,
+      </if>
+      <if test="forceAge != null">
+        force_age,
       </if>
       <if test="deleteFlat != null">
         delete_flat,
@@ -559,6 +585,12 @@
       <if test="educationEntrance != null">
         #{educationEntrance,jdbcType=INTEGER},
       </if>
+      <if test="forceSpecialty != null">
+        #{forceSpecialty,jdbcType=VARCHAR},
+      </if>
+      <if test="forceAge != null">
+        #{forceAge,jdbcType=VARCHAR},
+      </if>
       <if test="deleteFlat != null">
         #{deleteFlat,jdbcType=INTEGER},
       </if>
@@ -586,6 +618,8 @@
     postion_specialty = #{postionSpecialty,jdbcType=VARCHAR},
     publish_month = #{publishMonth,jdbcType=INTEGER},
     education_entrance = #{educationEntrance,jdbcType=INTEGER},
+    force_age = #{forceAge,jdbcType=VARCHAR},
+    force_specialty = #{forceSpecialty,jdbcType=VARCHAR},
     delete_flat = #{deleteFlat,jdbcType=INTEGER},
     filed1 = #{filed1,jdbcType=VARCHAR},
     filed2 = #{filed2,jdbcType=VARCHAR},

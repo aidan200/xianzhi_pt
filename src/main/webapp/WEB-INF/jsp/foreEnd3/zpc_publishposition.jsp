@@ -21,7 +21,7 @@
 
 <div class="pup_container">
     <div class="pup_allin">
-        <form action="${pageContext.request.contextPath}/Postion/insertPostion" class="ac-boxfill">
+        <form action="${pageContext.request.contextPath}/Postion/insertPostion.do" class="ac-boxfill">
             <div class="pup_alltop">
                 <h4>职位发布</h4>
                 <p> 您可同时运作 <span>0</span> 个职位，当前还可以发布 <span>0</span> 个职位，职位有效期 <span>0</span> 天</p>
@@ -51,12 +51,12 @@
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>职位月薪：</span>
-                        <input type="text" class="pup_input" style="width: 120px" name="postionMm">元至
-                        <input type="text" class="pup_input" style="width: 120px" name="postionYm">元
+                        <input type="text" class="pup_input" style="width: 120px" name="postionMm" id="postionMm">元至
+                        <input type="text" class="pup_input" style="width: 120px" name="postionYm" id="postionYm">元
                         <%--checkbox--%>
                         <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
                             <input type="checkbox" id="pupnum1">
-                            <label for="pupnum1" style="font-weight: normal;margin-bottom: 0">
+                            <label id="checkLabel" for="pupnum1" style="font-weight: normal;margin-bottom: 0">
                                 <jsp:include page="checksvg.jsp"/>
                                 面议
                             </label>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>工作经验：</span>
-                        <input type="text" class="pup_input" style="width: 180px" name="postionExp">以上
+                        <input type="text" class="pup_input" style="width: 180px" name="postionExp" id="postionExp">以上
                         <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
                             <input type="checkbox" id="pupnum2">
                             <label for="pupnum2" style="font-weight: normal;margin-bottom: 0">
@@ -112,7 +112,7 @@
                     <div class="pup_form">
                         <span> 基本要求：</span>
                         <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
-                            <input type="checkbox" id="pupnum3">
+                            <input type="checkbox" id="pupnum3" name="check" value="1">
                             <label for="pupnum3" style="font-weight: normal;margin-bottom: 0">
                                 <jsp:include page="checksvg.jsp"/>
                                 只允许完全符合以下条件人选投递
@@ -159,7 +159,8 @@
                     <%--</div>--%>
                     <div class="pup_form">
                         <span>专业要求：</span>
-                        <input type="text" class="pup_input" style="width: 280px" placeholder="不限" name="postionSpecialty">
+                        <input type="text" class="pup_input" style="width: 280px" placeholder="不限" name="postionSpecialty" id="postionSpecialty">
+                        <input type="hidden" name="forceSpecialty" id="forceSpecialty">
                     </div>
                     <!--<div class="pup_form">-->
                     <!--<span>期望人所在行业：</span>-->
@@ -167,7 +168,7 @@
                     <!--</div>-->
                     <div class="pup_form">
                         <span>年龄要求：</span>
-                        <select name="postionAge" class="pup_input">
+                        <select name="postionAgeMin" class="pup_input" id="postionAgeMin">
                             <option value="不限">请选择</option>
                             <option value="20">20</option>
                             <option value="25">25</option>
@@ -178,15 +179,15 @@
                             <option value="50">50</option>
                         </select>
                         至
-                        <select name="" class="pup_input">
-                            <option value="-不限">请选择</option>
-                            <option value="-25">25</option>
-                            <option value="-30">30</option>
-                            <option value="-35">35</option>
-                            <option value="-40">40</option>
-                            <option value="-45">45</option>
-                            <option value="-50">50</option>
-                            <option value="-55">55</option>
+                        <select name="postionAgeMax" class="pup_input" id="postionAgeMax">
+                            <option value="不限">请选择</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="50">50</option>
+                            <option value="55">55</option>
                         </select>
                     </div>
                     <div class="pup_form">
@@ -236,6 +237,28 @@
     function countChar(textareaNamezzjs,spanName){
         document.getElementById(spanName).innerHTML=document.getElementById(textareaNamezzjs).value.length;
     }
+</script>
+<script>
+    $('#pupnum1').click(function () {
+        if($(this).is(":checked")==true){
+            $('#postionMm').attr("disabled","disabled");
+            $('#postionYm').attr("disabled","disabled");
+            $('#postionMm').val(null);
+            $('#postionYm').val(null);
+        }else {
+            $('#postionMm').removeAttr("disabled","disabled");
+            $('#postionYm').removeAttr("disabled","disabled");
+        }
+    })
+    $('#pupnum2').click(function () {
+        if($(this).is(":checked")==true){
+            $('#postionExp').attr("disabled","disabled");
+            $('#postionExp').val(null);
+        }else {
+            $('#postionExp').removeAttr("disabled","disabled");
+        }
+    })
+
 </script>
 </body>
 </html>
