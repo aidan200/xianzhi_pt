@@ -53,6 +53,8 @@ public class ResumeController extends BaseController {
         }else{
             map.put("msg","err");
         }
+        map.put("resumeFlash",resume.getResumeFlash());
+        map.put("resumeCompletion",resume.getResumeCompletion());
         return map;
     }
 

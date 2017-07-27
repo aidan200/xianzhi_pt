@@ -47,7 +47,7 @@
                         <div></div>
                     </div>
                     <div class="zp_jianli_yl">
-                        &nbsp;<a href="">预览</a> &nbsp;<span>|</span> &nbsp;<a href="">下载</a> &nbsp;<span>|</span> &nbsp;<a
+                        &nbsp;<a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resumeId}" target="_blank">预览</a> &nbsp;<span>|</span> &nbsp;<a href="">下载</a> &nbsp;<span>|</span> &nbsp;<a
                             href="">刷新</a>
                     </div>
 
