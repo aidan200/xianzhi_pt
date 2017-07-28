@@ -537,7 +537,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
             $('.zp_jianli_cont_left_jbzl_yl').after(str);
 
             $('#jl_sj').unbind().on('keyup',function (){
-                var num_kg=number('#jl_sj');
+                var num_kg=number2('#jl_sj');
                 if(num_kg){
                     $('#jl_sj').css({"color":"#555555"})
                 }else{
@@ -598,7 +598,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
                 resumeSex:trim(oxb),                           //性别
                 resumeEmail:trim($('#jl_yx').val()),          //邮箱
             };
-            var num_kg=number('#jl_sj');
+            var num_kg=number2('#jl_sj');
             function bdxy(){
                 if(resume.resumeBirth==''||resume.resumeBirth==null){       //出生年月
                     $('#jl_cstime').addClass('jl_name');
@@ -2106,15 +2106,16 @@ obj_xmjy.prototype.init=function (){
                 str+='<div class="zp_xmjy_left">'
                 str+='<ul>'
                 str+='<li>项目职务：</li>'
-                str+='<li>项目职责：</li>'
                 str+='<li>项目描述：</li>'
+                str+='<li>项目职责：</li>'
                 str+='</ul>'
                 str+='</div>'
                 str+='<div class="zp_xmjy_right">'
                 str+='<ul>'
                 str+='<li>'+_self.obj_s[i].xmzw+'</li>'
-                str+='<li>'+_self.obj_s[i].zz+'</li>'
                 str+='<li>'+_self.obj_s[i].xmms+'</li>'
+                str+='<li>'+_self.obj_s[i].zz+'</li>'
+
                 str+='</ul>'
                 str+='</div>'
                 str+='<div style="clear:both;"></div>'
@@ -3018,17 +3019,19 @@ obj_gssc.prototype.bindingSJ=function (){
     })
     //模糊查询以及添加事件开始
     $('#gs_ssk').on('keyup',function (event){
+
         clearTimeout(This.kg);
         function jtjp(){
             $('#sy span').each(function (index,ele){                        //监听键盘
                 if($('#gs_ssk').val()==$(ele).html()){
                     $('#pbqy').find('button').eq(2).css({"display":"inline-block"});
                     $('#gs_ssk').val($(ele).html()).attr('data-id',$(ele).attr('data-id'));
-                    $('#sy > ul').html('')
+                    // $('#sy > ul').html('')
                 }else{
                     $('#gs_ssk').attr('data-id','');
                     $('#pbqy').find('button').eq(2).css({"display":"none"});
                 }
+
             });
         }
 
@@ -3036,7 +3039,14 @@ obj_gssc.prototype.bindingSJ=function (){
              jtjp();
         }
         if($('#gs_ssk').val().length>=2){
-
+            if($('#sy span').length==0){
+                $('#qr').css({"display":"none"})
+            }
+            $('#sy span').each(function (i,e){
+                if($('#gs_ssk').val()!=$(e).html()){
+                    $('#qr').css({"display":"none"})
+                }
+            })
             This.kg=setTimeout(function (){
                 // 在这里发送AJAX
                 var val=$('#gs_ssk').val();
@@ -3058,8 +3068,12 @@ obj_gssc.prototype.bindingSJ=function (){
                             $('#pbqy').find('button').eq(2).css({"display":"inline-block"});
                             $('#sy > ul').html('')
                         })
-
                         jtjp()
+                        $('#sy span').each(function (i,e){
+                            if($('#gs_ssk').val()==$(e).html()){
+                                $('#qr').css({"display":"inline-block"})
+                            }
+                        })
 
 
 
@@ -3074,6 +3088,7 @@ obj_gssc.prototype.bindingSJ=function (){
         }else{
             $('#sy > ul').html('');     //清空
         }
+
     })
     //提交添加开始
     $('#qr').on('click',function (){
@@ -3102,6 +3117,7 @@ obj_gssc.prototype.bindingSJ=function (){
 
 }
 //屏蔽公司
+
 function flashResume() {                    //简历完成度
     $.ajax({
         type:"get",
@@ -3133,6 +3149,8 @@ function flashResume2(){
                 var completion = data.resumeCompletion;//完成度
                 $('.zp_jianli_wcd .zl_wcd').html(completion);
                 $('.zp_jianli_wcd div').css({"width":completion+"%"})
+                $('#jl_wcd').html(completion)
+                $('#js_sxsj').html(getNowFormatDateSS(date))
 
         },error:function (){ //报错执行的
             alert('基本资料修改错误')
@@ -3141,11 +3159,15 @@ function flashResume2(){
     })
 }
 function number(obj){                   //正则表达式
+    var s = /^[0-9]*$/;
+    var v = s.test($(obj).val())
+    return v
+}
+function number2(obj){                   //正则表达式
     var s = /^[0-9]{11}$/;
     var v = s.test($(obj).val())
     return v
 }
-
 
 
 $(function (){                              //入口函数

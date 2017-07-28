@@ -24,6 +24,7 @@
         var wanchengdu;                                         //完成度
 
     </script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_jianli.js"></script>
 
@@ -259,7 +260,7 @@
                     <p>简&emsp;历</p>
                     <div>
                         <div class="col-lg-7">
-                            <h4>60%&nbsp;&nbsp;<span>06-29&nbsp;13:07</span></h4>
+                            <h4><span id="jl_wcd">60</span>%&nbsp;&nbsp;<span id="js_sxsj">06-29&nbsp;13:07</span></h4>
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>

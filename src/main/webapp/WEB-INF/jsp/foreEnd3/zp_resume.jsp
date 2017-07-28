@@ -135,27 +135,27 @@
                         </div>
                     </b>
                     <div class="resume_two">
-                        <div class="resume_every">
-                            公司性质：<span>${je.jobexpCompanyType}</span>
-                        </div>
+                        <%--<div class="resume_every">--%>
+                            <%--公司性质：<span>${je.jobexpCompanyType}</span>--%>
+                        <%--</div>--%>
                         <div class="resume_every">
                             公司规模：<span>${je.jobexpSubordinate}人</span>
                         </div>
                         <div class="resume_every">
-                            公司行业：<span>${je.jobexpField}</span>
+                            经营领域：<span>${je.jobexpField}</span>
                         </div>
                         <div class="resume_every">
                             工作职位：<span>${je.jobexpPostion}</span>
                         </div>
-                        <div class="resume_every">
-                            薪酬状况：<span>${je.jobexpMm}</span>
-                        </div>
+                        <%--<div class="resume_every">--%>
+                            <%--薪酬状况：<span>${je.jobexpMm}</span>--%>
+                        <%--</div>--%>
                         <div class="resume_every">
                             工作地点：<span>${je.jobexpWorkspace}</span>
                         </div>
-                        <div class="resume_every">
-                            所在部门：<span>${je.jobexpDept}</span>
-                        </div>
+                        <%--<div class="resume_every">--%>
+                            <%--所在部门：<span>${je.jobexpDept}</span>--%>
+                        <%--</div>--%>
                         <div class="resume_every3">
                             <span style="display: inline-block;float: left">职责业绩：${je.jobexpDuty}</span>
                             <span class="resume_many">hhahhahahahhahaha</span>
@@ -205,6 +205,9 @@
                     <h4><span class="fa fa-map-signs"></span>项目经验</h4>
                     <c:forEach var="e2" items="${xzResume.xzProjectExps}">
                         <div class="resume_two">
+                            <div class="resume_every3">
+                                项目时间：<span>2016-2017</span>
+                            </div>
                             <div class="resume_every3">
                                 项目名称：<span>${e2.proexpName}</span>
                             </div>
