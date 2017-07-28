@@ -206,6 +206,9 @@
                     <c:forEach var="e2" items="${xzResume.xzProjectExps}">
                         <div class="resume_two">
                             <div class="resume_every3">
+                                项目时间：<span>2016-2017</span>
+                            </div>
+                            <div class="resume_every3">
                                 项目名称：<span>${e2.proexpName}</span>
                             </div>
                             <div class="resume_every3">
