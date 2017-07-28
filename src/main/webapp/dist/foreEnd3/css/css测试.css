@@ -4056,6 +4056,11 @@ input[type="button"].fileInputButton {
     float: left;
     margin-left: 15px;
 }
+.pop_but{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
 
 .pop_test2 h4 {
     color: #3d9ccc;
@@ -4125,6 +4130,14 @@ input[type="button"].fileInputButton {
     border: 1px solid #d9d9d9;
     position: relative;
 }
+.pop_more{
+    width: 100%;
+    background-color: #FFFFff;
+    height: 80px;
+    border: 1px solid #d9d9d9;
+    display: none;
+    border-top:none;
+}
 
 .pop_no {
     width: 100%;
@@ -4134,7 +4147,84 @@ input[type="button"].fileInputButton {
     border: 1px solid #d9d9d9;
     overflow: hidden;
 }
+/*进度的*/
+.ui-stepBar-wrap2 {
+    position: relative;
+    width: 530px;
+    height: 130px;
+    display: none;
+    z-index: 100;
+    margin: 0 auto;
+}
 
+.ui-stepBar-wrap2 .ui-stepBar {
+    position: relative;
+    width: 90%;
+    height: 5px;
+    background: #cccccc;
+    top: 30px;
+    left: 5%;
+    z-index: 101;
+}
+
+.ui-stepBar-wrap2 .ui-stepBar .ui-stepProcess {
+    position: relative;
+    width: 0;
+    height: 5px;
+    background: #f8a91e;
+    top: 0;
+    left: 0;
+    z-index: 102;
+}
+
+.ui-stepBar-wrap2 .ui-stepInfo-wrap {
+    width: 95%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.ui-stepBar-wrap2 .ui-stepInfo-wrap .ui-stepInfo {
+    position: relative;
+    float: left;
+    padding-top: 16px;
+    text-align: center;
+}
+
+.ui-stepBar-wrap2 .ui-stepInfo-wrap .ui-stepInfo .ui-stepSequence {
+    position: relative;
+    padding: 4px 8px;
+    border-radius: 50%;
+    z-index: 103;
+}
+
+.ui-stepBar-wrap2 .ui-stepInfo-wrap .ui-stepInfo .ui-stepName {
+    position: relative;
+    line-height: 50px;
+    z-index: 103;
+}
+
+.ui-stepBar-wrap2 .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-pre-change,
+.ui-stepBar-wrap2 .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-hind-change {
+    cursor: pointer;
+}
+
+.ui-stepBar-wrap2 .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-pre-change:hover {
+    box-shadow: 0 0 3px 1px #f8a91e;
+}
+
+.ui-stepBar-wrap2 .ui-stepInfo-wrap .ui-stepInfo .judge-stepSequence-hind-change:hover {
+    box-shadow: 0 0 3px 1px #cccccc;
+}
+
+.judge-stepSequence-pre {
+    background: #f8a91e;
+    color: #ffffff;
+}
+
+.judge-stepSequence-hind {
+    background: #cccccc;
+    color: #ffffff;
+}
 /*------------------------公司主页-----------------------*/
 .comh_allin {
     /*width: 100%;*/
@@ -5714,3 +5804,4 @@ footer {
     font-size: 23px;
     float: right;
 }
+
