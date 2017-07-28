@@ -41,7 +41,7 @@ public class PostionSendController extends BaseController{
     @RequestMapping("sendPostion.do")
     public Map sendPostion(Long postionId){
         Map map = new HashMap();
-
+        
 
         return map;
     }
