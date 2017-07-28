@@ -125,8 +125,8 @@ public class XzPostionServiceImpl implements XzPostionService{
     }
 
     @Override
-    public List<Long> selectCollect(Long memberId) {
-        List<Long> list=postionMapper.selectCollect(memberId);
+    public List<XzPostion> selectCollect(Long memberId) {
+        List<XzPostion> list=postionMapper.selectCollect(memberId);
         return list;
     }
 }

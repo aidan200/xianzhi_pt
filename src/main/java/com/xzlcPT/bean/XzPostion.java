@@ -60,6 +60,8 @@ public class XzPostion {
 
     private String filed3;
 
+    private Long collectId;
+
     private XzCompany company;
 
     private List<XzField> fields;
@@ -357,6 +359,14 @@ public class XzPostion {
 
     public String getForceSpecialty() {
         return forceSpecialty;
+    }
+
+    public void setCollectId(Long collectId) {
+        this.collectId = collectId;
+    }
+
+    public Long getCollectId() {
+        return collectId;
     }
 
     @Override

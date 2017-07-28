@@ -62,6 +62,8 @@ public class XzResume {
 
     private String filed3;
 
+    private Long collectId;
+
     private List<XzField> fields;
 
     private List<XzJobExp> jobExps;
@@ -345,6 +347,13 @@ public class XzResume {
         return xzResumeSkills;
     }
 
+    public void setCollectId(Long collectId) {
+        this.collectId = collectId;
+    }
+
+    public Long getCollectId() {
+        return collectId;
+    }
 
     @Override
     public String toString() {

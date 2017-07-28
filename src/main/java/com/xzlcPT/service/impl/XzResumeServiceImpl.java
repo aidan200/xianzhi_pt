@@ -143,7 +143,24 @@ public class XzResumeServiceImpl implements XzResumeService{
         pageBean.setList(resumeList);
         return pageBean;
     }
+    //收藏简历
+    @Override
+    public int insertCollect(Map map) {
+       int i=resumeMapper.insertCollect(map);
+        return i;
+    }
+    //删除收藏
+    @Override
+    public int deleteCollect(Long collectId) {
+        int i=resumeMapper.deleteCollect(collectId);
+        return i;
+    }
 
+    @Override
+    public List<XzResume> selectCollect(Long companyId) {
+        List<XzResume> resumeList=resumeMapper.selectCollect(companyId);
+        return resumeList;
+    }
 
     //修改完成度
     public XzResume updateCompletionById(Long id) {
