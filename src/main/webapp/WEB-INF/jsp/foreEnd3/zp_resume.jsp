@@ -274,6 +274,7 @@
 </div>
 <a href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ghh.png" alt="" class="index_gh"></a>
 
+<jsp:include page="behindforeEnd.jsp"/>
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>
 <script>
     $(function () {

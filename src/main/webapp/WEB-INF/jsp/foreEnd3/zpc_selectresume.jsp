@@ -220,6 +220,8 @@
     <input id="Position" type="hidden" name="resumePosition">
     <input id="workspace" form="hidForm" type="hidden" name="workspace" value="" >
 </form>
+
+<jsp:include page="behindforeEnd.jsp"/>
 <script type="text/javascript">
     $(document).ready(function () {
         $(".divSmall5").click(function () {

@@ -211,7 +211,7 @@
         </div>
     </div>
 </section>
-
+<jsp:include page="behindforeEnd.jsp"/>
 </body>
 <script>
     var page;
