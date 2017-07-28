@@ -3143,7 +3143,7 @@ function flashResume2(){
     })
 }
 function number(obj){                   //正则表达式
-    var s = /^[0-9]*$/;
+    var s = /^[0-9]{11}$/;
     var v = s.test($(obj).val())
     return v
 }
@@ -3182,7 +3182,7 @@ $(function (){                              //入口函数
     var obj__gssc=new obj_gssc();           //企业收藏开始
      obj__gssc.init();
 
-    flashResume();                           //加载完成度
+    flashResume2();                           //加载完成度
 });
 
 
