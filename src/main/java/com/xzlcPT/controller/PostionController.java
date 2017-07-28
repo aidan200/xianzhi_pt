@@ -168,10 +168,10 @@ public class PostionController extends BaseController{
     }
     //添加职位信息
     @RequestMapping("insertPostion.do")
-    public ModelAndView insertPostion(String postionName,String postionSpace,String postionDepartment,Integer peopleNumber,
+    public ModelAndView insertPostion(@ModelAttribute("userLogin") XzLogin userLogin,String postionName,String postionSpace,String postionDepartment,Integer peopleNumber,
                                       Integer postionMm,Integer postionYm,Integer publishMonth,String postionExp,String postionEducation,Integer educationEntrance,
-                                        String postionDescription,String postionSpecialty,String postionAgeMin,String postionAgeMax,Integer companyId,Integer check){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+                                        String postionDescription,String postionSpecialty,String postionAgeMin,String postionAgeMax,Integer check){
+        ModelAndView mv=new ModelAndView("/foreEnd3/zpc_position_management");
         Map map=new HashMap();
         map.put("postionName",postionName);
         map.put("postionSpace",postionSpace);
@@ -192,7 +192,7 @@ public class PostionController extends BaseController{
         map.put("postionSpecialty",postionSpecialty);
         map.put("postionAgeMin",postionAgeMin);
         map.put("postionAgeMax",postionAgeMax);
-        map.put("companyId",companyId);
+        map.put("companyId",userLogin.getCompany().getCompanyId());
         map.put("educationEntrance",educationEntrance);
         if (check!=null&&check==1){
             map.put("forceAgeMax",postionAgeMax);
