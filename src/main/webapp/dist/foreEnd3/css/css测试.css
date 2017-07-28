@@ -3928,9 +3928,9 @@ input[type="button"].fileInputButton {
     border: 3px solid #FFA500;
     position: relative;
     background-color: #FFF;
-    display: inline-block;
+    /*display: inline-block;*/
     padding-left: 10px;
-    /*display: none;*/
+    display: none;
     z-index: 999;
 }
 
