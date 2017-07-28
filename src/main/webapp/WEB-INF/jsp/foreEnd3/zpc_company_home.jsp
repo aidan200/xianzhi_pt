@@ -115,8 +115,8 @@
                     </div>
                     <div class="comh_no">
                         <div class="pop_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pop_img">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""
+                                 class="com_img">
                             <p>暂无简历记录</p>
                         </div>
                     </div>
@@ -129,8 +129,8 @@
                     </div>
                     <div class="comh_no">
                         <div class="pop_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pop_img">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""
+                                 class="com_img">
                             <p>暂无简历记录</p>
                         </div>
                     </div>
@@ -143,8 +143,8 @@
                     </div>
                     <div class="comh_no">
                         <div class="pop_allimg">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/no.png" alt=""
-                                 class="pop_img">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""
+                                 class="com_img">
                             <p>暂无简历记录</p>
                         </div>
                     </div>
@@ -161,14 +161,14 @@
     </div>
 </div>
 
-<div class="allboolean">
-    <div class="b_out">
-        <div class="booleanin">
-            请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
-            <span class="fa fa-remove bremove"></span>
-        </div>
-    </div>
-</div>
+<%--<div class="allboolean">--%>
+    <%--<div class="b_out">--%>
+        <%--<div class="booleanin">--%>
+            <%--请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈--%>
+            <%--<span class="fa fa-remove bremove"></span>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
 <jsp:include page="behindforeEnd.jsp"/>
 <div id="index_bb">
