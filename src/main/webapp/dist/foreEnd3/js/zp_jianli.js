@@ -653,8 +653,8 @@ obj_zyyx.prototype.init=function (){
             _self.qwhy=data.resume.fields;                  //行业(包括当前 和期望 2是当前 3是期望的)
             _self.qwzn=data.resume.resumeIntentPosition;    //期望职能
             _self.qwdd=data.resume.resumeWorkspace;         //期望地点
-            _self.qwnx=[data.resume.resumeIntentYm,12];     //期望年薪
-            _self.mqnx=[data.resume.resumeYm,12];           //当前年薪
+            _self.qwnx=[data.resume.resumeIntentMm,12];     //期望年薪
+            _self.mqnx=[data.resume.resumeMm,12];           //当前年薪
             _self.bindingDOM();
             _self.bindingSJ();
         },error:function (){ //报错执行的
@@ -884,16 +884,19 @@ obj_zyyx.prototype.bindingSJ=function (){
                 }
                 zhisha_01();                         //删除技能自杀按钮
             });
-
-
-            // $('#jl_qwnx input').keyup(function (event){         //鼠标抬起事件
-            //     var aa_qwnx=$('#jl_qwnx').find('input').eq(0).val()*$('#jl_qwnx').find('input').eq(1).val(); //
-            //     $('#qwnx_cont').html(aa_qwnx/10000);       //期望年薪
-            // })
-            // $('#jl_mqnx input').keyup(function (event){         //鼠标抬起事件
-            //     var aa_qwnx=$('#jl_qwnx').find('input').eq(0).val()*$('#jl_qwnx').find('input').eq(1).val(); //
-            //     $('#qwnx_cont').html(aa_qwnx/10000);             //目前年薪
-            // })
+            function jisuan(){//计算年薪
+                var aa_qwnx=$('#jl_qwnx').find('input').eq(0).val()*$('#jl_qwnx').find('input').eq(1).val(); //
+                $('#qwnx_cont').html(aa_qwnx/10000);       //期望年薪
+                var aa_mqnx=$('#jl_mqnx').find('input').eq(0).val()*$('#jl_mqnx').find('input').eq(1).val(); //
+                $('#mqnx_cont').html(aa_mqnx/10000);       //期望年薪
+            }
+            jisuan()
+            $('#jl_qwnx input').keyup(function (event){         //鼠标抬起事件
+                jisuan()
+            })
+            $('#jl_mqnx input').keyup(function (event){         //鼠标抬起事件
+                jisuan()
+            })
 
 
             $('.zp_jianli_zl_3').find('button').eq(1).on('click',function (){
@@ -916,8 +919,8 @@ obj_zyyx.prototype.bindingSJ=function (){
                     fields:shuzu,                                   //行业
                     resumeIntentPosition:trim($('#jl_qwzn').val()),   //期望职能
                     resumeWorkspace:trim($('#jl_qwdd').val()),        //期望地点
-                    resumeIntentYm:trim($('#jl_qwnx input').eq(0).val()),//期望年薪
-                    resumeYm:trim($('#jl_mqnx input').eq(0).val())     //当前年息
+                    resumeIntentMm:trim($('#jl_qwnx input').eq(0).val()),//期望年薪
+                    resumeMm:trim($('#jl_mqnx input').eq(0).val())     //当前年息
                 };
                 function bdxy(){
                     if(pcont.fields.length==0){
@@ -936,19 +939,19 @@ obj_zyyx.prototype.bindingSJ=function (){
                         $('#jl_qwdd').focus()
                         return
                     }
-                    if(pcont.resumeIntentYm==''||pcont.resumeIntentYm==null){
+                    if(pcont.resumeIntentMm==''||pcont.resumeIntentMm==null){
                         $('#_zwnx_').addClass('jl_name');
                         $('#_zwnx_').focus()
                         return
                     }
-                    if(pcont.resumeYm==''||pcont.resumeYm==null){
+                    if(pcont.resumeMm==''||pcont.resumeMm==null){
                         $('#_mqnx_').addClass('jl_name');
                         $('#_mqnx_').focus()
                         return
                     }
                 }
                 bdxy()
-                if(pcont.fields.length!=0&&pcont.resumeIntentPosition!=''&&pcont.resumeIntentPosition!=null&&pcont.resumeWorkspace!=''&&pcont.resumeWorkspace!=null&&pcont.resumeIntentYm!=''&&pcont.resumeIntentYm!=null&&pcont.resumeYm!=''&&pcont.resumeYm!=null){
+                if(pcont.fields.length!=0&&pcont.resumeIntentPosition!=''&&pcont.resumeIntentPosition!=null&&pcont.resumeWorkspace!=''&&pcont.resumeWorkspace!=null&&pcont.resumeIntentMm!=''&&pcont.resumeIntentMm!=null&&pcont.resumeMm!=''&&pcont.resumeMm!=null){
                     $(this).unbind('click')
                     $.ajax({
                         type:"post",    //提交方式
@@ -2787,7 +2790,10 @@ obj_scjn.prototype.bindingSJ=function () {
                 var attr=[];
                 if(k.length==0){
                     //最后一个删除不掉
-
+                    alert('aaa')
+                    attr[0]={
+                        resumeId:ID,
+                    }
                 }else{
                     for(var i=0;i<k.length;i++){
                         attr[i]={
