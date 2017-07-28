@@ -194,7 +194,7 @@ public class PostionController extends BaseController{
         map.put("postionAgeMax",postionAgeMax);
         map.put("companyId",companyId);
         map.put("educationEntrance",educationEntrance);
-        if (check!=null&&1==check){
+        if (check!=null&&check==1){
             map.put("forceAgeMax",postionAgeMax);
             map.put("forceAgeMin",postionAgeMin);
             map.put("forceSpecialty",postionSpecialty);
