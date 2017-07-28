@@ -3129,12 +3129,10 @@ function flashResume2(){
         dataType:'json',
         url:path+'Resume/flashResumeByMore.do',
         success:function (data){
-            if(data.msg=='ok'){
                 var date = new Date(data.resumeFlash);//刷新简历时间
                 var completion = data.resumeCompletion;//完成度
                 $('.zp_jianli_wcd .zl_wcd').html(completion);
                 $('.zp_jianli_wcd div').css({"width":completion+"%"})
-            }
 
         },error:function (){ //报错执行的
             alert('基本资料修改错误')
@@ -3143,7 +3141,7 @@ function flashResume2(){
     })
 }
 function number(obj){                   //正则表达式
-    var s = /^[0-9]*$/;
+    var s = /^[0-9]{11}$/;
     var v = s.test($(obj).val())
     return v
 }
@@ -3182,7 +3180,7 @@ $(function (){                              //入口函数
     var obj__gssc=new obj_gssc();           //企业收藏开始
      obj__gssc.init();
 
-    flashResume();                           //加载完成度
+    flashResume2();                           //加载完成度
 });
 
 

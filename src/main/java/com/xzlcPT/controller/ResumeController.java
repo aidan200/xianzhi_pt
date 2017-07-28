@@ -64,6 +64,7 @@ public class ResumeController extends BaseController {
     public Map<String,Object> flashResumeByMore(Long resumeId){
         Map<String,Object> map = new HashMap<>();
         XzResume rss = resumeService.selectById(resumeId);
+        map.put("resumeYm",rss.getResumeYm());
         map.put("resumeFlash",rss.getResumeFlash());
         map.put("resumeCompletion",rss.getResumeCompletion());
         return map;
