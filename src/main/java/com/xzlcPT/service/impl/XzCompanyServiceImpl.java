@@ -194,5 +194,23 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         return nlist;
     }
 
+    @Override
+    public int insertFollow(Map map) {
+        int i=companyMapper.insertFollow(map);
+        return i;
+    }
+
+    @Override
+    public int deleteFollow(Long followId) {
+        int i=companyMapper.deleteFollow(followId);
+        return i;
+    }
+
+    @Override
+    public List<XzCompany> selectFollow(Long memberId) {
+        List<XzCompany> companyList=companyMapper.selectFollow(memberId);
+        return companyList;
+    }
+
 
 }

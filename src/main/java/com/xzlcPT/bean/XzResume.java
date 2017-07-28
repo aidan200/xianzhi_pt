@@ -64,6 +64,8 @@ public class XzResume {
 
     private Long collectId;
 
+    private Date collectTime;
+
     private List<XzField> fields;
 
     private List<XzJobExp> jobExps;
@@ -353,6 +355,14 @@ public class XzResume {
 
     public Long getCollectId() {
         return collectId;
+    }
+
+    public void setCollectTime(Date collectTime) {
+        this.collectTime = collectTime;
+    }
+
+    public Date getCollectTime() {
+        return collectTime;
     }
 
     @Override

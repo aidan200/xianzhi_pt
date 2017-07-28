@@ -14,6 +14,12 @@
 <html>
 <head>
     <title>Title</title>
+    <script>
+        var s = /^([0-9]{3}-[0-9]{8})|([0-9]{4}-[0-9]{7})$/;
+        var v = s.test("111-11111111");
+        alert(v);
+
+    </script>
 </head>
 <body>
     <form action="${pageContext.request.contextPath}/XzLogin/Login.do">

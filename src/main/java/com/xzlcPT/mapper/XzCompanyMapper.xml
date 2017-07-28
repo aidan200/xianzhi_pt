@@ -26,6 +26,8 @@
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <result column="delete_falt" jdbcType="BIGINT" property="deleteFalt" />
+    <result column="follow_id" jdbcType="BIGINT" property="followId"/>
+    <result column="follow_time" jdbcType="TIMESTAMP" property="followTime"/>
   </resultMap>
   <resultMap id="CompanyInfo" type="com.xzlcPT.bean.XzCompany">
     <id column="company_id" jdbcType="BIGINT" property="companyId" />
@@ -606,5 +608,36 @@
         #{company_id,jdbcType=BIGINT}
       </foreach>
     </if>
+  </select>
+  <insert id="insertFollow" parameterType="java.util.Map">
+    insert into xz_company_follow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="followTime != null">
+        follow_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="followTime != null">
+        #{followTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteFollow" parameterType="java.lang.Long">
+    delete from xz_company_follow where follow_id=#{followId,jdbcType=INTEGER}
+  </delete>
+  <select id="selectFollow" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select company_id,follow_id,follow_time from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
   </select>
 </mapper>

@@ -62,6 +62,8 @@ public class XzPostion {
 
     private Long collectId;
 
+    private Date collectTime;
+
     private XzCompany company;
 
     private List<XzField> fields;
@@ -367,6 +369,14 @@ public class XzPostion {
 
     public Long getCollectId() {
         return collectId;
+    }
+
+    public void setCollectTime(Date collectTime) {
+        this.collectTime = collectTime;
+    }
+
+    public Date getCollectTime() {
+        return collectTime;
     }
 
     @Override

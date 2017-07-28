@@ -22,4 +22,10 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     public List<XzPostionSend> selSendCountByCorRId(Map map) {
         return postionSendMapper.selSendCountByCorRId(map);
     }
+
+    @Override
+    public int insertSelective(Map map) {
+        int i=postionSendMapper.insertSelective(map);
+        return i;
+    }
 }

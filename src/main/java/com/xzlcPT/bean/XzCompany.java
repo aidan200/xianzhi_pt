@@ -52,6 +52,8 @@ public class XzCompany {
     private String filed2;//备用列2
     private String filed3;//备用列3
     private int pcount;//职位个数
+    private Long followId;//关注ID
+    private Date followTime;//关注时间
 
     public List<XzField> getFields() {
         return fields;
@@ -307,6 +309,22 @@ public class XzCompany {
 
     public List<XzCompanySkill> getSkills() {
         return skills;
+    }
+
+    public void setFollowId(Long followId) {
+        this.followId = followId;
+    }
+
+    public Long getFollowId() {
+        return followId;
+    }
+
+    public void setFollowTime(Date followTime) {
+        this.followTime = followTime;
+    }
+
+    public Date getFollowTime() {
+        return followTime;
     }
 
     @Override

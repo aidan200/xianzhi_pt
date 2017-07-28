@@ -10,4 +10,6 @@ import java.util.Map;
  */
 public interface XzPostionSendService {
     List<XzPostionSend> selSendCountByCorRId(Map map);
+
+    int insertSelective(Map map);
 }
