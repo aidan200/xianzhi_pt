@@ -127,7 +127,6 @@
                                 <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-calendar-minus-o"></div>
                                 <span>工作经历</span>
                                 <em class="tips-required">必填<i></i></em>
-
                             </div>
 
                         </div>
