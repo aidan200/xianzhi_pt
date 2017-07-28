@@ -216,7 +216,7 @@
                 提示：对于发布虚假招聘信息的企业及账号，先知网有权进行封号处理，造成先知网损失的，需对先知网进行赔偿；同时，先知网保留诉讼的权利。
             </div>
             <div style="text-align: center;margin-bottom: 80px;margin-top: 40px">
-                <input type="hidden" name="companyId" value="2">
+                <%--<input type="hidden" name="companyId" value="2">--%>
                 <button class="pup_but1"  id="sub">发布职位</button>
                 <button class="pup_but2">保存为草稿职位</button>
             </div>
