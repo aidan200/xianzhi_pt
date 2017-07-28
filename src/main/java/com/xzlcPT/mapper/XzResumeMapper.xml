@@ -31,6 +31,7 @@
     <result column="filed1" jdbcType="VARCHAR" property="filed1" />
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    <result column="collect_id" jdbcType="BIGINT" property="collectId"/>
   </resultMap>
   <resultMap id="ResumeInfo" type="com.xzlcPT.bean.XzResume">
     <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
@@ -618,5 +619,36 @@
     <if test="resumeState !=null and resumeState !=''">
       AND r.resume_state = #{resumeState,jdbcType=VARCHAR}
     </if>
+  </select>
+  <insert id="insertCollect" parameterType="java.util.Map">
+    insert into xz_resume_collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="collectTime != null">
+        collect_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="collectTime != null">
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteCollect" parameterType="java.lang.Long">
+    delete from xz_resume_collect where collect_id=#{collectId,jdbcType=INTEGER}
+  </delete>
+  <select id="selectCollect" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select resume_id,collect_id from xz_resume_collect where company_id=#{companyId,jdbcType=INTEGER}
   </select>
 </mapper>
