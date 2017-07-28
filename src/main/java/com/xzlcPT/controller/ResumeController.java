@@ -58,6 +58,17 @@ public class ResumeController extends BaseController {
         return map;
     }
 
+    //查看完成度
+    @ResponseBody
+    @RequestMapping("flashResumeByMore.do")
+    public Map<String,Object> flashResumeByMore(Long resumeId){
+        Map<String,Object> map = new HashMap<>();
+        XzResume rss = resumeService.selectById(resumeId);
+        map.put("resumeFlash",rss.getResumeFlash());
+        map.put("resumeCompletion",rss.getResumeCompletion());
+        return map;
+    }
+
 
     //基本资料修改
     @ResponseBody
