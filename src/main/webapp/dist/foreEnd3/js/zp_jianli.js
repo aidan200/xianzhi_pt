@@ -3129,12 +3129,10 @@ function flashResume2(){
         dataType:'json',
         url:path+'Resume/flashResumeByMore.do',
         success:function (data){
-            if(data.msg=='ok'){
                 var date = new Date(data.resumeFlash);//刷新简历时间
                 var completion = data.resumeCompletion;//完成度
                 $('.zp_jianli_wcd .zl_wcd').html(completion);
                 $('.zp_jianli_wcd div').css({"width":completion+"%"})
-            }
 
         },error:function (){ //报错执行的
             alert('基本资料修改错误')
