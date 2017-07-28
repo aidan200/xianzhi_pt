@@ -343,6 +343,7 @@ obj_yhxx.prototype.bindingSJ=function (){
                         return
                     }
                     if(resume.resumeWorkspace==''||resume.resumeWorkspace==null){ //当前城市为空
+
                         $('#jl_dqcs').addClass('jl_name');
                         $('#jl_dqcs').focus();
                         return
@@ -361,8 +362,11 @@ obj_yhxx.prototype.bindingSJ=function (){
                         url:path+'Resume/updateResume.do',    //路径
 
                         success:function (data){//data 就是数据 json
+
                             xgk.remove();          //删除修改框
                             _self.init();           //重新加载数据
+                            flashResume()           //刷新简历
+
                             $('.zp_jianli_cont_left_top2_top').css({"display":"block"});//显示出来
 
                         },error:function (){ //报错执行的
@@ -450,11 +454,11 @@ obj_zbzl.prototype.bindingDOM=function (){//绑定基本信息
 
 
     if(_self.zt==0){                        //状态
-        _self.DOM.zt.html("未就职");
+        _self.DOM.zt.html("目前在职暂无跳槽打算");
     }else if(_self.zt==1){
-        _self.DOM.zt.html("就职");
+        _self.DOM.zt.html("目前就职但是有合适的机会会考虑");
     }else if(_self.zt==2){
-        _self.DOM.zt.html("保密");
+        _self.DOM.zt.html("目前已离职");
     }else{
         _self.DOM.zt.html("");
     }
@@ -497,9 +501,9 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
             str+='<li>'
             str+='<span>状态</span>'
             str+='<select class="form-control" id="jl_zt">'
-            str+='<option value="0">就职</option>'
-            str+='<option value="1">未就职</option>'
-            str+='<option value="2">保密</option>'
+            str+='<option value="0">目前在职暂无跳槽打算</option>'
+            str+='<option value="1">目前就职但是有合适的机会会考虑</option>'
+            str+='<option value="2">目前已离职</option>'
             str+='</select>'
             str+='</li>'
             str+='</ul>'
@@ -610,6 +614,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
                     success:function (data){//data 就是数据 json
                         tck.remove();                           //删除修改框
                         _self.init();                           //重新加载
+                        flashResume()           //刷新简历
                         $('.zp_jianli_cont_left_jbzl_middle').css({"display":"block"})
                     },error:function (){ //报错执行的
                         alert('基本资料修改错误')
@@ -731,7 +736,6 @@ obj_zyyx.prototype.bindingSJ=function (){
             }else{
                 str+='期望职能 <input id="jl_qwzn" value="" type="text" class="form-control zp_jianli_zl_3_input1" placeholder="请输入你期望的智能">'
             }
-            str+=' <em></em>'
             str+='</li>'
             str+='<li>'
             if(_self.qwdd!=''&&_self.qwdd!=null){
@@ -955,6 +959,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                         success:function (data){//data 就是数据 json
                             xgk.remove();//删除修改框
                             _self.init();//重新载入
+                            flashResume()           //刷新简历
                             $('#zyyx_cont').css({"display":"block"})   //显示
 
                         },error:function (){ //报错执行的
@@ -1336,6 +1341,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                             $(This).parent().parent().remove();               //自杀
                             $('#gzjl').siblings('div').remove();
                             _self.init();
+                            flashResume()           //刷新简历
 
                         },error:function (){ //报错执行的
                             alert('基本资料修改错误')
@@ -1364,6 +1370,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                             $('#gzjl').siblings('div').remove();
                             kg=true;
                             _self.init()
+                            flashResume()           //刷新简历
                         },error:function (){ //报错执行的
                             alert('工作经历删除错误')
                         }
@@ -1548,6 +1555,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                             $(This2).parent().parent().remove();               //自杀
                             $('#gzjl').siblings('div').remove();
                             _self.init();
+                            flashResume()           //刷新简历
 
                         },error:function (){ //报错执行的
                             alert('基本资料修改错误')
@@ -1763,6 +1771,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                                         aaa.eq(i).remove();
                                     }
                                     _self.init();
+                                    flashResume()           //刷新简历
 
                                 },error:function (){ //报错执行的
                                     alert('基本资料修改错误')
@@ -1798,6 +1807,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                                 ee.eq(i).remove();
                             }
                             _self.init()
+                            flashResume()           //刷新简历
                         },error:function (){ //报错执行的
                             alert('工作经历删除错误')
                         }
@@ -1923,6 +1933,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                                 aa.eq(i).remove();
                             }
                             _self.init();
+                            flashResume()           //刷新简历
 
                         },error:function (){ //报错执行的
                             alert('基本资料修改错误')
@@ -2136,6 +2147,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                                     aa.eq(i).remove();
                                 }
                                 _self.init();
+                                flashResume()           //刷新简历
                             },error:function (){ //报错执行的
                                 alert('基本资料修改错误')
                             }
@@ -2166,6 +2178,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                                 ee.eq(i).remove();
                             }
                             _self.init()
+                            flashResume()           //刷新简历
                         },error:function (){ //报错执行的
                             alert('工作经历删除错误')
                         }
@@ -2304,6 +2317,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                                  odiv.eq(i).remove();
                              }
                              _self.init();
+                             flashResume()           //刷新简历
 
                          },error:function (){ //报错执行的
                              alert('基本资料修改错误')
@@ -2400,6 +2414,7 @@ obj_zopj.prototype.bindingSJ=function (){
                     url:path+'Resume/updateResume.do',    //路径
                     success:function (data){//data 就是数据 json
                         _self.init()
+                        flashResume()           //刷新简历
                         bb.prev('p').css({"display":"block"})
                         bb.remove()
 
@@ -2447,8 +2462,10 @@ obj_zopj.prototype.bindingSJ=function (){
                     url:path+'Resume/updateResume.do',    //路径
                     success:function (data){//data 就是数据 json
                         _self.init()
+                        flashResume()           //刷新简历
                         bb.prev('p').css({"display":"block"})
                         bb.remove()
+
 
                     },error:function (){ //报错执行的
                         alert('基本资料修改错误')
@@ -2536,6 +2553,7 @@ obj_fjxx.prototype.bindingSJ=function (){
                     url:path+'Resume/updateResume.do',    //路径
                     success:function (data){//data 就是数据 json
                         _self.init();
+                        flashResume()           //刷新简历
                         bb.prev('p').css({"display":"block"})
                         bb.remove()
 
@@ -2583,6 +2601,7 @@ obj_fjxx.prototype.bindingSJ=function (){
                     url:path+'Resume/updateResume.do',    //路径
                     success:function (data){//data 就是数据 json
                         _self.init();
+                        flashResume()           //刷新简历
                         bb.prev('p').css({"display":"block"})
                         bb.remove()
 
@@ -2788,6 +2807,7 @@ obj_scjn.prototype.bindingSJ=function () {
                         othis.remove();
 
                         _self.init();
+                        flashResume()           //刷新简历
                         $('#scjn_cont').css({"display":"block"})
 
                     },error:function (){ //报错执行的
@@ -2835,7 +2855,6 @@ obj_gssc.prototype.init=function (){
         }
     })
 }
-
 obj_gssc.prototype.bindingSJ=function (){
 
     var This=this;
@@ -2963,6 +2982,29 @@ obj_gssc.prototype.bindingSJ=function (){
     })
 
 }
+//屏蔽公司
+function flashResume() {
+    $.ajax({
+        type:"get",
+        data: {resumeId:ID},
+        dataType:'json',
+        url:path+'Resume/flashResume.do',
+        success:function (data){
+            if(data.msg=='ok'){
+                var date = new Date(data.resumeFlash);//刷新简历时间
+                var completion = data.resumeCompletion;//完成度
+                $('.zp_jianli_wcd .zl_wcd').html(completion);
+                 $('.zp_jianli_wcd div').css({"width":completion+"%"})
+            }
+
+        },error:function (){ //报错执行的
+            alert('基本资料修改错误')
+        }
+
+    })
+}
+
+
 
 
 
@@ -2998,6 +3040,7 @@ $(function (){                              //入口函数
     var obj__gssc=new obj_gssc();           //企业收藏开始
      obj__gssc.init();
 
+    flashResume();                           //加载完成度
 });
 
 
