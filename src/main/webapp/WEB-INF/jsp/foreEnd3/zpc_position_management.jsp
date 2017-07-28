@@ -25,7 +25,7 @@
 
     </style>
     <script>
-        var companyId = '${userLogin.company.companyId}';
+        var companyId = '${userLogin.company.companyId}';     //公司ID
         var path = '${pageContext.request.contextPath}/';     //全局路径
     </script>
     <%--汉堡小按钮--%>
@@ -122,6 +122,8 @@
                                     <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
+                                    <th width="80">待定</th>
+                                    <th width="80">通知面试</th>
                                     <th width="80">刷新时间</th>
                                     <th width="100">操作</th>
                                 </tr>
@@ -138,6 +140,8 @@
                                     </td>
                                     <td class="all_no"><a href="">web前端</a></td>
                                     <td class="all_no">10</td>
+                                    <td class="all_no">5</td>
+                                    <td class="all_no">3</td>
                                     <td class="all_no">5</td>
                                     <td class="all_no">3</td>
                                     <td class="all_no">5</td>
@@ -176,7 +180,7 @@
                             <div class="pom_bottom">
                                 <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
                                 <button class="scan" type="button">删除</button>
-                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                                <span style="float: right;margin: 15px;color: #999">共 <span class="gs_zwzs">1</span>个职位</span>
                             </div>
 
                             <%--分页--%>

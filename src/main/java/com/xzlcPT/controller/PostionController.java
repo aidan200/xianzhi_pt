@@ -1,5 +1,6 @@
 package com.xzlcPT.controller;
 
+import com.amazonaws.services.dynamodbv2.xspec.L;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzPostion;
@@ -200,6 +201,34 @@ public class PostionController extends BaseController{
         }
         int i=postionService.insertPostion(map);
         mv.addObject("i",i);
+        return mv;
+    }
+    //收藏职位
+    @RequestMapping("insertCollect.do")
+    public ModelAndView insertCollect(Integer postionId,Integer memberId,Date collectTime){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        Map map=new HashMap();
+        map.put("postionId",postionId);
+        map.put("memberId",memberId);
+        map.put("collectTime",collectTime);
+        int i=postionService.insertCollect(map);
+        mv.addObject("i",i);
+        return mv;
+    }
+    //删除收藏
+    @RequestMapping("deleteCollect.do")
+    public ModelAndView deleteCollect(Long collectId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        int i=postionService.deleteCollect(collectId);
+        mv.addObject("i",i);
+        return mv;
+    }
+    //查询收藏
+    @RequestMapping("selectCollect.do")
+    public ModelAndView selectCollect(Long memberId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        List<Long> list1=postionService.selectCollect(memberId);
+        mv.addObject("list1",list1);
         return mv;
     }
 }

@@ -111,4 +111,22 @@ public class XzPostionServiceImpl implements XzPostionService{
         int i=postionMapper.insertPostion(map);
         return i;
     }
+
+    @Override
+    public int insertCollect(Map map) {
+       int i=postionMapper.insertCollect(map);
+        return i;
+    }
+
+    @Override
+    public int deleteCollect(Long collectId) {
+       int i=postionMapper.deleteCollect(collectId);
+        return i;
+    }
+
+    @Override
+    public List<Long> selectCollect(Long memberId) {
+        List<Long> list=postionMapper.selectCollect(memberId);
+        return list;
+    }
 }

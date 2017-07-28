@@ -1,5 +1,6 @@
 package com.xzlcPT.service;
 
+import com.amazonaws.services.dynamodbv2.xspec.L;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzJobExp;
 import com.xzlcPT.bean.XzPostion;
@@ -32,5 +33,11 @@ public interface XzPostionService {
     List<XzPostion> selInfoByComId(XzPostion xzPostion);
 
     int insertPostion(Map map);
+
+    int insertCollect(Map map);
+
+    int deleteCollect(Long collectId);
+
+    List<Long> selectCollect(Long memberId);
 
 }

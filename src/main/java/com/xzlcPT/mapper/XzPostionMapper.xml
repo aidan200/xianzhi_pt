@@ -691,4 +691,10 @@
       </if>
     </trim>
   </insert>
+  <delete id="deleteCollect" parameterType="java.lang.Long">
+    delete from xz_postion_collect where collect_id=#{collectId,jdbcType=INTEGER}
+  </delete>
+  <select id="selectCollect" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select postion_id from xz_postion_collect where member_id=#{memberId,jdbcType=INTEGER}
+  </select>
 </mapper>

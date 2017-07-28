@@ -21,6 +21,7 @@
         var path = '${pageContext.request.contextPath}/';     //全局路径
         var ID = '${resumeId}';                                          //ID
         var memberId;
+        var wanchengdu;                                         //完成度
 
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
@@ -43,7 +44,7 @@
                         <a href="javascript:;" class="fa fa-edit"></a>
                     </div>
                     <div class="zp_jianli_wcd">
-                        <span>完成度60%</span>
+                        <span>完成度<span class="zl_wcd"></span>%</span>
                         <div></div>
                     </div>
                     <div class="zp_jianli_yl">
