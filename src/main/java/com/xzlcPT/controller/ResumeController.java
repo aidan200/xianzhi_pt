@@ -52,8 +52,9 @@ public class ResumeController extends BaseController {
         }else{
             map.put("msg","err");
         }
-        map.put("resumeFlash",resume.getResumeFlash());
-        map.put("resumeCompletion",resume.getResumeCompletion());
+        XzResume rss = resumeService.selectById(resumeId);
+        map.put("resumeFlash",rss.getResumeFlash());
+        map.put("resumeCompletion",rss.getResumeCompletion());
         return map;
     }
 
