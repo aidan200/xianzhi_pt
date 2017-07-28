@@ -27,4 +27,10 @@ public interface XzResumeMapper {
 
     List<XzResume> selectRcount(Map map);
 
+    int insertCollect(Map map);
+
+    int deleteCollect(Long collectId);
+
+    List<XzResume> selectCollect(Long companyId);
+
 }

@@ -38,6 +38,6 @@ public interface XzPostionService {
 
     int deleteCollect(Long collectId);
 
-    List<Long> selectCollect(Long memberId);
+    List<XzPostion> selectCollect(Long memberId);
 
 }

@@ -227,7 +227,7 @@ public class PostionController extends BaseController{
     @RequestMapping("selectCollect.do")
     public ModelAndView selectCollect(Long memberId){
         ModelAndView mv=new ModelAndView("/foreEnd3/test2");
-        List<Long> list1=postionService.selectCollect(memberId);
+        List<XzPostion> list1=postionService.selectCollect(memberId);
         mv.addObject("list1",list1);
         return mv;
     }

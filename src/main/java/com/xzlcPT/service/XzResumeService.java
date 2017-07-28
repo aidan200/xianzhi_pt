@@ -26,4 +26,9 @@ public interface XzResumeService {
 
     //XzResume selectCompletionById(Long id);
 
+    int insertCollect(Map map);
+
+    int deleteCollect(Long collectId);
+
+    List<XzResume> selectCollect(Long companyId);
 }

@@ -52,8 +52,20 @@ public class ResumeController extends BaseController {
         }else{
             map.put("msg","err");
         }
-        map.put("resumeFlash",resume.getResumeFlash());
-        map.put("resumeCompletion",resume.getResumeCompletion());
+        XzResume rss = resumeService.selectById(resumeId);
+        map.put("resumeFlash",rss.getResumeFlash());
+        map.put("resumeCompletion",rss.getResumeCompletion());
+        return map;
+    }
+
+    //查看完成度
+    @ResponseBody
+    @RequestMapping("flashResumeByMore.do")
+    public Map<String,Object> flashResumeByMore(Long resumeId){
+        Map<String,Object> map = new HashMap<>();
+        XzResume rss = resumeService.selectById(resumeId);
+        map.put("resumeFlash",rss.getResumeFlash());
+        map.put("resumeCompletion",rss.getResumeCompletion());
         return map;
     }
 
@@ -133,6 +145,33 @@ public class ResumeController extends BaseController {
         mv.addObject("map",map);
         return mv;
     }
-
+    //添加收藏
+    @RequestMapping("insertCollect.do")
+    public ModelAndView insertCollect(Integer resumeId,Integer companyId,Date collectTime){
+        ModelAndView mv=new ModelAndView("foreEnd3/test2");
+        Map map=new HashMap();
+        map.put("resumeId",resumeId);
+        map.put("companyId",companyId);
+        map.put("collectTime",collectTime);
+        int i=resumeService.insertCollect(map);
+        mv.addObject("i",i);
+        return mv;
+    }
+    //删除收藏
+    @RequestMapping("delectCollect.do")
+    public ModelAndView deleteCollect(Long collectId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        int i=resumeService.deleteCollect(collectId);
+        mv.addObject("i",i);
+        return mv;
+    }
+    //查询收藏
+    @RequestMapping("selectCollect.do")
+    public ModelAndView selectCollect(Long companyId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        List<XzResume> resumeList=resumeService.selectCollect(companyId);
+        mv.addObject("resumeList",resumeList);
+        return mv;
+    }
 
 }
