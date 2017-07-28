@@ -2106,15 +2106,16 @@ obj_xmjy.prototype.init=function (){
                 str+='<div class="zp_xmjy_left">'
                 str+='<ul>'
                 str+='<li>项目职务：</li>'
-                str+='<li>项目职责：</li>'
                 str+='<li>项目描述：</li>'
+                str+='<li>项目职责：</li>'
                 str+='</ul>'
                 str+='</div>'
                 str+='<div class="zp_xmjy_right">'
                 str+='<ul>'
                 str+='<li>'+_self.obj_s[i].xmzw+'</li>'
-                str+='<li>'+_self.obj_s[i].zz+'</li>'
                 str+='<li>'+_self.obj_s[i].xmms+'</li>'
+                str+='<li>'+_self.obj_s[i].zz+'</li>'
+
                 str+='</ul>'
                 str+='</div>'
                 str+='<div style="clear:both;"></div>'
@@ -3133,6 +3134,8 @@ function flashResume2(){
                 var completion = data.resumeCompletion;//完成度
                 $('.zp_jianli_wcd .zl_wcd').html(completion);
                 $('.zp_jianli_wcd div').css({"width":completion+"%"})
+                $('#jl_wcd').html(completion)
+                $('#js_sxsj').html(getNowFormatDateSS(date))
 
         },error:function (){ //报错执行的
             alert('基本资料修改错误')

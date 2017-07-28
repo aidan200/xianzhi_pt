@@ -1897,3 +1897,7 @@ ul, li {
 .panel-default {
     border: 1px solid #EEEEEE;
 }
+#jl_wcd{
+    font-size: 20px;
+    color: #555555;
+}
