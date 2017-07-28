@@ -207,12 +207,9 @@
                     <li>
                         <span>求职简历:</span>
                         <div>
-                            <select class="form-control">
-                                <option>开放简历</option>
-                                <option></option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" onchange="ysChange(this)">
+                                <option value="0">开放简历</option>
+                                <option value="1">隐藏简历</option>
                             </select>
                         </div>
                     </li>
@@ -334,3 +331,15 @@
 </div>
 </body>
 </html>
+<script>
+    function ysChange(ys) {
+        var dd = {resumeId: ID, resumeYm: ys.value};
+        console.log(dd);
+        $.ajax({
+            type: 'post',
+            url: '${pageContext.request.contextPath}/Resume/updateResume.do',
+            contentType: "application/json",
+            data: JSON.stringify(dd)
+        });
+    }
+</script>
