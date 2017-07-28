@@ -2056,8 +2056,8 @@ obj_xmjy.prototype.bindingSJ=function (){
                 str+='</div>'
                 str+='</div>'
                 str+='<div class="zp_jianli_zl_2_bottom">'
-                str+='<button type="button" class="btn btn-primary">确定</button>'
-                str+='<button class="btn btn-default"  type="button">取消</button>'
+                str+='<button type="button" class="allyes">确定</button>'
+                str+='<button class="allno"  type="button">取消</button>'
                 str+='</div>'
                 str+=' </div>'
                 $(this).parent().after(str);//插入进去
