@@ -1,12 +1,20 @@
 package com.xzlcPT.controller;
 
+import com.xzlcPT.bean.XzLogin;
+import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.bean.XzPostionSend;
+import com.xzlcPT.bean.XzResume;
 import com.xzlcPT.service.XzPostionSendService;
+import com.xzlcPT.service.XzPostionService;
+import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +24,14 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("PostionSend")
+@SessionAttributes({"userLogin"})
 public class PostionSendController extends BaseController{
     @Autowired
     private XzPostionSendService postionSendService;
+    @Autowired
+    private XzResumeService xzResumeService;
+    @Autowired
+    private XzPostionService xzPostionService;
 
     //企业职位管理查询
     @ResponseBody
@@ -39,10 +52,18 @@ public class PostionSendController extends BaseController{
     //简历投递
     @ResponseBody
     @RequestMapping("sendPostion.do")
-    public Map sendPostion(Long postionId){
+    public Map sendPostion(@ModelAttribute("userLogin")XzLogin userLogin,Long postionId){
+        XzResume resume = xzResumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        XzPostion postion=xzPostionService.selPostionInfo(postionId);
+        Long companyId=postion.getCompanyId();
+        Long resumeId=resume.getResumeId();
+        Date sendTime=new Date();
         Map map = new HashMap();
-        
-
+        map.put("resumeId",resumeId);
+        map.put("postionId",postionId);
+        map.put("companyId",companyId);
+        map.put("sendTime",sendTime);
+        int i=postionSendService.insertSelective(map);
         return map;
     }
 }
