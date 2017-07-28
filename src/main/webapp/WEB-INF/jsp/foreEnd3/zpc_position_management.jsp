@@ -125,7 +125,6 @@
                                     <th width="80">待定</th>
                                     <th width="80">通知面试</th>
                                     <th width="80">刷新时间</th>
-                                    <th width="80">结束时间</th>
                                     <th width="100">操作</th>
                                 </tr>
                                 </thead>
@@ -147,7 +146,6 @@
                                     <td class="all_no">3</td>
                                     <td class="all_no">5</td>
                                     <td class="all_no">0725</td>
-                                    <td class="all_no">0726</td>
                                     <td class="all_no">
                                         <a href="javascript:" class="dg_xg">暂停</a>
                                         <a href="javascript:" class="dg_sc">结束</a>

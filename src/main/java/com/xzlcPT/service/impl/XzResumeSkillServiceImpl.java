@@ -30,9 +30,11 @@ public class XzResumeSkillServiceImpl implements XzResumeSkillService{
             resumeSkillMapper.deleteByResumeId(resumeId);
         }
         for (XzResumeSkill resumeSkill : resumeSkills) {
-            int i2 = resumeSkillMapper.insert(resumeSkill);
-            if(i2==0){
-                i = 0;
+            if(resumeSkill.getSkillName()!=null){
+                int i2 = resumeSkillMapper.insert(resumeSkill);
+                if(i2==0){
+                    i = 0;
+                }
             }
         }
         if(i==0){

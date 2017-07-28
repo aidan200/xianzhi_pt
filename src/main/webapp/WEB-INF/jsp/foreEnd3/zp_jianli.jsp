@@ -127,7 +127,6 @@
                                 <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-calendar-minus-o"></div>
                                 <span>工作经历</span>
                                 <em class="tips-required">必填<i></i></em>
-
                             </div>
 
                         </div>
@@ -159,7 +158,7 @@
 
                 </div>
                 <div class="zp_jianli_cont_left_zopj">
-                    <a class="zp_jianli_xg" href="javascript:;"></a>
+                    <a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>
                     <div class="zp_jianli_cont_left_jbzl_top">
                         <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-pencil-square-o"></div>
                         <span>自我评价</span>
@@ -172,7 +171,7 @@
 
                 </div>
                 <div class="zp_jianli_cont_left_fjxx">
-                    <a class="zp_jianli_xg" href="javascript:;"></a>
+                    <a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>
                     <div class="zp_jianli_cont_left_jbzl_top">
                         <div class="zp_jianli_cont_left_jbzl_top_bg fa fa-tags"></div>
                         <span>附加信息</span>
