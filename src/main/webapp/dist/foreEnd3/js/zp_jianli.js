@@ -362,10 +362,10 @@ obj_yhxx.prototype.bindingSJ=function (){
                         url:path+'Resume/updateResume.do',    //路径
 
                         success:function (data){//data 就是数据 json
-
+                            flashResume()           //刷新简历
                             xgk.remove();          //删除修改框
                             _self.init();           //重新加载数据
-                            flashResume()           //刷新简历
+
 
                             $('.zp_jianli_cont_left_top2_top').css({"display":"block"});//显示出来
 
@@ -612,9 +612,9 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
                     data:JSON.stringify(resume),        //转为JSON格式
                     url:path+'Resume/updateResume.do',    //路径
                     success:function (data){//data 就是数据 json
+                        flashResume()           //刷新简历
                         tck.remove();                           //删除修改框
                         _self.init();                           //重新加载
-                        flashResume()           //刷新简历
                         $('.zp_jianli_cont_left_jbzl_middle').css({"display":"block"})
                     },error:function (){ //报错执行的
                         alert('基本资料修改错误')
@@ -1340,11 +1340,12 @@ obj_gzjl.prototype.bindingSJ=function (){
                         dataType:'text',                   //定义返回data类型
                         url:path+'JobExp/updateJobExp.do',    //路径
                         success:function (data){//data 就是数据 json
+                            flashResume()           //刷新简历
                             $(This).parent().parent().prev().css({"display":"block"});
                             $(This).parent().parent().remove();               //自杀
                             $('#gzjl').siblings('div').remove();
                             _self.init();
-                            flashResume()           //刷新简历
+
 
                         },error:function (){ //报错执行的
                             alert('基本资料修改错误')
@@ -1370,10 +1371,11 @@ obj_gzjl.prototype.bindingSJ=function (){
                         dataType:'json',
                         url:path+'JobExp/deleteJobExp.do',
                         success:function (data){
+                            flashResume()           //刷新简历
                             $('#gzjl').siblings('div').remove();
                             kg=true;
                             _self.init()
-                            flashResume()           //刷新简历
+
                         },error:function (){ //报错执行的
                             alert('工作经历删除错误')
                         }
@@ -2653,6 +2655,7 @@ obj_scjn.prototype.bindingDOM=function (){
     }else{
         $('#scjn_cont').html("快来添加你擅长的技能吧");                  //提示话
         $('#scjn').find('.zp_jianli_xg').css({"display":"none"})        //修改按钮
+        $('#jl_tjscjn').css({"display":"block"});                        //添加按钮
     }
 
 };
@@ -2790,7 +2793,6 @@ obj_scjn.prototype.bindingSJ=function () {
                 var attr=[];
                 if(k.length==0){
                     //最后一个删除不掉
-                    alert('aaa')
                     attr[0]={
                         resumeId:ID,
                     }
