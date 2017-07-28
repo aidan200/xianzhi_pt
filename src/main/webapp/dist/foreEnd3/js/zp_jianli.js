@@ -1027,7 +1027,7 @@ obj_gzjl.prototype.init=function (){
                 str+='<div class="zp_jianli_cont_left_gzjl_cont">'
                 str+='<h3>'
                 str+='<span>'+_self.obj_s[i].zwmc2+'</span><span class="zp_jianli_color">&nbsp;|&nbsp;</span><span>'+_self.obj_s[i].gsmc+'</span>&nbsp;&nbsp;&nbsp;&nbsp;<time>（'+getNowFormatDate(_self.obj_s[i].rzsj)+' － '+getNowFormatDate(_self.obj_s[i].lzsj)+'）</time>'
-                str+='<a class="zp_jianli_xg" href="javascript:;"></a>'
+                str+='<a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>'
                 str+='<a class="fa fa-times-circle zp_jianli_sc" style="float: right" href="javascript:;"></a>'
                 str+='</h3>'
                 if(_self.obj_s[i].yx!=''&&_self.obj_s[i].yx!=null){
@@ -1610,7 +1610,7 @@ obj_yyjl.prototype.init=function (){
                 str+='<div class="zp_qq1" data-id="'+_self.obj_s[i].jyjlID+'">'
                 str+='<p class="zp_index_p_left">'
                 str+=''+_self.obj_s[i].xxmc+'（'+getNowFormatDate(_self.obj_s[i].jdsj)+'------'+getNowFormatDate(_self.obj_s[i].bynf)+'）'
-                str+='<a class="zp_jianli_xg" href="javascript:;"></a>'
+                str+='<a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>'
                 str+='<a class="fa fa-times-circle zp_jianli_sc" style="float: right" href="javascript:;"></a>'
                 str+='</p>'
                 str+='<ul>'
@@ -1987,7 +1987,7 @@ obj_xmjy.prototype.init=function (){
             var str='';
             for(var i=0;i<_self.obj_s.length;i++){
                 str+='<div class="zp_xmjy" data-id="'+_self.obj_s[i].xmjyID+'">'
-                str+='<a class="zp_jianli_xg" href="javascript:;"></a>'
+                str+='<a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>'
                 str+='<a class="fa fa-times-circle zp_jianli_sc" style="float: right" href="javascript:;"></a>'
                 str+='<p>项目名称：'+_self.obj_s[i].xmmc+' ('+_self.obj_s[i].kssj+'------'+_self.obj_s[i].jssj+')</p> '
                 str+='<div class="zp_xmjy_left">'
