@@ -507,9 +507,7 @@
 
 
 
-<footer>
-
-</footer>
+<jsp:include page="behindforeEnd.jsp"/>
 
 <%--<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>--%>
 <%--<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/move_blog.js"></script>--%>

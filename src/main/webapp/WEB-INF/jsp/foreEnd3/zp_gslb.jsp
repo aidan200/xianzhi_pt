@@ -255,7 +255,7 @@
         <input id="thePage" type="hidden" name="page" value="${page}">
     </form>
 </section>
-
+<jsp:include page="behindforeEnd.jsp"/>
 <%--添加上面一堆标签--%>
 <script type="text/javascript">
     $(document).ready(function () {

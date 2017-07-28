@@ -181,14 +181,7 @@ ul {
     cursor: pointer;
 }
 
-/*---------------------------footer----------------------*/
 
-footer {
-    width: 100%;
-    height: 200px;
-    background-color: #575757;
-    margin-top: 40px;
-}
 
 /*-----------------------博客----------------------*/
 .blog_all {
@@ -3796,6 +3789,7 @@ input[type="button"].fileInputButton {
     width: 100%;
     min-width: 1000px;
     height: 100%;
+    min-height: 520px;
     overflow: hidden;
 }
 
@@ -4260,7 +4254,7 @@ input[type="button"].fileInputButton {
     width: 250px;
     height: 550px;
     position: absolute;
-    top: 750px;
+    top: 250px;
     left: 80px;
     display: none;
     background: url("../../../dist/foreEnd3/img/Boolean.png");
@@ -4276,7 +4270,7 @@ input[type="button"].fileInputButton {
 
 @keyframes myfirst {
     0% {
-        top: 750px;
+        top: 170px;
     }
     100% {
         top: 130px
@@ -5658,3 +5652,54 @@ th {
     border: none;
 }
 
+/*---------------------------footer----------------------------------*/
+footer {
+    width: 100%;
+    min-width: 1100px;
+    height: 100px;
+    background-color: #575757;
+    overflow: hidden;
+    margin-top: 70px;
+}
+
+.allfooter {
+    width: 1100px;
+    height: 70px;
+    margin: 10px auto;
+    color: #cccccc;
+}
+
+.allleft {
+    width: 800px;
+    height: 50px;
+    float: left;
+}
+
+.footerul {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: block;
+}
+
+.footerul li {
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.allcopy {
+    font-size: 12px;
+}
+
+.allwei {
+    width: 300px;
+    height: 70px;
+    float: right;
+    padding-top: 9px;
+}
+.allwei span{
+    margin: 13px;
+    font-size: 23px;
+    float: right;
+}

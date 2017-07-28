@@ -224,7 +224,7 @@
         </form>
     </div>
 </div>
-
+<jsp:include page="behindforeEnd.jsp"/>
 <script language="javascript">
     function countChar(textareaNamezzjs, spanName) {
         document.getElementById(spanName).innerHTML = document.getElementById(textareaNamezzjs).value.length;
