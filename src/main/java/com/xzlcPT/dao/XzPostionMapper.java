@@ -36,4 +36,10 @@ public interface XzPostionMapper {
     List<XzPostion> selInfoByComId(XzPostion xzPostion);
 
     int insertPostion(Map map);
+
+    int insertCollect(Map map);
+
+    int deleteCollect(Long collectId);
+
+    List<Long> selectCollect(Long memberId);
 }
