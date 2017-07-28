@@ -147,8 +147,9 @@ public class ResumeController extends BaseController {
     }
     //添加收藏
     @RequestMapping("insertCollect.do")
-    public ModelAndView insertCollect(Integer resumeId,Integer companyId,Date collectTime){
+    public ModelAndView insertCollect(Integer resumeId,Integer companyId){
         ModelAndView mv=new ModelAndView("foreEnd3/test2");
+        Date collectTime=new Date();
         Map map=new HashMap();
         map.put("resumeId",resumeId);
         map.put("companyId",companyId);

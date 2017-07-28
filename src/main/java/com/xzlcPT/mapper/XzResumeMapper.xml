@@ -32,6 +32,7 @@
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <result column="collect_id" jdbcType="BIGINT" property="collectId"/>
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime"/>
   </resultMap>
   <resultMap id="ResumeInfo" type="com.xzlcPT.bean.XzResume">
     <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
@@ -649,6 +650,6 @@
     delete from xz_resume_collect where collect_id=#{collectId,jdbcType=INTEGER}
   </delete>
   <select id="selectCollect" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select resume_id,collect_id from xz_resume_collect where company_id=#{companyId,jdbcType=INTEGER}
+    select resume_id,collect_id,collect_time from xz_resume_collect where company_id=#{companyId,jdbcType=INTEGER}
   </select>
 </mapper>

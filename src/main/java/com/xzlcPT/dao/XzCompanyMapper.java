@@ -38,4 +38,10 @@ public interface XzCompanyMapper {
 
     List<XzCompany> selByCompanyIdList(List list);
 
+    int insertFollow(Map map);
+
+    int deleteFollow(Long followId);
+
+    List<XzCompany> selectFollow(Long memberId);
+
 }

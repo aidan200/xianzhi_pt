@@ -31,6 +31,7 @@
     <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <result column="collect_id" jdbcType="BIGINT" property="collectId"/>
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime"/>
   </resultMap>
 
   <resultMap id="PostionSendList" type="com.xzlcPT.bean.XzPostion">
@@ -696,6 +697,6 @@
     delete from xz_postion_collect where collect_id=#{collectId,jdbcType=INTEGER}
   </delete>
   <select id="selectCollect" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select postion_id,collect_id from xz_postion_collect where member_id=#{memberId,jdbcType=INTEGER}
+    select postion_id,collect_id,collect_time from xz_postion_collect where member_id=#{memberId,jdbcType=INTEGER}
   </select>
 </mapper>

@@ -325,4 +325,33 @@ public class CompanyInfoController {
     map.put("plist",plist);
     return map;
     }
+    //关注公司
+    @RequestMapping("insertFollow.do")
+    public ModelAndView insertFollow(Long companyId,Long memberId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        Date followTime=new Date();
+        Map map=new HashMap();
+        map.put("companyId",companyId);
+        map.put("memberId",memberId);
+        map.put("followTime",followTime);
+        int i=companyService.insertFollow(map);
+        mv.addObject("i",i);
+        return mv;
+    }
+    //取消关注
+    @RequestMapping("deleteFollow.do")
+    public ModelAndView deleteFollow(Long followId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        int i=companyService.deleteFollow(followId);
+        mv.addObject("i",i);
+        return mv;
+    }
+    //查询该用户关注的企业
+    @RequestMapping("selectFollow.do")
+    public ModelAndView selectFollow(Long memberId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        List<XzCompany> companyList=companyService.selectFollow(memberId);
+        mv.addObject("companyList",companyList);
+        return mv;
+    }
 }

@@ -205,8 +205,9 @@ public class PostionController extends BaseController{
     }
     //收藏职位
     @RequestMapping("insertCollect.do")
-    public ModelAndView insertCollect(Integer postionId,Integer memberId,Date collectTime){
+    public ModelAndView insertCollect(Integer postionId,Integer memberId){
         ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        Date collectTime=new Date();
         Map map=new HashMap();
         map.put("postionId",postionId);
         map.put("memberId",memberId);
