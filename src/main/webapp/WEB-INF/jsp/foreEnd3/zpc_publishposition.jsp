@@ -242,6 +242,7 @@
             $('#postionYm').attr("disabled", "disabled");
             $('#postionMm').val(null);
             $('#postionYm').val(null);
+            $('#postionMmnull').children().css('display','none');
         } else {
             $('#postionMm').removeAttr("disabled", "disabled");
             $('#postionYm').removeAttr("disabled", "disabled");
@@ -251,6 +252,7 @@
         if ($(this).is(":checked") == true) {
             $('#postionExp').attr("disabled", "disabled");
             $('#postionExp').val(null);
+            $('#postionExp').next().children().css('display','none');
         } else {
             $('#postionExp').removeAttr("disabled", "disabled");
         }
