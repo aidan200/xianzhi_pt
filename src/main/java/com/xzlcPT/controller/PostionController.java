@@ -245,7 +245,7 @@ public class PostionController extends BaseController{
     //修改投递状态(审核中)
     @ResponseBody
     @RequestMapping("updateStateIng.do")
-    public Map updateStateIng(@RequestBody Long postionId){
+    public Map updateStateIng(Long postionId){
         XzPostion xzPostion=new XzPostion();
         xzPostion.setPostionId(postionId);
         xzPostion.setPostionWelfare("1");

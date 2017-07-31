@@ -37,7 +37,7 @@
 
         });
     </script>
-        <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/position_management.js"></script>
 
@@ -203,8 +203,8 @@
                     </form>
 
 
-                    <%--抱歉没有找到--%>
-                    <%--<div class="comh_no2">--%>
+                    <%--&lt;%&ndash;抱歉没有找到&ndash;%&gt;--%>
+                    <%--<div class="comh_no2" style="display: none">--%>
                     <%--<div class="pom_allimg">--%>
                     <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
                     <%--class="rem_img">--%>
@@ -232,7 +232,7 @@
                         <input type="text" class="pom_input8 datainp" id="indate4" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" id="" type="button">搜索</button></span>
+                        <button class="pom_b" id="xxk_02" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -241,14 +241,19 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="350">职位名称</th>
-                                    <th width="100">审核时间</th>
-                                    <th width="200">审核状态</th>
+                                    <th width="160">职位名称</th>
+                                    <th width="80">应聘人选</th>
+                                    <th width="80">未处理</th>
+                                    <th width="80">主动下载</th>
+                                    <th width="80">意向沟通</th>
+                                    <th width="80">待定</th>
+                                    <th width="80">通知面试</th>
+                                    <th width="80">刷新时间</th>
                                     <th width="100">操作</th>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="shz_tbody">
                                 <tr>
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
@@ -270,9 +275,9 @@
 
                             <%--全选删除--%>
                             <div class="pom_bottom">
-                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
-                                <button>删除</button>
-                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                                <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
+                                <button class="scan" type="button">删除</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span class="gs_zwzs">1</span>个职位</span>
                             </div>
 
                             <%--分页--%>
@@ -312,7 +317,7 @@
                                 <input type="text" class="pom_input8 datainp" id="indate6" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" id="" type="button">搜索</button></span>
+                        <button class="pom_b" id="xxk_03" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -321,14 +326,19 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="150">职位名称</th>
-                                    <th width="100">审核时间</th>
-                                    <th width="400">未通过原因</th>
+                                    <th width="160">职位名称</th>
+                                    <th width="80">应聘人选</th>
+                                    <th width="80">未处理</th>
+                                    <th width="80">主动下载</th>
+                                    <th width="80">意向沟通</th>
+                                    <th width="80">待定</th>
+                                    <th width="80">通知面试</th>
+                                    <th width="80">刷新时间</th>
                                     <th width="100">操作</th>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="shwtg_tbody">
                                 <tr>
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
@@ -351,9 +361,9 @@
 
                             <%--全选删除--%>
                             <div class="pom_bottom">
-                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
-                                <button>删除</button>
-                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                                <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
+                                <button class="scan" type="button">删除</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span class="gs_zwzs">1个</span>职位</span>
                             </div>
 
                             <%--分页--%>
@@ -393,7 +403,7 @@
                                 <input type="text" class="pom_input8 datainp" id="indate8" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" id="" type="button">搜索</button></span>
+                        <button class="pom_b" id="xxk_04" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -402,14 +412,19 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="340">职位名称</th>
-                                    <th width="200">创建</th>
-                                    <th width="200">更新</th>
-                                    <th width="150">操作</th>
+                                    <th width="160">职位名称</th>
+                                    <th width="80">应聘人选</th>
+                                    <th width="80">未处理</th>
+                                    <th width="80">主动下载</th>
+                                    <th width="80">意向沟通</th>
+                                    <th width="80">待定</th>
+                                    <th width="80">通知面试</th>
+                                    <th width="80">刷新时间</th>
+                                    <th width="100">操作</th>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="cgzw_tbody">
                                 <tr class="pom_h">
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
@@ -435,9 +450,9 @@
 
                             <%--全选删除--%>
                             <div class="pom_bottom">
-                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
-                                <button>删除</button>
-                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                                <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
+                                <button class="scan" type="button">删除</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span class="gs_zwzs">1</span>个职位</span>
                             </div>
 
                             <%--分页--%>
@@ -477,7 +492,7 @@
                                 <input type="text" class="pom_input8 datainp" id="indate10" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" id="" type="button">搜索</button></span>
+                        <button class="pom_b" id="xxk_05" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -486,16 +501,19 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="250">职位名称</th>
+                                    <th width="160">职位名称</th>
                                     <th width="80">应聘人选</th>
+                                    <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="100">暂停时间</th>
-                                    <th width="150">操作</th>
+                                    <th width="80">待定</th>
+                                    <th width="80">通知面试</th>
+                                    <th width="80">刷新时间</th>
+                                    <th width="100">操作</th>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="yzt_tbody">
                                 <tr class="pom_h">
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
@@ -521,9 +539,9 @@
                             </table>
 
                             <div class="pom_bottom">
-                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
-                                <button>删除</button>
-                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                                <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
+                                <button class="scan" type="button">删除</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span class="gs_zwzs">1</span>个职位</span>
                             </div>
 
                             <%--分页--%>
@@ -563,7 +581,7 @@
                                 <input type="text" class="pom_input8 datainp" id="indate12" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" id="" type="button">搜索</button></span>
+                        <button class="pom_b" id="xxk_06" type="button">搜索</button></span>
                         </div>
 
                         <%--表格--%>
@@ -572,17 +590,19 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="300">职位名称</th>
+                                    <th width="160">职位名称</th>
                                     <th width="80">应聘人选</th>
+                                    <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
-                                    <th width="80">推荐简历</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="100">结束时间</th>
-                                    <th width="150">操作</th>
+                                    <th width="80">待定</th>
+                                    <th width="80">通知面试</th>
+                                    <th width="80">刷新时间</th>
+                                    <th width="100">操作</th>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="yjs_tbody">
                                 <tr class="pom_h">
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
@@ -608,9 +628,9 @@
 
                             <%--全选删除--%>
                             <div class="pom_bottom">
-                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
-                                <button>删除</button>
-                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                                <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
+                                <button type="button" class="scan">删除</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span class="gs_zwzs">1个</span>职位</span>
                             </div>
 
                             <%--分页--%>
@@ -649,7 +669,7 @@
                                 <input type="text" class="pom_input8 datainp" id="indate14" placeholder="请选择" readonly>
                         </span>
                             <span>
-                        <button class="pom_b" id="" type="button">搜索</button></span>
+                        <button class="pom_b" id="xxk_07" type="button">搜索</button></span>
                         </div>
                         <%--表格--%>
                         <div class="pom_table">
@@ -657,16 +677,19 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="280">职位名称</th>
-                                    <th width="120">职位状态</th>
-                                    <th width="100">应聘人选</th>
-                                    <th width="100">主动下载</th>
-                                    <th width="100">意向沟通</th>
-                                    <th width="150">操作</th>
+                                    <th width="160">职位名称</th>
+                                    <th width="80">应聘人选</th>
+                                    <th width="80">未处理</th>
+                                    <th width="80">主动下载</th>
+                                    <th width="80">意向沟通</th>
+                                    <th width="80">待定</th>
+                                    <th width="80">通知面试</th>
+                                    <th width="80">刷新时间</th>
+                                    <th width="100">操作</th>
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody id="qbzw_tbody">
                                 <tr class="pom_h">
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
@@ -691,9 +714,9 @@
 
                             <%--全选删除--%>
                             <div class="pom_bottom">
-                                <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
-                                <button>删除</button>
-                                <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>职位</span>
+                                <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
+                                <button type="button" class="scan">删除</button>
+                                <span style="float: right;margin: 15px;color: #999">共 <span class="gs_zwzs">1</span>个职位</span>
                             </div>
 
                             <%--分页--%>
