@@ -245,10 +245,7 @@ public class PostionController extends BaseController{
     //修改投递状态
     @ResponseBody
     @RequestMapping("updateState.do")
-    public Map updateState(@RequestBody Long postionId,Long postionWelfare){
-        XzPostion xzPostion=new XzPostion();
-        xzPostion.setPostionId(postionId);
-        xzPostion.setPostionWelfare(postionWelfare.toString());
+    public Map updateState(@RequestBody XzPostion xzPostion){
         int i=postionService.updateState(xzPostion);
         Map map=new HashMap();
         map.put("i",i);
