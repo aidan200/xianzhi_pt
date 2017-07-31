@@ -70,8 +70,14 @@
 <div class="allpop" role="alert">
     <div class="all_container">
         <div class="index_tan">
-            <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do">用户</a>
-            <a href="${pageContext.request.contextPath}/XzRegister/goRegisterC.do">企业</a>
+            <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ren.png" alt="" class="re_im">
+                <span class="head_span">用户注册</span>
+            </a>
+            <a href="${pageContext.request.contextPath}/XzRegister/goRegisterC.do">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/gong.png" alt="" class="re_im">
+                <span class="head_span">企业注册</span>
+            </a>
         </div>
         <a href="#0" class="all_close cmd_close"></a>
     </div>
