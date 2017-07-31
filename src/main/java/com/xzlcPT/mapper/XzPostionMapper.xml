@@ -167,7 +167,7 @@
     p.force_age,p.force_specialty,p.education_entrance
   </sql>
   <select id="selPostionSendList" resultMap="PostionSendList" parameterType="Map">
-    SELECT p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
+    SELECT p.postion_id,p.company_id,p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
     count(p.company_id) alls,
 	count(CASE ps.send_state WHEN '0' THEN 1 ELSE null END ) wcl,
     count(CASE ps.send_state WHEN '1' THEN 1 ELSE null END ) dd,
