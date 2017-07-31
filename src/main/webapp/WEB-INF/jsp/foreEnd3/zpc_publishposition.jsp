@@ -40,19 +40,20 @@
 
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>工作地址：</span>
-                        <input type="text" class="pup_input" style="width: 380px" name="postionSpace">
+                        <input type="text" class="pup_input" style="width: 380px" name="postionSpace" id="postionSpace">
                         <div class="pup_text">注：1.职位发布后省/市/区不可以修改。2.填写街道、楼宇详细地址，有利于职位曝光。</div>
                         <span class="tag_bubble"><div class="tag2">hahahahhahahh</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>所属部门：</span>
-                        <input type="text" class="pup_input" style="width: 380px" name="postionDepartment">
+                        <input type="text" class="pup_input" style="width: 380px" name="postionDepartment" id="postionDepartment">
                         <span class="tag_bubble"><div class="tag2">hahahahhahahh</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>部门人数：</span>
-                        <input type="text" class="pup_input" style="width: 180px" name="peopleNumber">人
-                        <span class="tag_bubble2"><div class="tag2">hahahahhahahh</div></span>
+                        <input type="text" class="pup_input" style="width: 180px" name="peopleNumber" id="peopleNumber">人
+                        <span class="tag_bubble2"><div class="tag2">不能为空</div></span>
+                        <span class="tag_bubble2"><div class="tag2">请输入数字</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>职位月薪：</span>
@@ -256,6 +257,33 @@
         $('#postionName').on('blur',function () {
             if($('#postionName').val()==null||$('#postionName').val()=='') {
                 $(this).next().next().children().css('display', 'block');
+            }else {
+                $(this).next().next().children().css('display','none');
+            }
+        })
+        $('#postionSpace').on('blur',function () {
+            if($('#postionSpace').val()==null||$('#postionSpace').val()==''){
+                $(this).next().next().children().css('display','block');
+            }else {
+                $(this).next().next().children().css('display','none');
+            }
+        })
+        $('#postionDepartment').on('blur',function () {
+            if($('#postionDepartment').val()==null||$('#postionDepartment').val()==''){
+                $(this).next().children().css('display','block');
+            }else {
+                $(this).next().children().css('display','none');
+            }
+        })
+        $('#peopleNumber').on('blur',function () {
+            var reg=/^[0-9]*$/;
+            if($('#peopleNumber').val()==null||$('#peopleNumber').val()==''){
+                $(this).next().children().css('display','block');
+            }else if(!reg.test($('#peopleNumber').val())){
+                $(this).next().next().children().css('display','block');
+            }else {
+                $(this).next().children().css('display','none');
+                $(this).next().next().children().css('display','none');
             }
         })
     })
