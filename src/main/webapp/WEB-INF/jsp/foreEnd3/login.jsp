@@ -75,7 +75,8 @@
                     <button type="submit" class="login_button">用户登录</button>
                     <a href="#0" class="login_re allregister">没有账号？ 立即注册</a>
                 </div>
-
+            </form>
+            <form action="">
                 <div class="login_in2">
                     <button type="button" class="login_user"><span class="fa fa-arrow-left" style="color: #FFA500"></span> 用户登录</button>
                     <h2>欢迎登录企业账号</h2>

@@ -5700,6 +5700,11 @@ th {
     padding: 20px;
     overflow: hidden;
     position: relative;
+    margin-top: 50px;
+}
+
+.openha{
+
 }
 
 .comd_table {
