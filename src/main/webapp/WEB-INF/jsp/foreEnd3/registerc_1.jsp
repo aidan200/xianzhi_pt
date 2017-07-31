@@ -96,27 +96,17 @@
 
 <div class="myTab" id="register_2">
     <div class="register1_all">
-            <div class="register2_in">
-                <div class="r2_left" style="margin-top: 50px">
-                    <div class="r2_ne">
-                        <div class="register1_all">
-                            ${msg}
-                            <button onclick="remailgo()">前往邮箱完成验证</button>
-                            <button onclick="remailgoReplay()">重新发送验证邮件</button>
-                            <span id="mailReMsg"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="r2_bottom">
-                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bvbv.png" alt="">
-                <div>
-                    <h4>先知承诺</h4>
-                    <p>企业资料仅用于资质审核，先知平台绝不向第三方泄露，请您放心填写。</p>
-                </div>
-            </div>
+
+        <div class="regiater1_small">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/carh.gif" alt="" style="width: 300px;height: 300px;display: block;margin: 0 auto;margin-top: 30px;margin-bottom: 10px">
+            ${msg} <br>
+            <button onclick="remailgo()" class="reg_b">前往邮箱完成验证</button>
+            <button onclick="remailgoReplay()" class="reg_b">重新发送验证邮件</button>
+            <span id="mailReMsg" style="display: block"></span>
+        </div>
     </div>
 </div>
+
 <div class="myTab" id="register_3">
     <div class="register1_all">
         <form action="${pageContext.request.contextPath}/XzRegister/addCompanyByReg.do" method="post" enctype="multipart/form-data">
@@ -151,18 +141,21 @@
         </form>
     </div>
 </div>
+
 <div class="myTab" id="register_4">
     <div class="register1_all">
         <div class="reu_over">
             <div class="reu_b">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/success.png" alt="" class="reu_img3">
+                <button>进入官网首页</button>
+                <div class="reu_bo"><span id="test">5</span>秒后自动跳转</div>
                 <span>${msg}</span>
             </div>
-            <button>进入官网首页</button>
-            <div class="reu_bo"><span id="test">5</span>秒后自动跳转</div>
+
         </div>
     </div>
 </div>
+
 
 
 <!--进度-->

@@ -42,4 +42,6 @@ public interface XzPostionMapper {
     int deleteCollect(Long collectId);
 
     List<XzPostion> selectCollect(Long memberId);
+
+    int updateState(XzPostion xzPostion);
 }

@@ -51,13 +51,14 @@
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
                                  class="allheader">
                             <ul class="head-menu">
-                                <li>
-                                    <span>郑秀妍</span>
+                                <li class="head_new2">
+                                    <span class="fa fa-user" style="color: #666"></span>
+                                    <span><a href="">郑秀妍</a></span>
                                     <span><a href="" style="float: right">注销</a></span>
                                 </li>
-                                <li><a href="#">我的简历</a></li>
-                                <li><a href="#">查看职位信息</a></li>
-                                <li><a href="#">balabala</a></li>
+                                <li><span class="head_new"></span><a href="#">我的简历</a></li>
+                                <li><span class="head_new"></span><a href="#">查看职位信息</a></li>
+                                <li><span class="head_new"></span><a href="#">balabala</a></li>
                             </ul>
 
                                 <%--<a><span>${userLogin.loginCount}${userLogin.member.memberId}</span></a>--%>
@@ -65,9 +66,9 @@
                     </a>
                 </c:if>
 
-                <%--<li class="register1">--%>
-                    <%--<a href="#0" class="allregister" style="margin-top: 13px"><span>注册</span></a>--%>
-                <%--</li>--%>
+                <li class="register1">
+                    <a href="#0" class="allregister" style="margin-top: 13px"><span>注册</span></a>
+                </li>
                 <li class="login1">
                     <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"
                        style="margin-top: 13px"><span>登录</span></a>
@@ -82,8 +83,14 @@
 <div class="allpop" role="alert">
     <div class="all_container">
         <div class="index_tan">
-            <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do">用户</a>
-            <a href="${pageContext.request.contextPath}/XzRegister/goRegisterC.do">企业</a>
+            <a href="${pageContext.request.contextPath}/XzRegister/goRegister.do">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ren.png" alt="" class="re_im">
+                <span class="head_span">用户注册</span>
+            </a>
+            <a href="${pageContext.request.contextPath}/XzRegister/goRegisterC.do">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/gong.png" alt="" class="re_im">
+               <span class="head_span">企业注册</span>
+            </a>
         </div>
         <a href="#0" class="all_close cmd_close"></a>
     </div>

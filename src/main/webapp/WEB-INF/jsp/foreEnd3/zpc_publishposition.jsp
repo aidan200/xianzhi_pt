@@ -21,7 +21,7 @@
 
 <div class="pup_container">
     <div class="pup_allin">
-        <form action="${pageContext.request.contextPath}/Postion/insertPostion.do" class="ac-boxfill" id="f1">
+        <form action="${pageContext.request.contextPath}/Postion/insertPostion.do" class="ac-boxfill" id="f1" onsubmit="return sub()">
             <div class="pup_alltop">
                 <h4>职位发布</h4>
                 <p> 您可同时运作 <span>0</span> 个职位，当前还可以发布 <span>0</span> 个职位，职位有效期 <span>0</span> 天</p>
@@ -35,24 +35,24 @@
                         <span> <span class="pup_span1">*</span>职位名称：</span>
                         <input type="text" class="pup_input" style="width: 380px" name="postionName" id="postionName">
                         <div class="pup_text">注：职位发布后职位名称不可以修改</div>
-                        <span class="tag_bubble"><div class="tag2">hahahahhahahh</div></span>
+                        <span class="tag_bubble"><div class="tag2">职位名不能为空</div></span>
                     </div>
 
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>工作地址：</span>
                         <input type="text" class="pup_input" style="width: 380px" name="postionSpace" id="postionSpace">
                         <div class="pup_text">注：1.职位发布后省/市/区不可以修改。2.填写街道、楼宇详细地址，有利于职位曝光。</div>
-                        <span class="tag_bubble"><div class="tag2">hahahahhahahh</div></span>
+                        <span class="tag_bubble"><div class="tag2">工作名不能为空</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>所属部门：</span>
                         <input type="text" class="pup_input" style="width: 380px" name="postionDepartment" id="postionDepartment">
-                        <span class="tag_bubble"><div class="tag2">hahahahhahahh</div></span>
+                        <span class="tag_bubble"><div class="tag2">所属部门不能为空</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>部门人数：</span>
                         <input type="text" class="pup_input" style="width: 180px" name="peopleNumber" id="peopleNumber">人
-                        <span class="tag_bubble2"><div class="tag2">不能为空</div></span>
+                        <span class="tag_bubble2"><div class="tag2">部门人数不能为空</div></span>
                         <span class="tag_bubble2"><div class="tag2">请输入数字</div></span>
                     </div>
                     <div class="pup_form">
@@ -67,16 +67,21 @@
                                 面议
                             </label>
                         </div>
-                        <span class="tag_bubble"><div class="tag2">hahahahhahahh</div></span>
+                        <span class="tag_bubble" id="postionMmnull"><div class="tag2">月薪不能为空</div></span>
+                        <span class="tag_bubble" id="postionMmsz"><div class="tag2">请输入数字</div></span>
+                        <span class="tag_bubble" id="postionMmdx"><div class="tag2">最低月薪不能高于最高月薪</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>发放月数：</span>
-                        <input type="text" class="pup_input" style="width: 180px" name="publishMonth">个月
-                        <span class="tag_bubble2"><div class="tag2">hahahahhahahh</div></span>
+                        <input type="text" class="pup_input" style="width: 180px" name="publishMonth" id="publishMonth">个月
+                        <span class="tag_bubble2"><div class="tag2">发放月数不能为空</div></span>
+                        <span class="tag_bubble2"><div class="tag2">请输入数字</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>工作经验：</span>
-                        <input type="text" class="pup_input" style="width: 180px" name="postionExp" id="postionExp">以上
+                        <input type="text" class="pup_input" style="width: 180px" name="postionExp" id="postionExp">年以上
+                        <span class="tag_bubble2"><div class="tag2">工作经验不能为空</div></span>
+                        <span class="tag_bubble2"><div class="tag2">请输入数字</div></span>
                         <div class="checkboxWrapper theme7 extraSmallCheckboxSize">
                             <input type="checkbox" id="pupnum2">
                             <label for="pupnum2" style="font-weight: normal;margin-bottom: 0">
@@ -84,11 +89,10 @@
                                 不限
                             </label>
                         </div>
-                        <span class="tag_bubble2"><div class="tag2">hahahahhahahh</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>学历要求：</span>
-                        <select id="" class="pup_input" style="width: 200px" name="postionEducation">
+                        <select id="postionEducation" class="pup_input" style="width: 200px" name="postionEducation">
                             <option value="">请选择</option>
                             <option value="不限">不限</option>
                             <option value="博士">博士</option>
@@ -100,7 +104,7 @@
                         <input type="radio" name="educationEntrance" value="0">是
                         <input type="radio" name="educationEntrance" checked="checked" style="margin-left: 20px"
                                value="1">不限
-                        <span class="tag_bubble3"><div class="tag2">hahahahhahahh</div></span>
+                        <span class="tag_bubble3"><div class="tag2">学历要求不能为空</div></span>
                     </div>
                     <div class="pup_form">
                         <span style="float: left"> <span class="pup_span1">*</span>职位描述：</span>
@@ -109,7 +113,7 @@
                                   onkeyup="countChar('status','counter');"></textarea>
                         已经输入<span id="counter">0</span>字
                         <%--<textarea class="pup_textarea"></textarea>--%>
-                        <span class="tag_bubble3"><div class="tag2">hahahahhahahh</div></span>
+                        <span class="tag_bubble3"><div class="tag2">职位描述不能为空</div></span>
                     </div>
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>职位亮点：</span>
@@ -133,7 +137,7 @@
                                 只允许完全符合以下条件人选投递
                             </label>
                         </div>
-                        <span class="tag_bubble5"><div class="tag2">hahahahhahahh</div></span>
+                        <span class="tag_bubble5"><div class="tag2"></div></span>
                     </div>
                     <%--<div class="pup_form">--%>
                     <%--<span>语言要求：</span>--%>
@@ -199,13 +203,13 @@
                         至
                         <select name="postionAgeMax" class="pup_input" id="postionAgeMax">
                             <option value="不限">请选择</option>
-                            <option value="25">25</option>
-                            <option value="30">30</option>
-                            <option value="35">35</option>
-                            <option value="40">40</option>
-                            <option value="45">45</option>
-                            <option value="50">50</option>
-                            <option value="55">55</option>
+                            <option value="25" id="25">25</option>
+                            <option value="30" id="30">30</option>
+                            <option value="35" id="35">35</option>
+                            <option value="40" id="40">40</option>
+                            <option value="45" id="45">45</option>
+                            <option value="50" id="50">50</option>
+                            <option value="55" id="55">55</option>
                         </select>
                         <span class="tag_bubble4"><div class="tag2">hahahahhahahh</div></span>
                     </div>
@@ -218,7 +222,7 @@
             </div>
             <div style="text-align: center;margin-bottom: 80px;margin-top: 40px">
                 <%--<input type="hidden" name="companyId" value="2">--%>
-                <button class="pup_but1"  id="sub">发布职位</button>
+                <button class="pup_but1">发布职位</button>
                 <button class="pup_but2">保存为草稿职位</button>
             </div>
 
@@ -238,6 +242,7 @@
             $('#postionYm').attr("disabled", "disabled");
             $('#postionMm').val(null);
             $('#postionYm').val(null);
+            $('#postionMmnull').children().css('display','none');
         } else {
             $('#postionMm').removeAttr("disabled", "disabled");
             $('#postionYm').removeAttr("disabled", "disabled");
@@ -247,6 +252,7 @@
         if ($(this).is(":checked") == true) {
             $('#postionExp').attr("disabled", "disabled");
             $('#postionExp').val(null);
+            $('#postionExp').next().children().css('display','none');
         } else {
             $('#postionExp').removeAttr("disabled", "disabled");
         }
@@ -286,7 +292,166 @@
                 $(this).next().next().children().css('display','none');
             }
         })
+        $('#postionMm').on('blur',function () {
+            var reg=/^[0-9]*$/;
+            var a=parseInt($('#postionMm').val());
+            var b=parseInt($('#postionYm').val());
+            if($('#postionMm').val()==null||$('#postionMm').val()==''){
+                $('#postionMmnull').children().css('display','block');
+            }else if(!reg.test($('#postionMm').val())){
+                $('#postionMmsz').children().css('display','block');
+            }else if(a>b){
+                $('#postionMmdx').children().css('display','block');
+            }else {
+                $('#postionMmnull').children().css('display','none');
+                $('#postionMmsz').children().css('display','none');
+                $('#postionMmdx').children().css('display','none');
+            }
+        })
+        $('#postionYm').on('blur',function () {
+            var reg=/^[0-9]*$/;
+            var a=parseInt($('#postionMm').val());
+            var b=parseInt($('#postionYm').val());
+            if($('#postionYm').val()==null||$('#postionYm').val()==''){
+                $('#postionMmnull').children().css('display','block');
+            }else if(!reg.test($('#postionYm').val())){
+                $('#postionMmsz').children().css('display','block');
+            }else if (a>b){
+                $('#postionMmdx').children().css('display','block');
+            }else {
+                $('#postionMmnull').children().css('display','none');
+                $('#postionMmsz').children().css('display','none');
+                $('#postionMmdx').children().css('display','none');
+            }
+        })
+        $('#publishMonth').on('blur',function () {
+            var reg=/^[0-9]*$/;
+            if($('#publishMonth').val()==null||$('#publishMonth').val()==''){
+                $('#publishMonth').next().children().css('display','block');
+            }else if(!reg.test($('#publishMonth').val())){
+                $('#publishMonth').next().next().children().css('display','block');
+            }else {
+                $('#publishMonth').next().children().css('display','none');
+                $('#publishMonth').next().next().children().css('display','none');
+            }
+        })
+        $('#postionExp').on('blur',function () {
+            var reg=/^[0-9]*$/;
+            if($('#postionExp').val()==null||$('#postionExp').val()==''){
+                $('#postionExp').next().children().css('display','block');
+            }else if(!reg.test($('#postionExp').val())){
+                $('#postionExp').next().next().children().css('display','block');
+            }else {
+                $('#postionExp').next().children().css('display','none');
+                $('#postionExp').next().next().children().css('display','none');
+            }
+        })
+        $('#postionEducation').on('blur',function () {
+           if($('#postionEducation').val()==null||$('#postionEducation').val()==''){
+               $(this).next().next().next().children().css('display','block');
+           }else {
+               $(this).next().next().next().children().css('display','none');
+           }
+        })
+        $('#status').on('blur',function () {
+            if($('#status').val()==null||$('#status').val()==''){
+                $(this).next().next().children().css('display','block');
+            }else {
+                $(this).next().next().children().css('display','none');
+            }
+        })
+        $('#postionAgeMin').change(function () {
+            var a=parseInt($('#postionAgeMin').val());
+            $('#postionAgeMax > option ').each(function (i,e){
+                if($(e).val()<a){
+                    $(e).css({"display":"none"})
+                }else{
+                    $(e).css({"display":"block"})
+                }
+            })
+        })
+        $('#postionAgeMax').change(function () {
+            var a=parseInt($('#postionAgeMax').val());
+            $('#postionAgeMin > option ').each(function (i,e){
+                if($(e).val()>a){
+                    $(e).css({"display":"none"})
+                }else{
+                    $(e).css({"display":"block"})
+                }
+            })
+        })
     })
 </script>
+<script>
+    function sub() {
+        var reg=/^[0-9]*$/;
+        if($('#postionName').val()==null||$('#postionName').val()=='') {
+            $('#postionName').next().next().children().css('display', 'block');
+            return false;
+        }
+        if($('#postionSpace').val()==null||$('#postionSpace').val()==''){
+            $('#postionSpace').next().next().children().css('display','block');
+            return false;
+        }
+        if($('#postionDepartment').val()==null||$('#postionDepartment').val()==''){
+            $('#postionDepartment').next().children().css('display','block');
+            return false;
+        }
+        if($('#peopleNumber').val()==null||$('#peopleNumber').val()==''){
+            $('#peopleNumber').next().children().css('display','block');
+            return false;
+        }else if(!reg.test($('#peopleNumber').val())){
+            $('#peopleNumber').next().next().children().css('display','block');
+            return false;
+        }
+        if($('#pupnum1').is(':checked')==false){
+        var a=parseInt($('#postionMm').val());
+        var b=parseInt($('#postionYm').val());
+        if($('#postionMm').val()==null||$('#postionMm').val()==''){
+            $('#postionMmnull').children().css('display','block');
+            return false;
+        }else if(!reg.test($('#postionMm').val())){
+            $('#postionMmsz').children().css('display','block');
+            return false;
+        }
+        if($('#postionYm').val()==null||$('#postionYm').val()==''){
+            $('#postionMmnull').children().css('display','block');
+            return false;
+        }else if(!reg.test($('#postionYm').val())){
+            $('#postionMmsz').children().css('display','block');
+            return false;
+        }
+        if(a>b){
+            $('#postionMmdx').children().css('display','block');
+            return false;
+        }
+        }
+        if($('#publishMonth').val()==null||$('#publishMonth').val()==''){
+            $('#publishMonth').next().children().css('display','block');
+            return false;
+        }else if(!reg.test($('#publishMonth').val())){
+            $('#publishMonth').next().next().children().css('display','block');
+            return false;
+        }
+        if($('#pupnum2').is(':checked')==false) {
+            if ($('#postionExp').val() == null || $('#postionExp').val() == '') {
+                $('#postionExp').next().children().css('display', 'block');
+                return false;
+            } else if (!reg.test($('#postionExp').val())) {
+                $('#postionExp').next().next().children().css('display', 'block');
+                return false;
+            }
+        }
+        if ($('#postionEducation').val() == null || $('#postionEducation').val() == '') {
+            $('#postionEducation').next().next().next().children().css('display', 'block');
+            return false
+        }
+        if($('#status').val()==null||$('#status').val()==''){
+            $('#status').next().next().children().css('display','block');
+            return false;
+        }
+    }
+</script>
+
 </body>
 </html>

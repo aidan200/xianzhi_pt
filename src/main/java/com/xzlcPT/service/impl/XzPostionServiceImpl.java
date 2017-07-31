@@ -131,4 +131,10 @@ public class XzPostionServiceImpl implements XzPostionService{
         List<XzPostion> list=postionMapper.selectCollect(memberId);
         return list;
     }
+
+    @Override
+    public int updateState(XzPostion xzPostion) {
+      int i=postionMapper.updateState(xzPostion);
+        return i;
+    }
 }

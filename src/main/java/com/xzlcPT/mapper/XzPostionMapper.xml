@@ -167,7 +167,7 @@
     p.force_age,p.force_specialty,p.education_entrance
   </sql>
   <select id="selPostionSendList" resultMap="PostionSendList" parameterType="Map">
-    SELECT p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
+    SELECT p.postion_id,p.company_id,p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
     count(p.company_id) alls,
 	count(CASE ps.send_state WHEN '0' THEN 1 ELSE null END ) wcl,
     count(CASE ps.send_state WHEN '1' THEN 1 ELSE null END ) dd,
@@ -699,4 +699,8 @@
   <select id="selectCollect" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select postion_id,collect_id,collect_time from xz_postion_collect where member_id=#{memberId,jdbcType=INTEGER}
   </select>
+  <update id="updateState" parameterType="com.xzlcPT.bean.XzPostion">
+    update xz_postion set postion_welfare = #{postionWelfare,jdbcType=VARCHAR} where
+    postion_id = #{postionId,jdbcType=BIGINT}
+  </update>
 </mapper>
