@@ -242,13 +242,41 @@ public class PostionController extends BaseController{
         mv.addObject("list1",list1);
         return mv;
     }
-    //修改投递状态
+    //修改投递状态(审核中)
     @ResponseBody
-    @RequestMapping("updateState.do")
-    public Map updateState(@RequestBody XzPostion xzPostion){
+    @RequestMapping("updateStateIng.do")
+    public Map updateStateIng(@RequestBody Long postionId){
+        XzPostion xzPostion=new XzPostion();
+        xzPostion.setPostionId(postionId);
+        xzPostion.setPostionWelfare("1");
         int i=postionService.updateState(xzPostion);
         Map map=new HashMap();
         map.put("i",i);
         return map;
     }
+    //修改投递状态(暂停发布)
+    @ResponseBody
+    @RequestMapping("updateStatePasue.do")
+    public Map updateStatePasue(@RequestBody Long postionId){
+    XzPostion xzPostion=new XzPostion();
+    xzPostion.setPostionId(postionId);
+    xzPostion.setPostionWelfare("4");
+    int i=postionService.updateState(xzPostion);
+    Map map=new HashMap();
+    map.put("i",i);
+    return map;
+    }
+    //修改投递状态(停止发布)
+    @ResponseBody
+    @RequestMapping("updateStateStop.do")
+    public  Map updateStateStop(@RequestBody Long postionId){
+        XzPostion xzPostion=new XzPostion();
+        xzPostion.setPostionId(postionId);
+        xzPostion.setPostionWelfare("5");
+    int i=postionService.updateState(xzPostion);
+    Map map=new HashMap();
+    map.put("i",i);
+    return map;
+    }
+
 }
