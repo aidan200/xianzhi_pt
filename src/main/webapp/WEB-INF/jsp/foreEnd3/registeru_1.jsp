@@ -32,6 +32,7 @@
 
 <jsp:include page="headerforeEnd.jsp"/>
 <!--上面的进度-->
+
 <div id="stepBar" class="ui-stepBar-wrap">
     <div class="ui-stepBar">
         <div class="ui-stepProcess"></div>
@@ -58,6 +59,7 @@
 
 
 <div id="myTabContent" class="tab-content">
+
 
     <div class="myTab" id="register_1">
         <div class="register1_all">
@@ -101,12 +103,16 @@
         </div>
     </div>
 
+
     <div class="myTab" id="register_2">
         <div class="register1_all">
-            ${msg}
-            <button onclick="remailgo()">前往邮箱完成验证</button>
-            <button onclick="remailgoReplay()">重新发送验证邮件</button>
-                <span id="mailReMsg"></span>
+            <div class="regiater1_small">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/carh.gif" alt="" style="width: 300px;height: 300px;display: block;margin: 0 auto;margin-top: 30px;margin-bottom: 10px">
+            ${msg} <br>
+            <button onclick="remailgo()" class="reg_b">前往邮箱完成验证</button>
+            <button onclick="remailgoReplay()" class="reg_b">重新发送验证邮件</button>
+                <span id="mailReMsg" style="display: block"></span>
+            </div>
         </div>
     </div>
 
@@ -115,12 +121,12 @@
             <div class="reu_over">
                 <div class="reu_b">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/success.png" alt="" class="reu_img3">
+                    <div style="clear: both;display: inline-block"></div>
+                    <button>进入官网首页</button>
+                    <div class="reu_bo"><span id="test">5</span>秒后自动跳转</div>
                     <span>${msg}</span>
                 </div>
-                <button>进入官网首页</button>
-                <div class="reu_bo"><span id="test">5</span>秒后自动跳转</div>
             </div>
-
         </div>
     </div>
 
