@@ -257,7 +257,7 @@ public class PostionController extends BaseController{
     //修改投递状态(暂停发布)
     @ResponseBody
     @RequestMapping("updateStatePasue.do")
-    public Map updateStatePasue(@RequestBody Long postionId){
+    public Map updateStatePasue(Long postionId){
     XzPostion xzPostion=new XzPostion();
     xzPostion.setPostionId(postionId);
     xzPostion.setPostionWelfare("4");
@@ -269,14 +269,14 @@ public class PostionController extends BaseController{
     //修改投递状态(停止发布)
     @ResponseBody
     @RequestMapping("updateStateStop.do")
-    public  Map updateStateStop(@RequestBody Long postionId){
+    public  Map updateStateStop(Long postionId){
         XzPostion xzPostion=new XzPostion();
         xzPostion.setPostionId(postionId);
         xzPostion.setPostionWelfare("5");
-    int i=postionService.updateState(xzPostion);
-    Map map=new HashMap();
-    map.put("i",i);
-    return map;
+        int i=postionService.updateState(xzPostion);
+        Map map=new HashMap();
+        map.put("i",i);
+        return map;
     }
 
 }
