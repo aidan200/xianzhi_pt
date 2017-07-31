@@ -179,7 +179,7 @@
 
         <div class="pop_right3">
 
-            <div id="main" style="width: 290px;height:300px;"></div>
+            <div id="main2" style="width: 290px;height:300px;"></div>
 
         </div>
     </div>
@@ -210,7 +210,7 @@
 </script>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
+    var myChart = echarts.init(document.getElementById('main2'));
 
     // 指定图表的配置项和数据
     var option = {

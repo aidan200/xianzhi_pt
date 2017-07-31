@@ -181,8 +181,6 @@ ul {
     cursor: pointer;
 }
 
-
-
 /*-----------------------博客----------------------*/
 .blog_all {
     margin-top: 30px;
@@ -2584,7 +2582,8 @@ ul {
     display: none;
     padding: 5px 20px;
 }
-.com_eli{
+
+.com_eli {
     border-bottom: 1px dashed #c0c0c0;
     padding-bottom: 12px;
 }
@@ -3922,10 +3921,11 @@ input[type="button"].fileInputButton {
     top: -180px;
     z-index: 1;
 }
+
 /*---气泡---*/
 .tag2 {
     width: 280px;
-    height:35px;
+    height: 35px;
     border: 3px solid #FFA500;
     position: relative;
     background-color: #FFF;
@@ -3952,31 +3952,37 @@ input[type="button"].fileInputButton {
     bottom: -35px;
     border-color: #FFF transparent transparent;
 }
-.tag_bubble{
+
+.tag_bubble {
     position: absolute;
     right: 0;
     top: -40px;
 }
-.tag_bubble2{
+
+.tag_bubble2 {
     position: absolute;
     left: 200px;
     top: -40px;
 }
-.tag_bubble3{
+
+.tag_bubble3 {
     position: absolute;
     right: -100px;
     top: -40px;
 }
-.tag_bubble4{
+
+.tag_bubble4 {
     position: absolute;
     left: 250px;
     top: -40px;
 }
-.tag_bubble5{
+
+.tag_bubble5 {
     position: absolute;
     left: 280px;
     top: -40px;
 }
+
 /*--------------------查看我投递的职位-------------------------*/
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     border: none;
@@ -3999,13 +4005,15 @@ input[type="button"].fileInputButton {
     margin: 40px auto;
     overflow: hidden;
 }
-.pop_left3{
+
+.pop_left3 {
     width: 650px;
     height: auto;
     overflow: hidden;
     float: left;
 }
-.pop_right3{
+
+.pop_right3 {
     width: 308px;
     height: auto;
     overflow: hidden;
@@ -4043,7 +4051,8 @@ input[type="button"].fileInputButton {
     margin-bottom: 90px;
 
 }
-.com_img{
+
+.com_img {
     margin-top: 50px;
 }
 
@@ -4065,7 +4074,8 @@ input[type="button"].fileInputButton {
     float: left;
     margin-left: 15px;
 }
-.pop_but{
+
+.pop_but {
     border: none;
     outline: none;
     background-color: transparent;
@@ -4139,13 +4149,14 @@ input[type="button"].fileInputButton {
     border: 1px solid #d9d9d9;
     position: relative;
 }
-.pop_more{
+
+.pop_more {
     width: 100%;
     background-color: #FFFFff;
     height: 80px;
     border: 1px solid #d9d9d9;
     display: none;
-    border-top:none;
+    border-top: none;
 }
 
 .pop_no {
@@ -4156,6 +4167,7 @@ input[type="button"].fileInputButton {
     border: 1px solid #d9d9d9;
     overflow: hidden;
 }
+
 /*进度的*/
 .ui-stepBar-wrap2 {
     position: relative;
@@ -4234,6 +4246,7 @@ input[type="button"].fileInputButton {
     background: #cccccc;
     color: #ffffff;
 }
+
 /*------------------------公司主页-----------------------*/
 .comh_allin {
     /*width: 100%;*/
@@ -4709,7 +4722,22 @@ input[type="button"].fileInputButton {
 .index_tan {
     width: 100%;
     height: 200px;
-    margin-top: 50px;
+    margin-top: 70px;
+}
+
+.index_tan a {
+    display: inline-block;
+}
+
+.re_im {
+    width: 260px;
+    height: 220px;
+}
+
+.head_span {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 .allregister {
@@ -5745,11 +5773,29 @@ th {
     z-index: 99999;
     height: auto;
     width: 160px;
+
+}
+
+.head_new {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: #FFA500;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.head_new2 {
+    border-bottom: 1px dashed #EEEEEE;
 }
 
 .head-menu li a {
     color: #666666;
     font-size: 13px;
+}
+
+.head-menu li a:hover {
+    color: #3d9ccc;
 }
 
 .head-menu li {
@@ -5808,7 +5854,8 @@ footer {
     float: right;
     padding-top: 9px;
 }
-.allwei span{
+
+.allwei span {
     margin: 13px;
     font-size: 23px;
     float: right;
