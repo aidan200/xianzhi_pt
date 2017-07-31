@@ -37,6 +37,7 @@
 
         });
     </script>
+        <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/position_management.js"></script>
 
