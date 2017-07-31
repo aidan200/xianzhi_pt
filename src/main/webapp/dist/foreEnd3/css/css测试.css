@@ -4005,6 +4005,15 @@ input[type="button"].fileInputButton {
     overflow: hidden;
     float: left;
 }
+.pop_right3{
+    width: 308px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    background-color: #FFFFff;
+    margin-top: 65px;
+    margin-left: 10px;
+}
 
 .nav-tabs > li > a {
     border: none;

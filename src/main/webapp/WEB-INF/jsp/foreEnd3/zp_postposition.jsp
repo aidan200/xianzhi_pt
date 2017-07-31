@@ -19,6 +19,7 @@
             });
         });
     </script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/echarts.js"></script>
 </head>
 <body style="background-color: #F0F0F0">
 <jsp:include page="headerforeEnd.jsp"/>
@@ -175,6 +176,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="pop_right3">
+
+            <div id="main" style="width: 290px;height:300px;"></div>
+
+        </div>
     </div>
 </div>
 
@@ -192,14 +199,71 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/dist/foreEnd3/js/stepBar.js"></script>
 <script type="text/javascript">
     $(function () {
-        var state = 1 ;
+        var states = 1 ;
         stepBar.init("stepBar", {
-            step: state,
+            step: states,
             change: false,
             animation: false
         });
 
     });
+</script>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: ''
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['投递简历次数']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['0718','0719','0720','0721','0722','0723','0724','0725','0726','0727','0728','0729','0730','0731','0732',]
+        },
+        yAxis: {
+            type: 'value',
+            show:'false'
+        },
+        series: [
+            {
+                name:'投递简历次数',
+                type:'line',
+                smooth:'true',
+                symbol:'emptyCircle',
+                symbolSize : function (v){
+                    return 8 + v/100
+                },
+                stack: '总量',
+                data:[20, 32, 1, 34, 15, 3, 8,10,1,4,10,5,6,8,2],
+                itemStyle : {
+                    normal : {
+                        color:'#3fb1e3',
+                        lineStyle:{
+                            color:'#3fb1e3'
+                        }
+                    }
+                },
+            }
+        ]
+    };
+
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
 </script>
 </body>
 </html>
