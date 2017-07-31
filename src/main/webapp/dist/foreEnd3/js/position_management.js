@@ -315,8 +315,12 @@ Zzzp.prototype.paging=function (){                          //分页加载方法
 Zzzp.prototype.paging_sj=function (){      //分页事件
     var This=this
     var aa=$('#pom_one .zp_botv a');
+    alert(_public.page)
     aa.each(function (i,e){
-         if(i==0 ){                         //上一页事件(如果是第一页不设置事件)&&_public.page!=1
+
+         if(i==0&&_public.page!=1){                         //上一页事件(如果是第一页不设置事件)
+
+             $(e).css({"color":"#cacaca"})
              $(e).unbind().on('click',function (){
                  var data=This.seekCont();              //获取到条件
                  data.page-=1;                         //减少1页
@@ -345,6 +349,9 @@ Zzzp.prototype.init=function (){        //初始化方法
     This.load()                         //加载页面
     This.seek()                         //搜索框点击加载事件
 }
+
+
+
 $(function (){
 
     var zzzp=new Zzzp();                    //正在招聘页

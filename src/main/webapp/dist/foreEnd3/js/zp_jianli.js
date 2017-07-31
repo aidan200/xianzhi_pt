@@ -3075,8 +3075,6 @@ obj_gssc.prototype.bindingSJ=function (){
                             }
                         })
 
-
-
                     },error:function (){ //报错执行的
                         alert('基本资料修改错误')
                     }
