@@ -21,7 +21,7 @@
 
 <div class="pup_container">
     <div class="pup_allin">
-        <form action="${pageContext.request.contextPath}/Postion/insertPostion.do" class="ac-boxfill">
+        <form action="${pageContext.request.contextPath}/Postion/insertPostion.do" class="ac-boxfill" id="f1">
             <div class="pup_alltop">
                 <h4>职位发布</h4>
                 <p> 您可同时运作 <span>0</span> 个职位，当前还可以发布 <span>0</span> 个职位，职位有效期 <span>0</span> 天</p>
@@ -33,7 +33,7 @@
                 <div class="pup_center1">
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>职位名称：</span>
-                        <input type="text" class="pup_input" style="width: 380px" name="postionName">
+                        <input type="text" class="pup_input" style="width: 380px" name="postionName" id="postionName">
                         <div class="pup_text">注：职位发布后职位名称不可以修改</div>
                         <span class="tag_bubble"><div class="tag2">hahahahhahahh</div></span>
                     </div>
@@ -216,8 +216,8 @@
                 提示：对于发布虚假招聘信息的企业及账号，先知网有权进行封号处理，造成先知网损失的，需对先知网进行赔偿；同时，先知网保留诉讼的权利。
             </div>
             <div style="text-align: center;margin-bottom: 80px;margin-top: 40px">
-                <input type="hidden" name="companyId" value="2">
-                <button class="pup_but1" type="submit">发布职位</button>
+                <%--<input type="hidden" name="companyId" value="2">--%>
+                <button class="pup_but1"  id="sub">发布职位</button>
                 <button class="pup_but2">保存为草稿职位</button>
             </div>
 
@@ -250,7 +250,15 @@
             $('#postionExp').removeAttr("disabled", "disabled");
         }
     })
-
+</script>
+<script>
+    $(function () {
+        $('#postionName').on('blur',function () {
+            if($('#postionName').val()==null||$('#postionName').val()=='') {
+                $(this).next().next().children().css('display', 'block');
+            }
+        })
+    })
 </script>
 </body>
 </html>

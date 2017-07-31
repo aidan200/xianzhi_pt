@@ -108,7 +108,7 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                 str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
                 str+='<td class="all_no">'+This.cont[i].dd+'</td>'
                 str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                str+='<td class="all_no">我是刷新时间</td>'
+                str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
                 str+='<td class="all_no">'
                 str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
                 str+=' <a href="javascript:;" class="dg_sc">结束</a> '

@@ -3929,9 +3929,9 @@ input[type="button"].fileInputButton {
     border: 3px solid #FFA500;
     position: relative;
     background-color: #FFF;
-    display: inline-block;
+    /*display: inline-block;*/
     padding-left: 10px;
-    /*display: none;*/
+    display: none;
     z-index: 999;
 }
 
@@ -3999,6 +3999,12 @@ input[type="button"].fileInputButton {
     margin: 40px auto;
     overflow: hidden;
 }
+.pop_left3{
+    width: 650px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+}
 
 .nav-tabs > li > a {
     border: none;
@@ -4028,6 +4034,9 @@ input[type="button"].fileInputButton {
     margin-bottom: 90px;
 
 }
+.com_img{
+    margin-top: 50px;
+}
 
 /*.pop_img {*/
 /*width: 150px;*/
@@ -4035,8 +4044,8 @@ input[type="button"].fileInputButton {
 /*margin-top: 160px;*/
 /*}*/
 .pop_head {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     border-radius: 150px;
     margin-left: 20px;
     float: left;
@@ -4045,15 +4054,16 @@ input[type="button"].fileInputButton {
 
 .pop_test2 {
     float: left;
-    margin-left: 30px;
+    margin-left: 15px;
 }
 
 .pop_test2 h4 {
     color: #3d9ccc;
+    margin-bottom: 0;
 }
 
 .pop_left2 {
-    width: 510px;
+    width: 390px;
     height: auto;
     float: left;
     border-right: 1px dotted #cccccc;
@@ -4062,9 +4072,9 @@ input[type="button"].fileInputButton {
 .pop_right2 {
     float: left;
     height: auto;
-    margin-left: 45px;
-    margin-top: 10px;
-    width: 380px;
+    margin-left: 15px;
+    /*margin-top: 10px;*/
+    width: 200px;
 }
 
 .pop_rt span {
@@ -4073,7 +4083,7 @@ input[type="button"].fileInputButton {
 
 .pop_rt {
     margin-top: 10px;
-    width: 378px;
+    width: 200px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4108,10 +4118,10 @@ input[type="button"].fileInputButton {
 
 .pop_have {
     width: 100%;
-    height: 160px;
+    height: 110px;
     background-color: #ffffff;
     margin-top: 10px;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #d9d9d9;
     position: relative;
 }
