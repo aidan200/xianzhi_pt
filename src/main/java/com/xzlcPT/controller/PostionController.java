@@ -8,10 +8,13 @@ import com.xzlcPT.bean.XzPostionBrowse;
 import com.xzlcPT.service.XzPostionBrowseService;
 import com.xzlcPT.service.XzPostionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -33,6 +36,13 @@ public class PostionController extends BaseController{
 
 
         return mv;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        //日期格式
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class,new CustomDateEditor(dateFormat, true));
     }
 
     //公司发布职位查询
