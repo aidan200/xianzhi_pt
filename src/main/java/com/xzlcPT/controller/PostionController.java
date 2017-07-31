@@ -8,10 +8,13 @@ import com.xzlcPT.bean.XzPostionBrowse;
 import com.xzlcPT.service.XzPostionBrowseService;
 import com.xzlcPT.service.XzPostionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -33,6 +36,13 @@ public class PostionController extends BaseController{
 
 
         return mv;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        //日期格式
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class,new CustomDateEditor(dateFormat, true));
     }
 
     //公司发布职位查询
@@ -171,7 +181,7 @@ public class PostionController extends BaseController{
     public ModelAndView insertPostion(@ModelAttribute("userLogin") XzLogin userLogin,String postionName,String postionSpace,String postionDepartment,Integer peopleNumber,
                                       Integer postionMm,Integer postionYm,Integer publishMonth,String postionExp,String postionEducation,Integer educationEntrance,
                                         String postionDescription,String postionSpecialty,String postionAgeMin,String postionAgeMax,Integer check){
-        ModelAndView mv=new ModelAndView("/foreEnd3/zpc_position_management");
+        ModelAndView mv=new ModelAndView("redirect:/view/foreEnd3/zpc_position_management.html");
         Map map=new HashMap();
         map.put("postionName",postionName);
         map.put("postionSpace",postionSpace);
