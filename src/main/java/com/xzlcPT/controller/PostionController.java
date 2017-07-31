@@ -242,4 +242,16 @@ public class PostionController extends BaseController{
         mv.addObject("list1",list1);
         return mv;
     }
+    //修改投递状态
+    @ResponseBody
+    @RequestMapping("updateState.do")
+    public Map updateState(@RequestBody Long postionId,Long postionWelfare){
+        XzPostion xzPostion=new XzPostion();
+        xzPostion.setPostionId(postionId);
+        xzPostion.setPostionWelfare(postionWelfare.toString());
+        int i=postionService.updateState(xzPostion);
+        Map map=new HashMap();
+        map.put("i",i);
+        return map;
+    }
 }

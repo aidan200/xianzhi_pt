@@ -328,7 +328,7 @@ public class CompanyInfoController {
     //关注公司
     @RequestMapping("insertFollow.do")
     public ModelAndView insertFollow(Long companyId,Long memberId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        ModelAndView mv=new ModelAndView("/foreEnd3/index");
         Date followTime=new Date();
         Map map=new HashMap();
         map.put("companyId",companyId);
@@ -341,7 +341,7 @@ public class CompanyInfoController {
     //取消关注
     @RequestMapping("deleteFollow.do")
     public ModelAndView deleteFollow(Long followId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        ModelAndView mv=new ModelAndView("/foreEnd3/index");
         int i=companyService.deleteFollow(followId);
         mv.addObject("i",i);
         return mv;
@@ -349,9 +349,23 @@ public class CompanyInfoController {
     //查询该用户关注的企业
     @RequestMapping("selectFollow.do")
     public ModelAndView selectFollow(Long memberId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        ModelAndView mv=new ModelAndView("/foreEnd3/index");
         List<XzCompany> companyList=companyService.selectFollow(memberId);
         mv.addObject("companyList",companyList);
+        return mv;
+    }
+    //按条件搜索公司
+    @RequestMapping("selCompany.do")
+    public ModelAndView selCompany(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,XzCompany xzCompany){
+        ModelAndView mv=new ModelAndView("foreEnd3/index");
+        PageBean<XzCompany> pageBean=companyService.selComCount(page, rows, xzCompany);
+        List<XzCompany> clist=pageBean.getList();
+        mv.addObject("page", pageBean.getPageNum());
+        mv.addObject("pages", pageBean.getPages());
+        mv.addObject("rows", pageBean.getPageSize());
+        mv.addObject("total", pageBean.getTotal());
+        mv.addObject("xzCompany", xzCompany);
+        mv.addObject("clist",clist);
         return mv;
     }
 }
