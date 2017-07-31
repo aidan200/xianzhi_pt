@@ -212,5 +212,41 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         return companyList;
     }
 
+    @Override
+    public PageBean<XzCompany> selComCount(Integer page, Integer rows, XzCompany xzCompany) {
+        PageHelper.startPage(page,rows);
+        List<XzCompany> plist=companyMapper.selComCount(xzCompany);
+        PageBean<XzCompany> pageBean=new PageBean<>(plist);
+        List<XzCompany> tlist=pageBean.getList();
+        List list = new ArrayList();
+        for (XzCompany company : tlist) {
+            list.add(company.getCompanyId());
+        }
+        List<XzCompany> companyList = companyMapper.selectAllJob(list);
+        for (int i=0;i<companyList.size();i++){
+            for (int j=0;j<plist.size();j++){
+                if (companyList.get(i).getCompanyId()==plist.get(j).getCompanyId()){
+                    companyList.get(i).setPcount(plist.get(j).getPcount());
+                }
+            }
+        }
+        List<XzPostion> polist=new ArrayList<XzPostion>();
+        for (int i=0;i<companyList.size();i++){
+            if (companyList.get(i).getPostions().size()>2){
+                polist=companyList.get(i).getPostions().subList(0,2);
+                companyList.get(i).setPostions(polist);
+            }
+        }
+        List<XzCompanyWelfare> welist=new ArrayList<XzCompanyWelfare>();
+        for (int i=0;i<companyList.size();i++){
+            if (companyList.get(i).getWelfares().size()>2){
+                welist=companyList.get(i).getWelfares().subList(0,2);
+                companyList.get(i).setWelfares(welist);
+            }
+        }
+        pageBean.setList(companyList);
+        return pageBean;
+    }
+
 
 }

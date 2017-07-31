@@ -699,4 +699,8 @@
   <select id="selectCollect" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select postion_id,collect_id,collect_time from xz_postion_collect where member_id=#{memberId,jdbcType=INTEGER}
   </select>
+  <update id="updateState" parameterType="com.xzlcPT.bean.XzPostion">
+    update xz_postion set postion_welfare = #{postionWelfare,jdbcType=VARCHAR} where
+    postion_id = #{postionId,jdbcType=BIGINT}
+  </update>
 </mapper>

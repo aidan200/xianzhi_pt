@@ -40,4 +40,6 @@ public interface XzPostionService {
 
     List<XzPostion> selectCollect(Long memberId);
 
+    int updateState(XzPostion xzPostion);
+
 }

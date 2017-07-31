@@ -640,4 +640,23 @@
   <select id="selectFollow" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select company_id,follow_id,follow_time from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
   </select>
+  <select id="selComCount" parameterType="com.xzlcPT.bean.XzCompany" resultMap="SelectAllMap">
+    select
+    c.company_id,count(p.postion_id) as pcount
+    from xz_company c  LEFT JOIN xz_postion p on c.company_id = p.company_id
+    <if test="companyCity != null and companyCity !=''">
+    and c.company_city=#{companyCity,jdbcType=BIGINT}
+    </if>
+    <if test="companyName != null and companyName !=''">
+      and c.company_name like CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="fields!=null">
+      AND f.field_name in
+      <foreach collection="fields" item = "field" open="(" close=")" separator="," >
+        #{field.fieldName,jdbcType=VARCHAR}
+      </foreach>
+    </if>
+    GROUP BY c.company_id WHERE delete_falt=0
+  </select>
+
 </mapper>

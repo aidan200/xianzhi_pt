@@ -35,4 +35,6 @@ public interface XzCompanyService {
     int deleteFollow(Long followId);
 
     List<XzCompany> selectFollow(Long memberId);
+
+    PageBean<XzCompany> selComCount(Integer page,Integer rows,XzCompany xzCompany);
 }
