@@ -1,6 +1,13 @@
 /**
  * Created by Administrator on 2017/7/6.
  */
+
+function th(obj){
+    // var qwe=/\n/.test(obj);
+    var ss = obj.replace(/\n/,"<br>");
+    return ss
+}
+
 //个人信息开始
 function obj_yhxx(){
     this.name='';                       //姓名
@@ -1110,7 +1117,9 @@ obj_gzjl.prototype.init=function (){
                     str+='<p>工作地点：'+_self.obj_s[i].gzdd+' | 月薪：/月*12个月</p>'
                 }
 
-                str+='<p>'+_self.obj_s[i].zzyj+'</p>'
+                var ss = _self.obj_s[i].zzyj.replace(/\n/,"<br>");
+
+                str+='<p>'+ss+'</p>'  //职责业绩
                 str+='</div>'
                 str+='<p class="zp_jianli_p1">公司领域：'
                 for(var j=0;j<_self.obj_s[i].gshy.length;j++){
@@ -1368,6 +1377,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                     jobexpDuty:trim(gzjl.find('textarea').eq(0).val()),                //职责业绩
                     jobexpId:trim(gzjl.attr('data-id'))                             //工作经历ID
                 };
+
                 var num_kg=number('#xxrs__');
                 function bdyz(){
                     if(obj_gzjl.jobexpCompanyName==''||obj_gzjl.jobexpCompanyName==null){
@@ -1605,6 +1615,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                     jobexpDuty:trim(gzjl.find('textarea').eq(0).val()),                //职责业绩
                     resumeId:ID,                                                 //简历ID
                 };
+
                 var num_kg=number('#xxrs__');
                 function bdyz(){
                     if(obj_gzjl.jobexpCompanyName==''||obj_gzjl.jobexpCompanyName==null){
@@ -2103,21 +2114,25 @@ obj_xmjy.prototype.init=function (){
                 str+='<a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>'
                 str+='<a class="fa fa-times-circle zp_jianli_sc" style="float: right" href="javascript:;"></a>'
                 str+='<p>项目名称：'+_self.obj_s[i].xmmc+' ('+_self.obj_s[i].kssj+'------'+_self.obj_s[i].jssj+')</p> '
-                str+='<div class="zp_xmjy_left">'
+                str+='<div >'//class="zp_xmjy_left"
                 str+='<ul>'
-                str+='<li>项目职务：</li>'
-                str+='<li>项目描述：</li>'
-                str+='<li>项目职责：</li>'
+                str+='<li>'
+                str+='<div class="qwe_left" style="display: inline-block">项目职务：</div>'
+                str+='<div class="qwe_right" style="display: inline-block">'+_self.obj_s[i].xmzw+'</div>'
+                str+='</li>'
+                var a1=th(_self.obj_s[i].xmms)
+                var a2=th(_self.obj_s[i].zz)
+                str+='<li>'
+                str+='<div class="qwe_left" >项目描述：</div>'
+                str+='<div class="qwe_right" >'+a1+'</div>'
+                str+='</li>'
+                str+='<li>'
+                str+='<div class="qwe_left" >项目职责：</div>'
+                str+='<div class="qwe_right" >'+a2+'</div>'
+                str+='</li>'
                 str+='</ul>'
                 str+='</div>'
-                str+='<div class="zp_xmjy_right">'
-                str+='<ul>'
-                str+='<li>'+_self.obj_s[i].xmzw+'</li>'
-                str+='<li>'+_self.obj_s[i].xmms+'</li>'
-                str+='<li>'+_self.obj_s[i].zz+'</li>'
 
-                str+='</ul>'
-                str+='</div>'
                 str+='<div style="clear:both;"></div>'
                 str+='</div>'
             }
@@ -2481,7 +2496,7 @@ obj_zopj.prototype.bindingDOM=function (){
     var _self=this;
     if(_self.zopj!=''&&_self.zopj!=null){                         //判断是否不为空
         $('#zp_tjzopj').css({"display":"none"});
-        $('#zp_zopj').html(_self.zopj);
+        $('#zp_zopj').html(th(_self.zopj));
         $('.zp_jianli_cont_left_zopj .zp_jianli_xg').css({"display":"block"})
     }else{
         $('#zp_tjzopj').css({"display":"block"});
@@ -2619,7 +2634,7 @@ obj_fjxx.prototype.bindingDOM=function (){
     var _self=this;
     if(_self.fjxx!=''&&_self.fjxx!=null){                         //判断是否不为空
         $('#zp_tjfjxx').css({"display":"none"});
-        $('#zp_fjxx').html(_self.fjxx);
+        $('#zp_fjxx').html(th(_self.fjxx));
         $('.zp_jianli_cont_left_fjxx .zp_jianli_xg').css({"display":"block"});
     }else{
         $('.zp_jianli_cont_left_fjxx .zp_jianli_xg').css({"display":"none"});
@@ -3166,6 +3181,9 @@ function number2(obj){                   //正则表达式
     var v = s.test($(obj).val())
     return v
 }
+
+
+
 
 
 $(function (){                              //入口函数
