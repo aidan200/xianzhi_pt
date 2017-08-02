@@ -161,6 +161,14 @@ public class XzResumeServiceImpl implements XzResumeService{
         List<XzResume> resumeList=resumeMapper.selectCollect(companyId);
         return resumeList;
     }
+    //按条件查询简历
+    @Override
+    public PageBean<XzResume> selResume(Integer page, Integer rows, Map map) {
+        PageHelper.startPage(page,rows);
+        List<XzResume> rlist=resumeMapper.selResume(map);
+        PageBean<XzResume> pageBean=new PageBean<>(rlist);
+        return pageBean;
+    }
 
     //修改完成度
     public XzResume updateCompletionById(Long id) {

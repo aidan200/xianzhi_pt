@@ -33,4 +33,6 @@ public interface XzResumeMapper {
 
     List<XzResume> selectCollect(Long companyId);
 
+    List<XzResume> selResume(Map map);
+
 }
