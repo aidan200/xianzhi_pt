@@ -79,7 +79,7 @@
 
 <section class="container zp_gsxq_bd_cont">
     <div class="zp_gsxq_bd_js">
-        <h4>请填写公司的信息<em class="pull-right"><span>*</span>为必填</em></h4>
+        <h4>请填写公司的信息<em class="pull-right"><span>*</span> 为必填</em></h4>
     </div>
     <div class="zp_gsxq_bd_cont_1" style="border: none">
         <h2><span class="number">1</span>公司基本信息</h2>
@@ -123,7 +123,7 @@
                         <c:forEach items="${company.skills}" var="s">
                             <div class='skilldiv'>
                                 <div>${s.skillName}</div>
-                                <a class="skillBtn">x</a>
+                                <a class="skillBtn fa fa-remove"></a>
                                 <input form='zp_gsxq_form' type="hidden" name="skillss" value="${s.skillName}">
                             </div>
                         </c:forEach>
@@ -229,7 +229,8 @@
                 <label class="group-title"><span class="text-error">* </span>公司图标：</label>
                 <div class="zp_gsxq_logo gstb">
                     <p>请您上传一张公司标志图片作为公司展示头像</p>
-                    <div id="gstb_bg" <c:if test="${company.companyPicture!=undefined}">style="background-image: url('${pageContext.request.contextPath}/uploadImg/${company.companyPicture}')" </c:if> ></div>
+                    <div id="gstb_bg" <c:if test="${company.companyPicture!=undefined}">
+                        style="background-image: url('${pageContext.request.contextPath}/uploadImg/${company.companyPicture}')" </c:if> ></div>
                     <input id="gstb_inp1" form="zp_gsxq_form" type="hidden" name="companyPicture" value="${company.companyPicture}" >
                 </div>
             </div>
@@ -279,7 +280,7 @@
                             <div class="zp_gsxq_cpjs_cp_right"><input class="_gsmc" form="zp_gsxq_form" value="{{filed1}}" type="text" placeholder="请输入产品名称">
                                 <textarea form="zp_gsxq_form" placeholder="请输入产品描述">{{productIntro}}</textarea>
                             </div>
-                            <div style="clear:both"></div><a>O</a><span>X</span>
+                            <div style="clear:both"></div><a class="fa fa-times"></a><span class="fa fa-remove"></span>
                         </div>
                     </script>
 

@@ -640,10 +640,10 @@
   <select id="selectFollow" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select company_id,follow_id,follow_time from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
   </select>
-  <select id="selComCount" parameterType="com.xzlcPT.bean.XzCompany" resultMap="SelectAllMap">
+  <select id="selComCount" parameterType="java.util.Map" resultMap="SelectAllMap">
     select
     c.company_id,count(p.postion_id) as pcount
-    from xz_company c  LEFT JOIN xz_postion p on c.company_id = p.company_id
+    from xz_company c  LEFT JOIN xz_postion p on c.company_id = p.company_id WHERE delete_falt=0
     <if test="companyCity != null and companyCity !=''">
     and c.company_city=#{companyCity,jdbcType=BIGINT}
     </if>
@@ -656,7 +656,7 @@
         #{field.fieldName,jdbcType=VARCHAR}
       </foreach>
     </if>
-    GROUP BY c.company_id WHERE delete_falt=0
+    GROUP BY c.company_id
   </select>
 
 </mapper>

@@ -44,6 +44,6 @@ public interface XzCompanyMapper {
 
     List<XzCompany> selectFollow(Long memberId);
 
-    List<XzCompany> selComCount(XzCompany xzCompany);
+    List<XzCompany> selComCount(Map map);
 
 }

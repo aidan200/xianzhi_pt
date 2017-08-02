@@ -33,6 +33,9 @@
     <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     <result column="collect_id" jdbcType="BIGINT" property="collectId"/>
     <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime"/>
+    <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
+    <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+    </collection>
   </resultMap>
   <resultMap id="ResumeInfo" type="com.xzlcPT.bean.XzResume">
     <id column="resume_id" jdbcType="BIGINT" property="resumeId" />

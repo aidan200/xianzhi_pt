@@ -356,15 +356,19 @@ public class CompanyInfoController {
     }
     //按条件搜索公司
     @RequestMapping("selCompany.do")
-    public ModelAndView selCompany(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,XzCompany xzCompany){
+    public ModelAndView selCompany(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,String companyCity,String companyName,List<String> list){
         ModelAndView mv=new ModelAndView("foreEnd3/index");
-        PageBean<XzCompany> pageBean=companyService.selComCount(page, rows, xzCompany);
+        Map map=new HashMap();
+        map.put("companyCity",companyCity);
+        map.put("companyName",companyName);
+        map.put("fields",list);
+        PageBean<XzCompany> pageBean=companyService.selComCount(page, rows,map );
         List<XzCompany> clist=pageBean.getList();
         mv.addObject("page", pageBean.getPageNum());
         mv.addObject("pages", pageBean.getPages());
         mv.addObject("rows", pageBean.getPageSize());
         mv.addObject("total", pageBean.getTotal());
-        mv.addObject("xzCompany", xzCompany);
+        mv.addObject("map", map);
         mv.addObject("clist",clist);
         return mv;
     }

@@ -213,9 +213,9 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     }
 
     @Override
-    public PageBean<XzCompany> selComCount(Integer page, Integer rows, XzCompany xzCompany) {
+    public PageBean<XzCompany> selComCount(Integer page, Integer rows, Map map) {
         PageHelper.startPage(page,rows);
-        List<XzCompany> plist=companyMapper.selComCount(xzCompany);
+        List<XzCompany> plist=companyMapper.selComCount(map);
         PageBean<XzCompany> pageBean=new PageBean<>(plist);
         List<XzCompany> tlist=pageBean.getList();
         List list = new ArrayList();

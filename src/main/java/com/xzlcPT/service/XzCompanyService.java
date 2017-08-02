@@ -36,5 +36,5 @@ public interface XzCompanyService {
 
     List<XzCompany> selectFollow(Long memberId);
 
-    PageBean<XzCompany> selComCount(Integer page,Integer rows,XzCompany xzCompany);
+    PageBean<XzCompany> selComCount(Integer page,Integer rows,Map map);
 }

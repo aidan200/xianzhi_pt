@@ -508,7 +508,7 @@ $(function (){
             var nodes = nodeBox.html();
             nodeBox.html(nodes+"<div class='skilldiv'>"+
                 "<div>"+val+"</div>"+
-                "<a class='skillBtn'>x</a>"+
+                "<a class='skillBtn fa fa-remove'></a>"+
                 "<input type='hidden' form='zp_gsxq_form' name='"+name+"' value='"+val+"'>"+
                 "</div>");
         }
