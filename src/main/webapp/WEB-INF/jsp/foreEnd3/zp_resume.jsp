@@ -96,8 +96,13 @@
                     <div class="resume_two">
                         <div class="resume_every">
                             期望行业：<span>
-                            <c:forEach var="f1" items="${xzResume.fields}">
+                            <c:forEach var="f1" items="${xzResume.fields}" varStatus="stat">
+                                <c:if test="${!stat.last}">
                                 ${f1.fieldName}/
+                                </c:if>
+                                <c:if test="${stat.last}">
+                                    ${f1.fieldName}
+                                </c:if>
                             </c:forEach>
                         </span>
                         </div>
@@ -142,7 +147,15 @@
                             公司规模：<span>${je.jobexpSubordinate}人</span>
                         </div>
                         <div class="resume_every">
-                            经营领域：<span>${je.jobexpField}</span>
+
+                            经营领域：<span><c:forEach items="${je.fields}" var="jf" varStatus="stat">
+                            <c:if test="${!stat.last}">
+                            ${jf.fieldName}/
+                            </c:if>
+                            <c:if test="${stat.last}">
+                                ${jf.fieldName}
+                            </c:if>
+                        </c:forEach></span>
                         </div>
                         <div class="resume_every">
                             工作职位：<span>${je.jobexpPostion}</span>
@@ -157,8 +170,8 @@
                             <%--所在部门：<span>${je.jobexpDept}</span>--%>
                         <%--</div>--%>
                         <div class="resume_every3">
-                            <span style="display: inline-block;float: left">职责业绩：${je.jobexpDuty}</span>
-                            <span class="resume_many">hhahhahahahhahaha</span>
+                            <span style="display: inline-block;float: left">职责业绩：</span>
+                            <span class="resume_many">${je.jobexpDuty}</span>
                         </div>
                     </div>
                     </c:forEach>
