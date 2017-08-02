@@ -62,32 +62,33 @@ ul {
     height: 100%;
     line-height: 50px;
     margin: 0;
-    background: #EDF6FD;
+    background: #3d9ccc;
     padding: 0 20px;
+    color: #FFFFff;
 }
 .zp_gsxq_bd_js > h4 > em{
     font-size: 12px;
     font-style:normal;
 }
-.zp_gsxq_bd_js > h4 span{
-    color: red;
-}
+/*.zp_gsxq_bd_js > h4 span{*/
+    /*color: red;*/
+/*}*/
 .zp_gsxq_bd_cont_1{
-    border-top: 1px dashed #29c;
+    border-top: 1px dashed #c0c0c0;
     padding: 30px 80px 0 80px ;
     margin-top: 40px;
 }
 .zp_gsxq_bd_cont_1 > h2{
     margin: 0;
     font-size: 14px;
-    color: #29c;
+    color: #FFA500;
 
 }
 .zp_gsxq_bd_cont_1 > h2 .number{
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-color: #29c;
+    background-color: #FFA500;
     border-radius: 30px;
     margin-right: 4px;
     color: #fff;
@@ -212,7 +213,7 @@ ul {
     border-radius: 3px;
 }
 .zp_gsxq_js > p{
-    color: #FF9982;
+    color: #fc6866;
     padding-left: 120px;
 }
 .zp_gsxq_cpjs {
@@ -239,8 +240,9 @@ ul {
     text-align: center;
 }
 .zp_aa  button{
-    border: 1px solid #2299CC;
-    background: none;
+    border: 1px solid #3d9ccc;
+    background: #3d9ccc;
+    color: #FFf;
     margin-right: 30px;
     padding-left: 20px;
     padding-right: 20px;
@@ -331,7 +333,7 @@ ul {
     background: #039FAC;
 }*/
 .zp_gsxq_bd_cont_1 >div > div >label >span{
-    color: red;
+    color: #fc6866;
 }
 .zp_gsxq_cp{
     height: 50px;
@@ -339,9 +341,9 @@ ul {
     background: #CCCCCC;
 }
 .zp_gsxq_cpjs_cp{
-    border: 1px solid #3D9CCC;
+    border: 1px solid #3d9ccc;
     margin: 0 auto;
-    border-top: 3px solid #3D9CCC;
+    border-top: 3px solid #3d9ccc;
     margin-bottom: 30px;
     position: relative;
 }
@@ -380,7 +382,7 @@ ul {
     background-size: contain;
 }
 .zp_gsxq_cpjs_cp_right{
-    border-left: 1px solid #ccc;
+    border-left: 1px dashed #ccc;
     padding-top: 20px;
     float: left;
     width: 60%;
@@ -396,6 +398,8 @@ ul {
     width: 250px;
     height: 200px;
     padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
     color: #757575;
 }
 .qyfc{
@@ -416,7 +420,7 @@ ul {
 .qyfc > div > h3{
     height: 30px;
     line-height: 30px;
-    background: #E6E6E6;
+    background: #fff;
     margin: 0;
     text-align: right;
 }
@@ -442,7 +446,6 @@ ul {
 
 }
 .qyfc > h4{
-
     width: 100%;
     float: right;
     position: relative;
@@ -451,7 +454,7 @@ ul {
     line-height: 38px;
     border: 1px dashed #e3e3e3;
     background: #f7f7f7;
-    color: #0077b3;
+    color: #3d9ccc;
     text-align: center;
     font-weight: 700;
     cursor: pointer;
