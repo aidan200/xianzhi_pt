@@ -75,13 +75,13 @@
                         <div class="comh_right">
                             <div class="comh_rt">
                                 <span>2015-至今</span>|
-                                <span class="comh_more" style="max-width: 185px">阿里巴巴有限公司ahtsrtgfkajfhkadf</span>|
-                                <span class="comh_more" style="max-width: 135px">资深产品经理adsertssfasd</span>
+                                <span class="comh_more" style="max-width: 150px">阿里巴巴有限公司ahtsrtgfkajfhkadf</span>|
+                                <span class="comh_more" style="max-width: 130px">资深产品经理adsertssfasd</span>
                             </div>
                             <div class="comh_rt">
                                 <span>2007-2011</span>|
-                                <span class="comh_more" style="max-width: 133px">复旦大学aewrwerfdfadfadfad</span>|
-                                <span class="comh_more" style="max-width: 131px">信息管理werfweaewe与信息系统a</span>|
+                                <span class="comh_more" style="max-width: 120px">复旦大学aewrwerfdfadfadfad</span>|
+                                <span class="comh_more" style="max-width: 120px">信息管理werfweaewe与信息系统a</span>|
                                 <span>本科</span>
                             </div>
                             <div style="margin-top: 10px;margin-right: 3px;float: right;color: #a8a8a8">
