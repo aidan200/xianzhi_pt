@@ -78,10 +78,11 @@ public class ResumeController extends BaseController {
     @ResponseBody
     @RequestMapping("ResumeDownload.do")
     public void ResumeDownload(Long resumeId, HttpServletRequest request, HttpServletResponse response){
-        //XzResume resume = resumeService.selectByMemberId(resumeId);
+        XzResume xzResume = resumeService.selResumeInformation(resumeId);
         System.out.println("路径：：："+request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
+        System.out.println(xzResume);
         String fileName = new Date().getTime()+".pdf";
-        File file = PdfUtil.makePdf(fileName,request);
+        File file = PdfUtil.makePdf(xzResume,fileName,request);
         response.setHeader("Content-Disposition","attachment;filename="+fileName);
         try {
             DataOutputStream temps = new DataOutputStream(response
@@ -89,7 +90,7 @@ public class ResumeController extends BaseController {
             DataInputStream in = new DataInputStream(
                     new FileInputStream(file));
 
-            byte[] b = new byte[2048];
+            byte[] b = new byte[512];
             while ((in.read(b)) != -1) {
                 temps.write(b);
                 temps.flush();

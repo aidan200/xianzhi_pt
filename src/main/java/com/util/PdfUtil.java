@@ -7,16 +7,18 @@ import com.xzlcPT.bean.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/8/1.
  */
 public class PdfUtil {
 
-    public static File makePdf(String fileName, HttpServletRequest request){
+    public static File makePdf(XzResume resume,String fileName, HttpServletRequest request){
         PdfPCell cell1;
         File file = null;
         //String fileName = "tttest.pdf";
@@ -48,7 +50,7 @@ public class PdfUtil {
             under.addImage(img);*/
 
 
-            Image TopImage = Image.getInstance("e:/topImage.png");
+            Image TopImage = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/topImage.png"));
             document.add(TopImage);
 
             float[] widths = {0.2f, 0.15f, 0.25f, 0.15f,0.25f};
@@ -63,7 +65,10 @@ public class PdfUtil {
             cell1 = new PdfPCell();
             cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
             table.setHorizontalAlignment(Element.ALIGN_CENTER);
-            Image image = Image.getInstance("e:/boy.png");
+            Image image = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
+            if(resume.getResumeSex()==1){
+                image = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/girl.png"));
+            }
             //照片
             cell1.setImage(image);
             cell1.setBorder(Rectangle.NO_BORDER);
@@ -71,7 +76,7 @@ public class PdfUtil {
             cell1.setFixedHeight(100f);
             table.addCell(cell1);
             //姓名
-            cell1 = makeCell("你妹",RName);
+            cell1 = makeCell(resume.getResumeName(),RName);
             cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell1.setFixedHeight(40f);
             cell1.setColspan(4);
@@ -79,20 +84,20 @@ public class PdfUtil {
             //第二行
             cell1 = makeCell("目前公司",content);
             table.addCell(cell1);
-            cell1 = makeCell("你妹公司",content);
+            cell1 = makeCell(resume.getResumeField(),content);
             table.addCell(cell1);
             cell1 = makeCell("所在地点",content);
             table.addCell(cell1);
-            cell1 = makeCell("你妹地点",content);
+            cell1 = makeCell(resume.getResumeWorkspace(),content);
             table.addCell(cell1);
             //第三行
             cell1 = makeCell("目前职位",content);
             table.addCell(cell1);
-            cell1 = makeCell("你妹职位",content);
+            cell1 = makeCell(resume.getResumePosition(),content);
             table.addCell(cell1);
             cell1 = makeCell("工作年限",content);
             table.addCell(cell1);
-            cell1 = makeCell("你妹年限",content);
+            cell1 = makeCell(resume.getResumeIntentYm()+"年",content);
             table.addCell(cell1);
             document.add(table);
 
@@ -107,27 +112,55 @@ public class PdfUtil {
             table.addCell(cell1);
             cell1 = makeCell("性别",content);
             table.addCell(cell1);
-            cell1 = makeCell("男",content);
+            if(0==resume.getResumeSex()){
+                cell1 = makeCell("男",content);
+            }else if(1==resume.getResumeSex()){
+                cell1 = makeCell("女",content);
+            }else{
+                cell1 = makeCell("",content);
+            }
             table.addCell(cell1);
             cell1 = makeCell("手机",content);
             table.addCell(cell1);
-            cell1 = makeCell("13812341234",content);
+            cell1 = makeCell(resume.getResumePhone(),content);
             table.addCell(cell1);
             cell1 = makeCell("年龄",content);
             table.addCell(cell1);
-            cell1 = makeCell("28",content);
+            Calendar birth=Calendar.getInstance();
+            birth.setTime(resume.getResumeBirth());
+            Calendar cal=Calendar.getInstance();
+            cell1 = makeCell(cal.get(Calendar.YEAR)-birth.get(Calendar.YEAR)+"岁",content);
             table.addCell(cell1);
             cell1 = makeCell("出生日期",content);
             table.addCell(cell1);
-            cell1 = makeCell("1999-10-12",content);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            cell1 = makeCell(sdf.format(resume.getResumeBirth()),content);
             table.addCell(cell1);
             cell1 = makeCell("婚姻状态",content);
             table.addCell(cell1);
-            cell1 = makeCell("已婚",content);
+            if("0".equals(resume.getResumeMarriage())){
+                cell1 = makeCell("未婚",content);
+            }else if("1".equals(resume.getResumeMarriage())){
+                cell1 = makeCell("已婚",content);
+            }else if("2".equals(resume.getResumeMarriage())){
+                cell1 = makeCell("保密",content);
+            }else{
+                cell1 = makeCell("",content);
+            }
             table.addCell(cell1);
             cell1 = makeCell("目前状态",content);
             table.addCell(cell1);
-            cell1 = makeCell("在职，暂不考虑换工作",content);
+            if("0"==resume.getResumeState()){
+                cell1 = makeCell("未工作",content);
+            }else if("1"==resume.getResumeState()){
+                cell1 = makeCell("在职,考虑新机会",content);
+            }else if("2"==resume.getResumeState()){
+                cell1 = makeCell("离职,正在找工作",content);
+            }else if("3"==resume.getResumeState()){
+                cell1 = makeCell("在职,暂无跳槽打算",content);
+            }else{
+                cell1 = makeCell("",content);
+            }
             table.addCell(cell1);
             document.add(table);
 
@@ -151,62 +184,69 @@ public class PdfUtil {
             table.addCell(cell1);
             cell1 = makeCell("期望地点",content);
             table.addCell(cell1);
-            cell1 = makeCell("你妹地点",content);
+            cell1 = makeCell(resume.getResumeIntentWorkspace(),content);
             table.addCell(cell1);
             cell1 = makeCell("期望职位",content);
             table.addCell(cell1);
-            cell1 = makeCell("你妹职位",content);
+            cell1 = makeCell(resume.getResumeIntentPosition(),content);
             table.addCell(cell1);
             cell1 = makeCell("目前薪资",content);
             table.addCell(cell1);
-            cell1 = makeCell("1000块",content);
+            cell1 = makeCell(resume.getResumeMm()+"/月",content);
             table.addCell(cell1);
             cell1 = makeCell("期望薪资",content);
             table.addCell(cell1);
-            cell1 = makeCell("2000块",content);
+            cell1 = makeCell(resume.getResumeMm()+"/月",content);
             table.addCell(cell1);
             document.add(table);
 
             //工作经历
-            table = new PdfPTable(widthsBase);
-            table.setSpacingBefore(25f);//表格之前间隔
-            table.setHorizontalAlignment(Element.ALIGN_CENTER);//表格水平居中
-            table.setWidthPercentage(90);//表格宽度90%
-            cell1 = makeCellTitle("工作经历",title);
-            table.addCell(cell1);
-            String jobBegin = "1999-10-10";
-            String jobEnd = "1999-10-10";
-            cell1 = makeCell(jobBegin+" 至 "+jobEnd,content);
-            cell1.setColspan(2);
-            table.addCell(cell1);
-            cell1 = makeCell("沈阳",content);
-            table.addCell(cell1);
-            cell1 = makeCell("你妹公司",content);
-            table.addCell(cell1);
-            cell1 = makeCell("公司领域",content);
-            table.addCell(cell1);
-            cell1 = makeCell("xxx/xxx/xxx",content);
-            cell1.setColspan(3);
-            table.addCell(cell1);
-            cell1 = makeCell("职位名称",content);
-            table.addCell(cell1);
-            cell1 = makeCell("你妹职位",content);
-            table.addCell(cell1);
-            cell1 = makeCell("下属人数",content);
-            table.addCell(cell1);
-            cell1 = makeCell("100人",content);
-            table.addCell(cell1);
-            cell1 = makeCellNoLine("职位业绩",content);
-            table.addCell(cell1);
-            cell1 = makeCellNoLine("啊圣诞节好热哦I人阿四大家奥is多久啊看似简单奥is多久啊哦is多久奥i" +
-                    "s多久哦爱睡觉的奥介绍的奥id就是啊路上看到阿里圣诞节" +
-                    "s多久哦爱睡觉的奥介绍的奥id就是啊路上看到阿里圣诞节" +
-                    "s多久哦爱睡觉的奥介绍的奥id就是啊路上看到阿里圣诞节" +
-                    "s多久哦爱睡觉的奥介绍的奥id就是啊路上看到阿里圣诞节",content);
-            cell1.setColspan(3);
-            cell1.setPaddingTop(10f);
-            table.addCell(cell1);
-            document.add(table);
+            if(resume.getJobExps()!=null){
+                table = new PdfPTable(widthsBase);
+                table.setSpacingBefore(25f);//表格之前间隔
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);//表格水平居中
+                table.setWidthPercentage(90);//表格宽度90%
+                cell1 = makeCellTitle("工作经历",title);
+                table.addCell(cell1);
+                for (XzJobExp xzJobExp : resume.getJobExps()) {
+                    String jobBegin = sdf.format(xzJobExp.getJobexpBeginTime());
+                    String jobEnd = sdf.format(xzJobExp.getJobexpEndTime());
+                    cell1 = makeCell(jobBegin+" 至 "+jobEnd,content);
+                    cell1.setColspan(2);
+                    table.addCell(cell1);
+                    cell1 = makeCell(xzJobExp.getJobexpWorkspace(),content);
+                    table.addCell(cell1);
+                    cell1 = makeCell(xzJobExp.getJobexpCompanyName(),content);
+                    table.addCell(cell1);
+                    cell1 = makeCell("公司领域",content);
+                    table.addCell(cell1);
+                    StringBuffer ly = new StringBuffer("");
+                    if(xzJobExp.getFields()!=null){
+                        for (XzField xzField : xzJobExp.getFields()) {
+                            ly.append(xzField.getFieldName()).append("/");
+                        }
+                        ly.substring(1);
+                    }
+                    cell1 = makeCell(ly.toString(),content);
+                    cell1.setColspan(3);
+                    table.addCell(cell1);
+                    cell1 = makeCell("职位名称",content);
+                    table.addCell(cell1);
+                    cell1 = makeCell(xzJobExp.getJobexpPostion(),content);
+                    table.addCell(cell1);
+                    cell1 = makeCell("下属人数",content);
+                    table.addCell(cell1);
+                    cell1 = makeCell(xzJobExp.getJobexpSubordinate()+"人",content);
+                    table.addCell(cell1);
+                    cell1 = makeCellNoLine("职位业绩",content);
+                    table.addCell(cell1);
+                    cell1 = makeCellNoLine(xzJobExp.getJobexpDuty(),content);
+                    cell1.setColspan(3);
+                    cell1.setPaddingTop(10f);
+                }
+                table.addCell(cell1);
+                document.add(table);
+            }
 
             //教育经历
             table = new PdfPTable(widthsBase);
