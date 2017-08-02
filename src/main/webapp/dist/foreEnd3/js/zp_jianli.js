@@ -686,7 +686,8 @@ obj_zyyx.prototype.init=function (){
         success:function (data){    //data 就是数据 json
             _self.qwhy=data.resume.fields;                  //行业(包括当前 和期望 2是当前 3是期望的)
             _self.qwzn=data.resume.resumeIntentPosition;    //期望职能
-            _self.qwdd=data.resume.resumeWorkspace;         //期望地点
+            _self.qwdd=data.resume.resumeIntentWorkspace;    //期望地点
+
             _self.qwnx=[data.resume.resumeIntentMm,12];     //期望年薪
             _self.mqnx=[data.resume.resumeMm,12];           //当前年薪
             _self.bindingDOM();
@@ -985,7 +986,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                     resumeId:ID,                                    //ID
                     fields:shuzu,                                   //行业
                     resumeIntentPosition:trim($('#jl_qwzn').val()),   //期望职能
-                    resumeWorkspace:trim($('#jl_qwdd').val()),        //期望地点
+                    resumeIntentWorkspace:trim($('#jl_qwdd').val()),        //期望地点
                     resumeIntentMm:trim($('#jl_qwnx input').eq(0).val()),//期望年薪
                     resumeMm:trim($('#jl_mqnx input').eq(0).val())     //当前年薪
                 };
@@ -1003,7 +1004,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                         $('#jl_qwzn').focus();
                         return
                     }
-                    if(pcont.resumeWorkspace==''||pcont.resumeWorkspace==null){
+                    if(pcont.resumeIntentWorkspace==''||pcont.resumeIntentWorkspace==null){
                         $('#jl_qwdd').addClass('jl_name');
                         $('#jl_qwdd').focus()
                         return
@@ -1035,7 +1036,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                     }
                 }
                 bdxy()
-                if(pcont.fields.length!=0&&pcont.resumeIntentPosition!=''&&pcont.resumeIntentPosition!=null&&pcont.resumeWorkspace!=''&&pcont.resumeWorkspace!=null&&pcont.resumeIntentMm!=''&&pcont.resumeIntentMm!=null&&pcont.resumeMm!=''&&pcont.resumeMm!=null&&aaa==true&&bbb==true){
+                if(pcont.fields.length!=0&&pcont.resumeIntentPosition!=''&&pcont.resumeIntentPosition!=null&&pcont.resumeIntentWorkspace!=''&&pcont.resumeIntentWorkspace!=null&&pcont.resumeIntentMm!=''&&pcont.resumeIntentMm!=null&&pcont.resumeMm!=''&&pcont.resumeMm!=null&&aaa==true&&bbb==true){
                     $(this).unbind('click')
                     $.ajax({
                         type:"post",    //提交方式
@@ -1114,10 +1115,11 @@ obj_gzjl.prototype.init=function (){
                 str+='<a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>'
                 str+='<a class="fa fa-times-circle zp_jianli_sc" style="float: right" href="javascript:;"></a>'
                 str+='</h3>'
+
                 if(_self.obj_s[i].yx!=''&&_self.obj_s[i].yx!=null){
-                    str+='<p>工作地点：'+_self.obj_s[i].gzdd+' | 月薪：'+_self.obj_s[i].yx+'/月*12个月</p>'
+                    str+='<p>工作地点：'+_self.obj_s[i].gzdd+' | 月薪：'+_self.obj_s[i].yx+'</p>'
                 }else{
-                    str+='<p>工作地点：'+_self.obj_s[i].gzdd+' | 月薪：/月*12个月</p>'
+                    str+='<p>工作地点：'+_self.obj_s[i].gzdd+' | 月薪：</p>'
                 }
 
                 var ss = _self.obj_s[i].zzyj.replace(/\n/,"<br>");
@@ -1269,6 +1271,9 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='<em class="em2"></em>'
                 str+='</li>'
                 str+='<li>'
+                str+='月薪<input type="text" id="yx___" value="'+_self.obj_s[index].yx+'" class="zwmc_input form-control zp_jianli_zl_3_input1 " placeholder="请输入职位名称">'
+                str+='</li>'
+                str+='<li>'
                 str+='职位名称<input type="text" id="zwmc___" value="'+_self.obj_s[index].zwmc2+'" class="zwmc_input form-control zp_jianli_zl_3_input1 " placeholder="请输入职位名称">'
                 str+='</li>'
                 str+='<li>'
@@ -1314,6 +1319,14 @@ obj_gzjl.prototype.bindingSJ=function (){
                         $('#xxrs__').css({"color":"red"})
                     }
                 });
+                $('#yx___').unbind().on('keyup',function (){
+                    var num_kg=number('#yx___');
+                    if(num_kg){
+                        $('#yx___').css({"color":"#555555"})
+                    }else{
+                        $('#yx___').css({"color":"red"})
+                    }
+                });
 
                 $('.ttk_jl').find('.em3').eq(0).unbind().on('click',function (){
                     jeDate({
@@ -1345,6 +1358,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                 eee('#rzsj__')
                 eee('#lzsj__')
                 eee('#zzyj__')
+                eee('#yx__')
                 aaa();
                 bbb();
             }
@@ -1372,16 +1386,19 @@ obj_gzjl.prototype.bindingSJ=function (){
                 var obj_gzjl={
                     jobexpCompanyName:trim(gzjl.find('input').eq(0).val()),         //公司名称
                     fields:attr,                                            //公司领域
-                    jobexpPostion:trim(gzjl.find('input').eq(1).val()),             //职位名称
-                    jobexpWorkspace:trim(gzjl.find('input').eq(2).val()),           //工作地点
-                    jobexpSubordinate:trim(gzjl.find('input').eq(3).val()),         //下属人数
-                    jobexpBeginTime:trim(gzjl.find('input').eq(4).val()),           //任职时间
-                    jobexpEndTime:trim(gzjl.find('input').eq(5).val()),             //离职时间
+                    jobexpMm:trim(gzjl.find('input').eq(1).val()),                  //月薪
+                    jobexpPostion:trim(gzjl.find('input').eq(2).val()),             //职位名称
+                    jobexpWorkspace:trim(gzjl.find('input').eq(3).val()),           //工作地点
+                    jobexpSubordinate:trim(gzjl.find('input').eq(4).val()),         //下属人数
+                    jobexpBeginTime:trim(gzjl.find('input').eq(5).val()),           //任职时间
+                    jobexpEndTime:trim(gzjl.find('input').eq(6).val()),             //离职时间
                     jobexpDuty:trim(gzjl.find('textarea').eq(0).val()),                //职责业绩
                     jobexpId:trim(gzjl.attr('data-id'))                             //工作经历ID
+
                 };
 
                 var num_kg=number('#xxrs__');
+                var num_kg2=number('#yx___');
                 function bdyz(){
                     if(obj_gzjl.jobexpCompanyName==''||obj_gzjl.jobexpCompanyName==null){
                         $('#gsmc___').addClass('jl_name');
@@ -1394,6 +1411,19 @@ obj_gzjl.prototype.bindingSJ=function (){
                         })
                         return
                     }
+                    if(obj_gzjl.jobexpMm==''||obj_gzjl.jobexpMm==null){
+                        $('#yx___').addClass('jl_name');
+                        $('#yx___').focus();
+                        return
+                    }
+                    if(num_kg2){
+
+                    }else{
+                        $('#yx___').css({"color":"red"})
+                        alert('只能输入数字')
+                        return
+                    }
+
                     if(obj_gzjl.jobexpPostion==''||obj_gzjl.jobexpPostion==null){
                         $('#zwmc___').addClass('jl_name');
                         $('#zwmc___').focus();
@@ -1432,11 +1462,12 @@ obj_gzjl.prototype.bindingSJ=function (){
                         $('#zzyj__').focus();
                         return
                     }
+                    return true;
 
                 }
-                bdyz()
+                 var aaaa=bdyz() //验证
 
-                if(obj_gzjl.fields.length!=0&&obj_gzjl.jobexpCompanyName!=''&&obj_gzjl.jobexpCompanyName!=null&&obj_gzjl.jobexpPostion!=''&&obj_gzjl.jobexpPostion!=null&&obj_gzjl.jobexpWorkspace!=''&&obj_gzjl.jobexpWorkspace!=null&&obj_gzjl.jobexpSubordinate!=''&&obj_gzjl.jobexpSubordinate!=null&&obj_gzjl.jobexpBeginTime!=''&&obj_gzjl.jobexpBeginTime!=null&&obj_gzjl.jobexpEndTime!=''&&obj_gzjl.jobexpEndTime!=null&&obj_gzjl.jobexpDuty!=''&&obj_gzjl.jobexpDuty!=null&&num_kg){
+                if(aaaa){
                     $(this).unbind('click')
                     $.ajax({
                         type:"post",    //提交方式
