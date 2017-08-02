@@ -182,7 +182,9 @@ public class PdfUtil {
                         temp.append("/").append(xzField.getFieldName());
                     }
                 }
-                dqhy = temp.substring(1);
+                if(resume.getFields().size()>0){
+                    dqhy = temp.substring(1);
+                }
             }
             cell1 = makeCell(dqhy,content);
             cell1.setColspan(3);
@@ -197,7 +199,9 @@ public class PdfUtil {
                         temp.append("/").append(xzField.getFieldName());
                     }
                 }
-                qwhy = temp.substring(1);
+                if(resume.getFields().size()>0) {
+                    qwhy = temp.substring(1);
+                }
             }
             cell1 = makeCell(qwhy,content);
             cell1.setColspan(3);
@@ -246,7 +250,9 @@ public class PdfUtil {
                         for (XzField xzField : xzJobExp.getFields()) {
                             temp.append("/").append(xzField.getFieldName());
                         }
-                        ly = temp.substring(1);
+                        if(xzJobExp.getFields().size()>0){
+                            ly = temp.substring(1);
+                        }
                     }
                     cell1 = makeCell(ly,content);
                     cell1.setColspan(3);
