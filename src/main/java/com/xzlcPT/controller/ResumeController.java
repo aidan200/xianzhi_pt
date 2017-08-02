@@ -178,5 +178,31 @@ public class ResumeController extends BaseController {
         map.put("resumeList",resumeList);
         return map;
     }
-
+    @ResponseBody
+    @RequestMapping("selResume.do")
+    public Map selResume(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,Integer companyId,Long postionId,
+                            String resumeSex,String resumeName,String resumeWorkspace,Long resumeBirthMin,Long resumeBirthMax,
+                         Long resumeWorkinglifeMin,Long resumeWorkinglifeMax,String resumeField,String resumePosition){
+        Map map=new HashMap();
+        map.put("companyId",companyId);
+        map.put("postionId",postionId);
+        map.put("resumeSex",resumeSex);
+        map.put("resumeName",resumeName);
+        map.put("resumeWorkspace",resumeWorkspace);
+        map.put("resumeBirthMin",resumeBirthMin);
+        map.put("resumeBirthMax",resumeBirthMax);
+        map.put("resumeWorkinglifeMin",resumeWorkinglifeMin);
+        map.put("resumeWorkinglifeMax",resumeWorkinglifeMax);
+        map.put("resumeField",resumeField);
+        map.put("resumePosition",resumePosition);
+        PageBean<XzResume> pageBean=resumeService.selResume(page,rows,map);
+        List<XzResume> resumeList=pageBean.getList();
+        Map map1=new HashMap();
+        map1.put("resumeList",resumeList);
+        map1.put("page",pageBean.getPageNum());
+        map1.put("pages",pageBean.getPages());
+        map1.put("rows",pageBean.getPageSize());
+        map1.put("total",pageBean.getTotal());
+        return map1;
+    }
 }

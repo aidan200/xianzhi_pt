@@ -31,4 +31,6 @@ public interface XzResumeService {
     int deleteCollect(Long collectId);
 
     List<XzResume> selectCollect(Long companyId);
+
+    PageBean<XzResume> selResume(Integer page,Integer rows,Map map);
 }
