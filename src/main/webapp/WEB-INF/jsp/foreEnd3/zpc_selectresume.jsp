@@ -152,12 +152,12 @@
         </select>
     <div style="clear: both"></div>
     <c:forEach var="r1" items="${resumeList}">
-    <div class="comh_have">
-        <div class="comh_left">
+    <div class="ses_have">
+        <div class="ses_left">
             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt="" class="comh_head">
-            <div class="comh_test">
+            <div class="ses_test">
                 <h4>${r1.resumeName}</h4>
-                <div class="comh_in">
+                <div class="ses_in">
                     <span>${r1.resumeSex eq 0?'男':''}${r1.resumeSex eq 1?'女':''}</span>|
                     <span><age:getAge year="${r1.resumeBirth.year+1900}"/></span>|
                     <span>${r1.resumeWorkspace}</span>|
@@ -167,14 +167,14 @@
 
                 </div>
                 <div style="margin-top: 10px;margin-left: 10px">
-                    <span style="color: #fc6866">${r1.resumeIntentPosition}</span>|
-                    <span><age:getAge year="${r1.resumeWorkinglife}"/>年经验</span>
+                    <span style="color: #fc6866;margin-right: 10px">${r1.resumeIntentPosition}</span>|
+                    <span style="margin-left: 10px"><age:getAge year="${r1.resumeWorkinglife}"/>年经验</span>
                 </div>
             </div>
         </div>
 
-        <div class="comh_right" style="width: 460px">
-            <div class="comh_rt">
+        <div class="ses_right">
+            <div class="ses_rt">
                 <c:forEach var="j3" items="${r1.jobExps}">
                 <span><fmt:formatDate value="${j3.jobexpBeginTime}" pattern="yyyy.MM"/>-<fmt:formatDate value="${j3.jobexpEndTime}" pattern="yyyy.MM"/></span>|
                 <span>${j3.jobexpCompanyName}</span>|
@@ -182,14 +182,14 @@
                 </c:forEach>
             </div>
             <c:forEach var="e2" items="${r1.xzResumeEducations}">
-            <div class="comh_rt">
+            <div class="ses_rt">
                 <span><fmt:formatDate value="${e2.enrollmentDate}" pattern="yyyy.MM"/>-<fmt:formatDate value="${e2.graduateDate}" pattern="yyyy.MM"/></span>|
                 <span>${e2.educationSchool}</span>|
                 <span>${e2.educationMajor}</span>|
                 <span>${e2.educationLevel}</span>
             </div>
             </c:forEach>
-            <div style="margin-top: 15px;margin-right: 10px;float: right;color: #a8a8a8">
+            <div class="ses_time">
                 <span><span>4</span>个小时前</span>
             </div>
         </div>
@@ -244,7 +244,7 @@
             });
             if (!isAlreadyHave) {
                 $(this).css({
-                    "background-color": "#3D9CCC",
+                    "background-color": "rgb(204,204,204)",
                     "color": "white"
                 });
                 writeDiv($(this).html(), $(this).attr("id"), $(this).attr("rel"), inpName, inpValue);
