@@ -3679,6 +3679,18 @@ input[type="button"].fileInputButton {
     margin: 3px;
 }
 
+.zp_pa > .a > a:focus {
+    background-color: #FFFFff;
+    color: #666666;
+    border: 1px solid #FFFFff;
+}
+
+.zp_pa > .a > a:active {
+    background-color: #FFFFff;
+    color: #666666;
+    border: 1px solid #FFFFff;
+}
+
 .zp_pa > .a > a:hover {
     background-color: rgb(255, 165, 0);
     color: #FFFFFF;
@@ -3689,16 +3701,28 @@ input[type="button"].fileInputButton {
 
 /*不能点击class b*/
 .zp_pa > .b > a {
-    /*background-color: #f8f8f8;*/
+    background-color: #f8f8f8;
     cursor: default;
     color: #cacaca;
+}
+
+.zp_pa > .b > a:focus {
+    color: #cacaca;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
+}
+
+.zp_pa > .b > a:active {
+    color: #cacaca;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
 }
 
 .zp_pa > .b > a:hover {
     color: #cacaca;
     /*background-color: #f8f8f8;*/
     border: 1px solid #EEEEEE;
-
+    background-color: #f8f8f8;
 }
 
 /*-----------------------公司查看个人简历-----------------------------*/

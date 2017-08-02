@@ -184,8 +184,8 @@
             <c:forEach var="e2" items="${r1.xzResumeEducations}">
             <div class="ses_rt">
                 <span><fmt:formatDate value="${e2.enrollmentDate}" pattern="yyyy.MM"/>-<fmt:formatDate value="${e2.graduateDate}" pattern="yyyy.MM"/></span>|
-                <span class="ses_s1" style="max-width: 135px">${e2.educationSchool}</span>|
-                <span class="ses_s1" style="max-width: 135px">${e2.educationMajor}</span>|
+                <span class="ses_s1" style="max-width: 130px">${e2.educationSchool}</span>|
+                <span class="ses_s1" style="max-width: 130px">${e2.educationMajor}</span>|
                 <span>${e2.educationLevel}</span>
             </div>
             </c:forEach>
