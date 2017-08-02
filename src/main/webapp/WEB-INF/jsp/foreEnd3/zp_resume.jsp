@@ -17,7 +17,7 @@
     <jsp:include page="distforeEnd.jsp"/>
 
 </head>
-<body>
+<body style="background-color: #EEEEEE">
 
 <jsp:include page="headerforeEnd.jsp"/>
 
@@ -30,19 +30,20 @@
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="resume_head">
             </div>
             <div class="resume_right">
-                <h3>${xzResume.resumeName}</h3>
+                <%--<h3>${xzResume.resumeName}</h3>--%>
                 <div style="margin-top: 20px">
                     <span class="resume_outs">
-                    目前公司: <span>${xzResume.resumeField}</span>
+                    姓&emsp;&emsp;名: <span>${xzResume.resumeName}</span>
                     </span>
                     <span class="resume_outs">
-                    所在地点: <span>${xzResume.resumeWorkspace}</span>
+                    目前职位: <span>${xzResume.resumePosition}</span>
                     </span>
+
                 </div>
 
                 <div style="margin-top: 10px">
                     <span class="resume_outs">
-                    目前职位: <span>${xzResume.resumePosition}</span>
+                    所在地点: <span>${xzResume.resumeWorkspace}</span>
                     </span>
                     <span class="resume_outs">
                     工作年限: <span>${xzResume.resumeIntentYm}</span>
@@ -78,10 +79,12 @@
                             <fmt:formatDate value="${xzResume.resumeBirth}" pattern="yyyy-MM-dd"/></span>
                         </div>
                         <div class="resume_every">
-                            婚姻状况： <span>${xzResume.resumeMarriage eq 0?'已婚':''}${xzResume.resumeMarriage eq 1?'未婚':''}</span>
+                            婚姻状况：
+                            <span>${xzResume.resumeMarriage eq 0?'已婚':''}${xzResume.resumeMarriage eq 1?'未婚':''}</span>
                         </div>
                         <div class="resume_every">
-                            目前状态： <span>${xzResume.resumeState eq 0?'未工作':''}${xzResume.resumeState eq 1?'在职':''}${xzResume.resumeState eq 2?'离职':''}</span>
+                            目前状态：
+                            <span>${xzResume.resumeState eq 0?'未工作':''}${xzResume.resumeState eq 1?'在职':''}${xzResume.resumeState eq 2?'离职':''}</span>
                         </div>
                     </div>
 
@@ -94,11 +97,14 @@
                 <div class="resume_more">
                     <h4><span class="fa fa-map-signs"></span>职业意向</h4>
                     <div class="resume_two">
-                        <div class="resume_every">
+                        <div class="resume_every3">
+                            目前行业：
+                        </div>
+                        <div class="resume_every3">
                             期望行业：<span>
                             <c:forEach var="f1" items="${xzResume.fields}" varStatus="stat">
                                 <c:if test="${!stat.last}">
-                                ${f1.fieldName}/
+                                    ${f1.fieldName}/
                                 </c:if>
                                 <c:if test="${stat.last}">
                                     ${f1.fieldName}
@@ -109,15 +115,19 @@
                         <div class="resume_every">
                             期望地点：<span>${xzResume.resumeIntentWorkspace}</span>
                         </div>
-                    </div>
-
-                    <div class="resume_two">
                         <div class="resume_every">
                             期望职位： <span>${xzResume.resumeIntentPosition}</span>
                         </div>
                         <div class="resume_every">
-                            期望年薪： <span> ${fn:replace((xzResume.resumeIntentMm*12/10000),".0","")}万</span>
+                            目前薪资： <span> 多少元</span>
                         </div>
+                        <div class="resume_every">
+                            期望薪资： <span> ${fn:replace((xzResume.resumeIntentMm*12/10000),".0","")}万</span>
+                        </div>
+                    </div>
+
+                    <div class="resume_two">
+
 
                     </div>
                 </div>
@@ -136,21 +146,17 @@
                             <span style="padding-left: 20px"><fmt:formatDate value="${je.jobexpBeginTime}"
                                                                              pattern="yyyy-MM-dd"/></span>-<span
                                 id="s2"><fmt:formatDate value="${je.jobexpEndTime}" pattern="yyyy-MM-dd"/></span>
+                            <span style="padding-left: 20px">${je.jobexpWorkspace}</span>
                             <span style="padding-left: 20px">${je.jobexpCompanyName}</span>
                         </div>
                     </b>
                     <div class="resume_two">
-                        <%--<div class="resume_every">--%>
-                            <%--公司性质：<span>${je.jobexpCompanyType}</span>--%>
-                        <%--</div>--%>
-                        <div class="resume_every">
-                            公司规模：<span>${je.jobexpSubordinate}人</span>
-                        </div>
-                        <div class="resume_every">
 
-                            经营领域：<span><c:forEach items="${je.fields}" var="jf" varStatus="stat">
+                        <div class="resume_every3">
+
+                            公司领域：<span><c:forEach items="${je.fields}" var="jf" varStatus="stat">
                             <c:if test="${!stat.last}">
-                            ${jf.fieldName}/
+                                ${jf.fieldName}/
                             </c:if>
                             <c:if test="${stat.last}">
                                 ${jf.fieldName}
@@ -158,19 +164,14 @@
                         </c:forEach></span>
                         </div>
                         <div class="resume_every">
-                            工作职位：<span>${je.jobexpPostion}</span>
+                            职位名称：<span>${je.jobexpPostion}</span>
                         </div>
-                        <%--<div class="resume_every">--%>
-                            <%--薪酬状况：<span>${je.jobexpMm}</span>--%>
-                        <%--</div>--%>
                         <div class="resume_every">
-                            工作地点：<span>${je.jobexpWorkspace}</span>
+                            下属人数：<span>${je.jobexpSubordinate}人</span>
                         </div>
-                        <%--<div class="resume_every">--%>
-                            <%--所在部门：<span>${je.jobexpDept}</span>--%>
-                        <%--</div>--%>
+
                         <div class="resume_every3">
-                            <span style="display: inline-block;float: left">职责业绩：</span>
+                            <span style="display: inline-block;float: left">职位业绩：</span>
                             <span class="resume_many" id="sp1"></span>
                             <input type="hidden" id="h1" value="${je.jobexpDuty}">
                         </div>
@@ -190,9 +191,11 @@
                     <c:forEach var="e1" items="${xzResume.xzResumeEducations}">
                         <div class="resume_two">
                             <div class="resume_every3">
-                                <b><span>${e1.educationSchool}</span><span style="margin-left: 20px"><fmt:formatDate
-                                        value="${e1.enrollmentDate}" pattern="yyyy-MM-dd"/>-<fmt:formatDate
-                                        value="${e1.graduateDate}" pattern="yyyy-MM-dd"/></span></b>
+                                <b><span style="margin-right: 20px"><fmt:formatDate
+                                        value="${e1.enrollmentDate}" pattern="yyyy-MM-dd"/> 至 <fmt:formatDate
+                                        value="${e1.graduateDate}" pattern="yyyy-MM-dd"/></span>
+                                    <span>${e1.educationSchool}</span>
+                                </b>
                             </div>
                             <div class="resume_every2">
                                 专业名称：<span>${e1.educationMajor}</span>
@@ -219,26 +222,27 @@
                     <h4><span class="fa fa-map-signs"></span>项目经验</h4>
                     <c:forEach var="e2" items="${xzResume.xzProjectExps}">
                         <div class="resume_two">
-                            <div class="resume_every3">
-                                项目时间：<span>2016-2017</span>
+                            <div class="resume_every">
+                                项目时间：<span>2016</span> 至 <span>2017</span>
                             </div>
-                            <div class="resume_every3">
+                            <div class="resume_every">
                                 项目名称：<span>${e2.proexpName}</span>
                             </div>
                             <div class="resume_every3">
-                                <span style="display: inline-block;float: left">项目职务：</span>
+                                <span style="display: inline-block;float: left">项目职位：</span>
                                 <span class="resume_many">${e2.proexpPostion}</span>
-                            </div>
-                            <div class="resume_every3">
-                                <span style="display: inline-block;float: left">项目职责：</span>
-                                <span class="resume_many" id="sp3"></span>
-                                <input type="hidden" id="h3" value="${e2.proexpDuty}">
                             </div>
                             <div class="resume_every3">
                                 <span style="display: inline-block;float: left">项目描述：</span>
                                 <span class="resume_many" id="sp2"></span>
                                 <input type="hidden" id="h2" value="${e2.proexpDescribe}">
                             </div>
+                            <div class="resume_every3">
+                                <span style="display: inline-block;float: left">项目职责：</span>
+                                <span class="resume_many" id="sp3"></span>
+                                <input type="hidden" id="h3" value="${e2.proexpDuty}">
+                            </div>
+
                         </div>
                     </c:forEach>
                 </div>
@@ -263,7 +267,7 @@
                     <h4><span class="fa fa-tags"></span>附加信息</h4>
                     <div class="resume_two" id="sp5">
                     </div>
-            <input type="hidden" value=" ${xzResume.filed2}" id="h5">
+                    <input type="hidden" value=" ${xzResume.filed2}" id="h5">
 
                 </div>
 
@@ -308,15 +312,15 @@
             $("#s2").text("至今");
         }
     });
-    var content = $("#h1").val().replace(/\n/g,"<br>");
+    var content = $("#h1").val().replace(/\n/g, "<br>");
     $("#sp1").html(content);
-    var content1= $("#h2").val().replace(/\n/g,"<br>");
+    var content1 = $("#h2").val().replace(/\n/g, "<br>");
     $("#sp2").html(content1);
-    var content2= $("#h3").val().replace(/\n/g,"<br>");
+    var content2 = $("#h3").val().replace(/\n/g, "<br>");
     $("#sp3").html(content2);
-    var content3= $("#h4").val().replace(/\n/g,"<br>");
+    var content3 = $("#h4").val().replace(/\n/g, "<br>");
     $("#sp4").html(content3);
-    var content4= $("#h5").val().replace(/\n/g,"<br>");
+    var content4 = $("#h5").val().replace(/\n/g, "<br>");
     $("#sp5").html(content4);
 </script>
 </body>
