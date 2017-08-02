@@ -311,12 +311,13 @@
     function flashResume() {
         $.ajax({
             type: 'get',
-            url: '${pageContext.request.contextPath}/Resume/flashResumeByMore.do',
+            url: '${pageContext.request.contextPath}/Resume/flashResume.do',
             contentType: "application/json",
             data: {resumeId: '${resume.resumeId}'},
             success:function (data) {
                 var date = new Date(data.resumeFlash);//刷新简历时间
                 var completion = data.resumeCompletion;//完成度
+                console.log(getNowFormatDateSS(date));
                 $('#theFlash').html(getNowFormatDateSS(date));
                 alert("简历刷新成功");
             }

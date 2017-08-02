@@ -1,6 +1,7 @@
 package com.xzlcPT.controller;
 
 import com.util.PageBean;
+import com.util.PdfUtil;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzResume;
 import com.xzlcPT.service.XzResumeService;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -68,6 +72,39 @@ public class ResumeController extends BaseController {
         map.put("resumeFlash",rss.getResumeFlash());
         map.put("resumeCompletion",rss.getResumeCompletion());
         return map;
+    }
+
+    //简历下载
+    @ResponseBody
+    @RequestMapping("ResumeDownload.do")
+    public void ResumeDownload(Long resumeId, HttpServletRequest request, HttpServletResponse response){
+        XzResume xzResume = resumeService.selResumeInformation(resumeId);
+        System.out.println("路径：：："+request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
+        System.out.println(xzResume);
+        String fileName = new Date().getTime()+".pdf";
+        File file = PdfUtil.makePdf(xzResume,fileName,request);
+        response.setHeader("Content-Disposition","attachment;filename="+fileName);
+        try {
+            DataOutputStream temps = new DataOutputStream(response
+                    .getOutputStream());
+            DataInputStream in = new DataInputStream(
+                    new FileInputStream(file));
+
+            byte[] b = new byte[512];
+            while ((in.read(b)) != -1) {
+                temps.write(b);
+                temps.flush();
+            }
+            in.close();
+            temps.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        /*try {
+            new FileInputStream(request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }*/
     }
 
 

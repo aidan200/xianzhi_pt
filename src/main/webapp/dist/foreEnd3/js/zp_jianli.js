@@ -461,11 +461,13 @@ obj_zbzl.prototype.bindingDOM=function (){//绑定基本信息
 
 
     if(_self.zt==0){                        //状态
-        _self.DOM.zt.html("目前在职暂无跳槽打算");
+        _self.DOM.zt.html("未工作");
     }else if(_self.zt==1){
-        _self.DOM.zt.html("目前就职但是有合适的机会会考虑");
+        _self.DOM.zt.html("在职,考虑新机会");
     }else if(_self.zt==2){
-        _self.DOM.zt.html("目前已离职");
+        _self.DOM.zt.html("离职,正在找工作");
+    }else if(_self.zt==3){
+        _self.DOM.zt.html("在职,暂无跳槽打算");
     }else{
         _self.DOM.zt.html("");
     }
@@ -508,9 +510,10 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
             str+='<li>'
             str+='<span>状态</span>'
             str+='<select class="form-control" id="jl_zt">'
-            str+='<option value="0">目前在职暂无跳槽打算</option>'
-            str+='<option value="1">目前就职但是有合适的机会会考虑</option>'
-            str+='<option value="2">目前已离职</option>'
+            str+='<option value="0">未工作</option>'
+            str+='<option value="1">在职,考虑新机会</option>'
+            str+='<option value="2">离职,正在找工作</option>'
+            str+='<option value="3">在职,暂无跳槽打算</option>'
             str+='</select>'
             str+='</li>'
             str+='</ul>'
