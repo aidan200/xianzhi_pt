@@ -1901,3 +1901,20 @@ ul, li {
     font-size: 20px;
     color: #555555;
 }
+.zp_xmjy li:after{
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height:0;
+    line-height:0;
+    content:".";
+}
+
+.qwe_left{
+    width: 13%;
+    float: left;
+}
+.qwe_right{
+    width: 80%;
+    float: left;
+}

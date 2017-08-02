@@ -278,5 +278,16 @@ public class PostionController extends BaseController{
         map.put("i",i);
         return map;
     }
-
+    //修改投递状态(正在招聘)
+    @ResponseBody
+    @RequestMapping("updateStateZping.do")
+    public Map updateStateZping(Long postionId){
+        Map map=new HashMap();
+        XzPostion xzPostion=new XzPostion();
+        xzPostion.setPostionId(postionId);
+        xzPostion.setPostionWelfare("3");
+        int i=postionService.updateState(xzPostion);
+        map.put("i",i);
+        return map;
+    }
 }
