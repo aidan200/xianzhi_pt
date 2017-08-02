@@ -83,28 +83,26 @@ public class ResumeController extends BaseController {
         System.out.println(xzResume);
         String fileName = new Date().getTime()+".pdf";
         File file = PdfUtil.makePdf(xzResume,fileName,request);
-        response.setHeader("Content-Disposition","attachment;filename="+fileName);
-        try {
-            DataOutputStream temps = new DataOutputStream(response
-                    .getOutputStream());
-            DataInputStream in = new DataInputStream(
-                    new FileInputStream(file));
+        if(file!=null){
+            response.setHeader("Content-Disposition","attachment;filename="+fileName);
+            try {
+                DataOutputStream temps = new DataOutputStream(response
+                        .getOutputStream());
+                DataInputStream in = new DataInputStream(
+                        new FileInputStream(file));
 
-            byte[] b = new byte[512];
-            while ((in.read(b)) != -1) {
-                temps.write(b);
-                temps.flush();
+                byte[] b = new byte[512];
+                while ((in.read(b)) != -1) {
+                    temps.write(b);
+                    temps.flush();
+                }
+                in.close();
+                temps.close();
+            }catch (Exception e){
+                e.printStackTrace();
             }
-            in.close();
-            temps.close();
-        }catch (Exception e){
-            e.printStackTrace();
+            file.delete();
         }
-        /*try {
-            new FileInputStream(request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
     }
 
 
