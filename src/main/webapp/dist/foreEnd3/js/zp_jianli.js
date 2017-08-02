@@ -2137,8 +2137,8 @@ obj_xmjy.prototype.init=function (){
                 new_bj_xmjy.xmzw=data.projectExpList[i].proexpPostion;//项目职务
                 new_bj_xmjy.xmms=data.projectExpList[i].proexpDescribe;//项目描述
                 new_bj_xmjy.zz=data.projectExpList[i].proexpDuty;      //项目职责
-                new_bj_xmjy.kssj=getNowFormatDate(data.projectExpList[i].createTime);    //开始时间
-                new_bj_xmjy.jssj=getNowFormatDate(data.projectExpList[i].deleteTime);    //结束时间
+                new_bj_xmjy.kssj=getNowFormatDate(data.projectExpList[i].proexpBeginTime);    //开始时间
+                new_bj_xmjy.jssj=getNowFormatDate(data.projectExpList[i].proexpEndTime);    //结束时间
                 new_bj_xmjy.xmjyID=data.projectExpList[i].proexpId;
                 _self.obj_s[i]=new_bj_xmjy;
             }
@@ -2260,8 +2260,8 @@ obj_xmjy.prototype.bindingSJ=function (){
                     var qrxg={
                         proexpName:xmjy.find('input').eq(0).val(),
                         proexpPostion:xmjy.find('input').eq(1).val(),
-                        createTime:xmjy.find('input').eq(2).val(),         //时间
-                        deleteTime:xmjy.find('input').eq(3).val(),
+                        proexpBeginTime:xmjy.find('input').eq(2).val(),         //时间
+                        proexpEndTime:xmjy.find('input').eq(3).val(),
                         proexpDescribe:xmjy.find('textarea').eq(0).val(),
                         proexpDuty:xmjy.find('textarea').eq(1).val(),
                         proexpId:xmjy.attr('data-id')
@@ -2277,12 +2277,12 @@ obj_xmjy.prototype.bindingSJ=function (){
                             $('#ttk_xmzw').focus()
                             return
                         }
-                        if(qrxg.createTime==''||qrxg.createTime==null){
+                        if(qrxg.proexpBeginTime==''||qrxg.proexpBeginTime==null){
                             $('#xmjy_kssj').addClass('jl_name')
                             $('#xmjy_kssj').focus()
                             return
                         }
-                        if(qrxg.deleteTime==''||qrxg.deleteTime==null){
+                        if(qrxg.proexpEndTime==''||qrxg.proexpEndTime==null){
                             $('#xmjy_jssj').addClass('jl_name')
                             $('#xmjy_jssj').focus()
                             return
@@ -2299,7 +2299,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                         }
                     }
                     bdxy()
-                    if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.createTime!=''&&qrxg.createTime!=null&&qrxg.deleteTime!=''&&qrxg.deleteTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
+                    if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.proexpBeginTime!=''&&qrxg.proexpBeginTime!=null&&qrxg.proexpEndTime!=''&&qrxg.proexpEndTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
                         $.ajax({
                             type:"post",    //提交方式
                             async:true,  //是否异步
