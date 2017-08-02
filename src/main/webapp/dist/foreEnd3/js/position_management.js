@@ -289,28 +289,32 @@ Zzzp.prototype.definition=function(obj){            //正在招聘暂停方法
         var othis=this
         var parent=$(othis).parent().parent();
         var data={
-            companyId:companyId,            //公司ID
-            zwID:parent.attr('data-id')     //职位ID
-        }
-        alert('我是暂停')
-        var xxk=$('#xxk_01').parent().parent();  //选择到搜索框父级
-        if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
-            alert('执行了默认')                        //执行默认查询
-            var data={
-                companyId:companyId,
-                postionWelfare:3
-            }
-            if(jl.zzzp!=0){
-                data.page=jl.zzzp;
-            }
-            This.cshjz(data);       //判断如果搜索框里没有条件则执行默认加载
-        }else{
-            alert('执行了条件')
-            var data=This.seekCont()                     //获取到条件对象
+            postionId:parent.attr('data-id')     //职位ID
+        };
+        $.ajax({
+            type:"get",    //提交方式
+            async:true,  //是否异步
+            data:data,        //转为JSON格式
+            dataType:'json',                   //定义返回data类型
+            url:path+'Postion/updateStatePasue.do ',    //路径
+            success:function (data2){//data 就是数据 json
+                var xxk=$('#xxk_01').parent().parent();  //选择到搜索框父级
+                if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
+                    var data={
+                        companyId:companyId,
+                        postionWelfare:3
+                    }
+                    This.cshjz(data);       //判断如果搜索框里没有条件则执行默认加载
+                }else{
+                    alert('执行了条件')
+                    var data=This.seekCont()                     //获取到条件对象
+                    This.cshjz(data);                           //条件加载
+                }
 
-            This.cshjz(data);                           //条件加载
-
-        }
+            },error:function (){ //报错执行的
+                alert('基本资料修改错误')
+            }
+        })
 
 
     })
@@ -321,32 +325,32 @@ Zzzp.prototype.operateEnd=function(obj){            //正在招聘暂停方法
         var othis=this
         var parent=$(othis).parent().parent()
         var data={
-            companyId:companyId,            //公司ID
-            zwID:parent.attr('data-id')     //职位ID
-        }
-        alert('我是删除')
-            var xxk=$('#xxk_01').parent().parent();  //选择到搜索框父级
-            if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
-                alert('执行了默认加载')
-                var data={
-                    companyId:companyId,
-                    postionWelfare:3
+            postionId:parent.attr('data-id')     //职位ID
+        };
+        $.ajax({
+            type:"get",    //提交方式
+            async:true,  //是否异步
+            data:data,        //转为JSON格式
+            dataType:'json',                   //定义返回data类型
+            url:path+'Postion/updateStateStop.do ',    //路径
+            success:function (data2){//data 就是数据 json
+                var xxk=$('#xxk_01').parent().parent();  //选择到搜索框父级
+                if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
+                    var data={
+                        companyId:companyId,
+                        postionWelfare:3
+                    }
+                    This.cshjz(data);       //判断如果搜索框里没有条件则执行默认加载
+                }else{
+                    alert('执行了条件')
+                    var data=This.seekCont()                     //获取到条件对象
+                    This.cshjz(data);                           //条件加载
                 }
-                if(jl.zzzp!=0){
-                    data.page=jl.zzzp;
-                }
-                This.cshjz(data);       //判断如果搜索框里没有条件则执行默认加载
-            }else{
-                var data=This.seekCont()                     //获取到条件对象
-                This.cshjz(data);                           //条件加载
+
+            },error:function (){ //报错执行的
+                alert('基本资料修改错误')
             }
-
-
-        //     },error:function (){ //报错执行的
-        //         alert('搜索框方法错误')
-        //     }
-        //
-        // })
+        })
 
     })
 }
@@ -1152,8 +1156,8 @@ Cgzw.prototype.cshjz=function (obj){               //初始化加载
                     str+='<tr data-id="'+This.cont[i].postionId+'">'
                     str+='<td>'
                     str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
-                    str+='<input type="checkbox" id="pom30'+i+'" class="choose2">'
-                    str+='<label for="pom30'+i+'" style="font-weight: normal;margin-bottom: 0">'
+                    str+='<input type="checkbox" id="pom40'+i+'" class="choose2">'
+                    str+='<label for="pom40'+i+'" style="font-weight: normal;margin-bottom: 0">'
                     str+=svn_btn
                     str+='</label>'
                     str+='</div>'
@@ -1167,7 +1171,7 @@ Cgzw.prototype.cshjz=function (obj){               //初始化加载
                     str+='<td class="all_no">'+This.cont[i].ms+'</td>'
                     str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
                     str+='<td class="all_no">'
-                    str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
+                    str+=' <a href="javascript:;" class="dg_xg">发布</a> '
                     str+=' <a href="javascript:;" class="dg_sc">结束</a> '
                     str+='</td>'
                     str+='</tr>'
@@ -1293,7 +1297,7 @@ Cgzw.prototype.allupdata=function (){   //全选删除方法以及单个删除�
 
 
 }
-Cgzw.prototype.definition=function(obj){            //正在招聘暂停方法
+Cgzw.prototype.definition=function(obj){            //发布
     var This=this;
     $(obj).unbind().on('click',function (){
         var othis=this
@@ -1495,8 +1499,8 @@ Yzt.prototype.cshjz=function (obj){               //初始化加载
                     str+='<tr data-id="'+This.cont[i].postionId+'">'
                     str+='<td>'
                     str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
-                    str+='<input type="checkbox" id="pom30'+i+'" class="choose2">'
-                    str+='<label for="pom30'+i+'" style="font-weight: normal;margin-bottom: 0">'
+                    str+='<input type="checkbox" id="pom50'+i+'" class="choose2">'
+                    str+='<label for="pom50'+i+'" style="font-weight: normal;margin-bottom: 0">'
                     str+=svn_btn
                     str+='</label>'
                     str+='</div>'
@@ -1510,7 +1514,7 @@ Yzt.prototype.cshjz=function (obj){               //初始化加载
                     str+='<td class="all_no">'+This.cont[i].ms+'</td>'
                     str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
                     str+='<td class="all_no">'
-                    str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
+                    str+=' <a href="javascript:;" class="dg_xg">继续</a> '
                     str+=' <a href="javascript:;" class="dg_sc">结束</a> '
                     str+='</td>'
                     str+='</tr>'
@@ -1636,29 +1640,38 @@ Yzt.prototype.allupdata=function (){   //全选删除方法以及单个删除方
 
 
 }
-Yzt.prototype.definition=function(obj){            //正在招聘暂停方法
+Yzt.prototype.definition=function(obj){            //继续招聘方法
     var This=this;
     $(obj).unbind().on('click',function (){
         var othis=this
         var parent=$(othis).parent().parent();
         var data={
-            companyId:companyId,            //公司ID
-            zwID:parent.attr('data-id')     //职位ID
-        }
-        alert('我是暂停')
-        var xxk=$('#xxk_05').parent().parent();  //选择到搜索框父级
-        if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
-            alert('执行了默认')                        //执行默认查询
-            var data={
-                companyId:companyId,
-                postionWelfare:4
+            postionId:parent.attr('data-id')     //职位ID
+        };
+        $.ajax({
+            type:"get",    //提交方式
+            async:true,  //是否异步
+            data:data,        //转为JSON格式
+            dataType:'json',                   //定义返回data类型
+            url:path+'Postion/updateStateZping.do',    //路径
+            success:function (data2){//data 就是数据 json
+                var xxk=$('#xxk_04').parent().parent();  //选择到搜索框父级
+                if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
+                    var data={
+                        companyId:companyId,
+                        postionWelfare:4
+                    }
+                    This.cshjz(data);       //判断如果搜索框里没有条件则执行默认加载
+                }else{
+                    alert('执行了条件')
+                    var data=This.seekCont()                     //获取到条件对象
+                    This.cshjz(data);                           //条件加载
+                }
+
+            },error:function (){ //报错执行的
+                alert('基本资料修改错误')
             }
-            This.cshjz(data);       //判断如果搜索框里没有条件则执行默认加载
-        }else{
-            alert('执行了条件')
-            var data=This.seekCont()                     //获取到条件对象
-            This.cshjz(data);                           //条件加载
-        }
+        })
 
 
     })
@@ -1828,8 +1841,8 @@ Yjs.prototype.cshjz=function (obj){               //初始化加载
                     str+='<tr data-id="'+This.cont[i].postionId+'">'
                     str+='<td>'
                     str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
-                    str+='<input type="checkbox" id="pom30'+i+'" class="choose2">'
-                    str+='<label for="pom30'+i+'" style="font-weight: normal;margin-bottom: 0">'
+                    str+='<input type="checkbox" id="pom60'+i+'" class="choose2">'
+                    str+='<label for="pom60'+i+'" style="font-weight: normal;margin-bottom: 0">'
                     str+=svn_btn
                     str+='</label>'
                     str+='</div>'
@@ -2161,8 +2174,8 @@ Qbzw.prototype.cshjz=function (obj){               //初始化加载
                     str+='<tr data-id="'+This.cont[i].postionId+'">'
                     str+='<td>'
                     str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
-                    str+='<input type="checkbox" id="pom30'+i+'" class="choose2">'
-                    str+='<label for="pom30'+i+'" style="font-weight: normal;margin-bottom: 0">'
+                    str+='<input type="checkbox" id="pom70'+i+'" class="choose2">'
+                    str+='<label for="pom70'+i+'" style="font-weight: normal;margin-bottom: 0">'
                     str+=svn_btn
                     str+='</label>'
                     str+='</div>'

@@ -212,7 +212,7 @@ public class ResumeController extends BaseController {
     }
     @ResponseBody
     @RequestMapping("selectResume.do")
-    public Map selResume(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,Long companyId,Long postionId,
+    public Map selResume(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="10")int rows,Long companyId,Long postionId,
                             String resumeSex,String resumeName,String resumeWorkspace,Long resumeBirthMin,Long resumeBirthMax,
                          Long resumeWorkinglifeMin,Long resumeWorkinglifeMax,String resumeField,String resumePosition){
         Map map=new HashMap();

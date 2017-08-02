@@ -81,7 +81,7 @@
                             婚姻状况： <span>${xzResume.resumeMarriage eq 0?'已婚':''}${xzResume.resumeMarriage eq 1?'未婚':''}</span>
                         </div>
                         <div class="resume_every">
-                            目前状态： <span>${xzResume.resumeState}</span>
+                            目前状态： <span>${xzResume.resumeState eq 0?'未工作':''}${xzResume.resumeState eq 1?'在职':''}${xzResume.resumeState eq 2?'离职':''}</span>
                         </div>
                     </div>
 
@@ -96,8 +96,13 @@
                     <div class="resume_two">
                         <div class="resume_every">
                             期望行业：<span>
-                            <c:forEach var="f1" items="${xzResume.fields}">
+                            <c:forEach var="f1" items="${xzResume.fields}" varStatus="stat">
+                                <c:if test="${!stat.last}">
                                 ${f1.fieldName}/
+                                </c:if>
+                                <c:if test="${stat.last}">
+                                    ${f1.fieldName}
+                                </c:if>
                             </c:forEach>
                         </span>
                         </div>
@@ -142,7 +147,15 @@
                             公司规模：<span>${je.jobexpSubordinate}人</span>
                         </div>
                         <div class="resume_every">
-                            经营领域：<span>${je.jobexpField}</span>
+
+                            经营领域：<span><c:forEach items="${je.fields}" var="jf" varStatus="stat">
+                            <c:if test="${!stat.last}">
+                            ${jf.fieldName}/
+                            </c:if>
+                            <c:if test="${stat.last}">
+                                ${jf.fieldName}
+                            </c:if>
+                        </c:forEach></span>
                         </div>
                         <div class="resume_every">
                             工作职位：<span>${je.jobexpPostion}</span>
@@ -157,8 +170,9 @@
                             <%--所在部门：<span>${je.jobexpDept}</span>--%>
                         <%--</div>--%>
                         <div class="resume_every3">
-                            <span style="display: inline-block;float: left">职责业绩：${je.jobexpDuty}</span>
-                            <span class="resume_many">hhahhahahahhahaha</span>
+                            <span style="display: inline-block;float: left">职责业绩：</span>
+                            <span class="resume_many" id="sp1"></span>
+                            <input type="hidden" id="h1" value="${je.jobexpDuty}">
                         </div>
                     </div>
                     </c:forEach>
@@ -217,11 +231,13 @@
                             </div>
                             <div class="resume_every3">
                                 <span style="display: inline-block;float: left">项目职责：</span>
-                                <span class="resume_many">${e2.proexpDuty}</span>
+                                <span class="resume_many" id="sp3"></span>
+                                <input type="hidden" id="h3" value="${e2.proexpDuty}">
                             </div>
                             <div class="resume_every3">
                                 <span style="display: inline-block;float: left">项目描述：</span>
-                                <span class="resume_many">${e2.proexpDescribe}</span>
+                                <span class="resume_many" id="sp2"></span>
+                                <input type="hidden" id="h2" value="${e2.proexpDescribe}">
                             </div>
                         </div>
                     </c:forEach>
@@ -234,9 +250,9 @@
             <div class="r_out">
                 <div class="resume_more">
                     <h4><span class="fa fa-pencil-square-o"></span>自我评价</h4>
-                    <div class="resume_two">
-                        ${xzResume.filed1}
+                    <div class="resume_two" id="sp4">
                     </div>
+                    <input type="hidden" id="h4" value="${xzResume.filed1}">
                 </div>
             </div>
             <div style="clear: both"></div>
@@ -245,10 +261,9 @@
             <div class="r_out">
                 <div class="resume_more">
                     <h4><span class="fa fa-tags"></span>附加信息</h4>
-                    <div class="resume_two">
-                        ${xzResume.filed2}
+                    <div class="resume_two" id="sp5">
                     </div>
-
+            <input type="hidden" value=" ${xzResume.filed2}" id="h5">
 
                 </div>
 
@@ -293,7 +308,16 @@
             $("#s2").text("至今");
         }
     });
-
+    var content = $("#h1").val().replace(/\n/g,"<br>");
+    $("#sp1").html(content);
+    var content1= $("#h2").val().replace(/\n/g,"<br>");
+    $("#sp2").html(content1);
+    var content2= $("#h3").val().replace(/\n/g,"<br>");
+    $("#sp3").html(content2);
+    var content3= $("#h4").val().replace(/\n/g,"<br>");
+    $("#sp4").html(content3);
+    var content4= $("#h5").val().replace(/\n/g,"<br>");
+    $("#sp5").html(content4);
 </script>
 </body>
 </html>

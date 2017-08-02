@@ -12,6 +12,13 @@
 <html lang="en">
 <head>
     <jsp:include page="distforeEnd.jsp"/>
+    <script>
+        var companyId = '${userLogin.company.companyId}';     //公司ID
+        var path = '${pageContext.request.contextPath}/';     //全局路径
+    </script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zpc_resume_manage.js"></script>
     <style>
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
             background-color: #ffffff;
@@ -62,18 +69,18 @@
                         <div class="rem_cen">
                             <span style="margin-left: 20px">职位</span>
                             <select name="" id="" class="rem_input1">
-                                <option value="">全部职位</option>
-                                <option value=""></option>
+                                <option value="全部职位">全部职位</option>
+                                <option value="啦啦啦">啦啦啦</option>
                             </select>
                             <span style="margin-left: 10px">学历</span>
                             <select name="" id="" class="rem_input1">
-                                <option value="">不限</option>
-                                <option value="">博士</option>
-                                <option value="">博士后</option>
-                                <option value="">MBA/EMBA</option>
-                                <option value="">硕士</option>
-                                <option value="">本科</option>
-                                <option value="">大专</option>
+                                <option value="不限">不限</option>
+                                <option value="博士">博士</option>
+                                <option value="博士后">博士后</option>
+                                <option value="MBA/EMBA">MBA/EMBA</option>
+                                <option value="硕士">硕士</option>
+                                <option value="本科">本科</option>
+                                <option value="大专">大专</option>
                             </select>
                             <input type="checkbox">及以上
                             <span style="margin-left: 10px">性别</span>
@@ -137,7 +144,7 @@
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody class="tbody">
                                 <tr class="pom_h">
                                     <td>
                                         <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
@@ -177,20 +184,20 @@
                             </div>
 
                             <%--分页--%>
-                            <div class="zp_botv">
-                                <div class="zp_pl">
-                                    <ul class="pagination zp_pa">
-                                        <li class="b"><a href="#">上一页</a></li>
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li class="a"><a href="#">2</a></li>
-                                        <li class="a"><a href="#">3</a></li>
-                                        <li class="a"><a href="#">4</a></li>
-                                        <li class="a"><a href="#">5</a></li>
-                                        <li class="a"><a href="#">下一页</a></li>
-                                    </ul>
-                                    <div class="zp_page">共 <span>38</span> 页</div>
-                                </div>
-                            </div>
+                            <%--<div class="zp_botv">--%>
+                                <%--<div class="zp_pl">--%>
+                                    <%--<ul class="pagination zp_pa">--%>
+                                        <%--<li class="b"><a href="#">上一页</a></li>--%>
+                                        <%--<li class="active"><a href="#">1</a></li>--%>
+                                        <%--<li class="a"><a href="#">2</a></li>--%>
+                                        <%--<li class="a"><a href="#">3</a></li>--%>
+                                        <%--<li class="a"><a href="#">4</a></li>--%>
+                                        <%--<li class="a"><a href="#">5</a></li>--%>
+                                        <%--<li class="a"><a href="#">下一页</a></li>--%>
+                                    <%--</ul>--%>
+                                    <%--<div class="zp_page">共 <span>38</span> 页</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
                         </div>
                     </form>
 
