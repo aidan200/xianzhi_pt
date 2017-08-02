@@ -13,26 +13,10 @@
 <head>
     <jsp:include page="distforeEnd.jsp"/>
     <style>
-        .cd-popup-trigger {
-            display: inline-block;
-            width: 160px;
-            height: 45px;
-            line-height: 45px;
-            text-align: center;
-            color: #FFF;
-            font-size: 16px;
-            text-transform: uppercase;
-            background: #f8a91e;
-            box-shadow: 0 3px 0 rgba(0, 0, 0, 0.07);
-            border-radius: 3px;
-            margin-top: 30px;
-        }
-
-        .cd-popup-trigger:hover {
-            color: #ffffff;
+        .hangs {
+            margin-left: 20px;
         }
     </style>
-
 </head>
 <body>
 
@@ -45,8 +29,18 @@
     <!--行业名企-->
     <div class="comd_top">
         <div class="comd_choose">
-            <a href="#0" class="openha">选择行业</a>
-            <span></span>
+            <div>
+                <span style="display: inline-block;margin-right: 20px">
+                <span class="fa fa-map-marker" style="margin-right: 5px;color: #3d9ccc;font-size: 20px"></span>
+                <span id="this_space" style="cursor: pointer;font-size: 18px" class="zp_gslc">选择地区</span>
+                </span>
+                <span style="display: inline-block">
+                <span class="fa fa-edit" style="color: #3d9ccc;font-size: 20px"></span>
+                    <a href="#0" class="openha" style="font-size: 18px">选择行业</a>
+                <span id="_hy"></span></span>
+
+                <%--<span></span>--%>
+            </div>
             <div>
                 <input type="text" class="comd_input1" placeholder="输入公司全称或关键词">
                 <button class="comd_b" type="submit">搜 索</button>
@@ -60,7 +54,8 @@
             <h4>行业名 <a href=""><span>更多职位 &raquo</span></a>></h4>
             <div class="com_com">
                 <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
+                         style=""/>
                 </a>
                 <div class="com_morem">
                     <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
@@ -74,7 +69,8 @@
 
             <div class="com_com">
                 <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
+                         style=""/>
                 </a>
                 <div class="com_morem">
                     <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
@@ -88,7 +84,8 @@
 
             <div class="com_com">
                 <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
+                         style=""/>
                 </a>
                 <div class="com_morem">
                     <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
@@ -102,7 +99,8 @@
 
             <div class="com_com">
                 <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi" style=""/>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
+                         style=""/>
                 </a>
                 <div class="com_morem">
                     <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
@@ -143,13 +141,14 @@
         <a href="#0" class="cd-popup-closeh cmd_closeh fa fa-remove"></a>
     </div>
 </div>
-
+<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
+<jsp:include page="cityUtil.jsp"></jsp:include>
 
 
 <script>
-    jQuery(document).ready(function($) {
+    jQuery(document).ready(function ($) {
 
-        $('.openha').on('click', function(event){
+        $('.openha').on('click', function (event) {
             event.preventDefault();
             $('.cd-popuph').addClass('is-visible');
         });
@@ -165,10 +164,20 @@
         });
 
     });
+    //行业回填
+    $('#xz_qwhy_qd').on('click', function () {
+        var aa = $('#hy_tab input[type=checkbox]:checked');
+        var str = ''
+        aa.each(function (i, e) {
+            str += '<span class="hangs">' + $(e).attr('data-value') + '</span>'+'，'
+        })
+        $('#_hy').html(str)
+        $('.cd-popuph').removeClass('is-visible');
+
+    })
+
+
 </script>
-
-
-
 
 
 <%--弹出框--%>

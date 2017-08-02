@@ -15,25 +15,18 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <jsp:include page="distforeEnd.jsp"/>
-    <style>
-        .cd-popup-container {
-            height: 400px;
-            margin-top: 100px;
-            overflow: hidden;
-        }
-    </style>
-    <script>
-        $(document).ready(function(){
-            $(".login_com").click(function(){
-                $(".login_in").animate({left:'400px'});
-                $(".login_in2").animate({left:'0'});
-            });
-            $(".login_user").click(function(){
-                $(".login_in").animate({left:'0'});
-                $(".login_in2").animate({left:'-400px'});
-            });
-        });
-    </script>
+    <%--<script>--%>
+        <%--$(document).ready(function(){--%>
+            <%--$(".login_com").click(function(){--%>
+                <%--$(".login_in").animate({left:'400px'});--%>
+                <%--$(".login_in2").animate({left:'0'});--%>
+            <%--});--%>
+            <%--$(".login_user").click(function(){--%>
+                <%--$(".login_in").animate({left:'0'});--%>
+                <%--$(".login_in2").animate({left:'-400px'});--%>
+            <%--});--%>
+        <%--});--%>
+    <%--</script>--%>
 
 </head>
 <body background="${pageContext.request.contextPath}/dist/foreEnd3/img/scsc.jpg" class="login_body">
@@ -76,38 +69,38 @@
                     <a href="#0" class="login_re allregister">没有账号？ 立即注册</a>
                 </div>
             </form>
-            <form action="">
-                <div class="login_in2">
-                    <button type="button" class="login_user"><span class="fa fa-arrow-left" style="color: #FFA500"></span> 用户登录</button>
-                    <h2>欢迎登录企业账号</h2>
-                    <div class="login_input" style="margin-top: 30px">
-                        <input class="effect-4" type="text" name="username" value="${username}" placeholder="会员名/邮箱">
-                        <span class="focus-border"></span>
-                    </div>
+            <%--<form action="">--%>
+                <%--<div class="login_in2">--%>
+                    <%--<button type="button" class="login_user"><span class="fa fa-arrow-left" style="color: #FFA500"></span> 用户登录</button>--%>
+                    <%--<h2>欢迎登录企业账号</h2>--%>
+                    <%--<div class="login_input" style="margin-top: 30px">--%>
+                        <%--<input class="effect-4" type="text" name="username" value="${username}" placeholder="会员名/邮箱">--%>
+                        <%--<span class="focus-border"></span>--%>
+                    <%--</div>--%>
 
-                    <div class="login_input" style="margin-top: 40px">
-                        <input class="effect-4" type="password" name="password" placeholder="请输入密码">
-                        <span class="focus-border"></span>
-                    </div>
+                    <%--<div class="login_input" style="margin-top: 40px">--%>
+                        <%--<input class="effect-4" type="password" name="password" placeholder="请输入密码">--%>
+                        <%--<span class="focus-border"></span>--%>
+                    <%--</div>--%>
 
-                    <div class="login_err">
-                        <c:if test="${msg!=null}">
-                            <span class="fa fa-exclamation-triangle">&nbsp;</span>${msg}
-                        </c:if>
-                    </div>
+                    <%--<div class="login_err">--%>
+                        <%--<c:if test="${msg!=null}">--%>
+                            <%--<span class="fa fa-exclamation-triangle">&nbsp;</span>${msg}--%>
+                        <%--</c:if>--%>
+                    <%--</div>--%>
 
-                    <div style="margin-top: 15px;overflow: hidden">
-                        <a class="login_forget" href="###">忘记密码?</a>
-                        <span class="login_remember">
-                            <input type="checkbox" name="remember" value="true">
-                        记住我
-                    </span>
+                    <%--<div style="margin-top: 15px;overflow: hidden">--%>
+                        <%--<a class="login_forget" href="###">忘记密码?</a>--%>
+                        <%--<span class="login_remember">--%>
+                            <%--<input type="checkbox" name="remember" value="true">--%>
+                        <%--记住我--%>
+                    <%--</span>--%>
 
-                    </div>
-                    <button type="submit" class="login_button2">企业登录</button>
-                    <a href="#0" class="login_re allregister">没有账号？ 立即注册</a>
-                </div>
-            </form>
+                    <%--</div>--%>
+                    <%--<button type="submit" class="login_button2">企业登录</button>--%>
+                    <%--<a href="#0" class="login_re allregister">没有账号？ 立即注册</a>--%>
+                <%--</div>--%>
+            <%--</form>--%>
         </div>
 
 

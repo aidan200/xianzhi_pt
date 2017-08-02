@@ -2270,21 +2270,21 @@ ul {
     text-align: center;
     margin-top: 60px;
 }
-.login_in2 {
-    padding: 30px;
-    text-align: center;
-    /*display: none;*/
-    position: absolute;
-    width: 100%;
-    left: -400px;
-    top: 0;
-}
+/*.login_in2 {*/
+    /*padding: 30px;*/
+    /*text-align: center;*/
+    /*!*display: none;*!*/
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*left: -400px;*/
+    /*top: 0;*/
+/*}*/
 
-.login_in2 h2 {
-    font-weight: normal;
-    text-align: center;
-    margin-top: 60px;
-}
+/*.login_in2 h2 {*/
+    /*font-weight: normal;*/
+    /*text-align: center;*/
+    /*margin-top: 60px;*/
+/*}*/
 
 .login_user,.login_com{
     background: none;
@@ -2445,6 +2445,18 @@ ul {
     }
 
 }
+
+/*--------------------------------手机号快速注册----------------------------------*/
+.registerp_body {
+    width: 100%;
+    min-width: 1400px;
+    height: 100%;
+    background-size: cover;
+
+}
+
+
+/*---------------------*/
 
 /*新改的社区*/
 .index_list {
@@ -3473,9 +3485,9 @@ input[type="button"].fileInputButton {
     width: 100px;
     height: 35px;
     border-radius: 3px;
-    background-color: #ffffff;
-    border: 1px solid #f8a91e;
-    color: #f8a91e;
+    background-color: #3d9ccc;
+    border: 1px solid #3d9ccc;
+    color: #ffffff;
 }
 
 /*!*-----------------------发布职位------------------------------*!*/
@@ -5633,7 +5645,7 @@ th {
 }
 
 .cd-popup-containerh .cd-buttonsh li:first-child a {
-    background: #fc7169;
+    background: #c5ccd8;
     border-radius: 0 0 0 .15em;
 }
 
@@ -5642,7 +5654,7 @@ th {
 }
 
 .cd-popup-containerh .cd-buttonsh li:last-child a {
-    background: #b6bece;
+    background: #3d9ccc;
     /*border-radius: 0 0 .25em 0;*/
 }
 
