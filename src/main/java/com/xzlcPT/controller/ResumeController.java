@@ -100,11 +100,6 @@ public class ResumeController extends BaseController {
         }catch (Exception e){
             e.printStackTrace();
         }
-        /*try {
-            new FileInputStream(request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
     }
 
 

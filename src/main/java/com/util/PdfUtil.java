@@ -75,25 +75,25 @@ public class PdfUtil {
             cell1.setRowspan(3);
             cell1.setFixedHeight(100f);
             table.addCell(cell1);
-            //姓名
-            cell1 = makeCell(resume.getResumeName(),RName);
+            //空白第一行
+            cell1 = makeCell("",RName);
             cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell1.setFixedHeight(40f);
             cell1.setColspan(4);
             table.addCell(cell1);
             //第二行
-            cell1 = makeCell("目前公司",content);
+            cell1 = makeCell("姓名",content);
             table.addCell(cell1);
-            cell1 = makeCell(resume.getResumeField(),content);
+            cell1 = makeCell(resume.getResumeName(),content);
             table.addCell(cell1);
-            cell1 = makeCell("所在地点",content);
-            table.addCell(cell1);
-            cell1 = makeCell(resume.getResumeWorkspace(),content);
-            table.addCell(cell1);
-            //第三行
             cell1 = makeCell("目前职位",content);
             table.addCell(cell1);
             cell1 = makeCell(resume.getResumePosition(),content);
+            table.addCell(cell1);
+            //第三行
+            cell1 = makeCell("所在地点",content);
+            table.addCell(cell1);
+            cell1 = makeCell(resume.getResumeWorkspace(),content);
             table.addCell(cell1);
             cell1 = makeCell("工作年限",content);
             table.addCell(cell1);
@@ -150,13 +150,13 @@ public class PdfUtil {
             table.addCell(cell1);
             cell1 = makeCell("目前状态",content);
             table.addCell(cell1);
-            if("0"==resume.getResumeState()){
+            if("0".equals(resume.getResumeState())){
                 cell1 = makeCell("未工作",content);
-            }else if("1"==resume.getResumeState()){
+            }else if("1".equals(resume.getResumeState())){
                 cell1 = makeCell("在职,考虑新机会",content);
-            }else if("2"==resume.getResumeState()){
+            }else if("2".equals(resume.getResumeState())){
                 cell1 = makeCell("离职,正在找工作",content);
-            }else if("3"==resume.getResumeState()){
+            }else if("3".equals(resume.getResumeState())){
                 cell1 = makeCell("在职,暂无跳槽打算",content);
             }else{
                 cell1 = makeCell("",content);
@@ -174,12 +174,32 @@ public class PdfUtil {
             table.addCell(cell1);
             cell1 = makeCell("目前行业",content);
             table.addCell(cell1);
-            cell1 = makeCell("你妹行业",content);
+            String dqhy = "";
+            if(resume.getFields()!=null){
+                StringBuffer temp = new StringBuffer("");
+                for (XzField xzField : resume.getFields()) {
+                    if("2".equals(xzField.getFieldType())){
+                        temp.append("/").append(xzField.getFieldName());
+                    }
+                }
+                dqhy = temp.substring(1);
+            }
+            cell1 = makeCell(dqhy,content);
             cell1.setColspan(3);
             table.addCell(cell1);
             cell1 = makeCell("期望行业",content);
             table.addCell(cell1);
-            cell1 = makeCell("你妹行业",content);
+            String qwhy = "";
+            if(resume.getFields()!=null){
+                StringBuffer temp = new StringBuffer("");
+                for (XzField xzField : resume.getFields()) {
+                    if("3".equals(xzField.getFieldType())){
+                        temp.append("/").append(xzField.getFieldName());
+                    }
+                }
+                qwhy = temp.substring(1);
+            }
+            cell1 = makeCell(qwhy,content);
             cell1.setColspan(3);
             table.addCell(cell1);
             cell1 = makeCell("期望地点",content);
@@ -220,14 +240,15 @@ public class PdfUtil {
                     table.addCell(cell1);
                     cell1 = makeCell("公司领域",content);
                     table.addCell(cell1);
-                    StringBuffer ly = new StringBuffer("");
+                    String ly = "";
                     if(xzJobExp.getFields()!=null){
+                        StringBuffer temp = new StringBuffer("");
                         for (XzField xzField : xzJobExp.getFields()) {
-                            ly.append(xzField.getFieldName()).append("/");
+                            temp.append("/").append(xzField.getFieldName());
                         }
-                        ly.substring(1);
+                        ly = temp.substring(1);
                     }
-                    cell1 = makeCell(ly.toString(),content);
+                    cell1 = makeCell(ly,content);
                     cell1.setColspan(3);
                     table.addCell(cell1);
                     cell1 = makeCell("职位名称",content);
@@ -243,63 +264,82 @@ public class PdfUtil {
                     cell1 = makeCellNoLine(xzJobExp.getJobexpDuty(),content);
                     cell1.setColspan(3);
                     cell1.setPaddingTop(10f);
+                    table.addCell(cell1);
                 }
-                table.addCell(cell1);
                 document.add(table);
             }
 
             //教育经历
-            table = new PdfPTable(widthsBase);
-            table.setSpacingBefore(25f);//表格之前间隔
-            table.setHorizontalAlignment(Element.ALIGN_CENTER);//表格水平居中
-            table.setWidthPercentage(90);//表格宽度90%
-            cell1 = makeCellTitle("教育经历",title);
-            table.addCell(cell1);
-            String eBegin = "1999-10-10";
-            String eEnd = "1999-10-10";
-            cell1 = makeCell(eBegin+" 至 "+eEnd,content);
-            cell1.setColspan(2);
-            table.addCell(cell1);
-            cell1 = makeCell("你妹学校",content);
-            cell1.setColspan(2);
-            table.addCell(cell1);
-            cell1 = makeCell("专业：xxxxx",content);
-            cell1.setColspan(2);
-            table.addCell(cell1);
-            cell1 = makeCell("学历：大专",content);
-            table.addCell(cell1);
-            cell1 = makeCell("统招",content);
-            table.addCell(cell1);
-            document.add(table);
+            if(resume.getXzResumeEducations()!=null){
+                table = new PdfPTable(widthsBase);
+                table.setSpacingBefore(25f);//表格之前间隔
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);//表格水平居中
+                table.setWidthPercentage(90);//表格宽度90%
+                cell1 = makeCellTitle("教育经历",title);
+                table.addCell(cell1);
+                for (XzResumeEducation education : resume.getXzResumeEducations()) {
+                    String eBegin = sdf.format(education.getEnrollmentDate());
+                    String eEnd = sdf.format(education.getGraduateDate());
+                    cell1 = makeCell(eBegin+" 至 "+eEnd,content);
+                    cell1.setColspan(2);
+                    table.addCell(cell1);
+                    cell1 = makeCell(education.getEducationSchool(),content);
+                    cell1.setColspan(2);
+                    table.addCell(cell1);
+                    cell1 = makeCell("专业："+education.getEducationMajor(),content);
+                    cell1.setColspan(2);
+                    table.addCell(cell1);
+                    cell1 = makeCell("学历："+education.getEducationLevel(),content);
+                    table.addCell(cell1);
+                    if(education.getEducationEntrance()==0){
+                        cell1 = makeCell("f非统招",content);
+                    }else if(education.getEducationEntrance()==1){
+                        cell1 = makeCell("统招",content);
+                    }else{
+                        cell1 = makeCell("",content);
+                    }
+                    table.addCell(cell1);
+                }
+                document.add(table);
+            }
 
             //项目经验
-            table = new PdfPTable(widthsBase);
-            table.setSpacingBefore(25f);//表格之前间隔
-            table.setHorizontalAlignment(Element.ALIGN_CENTER);//表格水平居中
-            table.setWidthPercentage(90);//表格宽度90%
-            cell1 = makeCellTitle("项目经验",title);
-            table.addCell(cell1);
-            String projectBegin = "1999-10-10";
-            String projectEnd = "1999-10-10";
-            cell1 = makeCell(projectBegin+" 至 "+projectEnd,content);
-            cell1.setColspan(2);
-            table.addCell(cell1);
-            cell1 = makeCell("xxxxx项目",content);
-            cell1.setColspan(2);
-            table.addCell(cell1);
-            cell1 = makeCellNoLine("项目描述",content);
-            table.addCell(cell1);
-            cell1 = makeCellNoLine("啊盛大盛大速度请问大多数 asdasd",content);
-            cell1.setPaddingTop(10f);
-            cell1.setColspan(3);
-            table.addCell(cell1);
-            cell1 = makeCellNoLine("项目职责",content);
-            table.addCell(cell1);
-            cell1 = makeCellNoLine("啊盛大盛大速度请问大多数 asdasd",content);
-            cell1.setPaddingTop(10f);
-            cell1.setColspan(3);
-            table.addCell(cell1);
-            document.add(table);
+            if(resume.getXzProjectExps()!=null){
+                table = new PdfPTable(widthsBase);
+                table.setSpacingBefore(25f);//表格之前间隔
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);//表格水平居中
+                table.setWidthPercentage(90);//表格宽度90%
+                cell1 = makeCellTitle("项目经验",title);
+                table.addCell(cell1);
+                for (XzProjectExp xzProjectExp : resume.getXzProjectExps()) {
+                    String projectBegin = sdf.format(xzProjectExp.getProexpBeginTime());
+                    String projectEnd = sdf.format(xzProjectExp.getProexpEndTime());
+                    cell1 = makeCell(projectBegin+" 至 "+projectEnd,content);
+                    cell1.setColspan(2);
+                    table.addCell(cell1);
+                    cell1 = makeCell(xzProjectExp.getProexpName(),content);
+                    cell1.setColspan(2);
+                    table.addCell(cell1);
+                    cell1 = makeCell("项目职位",content);
+                    table.addCell(cell1);
+                    cell1 = makeCell(xzProjectExp.getProexpPostion(),content);
+                    cell1.setColspan(3);
+                    table.addCell(cell1);
+                    cell1 = makeCellNoLine("项目描述",content);
+                    table.addCell(cell1);
+                    cell1 = makeCellNoLine(xzProjectExp.getProexpDescribe(),content);
+                    cell1.setPaddingTop(10f);
+                    cell1.setColspan(3);
+                    table.addCell(cell1);
+                    cell1 = makeCellNoLine("项目职责",content);
+                    table.addCell(cell1);
+                    cell1 = makeCellNoLine(xzProjectExp.getProexpDuty(),content);
+                    cell1.setPaddingTop(10f);
+                    cell1.setColspan(3);
+                    table.addCell(cell1);
+                }
+                document.add(table);
+            }
             //自我评价
             table = new PdfPTable(widthsBase);
             table.setSpacingBefore(25f);//表格之前间隔
@@ -307,7 +347,7 @@ public class PdfUtil {
             table.setWidthPercentage(90);//表格宽度90%
             cell1 = makeCellTitle("自我评价",title);
             table.addCell(cell1);
-            cell1 = makeCellNoLine("啊盛大盛大速度请问大多数 asdasd",content);
+            cell1 = makeCellNoLine(resume.getFiled1(),content);
             cell1.setPaddingTop(10f);
             cell1.setColspan(4);
             table.addCell(cell1);
@@ -319,23 +359,33 @@ public class PdfUtil {
             table.setWidthPercentage(90);//表格宽度90%
             cell1 = makeCellTitle("附加信息",title);
             table.addCell(cell1);
-            cell1 = makeCellNoLine("啊盛大盛大速度请问大多数 asdasd",content);
+            cell1 = makeCellNoLine(resume.getFiled2(),content);
             cell1.setPaddingTop(10f);
             cell1.setColspan(4);
             table.addCell(cell1);
             document.add(table);
             //擅长技能
-            table = new PdfPTable(widthsBase);
-            table.setSpacingBefore(25f);//表格之前间隔
-            table.setHorizontalAlignment(Element.ALIGN_CENTER);//表格水平居中
-            table.setWidthPercentage(90);//表格宽度90%
-            cell1 = makeCellTitle("擅长技能",title);
-            table.addCell(cell1);
-            cell1 = makeCellNoLine("啊盛大盛大速度请问大多数\n asdasd",content);
-            cell1.setPaddingTop(10f);
-            cell1.setColspan(4);
-            table.addCell(cell1);
-            document.add(table);
+            if(resume.getXzResumeSkills()!=null){
+                table = new PdfPTable(widthsBase);
+                table.setSpacingBefore(25f);//表格之前间隔
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);//表格水平居中
+                table.setWidthPercentage(90);//表格宽度90%
+                cell1 = makeCellTitle("擅长技能",title);
+                table.addCell(cell1);
+                String skills = "";
+                StringBuffer temp = new StringBuffer("");
+                for (XzResumeSkill xzResumeSkill : resume.getXzResumeSkills()) {
+                    temp.append(xzResumeSkill.getSkillName()).append("  ");
+                }
+                if(temp.length()>1){
+                    skills = temp.substring(1);
+                }
+                cell1 = makeCellNoLine(skills,content);
+                cell1.setPaddingTop(10f);
+                cell1.setColspan(4);
+                table.addCell(cell1);
+                document.add(table);
+            }
 
 
             document.close();
