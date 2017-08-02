@@ -147,33 +147,36 @@ public class ResumeController extends BaseController {
         return mv;
     }
     //添加收藏
+    @ResponseBody
     @RequestMapping("insertCollect.do")
-    public ModelAndView insertCollect(Integer resumeId,Integer companyId){
-        ModelAndView mv=new ModelAndView("foreEnd3/test2");
+    public Map insertCollect(Integer resumeId,Integer companyId){
         Date collectTime=new Date();
         Map map=new HashMap();
         map.put("resumeId",resumeId);
         map.put("companyId",companyId);
         map.put("collectTime",collectTime);
         int i=resumeService.insertCollect(map);
-        mv.addObject("i",i);
-        return mv;
+        Map map1=new HashMap();
+        map1.put("i",i);
+        return map1;
     }
     //删除收藏
+    @ResponseBody
     @RequestMapping("delectCollect.do")
-    public ModelAndView deleteCollect(Long collectId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public Map deleteCollect(Long collectId){
         int i=resumeService.deleteCollect(collectId);
-        mv.addObject("i",i);
-        return mv;
+        Map map=new HashMap();
+        map.put("i",i);
+        return map;
     }
     //查询收藏
+    @ResponseBody
     @RequestMapping("selectCollect.do")
-    public ModelAndView selectCollect(Long companyId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public Map selectCollect(Long companyId){
         List<XzResume> resumeList=resumeService.selectCollect(companyId);
-        mv.addObject("resumeList",resumeList);
-        return mv;
+        Map map=new HashMap();
+        map.put("resumeList",resumeList);
+        return map;
     }
 
 }

@@ -45,35 +45,37 @@
                 </li>
             </ul>
             <ul class="nav nav_1">
-                <c:if test="${userLogin!=undefined}">
-                    <a href="" style="">
-                        <li class="login1">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                 class="allheader">
-                            <ul class="head-menu">
-                                <li class="head_new2">
-                                    <span class="fa fa-user" style="color: #666"></span>
-                                    <span><a href="">郑秀妍</a></span>
-                                    <span><a href="" style="float: right">注销</a></span>
-                                </li>
-                                <li><span class="head_new"></span><a href="#">我的简历</a></li>
-                                <li><span class="head_new"></span><a href="#">查看职位信息</a></li>
-                                <li><span class="head_new"></span><a href="#">balabala</a></li>
-                            </ul>
+                <c:choose>
+                    <c:when test="${userLogin!=undefined}">
+                        <a href="" style="">
+                            <li class="login1">
+                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
+                                     class="allheader">
+                                <ul class="head-menu">
+                                    <li class="head_new2">
+                                        <span class="fa fa-user" style="color: #666"></span>
+                                        <span><a href="">郑秀妍</a></span>
+                                        <span><a href="${pageContext.request.contextPath}/XzLogin/ExitUser.do" style="float: right">注销</a></span>
+                                    </li>
+                                    <li><span class="head_new"></span><a href="#">我的简历</a></li>
+                                    <li><span class="head_new"></span><a href="#">查看职位信息</a></li>
+                                    <li><span class="head_new"></span><a href="#">balabala</a></li>
+                                </ul>
 
-                                <%--<a><span>${userLogin.loginCount}${userLogin.member.memberId}</span></a>--%>
+                                    <%--<a><span>${userLogin.loginCount}${userLogin.member.memberId}</span></a>--%>
+                            </li>
+                        </a>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="register1">
+                            <a href="#0" class="allregister" style="margin-top: 13px"><span>注册</span></a>
                         </li>
-                    </a>
-                </c:if>
-
-                <li class="register1">
-                    <a href="#0" class="allregister" style="margin-top: 13px"><span>注册</span></a>
-                </li>
-                <li class="login1">
-                    <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"
-                       style="margin-top: 13px"><span>登录</span></a>
-                </li>
-
+                        <li class="login1">
+                            <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"
+                               style="margin-top: 13px"><span>登录</span></a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
         </div>
     </div>
