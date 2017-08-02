@@ -292,7 +292,7 @@ public class PdfUtil {
                     cell1 = makeCell("学历："+education.getEducationLevel(),content);
                     table.addCell(cell1);
                     if(education.getEducationEntrance()==0){
-                        cell1 = makeCell("f非统招",content);
+                        cell1 = makeCell("非统招",content);
                     }else if(education.getEducationEntrance()==1){
                         cell1 = makeCell("统招",content);
                     }else{
@@ -387,14 +387,17 @@ public class PdfUtil {
                 document.add(table);
             }
 
-
             document.close();
 
             Image img = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/LOGO2.png"));
             //添加水印
             imageWatermark(request.getServletContext().getRealPath("/pdf/"+fileName),
                     request.getServletContext().getRealPath("/pdf/1"+fileName),img);
-
+            //删除未加水印的简历
+            File ff = new File(request.getServletContext().getRealPath("/pdf/"+fileName));
+            if(ff.exists()){
+                ff.delete();
+            }
             file = new File(request.getServletContext().getRealPath("/pdf/1"+fileName));
         } catch (Exception e) {
             e.printStackTrace();
