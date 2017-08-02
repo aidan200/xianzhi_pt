@@ -13,9 +13,9 @@
 <head>
     <jsp:include page="distforeEnd.jsp"/>
     <script>
-        $(document).ready(function(){
-            $(".pop_but").click(function(){
-                $(".pop_more").fadeToggle();
+        $(document).ready(function () {
+            $(".pop_but").click(function () {
+                $(".pop_more").slideToggle(500);
             });
         });
     </script>
@@ -55,62 +55,58 @@
                                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
                                      class="pop_head">
                                 <div class="pop_test2">
-                                    <h4>网站美工/网页设计师</h4>
+                                    <h4 style="display: inline-block">网站美工/网页设计师</h4>
+                                    <div style="color: #fc6866;display: inline-block;margin-left: 10px">10万</div>
+                                    <div style="display: inline-block;margin-left: 20px">吉林省江山网络科技公司</div>
+
                                     <div class="pop_in2">
-                                        <span style="color: #fc6866">10万</span>|
                                         <span class="pop_sp">沈阳</span>|
-                                        <span>大专及以上</span>|
-                                        <span>1年经验</span>
+                                        <span>1年经验</span>|
+                                        <span>互联网/移动联网/电子商务</span>
+
                                     </div>
-                                    <button class="pop_but" style="margin-left: 200px">
-                                        <span class="fa fa-chevron-down"></span>
-                                    </button>
+
+                                    <div style="margin-top: -10px">
+                                        <button class="pop_but" style="margin-left: 200px">
+                                            <span class="fa fa-chevron-down"></span>
+
+                                        </button>
+                                        <span style="margin-left: 190px;color: #666">4小时前</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="pop_right2">
-                                <div class="pop_rt">
-                                    吉林省江山网络科技公司
-                                </div>
-                                <div class="pop_rt">
-                                    互联网/移动联网/电子商务
-                                </div>
-                                <div style="margin-top: 5px;margin-right: 10px;float: right;color: #a8a8a8">
-                                    <span><span>4</span>个小时前</span>
-                                </div>
-                            </div>
+
                             <div class="pop-right-bottom">
                                 <b>国</b>
                             </div>
                         </div>
+
                         <div class="pop_more">
-                            <!--上面的进度-->
-                            <div id="stepBar" class="ui-stepBar-wrap2">
-                                <div class="ui-stepBar">
-                                    <div class="ui-stepProcess"></div>
+                            <div class="pop_m1">
+                                <div class="pop_min">
+                                    让你来面试 啊哈哈哈哈哈哈哈哈 快来啊 快来啊 你到底来不来 你来啊 你来啊 你不来拉到了 呵呵呵
                                 </div>
-                                <div class="ui-stepInfo-wrap">
-                                    <table class="ui-stepLayout" border="0" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td class="ui-stepInfo">
-                                                <a class="ui-stepSequence">1</a>
-                                                <p class="ui-stepName">已投递</p>
-                                            </td>
-                                            <td class="ui-stepInfo">
-                                                <a class="ui-stepSequence">2</a>
-                                                <p class="ui-stepName">已查看</p>
-                                            </td>
-                                            <td class="ui-stepInfo">
-                                                <a class="ui-stepSequence">3</a>
-                                                <p class="ui-stepName">已反馈</p>
-                                            </td>
-                                            <td class="ui-stepInfo">
-                                                <a class="ui-stepSequence">4</a>
-                                                <p class="ui-stepName">结束</p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                <div class="pop_z">已投递</div>
                             </div>
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt="" class="pop_ar">
+                            <div class="pop_m1">
+                                <div class="pop_min">
+                                </div>
+                                <div class="pop_z">已投递</div>
+                            </div>
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt="" class="pop_ar">
+                            <div class="pop_m1">
+                                <div class="pop_min">
+                                </div>
+                                <div class="pop_z">已投递</div>
+                            </div>
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt="" class="pop_ar">
+                            <div class="pop_m1">
+                                <div class="pop_min">
+                                </div>
+                                <div class="pop_z">已投递</div>
+                            </div>
+
                         </div>
 
 
@@ -178,8 +174,9 @@
         </div>
 
         <div class="pop_right3">
+            <h4 style="padding-top: 5px;padding-left: 20px">近15天投递记录</h4>
 
-            <div id="main2" style="width: 290px;height:300px;"></div>
+            <div id="main2" style="width: 290px;height:300px;margin-top: 30px"></div>
 
         </div>
     </div>
@@ -192,22 +189,7 @@
 <jsp:include page="behindforeEnd.jsp"/>
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>
 
-<!--进度-->
-<script type="text/javascript"
-        src="${pageContext.request.contextPath}/dist/foreEnd3/lib/jquery/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/dist/foreEnd3/js/stepBar.js"></script>
-<script type="text/javascript">
-    $(function () {
-        var states = 1 ;
-        stepBar.init("stepBar", {
-            step: states,
-            change: false,
-            animation: false
-        });
 
-    });
-</script>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main2'));
@@ -221,7 +203,7 @@
             trigger: 'axis'
         },
         legend: {
-            data:['投递简历次数']
+            data: ['投递简历次数']
         },
         grid: {
             left: '3%',
@@ -232,28 +214,28 @@
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['0718','0719','0720','0721','0722','0723','0724','0725','0726','0727','0728','0729','0730','0731','0732',]
+            data: ['0718', '0719', '0720', '0721', '0722', '0723', '0724', '0725', '0726', '0727', '0728', '0729', '0730', '0731', '0732',]
         },
         yAxis: {
             type: 'value',
-            show:'false'
+            show: 'false'
         },
         series: [
             {
-                name:'投递简历次数',
-                type:'line',
-                smooth:'true',
-                symbol:'emptyCircle',
-                symbolSize : function (v){
-                    return 8 + v/100
+                name: '投递简历次数',
+                type: 'line',
+                smooth: 'true',
+                symbol: 'emptyCircle',
+                symbolSize: function (v) {
+                    return 8 + v / 100
                 },
                 stack: '总量',
-                data:[20, 32, 1, 34, 15, 3, 8,10,1,4,10,5,6,8,2],
-                itemStyle : {
-                    normal : {
-                        color:'#3fb1e3',
-                        lineStyle:{
-                            color:'#3fb1e3'
+                data: [20, 32, 1, 34, 15, 3, 8, 10, 1, 4, 10, 5, 6, 8, 2],
+                itemStyle: {
+                    normal: {
+                        color: '#3fb1e3',
+                        lineStyle: {
+                            color: '#3fb1e3'
                         }
                     }
                 },

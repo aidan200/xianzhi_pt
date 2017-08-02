@@ -323,18 +323,6 @@
       <version>1.0</version>
     </dependency>
 
-    <!-- POI核心依赖 -->
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi</artifactId>
-      <version>3.8</version>
-    </dependency>
-    <!-- 为POI支持Office Open XML -->
-    <dependency>
-      <groupId>org.apache.poi</groupId>
-      <artifactId>poi-ooxml</artifactId>
-      <version>3.9</version>
-    </dependency>
     <!--itext-->
     <dependency>
       <groupId>com.itextpdf</groupId>
