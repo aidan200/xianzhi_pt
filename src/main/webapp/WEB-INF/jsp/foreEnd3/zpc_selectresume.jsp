@@ -177,15 +177,15 @@
             <div class="ses_rt">
                 <c:forEach var="j3" items="${r1.jobExps}">
                 <span><fmt:formatDate value="${j3.jobexpBeginTime}" pattern="yyyy.MM"/>-<fmt:formatDate value="${j3.jobexpEndTime}" pattern="yyyy.MM"/></span>|
-                <span>${j3.jobexpCompanyName}</span>|
-                <span>${j3.jobexpPostion}</span>
+                <span class="ses_s1" style="max-width: 150px">${j3.jobexpCompanyName}</span>|
+                <span class="ses_s1" style="max-width: 150px">${j3.jobexpPostion}</span>
                 </c:forEach>
             </div>
             <c:forEach var="e2" items="${r1.xzResumeEducations}">
             <div class="ses_rt">
                 <span><fmt:formatDate value="${e2.enrollmentDate}" pattern="yyyy.MM"/>-<fmt:formatDate value="${e2.graduateDate}" pattern="yyyy.MM"/></span>|
-                <span>${e2.educationSchool}</span>|
-                <span>${e2.educationMajor}</span>|
+                <span class="ses_s1" style="max-width: 135px">${e2.educationSchool}</span>|
+                <span class="ses_s1" style="max-width: 135px">${e2.educationMajor}</span>|
                 <span>${e2.educationLevel}</span>
             </div>
             </c:forEach>

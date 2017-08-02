@@ -4832,7 +4832,7 @@ input[type="button"].fileInputButton {
 .ses_right {
     float: left;
     margin-left: 15px;
-    margin-top: 31px;
+    margin-top: 25px;
     width: 480px;
     height: 100px;
     position: relative;
@@ -4842,6 +4842,15 @@ input[type="button"].fileInputButton {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.ses_s1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    display: inline-block;
+    top: 6px;
 }
 
 .ses_rt span {
