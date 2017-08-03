@@ -13,4 +13,6 @@ public interface XzResumeBrowseService {
     int insert(XzResumeBrowse xzResumeBrowse);
 
     int updateByPrimaryKey(Long browseId);
+
+    int selCountByResumeId(Long resumeId);
 }

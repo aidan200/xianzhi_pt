@@ -317,9 +317,9 @@ public class PostionController extends BaseController{
         Map map=new HashMap();
         map.put("memberId",userLogin.getMember().getMemberId());
         map.put("postionId",postionId);
-        XzPostion xzPostion=postionService.selCollectState(map);
+      int i=postionService.selCollectState(map);
         Map map1=new HashMap();
-        if(xzPostion.getFiled1().equals("1")){
+        if(i==1){
             map1.put("msg","ok");
         }else {
             map1.put("msg","err");

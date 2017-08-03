@@ -45,5 +45,5 @@ public interface XzPostionMapper {
 
     int updateState(XzPostion xzPostion);
 
-    XzPostion selCollectState(Map map);
+    int selCollectState(Map map);
 }

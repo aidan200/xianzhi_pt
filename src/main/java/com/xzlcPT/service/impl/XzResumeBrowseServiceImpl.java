@@ -29,4 +29,10 @@ public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
         int i=xzResumeBrowseMapper.updateByPrimaryKey(browseId);
         return i;
     }
+
+    @Override
+    public int selCountByResumeId(Long resumeId) {
+        int i=xzResumeBrowseMapper.selCountByResumeId(resumeId);
+        return i;
+    }
 }

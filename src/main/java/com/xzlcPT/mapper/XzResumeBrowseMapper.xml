@@ -87,4 +87,8 @@
         set isRead = 1
         where browse_id = #{browseId,jdbcType=BIGINT}
     </update>
+    <select id="selCountByResumeId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        select count(*) FROM xz_resume_browse WHERE isRead=1
+        and resume_id=#{resumeId,jdbcType=BIGINT}
+    </select>
 </mapper>

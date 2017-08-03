@@ -91,4 +91,13 @@ public class PostionSendController extends BaseController{
         }
         return map;
     }
+    //当天投递个数
+    @ResponseBody
+    @RequestMapping("selSendCount.do")
+    public Map selSendCount(Long resumeId){
+        int i=postionSendService.selSendCount(resumeId);
+        Map map=new HashMap();
+        map.put("i",i);
+        return map;
+    }
 }

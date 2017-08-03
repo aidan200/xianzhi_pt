@@ -711,7 +711,7 @@
     update xz_postion set postion_welfare = #{postionWelfare,jdbcType=VARCHAR} where
     postion_id = #{postionId,jdbcType=BIGINT}
   </update>
-  <select id="selCollectState" parameterType="java.util.Map" resultMap="BaseResultMap">
-    SELECT COUNT(*)as filed1 from xz_postion_collect WHERE member_id=#{memberId,jdbcType=BIGINT} and postion_id=#{postionId,jdbcType=BIGINT}
+  <select id="selCollectState" parameterType="java.util.Map" resultType="java.lang.Long">
+    SELECT COUNT(*) from xz_postion_collect WHERE member_id=#{memberId,jdbcType=BIGINT} and postion_id=#{postionId,jdbcType=BIGINT}
   </select>
 </mapper>
