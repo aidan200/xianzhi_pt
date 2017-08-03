@@ -114,26 +114,10 @@
                 <div class="wrap2">
                     <div>
                         ${xzCompany.companyIntro}
-                        我说还打客服哈困窘安徽科技发货快开始的风景好久发卡机打发卡夫卡开发家安全诶护肤支持女款企鹅
-                        安琪儿移入蓬蓬裙of懒得看VB你你说的你说雅虎搜易1划分及爱好你吓唬俺谁真谁假额你洗涮沈你细化三年
-                        沈设计巴菲赶赴案发hi在你家啊谁家的几番哈哈哈哈哈哈泥塑那你读哈大佛哦i你读书单杀你短信金额你签了了多少Ian
-                        多少钱哈哈和哈佛豪富爱恩和我你你是事故皇后三个球 我说还打客服哈困窘安徽科技发货快开始的风景好久发卡机打发卡夫卡开发家安全诶护肤支持女款企鹅
-                        安琪儿移入蓬蓬裙of懒得看VB你你说的你说雅虎搜易1划分及爱好你吓唬俺谁真谁假额你洗涮沈你细化三年
-                        沈设计巴菲赶赴案发hi在你家啊谁家的几番哈哈哈哈哈哈泥塑那你读哈大佛哦i你读书单杀你短信金额你签了了多少Ian
                     </div>
-                    <%--<div id="gradient"></div>--%>
                 </div>
                 <div class="read-more"></div>
-                <%--<p class="profile gsxq_g" data-selector="detail" style="display: block;">--%>
-                    <%--&nbsp; &nbsp;${xzCompany.companyIntro}agfjadbhfjsadbfsjhfbdfdsbvdbzafjdh--%>
-                <%--dsbdafjsdfnjhsdnbvfkjafnkhewagfjhadf bnfkjanfkjasnfkjadfnksadjfndkjfnakjdsfnaksdjfndkjfvndkjasfv--%>
-                <%--dsafkjehfaejfhnkadjnbvfkajdnfvjkadgbvjhfvbzv nznfkjsehkjfhsakjgfkjafgakjefgnaejkf</p>--%>
-                <%--<a class="link-more" href="###">点击展开更多详情</a>--%>
             </div>
-
-
-
-
 
 
             <div class="zp_gsxq_cpjs">
