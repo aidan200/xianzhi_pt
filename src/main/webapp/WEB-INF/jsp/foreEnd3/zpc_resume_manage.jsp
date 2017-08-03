@@ -92,8 +92,8 @@
                             </select>
                             <span style="margin-left: 10px">姓名</span>
                             <input type="text" class="rem_input">
-                            <button class="rem_b">搜索</button>
-                            <button class="rem_b1">清空</button>
+                            <button class="rem_b" type="button">搜索</button>
+                            <button class="rem_b1" type="button">清空</button>
                             <div class="hamburger hamburger--elastic">
                                 <div class="hamburger-box">
                                     <div class="hamburger-inner"></div>
