@@ -12,13 +12,13 @@ svn_btn+='</svg>'
 svn_btn+='</i>'
 
 var mzd=''      //抱歉没找到
-mzd+='<%--<div class="rem_no2">--%>'
-mzd+='<%--<div class="rem_allimg">--%>'
-mzd+='<%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>'
-mzd+='<%--class="rem_img">--%>'
-mzd+='<%--<p class="all_p"> 你暂时没有未处理的简历</p>--%>'
-mzd+='<%--</div>--%>'
-mzd+='<%--</div>--%>'
+mzd+='<div class="rem_no2">'
+mzd+='<div class="rem_allimg">'
+mzd+='<img src="'+path+'dist/foreEnd3/img/sfs.png" alt="">'
+mzd+='<class="rem_img">'
+mzd+='<p class="all_p"> 你暂时没有未处理的简历</p>'
+mzd+='</div>'
+mzd+='</div>'
 
 
 function Jl(){
@@ -172,6 +172,7 @@ Public.prototype.fy_sj=function (parent,pages,page,obj){        //参数1父级
     })
 }
 Public.prototype.mzd=function (parent){
+    $(parent).find('.rem_no2').remove();
     $(parent).find('.tbody').css({"display":"none"});
     $(parent).find('.rem_bb').css({"display":"none"}).after(mzd);
 }
@@ -228,7 +229,6 @@ Jlrzp.prototype.upload=function (){     //初始化加载
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
         This.fy_sj('#rem_one',jl.pages,jl.page,This);                       //分页事件完成
         This.qx('#rem_one');                                                //加载全选事件以及单选完成
-
     }
     This.sb=function (){                    //没查到数据执行的函数
         This.mzd('#rem_one');                       //没找到执行的
