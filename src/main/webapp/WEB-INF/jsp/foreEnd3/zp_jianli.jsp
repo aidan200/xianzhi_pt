@@ -331,8 +331,27 @@
         <a href="#0" class="cd-popup-closeh cmd_closeh fa fa-remove"></a>
     </div>
 </div>
+
+<%--遮罩--%>
+<div class="zhe">
+    <a href="###" class="all_close">我知道了 </a>
+    <button>akfjhajkfadjkf</button>
+</div>
+<%----%>
 </body>
 </html>
+
+<script>
+    jQuery(document).ready(function ($) {
+        //close popup
+        $('.zhe').on('click', function (event) {
+            if ($(event.target).is('.all_close') || $(event.target).is('.zhe')) {
+                event.preventDefault();
+                $(this).addClass('nozhe');
+            }
+        });
+    });
+</script>
 <script>
     function ysChange(ys) {
         var dd = {resumeId: ID, resumeYm: ys.value};

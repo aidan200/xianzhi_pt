@@ -7,6 +7,9 @@
     padding: 0 0;
 
 }
+textarea{
+    resize: none;
+}
 
 .zp_zwxq_cont_left{
 

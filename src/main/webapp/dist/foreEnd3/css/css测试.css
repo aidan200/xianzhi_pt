@@ -15,6 +15,7 @@ body {
 a {
     text-decoration: none;
     color: #222222;
+    cursor: pointer;
 }
 
 a:link {
@@ -43,6 +44,10 @@ body a {
 
 ul {
     list-style-type: none;
+}
+
+textarea {
+    resize: none;
 }
 
 /*!*----------------------导航---------------------------*!*/
@@ -2829,7 +2834,7 @@ ul {
 /**/
 .com_com {
     width: 225px;
-    height: auto;
+    height: 227px;
     border: 1px dashed #cccccc;
     display: inline-block;
     margin: 5px;
@@ -6091,8 +6096,6 @@ footer {
     float: right;
 }
 
-
-
 /*-----------------------------------一堆弹出框----------------------------------------*/
 
 /*只带确定的弹出框*/
@@ -6325,7 +6328,8 @@ footer {
     -o-transform: scale(1);
     transform: scale(1);
 }
-.tan3_input{
+
+.tan3_input {
     width: 200px;
     height: 30px;
     border: 1px solid #c0c0c0;

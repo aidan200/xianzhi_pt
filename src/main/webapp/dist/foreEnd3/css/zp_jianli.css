@@ -3,7 +3,9 @@
     margin: 0;
     padding: 0;
 }
-
+textarea{
+    resize: none;
+}
 body {
     font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
 
@@ -1917,4 +1919,27 @@ ul, li {
 .qwe_right{
     width: 80%;
     float: left;
+}
+
+/*----------遮罩------------*/
+.zhe{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999999;
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+.nozhe{
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
 }
