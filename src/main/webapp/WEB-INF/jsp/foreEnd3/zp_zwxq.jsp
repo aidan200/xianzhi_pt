@@ -49,7 +49,7 @@
                         </c:otherwise>
                     </c:choose>
                     <span>72小时反馈</span>
-                    <a href="">我感兴趣 请联系我</a></h3>
+                    <a href="###" class="newtan2">我感兴趣 请联系我</a></h3>
                 <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span><a href="" s>收藏</a></p>
                 <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>${xzPostion.postionAge}岁</span></div>
             </div>
@@ -226,6 +226,20 @@
 
 
 <jsp:include page="behindforeEnd.jsp"/>
+
+<div class="newpop2" role="alert">
+    <div class="newpop2_container">
+        <div class="allnew2_tan">
+            你打我呀打我呀打我呀
+        </div>
+        <div>
+            <button class="all_close2">确定</button>
+        </div>
+        <a href="###" class="all_close2 tan_close2 fa fa-remove"></a>
+    </div>
+</div>
+
+<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/tanthree.js"></script>
 <script>
     var postion = {};
     postion.container = "zp_zwxq_dt";
