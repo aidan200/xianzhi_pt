@@ -173,10 +173,11 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</li>'
             str+='<li>'
             if(_self.name!=''&&_self.name!=null){
-                str+='当前城市 <input id="jl_dqcs" value="'+_self.dqcs+'" type="text" class="form-control zp_jianli_input2" placeholder="请选择当前城市" >'
+                str+='当前城市 <input id="jl_dqcs" style="background-color: #ffffff" readonly value="'+_self.dqcs+'" type="text" class="form-control zp_jianli_input2" placeholder="请选择当前城市" >'
             }else{
-                str+='当前城市 <input id="jl_dqcs" value="" type="text" class="form-control zp_jianli_input2" placeholder="请选择当前城市" >'
+                str+='当前城市 <input id="jl_dqcs" style="background-color: #ffffff" readonly value="" type="text" class="form-control zp_jianli_input2" placeholder="请选择当前城市" >'
             }
+            str+='<em class="em666" id="jbzl_dd"></em>'
             str+='</li>'
             str+='</ul>'
             str+='<button type="button" id="zp_jianli_bd_1_qd" class="allyes">确定</button>'
@@ -184,6 +185,7 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_top2_top').after(str);              //插入
+            didian("#jbzl_dd","#jl_dqcs")
             if(qq==0){              //如果没有行业改变下样式
                 $('#dqhy_1').css({
                     "height":"30px",
@@ -774,11 +776,11 @@ obj_zyyx.prototype.bindingSJ=function (){
             str+='</li>'
             str+='<li>'
             if(_self.qwdd!=''&&_self.qwdd!=null){
-                str+='期望地点 <input id="jl_qwdd" value="'+_self.qwdd+'" type="text" class="form-control zp_jianli_zl_3_input1" placeholder="请输入期望地点">'
+                str+='期望地点 <input id="jl_qwdd"  readonly style="background-color: #ffffff"  value="'+_self.qwdd+'" type="text" class="form-control zp_jianli_zl_3_input1" placeholder="请输入期望地点">'
             }else{
-                str+='期望地点 <input id="jl_qwdd" value="" type="text" class="form-control zp_jianli_zl_3_input1" placeholder="请输入期望地点">'
+                str+='期望地点 <input id="jl_qwdd"  readonly style="background-color: #ffffff" value="" type="text" class="form-control zp_jianli_zl_3_input1" placeholder="请输入期望地点">'
             }
-            str+='<em></em>'
+            str+='<em id="zyyx_qwdd"></em>'
             str+='</li>'
             str+='<li id="jl_qwnx">'
             if(_self.qwnx[0]!=''&&_self.qwnx[0]!=null){
@@ -808,6 +810,8 @@ obj_zyyx.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_zyyx_yl').after(str);
+            didian("#zyyx_qwdd","#jl_qwdd")
+
             //先知文字
             $('#_zwnx_').unbind().on('keyup',function (){
                 var num_kg=number('#_zwnx_');
@@ -1278,8 +1282,9 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='</li>'
                 str+='<li>'
                 str+='工作地点'
-                str+='<div class="zp_jianli_zl_4_div1">'
-                str+='<input type="text" id="gzdd___" value="'+_self.obj_s[index].gzdd+'" class="gzdd_input form-control zp_jianli_zl_4_input2 "  placeholder="请输入工作地点">'
+                str+='<div class="zp_jianli_zl_4_div1" style="position: relative">'
+                str+='<input type="text" id="gzdd___" readonly style="background-color: #ffffff" value="'+_self.obj_s[index].gzdd+'" class="gzdd_input form-control zp_jianli_zl_4_input2 "  placeholder="请输入工作地点">'
+                str+='<em class="em666" id="gzjl_gzdd" style="left:150px"></em>'
                 str+='下属人数'
                 if(_self.obj_s[index].xxrs!=''&&_self.obj_s[index].xxrs!=null){
                     str+='<input type="text" id="xxrs__" value="'+_self.obj_s[index].xxrs+'" class="ssrs_input form-control zp_jianli_zl_4_input3" placeholder="请输入下属人数">'
@@ -1291,7 +1296,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='<li>'
                 str+='任职时间'
                 str+='<div class="zp_jianli_zl_4_div2" style="position: relative" >'
-                str+='<input class="form-control rzsh_input " id="rzsj__" value="'+getNowFormatDate(_self.obj_s[index].rzsj)+'" placeholder="请输入任职时间" readonly style="background-color: #ffffff"> '
+                str+='<input class="form-control rzsh_input "  id="rzsj__" value="'+getNowFormatDate(_self.obj_s[index].rzsj)+'" placeholder="请输入任职时间" readonly style="background-color: #ffffff"> '
                 str+='<em class="em3"  style="left: 150px"></em>'
                 str+='&nbsp;&nbsp;离职时间'
                 str+='<input class="form-control pull-right lzsj_input" id="lzsj__" value="'+getNowFormatDate(_self.obj_s[index].lzsj)+'"placeholder="请输入离职时间" readonly style="background-color: #ffffff"> '
@@ -1311,6 +1316,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='</div>'
                 $('#gzjl').siblings('div').eq(index).after(str);  //插入
 
+                didian("#gzjl_gzdd","#gzdd___")
                 $('#xxrs__').unbind().on('keyup',function (){
                     var num_kg=number('#xxrs__');
                     if(num_kg){
@@ -1549,8 +1555,9 @@ obj_gzjl.prototype.bindingSJ=function (){
             str+='</li>'
             str+='<li>'
             str+='工作地点'
-            str+='<div class="zp_jianli_zl_4_div1">'
-            str+='<input type="text" id="gzdd___"  class="form-control zp_jianli_zl_4_input2 "  placeholder="请输入工作地点"  >'
+            str+='<div class="zp_jianli_zl_4_div1" style="position: relative">'
+            str+='<input type="text" id="gzdd___" readonly style="background-color: #ffffff" class="form-control zp_jianli_zl_4_input2 "  placeholder="请输入工作地点"  >'
+            str+='<em class="em666" id="gzjl_gzdd" style="left:150px"></em>'
             str+='下属人数'
             str+='<input type="text"   id="xxrs__" class="form-control zp_jianli_zl_4_input3"  placeholder="请输入下属人数">'
             str+='</div>'
@@ -1577,6 +1584,7 @@ obj_gzjl.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $(this).before(str)//插入简历的空白模板
+            didian("#gzjl_gzdd","#gzdd___")
             $('#xxrs__').unbind().on('keyup',function (){
                 var num_kg=number('#xxrs__');
                 if(num_kg){
@@ -3164,7 +3172,6 @@ obj_gssc.prototype.bindingSJ=function (){
 
 }
 //屏蔽公司
-
 function flashResume() {                    //刷新简历
     $.ajax({
         type:"get",
@@ -3255,6 +3262,11 @@ $(function (){                              //入口函数
      obj__gssc.init();
 
     flashResume2();                           //加载完成度
+
+    didian(".btn1","#intpu1",function (){
+
+    })
+
 });
 
 
