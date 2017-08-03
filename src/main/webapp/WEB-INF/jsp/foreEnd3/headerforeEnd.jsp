@@ -51,12 +51,14 @@
                             <li class="login1">
                                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
                                      class="allheader">
+                                <span style="width: 7px;height: 7px;background-color: red;display:inline-block;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
                                 <ul class="head-menu">
                                     <li class="head_new2">
                                         <span class="fa fa-user" style="color: #666"></span>
                                         <span><a href="">郑秀妍</a></span>
                                         <span><a href="${pageContext.request.contextPath}/XzLogin/ExitUser.do" style="float: right">注销</a></span>
                                     </li>
+                                    <li><span class="head_new"></span><a href="#" class="fa fa-envelope"> (<span>10</span>)</a></li>
                                     <li><span class="head_new"></span><a href="#">我的简历</a></li>
                                     <li><span class="head_new"></span><a href="#">查看职位信息</a></li>
                                     <li><span class="head_new"></span><a href="#">balabala</a></li>
