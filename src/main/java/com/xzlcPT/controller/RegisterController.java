@@ -103,7 +103,7 @@ public class RegisterController extends BaseController {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    mv.addObject("msg","发送失败巴拉巴拉");
+                    mv.addObject("msg","发送失败,请检查邮箱");
                 }
         }
         return mv;
