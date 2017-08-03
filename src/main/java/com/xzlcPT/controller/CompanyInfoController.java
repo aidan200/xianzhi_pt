@@ -372,4 +372,21 @@ public class CompanyInfoController {
         mv.addObject("clist",clist);
         return mv;
     }
+    //查询关注状态
+    @ResponseBody
+    @RequestMapping("selFollowState.do")
+    public Map selFollowState(@ModelAttribute("userLogin") XzLogin userLogin,Long companyId){
+        Map map=new HashMap();
+        map.put("memberId",userLogin.getMember().getMemberId());
+        map.put("companyId",companyId);
+        XzCompany xzCompany=companyService.selFollowState(map);
+        Map map1=new HashMap();
+        if(xzCompany.getFiled1().equals("1")){
+            map1.put("msg","ok");
+        }else {
+            map1.put("msg","err");
+        }
+        return map1;
+    }
+
 }

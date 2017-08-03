@@ -186,6 +186,9 @@
     company_intro, company_scale, company_nature, licence, company_state, is_listing,
     domain, skill, financing, delete_company_date, filed1, filed2, filed3, delete_falt
   </sql>
+  <sql id="recommendList">
+    company_id,company_name,company_picture,company_space
+  </sql>
   <sql id="selCompanyInfoList">
     c.company_id, c.login_id, c.company_name, c.company_city, c.company_space, c.company_location, c.company_y, c.company_x, c.company_phone, c.company_picture,
     c.company_intro, c.company_scale, c.company_nature, c.licence, c.company_state, c.is_listing,
@@ -651,5 +654,13 @@
     </if>
     GROUP BY c.company_id,p.postion_id
   </select>
-
+  <select id="selFollowState" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select count(follow_id)as filed1 from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
+     and company_id=#{companyId,jdbcType=BIGINT}
+  </select>
+  <select id="selectRecommend" resultMap="BaseResultMap">
+    SELECT
+    <include refid="recommendList"/>
+    from xz_company where company_id in(SELECT company_id from xz_company_recommend)
+  </select>
 </mapper>

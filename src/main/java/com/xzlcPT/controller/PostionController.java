@@ -214,33 +214,43 @@ public class PostionController extends BaseController{
         return mv;
     }
     //收藏职位
+    @ResponseBody
     @RequestMapping("insertCollect.do")
-    public ModelAndView insertCollect(Integer postionId,Integer memberId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public Map insertCollect(Integer postionId,Integer memberId){
         Date collectTime=new Date();
         Map map=new HashMap();
         map.put("postionId",postionId);
         map.put("memberId",memberId);
         map.put("collectTime",collectTime);
         int i=postionService.insertCollect(map);
-        mv.addObject("i",i);
-        return mv;
+        if(i==1){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
     }
     //删除收藏
+    @ResponseBody
     @RequestMapping("deleteCollect.do")
-    public ModelAndView deleteCollect(Long collectId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public Map deleteCollect(Long collectId){
         int i=postionService.deleteCollect(collectId);
-        mv.addObject("i",i);
-        return mv;
+        Map map=new HashMap();
+        if(i==1){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
     }
     //查询收藏
+    @ResponseBody
     @RequestMapping("selectCollect.do")
-    public ModelAndView selectCollect(Long memberId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+    public Map selectCollect(Long memberId){
         List<XzPostion> list1=postionService.selectCollect(memberId);
-        mv.addObject("list1",list1);
-        return mv;
+        Map map=new HashMap();
+        map.put("list1",list1);
+        return map;
     }
     //修改投递状态(审核中)
     @ResponseBody
@@ -290,5 +300,20 @@ public class PostionController extends BaseController{
         map.put("i",i);
         return map;
     }
-
+    //查询是否收藏
+    @ResponseBody
+    @RequestMapping("selCollectState.do")
+    public Map selCollectState(@ModelAttribute("userLogin") XzLogin userLogin,Long postionId){
+        Map map=new HashMap();
+        map.put("memberId",userLogin.getMember().getMemberId());
+        map.put("postionId",postionId);
+        XzPostion xzPostion=postionService.selCollectState(map);
+        Map map1=new HashMap();
+        if(xzPostion.getFiled1().equals("1")){
+            map1.put("msg","ok");
+        }else {
+            map1.put("msg","err");
+        }
+        return map1;
+    }
 }
