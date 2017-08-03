@@ -140,15 +140,11 @@
     <result column="skill" jdbcType="VARCHAR" property="skill" />
     <result column="financing" jdbcType="VARCHAR" property="financing" />
     <result column="delete_company_date" jdbcType="DATE" property="deleteCompanyDate" />
-    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
-    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
     <result column="pcount" jdbcType="INTEGER" property="pcount"/>
     <collection property="products" ofType="com.xzlcPT.bean.XzCompanyProduct">
       <id column="product_id" jdbcType="BIGINT" property="productId" />
       <result column="product_Intro" jdbcType="VARCHAR" property="productIntro" />
       <result column="product_url" jdbcType="VARCHAR" property="productUrl" />
-      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-      <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
     </collection>
     <collection property="welfares" ofType="com.xzlcPT.bean.XzCompanyWelfare">
       <id column="welfare_id" jdbcType="BIGINT" property="welfareId" />
@@ -172,19 +168,11 @@
       <result column="postion_age" jdbcType="VARCHAR" property="postionAge" />
       <result column="postion_description" jdbcType="VARCHAR" property="postionDescription" />
       <result column="postion_welfare" jdbcType="VARCHAR" property="postionWelfare" />
-      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-      <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
-      <result column="delete_flat" jdbcType="INTEGER" property="deleteFlat" />
-      <result column="filed1" jdbcType="VARCHAR" property="filed1" />
-      <result column="filed2" jdbcType="VARCHAR" property="filed2" />
-      <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     </collection>
     <collection property="miens" ofType="com.xzlcPT.bean.XzCompanyMien">
       <id column="mien_id" jdbcType="BIGINT" property="mienId" />
       <result column="mien_Intro" jdbcType="VARCHAR" property="mienIntro" />
       <result column="mien_url" jdbcType="VARCHAR" property="mienUrl" />
-      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-      <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
     </collection>
     <collection property="skills" ofType="com.xzlcPT.bean.XzCompanySkill">
       <id column="skill_id" jdbcType="BIGINT" property="skillId"/>
@@ -219,13 +207,13 @@
     c.company_id, c.login_id, c.company_name,c.company_city, c.company_space, c.company_location, c.company_y, c.company_x, c.company_phone, c.company_picture,
     c.company_intro, c.company_scale, c.company_nature, c.licence, c.company_state, c.is_listing,
     c.domain, c.skill, c.financing,
-    p.product_id,p.company_id, p.product_Intro, p.product_url,
-    w.welfare_id,w.company_id,w.welfare_name,
+    p.product_id, p.product_Intro, p.product_url,
+    w.welfare_id, w.welfare_name,
     f.field_id, f.field_name, f.field_type,
-    s.postion_id,s.company_id,s.postion_name,s.postion_company,s.postion_ym,s.postion_mm,s.postion_space,s.postion_time,
-    s.postion_education,s.postion_exp,s.postion_age,s.postion_description,s.postion_welfare,s.create_time,s.delete_time,
-    m.mien_id,m.company_id, m.mien_Intro, m.mien_url,
-    k.skill_id,k.company_id,k.skill_name
+    s.postion_id, s.postion_name,s.postion_company,s.postion_ym,s.postion_mm,s.postion_space,s.postion_time,
+    s.postion_education,s.postion_exp,s.postion_age,s.postion_description,s.postion_welfare,
+    m.mien_id, m.mien_Intro, m.mien_url,
+    k.skill_id,k.skill_name
 </sql>
 
   <select id="selCompanyInfo" resultMap="CompanyInfo" parameterType="java.lang.Long">

@@ -3165,7 +3165,7 @@ obj_gssc.prototype.bindingSJ=function (){
 }
 //屏蔽公司
 
-function flashResume() {                    //简历完成度
+function flashResume() {                    //刷新简历
     $.ajax({
         type:"get",
         data: {resumeId:ID},
@@ -3176,7 +3176,9 @@ function flashResume() {                    //简历完成度
                 var date = new Date(data.resumeFlash);//刷新简历时间
                 var completion = data.resumeCompletion;//完成度
                 $('.zp_jianli_wcd .zl_wcd').html(completion);
-                 $('.zp_jianli_wcd div').css({"width":completion+"%"})
+                $('.zp_jianli_wcd div').css({"width":completion+"%"})
+                $('#jl_wcd').html(completion)
+                $('#js_sxsj').html(getNowFormatDateSS(date))
             }
 
         },error:function (){ //报错执行的
@@ -3185,7 +3187,7 @@ function flashResume() {                    //简历完成度
 
     })
 }
-function flashResume2(){
+function flashResume2(){  //查看简历完成度
     $.ajax({
         type:"get",
         data: {resumeId:ID},

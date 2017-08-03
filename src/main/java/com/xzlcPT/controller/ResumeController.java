@@ -30,7 +30,7 @@ public class ResumeController extends BaseController {
     public ModelAndView goEditResume(@ModelAttribute("userLogin")XzLogin userLogin){
         ModelAndView mv = new ModelAndView("foreEnd3/zp_jianli");
         XzResume resume = resumeService.selectByMemberId(userLogin.getMember().getMemberId());
-        mv.addObject("resumeId",resume.getResumeId());
+        mv.addObject("resume",resume);
         return mv;
     }
 

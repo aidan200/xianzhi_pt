@@ -12,12 +12,13 @@ svn_btn+='</svg>'
 svn_btn+='</i>'
 
 var mzd=''      //抱歉没找到
-mzd+='<div class="comh_no2" style="display: block">'
-mzd+='<div class="pom_allimg">'
-mzd+='<img src="'+path+'dist/foreEnd3/img/sfs.png" alt="" class="rem_img">'
-mzd+='<p class="all_p">抱歉没有找到符合条件的职位</p>'
-mzd+='</div>'
-mzd+='</div>'
+mzd+='<%--<div class="rem_no2">--%>'
+mzd+='<%--<div class="rem_allimg">--%>'
+mzd+='<%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>'
+mzd+='<%--class="rem_img">--%>'
+mzd+='<%--<p class="all_p"> 你暂时没有未处理的简历</p>--%>'
+mzd+='<%--</div>--%>'
+mzd+='<%--</div>--%>'
 
 
 function Jl(){
@@ -55,8 +56,8 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     str+='<tr class="pom_h" data-id="'+data.resumeList[i].resumeId+'">'
                     str+='<td>'
                     str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
-                    str+='<input type="checkbox" id="rem101"'+i+' class="choose2">'
-                    str+='<label for="rem101"+i style="font-weight: normal;margin-bottom: 0">'
+                    str+='<input type="checkbox" id="'+tbody+i+'" class="choose2">'
+                    str+='<label for="'+tbody+i+'" style="font-weight: normal;margin-bottom: 0">'
                     str+=svn_btn
                     str+='</label>'
                     str+='</div>'
@@ -103,6 +104,14 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
         }
     })
 }
+Public.prototype.seekCont=function (parent){
+    var parent=$(parent).find('.rem_cen');
+    var _public_ssk=jl;                                       //创建搜索对象
+    _public_ssk.zw=parent.find('select').eq(0).val()          //获取到职位
+    _public_ssk.xl=parent.find('select').eq(1).val()
+    _public_ssk.xlq=parent.find('input[type="checkbox"]:checked').length ;//如果是0代表不选如果是1代表选中
+    return _public_ssk
+}
 Public.prototype.fy=function (pages,page){  //总页数  当前页数
     var str=''
         str+='<div class="zp_botv">'
@@ -123,26 +132,29 @@ Public.prototype.fy=function (pages,page){  //总页数  当前页数
         str+='</div>'
         return str              //返回
 }
-Public.prototype.fy_sj=function (parent,pages,page){        //参数1父级
+Public.prototype.fy_sj=function (parent,pages,page,obj){        //参数1父级
+
+    var This=this;
     var aa=$(parent).find('.zp_botv a')
     $(parent).find('.zp_botv a').each(function (i,e){
+
         if(i==0&&page==1){              //样式
             $(e).css({"color":"#D8CDCA"})
         }else if(i==0&&page!=1){
             $(e).css({"color":"#666666"})
         }
-        if(i==0&&page!=1){                         //上一页事件(如果是第一页不设置事件)
+        if(i==0){                         //上一页事件(如果是第一页不设置事件)&&page!=1
             $(e).unbind().on('click',function (){
-
-               page-=1;                         //减少1页
-
+                var data=This.seekCont(parent);
+                data.page-=1;                         //减少1页
+                obj.huoqu(parent,data,obj.cg,obj.sb);  //把自己给传过来
             })
         }
         if(i!=0&&i!=aa.length-1&&i!=page){   //点击选页(当前页不设置事件)
             $(e).unbind().on('click',function (){
-
+                var data=This.seekCont(parent);
                 data.page=i;                          //设置你点的位置
-
+                obj.huoqu(parent,data,obj.cg,obj.sb);  //把自己给传过来
             })
         }
         if(i==aa.length-1&&pages==page){              //样式
@@ -152,40 +164,46 @@ Public.prototype.fy_sj=function (parent,pages,page){        //参数1父级
         }
         if(i==aa.length-1&&pages!=page){   //下一页(如果是最后一页不设置时间)
             $(e).unbind().on('click',function (){
-
+                var data=This.seekCont(parent);
                 data.page+=1;                         //增加1页
-
+                obj.huoqu(parent,data,obj.cg,obj.sb);  //把自己给传过来
             })
         }
 
     })
 }
+Public.prototype.mzd=function (parent){
+    $(parent).find('.tbody').css({"display":"none"});
+    $(parent).find('.rem_bb').css({"display":"none"}).after(mzd);
+}
+Public.prototype.zdl=function (parent){
+    $(parent).find('.tbody').css({"display":"block"});
+    $(parent).find('.rem_bb').css({"display":"block"}).after(mzd);
+}
+
+
 
 
 function Jlrzp(){                   //经理人应聘
     this.DOM={
-        ssk:$('#rem_one .rem_cen'),     //搜索框
-        parent:$('#rem_one'),
+        parent:$('#rem_one')
     }
 }
 Jlrzp.prototype=new Public();   //继承父类原型方法
 Jlrzp.prototype.upload=function (){     //初始化加载
     var This=this;
-    var data={
-        companyId:companyId,
-        zw:This.DOM.ssk.find('select').eq(0).val(),           //获取到职位
-        xl:This.DOM.ssk.find('select').eq(1).val(),          //获取到学历
-        xlq:This.DOM.ssk.find('input[type="checkbox"]:checked').length , //如果是0代表不选如果是1代表选中
-    }
-    function cg(){   //成功执行函数
+    var data=This.seekCont('#rem_one');                                 //获取到条件信息
+    This.cg=function (){   //成功执行函数
+
+        $('#rem_one').find('.zp_botv').remove();                           //删除掉之前的所有分页
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
-        This.fy_sj('#rem_one',jl.pages,jl.page)                            //分页时间完成
+        This.fy_sj('#rem_one',jl.pages,jl.page,This);                       //分页事件完成
 
     }
-    function sb(){  //没查到数据执行的函数
-
+    This.sb=function (){  //没查到数据执行的函数
+        This.mzd('#rem_one');                       //没找到执行的
     }
-    This.huoqu('#rem_one',data,cg,sb);    //调用加载方法（参数1 选择给谁加，参数2 参数)
+    This.huoqu('#rem_one',data,This.cg,This.sb);    //调用加载方法（参数1 选择给谁加，参数2 参数)
 }
 
 

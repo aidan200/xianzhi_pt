@@ -49,9 +49,9 @@ public class CompanyInfoController {
     }
     //按公司id查询公司详情
     @RequestMapping("selCompanyInfo.do")
-    public ModelAndView selCompanyInfo(Long companyId){
+    public ModelAndView selCompanyInfo(@ModelAttribute("userLogin") XzLogin userLogin){
         ModelAndView mv = new ModelAndView("foreEnd3/zp_gsxq_bd");
-        XzCompany xzCompany = companyService.selCompanyInf(companyId);
+        XzCompany xzCompany = companyService.selCompanyInf(userLogin.getCompany().getCompanyId());
         System.out.println(xzCompany);
         mv.addObject("company",xzCompany);
         return mv;

@@ -9,6 +9,7 @@
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
 <%@taglib prefix="j" uri="/xianzhipt/jsonTag" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -19,7 +20,7 @@
 
     <script>
         var path = '${pageContext.request.contextPath}/';     //全局路径
-        var ID = '${resumeId}';                                          //ID
+        var ID = '${resume.resumeId}';                                          //ID
         var memberId;
         var wanchengdu;                                         //完成度
 
@@ -49,8 +50,8 @@
                         <div></div>
                     </div>
                     <div class="zp_jianli_yl">
-                        &nbsp;<a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resumeId}" target="_blank">预览</a> &nbsp;<span>|</span> &nbsp;<a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resumeId}">下载</a> &nbsp;<span>|</span> &nbsp;<a
-                            onclick="flashResume2()">刷新</a>
+                        &nbsp;<a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}" target="_blank">预览</a> &nbsp;<span>|</span> &nbsp;<a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}">下载</a> &nbsp;<span>|</span> &nbsp;<a
+                            onclick="flashResume()">刷新</a>
                     </div>
 
                 </div>
@@ -209,8 +210,8 @@
                         <span>求职简历:</span>
                         <div>
                             <select class="form-control" onchange="ysChange(this)">
-                                <option value="0">开放简历</option>
-                                <option value="1">隐藏简历</option>
+                                <option <c:if test="${resume.resumeYm==0}"> selected </c:if> value="0">开放简历</option>
+                                <option <c:if test="${resume.resumeYm==1}"> selected </c:if>value="1">隐藏简历</option>
                             </select>
                         </div>
                     </li>
@@ -260,7 +261,7 @@
                     <p>简&emsp;历</p>
                     <div>
                         <div class="col-lg-7">
-                            <h4><span id="jl_wcd">60</span>%&nbsp;&nbsp;<span id="js_sxsj">06-29&nbsp;13:07</span></h4>
+                            <h4><span id="jl_wcd"></span>%&nbsp;&nbsp;<span id="js_sxsj"></span></h4>
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
@@ -283,14 +284,14 @@
 
                             </div>
                         </li>
-                        <li>
+                        <%--<li>
                             <div class="zp_index_ww1"><span>0</span></div>
                             <div class="zp_index_ww2">
                                 <p><a href=""><span>0</span>家企业HR查看过</a></p>
                                 <p><span>0</span>刷新简历能增加被查看概率</p>
 
                             </div>
-                        </li>
+                        </li>--%>
                     </ul>
                 </div>
                 <div class="zp_index_cont_right_bottom_bottom">
