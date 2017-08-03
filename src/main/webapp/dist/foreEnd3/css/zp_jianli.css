@@ -1071,7 +1071,6 @@ ul, li {
 
 .zp_jianli_zl_7 {
     width: 600px;
-
     margin: 0 auto;
     margin-bottom: 20px;
     background: #ffffff;
@@ -1720,7 +1719,8 @@ ul, li {
     padding-right: 0;
     margin-bottom: 1px;
 }
-.jianli_ul{
+
+.jianli_ul {
     margin-left: 50px;
 }
 
@@ -1880,43 +1880,50 @@ ul, li {
     outline: none;
     display: none
 }
-.jianli_s3{
+
+.jianli_s3 {
     background-color: transparent;
     border: none;
     outline: none;
     display: none;
     margin-left: 10px;
 }
+
 .panel-default > .panel-heading {
     color: #666;
     background-color: #F3F4F5;
-    border:none;
+    border: none;
 }
+
 .panel-heading {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+
 .panel-default {
     border: 1px solid #EEEEEE;
 }
-#jl_wcd{
+
+#jl_wcd {
     font-size: 20px;
     color: #555555;
 }
-.zp_xmjy li:after{
+
+.zp_xmjy li:after {
     clear: both;
     display: block;
     visibility: hidden;
-    height:0;
-    line-height:0;
-    content:".";
+    height: 0;
+    line-height: 0;
+    content: ".";
 }
 
-.qwe_left{
+.qwe_left {
     width: 13%;
     float: left;
 }
-.qwe_right{
+
+.qwe_right {
     width: 80%;
     float: left;
 }
@@ -1933,7 +1940,7 @@ ul, li {
 }
 
 /*----------遮罩------------*/
-.zhe{
+.zhe {
     position: fixed;
     left: 0;
     top: 0;
@@ -1946,11 +1953,84 @@ ul, li {
     -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
     -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
     transition: opacity 0.3s 0s, visibility 0s 0s;
+    overflow-y: visible;
 }
-.nozhe{
+
+.nozhe {
     opacity: 0;
     visibility: hidden;
     -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
     -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
     transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+
+.zhe_all {
+    width: 100%;
+    height: 1000px;
+    position: relative;
+}
+
+/*----------------------*/
+.zhe_every1 {
+    position: absolute;
+    left: 300px;
+    top: 10px;
+}
+
+.zhe_img {
+    width: 150px;
+    height: 150px;
+}
+
+.zhe_d {
+    width: 100px;
+    height: 50px;
+    position: relative;
+    display: inline-block;
+    left: -130px;
+    text-align: center;
+}
+
+.zhe_span {
+    font-size: 18px;
+    color: #FFFFff;
+}
+
+.zhe_many1 {
+    position: absolute;
+    top: 80px;
+    left: 430px;
+}
+
+.zhe_arr1 {
+    width: 80px;
+    height: 80px;
+}
+
+/*------------------------*/
+
+.zhe_every2 {
+    position: absolute;
+    left: 840px;
+    top: 350px;
+}
+
+.zhe_many2 {
+    position: absolute;
+    top: 400px;
+    left: 780px;
+}
+
+.jianli_zhe {
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    left: 600px;
+    top: 550px;
+    background-color: #FFA500;
+    color: #FFFFff;
+    border: none;
+    border-radius: 3px;
+    font-size: 20px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, .2);
 }

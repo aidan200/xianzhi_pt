@@ -3,6 +3,7 @@ package com.xzlcPT.service;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzField;
+import com.xzlcPT.bean.XzPostion;
 
 import java.util.List;
 import java.util.Map;
@@ -37,4 +38,8 @@ public interface XzCompanyService {
     List<XzCompany> selectFollow(Long memberId);
 
     PageBean<XzCompany> selComCount(Integer page,Integer rows,Map map);
+
+    XzCompany selFollowState(Map map);
+
+    List<XzCompany> selectRecommend();
 }

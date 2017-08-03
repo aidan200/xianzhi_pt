@@ -36,9 +36,10 @@ public class PostionSendController extends BaseController{
     //企业职位管理查询
     @ResponseBody
     @RequestMapping("count7.do")
-    public Map count7(Long selId,Integer type){
+    public Map count7(Long selId,Integer type,Integer day){
         Map map = new HashMap();
         Map serachMap = new HashMap();
+        serachMap.put("cday",day);
         if(type==1){
             serachMap.put("companyId",selId);
         }else if (type==2){
@@ -64,6 +65,30 @@ public class PostionSendController extends BaseController{
         map.put("companyId",companyId);
         map.put("sendTime",sendTime);
         int i=postionSendService.insertSelective(map);
+        map = new HashMap();
+        if(i==1){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
+    }
+
+    //查询是否投递
+    @ResponseBody
+    @RequestMapping("selisSend.do")
+    public Map selisSend(@ModelAttribute("userLogin")XzLogin userLogin,Long postionId){
+        XzResume resume = xzResumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        Map map = new HashMap();
+        map.put("resumeId",resume.getResumeId());
+        map.put("postionId",postionId);
+        int i = postionSendService.selisSend(map);
+        map = new HashMap();
+        if(i>0){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
         return map;
     }
 }

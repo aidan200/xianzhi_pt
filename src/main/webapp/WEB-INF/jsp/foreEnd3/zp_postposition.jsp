@@ -194,7 +194,98 @@
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main2'));
 
-    // 指定图表的配置项和数据
+    $(function () {
+        $.ajax({
+            url: '${pageContext.request.contextPath}/PostionSend/count7.do',
+            data: {selId:${resume.resumeId}, type: 2,day:14},
+            dataType: 'json',
+            success: function (data) {
+                var send = data.theCount;
+                var times = new Array();
+                var datas = new Array();
+                var myDate = new Date(); //获取今天日期
+                var myDate2;
+                myDate.setDate(myDate.getDate() - 14);
+                var dateTemp;
+                var dateTemp2;
+                var flag = 1;
+                for (var i = 0; i < 15; i++) {
+                    datas[i] = 0;
+                    dateTemp = (myDate.getMonth() + 1) + "-" + myDate.getDate();
+                    for (var j = 0; j < send.length; j++) {
+                        myDate2 = new Date(send[j].sendTime);
+                        dateTemp2 = (myDate2.getMonth() + 1) + "-" + myDate2.getDate();
+                        if (dateTemp2 == dateTemp) {
+                            datas[i] = send[j].ct;
+                        }
+                    }
+                    times.push(dateTemp);
+                    myDate.setDate(myDate.getDate() + flag);
+                }
+                console.log(times);
+                console.log(datas);
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: ''
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    legend: {
+                        data: ['投递简历次数']
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        //data: ['0718', '0719', '0720', '0721', '0722', '0723', '0724', '0725', '0726', '0727', '0728', '0729', '0730', '0731', '0732',]
+                        data: times
+                    },
+                    yAxis: {
+                        type: 'value',
+                        show: 'false'
+                    },
+                    series: [
+                        {
+                            name: '投递简历次数',
+                            type: 'line',
+                            smooth: 'true',
+                            symbol: 'emptyCircle',
+                            symbolSize: function (v) {
+                                return 8 + v / 100
+                            },
+                            stack: '总量',
+                            data: datas,
+                            //data: [20, 32, 1, 34, 15, 3, 8, 10, 1, 4, 10, 5, 6, 8, 2],
+                            itemStyle: {
+                                normal: {
+                                    color: '#3fb1e3',
+                                    lineStyle: {
+                                        color: '#3fb1e3'
+                                    }
+                                }
+                            },
+                        }
+                    ]
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+
+            }
+        })
+
+    })
+
+
+
+    /*// 指定图表的配置项和数据
     var option = {
         title: {
             text: ''
@@ -245,7 +336,7 @@
 
 
     // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+    myChart.setOption(option);*/
 </script>
 </body>
 </html>

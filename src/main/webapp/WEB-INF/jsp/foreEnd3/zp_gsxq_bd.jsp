@@ -75,6 +75,7 @@
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="companynav.jsp"/>
 <form action="${pageContext.request.contextPath}/CompanyInfo/editCompany.do" id="zp_gsxq_form" method="post" onsubmit="return makeText()"></form>
 
 <section class="container zp_gsxq_bd_cont">
@@ -105,7 +106,7 @@
                         <c:forEach items="${company.fields}" var="f">
                             <div class='skilldiv'>
                                 <div>${f.fieldName}</div>
-                                <a class="skillBtn">x</a>
+                                <a class="skillBtn fa fa-remove"></a>
                                 <input form='zp_gsxq_form' type="hidden" name="domains" value="${f.fieldId}">
                             </div>
                         </c:forEach>
@@ -161,7 +162,7 @@
                         <c:forEach items="${company.welfares}" var="w">
                             <div class='skilldiv'>
                                 <div>${w.welfareName}</div>
-                                <a class="skillBtn">x</a>
+                                <a class="skillBtn fa fa-remove"></a>
                                 <input form='zp_gsxq_form' type="hidden" name="welfaress" value="${w.welfareName}">
                             </div>
                         </c:forEach>

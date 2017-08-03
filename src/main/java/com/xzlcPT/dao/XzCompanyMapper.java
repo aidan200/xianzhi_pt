@@ -46,4 +46,7 @@ public interface XzCompanyMapper {
 
     List<XzCompany> selComCount(Map map);
 
+    XzCompany selFollowState(Map map);
+
+    List<XzCompany> selectRecommend();
 }

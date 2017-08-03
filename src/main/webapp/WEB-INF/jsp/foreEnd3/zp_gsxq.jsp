@@ -17,19 +17,75 @@
 <head>
     <jsp:include page="distforeEnd.jsp"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_gsxq.css">
+
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C"
             type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/mapUtil.js" type="text/javascript"></script>
-    <script>
-        $(document).ready(function () {
-            $(".link-more").click(function () {
-                $(".gsxq_g").css({
-                    "height": "auto",
+
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/lib/jquery/jquery-3.2.1.min.js"></script>
+    <style>
+        *{
+            -webkit-box-sizing: inherit;
+            -moz-box-sizing: inherit;
+            box-sizing: inherit;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+            var slideHeight = 70; // px
+            var defHeight = $('.wrap2').height();
+            if (defHeight >= slideHeight) {
+                $('.wrap2').css('height', slideHeight + 'px');
+                $('.read-more').append('<a href="###" class="new_a">点击展开更多详情</a>');
+                $('.read-more .new_a').click(function () {
+                    var curHeight = $('.wrap2').height();
+                    if (curHeight == slideHeight) {
+                        $('.wrap2').animate({
+                            height: defHeight
+                        }, "normal");
+                        $('.read-more .new_a').html('点击隐藏');
+//                        $('#gradient').fadeOut();
+                    } else {
+                        $('.wrap2').animate({
+                            height: slideHeight
+                        }, "normal");
+                        $('.read-more .new_a').html('点击展开更多详情');
+//                        $('#gradient').fadeIn();
+                    }
+                    return false;
                 });
-            });
+            }
+        });
+        $(function () {
+            var slideHeight1 = 70; // px
+            var defHeight1 = $('.wrap3').height();
+            if (defHeight1 >= slideHeight1) {
+                $('.wrap3').css('height', slideHeight1 + 'px');
+                $('.read-more3').append('<a href="###" class="new_a3">点击展开更多详情</a>');
+                $('.read-more3 .new_a3').click(function () {
+                    var curHeight1 = $('.wrap3').height();
+                    if (curHeight1 == slideHeight1) {
+                        $('.wrap3').animate({
+                            height: defHeight1
+                        }, "normal");
+                        $('.read-more3 .new_a3').html('点击隐藏');
+//                        $('#gradient').fadeOut();
+                    } else {
+                        $('.wrap3').animate({
+                            height: slideHeight1
+                        }, "normal");
+                        $('.read-more3 .new_a3').html('点击展开更多详情');
+//                        $('#gradient').fadeIn();
+                    }
+                    return false;
+                });
+            }
         });
     </script>
+
+
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
@@ -52,17 +108,35 @@
 
     </div>
     <div class="row zp_spxq_cont_cont">
-        <div class="col-md-8">
+        <div style="width: 600px;float: left">
             <div class="zp_gsxq_gsjs">
                 <h2 class="company-title">公司介绍</h2>
-                <p class="profile gsxq_g" data-selector="detail" style="display: block;">
-                    &nbsp; &nbsp;${xzCompany.companyIntro}agfjadbhfjsadbfsjhfbdfdsbvdbzafjdh
-                dsbdafjsdfnjhsdnbvfkjafnkhewagfjhadf bnfkjanfkjasnfkjadfnksadjfndkjfnakjdsfnaksdjfndkjfvndkjasfv
-                dsafkjehfaejfhnkadjnbvfkajdnfvjkadgbvjhfvbzv nznfkjsehkjfhsakjgfkjafgakjefgnaejkf</p>
-                <a class="link-more" href="###" style="display: block;">点击展开更多详情</a>
+                <div class="wrap2">
+                    <div>
+                        ${xzCompany.companyIntro}
+                    </div>
+                </div>
+                <div class="read-more"></div>
             </div>
+
+
             <div class="zp_gsxq_cpjs">
                 <h2 class="product-title">产品介绍</h2>
+
+                <%----%>
+                <div class="wrap3">
+                    <div>
+                        我说还打客服哈困窘安徽科技发货快开始的风景好久发卡机打发卡夫卡开发家安全诶护肤支持女款企鹅
+                        安琪儿移入蓬蓬裙of懒得看VB你你说的你说雅虎搜易1划分及爱好你吓唬俺谁真谁假额你洗涮沈你细化三年
+                        沈设计巴菲赶赴案发hi在你家啊谁家的几番哈哈哈哈哈哈泥塑那你读哈大佛哦i你读书单杀你短信金额你签了了多少Ian
+                        多少钱哈哈和哈佛豪富爱恩和我你你是事故皇后三个球 我说还打客服哈困窘安徽科技发货快开始的风景好久发卡机打发卡夫卡开发家安全诶护肤支持女款企鹅
+                        安琪儿移入蓬蓬裙of懒得看VB你你说的你说雅虎搜易1划分及爱好你吓唬俺谁真谁假额你洗涮沈你细化三年
+                        沈设计巴菲赶赴案发hi在你家啊谁家的几番哈哈哈哈哈哈泥塑那你读哈大佛哦i你读书单杀你短信金额你签了了多少Ian
+                    </div>
+                </div>
+                <div class="read-more3"></div>
+                <%----%>
+
                 <c:forEach var="p1" items="${xzCompany.products}">
                     <dl class="clearfix" style="display: block;">
                         <dt><img src="https://image0.lietou-static.com/img/57d2632962f0550b9450e1d706a.jpg" alt=""></dt>
@@ -71,8 +145,13 @@
                         </dd>
                     </dl>
                 </c:forEach>
+
                 <a class="link-more" href="javascript:;" style="display: block;">点击展开更多详情</a>
             </div>
+
+
+
+
             <form id="f1" action="${pageContext.request.contextPath}/CompanyInfo/selectByConditions.do">
                 <div class="zp_gsxq_zpzw">
                     <h2>招聘职位<span>&nbsp;( 共${xzCompany.pcount}个 )</span></h2>
@@ -93,8 +172,8 @@
                             <input type="text" name="postionName" class="form-control" placeholder="职位名称"
                                    value="${xzPostion.postionName}">
                         </div>
-                        <div class="zp_gsxq_zpzw_left" style="width:auto; float: right; margin-right: 0">
-                            <button type="button" class="btn btn-primary" onclick="sel()">确定</button>
+                        <div class="zp_gsxq_zpzw_left" style="width:auto; float: left; margin-left: 20px">
+                            <button type="button" class="zp_but" onclick="sel()">确定</button>
                         </div>
                     </div>
                     <hr>
@@ -137,7 +216,7 @@
             </form>
         </div>
 
-        <div class="col-md-4 zp_spxq_cont_right" style=" padding-left: 20px;">
+        <div class="zp_spxq_cont_right" style="width: 300px;float: left">
             <div class="zp_spxq_cont_right_cont">
                 <div class="zp_spxq_cont_right_top">
                     <h2 class="base-title relative">投递查看
@@ -201,8 +280,9 @@
     </div>
 </section>
 
-
 <jsp:include page="behindforeEnd.jsp"/>
+
+
 <script>
     function pToSub(page) {
         var infpage = parseInt(document.getElementById("infPage").value);

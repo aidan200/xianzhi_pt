@@ -51,7 +51,11 @@
                         <div></div>
                     </div>
                     <div class="zp_jianli_yl">
-                        &nbsp;<a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}" target="_blank">预览</a> &nbsp;<span>|</span> &nbsp;<a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}">下载</a> &nbsp;<span>|</span> &nbsp;<a
+                        &nbsp;<a
+                            href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}"
+                            target="_blank">预览</a> &nbsp;<span>|</span> &nbsp;<a
+                            href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}">下载</a>
+                        &nbsp;<span>|</span> &nbsp;<a
                             onclick="flashResume()">刷新</a>
                     </div>
 
@@ -244,7 +248,8 @@
                                                                                   style="color: #3d9ccc"></span> 取消</button>
                                     <input id="gs_ssk" type="text" style="display: none;padding-left: 10px">
                                     <div id="gs_cont" style="display:none;"></div>
-                                    <button id="qr" type="button" class="jianli_s3"><span class="fa fa-check" style="color: #fc6866"></span>确认</button></span>
+                                    <button id="qr" type="button" class="jianli_s3"><span class="fa fa-check"
+                                                                                          style="color: #fc6866"></span>确认</button></span>
                                     <div id="sy">
                                         <ul class="jianli_ul" style="margin-left: 48px">
 
@@ -266,10 +271,14 @@
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
-                                <li><a href=""><span class="fa fa-eye" style="color: rgba(128,128,128,0.91)"></span></a></li>
-                                <li><a href=""><span class="fa fa-download" style="color: rgba(128,128,128,0.91)"></span></a></li>
-                                <li><a href=""><span class="fa fa-refresh" style="color: rgba(128,128,128,0.91)"></span></a></li>
-                                <li><a href=""><span class="fa fa-pencil" style="color: rgba(128,128,128,0.91)"></span></a></li>
+                                <li><a href=""><span class="fa fa-eye" style="color: rgba(128,128,128,0.91)"></span></a>
+                                </li>
+                                <li><a href=""><span class="fa fa-download"
+                                                     style="color: rgba(128,128,128,0.91)"></span></a></li>
+                                <li><a href=""><span class="fa fa-refresh" style="color: rgba(128,128,128,0.91)"></span></a>
+                                </li>
+                                <li><a href=""><span class="fa fa-pencil" style="color: rgba(128,128,128,0.91)"></span></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -418,10 +427,31 @@
 
 <%--遮罩--%>
 <div class="zhe">
-    <a href="###" class="all_close">我知道了 </a>
-    <button>akfjhajkfadjkf</button>
+    <div class="zhe_all">
+        <div class="zhe_every1">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/cir2.png" alt="" class="zhe_img">
+            <div class="zhe_d">
+                <span class="zhe_span">完善简历</span>
+            </div>
+        </div>
+        <div class="zhe_many1">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr1.png" alt="" class="zhe_arr1">
+        </div>
+
+        <div class="zhe_every2">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/cir2.png" alt="" class="zhe_img">
+            <div class="zhe_d"><span class="zhe_span">必填的</span></div>
+        </div>
+        <div class="zhe_many2">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
+        </div>
+
+        <button class="jianli_zhe">我知道了</button>
+    </div>
 </div>
 <%----%>
+
+
 </body>
 </html>
 
@@ -429,7 +459,7 @@
     jQuery(document).ready(function ($) {
         //close popup
         $('.zhe').on('click', function (event) {
-            if ($(event.target).is('.all_close') || $(event.target).is('.zhe')) {
+            if ($(event.target).is('.jianli_zhe') || $(event.target).is('.zhe')) {
                 event.preventDefault();
                 $(this).addClass('nozhe');
             }
