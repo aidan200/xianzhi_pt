@@ -75,6 +75,7 @@
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="companynav.jsp"/>
 <form action="${pageContext.request.contextPath}/CompanyInfo/editCompany.do" id="zp_gsxq_form" method="post" onsubmit="return makeText()"></form>
 
 <section class="container zp_gsxq_bd_cont">
