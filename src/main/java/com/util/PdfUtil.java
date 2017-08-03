@@ -22,7 +22,7 @@ public class PdfUtil {
         PdfPCell cell1;
         File file = null;
         //String fileName = "tttest.pdf";
-        File outFile = new File(request.getServletContext().getRealPath("/pdf/"+fileName));
+        File outFile = new File(request.getServletContext().getRealPath("/pdf/1"+fileName));
         try {
             // 第一个参数是页面大小。接下来的参数分别是左、右、上和下页边距。
             Document document = new Document(PageSize.A4, 0, 0, 0, 0);
@@ -397,14 +397,14 @@ public class PdfUtil {
 
             Image img = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/LOGO2.png"));
             //添加水印
-            imageWatermark(request.getServletContext().getRealPath("/pdf/"+fileName),
-                    request.getServletContext().getRealPath("/pdf/1"+fileName),img);
+            imageWatermark(request.getServletContext().getRealPath("/pdf/1"+fileName),
+                    request.getServletContext().getRealPath("/pdf/"+fileName),img);
             //删除未加水印的简历
-            File ff = new File(request.getServletContext().getRealPath("/pdf/"+fileName));
+            File ff = new File(request.getServletContext().getRealPath("/pdf/1"+fileName));
             if(ff.exists()){
                 ff.delete();
             }
-            file = new File(request.getServletContext().getRealPath("/pdf/1"+fileName));
+            file = new File(request.getServletContext().getRealPath("/pdf/"+fileName));
         } catch (Exception e) {
             e.printStackTrace();
         }

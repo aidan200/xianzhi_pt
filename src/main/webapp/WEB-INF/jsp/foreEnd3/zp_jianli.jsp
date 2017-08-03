@@ -271,14 +271,9 @@
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
-                                <li><a href=""><span class="fa fa-eye" style="color: rgba(128,128,128,0.91)"></span></a>
-                                </li>
-                                <li><a href=""><span class="fa fa-download"
-                                                     style="color: rgba(128,128,128,0.91)"></span></a></li>
-                                <li><a href=""><span class="fa fa-refresh" style="color: rgba(128,128,128,0.91)"></span></a>
-                                </li>
-                                <li><a href=""><span class="fa fa-pencil" style="color: rgba(128,128,128,0.91)"></span></a>
-                                </li>
+                                <li><a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}" target="_blank"><span class="fa fa-eye"></span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}"><span class="fa fa-download"></span></a></li>
+                                <li><a onclick="flashResume()"><span class="fa fa-refresh" ></span></a></li>
                             </ul>
                         </div>
                     </div>

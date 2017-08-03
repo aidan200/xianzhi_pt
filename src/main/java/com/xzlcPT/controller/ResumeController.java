@@ -2,6 +2,7 @@ package com.xzlcPT.controller;
 
 import com.util.PageBean;
 import com.util.PdfUtil;
+import com.util.ZipUtil;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.bean.XzResume;
@@ -92,9 +93,14 @@ public class ResumeController extends BaseController {
         XzResume xzResume = resumeService.selResumeInformation(resumeId);
         System.out.println("路径：：："+request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
         System.out.println(xzResume);
-        String fileName = new Date().getTime()+".pdf";
+        String fileName = xzResume.getResumeName()+"("+new Date().getTime()+").pdf";
         File file = PdfUtil.makePdf(xzResume,fileName,request);
         if(file!=null){
+            try {
+                fileName = new String(fileName.getBytes(), "ISO-8859-1");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
             response.setHeader("Content-Disposition","attachment;filename="+fileName);
             try {
                 DataOutputStream temps = new DataOutputStream(response
@@ -113,6 +119,50 @@ public class ResumeController extends BaseController {
                 e.printStackTrace();
             }
             file.delete();
+        }
+    }
+
+    //简历批量下载
+    @ResponseBody
+    @RequestMapping("ResumeDownloadPL.do")
+    public void ResumeDownload(Long [] resumeIds, HttpServletRequest request, HttpServletResponse response){
+        List<File> resumeFiles = new ArrayList<>();
+        for (Long resumeId : resumeIds) {
+            XzResume xzResume = resumeService.selResumeInformation(resumeId);
+            System.out.println(xzResume);
+            String fileName = xzResume.getResumeName()+"("+new Date().getTime()+").pdf";
+            File file = PdfUtil.makePdf(xzResume,fileName,request);
+            resumeFiles.add(file);
+        }
+        String fileName = "批量导出简历("+new Date().getTime()+").zip";
+        File file = ZipUtil.compress(request.getServletContext().getRealPath("/pdf/"+fileName),resumeFiles);
+        if(file!=null){
+            try {
+                fileName = new String(fileName.getBytes(), "ISO-8859-1");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            response.setHeader("Content-Disposition","attachment;filename="+fileName);
+            try {
+                DataOutputStream temps = new DataOutputStream(response
+                        .getOutputStream());
+                DataInputStream in = new DataInputStream(
+                        new FileInputStream(file));
+
+                byte[] b = new byte[512];
+                while ((in.read(b)) != -1) {
+                    temps.write(b);
+                    temps.flush();
+                }
+                in.close();
+                temps.close();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            file.delete();
+            for (File resumeFile : resumeFiles) {
+                resumeFile.delete();
+            }
         }
     }
 

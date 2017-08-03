@@ -139,8 +139,8 @@ public class XzPostionServiceImpl implements XzPostionService{
     }
 
     @Override
-    public XzPostion selCollectState(Map map) {
-        XzPostion xzPostion=postionMapper.selCollectState(map);
-        return xzPostion;
+    public int  selCollectState(Map map) {
+        int i=postionMapper.selCollectState(map);
+        return i;
     }
 }

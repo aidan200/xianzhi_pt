@@ -42,6 +42,6 @@ public interface XzPostionService {
 
     int updateState(XzPostion xzPostion);
 
-    XzPostion selCollectState(Map map);
+    int selCollectState(Map map);
 
 }

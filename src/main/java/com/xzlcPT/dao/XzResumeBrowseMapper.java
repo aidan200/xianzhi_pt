@@ -14,4 +14,6 @@ public interface XzResumeBrowseMapper {
     int updateByPrimaryKeySelective(XzResumeBrowse record);
 
     int updateByPrimaryKey(Long browseId);
+
+    int selCountByResumeId(Long resumeId);
 }

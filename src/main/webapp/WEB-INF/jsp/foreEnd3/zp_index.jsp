@@ -86,8 +86,21 @@
             <div class="zp_index_cont_right_top">
                 <div>
                     <div class="zp_index_cont_right_top_left">
-                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" width="100%"
-                             height="100%">
+                        <c:choose>
+                            <c:when test="${resume.resumeIntentField!=null}">
+                                <img src="${pageContext.request.contextPath}/uploadImg/${resume.resumeIntentField}" alt="" width="100%" height="100%">
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${resume.resumeSex==1}">
+                                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt="" width="100%" height="100%">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" width="100%" height="100%">
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="zp_index_cont_right_top_right">
                         <span>${resume.resumeName}</span>
@@ -153,9 +166,9 @@
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
                                 <li><a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}" target="_blank"><span class="fa fa-eye"></span></a></li>
-                                <li><span class="fa fa-download"></span></li>
-                                <li><span class="fa fa-refresh"></span></li>
-                                <li><span class="fa fa-pencil"></span></li>
+                                <li><a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}"><span class="fa fa-download"></span></a></li>
+                                <li><a onclick="flashResume()"><span class="fa fa-refresh" ></span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/Resume/goEditResume.do"><span class="fa fa-pencil"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -181,14 +194,6 @@
                             <div class="zp_index_ww1"><span>0</span></div>
                             <div class="zp_index_ww2">
                                 <p><a href=""><span>0</span>个人看过你的简历</a></p>
-                                <p><span>0</span>刷新简历能增加被查看概率</p>
-
-                            </div>
-                        </li>
-                        <li>
-                            <div class="zp_index_ww1"><span>0</span></div>
-                            <div class="zp_index_ww2">
-                                <p><a href=""><span>0</span>家企业HR查看过</a></p>
                                 <p><span>0</span>刷新简历能增加被查看概率</p>
 
                             </div>
@@ -272,12 +277,12 @@
                         '<li>' +
                         '<i><b>' + companyNature + '</b></i>' +
                         '<div class="zp_index_cont_left_zwtj_cont_left">' +
-                        '<h4>' + data.postionList[i].postionName + '</h4>' +
+                        '<a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId='+data.postionList[i].postionId+'"><h4>' + data.postionList[i].postionName + '</h4></a>' +
                         '<p> <span>' + salary + '</span>&nbsp;&nbsp;|&nbsp;&nbsp;' + data.postionList[i].postionSpace + '&nbsp;&nbsp;|&nbsp;&nbsp;' + data.postionList[i].postionEducation + '及以上&nbsp;&nbsp;|&nbsp;&nbsp;' + data.postionList[i].postionExp + '</p>' +
                         '<span>' + time + '</span>' +
                         '</div>' +
                         '<div class="zp_index_cont_left_zwtj_cont_right">' +
-                        '<p>' + data.postionList[i].company.companyName + '</p>' +
+                        '<a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId='+data.postionList[i].company.companyId+'"><p>' + data.postionList[i].company.companyName + '</p></a>' +
                         '<p>' + fields + '</p>' +
                         '<p class="zp_index_cont_bz">' + welfares + '</p>' +
                         '</div>' +
