@@ -17,6 +17,9 @@
             $(".pop_but").click(function () {
                 $(".pop_more").slideToggle(500);
             });
+            $(".pop_d").click(function () {
+                $(".pop_dd").slideToggle(500);
+            });
         });
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/echarts.js"></script>
@@ -77,36 +80,37 @@
                             </div>
 
                             <div class="pop-right-bottom">
-                                <b>国</b>
+                                <b>快</b>
                             </div>
                         </div>
 
                         <div class="pop_more">
                             <div class="pop_m1">
                                 <div class="pop_min">
-                                    让你来面试 啊哈哈哈哈哈哈哈哈 快来啊 快来啊 你到底来不来 你来啊 你来啊 你不来拉到了 呵呵呵
+                                    已投递
                                 </div>
-                                <div class="pop_z">已投递</div>
                             </div>
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt="" class="pop_ar">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt=""
+                                 class="pop_ar">
                             <div class="pop_m1">
                                 <div class="pop_min">
+                                    已查看
                                 </div>
-                                <div class="pop_z">已投递</div>
                             </div>
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt="" class="pop_ar">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt=""
+                                 class="pop_ar">
                             <div class="pop_m1">
                                 <div class="pop_min">
+                                    约面试
                                 </div>
-                                <div class="pop_z">已投递</div>
                             </div>
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt="" class="pop_ar">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt=""
+                                 class="pop_ar">
                             <div class="pop_m1">
                                 <div class="pop_min">
+                                    不匹配
                                 </div>
-                                <div class="pop_z">已投递</div>
                             </div>
-
                         </div>
 
 
@@ -132,13 +136,36 @@
                         <div class="pop_top2">
                             <span class="pop_span">已投递（<span>10</span>）</span>
                         </div>
-                        <div class="pop_no">
-                            <div class="pop_allimg">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""
-                                     class="rem_img">
-                                <p class="all_p">暂无简历记录</p>
+                        <div class="pop_tou">
+                            <ul>
+                                <li class="pop_tl">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>
+                                <li class="pop_tl1">职位名：<span></span></li>
+                                <li class="pop_tl2">投递时间：<span>2017-07-08</span></li>
+                            </ul>
+                        </div>
+
+                        <%--分页--%>
+                        <div class="zp_botv">
+                            <div class="zp_pl">
+                                <ul class="pagination zp_pa">
+                                    <li class="b"><a href="#">上一页</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li class="a"><a href="#">2</a></li>
+                                    <li class="a"><a href="#">3</a></li>
+                                    <li class="a"><a href="#">4</a></li>
+                                    <li class="a"><a href="#">5</a></li>
+                                    <li class="a"><a href="#">下一页</a></li>
+                                </ul>
+                                <div class="zp_page">共 <span>100</span> 页</div>
                             </div>
                         </div>
+                        <%--<div class="pop_no">--%>
+                        <%--<div class="pop_allimg">--%>
+                        <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
+                        <%--class="rem_img">--%>
+                        <%--<p class="all_p">暂无简历记录</p>--%>
+                        <%--</div>--%>
+                        <%--</div>--%>
                     </div>
 
                     <%--已查看--%>
@@ -146,13 +173,37 @@
                         <div class="pop_top2">
                             <span class="comh_span">已查看（<span>10</span>）</span>
                         </div>
-                        <div class="pop_no">
-                            <div class="pop_allimg">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""
-                                     class="rem_img">
-                                <p class="all_p">暂无简历记录</p>
+
+                        <div class="pop_tou">
+                            <ul>
+                                <li class="pop_tl">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>
+                                <li class="pop_tl1">职位名：<span></span></li>
+                                <li class="pop_tl2">查看时间：<span>2017-07-08</span></li>
+                            </ul>
+                        </div>
+
+                        <%--分页--%>
+                        <div class="zp_botv">
+                            <div class="zp_pl">
+                                <ul class="pagination zp_pa">
+                                    <li class="b"><a href="#">上一页</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li class="a"><a href="#">2</a></li>
+                                    <li class="a"><a href="#">3</a></li>
+                                    <li class="a"><a href="#">4</a></li>
+                                    <li class="a"><a href="#">5</a></li>
+                                    <li class="a"><a href="#">下一页</a></li>
+                                </ul>
+                                <div class="zp_page">共 <span>100</span> 页</div>
                             </div>
                         </div>
+                        <%--<div class="pop_no">--%>
+                            <%--<div class="pop_allimg">--%>
+                                <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
+                                     <%--class="rem_img">--%>
+                                <%--<p class="all_p">暂无简历记录</p>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                     </div>
 
                     <%--面试邀约--%>
@@ -160,13 +211,46 @@
                         <div class="pop_top2">
                             <span class="pop_span">面试邀约（<span>10</span>）</span>
                         </div>
-                        <div class="pop_no">
-                            <div class="pop_allimg">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""
-                                     class="rem_img">
-                                <p class="all_p">暂无简历记录</p>
+
+                        <div class="pop_tou">
+                            <ul>
+                                <li class="pop_tl3">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>
+                                <li class="pop_tl3">职位名：<span></span></li>
+                            </ul>
+                            <span class="fa fa-chevron-down pop_d"></span>
+                        </div>
+                        <div class="pop_dd">
+                            <ul>
+                                <li class="pop_tl4">面试信息：<span>afgagaeggfgga</span></li>
+                                <li class="pop_tl5">
+                                    <button>同意</button>
+                                    <button>拒绝</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <%--分页--%>
+                        <div class="zp_botv">
+                            <div class="zp_pl">
+                                <ul class="pagination zp_pa">
+                                    <li class="b"><a href="#">上一页</a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li class="a"><a href="#">2</a></li>
+                                    <li class="a"><a href="#">3</a></li>
+                                    <li class="a"><a href="#">4</a></li>
+                                    <li class="a"><a href="#">5</a></li>
+                                    <li class="a"><a href="#">下一页</a></li>
+                                </ul>
+                                <div class="zp_page">共 <span>100</span> 页</div>
                             </div>
                         </div>
+                        <%--<div class="pop_no">--%>
+                            <%--<div class="pop_allimg">--%>
+                                <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
+                                     <%--class="rem_img">--%>
+                                <%--<p class="all_p">暂无简历记录</p>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                     </div>
 
                 </div>
@@ -197,7 +281,7 @@
     $(function () {
         $.ajax({
             url: '${pageContext.request.contextPath}/PostionSend/count7.do',
-            data: {selId:${resume.resumeId}, type: 2,day:14},
+            data: {selId:${resume.resumeId}, type: 2, day: 14},
             dataType: 'json',
             success: function (data) {
                 var send = data.theCount;
@@ -284,59 +368,58 @@
     })
 
 
-
     /*// 指定图表的配置项和数据
-    var option = {
-        title: {
-            text: ''
-        },
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['投递简历次数']
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['0718', '0719', '0720', '0721', '0722', '0723', '0724', '0725', '0726', '0727', '0728', '0729', '0730', '0731', '0732',]
-        },
-        yAxis: {
-            type: 'value',
-            show: 'false'
-        },
-        series: [
-            {
-                name: '投递简历次数',
-                type: 'line',
-                smooth: 'true',
-                symbol: 'emptyCircle',
-                symbolSize: function (v) {
-                    return 8 + v / 100
-                },
-                stack: '总量',
-                data: [20, 32, 1, 34, 15, 3, 8, 10, 1, 4, 10, 5, 6, 8, 2],
-                itemStyle: {
-                    normal: {
-                        color: '#3fb1e3',
-                        lineStyle: {
-                            color: '#3fb1e3'
-                        }
-                    }
-                },
-            }
-        ]
-    };
+     var option = {
+     title: {
+     text: ''
+     },
+     tooltip: {
+     trigger: 'axis'
+     },
+     legend: {
+     data: ['投递简历次数']
+     },
+     grid: {
+     left: '3%',
+     right: '4%',
+     bottom: '3%',
+     containLabel: true
+     },
+     xAxis: {
+     type: 'category',
+     boundaryGap: false,
+     data: ['0718', '0719', '0720', '0721', '0722', '0723', '0724', '0725', '0726', '0727', '0728', '0729', '0730', '0731', '0732',]
+     },
+     yAxis: {
+     type: 'value',
+     show: 'false'
+     },
+     series: [
+     {
+     name: '投递简历次数',
+     type: 'line',
+     smooth: 'true',
+     symbol: 'emptyCircle',
+     symbolSize: function (v) {
+     return 8 + v / 100
+     },
+     stack: '总量',
+     data: [20, 32, 1, 34, 15, 3, 8, 10, 1, 4, 10, 5, 6, 8, 2],
+     itemStyle: {
+     normal: {
+     color: '#3fb1e3',
+     lineStyle: {
+     color: '#3fb1e3'
+     }
+     }
+     },
+     }
+     ]
+     };
 
 
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);*/
+     // 使用刚指定的配置项和数据显示图表。
+     myChart.setOption(option);*/
 </script>
 </body>
 </html>
