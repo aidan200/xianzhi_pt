@@ -23,10 +23,10 @@ mzd+='<%--</div>--%>'
 
 function Jl(){
     this.companyId=companyId;
-    this.total=0               //总数
-    this.pages=0               //页数
-    this.size=0                //不知道什么
-    this.page=1               //当前页        默认值
+    this.total=''              //总数
+    this.pages=''               //页数
+    this.size=''               //不知道什么
+    this.page=''               //当前页        默认值
     this.searchMap={           //查询条件
 
     }
@@ -72,7 +72,13 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     var bb=getNowFormatDate(new Date()).substring(0, 4);
                     var sj=bb-aa;
                     str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
-                    str+='<td class="all_no">没有</td>'    //学历有问题'+data.resumeList[i].xzResumeEducations+'
+
+                    if(data.resumeList[i].xzResumeEducations.length==0){
+                        str+='<td class="all_no">没有</td>'
+                    }else{
+                        str+='<td class="all_no">'+data.resumeList[i].xzResumeEducations[0].educationLevel+'</td>'
+                    }
+                       //学历有问题'+data.resumeList[i].xzResumeEducations+'
 
                     var cc=data.resumeList[i].resumeWorkinglife     //计算出开始工作年限
                     var js2=bb-cc;
@@ -104,14 +110,7 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
         }
     })
 }
-Public.prototype.seekCont=function (parent){
-    var parent=$(parent).find('.rem_cen');
-    var _public_ssk=jl;                                       //创建搜索对象
-    _public_ssk.zw=parent.find('select').eq(0).val()          //获取到职位
-    _public_ssk.xl=parent.find('select').eq(1).val()
-    _public_ssk.xlq=parent.find('input[type="checkbox"]:checked').length ;//如果是0代表不选如果是1代表选中
-    return _public_ssk
-}
+
 Public.prototype.fy=function (pages,page){  //总页数  当前页数
     var str=''
         str+='<div class="zp_botv">'
@@ -143,7 +142,7 @@ Public.prototype.fy_sj=function (parent,pages,page,obj){        //参数1父级
         }else if(i==0&&page!=1){
             $(e).css({"color":"#666666"})
         }
-        if(i==0){                         //上一页事件(如果是第一页不设置事件)&&page!=1
+        if(i==0&&page!=1){                         //上一页事件(如果是第一页不设置事件)
             $(e).unbind().on('click',function (){
                 var data=This.seekCont(parent);
                 data.page-=1;                         //减少1页
@@ -177,11 +176,29 @@ Public.prototype.mzd=function (parent){
     $(parent).find('.rem_bb').css({"display":"none"}).after(mzd);
 }
 Public.prototype.zdl=function (parent){
-    $(parent).find('.tbody').css({"display":"block"});
-    $(parent).find('.rem_bb').css({"display":"block"}).after(mzd);
+    $(parent).find('.zp_botv').remove();
+     $(parent).find('.tbody').css({"display":"table-row-group;"});      //显示内容区域
+     $(parent).find('.rem_bb').css({"display":"block"});                //显示操作区
 }
+Public.prototype.qx=function (parent){  //全选和单个选择事件
+        $(parent).find('.rem_bb input').eq(0).on('click',function (){
+            var aa=$(parent).find('.rem_bb  input:checked').length;                  //判断是否选中
+            if(aa!=1){
+                $(parent).find('.tbody tr').removeAttr('data-kg')
+            }else{
+                $(parent).find('.tbody tr').attr('data-kg','true');
+            }
+        })
+        $(parent).find('i').on('click',function (){                                     //单个选择完成
+            var parent=$(this).parent().parent().parent().parent()            //获取到父
+            if($(parent).attr('data-kg')!='true'){          //代表选中
 
-
+                $(parent).attr('data-kg','true')
+            }else{
+                $(parent).removeAttr('data-kg')             //没选中
+            }
+        })
+}
 
 
 function Jlrzp(){                   //经理人应聘
@@ -190,21 +207,45 @@ function Jlrzp(){                   //经理人应聘
     }
 }
 Jlrzp.prototype=new Public();   //继承父类原型方法
+Jlrzp.prototype.seekCont=function (parent){
+    var parent=$(parent).find('.rem_cen');
+    var _public_ssk=jl;                                       //创建搜索对象
+    _public_ssk.zw=parent.find('select').eq(0).val() ;         //获取到职位
+    _public_ssk.xl=parent.find('select').eq(1).val();
+    _public_ssk.xlq=parent.find('input[type="checkbox"]:checked').length ;//如果是0代表不选如果是1代表选中
+    _public_ssk.xb=parent.find('select').eq(2).val();           //性别
+    _public_ssk.name=parent.find('input[type="text"]').eq(0).val();           //姓名
+    delete _public_ssk.pages;
+    return _public_ssk
+}
 Jlrzp.prototype.upload=function (){     //初始化加载
     var This=this;
     var data=This.seekCont('#rem_one');                                 //获取到条件信息
+
     This.cg=function (){   //成功执行函数
 
-        $('#rem_one').find('.zp_botv').remove();                           //删除掉之前的所有分页
+        This.zdl('#rem_one');//成功显示
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
         This.fy_sj('#rem_one',jl.pages,jl.page,This);                       //分页事件完成
+        This.qx('#rem_one');                                                //加载全选事件以及单选完成
 
     }
-    This.sb=function (){  //没查到数据执行的函数
+    This.sb=function (){                    //没查到数据执行的函数
         This.mzd('#rem_one');                       //没找到执行的
     }
     This.huoqu('#rem_one',data,This.cg,This.sb);    //调用加载方法（参数1 选择给谁加，参数2 参数)
 }
+Jlrzp.prototype.JS=function (){                     //点击事件加载
+    var This=this
+    $('#myTab li a').eq(0).on('click',function (){      //经理人应聘选项卡加载
+        This.upload();
+    })
+    $(This.DOM.parent).find('.rem_b').on('click',function (){   //搜索事件按钮
+        jl.page=1;                                              //搜索时候
+        This.upload();
+    })
+}
+
 
 
 
@@ -218,7 +259,7 @@ Jlrzp.prototype.upload=function (){     //初始化加载
 $(function (){
     var  jlrzp=new Jlrzp();
     jlrzp.upload();
-
+    jlrzp.JS();
 })
 
 

@@ -29,10 +29,11 @@
     send_time1, rs_time1, send_type, create_time, delete_time, field1, field2, field3, 
     delete_falt
   </sql>
+  <!--投递计数-->
   <select id="selSendCountByCorRId" parameterType="Map" resultMap="theCount">
     SELECT count(send_id) ct,send_time
     FROM xz_postion_send
-    where date_sub(curdate(), INTERVAL 6 DAY) &lt;= date(send_time)
+    where date_sub(curdate(), INTERVAL #{cday} DAY) &lt;= date(send_time)
     <if test="companyId!=null">
       and company_id = #{companyId,jdbcType=BIGINT}
     </if>
@@ -41,6 +42,14 @@
     </if>
     GROUP BY DATE_FORMAT( send_time, '%Y-%m-%d' )
   </select>
+  <!--是否投递-->
+  <select id="selisSend" parameterType="Map" resultType="java.lang.Integer">
+    SELECT COUNT(*)
+    FROM xz_postion_send
+    where postion_id = #{postionId,jdbcType=BIGINT}
+    and resume_id = #{resumeId,jdbcType=BIGINT}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

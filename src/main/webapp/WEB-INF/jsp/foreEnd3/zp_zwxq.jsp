@@ -49,7 +49,7 @@
                         </c:otherwise>
                     </c:choose>
                     <span>72小时反馈</span>
-                    <a href="###" class="newtan2">我感兴趣 请联系我</a></h3>
+                    <a id="lxw" isSend="f" onclick="sendResume()">我感兴趣 请联系我</a></h3>
                 <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span><a href="" s>收藏</a></p>
                 <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>${xzPostion.postionAge}岁</span></div>
             </div>
@@ -61,7 +61,7 @@
             <div class="zp_zwxq_cont_left_zwms">
                 <h3>职位描述：</h3>
                 <div>
-                    <textarea cols="110" rows="20" readonly="readonly" style="BORDER-BOTTOM-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none;overflow-y:hidden;border:0;outline:none;font-size:10pt;">${xzPostion.postionDescription}</textarea>
+                    <textarea cols="80" rows="20" readonly="readonly" style="BORDER-BOTTOM-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none;overflow-y:hidden;border:0;outline:none;font-size:10pt;">${xzPostion.postionDescription}</textarea>
                 </div>
             </div>
             <div class="zp_zwxq_cont_left_qtxx">
@@ -229,11 +229,11 @@
 
 <div class="newpop2" role="alert">
     <div class="newpop2_container">
-        <div class="allnew2_tan">
-            你打我呀打我呀打我呀
+        <div class="allnew2_tan" id="tMsg">
+            简历投递成功
         </div>
         <div>
-            <button class="all_close2">确定</button>
+            <button class="newtan2">确定</button>
         </div>
         <a href="###" class="all_close2 tan_close2 fa fa-remove"></a>
     </div>
@@ -249,7 +249,52 @@
     var myMap = new myMap(postion);
     $(function () {
         myMap.init();
+        isSend();
     })
+    
+    function sendResume() {
+        if($('#lxw').attr("isSend")=="f"){
+            $.ajax({
+                url:"${pageContext.request.contextPath}/PostionSend/sendPostion.do",
+                data:{postionId:${param.postionId}},
+                type:"get",
+                dataType:"json",
+                success:function (data) {
+                    if(data.msg=="ok"){
+                        $('#tMsg').html("投递成功");
+                        $('.newpop2').addClass('is-visible');
+                        $('#lxw').html("已投递");
+                        $('#lxw').attr("isSend","t");
+                    }else{
+                        $('#tMsg').html("投递失败，请重新登录");
+                    }
+                }
+            })
+        }else{
+            $('.newpop2').addClass('is-visible');
+            $('#tMsg').html("已投递该职位，不可重复投递");
+        }
+
+    }
+    
+    
+    function isSend() {
+        $.ajax({
+            url:"${pageContext.request.contextPath}/PostionSend/selisSend.do",
+            data:{postionId:${param.postionId}},
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                if(data.msg=="ok"){
+                    $('#lxw').html("已投递");
+                    $('#lxw').attr("isSend","t");
+                }else{
+                    $('#lxw').html("我感兴趣 请联系我");
+                    $('#lxw').attr("isSend","f");
+                }
+            }
+        })
+    }
 </script>
 
 </body>

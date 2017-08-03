@@ -3,7 +3,9 @@ package com.xzlcPT.controller;
 import com.util.PageBean;
 import com.util.PdfUtil;
 import com.xzlcPT.bean.XzLogin;
+import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.bean.XzResume;
+import com.xzlcPT.service.XzPostionService;
 import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,8 @@ public class ResumeController extends BaseController {
 
     @Autowired
     private XzResumeService resumeService;
+    @Autowired
+    private XzPostionService postionService;
     //跳转到个人简历编辑
     @RequestMapping("goEditResume.do")
     public ModelAndView goEditResume(@ModelAttribute("userLogin")XzLogin userLogin){
@@ -61,7 +65,14 @@ public class ResumeController extends BaseController {
         map.put("resumeCompletion",rss.getResumeCompletion());
         return map;
     }
-
+    //个人投递职位查询
+    @RequestMapping("selPostionBySelf.do")
+    public ModelAndView selPostionBySelf(@ModelAttribute("userLogin") XzLogin userLogin){
+        ModelAndView mv = new ModelAndView("foreEnd3/zp_postposition");
+        XzResume resume =  resumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        mv.addObject("resume",resume);
+        return mv;
+    }
     //查看完成度
     @ResponseBody
     @RequestMapping("flashResumeByMore.do")
@@ -232,12 +243,14 @@ public class ResumeController extends BaseController {
         map.put("resumePosition",resumePosition);
         PageBean<XzResume> pageBean=resumeService.selResume(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
+        List<XzPostion> postionList=postionService.selectByComId(companyId);
         Map map1=new HashMap();
         map1.put("resumeList",resumeList);
         map1.put("page",pageBean.getPageNum());
         map1.put("pages",pageBean.getPages());
         map1.put("rows",pageBean.getPageSize());
         map1.put("total",pageBean.getTotal());
+        map1.put("postionList",postionList);
          return map1;
     }
 }

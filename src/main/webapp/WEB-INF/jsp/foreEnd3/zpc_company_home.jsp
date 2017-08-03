@@ -185,7 +185,7 @@
     $(function () {
         $.ajax({
             url: '${pageContext.request.contextPath}/PostionSend/count7.do',
-            data: {selId:${userLogin.company.companyId}, type: 1},
+            data: {selId:${userLogin.company.companyId}, type: 1,day:6},
             dataType: 'json',
             success: function (data) {
                 var send = data.theCount;
