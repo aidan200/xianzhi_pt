@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="myPage" uri="/xianzhiOA/pageTag" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
     </style>
 </head>
 
-<form action="${pageContext.request.contextPath}/CompanyInfo/selCompany.do">
+<form action="${pageContext.request.contextPath}/CompanyInfo/selCompany.do" name="f1" id="f1">
 <jsp:include page="headerforeEnd.jsp"/>
 
 
@@ -42,7 +43,7 @@
                 <%--<span></span>--%>
             </div>
             <div>
-                <input type="text" class="comd_input1" name="companyName" placeholder="输入公司全称或关键词">
+                <input type="text" class="comd_input1" name="companyName" placeholder="输入公司全称或关键词" value="${map.get("companyName")}">
                 <button class="comd_b" type="submit">搜 索</button>
             </div>
         </div>
@@ -75,15 +76,17 @@
             <div class="zp_botv">
                 <div class="zp_pl">
                     <ul class="pagination zp_pa">
-                        <li class="b"><a href="#">上一页</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li class="a"><a href="#">2</a></li>
-                        <li class="a"><a href="#">3</a></li>
-                        <li class="a"><a href="#">4</a></li>
-                        <li class="a"><a href="#">5</a></li>
-                        <li class="a"><a href="#">下一页</a></li>
+                        <%--<li class="b"><a href="#">上一页</a></li>--%>
+                        <%--<li class="active"><a href="#">1</a></li>--%>
+                        <%--<li class="a"><a href="#">2</a></li>--%>
+                        <%--<li class="a"><a href="#">3</a></li>--%>
+                        <%--<li class="a"><a href="#">4</a></li>--%>
+                        <%--<li class="a"><a href="#">5</a></li>--%>
+                        <%--<li class="a"><a href="#">下一页</a></li>--%>
+                            <input id="infPage" type="hidden" name="page" value="${page}">
+                            <myPage:paging length="8" page="${page}" pages="${pages}"/>
                     </ul>
-                    <div class="zp_page">共 <span>100</span> 页</div>
+                    <div class="zp_page">共 <span>${pages}</span> 页</div>
                 </div>
             </div>
 
@@ -151,7 +154,17 @@
         $('.cd-popuph').removeClass('is-visible');
 
     })
-
+    function pToSub(page) {
+        var infpage = parseInt(document.getElementById("infPage").value);
+        if (page != infpage && page - infpage > 0 || page != infpage && page - infpage < 0) {
+            document.getElementById("infPage").value = page;
+            document.getElementById("f1").submit();
+        }
+    }
+    function sel() {
+        document.getElementById("infPage").value = 1;
+        document.getElementById("f1").submit();
+    }
 
 </script>
 

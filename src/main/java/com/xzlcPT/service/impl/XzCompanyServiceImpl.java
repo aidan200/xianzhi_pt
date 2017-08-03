@@ -248,5 +248,17 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         return pageBean;
     }
 
+    @Override
+    public XzCompany selFollowState(Map map) {
+        XzCompany xzCompany=companyMapper.selFollowState(map);
+        return xzCompany;
+    }
+
+    @Override
+    public List<XzCompany> selectRecommend() {
+        List<XzCompany> xzCompanyList=companyMapper.selectRecommend();
+        return xzCompanyList;
+    }
+
 
 }
