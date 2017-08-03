@@ -160,19 +160,29 @@ public class PostionController extends BaseController{
     public ModelAndView selPostionInfo(@ModelAttribute("userLogin") XzLogin userLogin,Long postionId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_zwxq");
         XzPostion xzPostion=postionService.selPostionInfo(postionId);
-        List<XzPostion> plist=postionService.selInfoByName(xzPostion.getPostionName());//可能感兴趣的职位
         List<XzPostion> cplist=postionService.selInfoByComId(xzPostion);//该公司相似职位
         postionBrowseService.insertPostionBrowse(postionId,userLogin.getMember().getMemberId());//职位浏览记录
         mv.addObject("cplist",cplist);
-        mv.addObject("plist",plist);
         mv.addObject("xzPostion",xzPostion);
         return mv;
+    }
+    //可能感兴趣的职位
+    @ResponseBody
+    @RequestMapping("selInfoByName.do")
+    public Map selInfoByName(Long postionId){
+        XzPostion xzPostion=postionService.selPostionInfo(postionId);
+        List<XzPostion> plist =postionService.selInfoByName(xzPostion);
+        Map map=new HashMap();
+        map.put("plist",plist);
+        return map;
     }
     //按职位名模糊查询
     @RequestMapping("selPostionByname.do")
     public ModelAndView selPostionByname(String postionName){
         ModelAndView mv=new ModelAndView("/foreEnd3/test2");
-        List<XzPostion> plist=postionService.selInfoByName(postionName);
+        XzPostion xzPostion=new XzPostion();
+        xzPostion.setPostionName(postionName);
+        List<XzPostion> plist=postionService.selInfoByName(xzPostion);
         mv.addObject("plist",plist);
         return mv;
     }

@@ -15,12 +15,18 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <script>
+        var path='${pageContext.request.contextPath}'
+        var postionId='${xzPostion.postionId}'
+    </script>
+
     <jsp:include page="distforeEnd.jsp"/>
     <title>职位详情</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_zwxq.css">
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/mapUtil.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_zwxq.js" type="text/javascript"></script>
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
@@ -94,9 +100,13 @@
                                 <p>
                                     <span class="edu">${p1.postionEducation} |${p1.postionExp}工作经验</span>
                                     <span class="place" title="${p1.postionSpace}">${p1.postionSpace}</span>
-                                    <span class="industry" title="房地产开发/建筑/建材/工程">
-                                        <c:forEach items="${p1.company.fields}" var="f1">
-                                       ${f1.fieldName}/
+                                        <c:forEach items="${p1.company.fields}" var="f1" varStatus="stat">
+                                            <c:if test="${!stat.last}">
+                                                ${f1.fieldName}/
+                                            </c:if>
+                                            <c:if test="${stat.last}">
+                                                ${f1.fieldName}
+                                            </c:if>
                                         </c:forEach>
                                             </span>
                                 </p>
@@ -161,8 +171,13 @@
                         </h4>
                         <ul>
                             <li>
-                                <c:forEach items="${xzPostion.company.fields}" var="f1">
-                                ${f1.fieldName}/
+                                <c:forEach items="${xzPostion.company.fields}" var="f1" varStatus="stat">
+                                    <c:if test="${!stat.last}">
+                                        ${f1.fieldName}/
+                                    </c:if>
+                                    <c:if test="${stat.last}">
+                                        ${f1.fieldName}
+                                    </c:if>
                                 </c:forEach>
                             </li>
                             <li>${xzPostion.company.companyScale}人</li>

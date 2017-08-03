@@ -28,7 +28,7 @@ public interface XzPostionService {
 
     XzPostion selPostionInfo(Long postionId);
 
-    List<XzPostion> selInfoByName(String postionName);
+    List<XzPostion> selInfoByName(XzPostion xzPostion);
 
     List<XzPostion> selInfoByComId(XzPostion xzPostion);
 
