@@ -629,22 +629,27 @@
     select company_id,follow_id,follow_time from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
   </select>
   <select id="selComCount" parameterType="java.util.Map" resultMap="SelectAllMap">
-    select
-    c.company_id,count(p.postion_id) as pcount
-    from xz_company c  LEFT JOIN xz_postion p on c.company_id = p.company_id WHERE delete_falt=0
+    select DISTINCT
+    c.company_id,count(p.postion_id) as pcount,w.welfare_name,c.company_picture
+    from xz_company c
+    LEFT JOIN xz_postion p on c.company_id = p.company_id
+    LEFT JOIN xz_company_domain d ON c.company_id=d.company_id
+    LEFT JOIN xz_field f ON f.field_id=d.field_id
+    LEFT JOIN xz_company_welfare w ON c.company_id=w.company_id
+    WHERE delete_falt=0
     <if test="companyCity != null and companyCity !=''">
     and c.company_city=#{companyCity,jdbcType=BIGINT}
     </if>
     <if test="companyName != null and companyName !=''">
       and c.company_name like CONCAT('%',#{companyName,jdbcType=VARCHAR},'%')
     </if>
-    <if test="fields!=null">
+    <if test="list!=null and list !=''">
       AND f.field_name in
-      <foreach collection="fields" item = "field" open="(" close=")" separator="," >
-        #{field.fieldName,jdbcType=VARCHAR}
+      <foreach collection="list" item = "field_name" open="(" close=")" separator="," >
+        #{field_name,jdbcType=VARCHAR}
       </foreach>
     </if>
-    GROUP BY c.company_id
+    GROUP BY c.company_id,p.postion_id
   </select>
 
 </mapper>

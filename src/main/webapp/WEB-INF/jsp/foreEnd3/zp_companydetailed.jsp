@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: SYHT
@@ -18,13 +19,12 @@
         }
     </style>
 </head>
-<body>
 
+<form action="${pageContext.request.contextPath}/CompanyInfo/selCompany.do">
 <jsp:include page="headerforeEnd.jsp"/>
 
 
 <div class="com_container">
-
     <div class="comd_topimg"></div>
     <!--行业名企-->
     <div class="comd_top">
@@ -42,7 +42,7 @@
                 <%--<span></span>--%>
             </div>
             <div>
-                <input type="text" class="comd_input1" placeholder="输入公司全称或关键词">
+                <input type="text" class="comd_input1" name="companyName" placeholder="输入公司全称或关键词">
                 <button class="comd_b" type="submit">搜 索</button>
             </div>
         </div>
@@ -51,7 +51,8 @@
     <div class="com_position1">
 
         <div class="com_top">
-            <h4>行业名 <a href=""><span>更多职位 &raquo</span></a>></h4>
+            <h4>行业名企<a href=""><span>更多职位 &raquo</span></a>></h4>
+            <c:forEach items="${clist}" var="c1">
             <div class="com_com">
                 <a href="" style="display: block;text-align: center">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
@@ -59,58 +60,16 @@
                 </a>
                 <div class="com_morem">
                     <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
+                    <span class="com_sp"> <span style="color: #fc6866">${c1.pcount} </span> 个在招职位</span>
                 </div>
                 <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
+                    <c:forEach items="${c1.welfares}" var="w1">
+                    <span class="com_sp2">${w1.welfareName}</span>
+                    </c:forEach>
                 </div>
             </div>
+            </c:forEach>
 
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
-                         style=""/>
-                </a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
-
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
-                         style=""/>
-                </a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
-
-            <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
-                         style=""/>
-                </a>
-                <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
-                    <span class="com_sp"> <span style="color: #fc6866">500 </span> 个在招职位</span>
-                </div>
-                <div>
-                    <span class="com_sp2">绩效奖金</span>
-                    <span class="com_sp2">带薪年假</span>
-                </div>
-            </div>
 
         </div>
     </div>
@@ -127,10 +86,10 @@
         <div class="comd_table" id="hy_tab">
             <h4>IT行业</h4>
             <ul class="zp_ulu">
-                <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" data-value="互联网/移动互联网"/>互联网/移动互联网</li>
-                <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" data-value="网络游戏"/>网络游戏</li>
-                <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" data-value="计算机软件"/>计算机软件</li>
-                <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" data-value="IT服务/系统集成"/>IT服务/系统集成</li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" name="fffs" data-value="互联网/移动互联网" value="互联网"/>互联网/移动互联网</li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" name="fffs" data-value="网络游戏" value="网络游戏"/>网络游戏</li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" name="fffs" data-value="计算机软件" value="计算机软件"/>计算机软件</li>
+                <li><input type="checkbox" data-fieldtype="2" data-fieldId="4" name="fffs" data-value="IT服务/系统集成" value="IT服务"/>IT服务/系统集成</li>
             </ul>
         </div>
 
@@ -141,10 +100,11 @@
         <a href="#0" class="cd-popup-closeh cmd_closeh fa fa-remove"></a>
     </div>
 </div>
+<input id="workspace" name="companyCity" type="hidden">
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
 <jsp:include page="cityUtil.jsp"></jsp:include>
 
-
+</form>
 <script>
     jQuery(document).ready(function ($) {
 
