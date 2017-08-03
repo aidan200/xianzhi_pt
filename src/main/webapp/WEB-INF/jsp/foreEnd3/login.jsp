@@ -39,7 +39,7 @@
             <form action="${pageContext.request.contextPath}/XzLogin/Login.do" method="post">
 
                 <div class="login_in">
-                    <button type="button" class="login_com">企业登录 <span class="fa fa-arrow-right" style="color: #3d9ccc"></span></button>
+                    <%--<button type="button" class="login_com">企业登录 <span class="fa fa-arrow-right" style="color: #3d9ccc"></span></button>--%>
                     <h2>欢迎登录用户账号</h2>
                     <div class="login_input" style="margin-top: 30px">
                         <input class="effect-4" type="text" name="username" value="${username}" placeholder="会员名/邮箱">
