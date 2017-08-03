@@ -12,22 +12,21 @@ svn_btn+='</svg>'
 svn_btn+='</i>'
 
 var mzd=''      //抱歉没找到
-mzd+='<div class="comh_no2" style="display: block">'
-mzd+='<div class="pom_allimg">'
-mzd+='<img src="'+path+'dist/foreEnd3/img/sfs.png" alt="" class="rem_img">'
-mzd+='<p class="all_p">抱歉没有找到符合条件的职位</p>'
-mzd+='</div>'
-mzd+='</div>'
+mzd+='<%--<div class="rem_no2">--%>'
+mzd+='<%--<div class="rem_allimg">--%>'
+mzd+='<%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>'
+mzd+='<%--class="rem_img">--%>'
+mzd+='<%--<p class="all_p"> 你暂时没有未处理的简历</p>--%>'
+mzd+='<%--</div>--%>'
+mzd+='<%--</div>--%>'
 
 
-
-//全局方法
-function Public(){               //父类（公用的对象）
+function Jl(){
     this.companyId=companyId;
     this.total=0               //总数
     this.pages=0               //页数
     this.size=0                //不知道什么
-    this.page=0                //当前页
+    this.page=1               //当前页        默认值
     this.searchMap={           //查询条件
 
     }
@@ -36,8 +35,11 @@ function Public(){               //父类（公用的对象）
 
     }
 }
-var _public=new Public(); //创建全局对象实例;
-Public.prototype.huoqu=function (tbody,obj){ //全局查询方法
+var jl=new Jl();            //记录实例
+
+//全局方法
+function Public(){}               //父类（公用的对象）
+Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
     var This=this;
     $.ajax({
         type:"post",    //提交方式
@@ -46,75 +48,166 @@ Public.prototype.huoqu=function (tbody,obj){ //全局查询方法
         dataType:'json',                   //定义返回data类型
         url:path+'Resume/selectResume.do',    //路径
         success:function (data){//data 就是数据 json
-            This.pages=data.pages;              //获取总页
-            This.page=data.page;               //获取当前页
-        var str=''
-            for(var i=0;i<data.resumeList.length;i++){
-                str+='<tr class="pom_h" data-id="'+data.resumeList[i].resumeId+'">'
-                str+='<td>'
-                str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
-                str+='<input type="checkbox" id="rem101"'+i+' class="choose2">'
-                str+='<label for="rem101"+i style="font-weight: normal;margin-bottom: 0">'
-                str+=svn_btn
-                str+='</label>'
-                str+='</div>'
-                str+='</td>'
-                str+='<td class="all_no">'+data.resumeList[i].resumeName+'</td>'
-                if(data.resumeList[i].resumeSex==0){
-                    str+='<td class="all_no" data-xb="'+data.resumeList[i].resumeSex+'">男</td>'
-                }else{
-                    str+='<td class="all_no" data-xb="'+data.resumeList[i].resumeSex+'">女</td>'
+            jl.pages=data.pages;              //获取总页
+            jl.page=data.page;               //获取当前页
+            if(data.resumeList.length!=0){
+                var str=''
+                for(var i=0;i<data.resumeList.length;i++){
+                    str+='<tr class="pom_h" data-id="'+data.resumeList[i].resumeId+'">'
+                    str+='<td>'
+                    str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
+                    str+='<input type="checkbox" id="'+tbody+i+'" class="choose2">'
+                    str+='<label for="'+tbody+i+'" style="font-weight: normal;margin-bottom: 0">'
+                    str+=svn_btn
+                    str+='</label>'
+                    str+='</div>'
+                    str+='</td>'
+                    str+='<td class="all_no">'+data.resumeList[i].resumeName+'</td>'
+                    if(data.resumeList[i].resumeSex==0){
+                        str+='<td class="all_no" data-xb="'+data.resumeList[i].resumeSex+'">男</td>'
+                    }else{
+                        str+='<td class="all_no" data-xb="'+data.resumeList[i].resumeSex+'">女</td>'
+                    }
+                    var aa= getNowFormatDate(data.resumeList[i].resumeBirth).substring(0, 4)
+                    var bb=getNowFormatDate(new Date()).substring(0, 4);
+                    var sj=bb-aa;
+                    str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
+                    str+='<td class="all_no">没有</td>'    //学历有问题'+data.resumeList[i].xzResumeEducations+'
+
+                    var cc=data.resumeList[i].resumeWorkinglife     //计算出开始工作年限
+                    var js2=bb-cc;
+                    str+='<td class="all_no">'+js2+'</td>'
+                    str+='<td class="all_no">'+data.resumeList[i].resumePosition  +'</td>' //目前职位
+                    str+='<td class="all_no">'+data.resumeList[i].resumeField  +'</td>'   //目前公司
+                    str+='<td class="all_no">'+data.resumeList[i].resumeIntentPosition  +'</td>'  //应聘职位
+                    str+='<td class="all_no">'
+                    str+='<a href="">过滤</a>'
+                    str+='<a href="">待定</a>'
+                    str+='<a href="">不合适</a>'
+                    str+='<a href="">目标</a>'
+                    str+='</td>'
+                    str+='</tr>'
                 }
-                var aa= getNowFormatDate(data.resumeList[i].resumeBirth).substring(0, 4)
-                var bb=getNowFormatDate(new Date()).substring(0, 4);
-                var sj=bb-aa;
-                str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
-                str+='<td class="all_no">没有</td>'    //学历有问题'+data.resumeList[i].xzResumeEducations+'
+                $(tbody+' tbody').html(str);
 
-                var cc=data.resumeList[i].resumeWorkinglife     //计算出开始工作年限
-                var js2=bb-cc;
-                str+='<td class="all_no">'+js2+'</td>'
-                str+='<td class="all_no">'+data.resumeList[i].resumePosition  +'</td>' //目前职位
-                str+='<td class="all_no">'+data.resumeList[i].resumeField  +'</td>'   //目前公司
-                str+='<td class="all_no">'+data.resumeList[i].resumeIntentPosition  +'</td>'  //应聘职位
-                str+='<td class="all_no">'
-                str+='<a href="">过滤</a>'
-                str+='<a href="">待定</a>'
-                str+='<a href="">不合适</a>'
-                str+='<a href="">目标</a>'
-                str+='</td>'
-                str+='</tr>'
+                fn1()
+
+
+            }else{
+                fn2()
+                alert('失败了')
             }
-          $(tbody+' tbody').html(str);
 
-        alert('成功了')
 
         },error:function (){ //报错执行的
             alert('基本资料修改错误')
         }
     })
 }
+Public.prototype.seekCont=function (parent){
+    var parent=$(parent).find('.rem_cen');
+    var _public_ssk=jl;                                       //创建搜索对象
+    _public_ssk.zw=parent.find('select').eq(0).val()          //获取到职位
+    _public_ssk.xl=parent.find('select').eq(1).val()
+    _public_ssk.xlq=parent.find('input[type="checkbox"]:checked').length ;//如果是0代表不选如果是1代表选中
+    return _public_ssk
+}
+Public.prototype.fy=function (pages,page){  //总页数  当前页数
+    var str=''
+        str+='<div class="zp_botv">'
+        str+='<div class="zp_pl">'
+        str+='<ul class="pagination zp_pa">'
+        str+='<li class="b"><a href="javascript:;">上一页</a></li>'
+        for(var i=1;i<pages+1;i++){
+            if(page==i){
+                str+='<li class="active"><a href="javascript:;">'+i+'</a></li>'
+            }else{
+                str+='<li class="a"><a href="javascript:;">'+i+'</a></li>'
+            }
+        }
+        str+='<li class="a"><a href="javascript:;">下一页</a></li>'
+        str+='</ul>'
+        str+='<div class="zp_page">共 <span>'+pages+'</span> 页</div>'
+        str+='</div>'
+        str+='</div>'
+        return str              //返回
+}
+Public.prototype.fy_sj=function (parent,pages,page,obj){        //参数1父级
+
+    var This=this;
+    var aa=$(parent).find('.zp_botv a')
+    $(parent).find('.zp_botv a').each(function (i,e){
+
+        if(i==0&&page==1){              //样式
+            $(e).css({"color":"#D8CDCA"})
+        }else if(i==0&&page!=1){
+            $(e).css({"color":"#666666"})
+        }
+        if(i==0){                         //上一页事件(如果是第一页不设置事件)&&page!=1
+            $(e).unbind().on('click',function (){
+                var data=This.seekCont(parent);
+                data.page-=1;                         //减少1页
+                obj.huoqu(parent,data,obj.cg,obj.sb);  //把自己给传过来
+            })
+        }
+        if(i!=0&&i!=aa.length-1&&i!=page){   //点击选页(当前页不设置事件)
+            $(e).unbind().on('click',function (){
+                var data=This.seekCont(parent);
+                data.page=i;                          //设置你点的位置
+                obj.huoqu(parent,data,obj.cg,obj.sb);  //把自己给传过来
+            })
+        }
+        if(i==aa.length-1&&pages==page){              //样式
+            $(e).css({"color":"#D8CDCA"})
+        }else if(i==aa.length-1&&pages!=page){
+            $(e).css({"color":"#666666"})
+        }
+        if(i==aa.length-1&&pages!=page){   //下一页(如果是最后一页不设置时间)
+            $(e).unbind().on('click',function (){
+                var data=This.seekCont(parent);
+                data.page+=1;                         //增加1页
+                obj.huoqu(parent,data,obj.cg,obj.sb);  //把自己给传过来
+            })
+        }
+
+    })
+}
+Public.prototype.mzd=function (parent){
+    $(parent).find('.tbody').css({"display":"none"});
+    $(parent).find('.rem_bb').css({"display":"none"}).after(mzd);
+}
+Public.prototype.zdl=function (parent){
+    $(parent).find('.tbody').css({"display":"block"});
+    $(parent).find('.rem_bb').css({"display":"block"}).after(mzd);
+}
+
+
 
 
 function Jlrzp(){                   //经理人应聘
     this.DOM={
-        ssk:$('#rem_one .rem_cen'),     //搜索框
+        parent:$('#rem_one')
     }
 }
 Jlrzp.prototype=new Public();   //继承父类原型方法
-Jlrzp.prototype.upload=function (){
+Jlrzp.prototype.upload=function (){     //初始化加载
     var This=this;
-    var data={
-        companyId:companyId,
-        zw:This.DOM.ssk.find('select').eq(0).val(),           //获取到职位
-        xl:This.DOM.ssk.find('select').eq(1).val(),          //获取到学历
-        xlq:This.DOM.ssk.find('input[type="checkbox"]:checked').length , //如果是0代表不选如果是1代表选中
+    var data=This.seekCont('#rem_one');                                 //获取到条件信息
+    This.cg=function (){   //成功执行函数
+
+        $('#rem_one').find('.zp_botv').remove();                           //删除掉之前的所有分页
+        This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
+        This.fy_sj('#rem_one',jl.pages,jl.page,This);                       //分页事件完成
+
     }
-    This.huoqu('#rem_one',data);    //调用加载方法（参数1 选择给谁加，参数2 参数)
-
-
-
+    This.sb=function (){  //没查到数据执行的函数
+        This.mzd('#rem_one');                       //没找到执行的
+    }
+    This.huoqu('#rem_one',data,This.cg,This.sb);    //调用加载方法（参数1 选择给谁加，参数2 参数)
 }
+
+
+
 
 
 

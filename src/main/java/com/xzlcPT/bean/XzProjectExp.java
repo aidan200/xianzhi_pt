@@ -132,4 +132,24 @@ public class XzProjectExp {
     public void setFiled3(String filed3) {
         this.filed3 = filed3 == null ? null : filed3.trim();
     }
+
+
+    @Override
+    public String toString() {
+        return "XzProjectExp{" +
+                "proexpId=" + proexpId +
+                ", resumeId=" + resumeId +
+                ", proexpName='" + proexpName + '\'' +
+                ", proexpDuty='" + proexpDuty + '\'' +
+                ", proexpBeginTime=" + proexpBeginTime +
+                ", proexpEndTime=" + proexpEndTime +
+                ", proexpDescribe='" + proexpDescribe + '\'' +
+                ", proexpPostion='" + proexpPostion + '\'' +
+                ", createTime=" + createTime +
+                ", deleteTime=" + deleteTime +
+                ", filed1='" + filed1 + '\'' +
+                ", filed2='" + filed2 + '\'' +
+                ", filed3='" + filed3 + '\'' +
+                '}';
+    }
 }

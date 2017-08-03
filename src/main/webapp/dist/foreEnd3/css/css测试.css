@@ -3679,6 +3679,18 @@ input[type="button"].fileInputButton {
     margin: 3px;
 }
 
+.zp_pa > .a > a:focus {
+    background-color: #FFFFff;
+    color: #666666;
+    border: 1px solid #FFFFff;
+}
+
+.zp_pa > .a > a:active {
+    background-color: #FFFFff;
+    color: #666666;
+    border: 1px solid #FFFFff;
+}
+
 .zp_pa > .a > a:hover {
     background-color: rgb(255, 165, 0);
     color: #FFFFFF;
@@ -3689,16 +3701,28 @@ input[type="button"].fileInputButton {
 
 /*不能点击class b*/
 .zp_pa > .b > a {
-    /*background-color: #f8f8f8;*/
+    background-color: #f8f8f8;
     cursor: default;
     color: #cacaca;
+}
+
+.zp_pa > .b > a:focus {
+    color: #cacaca;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
+}
+
+.zp_pa > .b > a:active {
+    color: #cacaca;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
 }
 
 .zp_pa > .b > a:hover {
     color: #cacaca;
     /*background-color: #f8f8f8;*/
     border: 1px solid #EEEEEE;
-
+    background-color: #f8f8f8;
 }
 
 /*-----------------------公司查看个人简历-----------------------------*/
@@ -3706,7 +3730,7 @@ input[type="button"].fileInputButton {
     width: 100%;
     height: auto;
     overflow: hidden;
-    background-color: #eeeeee;
+    /*background-color: #eeeeee;*/
 }
 
 .resume_all {
@@ -3746,7 +3770,7 @@ input[type="button"].fileInputButton {
 .resume_right {
     float: left;
     margin-left: 50px;
-    margin-top: 30px;
+    margin-top: 70px;
     /*color: #ffffff;*/
     color: #666666;
     font-size: 15px;
@@ -4362,14 +4386,14 @@ input[type="button"].fileInputButton {
 /*------------------------公司主页-----------------------*/
 .comh_allin {
     /*width: 100%;*/
-    width: 1200px;
+    width: 1100px;
     height: 100%;
     margin: 40px auto;
     overflow: hidden;
 }
 
 .comh_alla {
-    width: 920px;
+    width: 850px;
     float: left;
     /*margin:  auto;*/
 }
@@ -4398,7 +4422,7 @@ input[type="button"].fileInputButton {
     width: 100%;
     height: 50px;
     background-color: #3D9CCC;
-    border: 1px dashed #d9d9d9;
+    /*border: 1px dashed #d9d9d9;*/
     margin-top: 20px;
     line-height: 50px;
     color: #ffffff;
@@ -4410,16 +4434,16 @@ input[type="button"].fileInputButton {
 }
 
 .comh_head {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 150px;
-    margin-left: 20px;
+    /*margin-left: 10px;*/
     float: left;
     margin-top: 10px;
 }
 
 .comh_left {
-    width: 380px;
+    width: 360px;
     height: auto;
     float: left;
     border-right: 1px dotted #cccccc;
@@ -4433,6 +4457,7 @@ input[type="button"].fileInputButton {
 .comh_test h4 {
     color: #3D9CCC;
     margin-bottom: 6px;
+    margin-left: 10px;
 }
 
 .comh_in span {
@@ -4453,7 +4478,7 @@ input[type="button"].fileInputButton {
     height: auto;
     margin-left: 15px;
     margin-top: 31px;
-    width: 470px;
+    width: 430px;
 }
 
 .comh_rt span {
@@ -6066,3 +6091,243 @@ footer {
     float: right;
 }
 
+
+
+/*-----------------------------------一堆弹出框----------------------------------------*/
+
+/*只带确定的弹出框*/
+.allnew2_tan {
+    width: 100%;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.newtan2 {
+    display: block;
+    text-transform: uppercase;
+    margin-top: 13px;
+}
+
+.newpop2 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    z-index: 999999;
+}
+
+.newpop2.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.newpop2_container {
+    position: relative;
+    width: 700px;
+    height: 400px;
+    margin: 100px auto;
+    background: #FFF;
+    border-radius: .25em .25em .4em .4em;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-backface-visibility: hidden;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    overflow: hidden;
+}
+
+.newpop2_container .tan_close2 {
+    position: absolute;
+    top: 9px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.is-visible .newpop2_container {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+/*--带确定和取消的---*/
+.allnew_tan {
+    width: 100%;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.newtan {
+    display: block;
+    text-transform: uppercase;
+    margin-top: 13px;
+}
+
+.newpop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    z-index: 999999;
+}
+
+.newpop.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.newpop_container {
+    position: relative;
+    width: 700px;
+    height: 400px;
+    margin: 100px auto;
+    background: #FFF;
+    border-radius: .25em .25em .4em .4em;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-backface-visibility: hidden;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    overflow: hidden;
+}
+
+.newpop_container .tan_close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.is-visible .newpop_container {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+/*-----带input的-----*/
+.allnew3_tan {
+    width: 100%;
+    height: 200px;
+    margin-top: 50px;
+}
+
+.newtan3 {
+    display: block;
+    text-transform: uppercase;
+    margin-top: 13px;
+}
+
+.newpop3 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    transition: opacity 0.3s 0s, visibility 0s 0.3s;
+    z-index: 999999;
+}
+
+.newpop3.is-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
+    -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
+    transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.newpop3_container {
+    position: relative;
+    width: 700px;
+    height: 400px;
+    margin: 100px auto;
+    background: #FFF;
+    border-radius: .25em .25em .4em .4em;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-backface-visibility: hidden;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    overflow: hidden;
+}
+
+.newpop3_container .tan_close3 {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.is-visible .newpop3_container {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+.tan3_input{
+    width: 200px;
+    height: 30px;
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+}
