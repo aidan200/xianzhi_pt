@@ -7,6 +7,8 @@ import java.util.Map;
 
 public interface XzPostionSendMapper {
 
+    Integer selisSend(Map map);
+
     List<XzPostionSend> selSendCountByCorRId(Map map);
 
     int deleteByPrimaryKey(Long sendId);

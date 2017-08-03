@@ -19,7 +19,7 @@
         <li><a href="${pageContext.request.contextPath}/zp_index" class="hvr-wobble-bottom">个人首页</a></li>
         <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_companylist.html" class="hvr-wobble-bottom">企业</a></li>
         <li><a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do" class="hvr-wobble-bottom">搜索职位</a></li>
-        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_postposition.html" class="hvr-wobble-bottom">我的职位</a></li>
+        <li><a href="${pageContext.request.contextPath}/Resume/selPostionBySelf.do" class="hvr-wobble-bottom">我的职位</a></li>
         <li><a href="${pageContext.request.contextPath}/Resume/goEditResume.do" class="hvr-wobble-bottom">简历</a></li>
     </ul>
 </nav>

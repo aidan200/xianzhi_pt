@@ -61,7 +61,14 @@ public class ResumeController extends BaseController {
         map.put("resumeCompletion",rss.getResumeCompletion());
         return map;
     }
-
+    //个人投递职位查询
+    @RequestMapping("selPostionBySelf.do")
+    public ModelAndView selPostionBySelf(@ModelAttribute("userLogin") XzLogin userLogin){
+        ModelAndView mv = new ModelAndView("foreEnd3/zp_postposition");
+        XzResume resume =  resumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        mv.addObject("resume",resume);
+        return mv;
+    }
     //查看完成度
     @ResponseBody
     @RequestMapping("flashResumeByMore.do")
