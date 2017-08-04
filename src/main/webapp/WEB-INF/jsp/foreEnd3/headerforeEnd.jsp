@@ -49,8 +49,7 @@
                     <c:when test="${userLogin!=undefined}">
                         <a href="" style="">
                             <li class="login1">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                     class="allheader">
+                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="allheader">
                                 <span style="width: 5px;height: 5px;background-color: red;display:inline-block;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
                                 <ul class="head-menu">
                                     <li class="head_new2">
@@ -102,4 +101,32 @@
 
 
 </body>
+<script>
+    $(function () {
+        console.log(${userLogin==null});
+        console.log(getCookie("count"));
+        console.log(getCookie("pw"));
+        if(${userLogin==null}){
+            if(getCookie("count")!=null&&getCookie("pw")!=null){
+                $.ajax({
+                    url:'${pageContext.request.contextPath}/XzLogin/LoginCookie.do',
+                    data:{username:getCookie("count"),password:getCookie("pw")},
+                    success:function (data) {
+                        if(data.msg=="ok"){
+                            window.location.reload();
+                        }
+                    }
+                });
+            }
+        }
+    })
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return arr[2];
+        else
+            return null;
+    }
+</script>
 </html>
