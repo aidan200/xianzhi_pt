@@ -43,10 +43,11 @@
                     <%--每个公司列表--%>
                     <div class="dot_have">
                         <div class="dot_left2">
+                            <a href="">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                 class="dot_head">
+                                 class="dot_head"></a>
                             <div class="dot_test2">
-                                <h4>网站美工/网页设计师</h4>
+                                <a href=""><h4>网站美工/网页设计师</h4></a>
                                 <div>
                                     <span class="dot_sp" style="color: #fc6866;margin-left: 10px">10万</span>|
                                     <span class="dot_sp">沈阳</span>|
@@ -55,11 +56,12 @@
                                 </div>
                             </div>
                             <div class="dot_test3">
-                                <div class="dot_t3s">吉林省江山网络科技公司</div>
+                                <div class="dot_t3s"><a href="">吉林省江山网络科技公司</a></div>
                                 <div class="dot_t3s" style="margin-top: 5px">互联网/移动联网/电子商务</div>
                                 <span style="margin-left: 190px;color: #666">4小时前</span>
                             </div>
                             <div style="float: left;width: 100px;height: auto;overflow: hidden">
+
                                 <button class="dot_but">取消收藏</button>
 
                             </div>
@@ -123,10 +125,11 @@
                     </div>
                     <div class="dot_have">
                         <div class="dot_left2">
+                            <a href="">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                 class="dot_head">
+                                 class="dot_head"></a>
                             <div class="dot_test2">
-                                <h4>网站美工/网页设计师</h4>
+                                <a href=""><h4>网站美工/网页设计师</h4></a>
                                 <div>
                                     <span class="dot_sp" style="color: #fc6866;margin-left: 10px">10万</span>|
                                     <span class="dot_sp">沈阳</span>|
@@ -135,7 +138,7 @@
                                 </div>
                             </div>
                             <div class="dot_test3">
-                                <div class="dot_t3s">吉林省江山网络科技公司</div>
+                                <div class="dot_t3s"><a href="">吉林省江山网络科技公司</a></div>
                                 <div class="dot_t3s" style="margin-top: 5px">互联网/移动联网/电子商务</div>
                                 <span style="margin-left: 190px;color: #666">4小时前</span>
                             </div>
@@ -182,20 +185,20 @@
 
                     <div class="dot_have">
                         <div class="dot_left2">
-
+                            <a href="">
                             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                 class="dot_head">
+                                 class="dot_head"></a>
                             <div class="dot_com">
-                                <div class="dot_t5">吉林省江山网络科技公司</div>
+                                <a href=""><div class="dot_t5">吉林省江山网络科技公司</div></a>
                                 <div style="margin-top: 10px">
                                     <span>沈阳</span>
                                 </div>
 
                             </div>
                             <div class="dot_com2">
-                                <div style="margin-top: 5px">互联网/移动联网/电子商务</div>
-                                <div style="margin-top: 5px">互联网/移动联网/电子商务</div>
-                                <div style="margin-top: 5px">互联网/移动联网/电子商务</div>
+                                <div style="margin-top: 5px"><a href="">互联网/移动联网/电子商务</a></div>
+                                <div style="margin-top: 5px"><a href="">互联网/移动联网/电子商务</a></div>
+                                <div style="margin-top: 5px"><a href="">互联网/移动联网/电子商务</a></div>
                             </div>
                             <div style="float: left;width: 100px;height: auto;overflow: hidden">
                                 <button class="dot_but">取消关注</button>
