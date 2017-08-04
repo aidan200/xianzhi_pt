@@ -23,6 +23,7 @@
 
 <form action="${pageContext.request.contextPath}/CompanyInfo/selCompany.do" name="f1" id="f1">
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="personnav.jsp"/>
 
 
 <div class="com_container">

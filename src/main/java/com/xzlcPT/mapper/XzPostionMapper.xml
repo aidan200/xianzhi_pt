@@ -172,14 +172,15 @@
   </sql>
   <select id="selPostionSendList" resultMap="PostionSendList" parameterType="Map">
     SELECT p.postion_id,p.company_id,p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
-    count(p.company_id) alls,
-	count(CASE ps.send_state WHEN '0' THEN 1 ELSE null END ) wcl,
-    count(CASE ps.send_state WHEN '1' THEN 1 ELSE null END ) dd,
-    count(CASE ps.send_state WHEN '2' THEN 1 ELSE null END ) yxgt,
-    count(CASE ps.send_state WHEN '3' THEN 1 ELSE null END ) ms,
-	count(CASE ps.send_type WHEN '1' THEN ps.send_type ELSE null END ) zdxz
-    FROM xz_postion p LEFT JOIN xz_postion_send ps on p.postion_id = ps.postion_id
-    where p.company_id = #{companyId,jdbcType=BIGINT}
+    count(CASE ps.send_state
+    WHEN '0' THEN 1
+    WHEN '1' THEN 1
+    WHEN '2' THEN 1
+    ELSE null END) alls,
+    count(CASE ps.send_state WHEN '0' THEN 1 ELSE null END ) wcl,
+    count(CASE ps.send_state WHEN '1' THEN 1 ELSE null END ) yxgt,
+    count(CASE ps.send_state WHEN '2' THEN 1 ELSE null END ) ms,
+    count(CASE ps.send_type WHEN '1' THEN ps.send_type ELSE null END ) zdxz
     <if test="postionName!=null and postionName!=''">
       and postion_name like CONCAT('%',#{postionName},'%')
     </if>
