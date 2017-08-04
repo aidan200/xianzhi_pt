@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzResumeBrowseMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzResumeBrowse">
+        <id column="browse_id" jdbcType="BIGINT" property="browseId" />
+        <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+        <result column="company_id" jdbcType="BIGINT" property="companyId" />
+        <result column="isRead" jdbcType="INTEGER" property="isread" />
+        <result column="browse_time" jdbcType="TIMESTAMP" property="browseTime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        browse_id, resume_id, company_id, isRead, browse_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from xz_resume_browse
+        where browse_id = #{browseId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from xz_resume_browse
+        where browse_id = #{browseId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.xzlcPT.bean.XzResumeBrowse">
+        insert into xz_resume_browse ( resume_id, company_id,
+        isRead, browse_time)
+        values (#{resumeId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT},
+       0, #{browseTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzResumeBrowse">
+        insert into xz_resume_browse
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="browseId != null">
+                browse_id,
+            </if>
+            <if test="resumeId != null">
+                resume_id,
+            </if>
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="isread != null">
+                isRead,
+            </if>
+            <if test="browseTime != null">
+                browse_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="browseId != null">
+                #{browseId,jdbcType=BIGINT},
+            </if>
+            <if test="resumeId != null">
+                #{resumeId,jdbcType=BIGINT},
+            </if>
+            <if test="companyId != null">
+                #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="isread != null">
+                #{isread,jdbcType=INTEGER},
+            </if>
+            <if test="browseTime != null">
+                #{browseTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzResumeBrowse">
+        update xz_resume_browse
+        <set>
+            <if test="resumeId != null">
+                resume_id = #{resumeId,jdbcType=BIGINT},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="isread != null">
+                isRead = #{isread,jdbcType=INTEGER},
+            </if>
+            <if test="browseTime != null">
+                browse_time = #{browseTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where browse_id = #{browseId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="java.lang.Long">
+        update xz_resume_browse
+        set isRead = 1
+        where browse_id = #{browseId,jdbcType=BIGINT}
+    </update>
+    <select id="selCountByResumeId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        select count(*) FROM xz_resume_browse WHERE isRead=1
+        and resume_id=#{resumeId,jdbcType=BIGINT}
+    </select>
+</mapper>

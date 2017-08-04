@@ -31,7 +31,7 @@ public interface XzPostionMapper {
 
     XzPostion selPostionInfo(Long postionId);
 
-    List<XzPostion> selInfoByName(String postionName);
+    List<XzPostion> selInfoByName(XzPostion xzPostion);
 
     List<XzPostion> selInfoByComId(XzPostion xzPostion);
 
@@ -45,5 +45,5 @@ public interface XzPostionMapper {
 
     int updateState(XzPostion xzPostion);
 
-    XzPostion selCollectState(Map map);
+    int selCollectState(Map map);
 }

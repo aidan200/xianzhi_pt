@@ -33,4 +33,10 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         int i=postionSendMapper.insertSelective(map);
         return i;
     }
+
+    @Override
+    public int selSendCount(Long resumeId) {
+        int i=postionSendMapper.selSendCount(resumeId);
+        return i;
+    }
 }

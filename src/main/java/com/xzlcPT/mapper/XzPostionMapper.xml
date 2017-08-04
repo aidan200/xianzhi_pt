@@ -166,6 +166,10 @@
     p.delete_flat,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty,p.publish_month,
     p.force_age,p.force_specialty,p.education_entrance
   </sql>
+  <sql id="selByNameList">
+    p.postion_id, p.postion_name,p.postion_ym,p.postion_mm,p.postion_space,c.company_id, c.company_name,f.field_id, f.field_name,
+ p.postion_education, p.postion_exp
+  </sql>
   <select id="selPostionSendList" resultMap="PostionSendList" parameterType="Map">
     SELECT p.postion_id,p.company_id,p.postion_name ,p.postion_time,p.publish_time,p.over_time,p.postion_welfare,p.delete_time,p.postion_company,
     count(p.company_id) alls,
@@ -654,12 +658,16 @@
     xz_company c ON p.company_id = c.company_id LEFT JOIN xz_company_domain d on c.company_id = d.company_id
     LEFT JOIN xz_field f on d.field_id = f.field_id WHERE p.postion_id=#{postionId,jdbcType=BIGINT}
   </select>
-  <select id="selInfoByName" parameterType="java.lang.String" resultMap="selPostionList">
+  <select id="selInfoByName" parameterType="com.xzlcPT.bean.XzPostion" resultMap="selPostionList">
     select
-    <include refid="Postion_index_list"/>
+    <include refid="selByNameList"/>
     FROM xz_postion p LEFT JOIN xz_company_welfare w ON p.company_id = w.company_id LEFT JOIN
     xz_company c ON p.company_id = c.company_id LEFT JOIN xz_company_domain d on c.company_id = d.company_id
     LEFT JOIN xz_field f on d.field_id = f.field_id  WHERE  p.postion_name LIKE CONCAT('%',#{postionName,jdbcType=VARCHAR},'%')
+    <if test="postionId !=null and postionId !=''">
+    and p.postion_id &lt;&gt;#{postionId,jdbcType=BIGINT}
+    </if>
+
   </select>
   <select id="selInfoByComId" parameterType="com.xzlcPT.bean.XzPostion" resultMap="BaseResultMap">
     select
@@ -703,7 +711,7 @@
     update xz_postion set postion_welfare = #{postionWelfare,jdbcType=VARCHAR} where
     postion_id = #{postionId,jdbcType=BIGINT}
   </update>
-  <select id="selCollectState" parameterType="java.util.Map" resultMap="BaseResultMap">
-    SELECT COUNT(*)as filed1 from xz_postion_collect WHERE member_id=#{memberId,jdbcType=BIGINT} and postion_id=#{postionId,jdbcType=BIGINT}
+  <select id="selCollectState" parameterType="java.util.Map" resultType="java.lang.Long">
+    SELECT COUNT(*) from xz_postion_collect WHERE member_id=#{memberId,jdbcType=BIGINT} and postion_id=#{postionId,jdbcType=BIGINT}
   </select>
 </mapper>

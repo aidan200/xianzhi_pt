@@ -121,9 +121,7 @@
         <include refid="Base_Column_List"/>
         FROM xz_login
         where delete_falt = 0
-        <if test="username!=null and username!=''">
-          and (login_count = #{username} or login_email = #{username})
-        </if>
+        and (login_count = #{username} or login_email = #{username})
 
     </select>
 

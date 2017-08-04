@@ -85,8 +85,8 @@ public class XzPostionServiceImpl implements XzPostionService{
     }
 
     @Override
-    public List<XzPostion> selInfoByName(String postionName) {
-       List<XzPostion> plist = postionMapper.selInfoByName(postionName);
+    public List<XzPostion> selInfoByName(XzPostion xzPostion) {
+       List<XzPostion> plist = postionMapper.selInfoByName(xzPostion);
         return plist;
     }
 
@@ -139,8 +139,8 @@ public class XzPostionServiceImpl implements XzPostionService{
     }
 
     @Override
-    public XzPostion selCollectState(Map map) {
-        XzPostion xzPostion=postionMapper.selCollectState(map);
-        return xzPostion;
+    public int  selCollectState(Map map) {
+        int i=postionMapper.selCollectState(map);
+        return i;
     }
 }

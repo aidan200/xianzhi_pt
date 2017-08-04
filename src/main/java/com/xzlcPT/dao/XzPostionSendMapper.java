@@ -22,4 +22,6 @@ public interface XzPostionSendMapper {
     int updateByPrimaryKeySelective(XzPostionSend record);
 
     int updateByPrimaryKey(XzPostionSend record);
+
+    int selSendCount(Long resumeId);
 }
