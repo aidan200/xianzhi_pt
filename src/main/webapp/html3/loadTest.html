@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #loading{
+            height: 50px;
+            width: 50px;
+            position: fixed;
+            z-index: 1;
+            margin-top: 0px;
+            top: 0px;
+        }
+        #loading-center{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        #loading-center-absolute {
+            position: absolute;
+            left: 50%;
+            height: 200px;
+            width: 200px;
+            margin-top: -100px;
+            margin-left: -100px;
+            -ms-transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+
+        }
+        .object{
+
+            -moz-border-radius: 50% 50% 50% 50%;
+            -webkit-border-radius: 50% 50% 50% 50%;
+            border-radius: 50% 50% 50% 50%;
+            position: absolute;
+            border-top: 2px solid #6be7ff;
+            border-bottom: 2px solid transparent;
+            border-left:  2px solid #6be7ff;
+            border-right: 2px solid transparent;
+
+            -webkit-animation: animate 2s infinite;
+            animation: animate 2s infinite;
+
+        }
+
+
+        #object_one{
+            left: 75px;
+            top: 75px;
+            width: 10px;
+            height: 10px;
+        }
+
+        #object_two{
+            left: 70px;
+            top: 70px;
+            width: 20px;
+            height: 20px;
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+        }
+
+        #object_three{
+            left: 65px;
+            top: 65px;
+            width: 30px;
+            height: 30px;
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+        }
+        #object_four{
+            left: 60px;
+            top: 60px;
+            width: 40px;
+            height: 40px;
+            -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+
+        }
+
+        @-webkit-keyframes animate {
+
+
+            50% {
+
+                -ms-transform: rotate(360deg) scale(0.8);
+                -webkit-transform: rotate(360deg) scale(0.8);
+                transform: rotate(360deg) scale(0.8);
+            }
+
+
+
+        }
+
+        @keyframes animate {
+
+            50% {
+
+                -ms-transform: rotate(360deg) scale(0.8);
+                -webkit-transform: rotate(360deg) scale(0.8);
+                transform: rotate(360deg) scale(0.8);
+            }
+
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_four"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_one"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
