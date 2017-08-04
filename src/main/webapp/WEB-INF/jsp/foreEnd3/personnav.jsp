@@ -21,6 +21,7 @@
         <li><a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do" class="hvr-wobble-bottom">搜索职位</a></li>
         <li><a href="${pageContext.request.contextPath}/Resume/selPostionBySelf.do" class="hvr-wobble-bottom">我的职位</a></li>
         <li><a href="${pageContext.request.contextPath}/Resume/goEditResume.do" class="hvr-wobble-bottom">简历</a></li>
+        <li><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_dongtai.html" class="hvr-wobble-bottom">动态</a></li>
     </ul>
 </nav>
 </body>
