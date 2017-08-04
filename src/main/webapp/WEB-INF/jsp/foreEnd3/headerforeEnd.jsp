@@ -54,7 +54,7 @@
                                 <ul class="head-menu">
                                     <li class="head_new2">
                                         <span class="fa fa-user" style="color: #666;float: left;font-size: 16px;margin-right: 5px;line-height: 22px"></span>
-                                        <span style="float: left"><a href="###" style="width: 80px;display: inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height: 22px">郑秀妍sFASFASFSFSFSFSFSFSASAF</a></span>
+                                        <span style="float: left"><a href="###" style="width: 80px;display: inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height: 22px">郑秀妍</a></span>
                                         <span style="float: right"><a href="${pageContext.request.contextPath}/XzLogin/ExitUser.do">注销</a></span>
                                         <span style="float: right;margin-right: 5px"><a href="#" class="fa fa-envelope" style="color: #fc6866"> (<span>10</span>)</a></span>
                                     </li>
