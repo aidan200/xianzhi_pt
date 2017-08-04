@@ -9,10 +9,12 @@ import com.xzlcPT.service.XzPostionService;
 import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -99,5 +101,13 @@ public class PostionSendController extends BaseController{
         Map map=new HashMap();
         map.put("i",i);
         return map;
+    }
+
+    @RequestMapping("sel")
+    public ModelAndView sel(Long resumeId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
+        int i=postionSendService.selSendCount(resumeId);
+        mv.addObject("i",i);
+        return mv;
     }
 }
