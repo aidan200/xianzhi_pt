@@ -227,11 +227,11 @@ public class PostionController extends BaseController{
     //收藏职位
     @ResponseBody
     @RequestMapping("insertCollect.do")
-    public Map insertCollect(Integer postionId,Integer memberId){
+    public Map insertCollect(@ModelAttribute("userLogin") XzLogin userLogin,Integer postionId){
         Date collectTime=new Date();
         Map map=new HashMap();
         map.put("postionId",postionId);
-        map.put("memberId",memberId);
+        map.put("memberId",userLogin.getMember().getMemberId());
         map.put("collectTime",collectTime);
         int i=postionService.insertCollect(map);
         if(i==1){

@@ -53,7 +53,7 @@
     <div class="com_position1">
 
         <div class="com_top">
-            <h4>行业名企<a href=""><span>更多职位 &raquo</span></a>></h4>
+            <h4>行业名企<a href="${pageContext.request.contextPath}/Postion/selPostionIndex.do"><span>更多职位 &raquo</span></a>></h4>
             <c:forEach items="${clist}" var="c1">
             <div class="com_com">
                 <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${c1.companyId}" style="display: block;text-align: center">

@@ -94,7 +94,8 @@
                     <span>72小时反馈</span>
                     <a id="lxw" isSend="f" onclick="sendResume()">我感兴趣 请联系我</a></h3>
                 <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate
-                        value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span><a href="" s>收藏</a></p>
+                        value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span>
+                    <a href="" isCollect="f" onclick="insertCollect()" id="sc">收藏</a></p>
                 <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>${xzPostion.postionAge}岁</span>
                 </div>
             </div>
@@ -315,10 +316,12 @@
     postion.x = '${xzPostion.company.companyX}';
     postion.y = '${xzPostion.company.companyY}';
     console.log(postion);
+    var id='${xzPostion.postionId}';
     var myMap = new myMap(postion);
     $(function () {
         myMap.init();
         isSend();
+        isCollect();
     })
 
     function sendResume() {
@@ -345,8 +348,6 @@
         }
 
     }
-
-
     function isSend() {
         $.ajax({
             url: "${pageContext.request.contextPath}/PostionSend/selisSend.do",
@@ -363,6 +364,44 @@
                 }
             }
         })
+    }
+    function insertCollect() {
+        alert("aaaaaaaaaaaaaaaaa");
+        if($('#sc').attr("isCollect")=="f"){
+            $.ajax({
+                url:"${pageContext.request.contextPath}/Postion/insertCollect.do",
+                data:{postionId:id},
+                type:"get",
+                dataType:"json",
+                success:function(data){
+                    if(data.msg=="ok"){
+                        $('#sc').html("已收藏");
+                        $('#sc').attr("isCollect","t");
+                    }
+                }
+            })
+        }else {
+            $('#sc').html("已收藏");
+            $('#sc').attr("isCollect","t");
+        }
+    }
+    function isCollect() {
+        $.ajax({
+            url:"${pageContext.request.contextPath}/Postion/selCollectState.do",
+            data:{postionId:id},
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                if(data.msg=="ok"){
+                    $('#sc').html("已收藏");
+                    $('#sc').attr("isCollect","t");
+                }else {
+                    $('#sc').html("收藏");
+                    $('#sc').attr("isCollect","f");
+                }
+            }
+        })
+
     }
 </script>
 
