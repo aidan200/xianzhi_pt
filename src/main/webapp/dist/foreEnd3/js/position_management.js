@@ -73,7 +73,6 @@ function Zzzp(){
     this.yxgt=0,              //5.意向沟通         1
     this.createTime=0,        //7.刷新时间         1
     this.deleteTime=0;        //8.结束时间         1
-    this.dd=0                 //待定               1
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -109,7 +108,6 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         zzzp.yxgt=data.postionList[i].yxgt;
                         zzzp.createTime=data.postionList[i].createTime;
                         zzzp.deleteTime=data.postionList[i].deleteTime;
-                        zzzp.dd=data.postionList[i].dd;
                         zzzp.ms=data.postionList[i].ms;
                         This.cont[i]=zzzp;
                 }
@@ -135,7 +133,6 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
                         str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                         str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                        str+='<td class="all_no">'+This.cont[i].dd+'</td>'
                         str+='<td class="all_no">'+This.cont[i].ms+'</td>'
                         str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
                         str+='<td class="all_no">'
@@ -1068,7 +1065,6 @@ function Cgzw(){              //审核未
     this.postionName='',      //1.职位名称             1
     this.cjsj=''                //创建时间
     this.zhxgsj=''              //最后修改时间
-    //通知面试  待定
     this.cont=[]              //10装对象的数组
     this.Dom={                //装在常用DOM
 
@@ -1399,7 +1395,6 @@ function Yzt(){              //审核未
         this.zdxz=0,              //4.主动下载         1
         this.yxgt=0,              //5.意向沟通         1
         this.tzsj=0;              //6.暂停时间           1
-    this.dd=0                 //待定               1
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -1435,7 +1430,6 @@ Yzt.prototype.cshjz=function (obj){               //初始化加载
                 yzt.zdxz=data.postionList[i].zdxz;
                 yzt.yxgt=data.postionList[i].yxgt;
                 yzt.tzsj="不知道啊"             //暂停时间
-                yzt.dd=data.postionList[i].dd;
                 yzt.ms=data.postionList[i].ms;
                 This.cont[i]=yzt;
             }
@@ -1461,7 +1455,6 @@ Yzt.prototype.cshjz=function (obj){               //初始化加载
                     str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
                     str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                     str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].dd+'</td>'
                     str+='<td class="all_no">'+This.cont[i].ms+'</td>'
                     str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].tzsj)+'</td>'
                     str+='<td class="all_no">'
@@ -1743,7 +1736,6 @@ function Yjs(){              //审核未
         this.zdxz=0,              //4.主动下载         1
         this.yxgt=0,              //5.意向沟通         1
         this.tzsj=''               //停止时间
-    this.dd=0                 //待定               1
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -1779,7 +1771,6 @@ Yjs.prototype.cshjz=function (obj){               //初始化加载
                 yjs.zdxz=data.postionList[i].zdxz;
                 yjs.yxgt=data.postionList[i].yxgt;
                 yjs.tzsj="不知道"
-                yjs.dd=data.postionList[i].dd;
                 yjs.ms=data.postionList[i].ms;
                 This.cont[i]=yjs;
             }
@@ -1805,7 +1796,6 @@ Yjs.prototype.cshjz=function (obj){               //初始化加载
                     str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
                     str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                     str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].dd+'</td>'
                     str+='<td class="all_no">'+This.cont[i].ms+'</td>'
                     str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].tzsj)+'</td>'
                     str+='<td class="all_no">'

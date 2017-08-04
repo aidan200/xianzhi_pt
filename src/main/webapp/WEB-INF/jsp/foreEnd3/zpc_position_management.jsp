@@ -123,7 +123,6 @@
                                     <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
                                     <th width="80">通知面试</th>
                                     <th width="80">刷新时间</th>
                                     <th width="100">操作</th>
@@ -491,7 +490,6 @@
                                     <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
                                     <th width="80">通知面试</th>
                                     <th width="80">暂停时间</th>
                                     <th width="100">操作</th>
@@ -580,7 +578,6 @@
                                     <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
                                     <th width="80">通知面试</th>
                                     <th width="80">停止时间</th>
                                     <th width="100">操作</th>
