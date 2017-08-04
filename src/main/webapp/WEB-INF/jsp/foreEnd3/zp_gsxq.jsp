@@ -180,7 +180,7 @@
                         <c:forEach var="po" items="${plist}">
                             <li>
                                 <div class="zp_gsxq_zpzw_li_left">
-                                    <p><a href="">${po.postionName}</a>
+                                    <p><a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${po.postionId}">${po.postionName}</a>
                                         <button type="button" class="gsxq_bu">立即应聘</button>
                                     </p>
                                     <p><span>
