@@ -225,13 +225,6 @@
                             <div class="zp_page">共 <span>100</span> 页</div>
                         </div>
                     </div>
-                    <%--<div class="pop_no">--%>
-                    <%--<div class="pop_allimg">--%>
-                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                    <%--class="rem_img">--%>
-                    <%--<p class="all_p">暂无简历记录</p>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
                 </div>
 
 
@@ -243,3 +236,45 @@
 </div>
 </body>
 </html>
+<script>
+    function BaseBox() {
+        this.page;
+        this.pages;
+        this.total;
+        this.dataBox;
+
+    }
+    BaseBox.prototype.init = function () {
+        alert(0);
+    }
+    BaseBox.prototype.getData = function (url,data,callBack) {
+        $.ajax({
+            url:url,
+            data:data,
+            dataType:'json',
+            success:function (data) {
+                callBack(data);
+            }
+        });
+    }
+
+
+    function collect(dataBox) {
+        BaseBox.call(this);
+        this.dataBox = dataBox;
+    }
+    collect.prototype = new BaseBox();
+    collect.prototype.init = function () {
+        alert(1);
+    }
+
+    collect.prototype.go = function () {
+        var _self = this;
+        _self.getData("aa",{},function (data) {
+            alert(data);
+        });
+    }
+    var cc = new collect();
+    //cc.go();
+
+</script>
