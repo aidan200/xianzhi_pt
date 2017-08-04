@@ -49,7 +49,7 @@
                     <c:when test="${userLogin!=undefined}">
                         <a href="" style="">
                             <li class="login1">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="allheader">
+                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/head.png" alt="" class="allheader">
                                 <span style="width: 5px;height: 5px;background-color: red;display:inline-block;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
                                 <ul class="head-menu">
                                     <li class="head_new2">
@@ -62,8 +62,6 @@
                                     <li><span class="head_new"></span><a href="#">查看职位信息</a></li>
                                     <li><span class="head_new"></span><a href="#">balabala</a></li>
                                 </ul>
-
-                                    <%--<a><span>${userLogin.loginCount}${userLogin.member.memberId}</span></a>--%>
                             </li>
                         </a>
                     </c:when>
@@ -103,9 +101,6 @@
 </body>
 <script>
     $(function () {
-        console.log(${userLogin==null});
-        console.log(getCookie("count"));
-        console.log(getCookie("pw"));
         if(${userLogin==null}){
             if(getCookie("count")!=null&&getCookie("pw")!=null){
                 $.ajax({
