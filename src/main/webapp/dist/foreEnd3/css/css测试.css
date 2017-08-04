@@ -3279,7 +3279,8 @@ input[type="button"].fileInputButton {
     width: 100%;
     min-width: 1200px;
     height: 260px;
-    background: url("../../../dist/foreEnd3/img/mkl.jpg") center center no-repeat;
+    background: url("../../../dist/foreEnd3/img/mkl.jpg") center no-repeat;
+    background-size: cover;
 }
 
 .img-replace {

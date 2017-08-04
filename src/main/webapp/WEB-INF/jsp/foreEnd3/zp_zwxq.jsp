@@ -194,7 +194,7 @@
                     <div class="zp_zwxq_cont_right_cont_top">
                         <h3>职位发布者</h3>
                         <div>
-                            <p><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zp_zwxq_yhtx.gif" alt="">
+                            <p><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="">
                             </p>
                             <p>
                                 ${xzPostion.company.companyName}
