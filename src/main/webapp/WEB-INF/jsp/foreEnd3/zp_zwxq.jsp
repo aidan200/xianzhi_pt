@@ -89,8 +89,8 @@
                 <h3>可能感兴趣的职位：</h3>
                 <div>
                     <div>
-                        <ul>
-                            <c:forEach items="${plist}" var="p1">
+                        <ul id="bbb">
+                            <%--<c:forEach items="${plist}" var="p1">
                             <li>
                                 <p>
                                     <a href="" class="zp_zwxq_a1">${p1.postionName}</a>
@@ -111,7 +111,7 @@
                                             </span>
                                 </p>
                             </li>
-                            </c:forEach>
+                            </c:forEach>--%>
                         </ul>
                     </div>
                 </div>
