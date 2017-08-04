@@ -4202,6 +4202,7 @@ input[type="button"].fileInputButton {
     line-height: 35px;
     padding-left: 10px;
 }
+
 .pop_tl3 {
     width: 320px;
     height: 60px;
@@ -4213,32 +4214,37 @@ input[type="button"].fileInputButton {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .pop_tl4 {
     width: 530px;
     height: 80px;
     float: left;
 }
-.pop_d{
+
+.pop_d {
     position: absolute;
     bottom: 5px;
     left: 300px;
     cursor: pointer;
 }
-.pop_dd{
+
+.pop_dd {
     display: none;
     width: 100%;
     height: 100px;
     border: 1px solid #d9d9d9;
     background-color: #FFFFff;
-    border-top:1px solid transparent;
+    border-top: 1px solid transparent;
     padding: 10px;
 }
-.pop_tl5{
+
+.pop_tl5 {
     width: 90px;
     float: left;
     padding-left: 10px;
 }
-.pop_tl5 button{
+
+.pop_tl5 button {
     width: 60px;
     height: 30px;
     background-color: #FFA500;
@@ -6442,4 +6448,102 @@ footer {
     height: 30px;
     border: 1px solid #c0c0c0;
     border-radius: 3px;
+}
+
+/*------------------------动态------------------------*/
+.dot_allin {
+    width: 980px;
+    height: 100%;
+    margin: 40px auto;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dot_top2 {
+    width: 100%;
+    height: 50px;
+    background-color: #3D9CCC;
+    /*border: 1px dashed #d9d9d9;*/
+    margin-top: 20px;
+    line-height: 50px;
+    color: #ffffff;
+}
+
+.dot_span {
+    float: right;
+    margin-right: 20px;
+}
+
+.dot_have {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #d9d9d9;
+    overflow: hidden;
+    position: relative;
+}
+
+.dot_left2 {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+.dot_head {
+    width: 100px;
+    height: 70px;
+    margin-left: 20px;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dot_test2 {
+    width: 330px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    border-right: 1px dashed #c0c0c0;
+}
+
+.dot_test3 {
+    width: 300px;
+    height: auto;
+    overflow: hidden;
+    float: left;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+.dot_test2 h4 {
+    color: #3d9ccc;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.dot_sp {
+    margin: 10px;
+}
+
+.dot_t3s {
+    width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.dot_but {
+    width: 80px;
+    height: 35px;
+    background-color: #FFA500;
+    color: #fff;
+    outline: none;
+    border: none;
+    margin-top: 20px;
 }
