@@ -66,8 +66,12 @@ public class PdfUtil {
             cell1.setVerticalAlignment(Element.ALIGN_MIDDLE);
             table.setHorizontalAlignment(Element.ALIGN_CENTER);
             Image image = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
-            if(resume.getResumeSex()==1){
-                image = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/girl.png"));
+            if(resume.getResumeIntentField()!=null){
+                image = Image.getInstance(request.getServletContext().getRealPath("/uploadImg/"+resume.getResumeIntentField()));
+            }else{
+                if(resume.getResumeSex()==1){
+                    image = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/girl.png"));
+                }
             }
             //照片
             cell1.setImage(image);

@@ -123,7 +123,6 @@
                                     <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
                                     <th width="80">通知面试</th>
                                     <th width="80">刷新时间</th>
                                     <th width="100">操作</th>
@@ -241,15 +240,10 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="160">职位名称</th>
-                                    <th width="80">应聘人选</th>
-                                    <th width="80">未处理</th>
-                                    <th width="80">主动下载</th>
-                                    <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
-                                    <th width="80">通知面试</th>
-                                    <th width="80">刷新时间</th>
-                                    <th width="100">操作</th>
+                                    <th width="80">职位名称</th>
+                                    <th width="80">审核状态</th>
+                                    <th width="80">审核时间</th>
+                                    <th width="80">创建时间</th>
                                 </tr>
                                 </thead>
 
@@ -326,15 +320,10 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="160">职位名称</th>
-                                    <th width="80">应聘人选</th>
-                                    <th width="80">未处理</th>
-                                    <th width="80">主动下载</th>
-                                    <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
-                                    <th width="80">通知面试</th>
-                                    <th width="80">刷新时间</th>
-                                    <th width="100">操作</th>
+                                    <th width="80">职位名称</th>
+                                    <th width="80">未通过原因</th>
+                                    <th width="80">审核时间</th>
+                                    <th width="80">创建时间</th>
                                 </tr>
                                 </thead>
 
@@ -412,15 +401,10 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="160">职位名称</th>
-                                    <th width="80">应聘人选</th>
-                                    <th width="80">未处理</th>
-                                    <th width="80">主动下载</th>
-                                    <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
-                                    <th width="80">通知面试</th>
-                                    <th width="80">刷新时间</th>
-                                    <th width="100">操作</th>
+                                    <th width="80">职位名称</th>
+                                    <th width="80">创建时间</th>
+                                    <th width="80">最后一次修改时间</th>
+                                    <th width="80">操作</th>
                                 </tr>
                                 </thead>
 
@@ -506,9 +490,8 @@
                                     <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
                                     <th width="80">通知面试</th>
-                                    <th width="80">刷新时间</th>
+                                    <th width="80">暂停时间</th>
                                     <th width="100">操作</th>
                                 </tr>
                                 </thead>
@@ -595,9 +578,8 @@
                                     <th width="80">未处理</th>
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
                                     <th width="80">通知面试</th>
-                                    <th width="80">刷新时间</th>
+                                    <th width="80">停止时间</th>
                                     <th width="100">操作</th>
                                 </tr>
                                 </thead>
@@ -677,15 +659,9 @@
                                 <thead>
                                 <tr class="pom_tr">
                                     <th width="50"></th>
-                                    <th width="160">职位名称</th>
-                                    <th width="80">应聘人选</th>
-                                    <th width="80">未处理</th>
-                                    <th width="80">主动下载</th>
-                                    <th width="80">意向沟通</th>
-                                    <th width="80">待定</th>
-                                    <th width="80">通知面试</th>
-                                    <th width="80">刷新时间</th>
-                                    <th width="100">操作</th>
+                                    <th width="80">职位名称</th>
+                                    <th width="80">简历状态</th>
+                                    <th width="80">创建时间</th>
                                 </tr>
                                 </thead>
 

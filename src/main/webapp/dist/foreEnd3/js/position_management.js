@@ -73,7 +73,6 @@ function Zzzp(){
     this.yxgt=0,              //5.意向沟通         1
     this.createTime=0,        //7.刷新时间         1
     this.deleteTime=0;        //8.结束时间         1
-    this.dd=0                 //待定               1
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -109,7 +108,6 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         zzzp.yxgt=data.postionList[i].yxgt;
                         zzzp.createTime=data.postionList[i].createTime;
                         zzzp.deleteTime=data.postionList[i].deleteTime;
-                        zzzp.dd=data.postionList[i].dd;
                         zzzp.ms=data.postionList[i].ms;
                         This.cont[i]=zzzp;
                 }
@@ -135,7 +133,6 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
                         str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                         str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                        str+='<td class="all_no">'+This.cont[i].dd+'</td>'
                         str+='<td class="all_no">'+This.cont[i].ms+'</td>'
                         str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
                         str+='<td class="all_no">'
@@ -319,7 +316,7 @@ Zzzp.prototype.definition=function(obj){            //正在招聘暂停方法
 
     })
 }
-Zzzp.prototype.operateEnd=function(obj){            //正在招聘暂停方法
+Zzzp.prototype.operateEnd=function(obj){            //正在招聘停止方法
     var This=this;
     $(obj).unbind().on('click',function (){
         var othis=this
@@ -431,15 +428,9 @@ Zzzp.prototype.init=function (){        //初始化方法
 function Shz(){              //审核中
     this.postionId=0;         //职位id                 1
     this.postionName='',      //1.职位名称             1
-        this.yprx=0,              //2.应聘人选         1
-        this.wcl=0,               //3.未处理           1
-        this.zdxz=0,              //4.主动下载         1
-        this.yxgt=0,              //5.意向沟通         1
-        this.createTime=0,        //7.刷新时间         1
-        this.deleteTime=0;        //8.结束时间         1
-    this.dd=0                 //待定               1
-    this.ms=0                 //面试               1
-    //通知面试  待定
+     this.shzt=''             //审核状态
+     this.shsj=''             //审核时间
+     this.cjsj=''             //创建时间
     this.cont=[]              //10装对象的数组
     this.Dom={                //装在常用DOM
 
@@ -468,14 +459,14 @@ Shz.prototype.cshjz=function (obj){               //初始化加载
                 var shz =new Shz();
                 shz.postionId=data.postionList[i].postionId;
                 shz.postionName=data.postionList[i].postionName;
-                shz.yprx=data.postionList[i].alls;     //应聘人选
-                shz.wcl=data.postionList[i].wcl;
-                shz.zdxz=data.postionList[i].zdxz;
-                shz.yxgt=data.postionList[i].yxgt;
-                shz.createTime=data.postionList[i].createTime;
-                shz.deleteTime=data.postionList[i].deleteTime;
-                shz.dd=data.postionList[i].dd;
-                shz.ms=data.postionList[i].ms;
+
+                shz.shzt="shzt000000"
+                shz.shsj="shzt1111111111"
+                shz.cjsj="shzt2222222"
+
+                //缺少方法现在
+
+
                 This.cont[i]=shz;
             }
             if( This.cont.length!=0){       //判断如果后台没有查到正在招聘数据
@@ -496,17 +487,9 @@ Shz.prototype.cshjz=function (obj){               //初始化加载
                     str+='</div>'
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
-                    str+='<td class="all_no">'+This.cont[i].yprx+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].dd+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
-                    str+='<td class="all_no">'
-                    str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
-                    str+=' <a href="javascript:;" class="dg_sc">结束</a> '
-                    str+='</td>'
+                    str+='<td class="all_no">'+This.cont[i].shzt+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].shsj)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].cjsj)+'</td>'
                     str+='</tr>'
                 }
                 $('#shz_tbody').html(str)      //输出到页面上
@@ -765,15 +748,10 @@ Shz.prototype.init=function (){        //初始化方法
 function Shwtg(){              //审核未
     this.postionId=0;         //职位id                 1
     this.postionName='',      //1.职位名称             1
-        this.yprx=0,              //2.应聘人选         1
-        this.wcl=0,               //3.未处理           1
-        this.zdxz=0,              //4.主动下载         1
-        this.yxgt=0,              //5.意向沟通         1
-        this.createTime=0,        //7.刷新时间         1
-        this.deleteTime=0;        //8.结束时间         1
-    this.dd=0                 //待定               1
-    this.ms=0                 //面试               1
-    //通知面试  待定
+    this.wtgyx=''              //未通过原因
+    this.shsj=''               //审核时间
+    this.cjsj=''               //创建时间
+
     this.cont=[]              //10装对象的数组
     this.Dom={                //装在常用DOM
 
@@ -802,14 +780,9 @@ Shwtg.prototype.cshjz=function (obj){               //初始化加载
                 var shwtg =new Shwtg();
                 shwtg.postionId=data.postionList[i].postionId;
                 shwtg.postionName=data.postionList[i].postionName;
-                shwtg.yprx=data.postionList[i].alls;     //应聘人选
-                shwtg.wcl=data.postionList[i].wcl;
-                shwtg.zdxz=data.postionList[i].zdxz;
-                shwtg.yxgt=data.postionList[i].yxgt;
-                shwtg.createTime=data.postionList[i].createTime;
-                shwtg.deleteTime=data.postionList[i].deleteTime;
-                shwtg.dd=data.postionList[i].dd;
-                shwtg.ms=data.postionList[i].ms;
+                shwtg.wtgyx="看你不爽"
+                shwtg.shsj="aaa"
+                shwtg.cjsj="aaa"
                 This.cont[i]=shwtg;
             }
             if( This.cont.length!=0){       //判断如果后台没有查到正在招聘数据
@@ -830,17 +803,9 @@ Shwtg.prototype.cshjz=function (obj){               //初始化加载
                     str+='</div>'
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
-                    str+='<td class="all_no">'+This.cont[i].yprx+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].dd+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
-                    str+='<td class="all_no">'
-                    str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
-                    str+=' <a href="javascript:;" class="dg_sc">结束</a> '
-                    str+='</td>'
+                    str+='<td class="all_no">'+This.cont[i].wtgyx+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].shsj)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].cjsj)+'</td>'
                     str+='</tr>'
                 }
                 $('#shwtg_tbody').html(str)      //输出到页面上
@@ -1098,15 +1063,8 @@ Shwtg.prototype.init=function (){        //初始化方法
 function Cgzw(){              //审核未
     this.postionId=0;         //职位id                 1
     this.postionName='',      //1.职位名称             1
-        this.yprx=0,              //2.应聘人选         1
-        this.wcl=0,               //3.未处理           1
-        this.zdxz=0,              //4.主动下载         1
-        this.yxgt=0,              //5.意向沟通         1
-        this.createTime=0,        //7.刷新时间         1
-        this.deleteTime=0;        //8.结束时间         1
-    this.dd=0                 //待定               1
-    this.ms=0                 //面试               1
-    //通知面试  待定
+    this.cjsj=''                //创建时间
+    this.zhxgsj=''              //最后修改时间
     this.cont=[]              //10装对象的数组
     this.Dom={                //装在常用DOM
 
@@ -1135,14 +1093,9 @@ Cgzw.prototype.cshjz=function (obj){               //初始化加载
                 var cgzw =new Cgzw();
                 cgzw.postionId=data.postionList[i].postionId;
                 cgzw.postionName=data.postionList[i].postionName;
-                cgzw.yprx=data.postionList[i].alls;     //应聘人选
-                cgzw.wcl=data.postionList[i].wcl;
-                cgzw.zdxz=data.postionList[i].zdxz;
-                cgzw.yxgt=data.postionList[i].yxgt;
-                cgzw.createTime=data.postionList[i].createTime;
-                cgzw.deleteTime=data.postionList[i].deleteTime;
-                cgzw.dd=data.postionList[i].dd;
-                cgzw.ms=data.postionList[i].ms;
+                cgzw.cjsj="100年前"
+                cgzw.zhxgsj="50年前";
+
                 This.cont[i]=cgzw;
             }
             if( This.cont.length!=0){       //判断如果后台没有查到正在招聘数据
@@ -1163,16 +1116,12 @@ Cgzw.prototype.cshjz=function (obj){               //初始化加载
                     str+='</div>'
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
-                    str+='<td class="all_no">'+This.cont[i].yprx+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].dd+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].cjsj)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].zhxgsj)+'</td>'
                     str+='<td class="all_no">'
-                    str+=' <a href="javascript:;" class="dg_xg">发布</a> '
-                    str+=' <a href="javascript:;" class="dg_sc">结束</a> '
+                    str+=' <a href="javascript:;" class="dg_fb">发布</a> '
+                    str+=' <a href="javascript:;" class="dg_xg">修改</a> '
+                    str+=' <a href="javascript:;" class="dg_yl">预览</a> '
                     str+='</td>'
                     str+='</tr>'
                 }
@@ -1369,7 +1318,7 @@ Cgzw.prototype.operateEnd=function(obj){            //正在招聘暂停方法
 Cgzw.prototype.updata=function (){                  //正在招聘业务逻辑方法
     var This=this
     //在加载完成数据库后执行
-    This.definition('#pom_three  .dg_xg')       //单个暂停事件
+    This.definition('#pom_three  .dg_fb')       //单个暂停事件
     This.operateEnd('#pom_three  .dg_sc')       //单个结束事件
 }
 Cgzw.prototype.paging=function (){                          //分页加载方法
@@ -1445,9 +1394,7 @@ function Yzt(){              //审核未
         this.wcl=0,               //3.未处理           1
         this.zdxz=0,              //4.主动下载         1
         this.yxgt=0,              //5.意向沟通         1
-        this.createTime=0,        //7.刷新时间         1
-        this.deleteTime=0;        //8.结束时间         1
-    this.dd=0                 //待定               1
+        this.tzsj=0;              //6.暂停时间           1
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -1482,9 +1429,7 @@ Yzt.prototype.cshjz=function (obj){               //初始化加载
                 yzt.wcl=data.postionList[i].wcl;
                 yzt.zdxz=data.postionList[i].zdxz;
                 yzt.yxgt=data.postionList[i].yxgt;
-                yzt.createTime=data.postionList[i].createTime;
-                yzt.deleteTime=data.postionList[i].deleteTime;
-                yzt.dd=data.postionList[i].dd;
+                yzt.tzsj="不知道啊"             //暂停时间
                 yzt.ms=data.postionList[i].ms;
                 This.cont[i]=yzt;
             }
@@ -1510,9 +1455,8 @@ Yzt.prototype.cshjz=function (obj){               //初始化加载
                     str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
                     str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                     str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].dd+'</td>'
                     str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].tzsj)+'</td>'
                     str+='<td class="all_no">'
                     str+=' <a href="javascript:;" class="dg_xg">继续</a> '
                     str+=' <a href="javascript:;" class="dg_sc">结束</a> '
@@ -1676,35 +1620,39 @@ Yzt.prototype.definition=function(obj){            //继续招聘方法
 
     })
 }
-Yzt.prototype.operateEnd=function(obj){            //正在招聘暂停方法
+Yzt.prototype.operateEnd=function(obj){            //正在结束方法
     var This=this;
     $(obj).unbind().on('click',function (){
         var othis=this
-        var parent=$(othis).parent().parent()
+        var parent=$(othis).parent().parent();
         var data={
-            companyId:companyId,            //公司ID
-            zwID:parent.attr('data-id')     //职位ID
-        }
-        alert('我是删除')
-        var xxk=$('#xxk_05').parent().parent();  //选择到搜索框父级
-        if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
-            alert('执行了默认加载')
-            var data={
-                companyId:companyId,
-                postionWelfare:4
+            postionId:parent.attr('data-id')     //职位ID
+        };
+        $.ajax({
+            type:"get",    //提交方式
+            async:true,  //是否异步
+            data:data,        //转为JSON格式
+            dataType:'json',                   //定义返回data类型
+            url:path+'Postion/updateStateStop.do ',    //路径
+            success:function (data2){//data 就是数据 json
+                var xxk=$('#xxk_04').parent().parent();  //选择到搜索框父级
+                if(xxk.find('input').eq(0).val()==''&&xxk.find('input').eq(1).val()==''&&xxk.find('input').eq(2).val()==''){
+                    var data={
+                        companyId:companyId,
+                        postionWelfare:4
+                    }
+                    This.cshjz(data);       //判断如果搜索框里没有条件则执行默认加载
+                }else{
+                    alert('执行了条件')
+                    var data=This.seekCont()                     //获取到条件对象
+                    This.cshjz(data);                           //条件加载
+                }
+
+            },error:function (){ //报错执行的
+                alert('基本资料修改错误')
             }
-            This.cshjz(data);       //判断如果搜索框里没有条件则执行默认加载
-        }else{
-            var data=This.seekCont()                     //获取到条件对象
-            This.cshjz(data);                           //条件加载
-        }
+        })
 
-
-        //     },error:function (){ //报错执行的
-        //         alert('搜索框方法错误')
-        //     }
-        //
-        // })
 
     })
 }
@@ -1787,9 +1735,7 @@ function Yjs(){              //审核未
         this.wcl=0,               //3.未处理           1
         this.zdxz=0,              //4.主动下载         1
         this.yxgt=0,              //5.意向沟通         1
-        this.createTime=0,        //7.刷新时间         1
-        this.deleteTime=0;        //8.结束时间         1
-    this.dd=0                 //待定               1
+        this.tzsj=''               //停止时间
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -1824,9 +1770,7 @@ Yjs.prototype.cshjz=function (obj){               //初始化加载
                 yjs.wcl=data.postionList[i].wcl;
                 yjs.zdxz=data.postionList[i].zdxz;
                 yjs.yxgt=data.postionList[i].yxgt;
-                yjs.createTime=data.postionList[i].createTime;
-                yjs.deleteTime=data.postionList[i].deleteTime;
-                yjs.dd=data.postionList[i].dd;
+                yjs.tzsj="不知道"
                 yjs.ms=data.postionList[i].ms;
                 This.cont[i]=yjs;
             }
@@ -1852,12 +1796,10 @@ Yjs.prototype.cshjz=function (obj){               //初始化加载
                     str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
                     str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                     str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].dd+'</td>'
                     str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].tzsj)+'</td>'
                     str+='<td class="all_no">'
-                    str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
-                    str+=' <a href="javascript:;" class="dg_sc">结束</a> '
+                    str+=' <a href="javascript:;" class="dg_fh">恢复</a> '
                     str+='</td>'
                     str+='</tr>'
                 }
@@ -2116,15 +2058,8 @@ Yjs.prototype.init=function (){        //初始化方法
 function Qbzw(){              //审核未
     this.postionId=0;         //职位id                 1
     this.postionName='',      //1.职位名称             1
-        this.yprx=0,              //2.应聘人选         1
-        this.wcl=0,               //3.未处理           1
-        this.zdxz=0,              //4.主动下载         1
-        this.yxgt=0,              //5.意向沟通         1
-        this.createTime=0,        //7.刷新时间         1
-        this.deleteTime=0;        //8.结束时间         1
-    this.dd=0                 //待定               1
-    this.ms=0                 //面试               1
-    //通知面试  待定
+    this.zt=''                  //状态
+    this.cjsj=''                //创建时间
     this.cont=[]              //10装对象的数组
     this.Dom={                //装在常用DOM
 
@@ -2153,14 +2088,8 @@ Qbzw.prototype.cshjz=function (obj){               //初始化加载
                 var qbzw =new Qbzw();
                 qbzw.postionId=data.postionList[i].postionId;
                 qbzw.postionName=data.postionList[i].postionName;
-                qbzw.yprx=data.postionList[i].alls;     //应聘人选
-                qbzw.wcl=data.postionList[i].wcl;
-                qbzw.zdxz=data.postionList[i].zdxz;
-                qbzw.yxgt=data.postionList[i].yxgt;
-                qbzw.createTime=data.postionList[i].createTime;
-                qbzw.deleteTime=data.postionList[i].deleteTime;
-                qbzw.dd=data.postionList[i].dd;
-                qbzw.ms=data.postionList[i].ms;
+                qbzw.zt="状态";
+                qbzw.cjsj="不知道";
                 This.cont[i]=qbzw;
             }
             if( This.cont.length!=0){       //判断如果后台没有查到正在招聘数据
@@ -2181,17 +2110,8 @@ Qbzw.prototype.cshjz=function (obj){               //初始化加载
                     str+='</div>'
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
-                    str+='<td class="all_no">'+This.cont[i].yprx+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].wcl+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].dd+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
-                    str+='<td class="all_no">'
-                    str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
-                    str+=' <a href="javascript:;" class="dg_sc">结束</a> '
-                    str+='</td>'
+                    str+='<td class="all_no">'+This.cont[i].zt+'</td>'
+                    str+='<td class="all_no">'+This.cont[i].cjsj+'</td>'
                     str+='</tr>'
                 }
                 $('#qbzw_tbody').html(str)      //输出到页面上

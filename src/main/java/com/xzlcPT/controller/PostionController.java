@@ -190,7 +190,7 @@ public class PostionController extends BaseController{
     @RequestMapping("insertPostion.do")
     public ModelAndView insertPostion(@ModelAttribute("userLogin") XzLogin userLogin,String postionName,String postionSpace,String postionDepartment,Integer peopleNumber,
                                       Integer postionMm,Integer postionYm,Integer publishMonth,String postionExp,String postionEducation,Integer educationEntrance,
-                                        String postionDescription,String postionSpecialty,String postionAgeMin,String postionAgeMax,Integer check){
+                                        String postionDescription,String postionSpecialty,String postionAgeMin,String postionAgeMax,Integer check,Integer postionWelfare){
         ModelAndView mv=new ModelAndView("redirect:/view/foreEnd3/zpc_position_management.html");
         Map map=new HashMap();
         map.put("postionName",postionName);
@@ -214,6 +214,7 @@ public class PostionController extends BaseController{
         map.put("postionAgeMax",postionAgeMax);
         map.put("companyId",userLogin.getCompany().getCompanyId());
         map.put("educationEntrance",educationEntrance);
+        map.put("postionWelfare",postionWelfare);
         if (check!=null&&check==1){
             map.put("forceAgeMax",postionAgeMax);
             map.put("forceAgeMin",postionAgeMin);
