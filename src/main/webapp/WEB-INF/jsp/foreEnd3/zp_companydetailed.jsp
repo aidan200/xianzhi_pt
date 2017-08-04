@@ -183,13 +183,13 @@
         success:function (data){//data 就是数据 json
             var ccHtml="";
             for(var i = 0;i < data.fieldList.length;i++){
-                ccHtml+='<li><input class="gshychechBox" type="checkbox" ';
+                ccHtml+='<li><input class="gshychechBox" type="checkbox" name="fffs" ';
                 /*for(var j = 0;j<theFiels.length;j++){
                     if(theFiels[j]==data.fieldList[i].fieldId){
                         ccHtml+= 'checked';
                     }
                 }*/
-                ccHtml+=' data-fieldId="'+data.fieldList[i].fieldId+'" data-value="'+data.fieldList[i].fieldName+'"/>'+data.fieldList[i].fieldName+' </li>';
+                ccHtml+=' data-fieldId="'+data.fieldList[i].fieldId+'" value="'+data.fieldList[i].fieldName+'"/>'+data.fieldList[i].fieldName+' </li>';
             }
             $('#gshyBox').html(ccHtml);
             //行业回填
@@ -197,8 +197,9 @@
                 var aa = $('#hy_tab input[type=checkbox]:checked');
                 var str = ''
                 aa.each(function (i, e) {
-                    str += '<span class="hangs">' + $(e).attr('data-value') + '</span>'+'，'
+                    str += ','+'<span class="hangs">' + $(e).attr('value') + '</span>'
                 })
+                str = str.substring(1);
                 $('#_hy').html(str)
                 $('.cd-popuph').removeClass('is-visible');
 

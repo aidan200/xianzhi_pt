@@ -182,6 +182,7 @@
     count(CASE ps.send_state WHEN '2' THEN 1 ELSE null END ) ms,
     count(CASE ps.send_type WHEN '1' THEN ps.send_type ELSE null END ) zdxz
     FROM xz_postion p LEFT JOIN xz_postion_send ps on p.postion_id = ps.postion_id
+    where p.company_id = 26
     <if test="postionName!=null and postionName!=''">
       and postion_name like CONCAT('%',#{postionName},'%')
     </if>
