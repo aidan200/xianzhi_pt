@@ -2793,8 +2793,8 @@ obj_fjxx.prototype.bindingSJ=function (){
 
             str+='<p>你还可以输入<span>600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default" type="button">取消</button>'
+            str+='<button type="button" class="allyes">确定</button>'
+            str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_fjxx').after(str);
