@@ -6,10 +6,13 @@ import com.xzlcPT.bean.*;
 import com.xzlcPT.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -94,13 +98,45 @@ public class LoginController extends BaseController {
         return mv;
     }
 
-
+    //免登陆方法
+    @ResponseBody
+    @RequestMapping("/LoginCookie.do")
+    public Map loginCookie(String username,String password,Model model){
+        Map map = loginService.sellogin(username,MD5.md5(password));
+        System.out.println(map);
+        if(map.get("msg").equals("ok")){
+            XzLogin login = (XzLogin) map.get("login");
+            if(login.getLoginActive()==0){
+                //账号没激活
+                map.put("msg","noa");
+            }else{
+                //session中存入当前用户
+                model.addAttribute("userLogin",login);
+            }
+        }
+        return map;
+    }
 
     //    退出登录方法
     @RequestMapping("ExitUser.do")
-    public ModelAndView exitUser(SessionStatus sessionStatus) {
+    public ModelAndView exitUser(SessionStatus sessionStatus,HttpServletRequest request,HttpServletResponse response) {
         ModelAndView mv = new ModelAndView("redirect:/");
         sessionStatus.setComplete();//清空session
+        //删除cookie
+        Cookie[] cookies = request.getCookies();
+        if (null==cookies) {
+            System.out.println("没有cookie");
+        } else {
+            for(Cookie cookie : cookies){
+                //如果找到同名cookie，就将value设置为null，将存活时间设置为0，再替换掉原cookie，这样就相当于删除了。
+                if(cookie.getName().equals("count")||cookie.getName().equals("pw")){
+                    cookie.setValue(null);
+                    cookie.setMaxAge(0);
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                }
+            }
+        }
         System.out.println("ExitUser");
         return mv;
     }
