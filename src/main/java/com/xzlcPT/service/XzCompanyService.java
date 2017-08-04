@@ -39,7 +39,7 @@ public interface XzCompanyService {
 
     PageBean<XzCompany> selComCount(Integer page,Integer rows,Map map);
 
-    XzCompany selFollowState(Map map);
+    int selFollowState(Map map);
 
     List<XzCompany> selectRecommend();
 }
