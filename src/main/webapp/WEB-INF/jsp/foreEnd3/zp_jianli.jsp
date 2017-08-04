@@ -24,7 +24,7 @@
         var ID = '${resume.resumeId}';                                          //ID
         var memberId;
         var wanchengdu;                                         //完成度
-        var dkh="http://localhost:8080";        //端口号
+        var dkh = "http://localhost:8080";        //端口号
 
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/uploadUtil.js"></script>
@@ -46,8 +46,8 @@
             <div class="zp_jianli_cont_left_top">
                 <div>
                     <div class="zp_jianli_mc">
-                        <em title="中文简历_20170704">中文简历_201...</em>
-                        <a href="javascript:;" class="fa fa-edit"></a>
+                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/tree.png" alt=""
+                             class="jianli_tree">
                     </div>
                     <div class="zp_jianli_wcd">
                         <span>完成度<span class="zl_wcd"></span>%</span>
@@ -274,9 +274,13 @@
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
-                                <li><a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}" target="_blank"><span class="fa fa-eye"></span></a></li>
-                                <li><a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}"><span class="fa fa-download"></span></a></li>
-                                <li><a onclick="flashResume()"><span class="fa fa-refresh" ></span></a></li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}"
+                                       target="_blank"><span class="fa fa-eye"></span></a></li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}"><span
+                                            class="fa fa-download"></span></a></li>
+                                <li><a onclick="flashResume()"><span class="fa fa-refresh"></span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -352,40 +356,40 @@
         <div class="zp_gsxq_bd_tck_cont2_cont">
             <div style="padding-left: 20px">请选择省份</div>
             <ul class="zp_ul">
-                <li><a class="cd-popup-trigger" >北京市</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >广东省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >山东省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >江苏省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >河南省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >上海市</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >河北省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >浙江省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >香港特别行政区</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >陕西省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >湖南省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >重庆市</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >福建省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >天津市</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >云南省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >四川省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >广西壮族自治区</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >安徽省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >海南省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >江西省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >湖北省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >山西省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >辽宁省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >台湾省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >黑龙江</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >内蒙古自治区</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >澳门特别行政区</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >贵州省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >甘肃省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >青海省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >新疆维吾尔自治区</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >西藏区</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >吉林省</a></li>
-                <li><a href="#0" class="cd-popup-trigger" >宁夏回族自治区</a></li>
+                <li><a class="cd-popup-trigger">北京市</a></li>
+                <li><a href="#0" class="cd-popup-trigger">广东省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">山东省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">江苏省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">河南省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">上海市</a></li>
+                <li><a href="#0" class="cd-popup-trigger">河北省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">浙江省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">香港特别行政区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">陕西省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">湖南省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">重庆市</a></li>
+                <li><a href="#0" class="cd-popup-trigger">福建省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">天津市</a></li>
+                <li><a href="#0" class="cd-popup-trigger">云南省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">四川省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">广西壮族自治区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">安徽省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">海南省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">江西省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">湖北省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">山西省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">辽宁省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">台湾省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">黑龙江</a></li>
+                <li><a href="#0" class="cd-popup-trigger">内蒙古自治区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">澳门特别行政区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">贵州省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">甘肃省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">青海省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">新疆维吾尔自治区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">西藏区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">吉林省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">宁夏回族自治区</a></li>
             </ul>
 
         </div>
@@ -395,7 +399,7 @@
         </div>
 
         <div class="zp_gsxq_bd_tck_bottom">
-            <a class="zp_button1" >确定</a>
+            <a class="zp_button1">确定</a>
             <button type="button" class="zp_button">取消</button>
         </div>
 
@@ -427,9 +431,9 @@
 <div class="zhe">
     <div class="zhe_all">
         <div class="zhe_every1">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/cir2.png" alt="" class="zhe_img">
-            <div class="zhe_d">
-                <span class="zhe_span">完善简历</span>
+            <div style="position: relative">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle1.png" alt="" class="zhe_img">
+                <span class="zhe_span">请完善你的简历信息,你的简历完成度达到多少。。。。</span>
             </div>
         </div>
         <div class="zhe_many1">
@@ -437,8 +441,10 @@
         </div>
 
         <div class="zhe_every2">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/cir2.png" alt="" class="zhe_img">
-            <div class="zhe_d"><span class="zhe_span">必填的</span></div>
+            <div style="position: relative">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle2.png" alt="" class="zhe_img">
+                <span class="zhe_span">所有带必填的都必须填写</span>
+            </div>
         </div>
         <div class="zhe_many2">
             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
