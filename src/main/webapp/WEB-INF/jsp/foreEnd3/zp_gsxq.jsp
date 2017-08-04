@@ -96,7 +96,7 @@
     <div class="row zp_spxq_cont_top">
         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zp_gsxq_img1.png">
         <div>
-            <h3><span>${xzCompany.companyName}</span> <a href="">关注</a>
+            <h3><span>${xzCompany.companyName}</span> <a href="" onclick="">关注</a>
                 <div class="zp_gsxq_gzrs">121人关注</div>
             </h3>
             <ul>
