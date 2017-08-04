@@ -193,10 +193,13 @@ ul {
     float: left;
     margin-right: 15px;
 }
-
+li{
+    list-style-type: none;
+}
 .zp_gsxq_cpjs img {
-    width: 210px;
-    height: 140px;
+    width: 600px;
+    height: 300px;
+    display: block;
 }
 
 .zp_gsxq_cpjs dd {
@@ -276,18 +279,31 @@ ul {
 }
 
 .zp_gsxq_zpzw > ul > li {
-    height: 120px;
+    height: auto;
+    overflow: hidden;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-bottom: 1px solid #E5E5E5;
 
 }
 
 .zp_gsxq_zpzw_li_left {
     float: left;
-    width: 400px;
+    width: 580px;
     margin-right: 50px;
     color: #666;
 }
-
+.gsxq_bu{
+    float: right;
+    width: 80px;
+    height: 30px;
+    background-color: #FFA500;
+    color: #FFFFff;
+    border: none;
+    border-radius: 3px;
+    margin-top: 10px;
+    line-height: 20px;
+}
 .zp_gsxq_zpzw_li_left > p {
     height: 40px;
     line-height: 40px;

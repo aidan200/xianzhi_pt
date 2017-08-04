@@ -59,7 +59,7 @@
             }
         });
         $(function () {
-            var slideHeight1 = 70; // px
+            var slideHeight1 = 400; // px
             var defHeight1 = $('.wrap3').height();
             if (defHeight1 >= slideHeight1) {
                 $('.wrap3').css('height', slideHeight1 + 'px');
@@ -180,14 +180,15 @@
                         <c:forEach var="po" items="${plist}">
                             <li>
                                 <div class="zp_gsxq_zpzw_li_left">
-                                    <p><a href="">${po.postionName}</a></p>
+                                    <p><a href="">${po.postionName}</a>
+                                        <button type="button" class="gsxq_bu">立即应聘</button>
+                                    </p>
                                     <p><span>
                             ${fn:replace((po.postionMm*12/10000),".0","")}-${fn:replace((po.postionYm*12/10000),".0","")}万</span>&nbsp;&nbsp;${po.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionExp}工作经验
                                     </p>
-                                    <p><span style="color: #999999; font-size: 10px;">23小时前 投递后：24小时反馈</span></p>
                                 </div>
                                 <div class="zp_gsxq_zpzw_li_right">
-                                    <button type="button" class="btn btn-primary btn-large">立即应聘</button>
+
                                 </div>
                             </li>
                         </c:forEach>
