@@ -16,24 +16,61 @@
 <html lang="zh-CN">
 <head>
     <script>
-        var path='${pageContext.request.contextPath}'
-        var postionId='${xzPostion.postionId}'
+        var path = '${pageContext.request.contextPath}'
+        var postionId = '${xzPostion.postionId}'
     </script>
 
     <jsp:include page="distforeEnd.jsp"/>
     <title>职位详情</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_zwxq.css">
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
-    <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C" type="text/javascript"></script>
+    <script src="http://api.map.baidu.com/api?v=2.0&ak=8VuO5m4tgo3GWNiS6sQaBjNo2lG38D1C"
+            type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/mapUtil.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_zwxq.js" type="text/javascript"></script>
+    <%--<style>--%>
+        <%--*{--%>
+            <%---webkit-box-sizing: content-box;--%>
+            <%---moz-box-sizing: content-box;--%>
+            <%--box-sizing: content-box;--%>
+        <%--}--%>
+    <%--</style>--%>
+    <script>
+        $(function () {
+            var slideHeight = 310; // px
+            var defHeight = $('.wrap5').height();
+            if (defHeight >= slideHeight) {
+                $('.wrap5').css('height', slideHeight + 'px');
+                $('.read-more5').append('<a href="###" class="new_a">点击展开更多详情</a>');
+                $('.read-more5 .new_a').click(function () {
+                    var curHeight = $('.wrap5').height();
+                    if (curHeight == slideHeight) {
+                        $('.wrap5').animate({
+                            height: defHeight
+                        }, "normal");
+                        $('.read-more5 .new_a').html('点击隐藏');
+//                        $('#gradient').fadeOut();
+                    } else {
+                        $('.wrap5').animate({
+                            height: slideHeight
+                        }, "normal");
+                        $('.read-more5 .new_a').html('点击展开更多详情');
+//                        $('#gradient').fadeIn();
+                    }
+                    return false;
+                });
+            }
+        });
+    </script>
 </head>
 <body>
 <jsp:include page="headerforeEnd.jsp"/>
+<jsp:include page="personnav.jsp"/>
 
 <section class="container zp_zwxq_cont">
     <div class="row">
-        <div class="col-md-8 zp_zwxq_cont_left">
+
+        <div class="zp_zwxq_cont_left">
             <div class="zp_zwxq_cont_left_top">
                 <div>
                     <h1>${xzPostion.postionName}</h1>
@@ -56,18 +93,22 @@
                     </c:choose>
                     <span>72小时反馈</span>
                     <a id="lxw" isSend="f" onclick="sendResume()">我感兴趣 请联系我</a></h3>
-                <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span><a href="" s>收藏</a></p>
-                <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>${xzPostion.postionAge}岁</span></div>
+                <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate
+                        value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span><a href="" s>收藏</a></p>
+                <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>${xzPostion.postionAge}岁</span>
+                </div>
             </div>
             <div class="zp_zwxq_cont_left_bottom">
                 <c:forEach items="${xzPostion.company.welfares}" var="w1">
-                <span class="tag" title="${w1.welfareName}">${w1.welfareName}</span>
+                    <span class="tag" title="${w1.welfareName}">${w1.welfareName}</span>
                 </c:forEach>
             </div>
             <div class="zp_zwxq_cont_left_zwms">
                 <h3>职位描述：</h3>
                 <div>
-                    <textarea cols="80" rows="20" readonly="readonly" style="BORDER-BOTTOM-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-TOP-STYLE: none;overflow-y:hidden;border:0;outline:none;font-size:10pt;">${xzPostion.postionDescription}</textarea>
+                    <div class="zp_awxq_t">
+                              ${xzPostion.postionDescription}
+                    </div>
                 </div>
             </div>
             <div class="zp_zwxq_cont_left_qtxx">
@@ -78,13 +119,20 @@
                     <li><span>下属人数：</span><label>${xzPostion.peopleNumber}人</label></li>
                 </ul>
             </div>
+
             <div class="zp_zwxq_cont_left_qyjs">
                 <h3>企业介绍：</h3>
-                <div>
-                   ${xzPostion.company.companyIntro}
-                    <a href="javascript:;">[展开]</a>
+
+                <div class="wrap5">
+                    <div>
+                        ${xzPostion.company.companyIntro}
+                    </div>
                 </div>
+                <div class="read-more5"></div>
+
             </div>
+
+
             <div class="zp_zwxq_cont_left_xq">
                 <h3>可能感兴趣的职位：</h3>
                 <div>
@@ -138,19 +186,21 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 zp_zwxq_cont_right">
+
+        <div class="zp_zwxq_cont_right">
             <div class="zp_zwxq_cont_right_cont">
                 <div class="zp_zwxq_cont_1" style="border: 1px solid #E6E6E6">
                     <div class="zp_zwxq_cont_right_cont_top">
                         <h3>职位发布者</h3>
                         <div>
-                            <p><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zp_zwxq_yhtx.gif" alt=""></p>
+                            <p><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zp_zwxq_yhtx.gif" alt="">
+                            </p>
                             <p>
                                 ${xzPostion.company.companyName}
                             </p>
-                            <p>
-                                <a class="btn btn-primary"  href="javascript:;">立即沟通</a>
-                            </p>
+                            <%--<p>--%>
+                                <%--<a class="btn btn-primary" href="javascript:;">立即沟通</a>--%>
+                            <%--</p>--%>
                             <div>
                                 <div style="border-right: 1px dotted #d8d8d8;">
                                     <span>100</span>%
@@ -166,8 +216,9 @@
                     <div class="zp_zwxq_cont_right_cont_middle">
                         <h3>企业简介</h3>
                         <h4>
-                            <a href="" class="zp_zwxq_cont_right_cont_middle_a1">  ${xzPostion.company.companyName}</a>
-                            <a href="javascript:;" class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
+                            <a href="" class="zp_zwxq_cont_right_cont_middle_a1"> ${xzPostion.company.companyName}</a>
+                            <a href="javascript:;"
+                               class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
                         </h4>
                         <ul>
                             <li>
@@ -182,10 +233,10 @@
                             </li>
                             <li>${xzPostion.company.companyScale}人</li>
                             <li>
-                            ${xzPostion.company.companyNature eq 1?"国企":''}
-                            ${xzPostion.company.companyNature eq 2?"民营":''}
-                            ${xzPostion.company.companyNature eq 3?"外企":''}
-                            ${xzPostion.company.companyNature eq 4?"政府":''}
+                                ${xzPostion.company.companyNature eq 1?"国企":''}
+                                ${xzPostion.company.companyNature eq 2?"民营":''}
+                                ${xzPostion.company.companyNature eq 3?"外企":''}
+                                ${xzPostion.company.companyNature eq 4?"政府":''}
                             </li>
                         </ul>
                         <p>${xzPostion.company.companyCity}</p>
@@ -200,10 +251,10 @@
                         </p>
                         <ul>
                             <c:forEach items="${cplist}" var="cp">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${cp.postionId}">${cp.postionName}</a>
-                                <span class="zp_zwxq_span1">${cp.postionSpace}</span>
-                                <span class="zp_zwxq_span2">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${cp.postionId}">${cp.postionName}</a>
+                                    <span class="zp_zwxq_span1">${cp.postionSpace}</span>
+                                    <span class="zp_zwxq_span2">
                                     <c:choose>
                                         <c:when test="${cp.postionMm<0}">
                                             面议
@@ -216,7 +267,7 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </span>
-                            </li>
+                                </li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -245,9 +296,12 @@
 <div class="newpop2" role="alert">
     <div class="newpop2_container">
         <div class="allnew2_tan" id="tMsg">
+
             简历投递成功
         </div>
-        <div>
+        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/laba.png" alt=""
+             style="width: 200px;height: 160px">
+        <div class="new_tandiv">
             <button class="newtan2">确定</button>
         </div>
         <a href="###" class="all_close2 tan_close2 fa fa-remove"></a>
@@ -266,46 +320,46 @@
         myMap.init();
         isSend();
     })
-    
+
     function sendResume() {
-        if($('#lxw').attr("isSend")=="f"){
+        if ($('#lxw').attr("isSend") == "f") {
             $.ajax({
-                url:"${pageContext.request.contextPath}/PostionSend/sendPostion.do",
-                data:{postionId:${param.postionId}},
-                type:"get",
-                dataType:"json",
-                success:function (data) {
-                    if(data.msg=="ok"){
+                url: "${pageContext.request.contextPath}/PostionSend/sendPostion.do",
+                data: {postionId:${param.postionId}},
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    if (data.msg == "ok") {
                         $('#tMsg').html("投递成功");
                         $('.newpop2').addClass('is-visible');
                         $('#lxw').html("已投递");
-                        $('#lxw').attr("isSend","t");
-                    }else{
+                        $('#lxw').attr("isSend", "t");
+                    } else {
                         $('#tMsg').html("投递失败，请重新登录");
                     }
                 }
             })
-        }else{
+        } else {
             $('.newpop2').addClass('is-visible');
             $('#tMsg').html("已投递该职位，不可重复投递");
         }
 
     }
-    
-    
+
+
     function isSend() {
         $.ajax({
-            url:"${pageContext.request.contextPath}/PostionSend/selisSend.do",
-            data:{postionId:${param.postionId}},
-            type:"get",
-            dataType:"json",
-            success:function (data) {
-                if(data.msg=="ok"){
+            url: "${pageContext.request.contextPath}/PostionSend/selisSend.do",
+            data: {postionId:${param.postionId}},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                if (data.msg == "ok") {
                     $('#lxw').html("已投递");
-                    $('#lxw').attr("isSend","t");
-                }else{
+                    $('#lxw').attr("isSend", "t");
+                } else {
                     $('#lxw').html("我感兴趣 请联系我");
-                    $('#lxw').attr("isSend","f");
+                    $('#lxw').attr("isSend", "f");
                 }
             }
         })
