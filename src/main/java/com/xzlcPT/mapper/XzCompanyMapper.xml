@@ -633,9 +633,13 @@
   </select>
   <select id="selComCount" parameterType="java.util.Map" resultMap="SelectAllMap">
     select DISTINCT
-    c.company_id,count(p.postion_id) as pcount,w.welfare_name,c.company_picture
+    c.company_id,ppc.pcount,w.welfare_name,c.company_picture
     from xz_company c
-    LEFT JOIN xz_postion p on c.company_id = p.company_id
+    LEFT JOIN
+    (select c.company_id,COUNT(p.postion_id) pcount
+    from xz_company c LEFT JOIN xz_postion p on c.company_id = p.company_id
+    GROUP BY c.company_id) ppc
+    on c.company_id = ppc.company_id
     LEFT JOIN xz_company_domain d ON c.company_id=d.company_id
     LEFT JOIN xz_field f ON f.field_id=d.field_id
     LEFT JOIN xz_company_welfare w ON c.company_id=w.company_id
@@ -652,7 +656,7 @@
         #{field_name,jdbcType=VARCHAR}
       </foreach>
     </if>
-    GROUP BY c.company_id,p.postion_id
+    GROUP BY c.company_id
   </select>
   <select id="selFollowState" parameterType="java.util.Map" resultType="java.lang.Integer">
     select count(follow_id) from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
