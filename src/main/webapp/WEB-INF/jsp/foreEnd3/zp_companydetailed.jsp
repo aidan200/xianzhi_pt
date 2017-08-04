@@ -55,8 +55,8 @@
             <h4>行业名企<a href=""><span>更多职位 &raquo</span></a>></h4>
             <c:forEach items="${clist}" var="c1">
             <div class="com_com">
-                <a href="" style="display: block;text-align: center">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.png" alt="" class="com_comi"
+                <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${c1.companyId}" style="display: block;text-align: center">
+                    <img src="${pageContext.request.contextPath}/uploadImg/${c1.companyPicture}" alt="" class="com_comi"
                          style=""/>
                 </a>
                 <div class="com_morem">
