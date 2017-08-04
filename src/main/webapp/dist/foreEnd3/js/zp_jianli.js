@@ -43,7 +43,7 @@ obj_yhxx.prototype.init=function (){
             _self.dqcs=data.resume.resumeWorkspace;  //当前城市
             _self.szgs=data.resume.resumeField;
             _self.zp=data.resume.resumeIntentField  //图片路径
-            // _self.xb=data.resume.resumeIntentField  //图片路径
+            _self.xb=data.resume.resumeSex  //图片路径
             _self.bindingDOM();
             _self.bindingSJ();
         },error:function (){ //报错执行的
@@ -53,16 +53,28 @@ obj_yhxx.prototype.init=function (){
 };
 obj_yhxx.prototype.bindingDOM=function (){ //个人信息绑定
     var _self=this;
-    //adasdadddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
     if(_self.zp!=''&&_self.zp!=null){
         $('.zp_jianli_cont_left_top2_left').css({
-            "background-image":"url("+path+'dist/foreEnd3/img/'+_self.zp+")"
+            "background-image":"url("+path+'uploadImg/'+_self.zp+")"
         });
-    }else{
-        if(true){
 
+    }else{
+        if(_self.xb==0){
+            $('.zp_jianli_cont_left_top2_left').css({
+                "background-image":"url('"+path+"dist/foreEnd3/img/boy.png')"
+            });
+        }else if(_self.xb==1){
+            $('.zp_jianli_cont_left_top2_left').css({
+                "background-image":"url('"+path+"dist/foreEnd3/img/girl.png')"
+            });
+        }else{
+            $('.zp_jianli_cont_left_top2_left').css({
+                "background-image":"url('"+path+"dist/foreEnd3/img/boy.png')"
+            });
         }
     }
+        //性别
 
 
     if(_self.name!=''&&_self.name!=null){
@@ -201,14 +213,37 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</div>'
             $('.zp_jianli_cont_left_top2_top').after(str);              //插入
             didian("#jbzl_dd","#jl_dqcs");
+            $('#tx').attr('data-url',_self.zp);
 
-            $('#tx').css({
-                "background-image":"url("+path+"dist/foreEnd3/img/boy.png)",
-                "background-size":"contain"
-            })
+            if(_self.zp!=''&&_self.zp!=null){
+                $('#tx').css({
+                    "background-image":"url("+path+'uploadImg/'+_self.zp+")",
+
+                });
+
+            }else{
+                if(_self.xb==0){
+                    $('#tx').css({
+                        "background-image":"url('"+path+"dist/foreEnd3/img/boy.png')",
+
+                    });
+                }else if(_self.xb==1){
+                    $('#tx').css({
+                        "background-image":"url('"+path+"dist/foreEnd3/img/girl.png')",
+
+                    });
+                }else{
+                    $('#tx').css({
+                        "background-image":"url('"+path+"dist/foreEnd3/img/boy.png')",
+
+                    });
+                }
+            }
+            //性别
 
              var uuuu = new uploadUtil(document.getElementById("tx"),dkh+"/upload/img","",function (data){
                 console.log(data);
+                 $('#tx').attr('data-url',data)
              })
                 uuuu.init();
             if(qq==0){              //如果没有行业改变下样式
@@ -357,8 +392,13 @@ obj_yhxx.prototype.bindingSJ=function (){
                     fields:shuzu,                                          //当前行业
                     resumePosition:trim($('#jl_zwmc').val()),              //当前职位          已非空
                     resumeWorkspace:trim($('#jl_dqcs').val()),             //当前城市         已非空
-                    resumeId:ID
+                    resumeId:ID,
+
                 };
+
+                if($('#tx').attr('data-url')!=''&&$('#tx').attr('data-url')!=null&&$('#tx').attr('data-url')!=undefined){
+                    resume.resumeIntentField=trim($('#tx').attr('data-url'));
+                }
                 function www(){                 //验证信息
                     if(resume.resumeName==''||resume.resumeName==null){ //姓名为空
                         $('#jl_name').addClass('jl_name');
