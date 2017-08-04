@@ -2,6 +2,18 @@
  * Created by Administrator on 2017/7/6.
  */
 
+var ojdt=''
+ojdt+='<div id="loading">'
+ojdt+='<div id="loading-center">'
+ojdt+='<div id="loading-center-absolute">'
+ojdt+='<div class="object" id="object_four"></div>'
+ojdt+='<div class="object" id="object_three"></div>'
+ojdt+='<div class="object" id="object_two"></div>'
+ojdt+='<div class="object" id="object_one"></div>'
+ojdt+='</div>'
+ojdt+='</div>'
+ojdt+='</div>'
+
 function th(obj){
     // var qwe=/\n/.test(obj);
     var ss = obj.replace(/\n/,"<br>");
@@ -376,6 +388,9 @@ obj_yhxx.prototype.bindingSJ=function (){
                 $('.zp_jianli_cont_left_top2_top').css({"display":"block"}); //显示
             })
             $('.zp_jianli_zl_1').find('button').eq(0).on('click',function (){
+
+
+
                 var xgk=$(this).parent().parent();               //修改框
                 var shuzu=[];                                   //存放的数组
                 var dqhy=$('#dqhy_1 > div > div');
@@ -427,6 +442,7 @@ obj_yhxx.prototype.bindingSJ=function (){
 
 
                 if(resume.resumeName!=''&&resume.resumeName!=null&&resume.resumePosition!=''&&resume.resumePosition!=null&&resume.resumeWorkspace!=''&&resume.resumeWorkspace!=null&&dqhy.length!=0){
+                    $('.zp_jianli_zl_1').append(ojdt);
                     $(this).unbind('click')                           //清楚自身点击事件防止用户狂点
                     $.ajax({
                         type:"post",    //提交方式
@@ -705,6 +721,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
             }
             bdxy()
             if(resume.resumeState!=''&&resume.resumeState!=null&&resume.resumeMarriage!=''&&resume.resumeMarriage!=null&&resume.resumeBirth!=''&&resume.resumeBirth!=null&&resume.resumePhone!=''&&resume.resumePhone!=null&&resume.resumeSex!=''&&resume.resumeSex!=null&&resume.resumePhone!=null&&resume.resumeEmail!=''&&resume.resumeEmail!=null&&num_kg){
+                $('.zp_jianli_zl_2').append(ojdt);
                 $(this).unbind('click')
                 $.ajax({
                     type:"post",    //提交方式
@@ -1106,6 +1123,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                 }
                 bdxy()
                 if(pcont.fields.length!=0&&pcont.resumeIntentPosition!=''&&pcont.resumeIntentPosition!=null&&pcont.resumeIntentWorkspace!=''&&pcont.resumeIntentWorkspace!=null&&pcont.resumeIntentMm!=''&&pcont.resumeIntentMm!=null&&pcont.resumeMm!=''&&pcont.resumeMm!=null&&aaa==true&&bbb==true){
+                    $('.zp_jianli_zl_3').append(ojdt);
                     $(this).unbind('click')
                     $.ajax({
                         type:"post",    //提交方式
@@ -1539,6 +1557,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                  var aaaa=bdyz() //验证
 
                 if(aaaa){
+                    $('.zp_jianli_zl_4').append(ojdt);
                     $(this).unbind('click')
                     $.ajax({
                         type:"post",    //提交方式
@@ -1598,6 +1617,7 @@ obj_gzjl.prototype.bindingSJ=function (){
     })
     $('#tj_gzjl').unbind('click').on('click',function (){
         if(kg){
+
             tj_kg=false;
             kg=false;
             var str='';
@@ -1778,6 +1798,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                 }
                 bdyz()
                 if(obj_gzjl.jobexpCompanyName!=''&&obj_gzjl.jobexpCompanyName!=null&&obj_gzjl.fields.length!=0&&obj_gzjl.jobexpPostion!=''&&obj_gzjl.jobexpPostion!=null&&obj_gzjl.fields.length!=0&&obj_gzjl.jobexpWorkspace!=''&&obj_gzjl.jobexpWorkspace!=null&&obj_gzjl.jobexpSubordinate!=''&&obj_gzjl.jobexpSubordinate!=null&&obj_gzjl.jobexpBeginTime!=''&&obj_gzjl.jobexpBeginTime!=null&&obj_gzjl.jobexpEndTime!=''&&obj_gzjl.jobexpEndTime!=null&&obj_gzjl.jobexpDuty!=''&&obj_gzjl.jobexpDuty!=null&&num_kg){
+                    $('.zp_jianli_zl_4').append(ojdt);
                     $.ajax({
                         type:"post",    //提交方式
                         async:true,  //是否异步
@@ -1989,7 +2010,9 @@ obj_yyjl.prototype.bindingSJ=function (){
                             }
                         bdyz()
                         if(jyjl.educationSchool!=''&&jyjl.educationSchool!=null&&jyjl.educationMajor!=''&&jyjl.educationMajor!=null&&jyjl.enrollmentDate!=''&&jyjl.enrollmentDate!=null&&jyjl.graduateDate!=''&&jyjl.graduateDate!=null){
+                            $('.zp_jianli_zl_5').append(ojdt);
                             $(this).unbind('click')
+
                             $.ajax({
                                 type:"post",    //提交方式
                                 async:true,  //是否异步
@@ -2154,6 +2177,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                 }
                 bdyz()
                 if(jyjl.educationSchool!=''&&jyjl.educationSchool!=null&&jyjl.educationMajor!=''&&jyjl.educationMajor!=null&&jyjl.enrollmentDate!=''&&jyjl.enrollmentDate!=null&&jyjl.graduateDate!=''&&jyjl.graduateDate!=null){
+                    $('.zp_jianli_zl_5').append(ojdt);
                     $.ajax({
                         type:"post",    //提交方式
                         async:true,  //是否异步
@@ -2373,6 +2397,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                     }
                     bdxy()
                     if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.proexpBeginTime!=''&&qrxg.proexpBeginTime!=null&&qrxg.proexpEndTime!=''&&qrxg.proexpEndTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
+                        $('.zp_jianli_zl_7').append(ojdt);
                         $.ajax({
                             type:"post",    //提交方式
                             async:true,  //是否异步
@@ -2542,6 +2567,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                  }
                  bdxy()
                  if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.createTime!=''&&qrxg.createTime!=null&&qrxg.deleteTime!=''&&qrxg.deleteTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
+                     $('.zp_jianli_zl_7').append(ojdt);
                     $(this).unbind()
                      $.ajax({
                          type:"post",    //提交方式
@@ -2638,6 +2664,7 @@ obj_zopj.prototype.bindingSJ=function (){
                 $('#zp_zopj').css({'display':"block"});
             })
             $('.zp_jianli_zl_8').find('button').eq(0).on('click',function (){
+                 $('.zp_jianli_zl_8').append(ojdt);
                 var aa = $(this).parent().siblings('textarea').val();
                 var bb=$(this).parent().parent();
                 var resume={
@@ -2686,6 +2713,7 @@ obj_zopj.prototype.bindingSJ=function (){
                 $('#zp_zopj').css({'display':"block"});
             })
             $('.zp_jianli_zl_8').find('button').eq(0).on('click',function (){
+                $('.zp_jianli_zl_8').append(ojdt);
                 var aa = $(this).parent().siblings('textarea').val();
                 var bb=$(this).parent().parent();
                 var resume={
@@ -2765,8 +2793,8 @@ obj_fjxx.prototype.bindingSJ=function (){
 
             str+='<p>你还可以输入<span>600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
-            str+='<button type="button" class="btn btn-primary">确定</button>'
-            str+='<button class="btn btn-default" type="button">取消</button>'
+            str+='<button type="button" class="allyes">确定</button>'
+            str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_fjxx').after(str);
@@ -2777,6 +2805,7 @@ obj_fjxx.prototype.bindingSJ=function (){
                 $('#zp_fjxx').css({"display":"block"})
             })
             $('.zp_jianli_zl_9').find('button').eq(0).on('click',function (){
+                $('.zp_jianli_zl_9').append(ojdt);
                 var aa = $(this).parent().siblings('textarea').val();
                 var bb= $(this).parent().parent();
                 var resume={
@@ -2825,6 +2854,7 @@ obj_fjxx.prototype.bindingSJ=function (){
                 $('#zp_fjxx').css({"display":"block"})
             })
             $('.zp_jianli_zl_9').find('button').eq(0).on('click',function (){
+                $('.zp_jianli_zl_9').append(ojdt);
                 var aa = $(this).parent().siblings('textarea').val();
                 var bb= $(this).parent().parent();
                 var resume={
@@ -2944,6 +2974,7 @@ obj_scjn.prototype.bindingSJ=function () {
             $(this).parent().parent().remove()
         })
         $('.zp_jianli_zl_10').find('button').eq(0).on('click',function (){  //提交地址
+            $('.zp_jianli_zl_10').append(ojdt);
             var othis= $(this).parent().parent();
             var k=$('#jn_content > div > div');
             var attr=[];
@@ -3023,6 +3054,7 @@ obj_scjn.prototype.bindingSJ=function () {
                 $(this).parent().parent().remove();          //取消自杀
             })
             $('.zp_jianli_zl_10').find('button').eq(0).on('click',function (){
+                $('.zp_jianli_zl_10').append(ojdt);
                 var othis= $(this).parent().parent();
                 var k=$('#jn_content > div > div');
                 var attr=[];
