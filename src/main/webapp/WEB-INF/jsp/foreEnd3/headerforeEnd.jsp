@@ -49,7 +49,7 @@
                     <c:when test="${userLogin!=undefined}">
                         <a href="" style="">
                             <li class="login1">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/head.png" alt="" class="allheader">
+                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hahaha.png" alt="" class="allheader">
                                 <span style="width: 5px;height: 5px;background-color: red;display:inline-block;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
                                 <ul class="head-menu">
                                     <li class="head_new2">
