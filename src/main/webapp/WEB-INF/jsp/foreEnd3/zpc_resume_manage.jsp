@@ -175,11 +175,11 @@
                             <%--全选删除--%>
                             <div class="rem_bb">
                                 <input type="checkbox" name="choose1" onclick="DoCheck3(this)"/>
-                                <button>导出简历</button>
-                                <button>浏览简历</button>
-                                <button>删除简历</button>
-                                <button>收藏简历</button>
-                                <button>批量标记</button>
+                                <button type="button">导出简历</button>
+                                <button type="button">浏览简历</button>
+                                <button type="button">删除简历</button>
+                                <button type="button">收藏简历</button>
+                                <button type="button">批量标记</button>
                                 <span style="float: right;margin: 15px;color: #999">共 <span>1个</span>简历</span>
                             </div>
 

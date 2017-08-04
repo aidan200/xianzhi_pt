@@ -1915,6 +1915,7 @@ ul, li {
     visibility: hidden;
     height: 0;
     line-height: 0;
+
     content: ".";
 }
 

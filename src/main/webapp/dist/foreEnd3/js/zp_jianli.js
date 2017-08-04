@@ -11,11 +11,13 @@ function th(obj){
 //个人信息开始
 function obj_yhxx(){
     this.name='';                       //姓名
+    this.xb='';
     this.dqhy='';                       //当前行业
     this.gznf='';                       //工作年份
     this.zwmc='';                       //职位名称
     this.dqcs='';                       //当前城市
     this.szgs='';                       //所在公司
+    this.zp='';                         //图片路径
     this.DOM={
         name:$('#grxx_name'),
         zwmc:$('#grxx_zwmc'),
@@ -40,6 +42,8 @@ obj_yhxx.prototype.init=function (){
             _self.zwmc=data.resume.resumePosition;   //当前职位
             _self.dqcs=data.resume.resumeWorkspace;  //当前城市
             _self.szgs=data.resume.resumeField;
+            _self.zp=data.resume.resumeIntentField  //图片路径
+            // _self.xb=data.resume.resumeIntentField  //图片路径
             _self.bindingDOM();
             _self.bindingSJ();
         },error:function (){ //报错执行的
@@ -48,8 +52,19 @@ obj_yhxx.prototype.init=function (){
     });
 };
 obj_yhxx.prototype.bindingDOM=function (){ //个人信息绑定
-
     var _self=this;
+    //adasdadddddddddddddddddddddddddddddddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    if(_self.zp!=''&&_self.zp!=null){
+        $('.zp_jianli_cont_left_top2_left').css({
+            "background-image":"url("+path+'dist/foreEnd3/img/'+_self.zp+")"
+        });
+    }else{
+        if(true){
+
+        }
+    }
+
+
     if(_self.name!=''&&_self.name!=null){
         _self.DOM.name.html(_self.name)           //名字
         _self.DOM.name.css({"color":"#000"})
@@ -124,10 +139,10 @@ obj_yhxx.prototype.bindingSJ=function (){
             var str='';
             str+='<div class="zp_jianli_zl_1">'
             str+='<div class="zp_jianli_zl_1_left">'
-            str+='<img src="/dist/foreEnd3/img/boy.png" alt="" width="102" height="102">'
+            str+='<div id="tx" style="width: 102px; height:102px;"></div>'
+
             str+='<div>'
-            str+='<a href="">删除</a>'
-            str+='<a href="">修改</a>'
+           str+='点击图片修改'
             str+='</div>'
             str+='</div>'
             str+='<div class="zp_jianli_zl_1_right">'
@@ -185,7 +200,17 @@ obj_yhxx.prototype.bindingSJ=function (){
             str+='</div>'
             str+='</div>'
             $('.zp_jianli_cont_left_top2_top').after(str);              //插入
-            didian("#jbzl_dd","#jl_dqcs")
+            didian("#jbzl_dd","#jl_dqcs");
+
+            $('#tx').css({
+                "background-image":"url("+path+"dist/foreEnd3/img/boy.png)",
+                "background-size":"contain"
+            })
+
+             var uuuu = new uploadUtil(document.getElementById("tx"),dkh+"/upload/img","",function (data){
+                console.log(data);
+             })
+                uuuu.init();
             if(qq==0){              //如果没有行业改变下样式
                 $('#dqhy_1').css({
                     "height":"30px",

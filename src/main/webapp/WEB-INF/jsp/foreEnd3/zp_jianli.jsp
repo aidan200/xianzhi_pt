@@ -18,14 +18,16 @@
     <jsp:include page="distforeEnd.jsp"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_jianli.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/xzdd.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/fileUpload.css">
     <script>
         var path = '${pageContext.request.contextPath}/';     //全局路径
         var ID = '${resume.resumeId}';                                          //ID
         var memberId;
         var wanchengdu;                                         //完成度
+        var dkh="http://localhost:8080";        //端口号
 
     </script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/uploadUtil.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/xzdd.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
@@ -36,6 +38,7 @@
 
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
+
 
 <section class="zp_jianli_tt">
     <div class="zp_jianli_cont">
