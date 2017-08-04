@@ -64,7 +64,7 @@ ul, li {
 .zp_jianli_cont {
     width: 980px;
     margin: 40px auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .zp_jianli_cont_left {
@@ -114,7 +114,12 @@ ul, li {
     height: 30px;
     line-height: 30px;
 }
-
+.jianli_tree{
+    width: 70px;
+    height: 70px;
+    position: relative;
+    top: -50px;
+}
 .zp_jianli_wcd {
     width: 140px;
     background: #CCCCCC;
@@ -1975,27 +1980,31 @@ ul, li {
 /*----------------------*/
 .zhe_every1 {
     position: absolute;
-    left: 300px;
+    left: 150px;
     top: 10px;
 }
 
 .zhe_img {
-    width: 150px;
-    height: 150px;
+    width: 330px;
+    height:300px;
 }
 
-.zhe_d {
-    width: 100px;
-    height: 50px;
-    position: relative;
-    display: inline-block;
-    left: -130px;
-    text-align: center;
-}
+/*.zhe_d {*/
+    /*width: 200px;*/
+    /*height: 100px;*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+    /*left: -250px;*/
+    /*top: 25px;*/
+    /*text-align: center;*/
+/*}*/
 
 .zhe_span {
     font-size: 18px;
     color: #FFFFff;
+    position: absolute;
+    top:160px;
+    left: 80px;
 }
 
 .zhe_many1 {
