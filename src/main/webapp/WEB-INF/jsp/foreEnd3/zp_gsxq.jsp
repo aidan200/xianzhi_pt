@@ -96,7 +96,7 @@
     <div class="row zp_spxq_cont_top">
         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zp_gsxq_img1.png">
         <div>
-            <h3><span>${xzCompany.companyName}</span> <a href="" onclick="">关注</a>
+            <h3><span>${xzCompany.companyName}</span> <a isFollow="f" onclick="insertFollow()" id="gz">关注</a>
                 <div class="zp_gsxq_gzrs">121人关注</div>
             </h3>
             <ul>
@@ -295,11 +295,52 @@
     postion.container = "zp_spxq_dts";
     postion.x = '${xzCompany.companyX}';
     postion.y = '${xzCompany.companyY}';
+    var aa='${xzCompany.companyId}';
     console.log(postion);
     var myMap = new myMap(postion);
     $(function () {
         myMap.init();
     })
+
+    function insertFollow() {
+        if($('#gz').attr("isFollow")=='f'){
+            $.ajax({
+                url:"${pageContext.request.contextPath}/CompanyInfo/insertFollow.do",
+                data:{companyId:aa},
+                type:"get",
+                dataType:"json",
+                success:function(data){
+                    if(data.msg=="ok"){
+                        $('#gz').html("已关注");
+                        $('#gz').attr("isFollow","t");
+                    }
+                }
+            })
+        }else {
+            $('#gz').html("已关注");
+            $('#gz').attr("isFollow","t");
+        }
+    }
+    $(function () {
+        isFollow();
+    })
+    function isFollow() {
+        $.ajax({
+            url:"${pageContext.request.contextPath}/CompanyInfo/selFollowState.do",
+            data:{companyId:aa},
+            type:"get",
+            dataType:"json",
+            success:function(data) {
+                if (data.msg == "ok") {
+                    $('#gz').html("已关注");
+                    $('#gz').attr("isFollow", "t");
+                }else {
+                    $('#gz').html("关注");
+                    $('#gz').attr("isFollow", "f");
+                }
+            }
+        })
+    }
 </script>
 <script>
     var intro = $('#h1').val().replace(/\n/g, "<br>");

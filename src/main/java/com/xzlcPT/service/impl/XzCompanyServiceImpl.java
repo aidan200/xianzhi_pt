@@ -249,9 +249,9 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     }
 
     @Override
-    public XzCompany selFollowState(Map map) {
-        XzCompany xzCompany=companyMapper.selFollowState(map);
-        return xzCompany;
+    public int selFollowState(Map map) {
+        int i=companyMapper.selFollowState(map);
+        return i;
     }
 
     @Override

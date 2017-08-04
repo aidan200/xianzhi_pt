@@ -326,25 +326,36 @@ public class CompanyInfoController {
     return map;
     }
     //关注公司
+    @ResponseBody
     @RequestMapping("insertFollow.do")
-    public ModelAndView insertFollow(Long companyId,Long memberId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/index");
+    public Map insertFollow(@ModelAttribute("userLogin") XzLogin userLogin,Long companyId){
         Date followTime=new Date();
+        System.out.println("companyId:::::::::::::::::::::::::::::::::::::::::::::::::::"+companyId);
         Map map=new HashMap();
         map.put("companyId",companyId);
-        map.put("memberId",memberId);
+        map.put("memberId",userLogin.getMember().getMemberId());
         map.put("followTime",followTime);
         int i=companyService.insertFollow(map);
-        mv.addObject("i",i);
-        return mv;
+        Map map1=new HashMap();
+        if(i==1){
+            map1.put("msg","ok");
+        }else {
+            map1.put("msg","err");
+        }
+        return map1;
     }
     //取消关注
+    @ResponseBody
     @RequestMapping("deleteFollow.do")
-    public ModelAndView deleteFollow(Long followId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/index");
+    public Map deleteFollow(Long followId){
         int i=companyService.deleteFollow(followId);
-        mv.addObject("i",i);
-        return mv;
+        Map map=new HashMap();
+        if(i==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","err");
+        }
+        return map;
     }
     //查询该用户关注的企业
     @RequestMapping("selectFollow.do")
@@ -379,9 +390,9 @@ public class CompanyInfoController {
         Map map=new HashMap();
         map.put("memberId",userLogin.getMember().getMemberId());
         map.put("companyId",companyId);
-        XzCompany xzCompany=companyService.selFollowState(map);
+        int i=companyService.selFollowState(map);
         Map map1=new HashMap();
-        if(xzCompany.getFiled1().equals("1")){
+        if(i==1){
             map1.put("msg","ok");
         }else {
             map1.put("msg","err");

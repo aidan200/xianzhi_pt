@@ -654,8 +654,8 @@
     </if>
     GROUP BY c.company_id,p.postion_id
   </select>
-  <select id="selFollowState" parameterType="java.util.Map" resultMap="BaseResultMap">
-    select count(follow_id)as filed1 from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
+  <select id="selFollowState" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(follow_id) from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
      and company_id=#{companyId,jdbcType=BIGINT}
   </select>
   <select id="selectRecommend" resultMap="BaseResultMap">
