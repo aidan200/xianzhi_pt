@@ -127,12 +127,14 @@
                 <div class="wrap3">
                     <div>
                         <div>
-                        我说还打客服哈困窘安徽科技发货快开始的风景好久发卡机打发卡夫卡开发家安全诶护肤支持女款企鹅
-                        安琪儿移入蓬蓬裙of懒得看VB你你说的你说雅虎搜易1划分及爱好你吓唬俺谁真谁假额你洗涮沈你细化三年
-                        沈设计巴菲赶赴案发hi在你家啊谁家的几番哈哈哈哈哈哈泥塑那你读哈大佛哦i你读书单杀你短信金额你签了了多少Ian
-                        多少钱哈哈和哈佛豪富爱恩和我你你是事故皇后三个球 我说还打客服哈困窘安徽科技发货快开始的风景好久发卡机打发卡夫卡开发家安全诶护肤支持女款企鹅
-                        安琪儿移入蓬蓬裙of懒得看VB你你说的你说雅虎搜易1划分及爱好你吓唬俺谁真谁假额你洗涮沈你细化三年
-                        沈设计巴菲赶赴案发hi在你家啊谁家的几番哈哈哈哈哈哈泥塑那你读哈大佛哦i你读书单杀你短信金额你签了了多少Ian
+                            <c:forEach var="p1" items="${xzCompany.products}">
+                                <dl class="clearfix" style="display: block;">
+                                    <dt><img src="https://image0.lietou-static.com/img/57d2632962f0550b9450e1d706a.jpg" alt=""></dt>
+                                    <dd>
+                                        <p data-selector="detail">${p1.productIntro}</p>
+                                    </dd>
+                                </dl>
+                            </c:forEach>
                         </div>
 
 
@@ -142,16 +144,8 @@
                 <div class="read-more3"></div>
                 <%----%>
 
-                <c:forEach var="p1" items="${xzCompany.products}">
-                    <dl class="clearfix" style="display: block;">
-                        <dt><img src="https://image0.lietou-static.com/img/57d2632962f0550b9450e1d706a.jpg" alt=""></dt>
-                        <dd>
-                            <p data-selector="detail">${p1.productIntro}</p>
-                        </dd>
-                    </dl>
-                </c:forEach>
 
-                <a class="link-more" href="javascript:;" style="display: block;">点击展开更多详情</a>
+
             </div>
 
 
@@ -265,20 +259,16 @@
                         企业风采
                         <hr>
                     </h2>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/zp_gsxq_gsfc.png" alt="">
-                    <h2>
-                        企业风采
-                        <hr>
-                    </h2>
-                    <ul>
+
                         <c:forEach var="m1" items="${xzCompany.miens}">
+                            <img src="${pageContext.request.contextPath}/uploadImg/${m1.mienUrl}" alt="">
                             <li>
                                 <a href="">
                                         ${m1.mienIntro}
                                 </a>
                             </li>
                         </c:forEach>
-                    </ul>
+
                 </div>
             </div>
         </div>
