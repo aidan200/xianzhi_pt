@@ -200,7 +200,14 @@ Public.prototype.qx=function (parent){  //全选和单个选择事件
             }
         })
 }
+Public.prototype.dcjl=function (parent){
 
+    $(parent).find('.rem_bb  button').eq(0).on('click',function (){
+
+
+
+    })
+}
 
 function Jlrzp(){                   //经理人应聘
     this.DOM={
@@ -229,6 +236,8 @@ Jlrzp.prototype.upload=function (){     //初始化加载
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
         This.fy_sj('#rem_one',jl.pages,jl.page,This);                       //分页事件完成
         This.qx('#rem_one');                                                //加载全选事件以及单选完成
+        This.dcjl('#rem_one');
+
     }
     This.sb=function (){                    //没查到数据执行的函数
         This.mzd('#rem_one');                       //没找到执行的
