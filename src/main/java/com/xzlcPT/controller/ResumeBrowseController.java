@@ -27,7 +27,7 @@ public class ResumeBrowseController extends BaseController{
     private XzResumeBrowseService xzResumeBrowseService;
     //查看简历
     @ResponseBody
-    @RequestMapping("insert")
+    @RequestMapping("insert.do")
     public Map insert(XzResumeBrowse xzResumeBrowse){
         Date date=new Date();
         xzResumeBrowse.setBrowseTime(date);
@@ -42,7 +42,7 @@ public class ResumeBrowseController extends BaseController{
     }
     //用户查看消息
     @ResponseBody
-    @RequestMapping("update")
+    @RequestMapping("update.do")
     public Map updateByPrimaryKey(Long browseId){
         int i=xzResumeBrowseService.updateByPrimaryKey(browseId);
         Map map=new HashMap();
@@ -55,7 +55,7 @@ public class ResumeBrowseController extends BaseController{
     }
     //多少人看过我的简历
     @ResponseBody
-    @RequestMapping("selCount")
+    @RequestMapping("selCount.do")
     public Map selCountByResumeId(Long resumeId){
         int i=xzResumeBrowseService.selCountByResumeId(resumeId);
         Map map=new HashMap();
