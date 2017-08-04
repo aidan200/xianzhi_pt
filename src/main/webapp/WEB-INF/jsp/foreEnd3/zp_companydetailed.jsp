@@ -60,8 +60,8 @@
                     <img src="${pageContext.request.contextPath}/uploadImg/${c1.companyPicture}" alt="" class="com_comi"
                          style=""/>
                 </a>
+                <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${c1.companyId}"><span class="com_sp" style="color: #fc6866">${c1.companyName}</span></a>
                 <div class="com_morem">
-                    <a href=""><span class="com_sp" style="color: #fc6866">更多 &raquo</span></a>
                     <span class="com_sp"> <span style="color: #fc6866">${c1.pcount} </span> 个在招职位</span>
                 </div>
                 <div>
