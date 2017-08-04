@@ -129,7 +129,7 @@
                         <div>
                             <c:forEach var="p1" items="${xzCompany.products}">
                                 <dl class="clearfix" style="display: block;">
-                                    <dt><img src="https://image0.lietou-static.com/img/57d2632962f0550b9450e1d706a.jpg" alt=""></dt>
+                                    <dt><img src="${pageContext.request.contextPath}/uploadImg/${p1.productUrl}" alt=""></dt>
                                     <dd>
                                         <p data-selector="detail">${p1.productIntro}</p>
                                     </dd>
@@ -138,17 +138,11 @@
                         </div>
 
 
-
                     </div>
                 </div>
                 <div class="read-more3"></div>
                 <%----%>
-
-
-
             </div>
-
-
 
 
             <form id="f1" action="${pageContext.request.contextPath}/CompanyInfo/selectByConditions.do">
@@ -241,7 +235,13 @@
                     <ul>
                         <li style="overflow: visible">行业：
                             <c:forEach var="f" items="${xzCompany.fields}" varStatus="s">
-                                <span>${f.fieldName}</span>
+                                <span> <c:if test="${!s.last}">
+                                    ${f.fieldName}/
+                                </c:if>
+                                <c:if test="${s.last}">
+                                    ${f.fieldName}
+                                </c:if>
+                                </span>
                                 <c:if test="${(s.index+1)%3==0}">
                                     <br>
                                 </c:if>
@@ -264,9 +264,7 @@
                         <c:forEach var="m1" items="${xzCompany.miens}">
                             <img src="${pageContext.request.contextPath}/uploadImg/${m1.mienUrl}" alt="">
                             <li>
-                                <a href="">
                                         ${m1.mienIntro}
-                                </a>
                             </li>
                         </c:forEach>
 
