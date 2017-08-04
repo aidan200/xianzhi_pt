@@ -37,8 +37,9 @@
 <body>
 
 <jsp:include page="headerforeEnd.jsp"/>
-<jsp:include page="personnav.jsp"/>
-
+<c:if test="${msg!='err'}">
+    <jsp:include page="personnav.jsp"/>
+</c:if>
 
 <section class="zp_jianli_tt">
     <div class="zp_jianli_cont">
@@ -428,31 +429,33 @@
 </div>
 
 <%--遮罩--%>
-<div class="zhe">
-    <div class="zhe_all">
-        <div class="zhe_every1">
-            <div style="position: relative">
-                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle1.png" alt="" class="zhe_img">
-                <span class="zhe_span">请完善你的简历信息,你的简历完成度达到多少。。。。</span>
+<c:if test="${msg=='err'}">
+    <div class="zhe">
+        <div class="zhe_all">
+            <div class="zhe_every1">
+                <div style="position: relative">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle1.png" alt="" class="zhe_img">
+                    <span class="zhe_span">请完善你的简历信息,使你的简历完成度达60%以上</span>
+                </div>
             </div>
-        </div>
-        <div class="zhe_many1">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr1.png" alt="" class="zhe_arr1">
-        </div>
-
-        <div class="zhe_every2">
-            <div style="position: relative">
-                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle2.png" alt="" class="zhe_img">
-                <span class="zhe_span">所有带必填的都必须填写</span>
+            <div class="zhe_many1">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr1.png" alt="" class="zhe_arr1">
             </div>
-        </div>
-        <div class="zhe_many2">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
-        </div>
 
-        <button class="jianli_zhe">我知道了</button>
+            <div class="zhe_every2">
+                <div style="position: relative">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle2.png" alt="" class="zhe_img">
+                    <span class="zhe_span">所有带必填的都必须填写</span>
+                </div>
+            </div>
+            <div class="zhe_many2">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
+            </div>
+
+            <button class="jianli_zhe">我知道了</button>
+        </div>
     </div>
-</div>
+</c:if>
 <%----%>
 
 

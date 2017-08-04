@@ -191,10 +191,10 @@
                     <p><span>谁看过我的简历</span></p>
                     <ul>
                         <li>
-                            <div class="zp_index_ww1"><span>0</span></div>
+                            <div class="zp_index_ww1"><span class="wsis">0</span></div>
                             <div class="zp_index_ww2">
-                                <p><a href=""><span>0</span>个人看过你的简历</a></p>
-                                <p><span>0</span>刷新简历能增加被查看概率</p>
+                                <p><a href=""><span class="wsis">0</span>个人看过你的简历</a></p>
+                                <p>刷新简历能增加被查看概率</p>
 
                             </div>
                         </li>
@@ -203,10 +203,10 @@
                 <div class="zp_index_cont_right_bottom_bottom">
                     <p><span>每日投递数量</span></p>
                     <div>
-                        <div class="zp_index_ww1"><span>0</span></div>
+                        <div class="zp_index_ww1"><span class="iss">0</span></div>
                         <div class="zp_index_ww2">
-                            <p><a href="">今日已投递<span>0</span>个职位</a></p>
-                            <p><span>0</span>每天最多投递50个</p>
+                            <p><a href="">今日已投递<span class="iss">0</span>个职位</a></p>
+                            <p>每天最多投递50个</p>
 
                         </div>
                     </div>
@@ -266,11 +266,17 @@
                     time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
                     var fields = '';//领域
                     for (var j = 0; j < data.postionList[i].company.fields.length; j++) {
-                        fields += data.postionList[i].company.fields[j].fieldName + "/";
+                        fields += "/" + data.postionList[i].company.fields[j].fieldName;
+                        if(j==2){
+                            fields += "...";
+                            break;
+                        }
                     }
+                    fields = fields.substring(1);
                     var welfares = '';//福利
                     for (var j = 0; j < data.postionList[i].company.welfares.length; j++) {
                         welfares += '<span>' + data.postionList[i].company.welfares[j].welfareName + "</span>";
+                        if(j==2)break;
                     }
 
                     $('#postionRs').append(
@@ -330,6 +336,28 @@
     }
     $(function () {
         serchPostion();
+        whoSeeI();
+        iSend();
     })
+    function whoSeeI() {
+        $.ajax({
+            type: 'get',
+            url: '${pageContext.request.contextPath}/ResumeBrowse/selCount.do',
+            data: {resumeId: '${resume.resumeId}'},
+            success:function (data) {
+                $('.wsis').html(data.i);
+            }
+        });
+    }
+    function iSend() {
+        $.ajax({
+            type: 'get',
+            url: '${pageContext.request.contextPath}/PostionSend/selSendCount.do',
+            data: {resumeId: '${resume.resumeId}'},
+            success:function (data) {
+                $('.iss').html(data.i);
+            }
+        });
+    }
 </script>
 </html>
