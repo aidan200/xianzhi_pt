@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/fileUpload.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/css测试.css">
     <script>
-        var ID=2;
+        var ID= '${userLogin.company.companyId}';     //公司ID
         var dkh="http://localhost:8080";        //端口号
         var path="${pageContext.request.contextPath}/"
     </script>
