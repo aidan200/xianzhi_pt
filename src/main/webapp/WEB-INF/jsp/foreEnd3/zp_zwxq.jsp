@@ -302,7 +302,7 @@
         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/laba.png" alt=""
              style="width: 200px;height: 160px">
         <div class="new_tandiv">
-            <button class="newtan2">确定</button>
+            <button class="all_close2">确定</button>
         </div>
         <a href="###" class="all_close2 tan_close2 fa fa-remove"></a>
     </div>
