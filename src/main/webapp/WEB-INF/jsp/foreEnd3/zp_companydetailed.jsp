@@ -105,7 +105,7 @@
 
         <div class="comd_table" id="hy_tab">
             <h4>IT行业</h4>
-            <ul class="zp_ulu">
+            <ul id="gshyBox" class="zp_ulu">
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="1" name="fffs" data-value="互联网/移动互联网" value="互联网"/>互联网/移动互联网</li>
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="2" name="fffs" data-value="网络游戏" value="网络游戏"/>网络游戏</li>
                 <li><input type="checkbox" data-fieldtype="2" data-fieldId="3" name="fffs" data-value="计算机软件" value="计算机软件"/>计算机软件</li>
@@ -145,7 +145,7 @@
 
     });
     //行业回填
-    $('#xz_qwhy_qd').on('click', function () {
+   /* $('#xz_qwhy_qd').on('click', function () {
         var aa = $('#hy_tab input[type=checkbox]:checked');
         var str = ''
         aa.each(function (i, e) {
@@ -154,7 +154,7 @@
         $('#_hy').html(str)
         $('.cd-popuph').removeClass('is-visible');
 
-    })
+    })*/
     function pToSub(page) {
         var infpage = parseInt(document.getElementById("infPage").value);
         if (page != infpage && page - infpage > 0 || page != infpage && page - infpage < 0) {
@@ -173,4 +173,40 @@
 <%--弹出框--%>
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
 </body>
+<script>
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:{type:1},
+        dataType:'json',                   //定义返回data类型
+        url:'${pageContext.request.contextPath}/Field/selByType',    //路径
+        success:function (data){//data 就是数据 json
+            var ccHtml="";
+            for(var i = 0;i < data.fieldList.length;i++){
+                ccHtml+='<li><input class="gshychechBox" type="checkbox" ';
+                /*for(var j = 0;j<theFiels.length;j++){
+                    if(theFiels[j]==data.fieldList[i].fieldId){
+                        ccHtml+= 'checked';
+                    }
+                }*/
+                ccHtml+=' data-fieldId="'+data.fieldList[i].fieldId+'" data-value="'+data.fieldList[i].fieldName+'"/>'+data.fieldList[i].fieldName+' </li>';
+            }
+            $('#gshyBox').html(ccHtml);
+            //行业回填
+            $('#xz_qwhy_qd').on('click', function () {
+                var aa = $('#hy_tab input[type=checkbox]:checked');
+                var str = ''
+                aa.each(function (i, e) {
+                    str += '<span class="hangs">' + $(e).attr('data-value') + '</span>'+'，'
+                })
+                $('#_hy').html(str)
+                $('.cd-popuph').removeClass('is-visible');
+
+            })
+        },error:function (){ //报错执行的
+            alert('行业查找失败');
+        }
+    })
+
+</script>
 </html>
