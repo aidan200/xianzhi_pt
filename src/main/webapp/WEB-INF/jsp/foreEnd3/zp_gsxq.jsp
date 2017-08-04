@@ -26,9 +26,9 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/lib/jquery/jquery-3.2.1.min.js"></script>
     <style>
         *{
-            -webkit-box-sizing: inherit;
-            -moz-box-sizing: inherit;
-            box-sizing: inherit;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
         }
     </style>
 
@@ -109,7 +109,7 @@
 
     </div>
     <div class="row zp_spxq_cont_cont">
-        <div style="width: 600px;float: left">
+        <div style="width: 600px;float: left;margin-right: 10px">
             <div class="zp_gsxq_gsjs">
                 <h2 class="company-title">公司介绍</h2>
                 <div class="wrap2">

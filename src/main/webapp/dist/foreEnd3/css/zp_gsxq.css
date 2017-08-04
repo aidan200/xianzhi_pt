@@ -303,6 +303,7 @@ li{
     border-radius: 3px;
     margin-top: 10px;
     line-height: 20px;
+    outline: none;
 }
 .zp_gsxq_zpzw_li_left > p {
     height: 40px;
@@ -500,6 +501,7 @@ li{
     position: relative;
     padding: 10px;
     overflow: hidden;
+    word-wrap: break-word;
 }
 
 #gradient {
