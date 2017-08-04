@@ -180,8 +180,9 @@ ul, li {
 .zp_jianli_cont_left_top2_left {
     float: left;
     width: 100px;
-    background: url('../img/boy.png');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 98px;
     margin-right: 10px;
     z-index: 11111;
@@ -2043,4 +2044,9 @@ ul, li {
     border-radius: 3px;
     font-size: 20px;
     box-shadow: 0 2px 4px rgba(255, 255, 255, .2);
+}
+#tx{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
