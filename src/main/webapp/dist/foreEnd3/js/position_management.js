@@ -71,8 +71,7 @@ function Zzzp(){
     this.wcl=0,               //3.未处理           1
     this.zdxz=0,              //4.主动下载         1
     this.yxgt=0,              //5.意向沟通         1
-    this.createTime=0,        //7.刷新时间         1
-    this.deleteTime=0;        //8.结束时间         1
+    this.publishTime=0,      //6.发布时间         1
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -106,8 +105,7 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         zzzp.wcl=data.postionList[i].wcl;
                         zzzp.zdxz=data.postionList[i].zdxz;
                         zzzp.yxgt=data.postionList[i].yxgt;
-                        zzzp.createTime=data.postionList[i].createTime;
-                        zzzp.deleteTime=data.postionList[i].deleteTime;
+                        zzzp.publishTime=data.postionList[i].publishTime;
                         zzzp.ms=data.postionList[i].ms;
                         This.cont[i]=zzzp;
                 }
@@ -134,7 +132,7 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                         str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
                         str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                        str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].postionTime)+'</td>'
+                        str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].publishTime)+'</td>'
                         str+='<td class="all_no">'
                         str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
                         str+=' <a href="javascript:;" class="dg_sc">结束</a> '
@@ -428,9 +426,9 @@ Zzzp.prototype.init=function (){        //初始化方法
 function Shz(){              //审核中
     this.postionId=0;         //职位id                 1
     this.postionName='',      //1.职位名称             1
-     this.shzt=''             //审核状态
-     this.shsj=''             //审核时间
-     this.cjsj=''             //创建时间
+
+     this.deleteTime=''         //审核时间
+    this.createTime=''          //创建时间
     this.cont=[]              //10装对象的数组
     this.Dom={                //装在常用DOM
 
@@ -459,10 +457,9 @@ Shz.prototype.cshjz=function (obj){               //初始化加载
                 var shz =new Shz();
                 shz.postionId=data.postionList[i].postionId;
                 shz.postionName=data.postionList[i].postionName;
+                shz.deleteTime=data.postionList[i].deleteTime;
+                shz.createTime=data.postionList[i].createTime;
 
-                shz.shzt="shzt000000"
-                shz.shsj="shzt1111111111"
-                shz.cjsj="shzt2222222"
 
                 //缺少方法现在
 
@@ -487,9 +484,9 @@ Shz.prototype.cshjz=function (obj){               //初始化加载
                     str+='</div>'
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
-                    str+='<td class="all_no">'+This.cont[i].shzt+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].shsj)+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].cjsj)+'</td>'
+                    str+='<td class="all_no">审核中</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].deleteTime)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].createTime)+'</td>'
                     str+='</tr>'
                 }
                 $('#shz_tbody').html(str)      //输出到页面上
@@ -1063,8 +1060,8 @@ Shwtg.prototype.init=function (){        //初始化方法
 function Cgzw(){              //审核未
     this.postionId=0;         //职位id                 1
     this.postionName='',      //1.职位名称             1
-    this.cjsj=''                //创建时间
-    this.zhxgsj=''              //最后修改时间
+    this.createTime=''                //创建时间
+    this.publishTime=''              //最后修改时间
     this.cont=[]              //10装对象的数组
     this.Dom={                //装在常用DOM
 
@@ -1093,8 +1090,8 @@ Cgzw.prototype.cshjz=function (obj){               //初始化加载
                 var cgzw =new Cgzw();
                 cgzw.postionId=data.postionList[i].postionId;
                 cgzw.postionName=data.postionList[i].postionName;
-                cgzw.cjsj="100年前"
-                cgzw.zhxgsj="50年前";
+                cgzw.createTime=data.postionList[i].createTime;
+                cgzw.publishTime=data.postionList[i].publishTime;
 
                 This.cont[i]=cgzw;
             }
@@ -1116,8 +1113,8 @@ Cgzw.prototype.cshjz=function (obj){               //初始化加载
                     str+='</div>'
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].cjsj)+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].zhxgsj)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].createTime)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].publishTime)+'</td>'
                     str+='<td class="all_no">'
                     str+=' <a href="javascript:;" class="dg_fb">发布</a> '
                     str+=' <a href="javascript:;" class="dg_xg">修改</a> '
@@ -1394,7 +1391,7 @@ function Yzt(){              //审核未
         this.wcl=0,               //3.未处理           1
         this.zdxz=0,              //4.主动下载         1
         this.yxgt=0,              //5.意向沟通         1
-        this.tzsj=0;              //6.暂停时间           1
+        this.publishTime=0;              //6.暂停时间           1
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -1429,7 +1426,7 @@ Yzt.prototype.cshjz=function (obj){               //初始化加载
                 yzt.wcl=data.postionList[i].wcl;
                 yzt.zdxz=data.postionList[i].zdxz;
                 yzt.yxgt=data.postionList[i].yxgt;
-                yzt.tzsj="不知道啊"             //暂停时间
+                yzt.publishTime=data.postionList[i].publishTime         //暂停时间
                 yzt.ms=data.postionList[i].ms;
                 This.cont[i]=yzt;
             }
@@ -1456,7 +1453,7 @@ Yzt.prototype.cshjz=function (obj){               //初始化加载
                     str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                     str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
                     str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].tzsj)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].publishTime)+'</td>'
                     str+='<td class="all_no">'
                     str+=' <a href="javascript:;" class="dg_xg">继续</a> '
                     str+=' <a href="javascript:;" class="dg_sc">结束</a> '
@@ -1735,7 +1732,7 @@ function Yjs(){              //审核未
         this.wcl=0,               //3.未处理           1
         this.zdxz=0,              //4.主动下载         1
         this.yxgt=0,              //5.意向沟通         1
-        this.tzsj=''               //停止时间
+        this.deleteTime=''               //停止时间
     this.ms=0                 //面试               1
     //通知面试  待定
     this.cont=[]              //10装对象的数组
@@ -1770,7 +1767,7 @@ Yjs.prototype.cshjz=function (obj){               //初始化加载
                 yjs.wcl=data.postionList[i].wcl;
                 yjs.zdxz=data.postionList[i].zdxz;
                 yjs.yxgt=data.postionList[i].yxgt;
-                yjs.tzsj="不知道"
+                yjs.deleteTime=data.postionList[i].deleteTime
                 yjs.ms=data.postionList[i].ms;
                 This.cont[i]=yjs;
             }
@@ -1797,7 +1794,7 @@ Yjs.prototype.cshjz=function (obj){               //初始化加载
                     str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                     str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
                     str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].tzsj)+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].deleteTime)+'</td>'
                     str+='<td class="all_no">'
                     str+=' <a href="javascript:;" class="dg_fh">恢复</a> '
                     str+='</td>'
@@ -2059,7 +2056,7 @@ function Qbzw(){              //审核未
     this.postionId=0;         //职位id                 1
     this.postionName='',      //1.职位名称             1
     this.zt=''                  //状态
-    this.cjsj=''                //创建时间
+    this.createTime=''                //创建时间
     this.cont=[]              //10装对象的数组
     this.Dom={                //装在常用DOM
 
@@ -2088,8 +2085,8 @@ Qbzw.prototype.cshjz=function (obj){               //初始化加载
                 var qbzw =new Qbzw();
                 qbzw.postionId=data.postionList[i].postionId;
                 qbzw.postionName=data.postionList[i].postionName;
-                qbzw.zt="状态";
-                qbzw.cjsj="不知道";
+                qbzw.zt="空着呢";
+                qbzw.createTime=data.postionList[i].createTime;
                 This.cont[i]=qbzw;
             }
             if( This.cont.length!=0){       //判断如果后台没有查到正在招聘数据
@@ -2111,7 +2108,7 @@ Qbzw.prototype.cshjz=function (obj){               //初始化加载
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
                     str+='<td class="all_no">'+This.cont[i].zt+'</td>'
-                    str+='<td class="all_no">'+This.cont[i].cjsj+'</td>'
+                    str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].createTime)+'</td>'
                     str+='</tr>'
                 }
                 $('#qbzw_tbody').html(str)      //输出到页面上

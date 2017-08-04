@@ -124,7 +124,7 @@
                                     <th width="80">主动下载</th>
                                     <th width="80">意向沟通</th>
                                     <th width="80">通知面试</th>
-                                    <th width="80">刷新时间</th>
+                                    <th width="80">发布时间</th>
                                     <th width="100">操作</th>
                                 </tr>
                                 </thead>
