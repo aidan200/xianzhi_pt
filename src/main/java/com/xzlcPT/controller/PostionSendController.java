@@ -102,12 +102,4 @@ public class PostionSendController extends BaseController{
         map.put("i",i);
         return map;
     }
-
-    @RequestMapping("sel")
-    public ModelAndView sel(Long resumeId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/test2");
-        int i=postionSendService.selSendCount(resumeId);
-        mv.addObject("i",i);
-        return mv;
-    }
 }
