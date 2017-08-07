@@ -25,8 +25,8 @@
             <input type="text" class="tan3_input">
         </div>
         <div>
-            <button>确定</button>
-            <button class="all_close3">取消</button>
+            <button class="bee_one">确定</button>
+            <button class="all_close3 bee_two">取消</button>
         </div>
 
         <a href="###" class="all_close3 tan_close3 fa fa-remove"></a>
@@ -43,8 +43,8 @@
             哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
         </div>
         <div>
-            <button>确定</button>
-            <button class="all_close">取消</button>
+            <button class="bee_one">确定</button>
+            <button class="all_close bee_two">取消</button>
         </div>
         <a href="###" class="all_close tan_close fa fa-remove"></a>
     </div>

@@ -99,7 +99,7 @@
 
 
 <%--确定和取消--%>
-<a href="###" class="newtan"><span>点我</span></a>
+<%--<a href="###" class="newtan"><span>点我</span></a>--%>
 <div class="newpop" role="alert">
     <div class="newpop_container">
         <div class="allnew_tan">
