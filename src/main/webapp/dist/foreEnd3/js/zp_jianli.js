@@ -253,7 +253,7 @@ obj_yhxx.prototype.bindingSJ=function (){
             }
             //性别
 
-             var uuuu = new uploadUtil(document.getElementById("tx"),dkh+"/upload/img","",function (data){
+             var uuuu = new uploadUtil(document.getElementById("tx"),"/upload/img","",function (data){
                 console.log(data);
                  $('#tx').attr('data-url',data)
              })
