@@ -155,10 +155,12 @@
                                 <div style="margin-top: 5px"><a href="">Java高级工程师</a></div>
                                 <div style="margin-top: 5px"><a href="">更多</a></div>
                             </div>
-                            <div style="float: left;width: 100px;height: auto;overflow: hidden">
+                            <div style="float: left;width: 150px;height: auto;overflow: hidden">
                                 <button class="dot_but">查看</button>
                                 <div class="dot_sma">时间在这呢</div>
                             </div>
+                            <span class="fa fa-envelope" style="float: right;color: #fc6866"></span>
+                            <span class="fa fa-envelope-open-o" style="float: right;color: #cccccc"></span>
                         </div>
 
                         <div class="pop-right-bottom">
@@ -376,7 +378,10 @@
                     str+='<div style="margin-top: 5px"><a href="">'+rbList[i].company.postions[j].postionName+'</a></div>';
                     if(j>1)break;
                 }
-                str+='</div><div style="float: left;width: 100px;height: auto;overflow: hidden"><button class="dot_but">取消关注</button>';
+                str+='</div><div style="float: left;width: 100px;height: auto;overflow: hidden"><button class="dot_but">查看</button><div class="dot_sma">时间在这呢</div>';
+                str+='<span class="fa fa-envelope" style="float: right;color: #fc6866"></span>'
+                str+='<span class="fa fa-envelope-open-o" style="float: right;color: #cccccc"></span>'
+
                 str+='</div></div><div class="pop-right-bottom"><b>';
                 if(rbList[i].company.companyNature=='1'){
                     str+='国';
