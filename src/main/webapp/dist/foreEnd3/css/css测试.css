@@ -2770,7 +2770,6 @@ textarea {
 .com_position1 {
     width: 100%;
     min-width: 1000px;
-    background-color: #ffffff;
     height: auto;
     overflow: hidden;
 }
@@ -2840,6 +2839,7 @@ textarea {
     margin: 5px;
     overflow: hidden;
     padding: 20px;
+    background-color: #FFFFff;
 }
 
 .com_comi {
@@ -6125,7 +6125,8 @@ th {
     width: 200px;
 
 }
-.head_new{
+
+.head_new {
     width: 3px;
     height: 17px;
     display: inline-block;
@@ -6136,12 +6137,12 @@ th {
 }
 
 /*.head_new {*/
-    /*display: inline-block;*/
-    /*width: 5px;*/
-    /*height: 5px;*/
-    /*background-color: #FFA500;*/
-    /*margin-right: 5px;*/
-    /*border-radius: 3px;*/
+/*display: inline-block;*/
+/*width: 5px;*/
+/*height: 5px;*/
+/*background-color: #FFA500;*/
+/*margin-right: 5px;*/
+/*border-radius: 3px;*/
 /*}*/
 
 .head_new2 {
@@ -6223,6 +6224,8 @@ footer {
     float: right;
 }
 
+
+
 /*-----------------------------------一堆弹出框----------------------------------------*/
 
 /*只带确定的弹出框*/
@@ -6233,8 +6236,9 @@ footer {
     font-size: 18px;
     margin-bottom: 10px;
 }
-.new_tandiv button{
-    width:100px;
+
+.new_tandiv button {
+    width: 100px;
     height: 30px;
     background-color: #FFA500;
     color: #FFFFff;
@@ -6243,6 +6247,7 @@ footer {
     outline: none;
     margin-top: 20px;
 }
+
 .newtan2 {
 
 }
@@ -6513,26 +6518,30 @@ footer {
     height: auto;
     float: left;
 }
-.dot_com{
+
+.dot_com {
     width: 300px;
     float: left;
     margin-left: 30px;
     height: auto;
-    border-right:1px dashed #c0c0c0;
+    border-right: 1px dashed #c0c0c0;
     margin-top: 10px;
     padding-bottom: 20px;
 }
-.dot_com2{
+
+.dot_com2 {
     width: 300px;
     float: left;
     margin-left: 30px;
     height: auto;
     margin-top: 5px;
 }
-.dot_t5{
+
+.dot_t5 {
     font-size: 18px;
     color: #3d9ccc;
 }
+
 .dot_head {
     width: 100px;
     height: 70px;
@@ -6588,4 +6597,153 @@ footer {
     border: none;
     margin-top: 20px;
     margin-left: 20px;
+}
+
+
+/*--------------------------我的消息------------------------*/
+.news_all {
+    width: 100%;
+    min-width: 1200px;
+    height: auto;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.new_center {
+    width: 980px;
+    height: auto;
+    margin: 40px auto;
+}
+
+.news_top {
+    width: 100%;
+    height: 50px;
+    background-color: #3D9CCC;
+    margin-top: 60px;
+    line-height: 50px;
+    color: #ffffff;
+    position: relative;
+}
+
+.news_span {
+    float: right;
+    margin-right: 20px;
+}
+
+.news_en {
+    position: absolute;
+    left: -30px;
+    top: -30px;
+}
+
+.new_img {
+    width: 100px;
+    height: 80px;
+    transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+}
+
+.news_ul {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    border: 1px solid #d9d9d9;
+    border-bottom: none;
+    background-color: #FFFFff;
+}
+
+.news_ul li {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px dashed #cccccc;
+    margin-top: 5px;
+    line-height: 50px;
+}
+
+.new_s {
+    padding-left: 20px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/*--------------------简历详情-------------------------*/
+.rei_all {
+    width: 100%;
+    min-width: 1200px;
+    height: auto;
+    overflow: hidden;
+}
+
+.rei_center {
+    width: 980px;
+    height: auto;
+    margin: 40px auto;
+    border: 1px solid #EEEEEE;
+    border-radius: 3px;
+    overflow: hidden;
+
+}
+
+.rei_top {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.rei_head {
+    width: 120px;
+    height: 120px;
+    margin-top: 40px;
+}
+
+.rei_left {
+    width: 50%;
+    height: auto;
+    overflow: hidden;
+    padding: 30px 15px 30px 30px;
+    float: left;
+}
+
+.rei_left1 {
+    width: 100%;
+    background-color: #EEEEEE;
+    font-size: 16px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.rei_one {
+    width: 140px;
+    height: 100px;
+}
+
+.rei_l {
+    padding-left: 30px;
+    margin-top: 5px;
+}
+
+.rei_right {
+    width: 50%;
+    height: auto;
+    overflow: hidden;
+    padding: 30px 30px 30px 15px;
+    float: left;
+}
+
+.rei_right1 {
+    width: 100%;
+    background-color: #EEEEEE;
+    font-size: 16px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
