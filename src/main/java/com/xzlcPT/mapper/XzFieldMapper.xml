@@ -166,6 +166,5 @@
     field_name
     from xz_field
     where field_id = #{fieldId,jdbcType=BIGINT}
-    GROUP BY field_id
   </select>
 </mapper>

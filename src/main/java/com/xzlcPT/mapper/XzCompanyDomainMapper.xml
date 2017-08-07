@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzCompanyDomainMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzCompanyDomain">
+    <id column="domain_id" jdbcType="BIGINT" property="domainId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="field_id" jdbcType="BIGINT" property="fieldId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap id="domainField" type="com.xzlcPT.bean.XzCompanyDomain">
+    <id column="domain_id" jdbcType="BIGINT" property="domainId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <association property="field" javaType="com.xzlcPT.bean.XzField">
+      <id column="field_id" jdbcType="BIGINT" property="fieldId" />
+      <result column="field_name" jdbcType="VARCHAR" property="fieldName" />
+    </association>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    domain_id, company_id, field_id, create_time
+  </sql>
+  <sql id="domainFieldList">
+    cd.domain_id, cd.company_id, f.field_id, f.field_name
+  </sql>
+  <select id="selectByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="domainFieldList" />
+    from xz_company_domain cd left JOIN  xz_field f on cd.field_id = f.field_id
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_company_domain
+    where domain_id = #{domainId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_company_domain
+    where domain_id = #{domainId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzCompanyDomain">
+    insert into xz_company_domain (domain_id, company_id, field_id, 
+      create_time)
+    values (#{domainId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{fieldId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzCompanyDomain">
+    insert into xz_company_domain
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        domain_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="fieldId != null">
+        field_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="domainId != null">
+        #{domainId,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="fieldId != null">
+        #{fieldId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzCompanyDomain">
+    update xz_company_domain
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="fieldId != null">
+        field_id = #{fieldId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where domain_id = #{domainId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzCompanyDomain">
+    update xz_company_domain
+    set company_id = #{companyId,jdbcType=BIGINT},
+      field_id = #{fieldId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where domain_id = #{domainId,jdbcType=BIGINT}
+  </update>
+</mapper>

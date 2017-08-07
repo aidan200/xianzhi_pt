@@ -5,10 +5,7 @@ package com.xzlcPT.service.impl;/**
 import com.github.pagehelper.PageHelper;
 import com.util.PageBean;
 import com.xzlcPT.bean.*;
-import com.xzlcPT.dao.XzCompanyMapper;
-import com.xzlcPT.dao.XzCompanyWelfareMapper;
-import com.xzlcPT.dao.XzPostionMapper;
-import com.xzlcPT.dao.XzResumeBrowseMapper;
+import com.xzlcPT.dao.*;
 import com.xzlcPT.service.XzResumeBrowseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +26,8 @@ public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
     private XzPostionMapper postionMapper;
     @Autowired
     private XzCompanyWelfareMapper companyWelfareMapper;
+    @Autowired
+    private XzCompanyDomainMapper companyDomainMapper;
 
 
     @Override
@@ -60,7 +59,8 @@ public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
             company.setPostions(postions);
             List<XzCompanyWelfare> companyWelfares = companyWelfareMapper.selectByCompanyId(company.getCompanyId());
             company.setWelfares(companyWelfares);
-
+            List<XzCompanyDomain> companyDomains = companyDomainMapper.selectByCompanyId(company.getCompanyId());
+            company.setDomains(companyDomains);
         });
         return new PageBean<>(resumeBrowses);
     }
