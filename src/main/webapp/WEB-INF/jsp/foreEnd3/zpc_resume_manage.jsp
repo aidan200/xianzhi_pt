@@ -15,6 +15,7 @@
     <script>
         var companyId = '${userLogin.company.companyId}';     //公司ID
         var path = '${pageContext.request.contextPath}/';     //全局路径
+
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
@@ -70,14 +71,14 @@
                         <div class="rem_cen">
                             <span style="margin-left: 20px">查看</span>
                             <select name="" id="" class="rem_input3">
-                                <option value="">下载时间由近到远</option>
-                                <option value="">下载时间由远到近</option>
-                                <option value="">更新时间从近到远</option>
-                                <option value="">更新时间从远到近</option>
-                                <option value="">年龄从大到小</option>
-                                <option value="">年龄从小到大</option>
-                                <option value="">工作年限从长到短</option>
-                                <option value="">工作年限从短到长</option>
+                                <option value="下载时间由近到远">下载时间由近到远</option>
+                                <option value="下载时间由远到近">下载时间由远到近</option>
+                                <option value="更新时间从近到远">更新时间从近到远</option>
+                                <option value="更新时间从远到近">更新时间从远到近</option>
+                                <option value="年龄从大到小">年龄从大到小</option>
+                                <option value="年龄从小到大">年龄从小到大</option>
+                                <option value="工作年限从长到短">工作年限从长到短</option>
+                                <option value="工作年限从短到长">工作年限从短到长</option>
 
                             </select>
 
@@ -89,7 +90,7 @@
                             <input type="text" class="rem_input3">
                             <span style="margin-left: 10px">目前公司</span>
                             <input type="text" class="rem_input3">
-                            <button class="rem_b">搜索</button>
+                            <button type="button" class="rem_b">搜索</button>
 
                         </div>
 
@@ -101,6 +102,7 @@
                                 <a href="">待定</a>
                                 <a href="">不合适</a>
                                 <a href="">被过滤的简历</a>
+
                             </div>
                             <table class="table fa-border table-striped" style="width: 100%;border-top:none ">
                                 <thead>
@@ -112,9 +114,8 @@
                                     <th width="70">学历</th>
                                     <th width="90">工作年限</th>
                                     <th width="130">目前职位</th>
-                                    <th width="130">目前公司</th>
                                     <th width="100">应聘职位</th>
-                                    <%--<th width="160">操作</th>--%>
+                                    <th width="160">操作</th>
                                 </tr>
                                 </thead>
 
@@ -410,7 +411,7 @@
                             <input type="text" class="rem_input3">
                             <span style="margin-left: 10px">目前公司</span>
                             <input type="text" class="rem_input3">
-                            <button class="rem_b">搜索</button>
+                            <button type="button" class="rem_b">搜索</button>
 
                         </div>
 
@@ -505,7 +506,7 @@
                             <input type="text" class="rem_input4">
                             <span style="margin-left: 10px">面试时间</span>
                             <input type="text" class="rem_input">
-                            <button class="rem_b">搜索</button>
+                            <button type="button" class="rem_b">搜索</button>
 
                         </div>
                         <div class="rem_table">
