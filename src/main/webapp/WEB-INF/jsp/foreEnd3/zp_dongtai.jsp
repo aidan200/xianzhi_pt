@@ -156,7 +156,8 @@
                                 <div style="margin-top: 5px"><a href="">更多</a></div>
                             </div>
                             <div style="float: left;width: 100px;height: auto;overflow: hidden">
-                                <button class="dot_but">取消关注</button>
+                                <button class="dot_but">查看</button>
+                                <div class="dot_sma">时间在这呢</div>
                             </div>
                         </div>
 
@@ -222,6 +223,7 @@
                             </div>
                             <div style="float: left;width: 100px;height: auto;overflow: hidden">
                                 <button class="dot_but">取消关注</button>
+                                <div class="dot_sma">时间在这呢</div>
                             </div>
                         </div>
 

@@ -6640,6 +6640,11 @@ footer {
     margin-top: 20px;
     margin-left: 20px;
 }
+.dot_sma{
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
 
 /*--------------------------我的消息------------------------*/
 .news_all {
