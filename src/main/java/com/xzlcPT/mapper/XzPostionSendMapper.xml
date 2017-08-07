@@ -285,7 +285,9 @@
     select ps.resume_id
     from xz_postion_send ps
     where ps.company_id = #{companyId,jdbcType=BIGINT}
+    <if test="sendState != null and sendState !=''">
     and ps.send_state = #{sendState,jdbcType=INTEGER}
+    </if>
 		)
 		ORDER BY e.graduate_date DESC
     ) s
