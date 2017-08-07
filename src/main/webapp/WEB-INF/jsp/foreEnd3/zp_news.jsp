@@ -32,7 +32,7 @@
                 <span class="new_s" style="width: 150px">2017-08-23</span>
                 <span class="new_s" style="width: 100px">消息类型</span>
                 <span class="new_s" style="width: 100px"><span class="fa fa-envelope news_have"></span><span class="fa fa-envelope-open-o news_em"></span></span>
-                <span class="new_s" style="width: 100px">删除</span>
+                <span class="new_s" style="width: 100px"><button class="news_bu" type="">删除</button></span>
             </li>
             <li>
                 <span class="new_s" style="width: 50px"><input type="checkbox" class="choose2"></span>
@@ -40,7 +40,7 @@
                 <span class="new_s" style="width: 150px">2017-08-23</span>
                 <span class="new_s" style="width: 100px">消息类型</span>
                 <span class="new_s" style="width: 100px"><span class="fa fa-envelope news_have"></span><span class="fa fa-envelope-open-o news_em"></span></span>
-                <span class="new_s" style="width: 100px">删除</span>
+                <span class="new_s" style="width: 100px"><button class="news_bu" type="">删除</button></span>
             </li>
             <li>
                 <span class="new_s" style="width: 50px"><input type="checkbox" class="choose2"></span>
@@ -48,7 +48,7 @@
                 <span class="new_s" style="width: 150px">2017-08-23</span>
                 <span class="new_s" style="width: 100px">消息类型</span>
                 <span class="new_s" style="width: 100px"><span class="fa fa-envelope news_have"></span><span class="fa fa-envelope-open-o news_em"></span></span>
-                <span class="new_s" style="width: 100px">删除</span>
+                <span class="new_s" style="width: 100px"><button class="news_bu" type="">删除</button></span>
             </li>
         </ul>
         <%--全选删除--%>
