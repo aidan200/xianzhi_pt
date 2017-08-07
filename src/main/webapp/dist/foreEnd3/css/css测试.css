@@ -6695,6 +6695,15 @@ footer {
 .news_have{
     color: #fc6866;
 }
+.news_bu{
+    width: 80px;
+    height: 40px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    display: inline-block;
+}
+
 /*--------------------简历详情-------------------------*/
 .rei_all {
     width: 100%;
