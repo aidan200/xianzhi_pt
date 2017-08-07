@@ -24,7 +24,7 @@
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
     <result column="ct" javaType="INTEGER" property="ct"/>
   </resultMap>
-  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzPostionSend">
+  <resultMap id="selState" type="com.xzlcPT.bean.XzPostionSend">
     <id column="send_id" jdbcType="BIGINT" property="sendId" />
     <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
     <result column="company_id" jdbcType="BIGINT" property="companyId" />
