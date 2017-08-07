@@ -6390,8 +6390,9 @@ footer {
     -o-transform: scale(1);
     transform: scale(1);
 }
-.bee_one{
-   width: 100px;
+
+.bee_one {
+    width: 100px;
     height: 30px;
     background-color: #FFA500;
     color: #FFFFff;
@@ -6399,7 +6400,8 @@ footer {
     border-radius: 3px;
     margin-right: 20px;
 }
-.bee_two{
+
+.bee_two {
     width: 100px;
     height: 30px;
     background-color: #FFFFff;
@@ -6407,6 +6409,7 @@ footer {
     border: 1px solid #FFA500;
     border-radius: 3px;
 }
+
 /*-----带input的-----*/
 .allnew3_tan {
     width: 100%;
@@ -6564,17 +6567,18 @@ footer {
     margin-left: 10px;
     margin-right: 10px;
 }
-.dot_spe{
+
+.dot_spe {
     margin-top: 10px;
 }
-.dot_spe span{
+
+.dot_spe span {
     display: inline-block;
     padding: 3px 5px;
     border: 1px dashed #CCCCCC;
     font-size: 12px;
     margin-right: 10px;
 }
-
 
 .dot_head {
     width: 100px;
@@ -6743,13 +6747,56 @@ footer {
     display: inline-block;
 }
 
+/*--------------------我的消息详情-----------------------*/
+.nei_all {
+    width: 100%;
+    min-width: 1200px;
+    height: auto;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.nei_center {
+    width: 980px;
+    height: auto;
+    margin: 40px auto;
+}
+
+.nei_out {
+    width: 100%;
+    min-height: 500px;
+    background-color: #FFFFff;
+    margin-top: 60px;
+    border: 1px solid #d9d9d9;
+    position: relative;
+}
+
+.nei_img {
+    width: 150px;
+    height: 150px;
+
+}
+
+.nei_sec {
+    width: 80%;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.nei_many {
+    position: absolute;
+    bottom: 30px;
+    text-align: right;
+    right: 40px;
+}
+
 /*--------------------简历详情-------------------------*/
 .rei_all {
     width: 100%;
     min-width: 1200px;
     height: auto;
     overflow: hidden;
-
 }
 
 .rei_center {
@@ -6797,6 +6844,7 @@ footer {
     width: 48%;
     float: left;
 }
+
 .rei_two2 {
     width: 45%;
     float: left;
@@ -6830,9 +6878,11 @@ footer {
     width: 100%;
     height: 20px;
 }
-.rei_col{
+
+.rei_col {
     color: #FFA500;
 }
+
 .rei_leftop {
     margin-top: 50px;
     padding-left: 20px;
@@ -6844,7 +6894,8 @@ footer {
     margin-top: 15px;
     font-size: 15px;
 }
-.rei_ji{
+
+.rei_ji {
     padding: 3px 5px 3px 5px;
     background-color: #3d9ccc;
     color: #FFFFff;

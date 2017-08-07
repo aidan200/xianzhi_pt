@@ -11,7 +11,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
     <jsp:include page="distforeEnd.jsp"/>
 </head>
 <body style="background-color: #EEEEEE">
