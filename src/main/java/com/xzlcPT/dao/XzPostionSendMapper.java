@@ -24,4 +24,6 @@ public interface XzPostionSendMapper {
     int updateByPrimaryKey(XzPostionSend record);
 
     int selSendCount(Long resumeId);
+
+    Map selByState(Map map);
 }

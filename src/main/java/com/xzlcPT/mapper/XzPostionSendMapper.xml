@@ -29,6 +29,10 @@
     send_time1, rs_time1, send_type, create_time, delete_time, field1, field2, field3, 
     delete_falt
   </sql>
+  <sql id="selResume">
+   e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
+    r.resume_position,ps.send_id,p.postion_name
+  </sql>
   <!--投递计数-->
   <select id="selSendCountByCorRId" parameterType="Map" resultMap="theCount">
     SELECT count(send_id) ct,send_time
@@ -255,5 +259,21 @@
     select count(send_id) from xz_postion_send where delete_falt=0
       and resume_id=#{resumeId,jdbcType=BIGINT}
       and DATEDIFF(send_time,NOW()) =0
+  </select>
+  <select id="selByState" parameterType="java.util.Map" resultType="java.util.Map">
+   select * from(
+    select
+   <include refid="selResume"/>
+    from xz_resume r LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id LEFT JOIN xz_postion_send ps on r.resume_id=ps.resume_id
+    LEFT JOIN xz_postion p ON ps.postion_id = p.postion_id
+    where r.resume_id in(
+    select ps.resume_id
+    from xz_postion_send ps
+    where ps.company_id = #{companyId,jdbcType=BIGINT}
+    and ps.send_state = #{sendState,jdbcType=INTEGER}
+		)
+		ORDER BY e.graduate_date DESC
+    ) s
+    GROUP BY s.send_id
   </select>
 </mapper>

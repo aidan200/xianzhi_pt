@@ -685,14 +685,12 @@
     </if>
     )
     <if test="educationLevel !=null and educationLevel !=''">
-      and e
-      .education_level = #{educationLevel,jdbcType=VARCHAR}
+      and e.education_level = #{educationLevel,jdbcType=VARCHAR}
     </if>
     <if test="resumeSex !=null and resumeSex !=''">and r.resume_sex=#{resumeSex,jdbcType=VARCHAR}
     </if>
     <if test="resumeName !=null and resumeName !=''">
-      and r
-      .resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
+      and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
     </if>
     <if test="resumeWorkspace !=null and resumeWorkspace !=''">and r.resume_workspace like
       concat('%',#{resumeWorkspace,jdbcType=VARCHAR},'%')

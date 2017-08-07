@@ -102,4 +102,13 @@ public class PostionSendController extends BaseController{
         map.put("i",i);
         return map;
     }
+    @ResponseBody
+    @RequestMapping("selByState.do")
+    public Map selByState(@ModelAttribute("userLogin")XzLogin userLogin,Integer sendState){
+        Map map=new HashMap();
+        map.put("companyId",userLogin.getCompany().getCompanyId());
+        map.put("sendState",sendState);
+        Map map1=postionSendService.selByState(map);
+        return map1;
+    }
 }

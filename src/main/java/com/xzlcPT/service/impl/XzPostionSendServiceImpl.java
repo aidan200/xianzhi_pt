@@ -40,4 +40,10 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         int i=postionSendMapper.selSendCount(resumeId);
         return i;
     }
+
+    @Override
+    public Map selByState(Map map) {
+        Map map1=postionSendMapper.selByState(map);
+        return map1;
+    }
 }

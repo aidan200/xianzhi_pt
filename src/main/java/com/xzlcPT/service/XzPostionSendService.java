@@ -17,4 +17,6 @@ public interface XzPostionSendService {
     int insertSelective(Map map);
 
     int selSendCount(Long resumeId);
+
+    Map selByState(Map map);
 }
