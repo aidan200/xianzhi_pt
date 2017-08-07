@@ -46,6 +46,7 @@ public class XzCompany {
     private List<XzCompanyMien> miens;//公司风采
     private List<XzPostion> postions;//公司职位
     private List<XzCompanySkill> skills;//公司技能
+    private List<XzCompanyDomain> domains;//经营领域2
     private Date deleteCompanyDate;//删除日期
     private int deleteFalt;//删除类型
     private String filed1;//备用列1
@@ -54,6 +55,14 @@ public class XzCompany {
     private int pcount;//职位个数
     private Long followId;//关注ID
     private Date followTime;//关注时间
+
+    public List<XzCompanyDomain> getDomains() {
+        return domains;
+    }
+
+    public void setDomains(List<XzCompanyDomain> domains) {
+        this.domains = domains;
+    }
 
     public List<XzField> getFields() {
         return fields;
