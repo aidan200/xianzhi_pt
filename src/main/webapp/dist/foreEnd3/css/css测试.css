@@ -1690,6 +1690,7 @@ textarea {
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    position: relative;
 }
 
 .view-fifth h2 {
@@ -1802,6 +1803,9 @@ textarea {
     box-shadow: 0 0 1px #000;
     width: 100px;
     height: 35px;
+    position: absolute;
+    bottom: 40px;
+    left: 90px;
 }
 
 /*-全民开发计划-*/
@@ -1820,7 +1824,7 @@ textarea {
 
 .index_01 p {
     font-size: 16px;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     margin-bottom: 40px;
     padding: 10px;
 }
@@ -1848,7 +1852,7 @@ textarea {
 
 .plan_d {
     width: 100%;
-    height: 85px;
+    height: auto;
     overflow: hidden;
     display: inline-block;
 }
@@ -6634,6 +6638,11 @@ footer {
     outline: none;
     border: none;
     margin-top: 20px;
+    margin-left: 20px;
+}
+.dot_sma{
+    font-size: 12px;
+    margin-top: 10px;
     margin-left: 20px;
 }
 
