@@ -46,16 +46,16 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     }
 
     @Override
-    public PageBean<XzResume> selByState(int page,int rows,Map map) {
+    public PageBean<XzPostionSend> selByState(int page,int rows,Map map) {
         PageHelper.startPage(page,rows);
         List<XzPostionSend> list2=postionSendMapper.selByState(map);
         PageBean pageBean=new PageBean(list2);
-        List<XzResume> list1=pageBean.getList();
-        List<Long>  list=new ArrayList<>();
-        for(XzPostionSend xzPostionSend:list2){
+        List<XzPostionSend> list1=pageBean.getList();
+        List<Long> list=new ArrayList<>();
+        for(XzPostionSend xzPostionSend:list1){
             list.add(xzPostionSend.getSendId());
         }
-        List<XzResume> resumeList=postionSendMapper.selBysendId(list);
+        List<XzPostionSend> resumeList=postionSendMapper.selBysendId(list);
         pageBean.setList(resumeList);
         return pageBean;
     }
