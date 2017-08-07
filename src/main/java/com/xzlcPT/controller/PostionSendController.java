@@ -125,4 +125,17 @@ public class PostionSendController extends BaseController{
         map.put("page",list.getPageNum());
         return map;
     }
+    @RequestMapping("selByid.do")
+    public ModelAndView selByid(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer sendState){
+       ModelAndView mv=new ModelAndView("foreEnd3/test2");
+        Map map=new HashMap();
+        map.put("companyId",28);
+        map.put("sendState",sendState);
+        PageBean<XzPostionSend> list=postionSendService.selByState(page,rows,map);
+        mv.addObject("list",list.getList());
+        mv.addObject("pages",list.getPages());
+        mv.addObject("total",list.getTotal());
+        mv.addObject("page",list.getPageNum());
+        return mv;
+    }
 }

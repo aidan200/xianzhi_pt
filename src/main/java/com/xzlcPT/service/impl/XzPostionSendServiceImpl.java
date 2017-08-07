@@ -49,6 +49,9 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     public PageBean<XzPostionSend> selByState(int page,int rows,Map map) {
         PageHelper.startPage(page,rows);
         List<XzPostionSend> list2=postionSendMapper.selByState(map);
+
+            System.out.println("size::::::::::::::::"+list2.size());
+
         PageBean pageBean=new PageBean(list2);
         List<XzPostionSend> list1=pageBean.getList();
         List<Long> list=new ArrayList<>();
