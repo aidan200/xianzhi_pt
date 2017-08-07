@@ -334,6 +334,9 @@ ORDER BY e.graduate_date DESC
       #{sendId,jdbcType=BIGINT}
     </foreach>
   </if>
+    <if test="list.size==0">
+      and 1=2
+    </if>
     GROUP BY s.send_id
   </select>
 </mapper>
