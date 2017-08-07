@@ -2,7 +2,9 @@ package com.xzlcPT.service;/**
  * Created by Administrator on 2017/8/3.
  */
 
+import com.util.PageBean;
 import com.xzlcPT.bean.XzResumeBrowse;
+
 
 /**
  * @author 甘汝雷
@@ -15,4 +17,6 @@ public interface XzResumeBrowseService {
     int updateByPrimaryKey(Long browseId);
 
     int selCountByResumeId(Long resumeId);
+
+    PageBean<XzResumeBrowse> updateWhoSawMe(int page, int rows, Long resumeId);
 }
