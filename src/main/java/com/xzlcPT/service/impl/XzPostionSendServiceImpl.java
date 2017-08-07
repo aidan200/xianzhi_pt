@@ -1,6 +1,7 @@
 package com.xzlcPT.service.impl;
 
 import com.xzlcPT.bean.XzPostionSend;
+import com.xzlcPT.bean.XzResume;
 import com.xzlcPT.dao.XzPostionSendMapper;
 import com.xzlcPT.service.XzPostionSendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +43,8 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     }
 
     @Override
-    public Map selByState(Map map) {
-        Map map1=postionSendMapper.selByState(map);
-        return map1;
+    public List<XzResume> selByState(Map map) {
+       List<XzResume> list=postionSendMapper.selByState(map);
+        return list;
     }
 }

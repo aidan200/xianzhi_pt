@@ -66,6 +66,10 @@ public class XzResume {
 
     private Date collectTime;
 
+    private Long postionId;
+
+    private String postionName;
+
     private List<XzField> fields;
 
     private List<XzJobExp> jobExps;
@@ -363,6 +367,22 @@ public class XzResume {
 
     public Date getCollectTime() {
         return collectTime;
+    }
+
+    public void setPostionId(Long postionId) {
+        this.postionId = postionId;
+    }
+
+    public Long getPostionId() {
+        return postionId;
+    }
+
+    public void setPostionName(String postionName) {
+        this.postionName = postionName;
+    }
+
+    public String getPostionName() {
+        return postionName;
     }
 
     @Override

@@ -108,7 +108,19 @@ public class PostionSendController extends BaseController{
         Map map=new HashMap();
         map.put("companyId",userLogin.getCompany().getCompanyId());
         map.put("sendState",sendState);
-        Map map1=postionSendService.selByState(map);
+        List<XzResume> list=postionSendService.selByState(map);
+        Map map1=new HashMap();
+        map1.put("list",list);
         return map1;
+    }
+    @RequestMapping("selsta")
+    public ModelAndView selsta(Long companyId,Integer sendState){
+        ModelAndView mv=new ModelAndView("foreEnd3/test2");
+        Map map=new HashMap();
+        map.put("companyId",companyId);
+        map.put("sendState",sendState);
+        List<XzResume> list=postionSendService.selByState(map);
+        mv.addObject("list",list);
+        return mv;
     }
 }

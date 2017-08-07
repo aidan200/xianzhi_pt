@@ -1,6 +1,8 @@
 package com.xzlcPT.service;
 
+import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.bean.XzPostionSend;
+import com.xzlcPT.bean.XzResume;
 
 import java.util.List;
 import java.util.Map;
@@ -18,5 +20,5 @@ public interface XzPostionSendService {
 
     int selSendCount(Long resumeId);
 
-    Map selByState(Map map);
+    List<XzResume> selByState(Map map);
 }

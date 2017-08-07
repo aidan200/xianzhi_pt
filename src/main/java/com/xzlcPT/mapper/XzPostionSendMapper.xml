@@ -24,6 +24,19 @@
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
     <result column="ct" javaType="INTEGER" property="ct"/>
   </resultMap>
+  <resultMap id="selState" type="com.xzlcPT.bean.XzResume">
+    <id column="resume_id" jdbcType="BIGINT" property="resumeId"/>
+    <result column="resume_name" jdbcType="VARCHAR" property="resumeName"/>
+    <result column="resume_sex" jdbcType="INTEGER" property="resumeSex"/>
+    <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
+    <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+    <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
+    <result column="postion_id" jdbcType="VARCHAR" property="postionId"/>
+    <result column="postion_name" jdbcType="VARCHAR" property="postionName"/>
+    <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
+      <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+    </collection>
+  </resultMap>
   <sql id="Base_Column_List">
     send_id, resume_id, company_id, postion_id, send_time, send_state, send_visual, send_msg, 
     send_time1, rs_time1, send_type, create_time, delete_time, field1, field2, field3, 
@@ -260,11 +273,13 @@
       and resume_id=#{resumeId,jdbcType=BIGINT}
       and DATEDIFF(send_time,NOW()) =0
   </select>
-  <select id="selByState" parameterType="java.util.Map" resultType="java.util.Map">
+  <select id="selByState" parameterType="java.util.Map" resultMap="selState">
    select * from(
     select
    <include refid="selResume"/>
-    from xz_resume r LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id LEFT JOIN xz_postion_send ps on r.resume_id=ps.resume_id
+    from xz_postion_send ps
+    LEFT JOIN  xz_resume r ON r.resume_id = ps.resume_id
+    LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id
     LEFT JOIN xz_postion p ON ps.postion_id = p.postion_id
     where r.resume_id in(
     select ps.resume_id
