@@ -6224,8 +6224,6 @@ footer {
     float: right;
 }
 
-
-
 /*-----------------------------------一堆弹出框----------------------------------------*/
 
 /*只带确定的弹出框*/
@@ -6599,7 +6597,6 @@ footer {
     margin-left: 20px;
 }
 
-
 /*--------------------------我的消息------------------------*/
 .news_all {
     width: 100%;
@@ -6652,6 +6649,7 @@ footer {
     border: 1px solid #d9d9d9;
     border-bottom: none;
     background-color: #FFFFff;
+    margin-bottom: 0;
 }
 
 .news_ul li {
@@ -6670,7 +6668,33 @@ footer {
     text-overflow: ellipsis;
 }
 
+.news_bottom {
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid #cccccc;
+    border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    padding-left: 20px;
+    overflow: hidden;
+}
 
+.news_bottom button {
+    width: 60px;
+    height: 25px;
+    border: 1px solid #fc6866;
+    border-radius: 3px;
+    background-color: #ffffff;
+    color: #fc6866;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+.news_em{
+    color: #c0c0c0;
+}
+.news_have{
+    color: #fc6866;
+}
 /*--------------------简历详情-------------------------*/
 .rei_all {
     width: 100%;
