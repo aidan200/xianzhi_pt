@@ -42,8 +42,8 @@
     <h4></h4>
     <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/19.jpg');z-index:2;background-size: cover">
         <div class="index_top">
-            <h1>大数据上云最佳实现</h1>
-            <p>一站式等保合规解决方案，限时优惠</p>
+            <h1>先知共创平台</h1>
+            <p>企业资源一体化，共创信息文化大数据平台</p>
             <a href="#" class="btn2 btn-4">查看详情</a>
         </div>
         <div class="items__inner" id="js-scene">
@@ -82,8 +82,8 @@
     </div>
     <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/19.jpg')">
         <div class="index_top">
-            <h1>阿里云快照商业化</h1>
-            <p>让业务数据更安全</p>
+            <h1>企业级定制化方案</h1>
+            <p>精准定位，解决互联网技术痛点</p>
             <a href="#" class="btn2 btn-4">查看详情</a>
         </div>
         <div class="items__inner" id="js-scene2">
@@ -122,8 +122,8 @@
     </div>
     <div style="background-image:url('${pageContext.request.contextPath}/dist/foreEnd3/img/19.jpg')">
         <div class="index_top">
-            <h1>物联网套件正式商业化</h1>
-            <p>端云一体化方案助企业快速搭建物联网平台</p>
+            <h1>全民开发计划</h1>
+            <p>十年磨一剑，打造最佳开发实践平台</p>
             <a href="#" class="btn2 btn-4">查看详情</a>
         </div>
         <div class="items__inner" id="js-scene3">
@@ -166,18 +166,16 @@
 
     <!--全民开发计划-->
     <div class="index_01">
-        <h3>全民开发计划</h3>
-        <p>全球领先、安全、稳定的云计算产品,计算储存网络安全大数据人工智能惠普科技助你飞跃发展</p>
+        <h3>国内最专业、最权威的企业级IT人才资源库</h3>
+        <p>先知平台联合众多企业为IT互联网人才提供精准的定位、优质的服务，助你飞跃发展。</p>
 
         <div class="index_plan">
             <div class="plan_a">
                 <div class="plan_in">
                     <div class="plan_c">
-                        <h4>入门型</h4>
+                        <h4>初创展示</h4>
                         <span class="plan_d">
-                        <p>适用个人网站初始阶段并发访问量小
-                            开发、测试环境
-                            代码存储服务器</p>
+                        <p>适合网站初始化建设、信息展示、个性化体验、动态交互。</p>
                         </span>
                     </div>
                     <div class="plan_a2">
@@ -191,11 +189,9 @@
             <div class="plan_a">
                 <div class="plan_in">
                     <div class="plan_c">
-                        <h4>基础型</h4>
+                        <h4>建站推广</h4>
                         <span class="plan_d">
-                        <p>流量适中的网站应用
-                            简单开发环境
-                            代码存储库</p></span>
+                        <p>服务器端搭建、资源整合、并发访问控制、数据持久化存储以及高效开发工具。</p></span>
                     </div>
                     <div class="plan_a2">
                         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt=""
@@ -208,11 +204,9 @@
             <div class="plan_a">
                 <div class="plan_in">
                     <div class="plan_c">
-                        <h4>通用型</h4>
+                        <h4>移动互联</h4>
                         <span class="plan_d">
-                        <p>日常运营活动
-                            并行计算应用
-                            普通数据处理</p></span>
+                        <p>电子商务、大数据平台、移动互联网开发等企业级应用快速搭建。实现领先、安全、稳定的互联网产品。</p></span>
                     </div>
                     <div class="plan_a2">
                         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt=""
@@ -225,11 +219,9 @@
             <div class="plan_a">
                 <div class="plan_in">
                     <div class="plan_c">
-                        <h4>进阶型</h4>
+                        <h4>行业解决方案</h4>
                         <span class="plan_d">
-                        <p>中小型 Web 服务器
-                            企业运营活动
-                            普通数据处理服务</p></span>
+                        <p>非富项目资源库，覆盖多个行业的专业解决方案。从设计到实现，一站式的技术全面升级。</p></span>
                     </div>
                     <div class="plan_a2">
                         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/1111.png" alt=""
@@ -243,18 +235,18 @@
         <div style="clear: both"></div>
     </div>
 
-    <!--解决方案-->
+    <!--服务解决方案分析-->
     <div class="index_02">
-        <h3>海纳百川，各行各业解决方案</h3>
+        <h3>先知服务</h3>
         <p>开发者工具、建站、API、企业应用、支持云端应用服务</p>
         <div class="an_main">
             <!-- FIFTH EXAMPLE -->
             <div class="view view-fifth">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ff.jpg" style="width: 100%"/>
                 <div class="mask">
-                    <h2>电商解决方案</h2>
+                    <h2>企业级人才定制</h2>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/dain.png" alt="">
-                    <p>结合大数据能力帮助电商企业快速搭建平台，应对业务高并发，剖析秒杀视频直播等场景</p>
+                    <p>企业与人才间的便捷对接，致力于为国内外企业提供“轻量级、精准化”的服务。</p>
                     <a href="#" class="info">
                         查看详情
                     </a>
@@ -263,36 +255,36 @@
             <div class="view view-fifth">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/gg.jpg" style="width: 100%"/>
                 <div class="mask">
-                    <h2>APP解决方案</h2>
+                    <h2>技术服务与推广</h2>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/app.png" alt="">
-                    <p>助移动开发者轻松应对用户数爆发式增长、实现基于大数据化的运营、增强用户黏性</p>
+                    <p>专业的流程，高效的服务能力和一站式解决方案，提供最佳的网络架构设计方案。</p>
                     <a href="#" class="info">查看详情</a>
                 </div>
             </div>
             <div class="view view-fifth">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hh.jpg" style="width: 100%"/>
                 <div class="mask">
-                    <h2>金融解决方案</h2>
+                    <h2>高品质企业资源服务</h2>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/jin.png" alt="">
-                    <p>为金融行业提供量身定制的云计算服务，具备低成本、高弹性、高可用、安全合规的特性</p>
+                    <p>聚焦互联网IT行业，云集多家名企，实现企业与人才精准化对接。完成一站式人才推送服务，打破求职者与招聘企业的中间壁垒。</p>
                     <a href="#" class="info">查看详情</a>
                 </div>
             </div>
             <div class="view view-fifth">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/dd.jpg" style="width: 100%"/>
                 <div class="mask">
-                    <h2>游戏解决方案</h2>
+                    <h2>校园共建</h2>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/game.png" alt="">
-                    <p>为游戏开发者提供专属集群、尊享VIP服务、专项扶持基金、多场景游戏部署解决方案</p>
+                    <p>学校与企业资源、信息共享的”双赢”模式。应社会所需 ，与市场接轨，实践与理论相结合的全新理念。</p>
                     <a href="#" class="info">查看详情</a>
                 </div>
             </div>
             <div class="view view-fifth">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/jj.jpg" style="width: 100%"/>
                 <div class="mask">
-                    <h2>医疗解决方案</h2>
+                    <h2>创新创业资源共享</h2>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/yi.png" alt="">
-                    <p>融合云计算大数据，连接用户医疗设备、医疗结构和医疗ISV，构建医疗行业云生态</p>
+                    <p>平台通过“互联网＋”的技术手段，打破资源汇聚的地缘优势，实现创新创业资源的平等共享。</p>
                     <a href="#" class="info">查看详情</a>
                 </div>
             </div>
@@ -302,13 +294,13 @@
 
     <!--服务内容-->
     <div class="index_03">
-        <h3>海纳百川，精选全球的高品质软件与服务</h3>
+        <h3>全民开发计划</h3>
         <p>开发者工具、建站、API、企业应用、支持云端应用服务</p>
         <div class="index_content">
             <div class="content_in col-md-4 col-sm-6">
                 <a href="">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/24.png" alt="">
-                    <h4>软件环境</h4>
+                    <h4>开发者工具</h4>
                     <div>
                         预装PHP | 预装JAVA | 预装ASP/.NET
                     </div>
@@ -319,7 +311,7 @@
             <div class="content_in col-md-4 col-sm-6">
                 <a href="">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/25.png" alt="">
-                    <h4>软件环境</h4>
+                    <h4>环境搭建</h4>
                     <div>
                         预装PHP | 预装JAVA | 预装ASP/.NET
                     </div>
@@ -329,7 +321,7 @@
             <div class="content_in col-md-4 col-sm-6">
                 <a href="">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/26.png" alt="">
-                    <h4>软件环境</h4>
+                    <h4>API文档</h4>
                     <div>
                         预装PHP | 预装JAVA | 预装ASP/.NET
                     </div>
@@ -339,7 +331,7 @@
             <div class="content_in col-md-4 col-sm-6">
                 <a href="">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/27.png" alt="">
-                    <h4>软件环境</h4>
+                    <h4>企业案例分析</h4>
                     <div>
                         预装PHP | 预装JAVA | 预装ASP/.NET
                     </div>
@@ -349,7 +341,7 @@
             <div class="content_in col-md-4 col-sm-6">
                 <a href="">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/28.png" alt="">
-                    <h4>软件环境</h4>
+                    <h4>知识库</h4>
                     <div>
                         预装PHP | 预装JAVA | 预装ASP/.NET
                     </div>
@@ -359,7 +351,7 @@
             <div class="content_in col-md-4 col-sm-6">
                 <a href="">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/29.png" alt="">
-                    <h4>软件环境</h4>
+                    <h4>开发文档</h4>
                     <div>
                         预装PHP | 预装JAVA | 预装ASP/.NET
                     </div>
