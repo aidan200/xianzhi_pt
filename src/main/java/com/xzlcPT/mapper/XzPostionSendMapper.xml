@@ -300,7 +300,6 @@
       and DATEDIFF(send_time,NOW()) =0
   </select>
   <select id="selByState" parameterType="java.util.Map" resultMap="selState">
-   select * from(
     select
    <include refid="selResume"/>
     from xz_postion_send ps
@@ -314,10 +313,8 @@
     <if test="sendState != null and sendState !=''">
     and ps.send_state = #{sendState,jdbcType=INTEGER}
     </if>
-		)
-		ORDER BY e.graduate_date DESC
-    ) s
-    GROUP BY s.send_id
+	  )
+	ORDER BY e.graduate_date DESC
   </select>
   <select id="selComCollect" parameterType="java.lang.Long" resultMap="selState">
     SELECT * from(
