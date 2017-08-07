@@ -7,6 +7,7 @@ import com.xzlcPT.dao.VideoDiscussMapper;
 import com.xzlcPT.service.VideoDiscussService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

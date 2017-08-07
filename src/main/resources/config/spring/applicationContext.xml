@@ -68,7 +68,7 @@
         </tx:attributes>
     </tx:advice>
 
-    <!-- 配置切面 aop -->
+    <!--配置切面 aop -->
     <aop:config>
         <aop:advisor advice-ref="interceptorAdvice" pointcut="execution(* com.xzlcPT.service.impl.*.*(..))"/>
     </aop:config>

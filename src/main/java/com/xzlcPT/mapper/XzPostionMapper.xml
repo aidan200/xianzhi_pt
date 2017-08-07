@@ -650,6 +650,9 @@
     <if test="postionName != null and postionName != ''">
     AND  postion_name like CONCAT('%',#{postionName,jdbcType=VARCHAR},'%')
     </if>
+    <if test="companyId !=null and companyId !=''">
+    AND  company_id = #{companyId,jdbcType=BIGINT}
+    </if>
   </select>
   <select id="selectCityByComId" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select DISTINCT (postion_space) FROM  xz_postion WHERE company_id=#{companyId,jdbcType=BIGINT}

@@ -103,7 +103,7 @@ qyfc.prototype.init=function (){
                 var obj1=document.getElementById(oid1);
                 var oid2=$('#tj_gsfc').prev('div').find('input').attr('id');
                 var obj2=document.getElementById(oid2);
-                var tpsc =  new uploadUtil(obj1,dkh+"/upload/img",obj2,function (){
+                var tpsc =  new uploadUtil(obj1,"/upload/img",obj2,function (){
                     var a = i;
                     return function (imgName) {
                         var aa=$('.qyfc > div').eq(a).find('div').attr('data-url',imgName);//赋值URL
@@ -215,7 +215,7 @@ qyfc.prototype.bindingSJ=function (){
             var bbb=document.getElementById(aaa);                //获取到背景DIV的元素
             var ccc= $(this).prev('div').find('input[type=text]').attr('id');
             var ddd=document.getElementById(ccc);
-            var uu =  new uploadUtil(bbb,dkh+"/upload/img",ddd,function (imgName){
+            var uu =  new uploadUtil(bbb,"/upload/img",ddd,function (imgName){
                     eee.prev('div').find('.a1_gb_tj').css({"display":"inline-block"});
                     eee.prev('div').find('div').attr('data-url',imgName);//赋值URL
             });
@@ -265,7 +265,7 @@ function gstb(){
 gstb.prototype.bindingSJ=function (){
     var  ogstb_bg=document.getElementById('gstb_bg');
     var  Ogstb_inp1=document.getElementById('gstb_inp1');
-    var uu =  new uploadUtil(ogstb_bg,dkh+"/upload/img",Ogstb_inp1,function (imgName){
+    var uu =  new uploadUtil(ogstb_bg,"/upload/img",Ogstb_inp1,function (imgName){
                 console.log(imgName);
                 Ogstb_inp1.value = imgName;
                 console.log(Ogstb_inp1)
@@ -301,7 +301,7 @@ cpjx.prototype.init=function (){
                 var bbb=$(e).find(' .cpjs_bg + input').attr('id');
                 var ccc=document.getElementById(aaa);
                 var ddd=document.getElementById(bbb)
-                var uu =  new uploadUtil(ccc,dkh+"/upload/img",ddd,function (imgName){
+                var uu =  new uploadUtil(ccc,"/upload/img",ddd,function (imgName){
                     $(e).find(' .cpjs_bg').attr('data-url',imgName)
                     $(e).find('a').css({"display":"block"})
                 });
@@ -404,7 +404,7 @@ cpjx.prototype.bindingSJ=function (){
             var oinput=$('#tjcpjs').prev('div').find('.zp_gsxq_cpjs_cp_left').find('input').attr('id')
             var aa=document.getElementById(oID);
             var bb=document.getElementById(oinput);
-            var uu =  new uploadUtil(aa,dkh+"/upload/img",bb,function (imgName){
+            var uu =  new uploadUtil(aa,"/upload/img",bb,function (imgName){
                     $('#gsxq_cpjs > .zp_gsxq_cpjs_cp').each(function (i,e){
                         if($(e).find('.zp_gsxq_cpjs_cp_left >div').attr('id')=='cpjs_'){
                             $(e).find('.zp_gsxq_cpjs_cp_left >div').attr('data-url',imgName)

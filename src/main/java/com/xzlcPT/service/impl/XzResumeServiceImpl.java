@@ -9,6 +9,7 @@ import com.xzlcPT.dao.XzResumeSkillMapper;
 import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Field;
 import java.util.*;

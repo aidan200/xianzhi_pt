@@ -8,6 +8,7 @@ import com.xzlcPT.dao.DiscussMapper;
 import com.xzlcPT.service.DiscussService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.HashMap;
