@@ -6518,27 +6518,47 @@ footer {
 }
 
 .dot_com {
-    width: 300px;
+    width: 400px;
     float: left;
     margin-left: 30px;
     height: auto;
     border-right: 1px dashed #c0c0c0;
     margin-top: 10px;
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
 
 .dot_com2 {
-    width: 300px;
+    width: 200px;
     float: left;
     margin-left: 30px;
     height: auto;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .dot_t5 {
     font-size: 18px;
     color: #3d9ccc;
 }
+
+.dot_ss {
+    margin-top: 10px;
+}
+
+.dot_ss span {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.dot_spe{
+    margin-top: 10px;
+}
+.dot_spe span{
+    display: inline-block;
+    padding: 3px 5px;
+    border: 1px dashed #CCCCCC;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
 
 .dot_head {
     width: 100px;
@@ -6689,13 +6709,16 @@ footer {
     margin-left: 10px;
     margin-top: 15px;
 }
-.news_em{
+
+.news_em {
     color: #c0c0c0;
 }
-.news_have{
+
+.news_have {
     color: #fc6866;
 }
-.news_bu{
+
+.news_bu {
     width: 80px;
     height: 40px;
     background-color: transparent;
@@ -6710,73 +6733,154 @@ footer {
     min-width: 1200px;
     height: auto;
     overflow: hidden;
+
 }
 
 .rei_center {
     width: 980px;
     height: auto;
     margin: 40px auto;
-    border: 1px solid #EEEEEE;
+    border: 1px solid #E5E5E5;
     border-radius: 3px;
     overflow: hidden;
+    background-color: #FFFFff;
 
+}
+
+.rei_topv {
+
+}
+
+.rei_headout {
+    width: 280px;
+    height: auto;
+    text-align: center;
+    float: left;
+}
+
+.rei_topr {
+    width: 660px;
+    height: auto;
+    float: left;
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+    border-bottom: 1px dashed #CCCCCC;
+    margin-top: 10px;
+}
+
+.rei_topr > div {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.rei_topr h4 {
+    margin-bottom: 20px;
+}
+
+.rei_two {
+    width: 45%;
+    float: left;
+}
+
+.rei_left {
+    width: 280px;
+    height: auto;
+    float: left;
+
+    padding: 20px;
+}
+
+.rei_right {
+    width: 680px;
+    height: auto;
+    float: left;
+    margin-left: 10px;
+    border-left: 1px dashed #cccccc;
+}
+
+.rei_head {
+    height: 120px;
+    width: 120px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .rei_top {
     width: 100%;
-    height: auto;
-    overflow: hidden;
-    text-align: center;
+    height: 20px;
 }
 
-.rei_head {
-    width: 120px;
-    height: 120px;
-    margin-top: 40px;
+.rei_leftop {
+    margin-top: 30px;
+    padding-left: 20px;
 }
 
-.rei_left {
-    width: 50%;
-    height: auto;
-    overflow: hidden;
-    padding: 30px 15px 30px 30px;
-    float: left;
-}
-
-.rei_left1 {
-    width: 100%;
-    background-color: #EEEEEE;
-    font-size: 16px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin: 0 auto;
-    margin-top: 20px;
-}
-
-.rei_one {
-    width: 140px;
-    height: 100px;
-}
-
-.rei_l {
-    padding-left: 30px;
+.rei_leftop div {
     margin-top: 5px;
+    font-size: 15px;
 }
 
-.rei_right {
-    width: 50%;
-    height: auto;
-    overflow: hidden;
-    padding: 30px 30px 30px 15px;
-    float: left;
-}
+/*.rei_top {*/
+/*width: 100%;*/
+/*height: auto;*/
+/*overflow: hidden;*/
+/*text-align: center;*/
+/*}*/
 
-.rei_right1 {
-    width: 100%;
-    background-color: #EEEEEE;
-    font-size: 16px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    margin: 0 auto;
-    margin-top: 20px;
-}
+/*.rei_head {*/
+/*width: 120px;*/
+/*height: 120px;*/
+/*margin-top: 40px;*/
+/*}*/
+/*.rei_xaio{*/
+/*width: 100%;*/
+/*height: 80px;*/
+/*}*/
+
+/*.rei_left {*/
+/*width: 50%;*/
+/*height: auto;*/
+/*overflow: hidden;*/
+/*padding: 30px 15px 30px 30px;*/
+/*float: left;*/
+/*}*/
+
+/*.rei_left1 {*/
+/*width: 100%;*/
+/*background-color: #EEEEEE;*/
+/*font-size: 16px;*/
+/*padding-bottom: 10px;*/
+/*padding-top: 10px;*/
+/*margin: 0 auto;*/
+/*margin-top: 20px;*/
+/*}*/
+
+/*.rei_one {*/
+/*width: 140px;*/
+/*height: 100px;*/
+/*}*/
+
+/*.rei_l {*/
+/*padding-left: 30px;*/
+/*margin-top: 5px;*/
+/*}*/
+
+/*.rei_right {*/
+/*width: 50%;*/
+/*height: auto;*/
+/*overflow: hidden;*/
+/*padding: 30px 30px 30px 15px;*/
+/*float: left;*/
+/*}*/
+
+/*.rei_right1 {*/
+/*width: 100%;*/
+/*background-color: #EEEEEE;*/
+/*font-size: 16px;*/
+/*padding-bottom: 10px;*/
+/*padding-top: 10px;*/
+/*margin: 0 auto;*/
+/*margin-top: 20px;*/
+/*}*/
