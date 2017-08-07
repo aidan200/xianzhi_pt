@@ -70,6 +70,8 @@ public class XzResume {
 
     private String postionName;
 
+    private Integer sendState;
+
     private List<XzField> fields;
 
     private List<XzJobExp> jobExps;
@@ -383,6 +385,14 @@ public class XzResume {
 
     public String getPostionName() {
         return postionName;
+    }
+
+    public void setSendState(Integer sendState) {
+        this.sendState = sendState;
+    }
+
+    public Integer getSendState() {
+        return sendState;
     }
 
     @Override
