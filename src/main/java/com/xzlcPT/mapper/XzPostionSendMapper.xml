@@ -18,7 +18,7 @@
     <result column="field1" jdbcType="VARCHAR" property="field1" />
     <result column="field2" jdbcType="VARCHAR" property="field2" />
     <result column="field3" jdbcType="VARCHAR" property="field3" />
-    <result column="delete_falt" jdbcType="TIMESTAMP" property="deleteFalt" />
+    <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
   </resultMap>
   <resultMap id="theCount" type="com.xzlcPT.bean.XzPostionSend">
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
@@ -41,7 +41,7 @@
     <result column="field1" jdbcType="VARCHAR" property="field1" />
     <result column="field2" jdbcType="VARCHAR" property="field2" />
     <result column="field3" jdbcType="VARCHAR" property="field3" />
-    <result column="delete_falt" jdbcType="TIMESTAMP" property="deleteFalt" />
+    <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
     <result column="postion_id" jdbcType="BIGINT" property="postionId"/>
     <result column="postion_name" jdbcType="VARCHAR" property="postionName"/>
     <collection property="resumes" ofType="com.xzlcPT.bean.XzResume">
@@ -302,7 +302,7 @@
   <select id="selByState" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT send_id FROM xz_postion_send
     WHERE company_id=#{companyId,jdbcType=BIGINT}
-    <if test="sendState !=null and sendState !=''">
+    <if test="sendState != null and sendState !=null">
     and send_state=#{sendState,jdbcType=INTEGER}
     </if>
   </select>
@@ -321,7 +321,7 @@
     SELECT * FROM (
     select
 		e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
-    r.resume_position,p.postion_name,ps.send_state,ps.send_id,r.delete_falt
+    r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt
     from xz_postion_send ps
     LEFT JOIN  xz_resume r ON r.resume_id = ps.resume_id
     LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id

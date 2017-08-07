@@ -36,7 +36,7 @@ public class XzPostionSend {
 
     private String field3;
 
-    private Date deleteFalt;
+    private int deleteFalt;
 
     private Integer ct;
 
@@ -182,12 +182,12 @@ public class XzPostionSend {
         this.field3 = field3 == null ? null : field3.trim();
     }
 
-    public Date getDeleteFalt() {
-        return deleteFalt;
+    public void setDeleteFalt(int deleteFalt) {
+        this.deleteFalt = deleteFalt;
     }
 
-    public void setDeleteFalt(Date deleteFalt) {
-        this.deleteFalt = deleteFalt;
+    public int getDeleteFalt() {
+        return deleteFalt;
     }
 
     public void setPostionName(String postionName) {
