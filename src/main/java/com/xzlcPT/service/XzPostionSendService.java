@@ -1,5 +1,6 @@
 package com.xzlcPT.service;
 
+import com.util.PageBean;
 import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.bean.XzPostionSend;
 import com.xzlcPT.bean.XzResume;
@@ -20,5 +21,5 @@ public interface XzPostionSendService {
 
     int selSendCount(Long resumeId);
 
-    List<XzResume> selByState(Map map);
+    PageBean<XzResume> selByState(int page,int rows,Map map);
 }
