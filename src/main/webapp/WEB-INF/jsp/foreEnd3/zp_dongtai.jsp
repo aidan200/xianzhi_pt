@@ -116,11 +116,11 @@
                     </div>
 
                     <%--<div class="pop_no">--%>
-                        <%--<div class="pop_allimg">--%>
-                            <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                                 <%--class="rem_img">--%>
-                            <%--<p class="all_p">暂无收藏记录</p>--%>
-                        <%--</div>--%>
+                    <%--<div class="pop_allimg">--%>
+                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
+                    <%--class="rem_img">--%>
+                    <%--<p class="all_p">暂无收藏记录</p>--%>
+                    <%--</div>--%>
                     <%--</div>--%>
                 </div>
 
@@ -155,12 +155,17 @@
                                 <div style="margin-top: 5px"><a href="">Java高级工程师</a></div>
                                 <div style="margin-top: 5px"><a href="">更多</a></div>
                             </div>
-                            <div style="float: left;width: 150px;height: auto;overflow: hidden">
-                                <button class="dot_but">查看</button>
-                                <div class="dot_sma">时间在这呢</div>
+                            <%--<div style="float: left;width: 150px;height: auto;overflow: hidden;margin-top: 20px">--%>
+                            <%--<span class="fa fa-envelope" style="color: #fc6866;display: inline-block"></span>--%>
+                            <%--<span class="fa fa-envelope-open-o" style="color: #cccccc"></span>--%>
+                            <%--<div class="dot_sma">时间在这呢</div>--%>
+                            <%--</div>--%>
+                            <div style="margin-top: 70px;width: 150px;float: left">
+                                <span class="dot_sma">2017-08-08</span>&emsp;
+                                <span class="fa fa-envelope" style="color: #fc6866;"></span>
+                                <span class="fa fa-envelope-open-o" style="color: #cccccc"></span>
                             </div>
-                            <span class="fa fa-envelope" style="float: right;color: #fc6866"></span>
-                            <span class="fa fa-envelope-open-o" style="float: right;color: #cccccc"></span>
+
                         </div>
 
                         <div class="pop-right-bottom">
@@ -251,11 +256,11 @@
                     </div>
 
                     <%--<div class="pop_no">--%>
-                        <%--<div class="pop_allimg">--%>
-                            <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                                 <%--class="rem_img">--%>
-                            <%--<p class="all_p">暂无关注记录</p>--%>
-                        <%--</div>--%>
+                    <%--<div class="pop_allimg">--%>
+                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
+                    <%--class="rem_img">--%>
+                    <%--<p class="all_p">暂无关注记录</p>--%>
+                    <%--</div>--%>
                     <%--</div>--%>
                 </div>
 
@@ -291,54 +296,54 @@
             data: data,
             dataType: 'json',
             success: function (data) {
-                _self.dataBox.innerHTML='<div class="dot_top2">'+
-                    '<span class="dot_span">谁看过我（<span>'+data.total+'</span>）</span></div>';
+                _self.dataBox.innerHTML = '<div class="dot_top2">' +
+                    '<span class="dot_span">谁看过我（<span>' + data.total + '</span>）</span></div>';
                 callBack(data);
-                _self.fen(10,data.page,data.pages);
-            },error:function () {
+                _self.fen(10, data.page, data.pages);
+            }, error: function () {
                 alert("超时，请重新登陆");
             }
         });
     }
-    BaseBox.prototype.fen = function (length,page,pages) {
+    BaseBox.prototype.fen = function (length, page, pages) {
         console.log(this);
         var _self = this;
         var html = "";
         var pBegin;
         var pEnd;
-        if(pages>length){
-            pBegin = page-length/2;
-            if(pBegin<=0){
+        if (pages > length) {
+            pBegin = page - length / 2;
+            if (pBegin <= 0) {
                 pBegin = 1;
             }
-            pEnd = length+pBegin-1;
-            if(pEnd>pages){
+            pEnd = length + pBegin - 1;
+            if (pEnd > pages) {
                 pEnd = pages;
-                pBegin = pEnd -length+1;
+                pBegin = pEnd - length + 1;
             }
-        }else{
+        } else {
             pBegin = 1;
-            pEnd =pages;
+            pEnd = pages;
         }
-        html +='<div class="zp_botv"><div class="zp_pl"><ul class="pagination zp_pa">';
-        if(page==1){
-            html +='<li class="b"><a>上一页</a></li>';
-        }else{
-            html +='<li class="a"><a onclick="toPage('+(page-1)+')" href="#">上一页</a></li>';
+        html += '<div class="zp_botv"><div class="zp_pl"><ul class="pagination zp_pa">';
+        if (page == 1) {
+            html += '<li class="b"><a>上一页</a></li>';
+        } else {
+            html += '<li class="a"><a onclick="toPage(' + (page - 1) + ')" href="#">上一页</a></li>';
         }
-        for(var i = pBegin;i <= pEnd;i++){
-            if(i==page){
-                html +='<li class="active"><a>'+i+'</a></li> ';
-            }else{
-                html +='<li class="a"><a onclick="toPage('+i+')">'+i+'</a></li> ';
+        for (var i = pBegin; i <= pEnd; i++) {
+            if (i == page) {
+                html += '<li class="active"><a>' + i + '</a></li> ';
+            } else {
+                html += '<li class="a"><a onclick="toPage(' + i + ')">' + i + '</a></li> ';
             }
         }
-        if(page==pages){
-            html +='<li class="b"><a>下一页</a></li>';
-        }else{
-            html +='<li class="a"><a onclick="toPage('+(page+1)+')">下一页</a></li>';
+        if (page == pages) {
+            html += '<li class="b"><a>下一页</a></li>';
+        } else {
+            html += '<li class="a"><a onclick="toPage(' + (page + 1) + ')">下一页</a></li>';
         }
-        html +='</ul><div class="zp_page">共 <span>'+pages+'</span> 页</div></div></div>';
+        html += '</ul><div class="zp_page">共 <span>' + pages + '</span> 页</div></div></div>';
         $(_self.dataBox).append(html);
     }
 
@@ -350,58 +355,58 @@
     collect.prototype = new BaseBox();
     collect.prototype.init = function () {
         var _self = this;
-        if(_self.page){
+        if (_self.page) {
             _self.go(_self.page);
-        }else{
+        } else {
             _self.go(1);
         }
     }
 
     collect.prototype.go = function (page) {
         var _self = this;
-        _self.getData(path + "/ResumeBrowse/selWhoSawMe.do", {page:page,rows:_self.rows}, function (data) {
+        _self.getData(path + "/ResumeBrowse/selWhoSawMe.do", {page: page, rows: _self.rows}, function (data) {
             var rbList = data.resumeBrowseList;
-            for(var i = 0;i < rbList.length; i++){
+            for (var i = 0; i < rbList.length; i++) {
                 var str = '';
-                str+='<div class="dot_have"><div class="dot_left2">';
-                str+='<a><img src="/dist/foreEnd3/img/huilogo.png" class="dot_head"/></a>';
-                str+='<div class="dot_com"><a href=""><div class="dot_t5">'+rbList[i].company.companyName+'</div></a>';
-                str+='<div class="dot_ss"><span>'+rbList[i].company.companyCity+'</span>|';
-                str+='<span>互联网/移动联网/电子商务</span>';
-                str+='</div><div class="dot_spe">';
-                for(var j=0;j<rbList[i].company.welfares.length;j++){
-                    str+='<span>'+rbList[i].company.welfares[j].welfareName+'</span>';
-                    if(j>3)break;
+                str += '<div class="dot_have"><div class="dot_left2">';
+                str += '<a><img src="/dist/foreEnd3/img/huilogo.png" class="dot_head"/></a>';
+                str += '<div class="dot_com"><a href=""><div class="dot_t5">' + rbList[i].company.companyName + '</div></a>';
+                str += '<div class="dot_ss"><span>' + rbList[i].company.companyCity + '</span>|';
+                str += '<span>互联网/移动联网/电子商务</span>';
+                str += '</div><div class="dot_spe">';
+                for (var j = 0; j < rbList[i].company.welfares.length; j++) {
+                    str += '<span>' + rbList[i].company.welfares[j].welfareName + '</span>';
+                    if (j > 3)break;
                 }
-                str+='</div></div><div class="dot_com2">';
-                for(var j=0;rbList[i].company.postions.length;j++){
-                    str+='<div style="margin-top: 5px"><a href="">'+rbList[i].company.postions[j].postionName+'</a></div>';
-                    if(j>1)break;
+                str += '</div></div><div class="dot_com2">';
+                for (var j = 0; rbList[i].company.postions.length; j++) {
+                    str += '<div style="margin-top: 5px"><a href="">' + rbList[i].company.postions[j].postionName + '</a></div>';
+                    if (j > 1)break;
                 }
-                str+='</div><div style="float: left;width: 100px;height: auto;overflow: hidden"><button class="dot_but">查看</button><div class="dot_sma">时间在这呢</div>';
-                str+='<span class="fa fa-envelope" style="float: right;color: #fc6866"></span>'
-                str+='<span class="fa fa-envelope-open-o" style="float: right;color: #cccccc"></span>'
+                str += '</div><div style="float: left;width: 150px;height: auto;overflow: hidden"><button class="dot_but">查看</button><div class="dot_sma">时间在这呢</div>';
+                str += '<span class="fa fa-envelope" style="float: right;color: #fc6866"></span>'
+                str += '<span class="fa fa-envelope-open-o" style="float: right;color: #cccccc"></span>'
 
-                str+='</div></div><div class="pop-right-bottom"><b>';
-                if(rbList[i].company.companyNature=='1'){
-                    str+='国';
-                }else if(rbList[i].company.companyNature=='2'){
-                    str+='民';
-                }else if(rbList[i].company.companyNature=='3'){
-                    str+='外';
-                }else if(rbList[i].company.companyNature=='4'){
-                    str+='政';
+                str += '</div></div><div class="pop-right-bottom"><b>';
+                if (rbList[i].company.companyNature == '1') {
+                    str += '国';
+                } else if (rbList[i].company.companyNature == '2') {
+                    str += '民';
+                } else if (rbList[i].company.companyNature == '3') {
+                    str += '外';
+                } else if (rbList[i].company.companyNature == '4') {
+                    str += '政';
                 }
-                str+='</b></div></div></div>';
+                str += '</b></div></div></div>';
                 $(_self.dataBox).append(str);
             }
         });
     }
     var cc = new collect(document.getElementById("dot_two"));
-    $('#to_dot_two').on("click",function () {
+    $('#to_dot_two').on("click", function () {
         cc.init();
     })
     function toPage() {
-        
+
     }
 </script>
