@@ -31,9 +31,11 @@ function Jl(){
 
     }
     this.postionWelfare;        //查询类型
-    this.jl={                   //记录页数对象
 
-    }
+    this. wck_page=0              //未查看页数
+    this. yxgg_page=0             //意向沟通页数
+    this. mstz_page=0             //面试通知页数
+
 }
 var jl=new Jl();            //记录实例
 
@@ -46,62 +48,108 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
         async:true,  //是否异步
         data:obj,        //转为JSON格式
         dataType:'json',                   //定义返回data类型
-        url:path+'Resume/selectResume.do',    //路径
+        url:path+'PostionSend/selByState.do',    //路径
         success:function (data){//data 就是数据 json
             jl.pages=data.pages;              //获取总页
             jl.page=data.page;               //获取当前页
-            if(data.resumeList.length!=0){
+
+            if(data.list.list.length!=0){
                 var str=''
-                for(var i=0;i<data.resumeList.length;i++){
-                    str+='<tr class="pom_h" data-id="'+data.resumeList[i].resumeId+'">'
-                    str+='<td>'
-                    str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
-                    str+='<input type="checkbox" id="'+tbody+i+'" class="choose2">'
-                    str+='<label for="'+tbody+i+'" style="font-weight: normal;margin-bottom: 0">'
-                    str+=svn_btn
-                    str+='</label>'
-                    str+='</div>'
-                    str+='</td>'
-                    str+='<td class="all_no">'+data.resumeList[i].resumeName+'</td>'
-                    if(data.resumeList[i].resumeSex==0){
-                        str+='<td class="all_no" data-xb="'+data.resumeList[i].resumeSex+'">男</td>'
-                    }else{
-                        str+='<td class="all_no" data-xb="'+data.resumeList[i].resumeSex+'">女</td>'
-                    }
-                    var aa= getNowFormatDate(data.resumeList[i].resumeBirth).substring(0, 4)
-                    var bb=getNowFormatDate(new Date()).substring(0, 4);
-                    var sj=bb-aa;
-                    str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
 
-                    if(data.resumeList[i].xzResumeEducations.length==0){
-                        str+='<td class="all_no">没有</td>'
-                    }else{
-                        str+='<td class="all_no">'+data.resumeList[i].xzResumeEducations[0].educationLevel+'</td>'
-                    }
-                       //学历有问题'+data.resumeList[i].xzResumeEducations+'
+                for(var i=0;i<data.list.list.length;i++){
+                    alert(data.list.list[i].sendState)
+                    if(data.list.list[i].sendState==0){
+                        jl.wck_page=data.page;             //保留页数
+                        str+='<tr class="pom_h" data-id="'+data.list.list[i].resumeId+'">'
+                        str+='<td>'
+                        str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
+                        str+='<input type="checkbox" id="'+tbody+i+'" class="choose2">'
+                        str+='<label for="'+tbody+i+'" style="font-weight: normal;margin-bottom: 0">'
+                        str+=svn_btn
+                        str+='</label>'
+                        str+='</div>'
+                        str+='</td>'
+                        str+='<td class="all_no">'+data.list.list[i].resumeName+'</td>'
+                        if(data.list.list[i].resumeSex==0){
+                            str+='<td class="all_no" data-xb="'+data.list.list[i].resumeSex+'">男</td>'
+                        }else{
+                            str+='<td class="all_no" data-xb="'+data.list.list[i].resumeSex+'">女</td>'
+                        }
+                        var aa= getNowFormatDate(data.list.list[i].resumeBirth).substring(0, 4)
+                        var bb=getNowFormatDate(new Date()).substring(0, 4);
+                        var sj=bb-aa;
+                        str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
 
-                    var cc=data.resumeList[i].resumeWorkinglife     //计算出开始工作年限
-                    var js2=bb-cc;
-                    str+='<td class="all_no">'+js2+'</td>'
-                    str+='<td class="all_no">'+data.resumeList[i].resumePosition  +'</td>' //目前职位
-                    str+='<td class="all_no">'+data.resumeList[i].resumeField  +'</td>'   //目前公司
-                    str+='<td class="all_no">'+data.resumeList[i].resumeIntentPosition  +'</td>'  //应聘职位
-                    str+='<td class="all_no">'
-                    str+='<a href="">过滤</a>'
-                    str+='<a href="">待定</a>'
-                    str+='<a href="">不合适</a>'
-                    str+='<a href="">目标</a>'
-                    str+='</td>'
-                    str+='</tr>'
+                        if(data.list.list[i].xzResumeEducations.length==0){
+                            str+='<td class="all_no">没有</td>'
+                        }else{
+                            str+='<td class="all_no">'+data.list.list[i].xzResumeEducations[0].educationLevel+'</td>'
+                        }
+                        //学历有问题'+data.resumeList[i].xzResumeEducations+'
+
+                        var cc=data.list.list[i].resumeWorkinglife     //计算出开始工作年限
+                        var js2=bb-cc;
+                        str+='<td class="all_no">'+js2+'</td>'
+                        str+='<td class="all_no">'+data.list.list[i].postionName  +'</td>' //目前职位
+                        str+='<td class="all_no">'+data.list.list[i].resumePosition  +'</td>'  //应聘职位
+                        str+='<td class="all_no">'
+                        str+='<a href="javascript:;" class="zw_yl">预览</a>'
+                        str+='&nbsp;'
+                        str+='<a href="javascript:;" class="zw_sc">删除</a>'
+
+                        str+='</td>'
+                        str+='</tr>'
+                    }  //未查看
+                    if(data.list.list[i].sendState==1){           //意向沟通
+
+
+                        jl.yxgg_page=data.page;             //保留页数
+                        str+='<tr class="pom_h" data-id="'+data.list.list[i].resumeId+'">'  //ID
+                        str+='<td>'
+                        str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
+                        str+='<input type="checkbox" id="'+tbody+i+'" class="choose2">'
+                        str+='<label for="'+tbody+i+'" style="font-weight: normal;margin-bottom: 0">'
+                        str+=svn_btn
+                        str+='</label>'
+                        str+='</div>'
+                        str+='</td>'
+                        str+='<td class="all_no">人选</td>' //人选编号
+                        str+='<td class="all_no">'+data.list.list[i].resumeName+'</td>'
+                        if(data.list.list[i].resumeSex==0){
+                            str+='<td class="all_no" data-xb="'+data.list.list[i].resumeSex+'">男</td>'
+                        }else{
+                            str+='<td class="all_no" data-xb="'+data.list.list[i].resumeSex+'">女</td>'
+                        }
+
+                        str+='<td class="all_no">年龄</td>'
+
+                        str+='<td class="all_no">目前职位</td>' //目前职位
+                        str+='<td class="all_no">目前公司</td>'  //目前公司
+                        str+='<td class="all_no">沟通职位</td>'  //目前公司
+                        str+='<td class="all_no">意向度</td>'  //意向度
+                        str+='<td class="all_no">沟通时间</td>'  //意向度
+
+                        str+='<td class="all_no">'
+                        str+='<a href="javascript:;" class="zw_yums">预约面试</a>'
+                        str+='&nbsp;'
+                        str+='<a href="javascript:;" class="zw_sc">删除</a>'
+
+                        str+='</td>'
+                        str+='</tr>'
+                    }
+                    if(data.list.list[i].sendState==2){          //面试通知
+
+                    }
+                    $(tbody+' tbody').html(str);
+
                 }
-                $(tbody+' tbody').html(str);
 
                 fn1()
 
 
             }else{
                 fn2()
-                alert('失败了')
+                alert('没找到数据')
             }
 
 
@@ -209,7 +257,7 @@ Public.prototype.dcjl=function (parent){
     })
 }
 
-function Jlrzp(){                   //经理人应聘
+function Jlrzp(){                   //未查看
     this.DOM={
         parent:$('#rem_one')
     }
@@ -218,11 +266,13 @@ Jlrzp.prototype=new Public();   //继承父类原型方法
 Jlrzp.prototype.seekCont=function (parent){
     var parent=$(parent).find('.rem_cen');
     var _public_ssk=jl;                                       //创建搜索对象
-    _public_ssk.zw=parent.find('select').eq(0).val() ;         //获取到职位
-    _public_ssk.xl=parent.find('select').eq(1).val();
-    _public_ssk.xlq=parent.find('input[type="checkbox"]:checked').length ;//如果是0代表不选如果是1代表选中
-    _public_ssk.xb=parent.find('select').eq(2).val();           //性别
-    _public_ssk.name=parent.find('input[type="text"]').eq(0).val();           //姓名
+    _public_ssk.page=jl.wck_page;                              //替换分页
+    _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
+    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
+    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
+    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
+    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+    _public_ssk.sendState=0;
     delete _public_ssk.pages;
     return _public_ssk
 }
@@ -233,11 +283,12 @@ Jlrzp.prototype.upload=function (){     //初始化加载
     This.cg=function (){   //成功执行函数
 
         This.zdl('#rem_one');//成功显示
-        This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
-        This.fy_sj('#rem_one',jl.pages,jl.page,This);                       //分页事件完成
+        This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.wck_page));  //分页加载完成
+        This.fy_sj('#rem_one',jl.pages,jl.wck_page,This);                       //分页事件完成
         This.qx('#rem_one');                                                //加载全选事件以及单选完成
         This.dcjl('#rem_one');
-
+        This.JS();                                                          //选项卡点击事件加载完成
+        This.yl();
     }
     This.sb=function (){                    //没查到数据执行的函数
         This.mzd('#rem_one');                       //没找到执行的
@@ -246,18 +297,135 @@ Jlrzp.prototype.upload=function (){     //初始化加载
 }
 Jlrzp.prototype.JS=function (){                     //点击事件加载
     var This=this
-    $('#myTab li a').eq(0).on('click',function (){      //经理人应聘选项卡加载
+    $('#myTab li a').eq(0).unbind().on('click',function (){      //经理人应聘选项卡加载
         This.upload();
     })
-    $(This.DOM.parent).find('.rem_b').on('click',function (){   //搜索事件按钮
+    $(This.DOM.parent).find('.rem_b').unbind().on('click',function (){   //搜索事件按钮
         jl.page=1;                                              //搜索时候
         This.upload();
     })
 }
+Jlrzp.prototype.yl=function (){     //预览事件
+    $('#rem_one').find('.zw_yl').unbind().on('click',function(){        //预览事件
+        alert('aaa')
+    })
+    $('#rem_one').find('.zw_sc').unbind().on('click',function(){        //删除事件
+        alert('aa')
+    })
+}
 
 
+function Yxgt(){                   //未查看
+    this.DOM={
+        parent:$('#rem_five')
+    }
+}
+Yxgt.prototype=new Public();   //继承父类原型方法
+Yxgt.prototype.seekCont=function (parent){
+    var parent=$(parent).find('.rem_five');
+    var _public_ssk=jl;                                       //创建搜索对象
+    _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
+    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
+    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
+    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
+    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+    _public_ssk.sendState=1;
+    delete _public_ssk.pages;
+    return _public_ssk
+}
+Yxgt.prototype.upload=function (){     //初始化加载
+    var This=this;
+    var data=This.seekCont('#rem_five');                                 //获取到条件信息
 
+    This.cg=function (){   //成功执行函数
 
+        This.zdl('#rem_five');//成功显示
+        This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
+        This.fy_sj('#rem_five',jl.pages,jl.page,This);                       //分页事件完成
+        This.qx('#rem_five');                                                //加载全选事件以及单选完成
+        This.dcjl('#rem_five');
+        This.JS();                                                          //选项卡点击事件加载完成
+        This.yl();
+    }
+    This.sb=function (){                    //没查到数据执行的函数
+        This.mzd('#rem_five');                       //没找到执行的
+    }
+    This.huoqu('#rem_five',data,This.cg,This.sb);    //调用加载方法（参数1 选择给谁加，参数2 参数)
+}
+Yxgt.prototype.JS=function (){                     //点击事件加载
+    var This=this
+    $('#myTab li a').eq(3).unbind().on('click',function (){      //经理人应聘选项卡加载
+        This.upload();
+    })
+    $(This.DOM.parent).find('.rem_b').unbind().on('click',function (){   //搜索事件按钮
+        jl.page=1;                                              //搜索时候
+        This.upload();
+    })
+}
+Yxgt.prototype.yl=function (){     //预览事件
+    $('#rem_five').find('.zw_yl').unbind().on('click',function(){        //预览事件
+        alert('aaa')
+    })
+    $('#rem_five').find('.zw_sc').unbind().on('click',function(){        //删除事件
+        alert('aa')
+    })
+}
+
+function Mstz(){                   //未查看
+    this.DOM={
+        parent:$('#rem_seven')
+    }
+}
+Mstz.prototype=new Public();   //继承父类原型方法
+Mstz.prototype.seekCont=function (parent){
+    var parent=$(parent).find('.rem_seven');
+    var _public_ssk=jl;                                       //创建搜索对象
+    _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
+    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
+    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
+    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
+    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+    _public_ssk.sendState=2;
+    delete _public_ssk.pages;
+    return _public_ssk
+}
+Mstz.prototype.upload=function (){     //初始化加载
+    var This=this;
+    var data=This.seekCont('#rem_seven');                                 //获取到条件信息
+
+    This.cg=function (){   //成功执行函数
+
+        This.zdl('#rem_seven');//成功显示
+        This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
+        This.fy_sj('#rem_seven',jl.pages,jl.page,This);                       //分页事件完成
+        This.qx('#rem_seven');                                                //加载全选事件以及单选完成
+        This.dcjl('#rem_seven');
+        This.JS();                                                          //选项卡点击事件加载完成
+        This.yl();
+    }
+    This.sb=function (){                    //没查到数据执行的函数
+        This.mzd('#rem_seven');                       //没找到执行的
+    }
+    This.huoqu('#rem_seven',data,This.cg,This.sb);    //调用加载方法（参数1 选择给谁加，参数2 参数)
+}
+Mstz.prototype.JS=function (){                     //点击事件加载
+    var This=this
+    $('#myTab li a').eq(4).unbind().on('click',function (){      //经理人应聘选项卡加载
+        This.upload();
+    })
+    $(This.DOM.parent).find('.rem_b').unbind().on('click',function (){   //搜索事件按钮
+        jl.page=1;                                              //搜索时候
+        This.upload();
+    })
+}
+Mstz.prototype.yl=function (){     //预览事件
+    $('#rem_seven').find('.zw_yl').unbind().on('click',function(){        //预览事件
+        alert('aaa')
+    })
+    $('#rem_seven').find('.zw_sc').unbind().on('click',function(){        //删除事件
+        alert('aa')
+    })
+}
 
 
 
@@ -268,7 +436,10 @@ Jlrzp.prototype.JS=function (){                     //点击事件加载
 $(function (){
     var  jlrzp=new Jlrzp();
     jlrzp.upload();
-    jlrzp.JS();
+
+     var  yxgt=new Yxgt();
+     yxgt.JS();             //点击时候执行
+
 })
 
 

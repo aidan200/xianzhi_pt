@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -47,8 +48,15 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     @Override
     public PageBean<XzResume> selByState(int page,int rows,Map map) {
         PageHelper.startPage(page,rows);
-        List<XzResume> list=postionSendMapper.selByState(map);
-        PageBean pageBean=new PageBean(list);
+        List<XzPostionSend> list2=postionSendMapper.selByState(map);
+        PageBean pageBean=new PageBean(list2);
+        List<XzResume> list1=pageBean.getList();
+        List<Long>  list=new ArrayList<>();
+        for(XzPostionSend xzPostionSend:list2){
+            list.add(xzPostionSend.getSendId());
+        }
+        List<XzResume> resumeList=postionSendMapper.selBysendId(list);
+        pageBean.setList(resumeList);
         return pageBean;
     }
 
@@ -57,6 +65,9 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         PageHelper.startPage(page,rows);
         List<XzResume> list=postionSendMapper.selComCollect(companyId);
         PageBean pageBean=new PageBean(list);
+        List<XzResume> list1=pageBean.getList();
         return pageBean;
     }
+
+
 }

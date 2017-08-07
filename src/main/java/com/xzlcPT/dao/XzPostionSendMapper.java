@@ -26,7 +26,9 @@ public interface XzPostionSendMapper {
 
     int selSendCount(Long resumeId);
 
-    List<XzResume> selByState(Map map);
+    List<XzPostionSend> selByState(Map map);
 
     List<XzResume> selComCollect(Long companyId);
+
+    List<XzResume> selBysendId(List list);
 }
