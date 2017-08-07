@@ -7,6 +7,7 @@ import com.xzlcPT.dao.VideoClassMapper;
 import com.xzlcPT.service.VideoClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,7 +17,6 @@ import java.util.List;
  * @author 王天岳
  * @create 2017-05-11 10:41
  **/
-
 
 @Service("videoClassService")
 public class VideoClassServiceImpl implements VideoClassService{

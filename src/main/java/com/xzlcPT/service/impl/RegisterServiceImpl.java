@@ -5,6 +5,7 @@ import com.xzlcPT.dao.RegisterMapper;
 import com.xzlcPT.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * ServiceImpl 层 RegisterServiceImpl

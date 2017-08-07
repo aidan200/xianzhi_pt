@@ -5,6 +5,7 @@ import com.xzlcPT.dao.OrderRecordMapper;
 import com.xzlcPT.service.OrderRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 建立 微信交易记录 实现类

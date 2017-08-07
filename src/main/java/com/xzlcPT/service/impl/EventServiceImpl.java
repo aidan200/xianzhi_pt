@@ -8,6 +8,7 @@ import com.xzlcPT.dao.EventMapper;
 import com.xzlcPT.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.HashMap;

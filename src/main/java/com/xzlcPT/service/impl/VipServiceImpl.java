@@ -9,6 +9,7 @@ import com.xzlcPT.dao.VipMapper;
 import com.xzlcPT.service.VipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.HashMap;
