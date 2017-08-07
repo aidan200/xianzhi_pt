@@ -24,20 +24,41 @@
     <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
     <result column="ct" javaType="INTEGER" property="ct"/>
   </resultMap>
-  <resultMap id="selState" type="com.xzlcPT.bean.XzResume">
-    <id column="resume_id" jdbcType="BIGINT" property="resumeId"/>
-    <result column="resume_name" jdbcType="VARCHAR" property="resumeName"/>
-    <result column="resume_sex" jdbcType="INTEGER" property="resumeSex"/>
-    <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
-    <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
-    <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
-    <result column="postion_id" jdbcType="VARCHAR" property="postionId"/>
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzPostionSend">
+    <id column="send_id" jdbcType="BIGINT" property="sendId" />
+    <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="send_time" jdbcType="TIMESTAMP" property="sendTime" />
+    <result column="send_state" jdbcType="INTEGER" property="sendState" />
+    <result column="send_visual" jdbcType="INTEGER" property="sendVisual" />
+    <result column="send_msg" jdbcType="VARCHAR" property="sendMsg" />
+    <result column="send_time1" jdbcType="TIMESTAMP" property="sendTime1" />
+    <result column="rs_time1" jdbcType="TIMESTAMP" property="rsTime1" />
+    <result column="send_type" jdbcType="INTEGER" property="sendType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="field1" jdbcType="VARCHAR" property="field1" />
+    <result column="field2" jdbcType="VARCHAR" property="field2" />
+    <result column="field3" jdbcType="VARCHAR" property="field3" />
+    <result column="delete_falt" jdbcType="TIMESTAMP" property="deleteFalt" />
+    <result column="postion_id" jdbcType="BIGINT" property="postionId"/>
     <result column="postion_name" jdbcType="VARCHAR" property="postionName"/>
-    <result column="send_state" jdbcType="INTEGER" property="sendState"/>
+    <collection property="resumes" ofType="com.xzlcPT.bean.XzResume">
+      <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
+      <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
+      <result column="resume_sex" jdbcType="INTEGER" property="resumeSex" />
+      <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
+      <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
+      <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
+      <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+    </collection>
     <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
+      <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
     </collection>
   </resultMap>
+  
   <sql id="Base_Column_List">
     send_id, resume_id, company_id, postion_id, send_time, send_state, send_visual, send_msg, 
     send_time1, rs_time1, send_type, create_time, delete_time, field1, field2, field3, 

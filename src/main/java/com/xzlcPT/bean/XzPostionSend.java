@@ -1,6 +1,7 @@
 package com.xzlcPT.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class XzPostionSend {
     private Long sendId;
@@ -38,6 +39,10 @@ public class XzPostionSend {
     private Date deleteFalt;
 
     private Integer ct;
+
+    private List<XzResume> resumes;
+
+    private String postionName;
 
     public Integer getCt() {
         return ct;
@@ -181,5 +186,21 @@ public class XzPostionSend {
 
     public void setDeleteFalt(Date deleteFalt) {
         this.deleteFalt = deleteFalt;
+    }
+
+    public void setPostionName(String postionName) {
+        this.postionName = postionName;
+    }
+
+    public String getPostionName() {
+        return postionName;
+    }
+
+    public void setResumes(List<XzResume> resumes) {
+        this.resumes = resumes;
+    }
+
+    public List<XzResume> getResumes() {
+        return resumes;
     }
 }
