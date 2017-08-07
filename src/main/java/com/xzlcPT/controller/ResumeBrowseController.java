@@ -3,12 +3,15 @@ package com.xzlcPT.controller;/**
  */
 
 import com.amazonaws.services.dynamodbv2.xspec.M;
+import com.util.PageBean;
+import com.xzlcPT.bean.XzLogin;
+import com.xzlcPT.bean.XzResume;
 import com.xzlcPT.bean.XzResumeBrowse;
 import com.xzlcPT.service.XzResumeBrowseService;
+import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -21,8 +24,10 @@ import java.util.Map;
  **/
 @Controller
 @RequestMapping("/ResumeBrowse")
+@SessionAttributes({"userLogin"})
 public class ResumeBrowseController extends BaseController{
-
+    @Autowired
+    private XzResumeService resumeService;
     @Autowired
     private XzResumeBrowseService xzResumeBrowseService;
     //查看简历
@@ -60,6 +65,21 @@ public class ResumeBrowseController extends BaseController{
         int i=xzResumeBrowseService.selCountByResumeId(resumeId);
         Map map=new HashMap();
         map.put("i",i);
+        return map;
+    }
+
+    //谁看过我的简历
+    @ResponseBody
+    @RequestMapping("selWhoSawMe.do")
+    public Map selWhoSawMe(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows, @ModelAttribute("userLogin")XzLogin login){
+        Map map = new HashMap();
+        XzResume resume = resumeService.selectByMemberId(login.getMember().getMemberId());
+        PageBean<XzResumeBrowse> pageBean = xzResumeBrowseService.updateWhoSawMe(page,rows,resume.getResumeId());
+        map.put("resumeBrowseList",pageBean.getList());
+        map.put("page", pageBean.getPageNum());
+        map.put("pages", pageBean.getPages());
+        map.put("rows", pageBean.getPageSize());
+        map.put("total", pageBean.getTotal());
         return map;
     }
 

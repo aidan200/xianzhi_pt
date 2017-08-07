@@ -9,6 +9,12 @@
   <sql id="Base_Column_List">
     welfare_id, company_id, welfare_name
   </sql>
+  <select id="selectByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from xz_company_welfare
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

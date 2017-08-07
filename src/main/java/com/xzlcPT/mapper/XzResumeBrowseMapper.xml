@@ -11,6 +11,12 @@
     <sql id="Base_Column_List">
         browse_id, resume_id, company_id, isRead, browse_time
     </sql>
+    <select id="selectByResumeId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from xz_resume_browse
+        where resume_id = #{resumeId,jdbcType = BIGINT}
+    </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

@@ -25,7 +25,7 @@
                     我收藏的职位
                 </a>
             </li>
-            <li><a href="#dot_two" data-toggle="tab">谁查看了我的简历</a></li>
+            <li><a href="#dot_two" data-toggle="tab" id="to_dot_two">谁查看了我的简历</a></li>
             <li><a href="#dot_three" data-toggle="tab">我关注的企业</a></li>
         </ul>
 
@@ -127,7 +127,7 @@
                 <%--谁查看了我的简历--%>
                 <div class="tab-pane fade" id="dot_two">
                     <div class="dot_top2">
-                        <span class="dot_span">我关注的企业（<span>10</span>）</span>
+                        <span class="dot_span">谁看过我（<span>10</span>）</span>
                     </div>
 
                     <div class="dot_have">
@@ -270,23 +270,72 @@
 
     function BaseBox() {
         this.page;
+        this.rows = 5;
         this.pages;
         this.total;
         this.dataBox;
+        this.pageBox;
 
     }
     BaseBox.prototype.init = function () {
         alert(0);
     }
     BaseBox.prototype.getData = function (url, data, callBack) {
+        var _self = this;
         $.ajax({
             url: url,
             data: data,
             dataType: 'json',
             success: function (data) {
+                _self.dataBox.innerHTML='<div class="dot_top2">'+
+                    '<span class="dot_span">谁看过我（<span>'+data.total+'</span>）</span></div>';
                 callBack(data);
+                _self.fen(10,data.page,data.pages);
+            },error:function () {
+                alert("超时，请重新登陆");
             }
         });
+    }
+    BaseBox.prototype.fen = function (length,page,pages) {
+        console.log(this);
+        var _self = this;
+        var html = "";
+        var pBegin;
+        var pEnd;
+        if(pages>length){
+            pBegin = page-length/2;
+            if(pBegin<=0){
+                pBegin = 1;
+            }
+            pEnd = length+pBegin-1;
+            if(pEnd>pages){
+                pEnd = pages;
+                pBegin = pEnd -length+1;
+            }
+        }else{
+            pBegin = 1;
+            pEnd =pages;
+        }
+        html +='<div class="zp_botv"><div class="zp_pl"><ul class="pagination zp_pa">';
+        if(page==1){
+            html +='<li class="b"><a>上一页</a></li>';
+        }else{
+            html +='<li class="a"><a onclick="toPage('+(page-1)+')" href="#">上一页</a></li>';
+        }
+        for(var i = pBegin;i <= pEnd;i++){
+            if(i==page){
+                html +='<li class="active"><a>'+i+'</a></li> ';
+            }else{
+                html +='<li class="a"><a onclick="toPage('+i+')">'+i+'</a></li> ';
+            }
+        }
+        if(page==pages){
+            html +='<li class="b"><a>下一页</a></li>';
+        }else{
+            html +='<li class="a"><a onclick="toPage('+(page+1)+')">下一页</a></li>';
+        }
+        html +='</ul><div class="zp_page">共 <span>'+pages+'</span> 页</div></div></div>';
+        $(_self.dataBox).append(html);
     }
 
 
@@ -299,13 +348,48 @@
         alert(1);
     }
 
-    collect.prototype.go = function () {
+    collect.prototype.go = function (page) {
         var _self = this;
-        _self.getData(path + "/ResumeBrowse/selCount.do", {}, function (data) {
-            alert(data);
+        _self.getData(path + "/ResumeBrowse/selWhoSawMe.do", {page:page,rows:_self.rows}, function (data) {
+            var rbList = data.resumeBrowseList;
+            for(var i = 0;i < rbList.length; i++){
+                var str = '';
+                str+='<div class="dot_have"><div class="dot_left2">';
+                str+='<a><img src="/dist/foreEnd3/img/huilogo.png" class="dot_head"/></a>';
+                str+='<div class="dot_com"><a href=""><div class="dot_t5">'+rbList[i].company.companyName+'</div></a>';
+                str+='<div class="dot_ss"><span>'+rbList[i].company.companyCity+'</span>|';
+                str+='<span>互联网/移动联网/电子商务</span>';
+                str+='</div><div class="dot_spe">';
+                for(var j=0;j<rbList[i].company.welfares.length;j++){
+                    str+='<span>'+rbList[i].company.welfares[j].welfareName+'</span>';
+                    if(j>3)break;
+                }
+                str+='</div></div><div class="dot_com2">';
+                for(var j=0;rbList[i].company.postions.length;j++){
+                    str+='<div style="margin-top: 5px"><a href="">'+rbList[i].company.postions[j].postionName+'</a></div>';
+                    if(j>1)break;
+                }
+                str+='</div><div style="float: left;width: 100px;height: auto;overflow: hidden"><button class="dot_but">取消关注</button>';
+                str+='</div></div><div class="pop-right-bottom"><b>';
+                if(rbList[i].company.companyNature=='1'){
+                    str+='国';
+                }else if(rbList[i].company.companyNature=='2'){
+                    str+='民';
+                }else if(rbList[i].company.companyNature=='3'){
+                    str+='外';
+                }else if(rbList[i].company.companyNature=='4'){
+                    str+='政';
+                }
+                str+='</b></div></div></div>';
+                $(_self.dataBox).append(str);
+            }
         });
     }
-    var cc = new collect();
-    //cc.go();
-
+    var cc = new collect(document.getElementById("dot_two"));
+    $('#to_dot_two').on("click",function () {
+        cc.go(1);
+    })
+    function toPage() {
+        
+    }
 </script>

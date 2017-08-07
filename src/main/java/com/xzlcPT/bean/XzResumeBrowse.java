@@ -13,6 +13,16 @@ public class XzResumeBrowse {
 
     private Date browseTime;
 
+    private XzCompany company;
+
+    public XzCompany getCompany() {
+        return company;
+    }
+
+    public void setCompany(XzCompany company) {
+        this.company = company;
+    }
+
     public Long getBrowseId() {
         return browseId;
     }
