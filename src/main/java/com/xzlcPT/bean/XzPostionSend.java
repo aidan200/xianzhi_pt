@@ -42,6 +42,8 @@ public class XzPostionSend {
 
     private List<XzResume> resumes;
 
+    private List<XzResumeEducation> xzResumeEducations;
+
     private String postionName;
 
     public Integer getCt() {
@@ -202,5 +204,13 @@ public class XzPostionSend {
 
     public List<XzResume> getResumes() {
         return resumes;
+    }
+
+    public void setXzResumeEducations(List<XzResumeEducation> xzResumeEducations) {
+        this.xzResumeEducations = xzResumeEducations;
+    }
+
+    public List<XzResumeEducation> getXzResumeEducations() {
+        return xzResumeEducations;
     }
 }
