@@ -2,12 +2,18 @@ package com.xzlcPT.service.impl;/**
  * Created by Administrator on 2017/8/3.
  */
 
-import com.xzlcPT.bean.XzResumeBrowse;
+import com.github.pagehelper.PageHelper;
+import com.util.PageBean;
+import com.xzlcPT.bean.*;
+import com.xzlcPT.dao.XzCompanyMapper;
+import com.xzlcPT.dao.XzCompanyWelfareMapper;
+import com.xzlcPT.dao.XzPostionMapper;
 import com.xzlcPT.dao.XzResumeBrowseMapper;
 import com.xzlcPT.service.XzResumeBrowseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @author 甘汝雷
@@ -17,6 +23,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
     @Autowired
     private XzResumeBrowseMapper xzResumeBrowseMapper;
+    @Autowired
+    private XzCompanyMapper companyMapper;
+    @Autowired
+    private XzPostionMapper postionMapper;
+    @Autowired
+    private XzCompanyWelfareMapper companyWelfareMapper;
 
 
     @Override
@@ -34,6 +46,35 @@ public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
     @Override
     public int selCountByResumeId(Long resumeId) {
         int i=xzResumeBrowseMapper.selCountByResumeId(resumeId);
+        return i;
+    }
+
+    @Override
+    public PageBean<XzResumeBrowse> selWhoSawMe(int page,int rows, Long resumeId) {
+        PageHelper.startPage(page,rows);
+        List<XzResumeBrowse> resumeBrowses = xzResumeBrowseMapper.selectByResumeId(resumeId);
+        resumeBrowses.forEach(o->{
+            XzCompany company = companyMapper.selectByPrimaryKey(o.getCompanyId());
+            o.setCompany(company);
+            List<XzPostion> postions = postionMapper.selectByCompanyId(company.getCompanyId());
+            company.setPostions(postions);
+            List<XzCompanyWelfare> companyWelfares = companyWelfareMapper.selectByCompanyId(company.getCompanyId());
+            company.setWelfares(companyWelfares);
+
+        });
+        return new PageBean<>(resumeBrowses);
+    }
+
+    @Override
+    public int updateIsRead(List<XzResumeBrowse> resumeBrowseList) {
+        int i = 0;
+        for (XzResumeBrowse xzResumeBrowse : resumeBrowseList) {
+            //修改为已读
+            if(xzResumeBrowse.getIsread()==0){
+                xzResumeBrowse.setIsread(1);
+                i+= xzResumeBrowseMapper.updateByPrimaryKeySelective(xzResumeBrowse);
+            }
+        }
         return i;
     }
 }

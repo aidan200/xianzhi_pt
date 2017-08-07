@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface XzCompanyWelfareMapper {
 
+    List<XzCompanyWelfare> selectByCompanyId(Long companyId);
+
     int deleteByCompanyId(Long companyId);
 
     int deleteByPrimaryKey(Long welfareId);
