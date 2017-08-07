@@ -22,4 +22,6 @@ public interface XzPostionSendService {
     int selSendCount(Long resumeId);
 
     PageBean<XzResume> selByState(int page,int rows,Map map);
+
+    PageBean<XzResume> selComCollect(int page,int rows,Long companyId);
 }

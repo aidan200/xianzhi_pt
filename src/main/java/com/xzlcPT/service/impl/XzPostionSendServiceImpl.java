@@ -51,4 +51,12 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         PageBean pageBean=new PageBean(list);
         return pageBean;
     }
+
+    @Override
+    public PageBean<XzResume> selComCollect(int page, int rows, Long companyId) {
+        PageHelper.startPage(page,rows);
+        List<XzResume> list=postionSendMapper.selComCollect(companyId);
+        PageBean pageBean=new PageBean(list);
+        return pageBean;
+    }
 }

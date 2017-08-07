@@ -47,6 +47,10 @@
    e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
     r.resume_position,p.postion_name,ps.send_state,ps.send_id
   </sql>
+  <sql id="selCollect">
+    e.education_level,r.resume_name,r.resume_sex,r.resume_birth,r.resume_id,r.resume_intent_ym,
+    r.resume_position,c.collect_time
+  </sql>
   <!--投递计数-->
   <select id="selSendCountByCorRId" parameterType="Map" resultMap="theCount">
     SELECT count(send_id) ct,send_time
@@ -294,5 +298,15 @@
     ) s
     GROUP BY s.send_id
   </select>
-
+  <select id="selComCollect" parameterType="java.lang.Long" resultMap="selState">
+    SELECT * from(
+    SELECT
+    <include refid="selCollect"/>
+    from xz_resume r
+    LEFT JOIN xz_resume_education e on r.resume_id=e.resume_id
+    LEFT JOIN xz_resume_collect c on r.resume_id=c.resume_id
+    WHERE c.company_id=#{companyId,jdbcType=BIGINT}
+    ORDER BY e.graduate_date DESC) s
+    GROUP BY s.resume_id
+  </select>
 </mapper>
