@@ -11,7 +11,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>footer</title>
 </head>
 <body>
 

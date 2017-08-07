@@ -21,6 +21,7 @@
     </style>
 </head>
 
+<body>
 <form action="${pageContext.request.contextPath}/CompanyInfo/selCompany.do" name="f1" id="f1">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
@@ -122,9 +123,10 @@
 </div>
 <input id="workspace" name="companyCity" type="hidden">
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
-<jsp:include page="cityUtil.jsp"></jsp:include>
+<jsp:include page="cityUtil.jsp"/>
 
 </form>
+
 <script>
     jQuery(document).ready(function ($) {
 
@@ -172,7 +174,7 @@
 
 <%--弹出框--%>
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
-</body>
+
 <script>
     $.ajax({
         type:"post",    //提交方式
@@ -210,4 +212,5 @@
     })
 
 </script>
+</body>
 </html>

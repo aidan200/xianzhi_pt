@@ -13,14 +13,12 @@
 <head>
     <jsp:include page="distforeEnd.jsp"/>
 </head>
-<body>
+<body style="background-color: #EEEEEE">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 
 <div class="pup_container">
     <div class="dot_allin">
-
-
         <ul id="myTab" class="nav nav-tabs">
             <li class="active">
                 <a href="#dot_one" data-toggle="tab" class="dot_tab">
@@ -233,7 +231,7 @@
     </div>
 
 </div>
-</div>
+<jsp:include page="behindforeEnd.jsp"/>
 </body>
 </html>
 <script>
