@@ -98,6 +98,21 @@
 </div>
 
 
+<%--确定和取消--%>
+<%--<a href="###" class="newtan"><span>点我</span></a>--%>
+<div class="newpop" role="alert">
+    <div class="newpop_container">
+        <div class="allnew_tan">
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        </div>
+        <div>
+            <button>确定</button>
+            <button class="all_close">取消</button>
+        </div>
+        <a href="###" class="all_close tan_close fa fa-remove"></a>
+    </div>
+</div>
+
 </body>
 <script>
     $(function () {

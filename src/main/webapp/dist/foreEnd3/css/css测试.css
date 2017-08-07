@@ -6744,7 +6744,6 @@ footer {
     border-radius: 3px;
     overflow: hidden;
     background-color: #FFFFff;
-
 }
 
 .rei_topv {
@@ -6752,10 +6751,9 @@ footer {
 }
 
 .rei_headout {
-    width: 280px;
+    width: 260px;
     height: auto;
     text-align: center;
-    float: left;
 }
 
 .rei_topr {
@@ -6780,16 +6778,20 @@ footer {
 }
 
 .rei_two {
+    width: 48%;
+    float: left;
+}
+.rei_two2 {
     width: 45%;
     float: left;
+    margin-left: 10px;
 }
 
 .rei_left {
     width: 280px;
     height: auto;
     float: left;
-
-    padding: 20px;
+    padding: 20px 5px 20px 10px;
 }
 
 .rei_right {
@@ -6798,6 +6800,7 @@ footer {
     float: left;
     margin-left: 10px;
     border-left: 1px dashed #cccccc;
+    margin-bottom: 10px;
 }
 
 .rei_head {
@@ -6811,76 +6814,24 @@ footer {
     width: 100%;
     height: 20px;
 }
-
+.rei_col{
+    color: #FFA500;
+}
 .rei_leftop {
-    margin-top: 30px;
+    margin-top: 50px;
     padding-left: 20px;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed #CCCCCC;
 }
 
 .rei_leftop div {
-    margin-top: 5px;
+    margin-top: 15px;
     font-size: 15px;
 }
-
-/*.rei_top {*/
-/*width: 100%;*/
-/*height: auto;*/
-/*overflow: hidden;*/
-/*text-align: center;*/
-/*}*/
-
-/*.rei_head {*/
-/*width: 120px;*/
-/*height: 120px;*/
-/*margin-top: 40px;*/
-/*}*/
-/*.rei_xaio{*/
-/*width: 100%;*/
-/*height: 80px;*/
-/*}*/
-
-/*.rei_left {*/
-/*width: 50%;*/
-/*height: auto;*/
-/*overflow: hidden;*/
-/*padding: 30px 15px 30px 30px;*/
-/*float: left;*/
-/*}*/
-
-/*.rei_left1 {*/
-/*width: 100%;*/
-/*background-color: #EEEEEE;*/
-/*font-size: 16px;*/
-/*padding-bottom: 10px;*/
-/*padding-top: 10px;*/
-/*margin: 0 auto;*/
-/*margin-top: 20px;*/
-/*}*/
-
-/*.rei_one {*/
-/*width: 140px;*/
-/*height: 100px;*/
-/*}*/
-
-/*.rei_l {*/
-/*padding-left: 30px;*/
-/*margin-top: 5px;*/
-/*}*/
-
-/*.rei_right {*/
-/*width: 50%;*/
-/*height: auto;*/
-/*overflow: hidden;*/
-/*padding: 30px 30px 30px 15px;*/
-/*float: left;*/
-/*}*/
-
-/*.rei_right1 {*/
-/*width: 100%;*/
-/*background-color: #EEEEEE;*/
-/*font-size: 16px;*/
-/*padding-bottom: 10px;*/
-/*padding-top: 10px;*/
-/*margin: 0 auto;*/
-/*margin-top: 20px;*/
-/*}*/
+.rei_ji{
+    padding: 3px 5px 3px 5px;
+    background-color: #3d9ccc;
+    color: #FFFFff;
+    margin: 5px 5px 5px 0;
+    display: inline-block;
+}

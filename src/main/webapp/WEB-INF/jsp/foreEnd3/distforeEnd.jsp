@@ -26,6 +26,11 @@
 
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/maini.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
+
+    <%--弹出框--%>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/tanthree.js"></script>
+
+    <%--头像下拉--%>
     <script type="text/javascript">
         $(document).ready(function () {
             $('nav li').hover(function () {
