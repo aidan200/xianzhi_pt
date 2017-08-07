@@ -106,9 +106,9 @@ public class PostionSendController extends BaseController{
         Map map=new HashMap();
         map.put("companyId",userLogin.getCompany().getCompanyId());
         map.put("sendState",sendState);
-        PageBean<XzResume> list=postionSendService.selByState(page,rows,map);
+        PageBean<XzPostionSend> list=postionSendService.selByState(page,rows,map);
         Map map1=new HashMap();
-        map1.put("list",list);
+        map1.put("list",list.getList());
         map1.put("pages",list.getPages());
         map1.put("total",list.getTotal());
         map1.put("page",list.getPageNum());
