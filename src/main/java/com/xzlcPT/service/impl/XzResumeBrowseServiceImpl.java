@@ -50,7 +50,7 @@ public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
     }
 
     @Override
-    public PageBean<XzResumeBrowse> updateWhoSawMe(int page,int rows, Long resumeId) {
+    public PageBean<XzResumeBrowse> selWhoSawMe(int page,int rows, Long resumeId) {
         PageHelper.startPage(page,rows);
         List<XzResumeBrowse> resumeBrowses = xzResumeBrowseMapper.selectByResumeId(resumeId);
         resumeBrowses.forEach(o->{
@@ -60,12 +60,21 @@ public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
             company.setPostions(postions);
             List<XzCompanyWelfare> companyWelfares = companyWelfareMapper.selectByCompanyId(company.getCompanyId());
             company.setWelfares(companyWelfares);
-            //修改为已读
-            if(o.getIsread()==0){
-                o.setIsread(1);
-                xzResumeBrowseMapper.updateByPrimaryKeySelective(o);
-            }
+
         });
         return new PageBean<>(resumeBrowses);
+    }
+
+    @Override
+    public int updateIsRead(List<XzResumeBrowse> resumeBrowseList) {
+        int i = 0;
+        for (XzResumeBrowse xzResumeBrowse : resumeBrowseList) {
+            //修改为已读
+            if(xzResumeBrowse.getIsread()==0){
+                xzResumeBrowse.setIsread(1);
+                i+= xzResumeBrowseMapper.updateByPrimaryKeySelective(xzResumeBrowse);
+            }
+        }
+        return i;
     }
 }

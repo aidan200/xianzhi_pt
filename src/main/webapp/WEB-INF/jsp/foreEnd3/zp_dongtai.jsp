@@ -345,7 +345,12 @@
     }
     collect.prototype = new BaseBox();
     collect.prototype.init = function () {
-        alert(1);
+        var _self = this;
+        if(_self.page){
+            _self.go(_self.page);
+        }else{
+            _self.go(1);
+        }
     }
 
     collect.prototype.go = function (page) {
@@ -387,7 +392,7 @@
     }
     var cc = new collect(document.getElementById("dot_two"));
     $('#to_dot_two').on("click",function () {
-        cc.go(1);
+        cc.init();
     })
     function toPage() {
         

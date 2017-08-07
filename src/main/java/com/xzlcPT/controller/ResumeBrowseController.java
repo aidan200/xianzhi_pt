@@ -74,7 +74,8 @@ public class ResumeBrowseController extends BaseController{
     public Map selWhoSawMe(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows, @ModelAttribute("userLogin")XzLogin login){
         Map map = new HashMap();
         XzResume resume = resumeService.selectByMemberId(login.getMember().getMemberId());
-        PageBean<XzResumeBrowse> pageBean = xzResumeBrowseService.updateWhoSawMe(page,rows,resume.getResumeId());
+        PageBean<XzResumeBrowse> pageBean = xzResumeBrowseService.selWhoSawMe(page,rows,resume.getResumeId());
+        xzResumeBrowseService.updateIsRead(pageBean.getList());
         map.put("resumeBrowseList",pageBean.getList());
         map.put("page", pageBean.getPageNum());
         map.put("pages", pageBean.getPages());

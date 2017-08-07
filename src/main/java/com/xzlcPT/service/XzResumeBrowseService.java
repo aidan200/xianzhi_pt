@@ -5,6 +5,8 @@ package com.xzlcPT.service;/**
 import com.util.PageBean;
 import com.xzlcPT.bean.XzResumeBrowse;
 
+import java.util.List;
+
 
 /**
  * @author 甘汝雷
@@ -18,5 +20,7 @@ public interface XzResumeBrowseService {
 
     int selCountByResumeId(Long resumeId);
 
-    PageBean<XzResumeBrowse> updateWhoSawMe(int page, int rows, Long resumeId);
+    PageBean<XzResumeBrowse> selWhoSawMe(int page, int rows, Long resumeId);
+    //修改已读
+    int updateIsRead(List<XzResumeBrowse> resumeBrowseList);
 }
