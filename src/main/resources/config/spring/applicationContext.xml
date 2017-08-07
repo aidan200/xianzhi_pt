@@ -23,6 +23,9 @@
         <property name="jdbcUrl" value="${jdbc.url}"/>
         <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
         <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+        <property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+        <property name="checkoutTimeout" value="${jdbc.checkoutTimeout}"/>
+        <property name="acquireRetryDelay" value="${jdbc.acquireRetryDelay}"/>
     </bean>
 
     <!-- 配置 SqlSessionFactory -->

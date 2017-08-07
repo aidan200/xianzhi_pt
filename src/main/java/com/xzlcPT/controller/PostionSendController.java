@@ -1,5 +1,6 @@
 package com.xzlcPT.controller;
 
+import com.util.PageBean;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.bean.XzPostionSend;
@@ -10,10 +11,7 @@ import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -101,5 +99,19 @@ public class PostionSendController extends BaseController{
         Map map=new HashMap();
         map.put("i",i);
         return map;
+    }
+    @ResponseBody
+    @RequestMapping("selByState.do")
+    public Map selByState(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer sendState){
+        Map map=new HashMap();
+        map.put("companyId",userLogin.getCompany().getCompanyId());
+        map.put("sendState",sendState);
+        PageBean<XzResume> list=postionSendService.selByState(page,rows,map);
+        Map map1=new HashMap();
+        map1.put("list",list);
+        map1.put("pages",list.getPages());
+        map1.put("total",list.getTotal());
+        map1.put("page",list.getPageNum());
+        return map1;
     }
 }

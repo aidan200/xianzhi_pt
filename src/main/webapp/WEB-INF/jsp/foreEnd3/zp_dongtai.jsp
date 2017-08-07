@@ -235,6 +235,9 @@
 </body>
 </html>
 <script>
+    var path = '${pageContext.request.contextPath}';
+
+
     function BaseBox() {
         this.page;
         this.pages;
@@ -268,7 +271,7 @@
 
     collect.prototype.go = function () {
         var _self = this;
-        _self.getData("aa",{},function (data) {
+        _self.getData(path+"/ResumeBrowse/selCount.do",{},function (data) {
             alert(data);
         });
     }

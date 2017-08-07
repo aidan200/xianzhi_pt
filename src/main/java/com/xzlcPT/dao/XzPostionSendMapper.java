@@ -1,6 +1,7 @@
 package com.xzlcPT.dao;
 
 import com.xzlcPT.bean.XzPostionSend;
+import com.xzlcPT.bean.XzResume;
 
 import java.util.List;
 import java.util.Map;
@@ -24,4 +25,6 @@ public interface XzPostionSendMapper {
     int updateByPrimaryKey(XzPostionSend record);
 
     int selSendCount(Long resumeId);
+
+    List<XzResume> selByState(Map map);
 }

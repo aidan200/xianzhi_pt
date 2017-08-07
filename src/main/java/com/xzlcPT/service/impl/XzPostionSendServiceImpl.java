@@ -1,6 +1,9 @@
 package com.xzlcPT.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.util.PageBean;
 import com.xzlcPT.bean.XzPostionSend;
+import com.xzlcPT.bean.XzResume;
 import com.xzlcPT.dao.XzPostionSendMapper;
 import com.xzlcPT.service.XzPostionSendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +42,13 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     public int selSendCount(Long resumeId) {
         int i=postionSendMapper.selSendCount(resumeId);
         return i;
+    }
+
+    @Override
+    public PageBean<XzResume> selByState(int page,int rows,Map map) {
+        PageHelper.startPage(page,rows);
+        List<XzResume> list=postionSendMapper.selByState(map);
+        PageBean pageBean=new PageBean(list);
+        return pageBean;
     }
 }
