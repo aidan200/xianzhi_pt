@@ -175,4 +175,15 @@ public class PostionSendController extends BaseController{
         }
         return map;
     }
+    @ResponseBody
+    @RequestMapping("selAll.do")
+    public Map selAll(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin){
+        PageBean<XzPostionSend> list=postionSendService.selAll(page,rows,userLogin.getCompany().getCompanyId());
+        Map map1=new HashMap();
+        map1.put("list",list.getList());
+        map1.put("pages",list.getPages());
+        map1.put("total",list.getTotal());
+        map1.put("page",list.getPageNum());
+        return map1;
+    }
 }
