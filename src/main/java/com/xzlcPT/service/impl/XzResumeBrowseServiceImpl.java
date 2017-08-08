@@ -66,15 +66,9 @@ public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
     }
 
     @Override
-    public int updateIsRead(List<XzResumeBrowse> resumeBrowseList) {
-        int i = 0;
-        for (XzResumeBrowse xzResumeBrowse : resumeBrowseList) {
-            //修改为已读
-            if(xzResumeBrowse.getIsread()==0){
-                xzResumeBrowse.setIsread(1);
-                i+= xzResumeBrowseMapper.updateByPrimaryKeySelective(xzResumeBrowse);
-            }
-        }
-        return i;
+    public int updateIsRead(Long resumeBrowseId) {
+        XzResumeBrowse xzResumeBrowse = xzResumeBrowseMapper.selectByPrimaryKey(resumeBrowseId);
+        xzResumeBrowse.setIsread(1);
+        return xzResumeBrowseMapper.updateByPrimaryKeySelective(xzResumeBrowse);
     }
 }

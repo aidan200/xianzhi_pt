@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li><a href="#dot_two" data-toggle="tab" id="to_dot_two">谁查看了我的简历</a></li>
-            <li><a href="#dot_three" data-toggle="tab">我关注的企业</a></li>
+            <li><a href="#dot_three" data-toggle="tab" id="to_dot_three">我关注的企业</a></li>
         </ul>
 
         <div class="dot_top">
@@ -273,6 +273,7 @@
 <jsp:include page="behindforeEnd.jsp"/>
 </body>
 </html>
+<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
 <script>
     var path = '${pageContext.request.contextPath}';
 
@@ -283,11 +284,15 @@
         this.pages;
         this.total;
         this.dataBox;
-        this.pageBox;
 
     }
     BaseBox.prototype.init = function () {
-        alert(0);
+        var _self = this;
+        if (_self.page) {
+            _self.go(_self.page);
+        } else {
+            _self.go(1);
+        }
     }
     BaseBox.prototype.getData = function (url, data, callBack) {
         var _self = this;
@@ -296,8 +301,6 @@
             data: data,
             dataType: 'json',
             success: function (data) {
-                _self.dataBox.innerHTML = '<div class="dot_top2">' +
-                    '<span class="dot_span">谁看过我（<span>' + data.total + '</span>）</span></div>';
                 callBack(data);
                 _self.fen(10, data.page, data.pages);
             }, error: function () {
@@ -306,7 +309,6 @@
         });
     }
     BaseBox.prototype.fen = function (length, page, pages) {
-        console.log(this);
         var _self = this;
         var html = "";
         var pBegin;
@@ -348,31 +350,37 @@
     }
 
 
-    function collect(dataBox) {
+    function sawMe(dataBox) {
         BaseBox.call(this);
         this.dataBox = dataBox;
     }
-    collect.prototype = new BaseBox();
-    collect.prototype.init = function () {
-        var _self = this;
-        if (_self.page) {
-            _self.go(_self.page);
-        } else {
-            _self.go(1);
-        }
-    }
+    sawMe.prototype = new BaseBox();
 
-    collect.prototype.go = function (page) {
+
+    sawMe.prototype.go = function (page) {
         var _self = this;
         _self.getData(path + "/ResumeBrowse/selWhoSawMe.do", {page: page, rows: _self.rows}, function (data) {
+            _self.dataBox.innerHTML = '<div class="dot_top2">' +
+                '<span class="dot_span">谁看过我（<span>' + data.total + '</span>）</span></div>';
             var rbList = data.resumeBrowseList;
             for (var i = 0; i < rbList.length; i++) {
                 var str = '';
                 str += '<div class="dot_have"><div class="dot_left2">';
-                str += '<a><img src="/dist/foreEnd3/img/huilogo.png" class="dot_head"/></a>';
-                str += '<div class="dot_com"><a href=""><div class="dot_t5">' + rbList[i].company.companyName + '</div></a>';
+                if(rbList[i].company.companyPicture!=null){
+                    str += '<a><img src="'+path+'/uploadImg/'+rbList[i].company.companyPicture+'" class="dot_head"/></a>';
+                }else{
+                    str += '<a><img src="'+path+'/dist/foreEnd3/img/huilogo.png" class="dot_head"/></a>';
+                }
+                str += '<div class="dot_com"><a class="isRead" data-readId="'+rbList[i].browseId+'" target="_blank" href="'+path+'/CompanyInfo/selCompanyInf.do?companyId='+rbList[i].company.companyId+'">';
+                str += '<div class="dot_t5">' + rbList[i].company.companyName + '</div></a>';
                 str += '<div class="dot_ss"><span>' + rbList[i].company.companyCity + '</span>|';
-                str += '<span>互联网/移动联网/电子商务</span>';
+                str += '<span>';
+                for(j=0;j<rbList[i].company.domains.length;j++){
+                    str +=rbList[i].company.domains[j].field.fieldName;
+                    if(j>=2)break;
+                    str +='/';
+                }
+                str += '</span>';
                 str += '</div><div class="dot_spe">';
                 for (var j = 0; j < rbList[i].company.welfares.length; j++) {
                     str += '<span>' + rbList[i].company.welfares[j].welfareName + '</span>';
@@ -380,14 +388,97 @@
                 }
                 str += '</div></div><div class="dot_com2">';
                 for (var j = 0; rbList[i].company.postions.length; j++) {
-                    str += '<div style="margin-top: 5px"><a href="">' + rbList[i].company.postions[j].postionName + '</a></div>';
-                    if (j > 1)break;
+                    str += '<div style="margin-top: 5px"><a class="isRead" data-readId="'+rbList[i].browseId+'" target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].company.postions[j].postionId+'">' + rbList[i].company.postions[j].postionName + '</a></div>';
+                    if (j >= 1)break;
                 }
-                str += '</div><div style="float: left;width: 150px;height: auto;overflow: hidden"><button class="dot_but">查看</button><div class="dot_sma">时间在这呢</div>';
-                str += '<span class="fa fa-envelope" style="float: right;color: #fc6866"></span>'
-                str += '<span class="fa fa-envelope-open-o" style="float: right;color: #cccccc"></span>'
+                str += '</div>';
+                str += '<div style="margin-top: 70px;width: 150px;float: left">';
+                str += '<span class="dot_sma">'+getNowFormatDateSS(rbList[i].browseTime)+'</span>&emsp;';
+                if(rbList[i].isread=='0'){
+                    str += '<span id="readFlag" class="fa fa-envelope" style="color: #fc6866;"></span>';
+                }else if(rbList[i].isread=='1'){
+                    str += '<span class="fa fa-envelope-open-o" style="color: #cccccc"></span>';
+                }
+                str += '</div>';
 
-                str += '</div></div><div class="pop-right-bottom"><b>';
+                str += '</div><div class="pop-right-bottom"><b>';
+                if (rbList[i].company.companyNature == '1') {
+                    str += '国';
+                } else if (rbList[i].company.companyNature == '2') {
+                    str += '民';
+                } else if (rbList[i].company.companyNature == '3') {
+                    str += '外';
+                } else if (rbList[i].company.companyNature == '4') {
+                    str += '政';
+                }
+                str += '</b></div></div></div>';
+                $(_self.dataBox).append(str);
+            }
+            $('.isRead').on('click',function () {
+                alert($(this).attr('data-readId'));
+                $.ajax({
+                   url:path+'/ResumeBrowse/updateIsRead.do',
+                    data:{resumeBrowseId:$(this).attr('data-readId')},
+                    success:function (data) {
+                        if(data.msg=="ok"){
+                            $('#readFlag').css('color','#cccccc');
+                            $('#readFlag').removeClass('fa-envelope');
+                            $('#readFlag').addClass('fa-envelope-open-o');
+                        }
+                    }
+                });
+            })
+        });
+    }
+    function follow(dataBox) {
+        BaseBox.call(this);
+        this.dataBox = dataBox;
+    }
+    follow.prototype = new BaseBox();
+    follow.prototype.go = function (page) {
+        var _self = this;
+        _self.getData(path + "/Follow/selFollowByMember.do", {page: page, rows: _self.rows}, function (data) {
+            _self.dataBox.innerHTML = '<div class="dot_top2">' +
+                '<span class="dot_span">我关注的企业（<span>' + data.total + '</span>）</span></div>';
+            var rbList = data.companyFollowList;
+            for (var i = 0; i < rbList.length; i++) {
+                var str = '';
+                str += '<div class="dot_have"><div class="dot_left2">';
+                if(rbList[i].company.companyPicture!=null){
+                    str += '<a><img src="'+path+'/uploadImg/'+rbList[i].company.companyPicture+'" class="dot_head"/></a>';
+                }else{
+                    str += '<a><img src="'+path+'/dist/foreEnd3/img/huilogo.png" class="dot_head"/></a>';
+                }
+                str += '<div class="dot_com"><a target="_blank" href="'+path+'/CompanyInfo/selCompanyInf.do?companyId='+rbList[i].company.companyId+'">';
+                str += '<div class="dot_t5">' + rbList[i].company.companyName + '</div></a>';
+                str += '<div class="dot_ss"><span>' + rbList[i].company.companyCity + '</span>|';
+                str += '<span>';
+                for(j=0;j<rbList[i].company.domains.length;j++){
+                    str +=rbList[i].company.domains[j].field.fieldName;
+                    if(j>=2)break;
+                    str +='/';
+                }
+                str += '</span>';
+                str += '</div><div class="dot_spe">';
+                for (var j = 0; j < rbList[i].company.welfares.length; j++) {
+                    str += '<span>' + rbList[i].company.welfares[j].welfareName + '</span>';
+                    if (j > 3)break;
+                }
+                str += '</div></div><div class="dot_com2">';
+                for (var j = 0; rbList[i].company.postions.length; j++) {
+                    str += '<div style="margin-top: 5px"><a target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].company.postions[j].postionId+'">' + rbList[i].company.postions[j].postionName + '</a></div>';
+                    if (j >= 1)break;
+                }
+            /*<div style="float: left;width: 100px;height: auto;overflow: hidden">
+                    <button class="dot_but">取消关注</button>
+                    <div class="dot_sma">时间在这呢</div>
+                </div>*/
+                str += '</div>';
+                str += '<div style="float: left;width: 100px;height: auto;overflow: hidden">';
+                str += '<button class="dot_but">取消关注</button>';
+                str += '<div class="dot_sma">'+getNowFormatDateSS(rbList[i].followTime)+'</div></div>';
+
+                str += '</div><div class="pop-right-bottom"><b>';
                 if (rbList[i].company.companyNature == '1') {
                     str += '国';
                 } else if (rbList[i].company.companyNature == '2') {
@@ -402,11 +493,17 @@
             }
         });
     }
-    var cc = new collect(document.getElementById("dot_two"));
-    $('#to_dot_two').on("click", function () {
-        cc.init();
-    })
-    function toPage() {
 
-    }
+
+
+
+    var sm = new sawMe(document.getElementById("dot_two"));
+    var ff = new follow(document.getElementById("dot_three"));
+
+    $('#to_dot_two').on("click", function () {
+        sm.init();
+    })
+    $('#to_dot_three').on('click',function () {
+        ff.init();
+    })
 </script>
