@@ -338,23 +338,38 @@ Public.prototype.sc=function (parent,This){
         })
     })
 }
-Public.prototype.yyms=function (parent){        //面试通知
-    $('#rem_five').find('.zw_yums').unbind().on('click',function(){        //预约面试
-        var parent=$(this).parent().parent();               //获取到
-        var data={
-            sendId:parent.attr('data-id')
-        };
-        $.ajax({
-            type:"post",    //提交方式
-            async:true,  //是否异步
-            data:data,        //转为JSON格式
-            dataType:'text',                   //定义返回data类型
-            url:path+'PostionSend/updateState.do',    //路径
-            success:function (data){//data 就是数据 json
-                This.upload();
-            },error:function (){ //报错执行的
-                alert('基本资料修改错误')
-            }
+Public.prototype.yyms=function (parent,This){        //面试通知
+
+    $(parent).find('.zw_yums').unbind().on('click',function(){        //预约面试
+        var parent2=$(this).parent().parent();               //获取到
+        $('.newpop3').addClass('is-visible');
+
+        $('.bee_one').unbind().on('click',function (){
+
+            $('.newpop3').removeClass('is-visible');            //关闭
+            var aa=$('.allnew3_tan input')
+            var data={
+                sendId:parent2.attr('data-id'),
+                gsmc:aa.eq(0).val(),                            //公司名称
+                sj:aa.eq(1).val(),                              //时间
+                dd:aa.eq(2).val(),                              //地点
+                fjxx:aa.eq(3).val(),                            //附加信息
+            };
+            $.ajax({
+                type:"post",    //提交方式
+                async:true,  //是否异步
+                data:data,        //转为JSON格式
+                dataType:'text',                   //定义返回data类型
+                url:path+'PostionSend/updateState.do',    //路径
+                success:function (data){//data 就是数据 json
+
+
+                    This.upload();
+                },error:function (){ //报错执行的
+                    alert('基本资料修改错误')
+                }
+
+            })
 
         })
     })
@@ -484,25 +499,7 @@ Yxgt.prototype.JS=function (){                     //点击事件加载
 }
 Yxgt.prototype.yl=function (){     //预览事件
     var This=this;
-    $('#rem_five').find('.zw_yums').unbind().on('click',function(){        //预约面试
-        var parent=$(this).parent().parent();               //获取到
-        var data={
-            sendId:parent.attr('data-id')
-        };
-        $.ajax({
-            type:"post",    //提交方式
-            async:true,  //是否异步
-            data:data,        //转为JSON格式
-            dataType:'text',                   //定义返回data类型
-            url:path+'PostionSend/updateState.do',    //路径
-            success:function (data){//data 就是数据 json
-                This.upload();
-            },error:function (){ //报错执行的
-                alert('基本资料修改错误')
-            }
-
-        })
-    })
+    This.yyms('#rem_five',This);                //预约面试
     This.sc('#rem_five',This)                 //删除方法
 }
 
@@ -739,7 +736,7 @@ Zdxz.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     $('#rem_three .jl_length').html( jl.total);
                     $(tbody).find('');
 
-                    str+='<tr class="pom_h" data-id="'+data.list[i].resumeId+'">'
+                    str+='<tr class="pom_h" data-id="'+data.list[i].sendId+'" data-id2="'+data.list[i].resumeId+'">'
                     str+='<td>'
                     str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
                     str+='<input type="checkbox" id="'+tbody+i+'" class="choose2">'
@@ -771,7 +768,7 @@ Zdxz.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 
 
                     str+='<td class="all_no">'
-                    str+='<a href="javascript:;" class="zw_yl">预约面试</a>'
+                    str+='<a href="javascript:;" class="zw_yums">预约面试</a>'
                     str+='&nbsp;'
                     str+='<a href="javascript:;" class="zw_sc">删除</a>'
 
@@ -838,12 +835,8 @@ Zdxz.prototype.JS=function (){                     //点击事件加载
 }
 Zdxz.prototype.yl=function (){     //预览事件
     var This=this;
-    $('#rem_three').find('.zw_yl').unbind().on('click',function(){        //预览事件
-        alert('aa')
-    })
-    $('#rem_three').find('.zw_sc').unbind().on('click',function(){        //删除事件
-        alert('aa')
-    })
+    This.yyms('#rem_three',This);                //预约面试
+    This.sc('#rem_three',This)                 //删除方法
 }
 
 function Wdsc(){                   //我的收藏
