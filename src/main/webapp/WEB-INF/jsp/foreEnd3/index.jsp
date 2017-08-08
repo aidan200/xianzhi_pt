@@ -182,7 +182,6 @@
         </div>
     </div>
 
-
     <!--全民开发计划-->
     <div class="index_01">
         <h3>国内最专业、最权威的企业级IT人才资源库</h3>
@@ -321,9 +320,9 @@
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/24.png" alt="">
                     <h4>开发者工具</h4>
                     <div>
-                        预装PHP | 预装JAVA | 预装ASP/.NET
+                        <span>Intellij-idea</span> | <span>Webstorm</span> | <span>Eclipse</span>
                     </div>
-                    <div> 预装建站系统 | 服务器软件 | 应用开发工具
+                    <div> <span>Sublime-text</span> | <span>Visual-studio</span> | <span>Xcode</span>
                     </div>
                 </a>
             </div>
@@ -332,9 +331,10 @@
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/25.png" alt="">
                     <h4>环境搭建</h4>
                     <div>
-                        预装PHP | 预装JAVA | 预装ASP/.NET
+                        <span>MEAN框架</span> | <span>预装JAVA</span> | <span>预装ASP/.NET</span>
                     </div>
-                    <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+                    <div> <span>预装建站系统</span> | <span>服务器软件</span> | <span>应用开发工具</span>
+                    </div>
                 </a>
             </div>
             <div class="content_in col-md-4 col-sm-6">
@@ -342,9 +342,10 @@
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/26.png" alt="">
                     <h4>API文档</h4>
                     <div>
-                        预装PHP | 预装JAVA | 预装ASP/.NET
+                        <span>JDK文档</span> | <span>Maven手册</span> | <span> Mybatis-3.1</span>
                     </div>
-                    <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+                    <div> <span> Tomcat </span> | <span> MySQL中文文档</span> | <span> Node.js</span>
+                    </div>
                 </a>
             </div>
             <div class="content_in col-md-4 col-sm-6">
@@ -352,9 +353,10 @@
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/27.png" alt="">
                     <h4>企业案例分析</h4>
                     <div>
-                        预装PHP | 预装JAVA | 预装ASP/.NET
+                        <span>支付模块</span> | <span>视频模块</span> | <span>电商平台</span>
                     </div>
-                    <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+                    <div> <span>博客模块</span> | <span>招聘模块</span> | <span>OV</span>
+                    </div>
                 </a>
             </div>
             <div class="content_in col-md-4 col-sm-6">
@@ -362,9 +364,10 @@
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/28.png" alt="">
                     <h4>知识库</h4>
                     <div>
-                        预装PHP | 预装JAVA | 预装ASP/.NET
+                        <span>技术文章</span> | <span>技术文章</span> | <span>技术文章</span>
                     </div>
-                    <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+                    <div> <span>技术文章</span> | <span>技术文章</span> | <span>技术文章</span>
+                    </div>
                 </a>
             </div>
             <div class="content_in col-md-4 col-sm-6">
@@ -372,9 +375,10 @@
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/29.png" alt="">
                     <h4>开发文档</h4>
                     <div>
-                        预装PHP | 预装JAVA | 预装ASP/.NET
+                        <span>需求管理</span> | <span>需求开发</span> | <span>系统设计</span>
                     </div>
-                    <div> 预装建站系统 | 服务器软件 | 应用开发工具</div>
+                    <div> <span>项目规划</span> | <span>项目监控</span> | <span>服务与维护</span>
+                    </div>
                 </a>
             </div>
             <div style="clear: both"></div>

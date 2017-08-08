@@ -13,6 +13,10 @@
 <head>
     <jsp:include page="distforeEnd.jsp"/>
     <script>
+        var path = '${pageContext.request.contextPath}/';     //全局路径
+        var resumeId = '${resume.resumeId}';                  //ID
+    </script>
+    <script>
         $(document).ready(function () {
             $(".pop_but").click(function () {
                 $(".pop_more").slideToggle(500);
@@ -23,6 +27,7 @@
         });
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/echarts.js"></script>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_postposition.js"></script>
 </head>
 <body style="background-color: #F0F0F0">
 <jsp:include page="headerforeEnd.jsp"/>
@@ -53,36 +58,40 @@
                         </div>
 
                         <%--每个公司列表--%>
-                        <div class="pop_have">
-                            <div class="pop_left2">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                     class="pop_head">
-                                <div class="pop_test2">
-                                    <h4 style="display: inline-block">网站美工/网页设计师</h4>
-                                    <div style="color: #fc6866;display: inline-block;margin-left: 10px">10万</div>
-                                    <div style="display: inline-block;margin-left: 20px">吉林省江山网络科技公司</div>
+                        <div class="pop_cont">
+                            <div class="pop_have">
+                                <div class="pop_left2">
+                                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
+                                         class="pop_head">
+                                    <div class="pop_test2">
+                                        <h4 style="display: inline-block">网站美工/网页设计师</h4>
+                                        <div style="color: #fc6866;display: inline-block;margin-left: 10px">10万</div>
+                                        <div style="display: inline-block;margin-left: 20px">吉林省江山网络科技公司</div>
 
-                                    <div class="pop_in2">
-                                        <span class="pop_sp">沈阳</span>|
-                                        <span>1年经验</span>|
-                                        <span>互联网/移动联网/电子商务</span>
+                                        <div class="pop_in2">
+                                            <span class="pop_sp">沈阳</span>|
+                                            <span>1年经验</span>|
+                                            <span>互联网/移动联网/电子商务</span>
 
-                                    </div>
+                                        </div>
 
-                                    <div style="margin-top: -10px">
-                                        <button class="pop_but" style="margin-left: 200px">
-                                            <span class="fa fa-chevron-down"></span>
+                                        <div style="margin-top: -10px">
+                                            <button class="pop_but" style="margin-left: 200px">
+                                                <span class="fa fa-chevron-down"></span>
 
-                                        </button>
-                                        <span style="margin-left: 190px;color: #666">4小时前</span>
+                                            </button>
+                                            <span style="margin-left: 190px;color: #666">4小时前</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="pop-right-bottom">
-                                <b>快</b>
+
+                                <div class="pop-right-bottom">
+                                    <b>快</b>
+                                </div>
                             </div>
                         </div>
+
 
                         <div class="pop_more">
                             <div class="pop_m1">
