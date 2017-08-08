@@ -26,4 +26,8 @@ public interface XzPostionSendService {
     PageBean<XzPostionSend> selByType(int page,int rows,Long companyId);
 
     PageBean<XzResume> selComCollect(int page,int rows,Long companyId);
+
+    int deleteByPrimaryKey(Long sendId);
+
+    int updateState(Long sendId);
 }

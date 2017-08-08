@@ -9,6 +9,7 @@ import com.xzlcPT.service.XzPostionSendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +83,18 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         PageBean pageBean=new PageBean(list);
         List<XzResume> list1=pageBean.getList();
         return pageBean;
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Long sendId) {
+        int i=postionSendMapper.deleteByPrimaryKey(sendId);
+        return i;
+    }
+
+    @Override
+    public int updateState(Long sendId) {
+        int i=postionSendMapper.updateState(sendId);
+        return i;
     }
 
 
