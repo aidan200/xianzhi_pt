@@ -373,4 +373,8 @@ ORDER BY e.graduate_date DESC
     send_state=1
     WHERE send_id=#{sendId,jdbcType=BIGINT}
   </update>
+  <select id="selAll" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT send_id from xz_postion_send WHERE
+    company_id=#{companyId,jdbcType=BIGINT}
+  </select>
 </mapper>

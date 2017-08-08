@@ -32,4 +32,6 @@ public interface XzPostionSendService {
     int updateState(Long sendId);
 
     int updateState1(Long sendId);
+
+    PageBean<XzPostionSend> selAll(int page,int rows,Long companyId);
 }
