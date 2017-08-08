@@ -170,12 +170,12 @@
         <%--<p>先知平台联合众多企业为IT互联网人才提供精准的定位、优质的服务，助你飞跃发展。</p>--%>
         <div id="wrapper" style="margin-top: 40px">
             <div class="index_tt">
-                <a class="shake shake-slow"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/person.png" alt="" class="index_01img">
+                <a class="shake shake-slow" href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/person.png" alt="" class="index_01img">
                 <h1 class="h1">个人入口</h1></a>
                 <p>上传简历为你找寻最适合你的工作。</p>
             </div>
             <div class="index_tt">
-                <a class="shake shake-slow"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/house.png" alt="" class="index_01img">
+                <a class="shake shake-slow" href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/house.png" alt="" class="index_01img">
                 <h1 class="h1">企业入口</h1></a>
                 <p>寻找最稀缺的精英人才</p>
             </div>
