@@ -3,6 +3,7 @@ package com.xzlcPT.dao;
 import com.xzlcPT.bean.XzCompanyFollow;
 
 import java.util.List;
+import java.util.Map;
 
 public interface XzCompanyFollowMapper {
 
@@ -19,4 +20,6 @@ public interface XzCompanyFollowMapper {
     int updateByPrimaryKeySelective(XzCompanyFollow record);
 
     int updateByPrimaryKey(XzCompanyFollow record);
+
+    int selFollowState(Map map);
 }

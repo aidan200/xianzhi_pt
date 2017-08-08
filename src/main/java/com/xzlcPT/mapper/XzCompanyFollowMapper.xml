@@ -35,9 +35,6 @@
   <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzCompanyFollow">
     insert into xz_company_follow
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="followId != null">
-        follow_id,
-      </if>
       <if test="companyId != null">
         company_id,
       </if>
@@ -49,9 +46,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="followId != null">
-        #{followId,jdbcType=BIGINT},
-      </if>
       <if test="companyId != null">
         #{companyId,jdbcType=BIGINT},
       </if>
@@ -85,4 +79,8 @@
       follow_time = #{followTime,jdbcType=TIMESTAMP}
     where follow_id = #{followId,jdbcType=BIGINT}
   </update>
+  <select id="selFollowState" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(follow_id) from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
+    and company_id=#{companyId,jdbcType=BIGINT}
+  </select>
 </mapper>

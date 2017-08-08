@@ -330,7 +330,6 @@ public class CompanyInfoController {
     @RequestMapping("insertFollow.do")
     public Map insertFollow(@ModelAttribute("userLogin") XzLogin userLogin,Long companyId){
         Date followTime=new Date();
-        System.out.println("companyId:::::::::::::::::::::::::::::::::::::::::::::::::::"+companyId);
         Map map=new HashMap();
         map.put("companyId",companyId);
         map.put("memberId",userLogin.getMember().getMemberId());
