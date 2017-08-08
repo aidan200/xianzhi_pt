@@ -366,10 +366,9 @@
         })
     }
     function insertCollect() {
-        alert("aaaaaaaaaaaaaaaaa");
         if($('#sc').attr("isCollect")=="f"){
             $.ajax({
-                url:"${pageContext.request.contextPath}/Postion/insertCollect.do",
+                url:"${pageContext.request.contextPath}/PCollect/insertSelective.do",
                 data:{postionId:id},
                 type:"get",
                 dataType:"json",
@@ -387,7 +386,7 @@
     }
     function isCollect() {
         $.ajax({
-            url:"${pageContext.request.contextPath}/Postion/selCollectState.do",
+            url:"${pageContext.request.contextPath}/PCollect/selCollectState.do",
             data:{postionId:id},
             type:"get",
             dataType:"json",
