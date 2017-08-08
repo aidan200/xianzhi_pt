@@ -37,7 +37,7 @@ public class XzPostionCollectServiceImpl implements XzPostionCollectService {
         List<XzPostionCollect> collectList = postionCollectMapper.selectByMemberId(memberId);
         collectList.forEach(xzPostionCollect -> {
             XzPostion postion = postionMapper.selectByPrimaryKey(xzPostionCollect.getPostionId());
-            XzCompany company = companyMapper.selectByPrimaryKey(postion.getCompany().getCompanyId());
+            XzCompany company = companyMapper.selectByPrimaryKey(postion.getCompanyId());
             List<XzCompanyDomain> companyDomains = companyDomainMapper.selectByCompanyId(company.getCompanyId());
             company.setDomains(companyDomains);
             postion.setCompany(company);

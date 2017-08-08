@@ -258,8 +258,8 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from xz_postion
-    where postion_id = #{postionId,jdbcType=BIGINT}
+    from xz_postion p
+    where p.postion_id = #{postionId,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from xz_postion

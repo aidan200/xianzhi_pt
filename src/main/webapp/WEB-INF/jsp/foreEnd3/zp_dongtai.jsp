@@ -21,7 +21,7 @@
     <div class="dot_allin">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active">
-                <a href="#dot_one" data-toggle="tab" class="dot_tab">
+                <a href="#dot_one" data-toggle="tab" class="dot_tab" id="to_dot_one">
                     我收藏的职位
                 </a>
             </li>
@@ -60,34 +60,6 @@
                             </div>
                             <div style="float: left;width: 100px;height: auto;overflow: hidden">
 
-                                <button class="dot_but">取消收藏</button>
-
-                            </div>
-                        </div>
-
-                        <div class="pop-right-bottom">
-                            <b>国</b>
-                        </div>
-                    </div>
-                    <div class="dot_have">
-                        <div class="dot_left2">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                 class="dot_head">
-                            <div class="dot_test2">
-                                <h4>网站美工/网页设计师</h4>
-                                <div>
-                                    <span class="dot_sp" style="color: #fc6866;margin-left: 10px">10万</span>|
-                                    <span class="dot_sp">沈阳</span>|
-                                    <span class="dot_sp">1年经验</span>|
-                                    <span class="dot_sp">本科</span>
-                                </div>
-                            </div>
-                            <div class="dot_test3">
-                                <div class="dot_t3s">吉林省江山网络科技公司</div>
-                                <div class="dot_t3s" style="margin-top: 5px">互联网/移动联网/电子商务</div>
-                                <span style="margin-left: 190px;color: #666">4小时前</span>
-                            </div>
-                            <div style="float: left;width: 100px;height: auto;overflow: hidden">
                                 <button class="dot_but">取消收藏</button>
 
                             </div>
@@ -469,10 +441,6 @@
                     str += '<div style="margin-top: 5px"><a target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].company.postions[j].postionId+'">' + rbList[i].company.postions[j].postionName + '</a></div>';
                     if (j >= 1)break;
                 }
-            /*<div style="float: left;width: 100px;height: auto;overflow: hidden">
-                    <button class="dot_but">取消关注</button>
-                    <div class="dot_sma">时间在这呢</div>
-                </div>*/
                 str += '</div>';
                 str += '<div style="float: left;width: 100px;height: auto;overflow: hidden">';
                 str += '<button class="dot_but" onclick="removeFollow('+rbList[i].followId+')">取消关注</button>';
@@ -494,12 +462,59 @@
         });
     }
 
+    function collect(dataBox) {
+        BaseBox.call(this);
+        this.dataBox = dataBox;
+    }
+    collect.prototype = new BaseBox();
+    collect.prototype.go = function (page) {
+        var _self = this;
+        _self.getData(path + "/PostionCollect/selCollectByMemberId.do", {page: page, rows: _self.rows}, function (data) {
+            _self.dataBox.innerHTML = '<div class="dot_top2">' +
+                '<span class="dot_span">我收藏的职位（<span>' + data.total + '</span>）</span></div>';
+            var rbList = data.postionCollectList;
+            for (var i = 0; i < rbList.length; i++) {
+                var str = '';
+                str +='<div class="dot_have"><div class="dot_left2"><a target="_blank" href="'+path+'/CompanyInfo/selCompanyInf.do?companyId='+rbList[i].postion.company.companyId+'">';
+                if(rbList[i].postion.company.companyPicture){
+                    str +='<img src="'+path+'/uploadImg/'+rbList[i].postion.company.companyPicture+'" class="dot_head">';
+                }else{
+                    str +='<img src="'+path+'/dist/foreEnd3/img/huilogo.png" class="dot_head">';
+                }
+                str +='</a><div class="dot_test2">';
+                str +='<a target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].postion.postionId+'"><h4>'+rbList[i].postion.postionName+'</h4></a>';
+                str +='<div><span class="dot_sp" style="color: #fc6866;margin-left: 10px">';
+                str +='10万';
+                str +='</span>|<span class="dot_sp">'+rbList[i].postion.postionSpace+'</span>|<span class="dot_sp">'+rbList[i].postion.postionExp+'年经验</span>|<span class="dot_sp">'+rbList[i].postion.postionEducation+'</span>';
+                str +='</div></div><div class="dot_test3">';
+                str +='<div class="dot_t3s"><a target="_blank" href="'+path+'/CompanyInfo/selCompanyInf.do?companyId='+rbList[i].postion.company.companyId+'">'+rbList[i].postion.company.companyName+'</a></div>';
+                str +='<div class="dot_t3s" style="margin-top: 5px">互联网/移动联网/电子商务</div>';
+                str +='<span style="margin-left: 190px;color: #666">'+getNowFormatDate(rbList[i].collectTime)+'</span>';
+                str +='</div><div style="float: left;width: 100px;height: auto;overflow: hidden">';
+                str +='<button class="dot_but">取消收藏</button></div></div><div class="pop-right-bottom"><b>';
+                if (rbList[i].postion.company.companyNature == '1') {
+                    str += '国';
+                } else if (rbList[i].postion.company.companyNature == '2') {
+                    str += '民';
+                } else if (rbList[i].postion.company.companyNature == '3') {
+                    str += '外';
+                } else if (rbList[i].postion.company.companyNature == '4') {
+                    str += '政';
+                }
+                str +='</b></div></div>';
+                $(_self.dataBox).append(str);
+            }
+        });
+    }
 
 
-
+    var cc = new collect(document.getElementById("dot_one"));
     var sm = new sawMe(document.getElementById("dot_two"));
     var ff = new follow(document.getElementById("dot_three"));
 
+    $('#to_dot_one').on("click", function () {
+        cc.init();
+    })
     $('#to_dot_two').on("click", function () {
         sm.init();
     })
@@ -516,4 +531,17 @@
             }
         });
     }
+    //取消收藏
+    function removeCollect(id) {
+        $.ajax({
+            url:path+'/Follow/deleteByPrimaryKey.do ',
+            data:{followId:id},
+            success:function (data) {
+                cc.init();
+            }
+        });
+    }
+    $(function () {
+        alert(1);
+    })
 </script>
