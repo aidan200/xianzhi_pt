@@ -95,7 +95,7 @@
                     <a id="lxw" isSend="f" onclick="sendResume()">我感兴趣 请联系我</a></h3>
                 <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate
                         value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span>
-                    <a href="" isCollect="f" onclick="insertCollect()" id="sc">收藏</a></p>
+                    <a isCollect="f" onclick="insertCollect()" id="sc">收藏</a></p>
                 <div><span style="border-left: none">${xzPostion.postionEducation}</span><span>${xzPostion.postionExp}以上经验</span><span>${xzPostion.postionAge}岁</span>
                 </div>
             </div>
