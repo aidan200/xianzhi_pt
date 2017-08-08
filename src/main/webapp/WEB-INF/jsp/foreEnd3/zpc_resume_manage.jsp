@@ -15,6 +15,8 @@
     <script>
         var companyId = '${userLogin.company.companyId}';     //公司ID
         var path = '${pageContext.request.contextPath}/';     //全局路径
+        var companyName='${userLogin.company.companyName}'             //公司名称
+        var companyLocation='${userLogin.company.companyLocation}'             //公司名称
 
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
