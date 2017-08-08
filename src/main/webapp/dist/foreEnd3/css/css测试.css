@@ -1808,7 +1808,6 @@ textarea {
     left: 90px;
 }
 
-
 /*--个人企业入口---*/
 .index_00 {
     width: 100%;
@@ -1830,15 +1829,18 @@ textarea {
     margin-bottom: 10px;
     padding: 10px;
 }
-.index_tt{
+
+.index_tt {
     width: 410px;
     height: auto;
     display: inline-block;
 }
-.index_01img{
+
+.index_01img {
     width: 200px;
     height: 200px;
 }
+
 /*--摇摆的--*/
 .shake {
     display: inline-block;
@@ -1846,6 +1848,7 @@ textarea {
     -ms-transform-origin: center center;
     transform-origin: center center
 }
+
 .shake:hover {
     -webkit-animation-name: shake-base;
     -ms-animation-name: shake-base;
@@ -1908,6 +1911,7 @@ textarea {
     -ms-animation-play-state: running;
     animation-play-state: running
 }
+
 .shake.shake-constant.shake-slow {
     -webkit-animation-name: shake-slow;
     -ms-animation-name: shake-slow;
@@ -1928,6 +1932,7 @@ textarea {
     -ms-animation-play-state: running;
     animation-play-state: running
 }
+
 .s
 
 @-webkit-keyframes shake-slow {
@@ -2082,6 +2087,7 @@ textarea {
         -webkit-transform: translate(2px, 1px) rotate(-0.5deg)
     }
 }
+
 @-ms-keyframes shake-slow {
     0% {
         -ms-transform: translate(0px, 0px) rotate(0deg)
@@ -2234,6 +2240,7 @@ textarea {
         -ms-transform: translate(8px, 0px) rotate(-3.5deg)
     }
 }
+
 @keyframes shake-slow {
     0% {
         transform: translate(0px, 0px) rotate(0deg)
@@ -2386,7 +2393,6 @@ textarea {
         transform: translate(7px, 4px) rotate(-0.5deg)
     }
 }
-
 
 /*-全民开发计划-*/
 .index_01 {
@@ -5178,15 +5184,21 @@ input[type="button"].fileInputButton {
 
 }
 
-.comh_rz {
+.comh_rightall {
     width: 240px;
     margin-left: 10px;
     height: auto;
-    margin-bottom: 20px;
-    background-color: #FFFFFF;
     float: left;
     margin-top: 20px;
+}
+
+.comh_rz {
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 10px;
     border: 1px solid #d9d9d9;
+    background-color: #FFFFFF;
 }
 
 .comh_rz h4 {
@@ -5194,6 +5206,24 @@ input[type="button"].fileInputButton {
     margin: 20px 20px 10px 25px;
     border-left: 5px solid #3fb1e3;
     padding-left: 5px;
+}
+.comh_cir{
+    width: 80px;
+    height: 80px;
+    border-radius: 500px;
+    border: 5px solid #c0c0c0;
+    line-height: 70px;
+    margin: 10px auto;
+}
+.comh_arr{
+    width: 30px;
+    height: 30px;
+}
+.comh_rr{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 20px;
 }
 
 /*------气球--------*/
@@ -7467,11 +7497,12 @@ footer {
 
 .rei_top {
     width: 100%;
-    height: 20px;
+    height: 80px;
+
 }
 
 .rei_col {
-    color: #FFA500;
+    color: #3d9ccc;
 }
 
 .rei_leftop {
@@ -7488,10 +7519,28 @@ footer {
 
 .rei_ji {
     padding: 3px 5px 3px 5px;
-    background-color: #3d9ccc;
+    background-color: #FFA500;
     color: #FFFFff;
     margin: 5px 5px 5px 0;
     display: inline-block;
+}
+
+.rei_bottom{
+    width: 100%;
+    height: auto;
+    margin: 60px auto;
+    text-align: center;
+    margin-top: 20px;
+}
+.rei_button{
+    width: 120px;
+    height: 35px;
+    outline: none;
+    border: none;
+    background-color: #3d9ccc;
+    color: #FFFFff;
+    border-radius: 3px;
+    margin-left: 20px;
 }
 
 /*----------------------邮箱里的----------------------------*/
@@ -7509,4 +7558,131 @@ footer {
     height: 800px;
     background: url("../../../dist/foreEnd3/img/qi.png") no-repeat;
     background-size: cover;
+}
+
+
+/*---------------------状态审核-------------------------*/
+.aud_all{
+    margin-top: 60px
+}
+.aud1_all {
+    max-width: 1100px;
+    height: 560px;
+    background-color: #FFFFff;
+    margin: 0 auto;
+    padding: 40px;
+    overflow: hidden;
+}
+
+/*.regiater1_small {*/
+    /*width: 600px;*/
+    /*height: 500px;*/
+    /*margin: 0 auto;*/
+    /*overflow: hidden;*/
+    /*text-align: center;*/
+/*}*/
+
+/*.reg_b {*/
+    /*width: 130px;*/
+    /*height: 35px;*/
+    /*border: 1px solid #6AC8B7;*/
+    /*background-color: #6AC8B7;*/
+    /*border-radius: 3px;*/
+    /*color: #FFFFff;*/
+    /*margin-top: 20px;*/
+/*}*/
+
+.aud_in {
+    width: 600px;
+    height: 560px;
+    float: left;
+}
+
+.aud_ne {
+    width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.aud_left {
+    width: 600px;
+}
+
+.aud_in input {
+    font-size: 16px;
+}
+
+.aud_span {
+    display: inline-block;
+    float: left;
+    font-size: 16px;
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin-top: 20px;
+}
+.aud_every {
+    margin-top: 20px;
+}
+
+.aud_every input {
+    outline: none;
+}
+
+.aud_every > span {
+    font-size: 16px;
+}
+
+.aud_bottom {
+    width: 300px;
+    float: left;
+    text-align: center;
+    margin-left: 50px;
+    margin-top: 100px;
+
+}
+
+.aud_bottom img {
+    width: 130px;
+    height: 140px;
+    margin: 0 auto;
+}
+
+.aud_bottom h3, .aud_bottom p {
+    color: #33444c;
+}
+
+.aud_button {
+    width: 140px;
+    height: 40px;
+    background-color: #6AC8B7;
+    margin-top: 40px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    transition: 0.45s all;
+    -webkit-transition: 0.45s all;
+    -o-transition: 0.45s all;
+    -moz-transition: 0.45s all;
+    -ms-transition: 0.45s all;
+    font-size: 16px;
+}
+
+.aud_button:hover {
+    background-color: #f8a91e;
+    border: none;
+    transition: 0.45s all;
+    -webkit-transition: 0.45s all;
+    -o-transition: 0.45s all;
+    -moz-transition: 0.45s all;
+    -ms-transition: 0.45s all;
+}
+.aud_g {
+    width: 400px;
+    height: 40px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding-left: 10px;
 }

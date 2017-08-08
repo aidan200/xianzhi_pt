@@ -152,22 +152,41 @@
 
             </div>
         </div>
-        <div class="comh_rz">
-            <h4>近七天投递简历次数</h4>
-            <div id="mapall" style="width: 230px;height: 300px"></div>
+        <div class="comh_rightall">
+            <div class="comh_rz">
+                <h4>近七天投递简历次数</h4>
+                <div id="mapall" style="width: 230px;height: 300px"></div>
+            </div>
+            <div class="comh_rz">
+                <h4>公司审核状态</h4>
+                <div class="comh_rr" style="padding-bottom: 20px">
+                    <a href="###">
+                        <div class="comh_cir">已提交</div>
+                    </a>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowx.png" alt="" class="comh_arr">
+                    <a href="###">
+                        <div class="comh_cir">审核中</div>
+                    </a>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowx.png" alt="" class="comh_arr">
+                    <a href="###">
+                        <div class="comh_cir">已完成</div>
+                    </a>
+                </div>
 
+            </div>
         </div>
+
 
     </div>
 </div>
 
 <%--<div class="allboolean">--%>
-    <%--<div class="b_out">--%>
-        <%--<div class="booleanin">--%>
-            <%--请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈--%>
-            <%--<span class="fa fa-remove bremove"></span>--%>
-        <%--</div>--%>
-    <%--</div>--%>
+<%--<div class="b_out">--%>
+<%--<div class="booleanin">--%>
+<%--请完善你的简历哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈--%>
+<%--<span class="fa fa-remove bremove"></span>--%>
+<%--</div>--%>
+<%--</div>--%>
 <%--</div>--%>
 
 <jsp:include page="behindforeEnd.jsp"/>
@@ -185,7 +204,7 @@
     $(function () {
         $.ajax({
             url: '${pageContext.request.contextPath}/PostionSend/count7.do',
-            data: {selId:${userLogin.company.companyId}, type: 1,day:6},
+            data: {selId:${userLogin.company.companyId}, type: 1, day: 6},
             dataType: 'json',
             success: function (data) {
                 var send = data.theCount;

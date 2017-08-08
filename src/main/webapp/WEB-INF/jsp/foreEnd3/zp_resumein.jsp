@@ -22,7 +22,7 @@
     <div class="rei_center">
 
 
-        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/xiaoge.png" alt="" class="rei_top">
+        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/tutu.png" alt="" class="rei_top">
 
         <div class="rei_very">
             <div class="rei_left">
@@ -85,8 +85,8 @@
                         <span>东北大学</span>
                     </div>
                     <div><span style="width: 32%;display: inline-block">专业：<span>服装设计工程</span></span>
-                         <span style="width: 32%;display: inline-block">学历： <span>小学</span></span>
-                         <span style="width: 32%;display: inline-block">非统招</span>
+                        <span style="width: 32%;display: inline-block">学历： <span>小学</span></span>
+                        <span style="width: 32%;display: inline-block">非统招</span>
                     </div>
                 </div>
 
@@ -110,6 +110,11 @@
                     <div>ajhcfbajh</div>
                 </div>
 
+            </div>
+            <div style="clear: both"></div>
+            <div class="rei_bottom">
+                <button class="rei_button">收藏简历</button>
+                <button class="rei_button">下载简历</button>
             </div>
         </div>
     </div>
