@@ -89,7 +89,8 @@
   </sql>
   <sql id="selById">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
-    r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type
+    r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type,
+    ps.send_time
   </sql>
   <!--投递计数-->
   <select id="selSendCountByCorRId" parameterType="Map" resultMap="theCount">
@@ -365,12 +366,14 @@ ORDER BY e.graduate_date DESC
   </select>
   <update id="updateState" parameterType="java.lang.Long" >
     update xz_postion_send set
-    send_state=2
+    send_state=2,
+    send_time=now()
     WHERE send_id=#{sendId,jdbcType=BIGINT}
   </update>
   <update id="updateState1" parameterType="java.lang.Long">
   update xz_postion_send set
-    send_state=1
+    send_state=1,
+    send_time=now()
     WHERE send_id=#{sendId,jdbcType=BIGINT}
   </update>
   <select id="selAll" parameterType="java.lang.Long" resultMap="BaseResultMap">
