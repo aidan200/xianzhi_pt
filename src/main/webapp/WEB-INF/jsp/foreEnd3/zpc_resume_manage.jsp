@@ -453,7 +453,7 @@
                                     </td>
                                 </tr>
                                 <tr class="pom_h2" id="divContainer">
-                                    <td colspan="12" style="padding-left: 40px">
+                                    <td colspan="12" style="padding-left: 40px;line-height: 25px">
                                         ssahdkfjadfjkdsfajksdfjdbfjsdbjsdnbjkasndfkjsdnckjadsncjk
                                         adfcakjdfndksjfsdfnv dskjnvfkajewhfjednbfvjdanksdnfajksdds
                                         ssahdkfjadfjkdsfajksdfjdbfjsdbjsdnbjkasndfkjsdnckjadsncjk
