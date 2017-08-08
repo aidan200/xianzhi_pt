@@ -198,7 +198,7 @@ public class PostionController extends BaseController{
         map.put("postionDepartment",postionDepartment);
         map.put("peopleNumber",peopleNumber);
         if (postionMm==null&&postionYm==null){
-            postionYm=0;
+            postionMm=-1;
         }
         map.put("postionMm",postionMm);
         map.put("postionYm",postionYm);
