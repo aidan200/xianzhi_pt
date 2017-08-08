@@ -324,6 +324,7 @@
     <if test="sendState != null and sendState !=null">
     and send_state=#{sendState,jdbcType=INTEGER}
     </if>
+    and send_type=0
   </select>
   <select id="selComCollect" parameterType="java.lang.Long" resultMap="ResumeInformation">
     SELECT * from(
