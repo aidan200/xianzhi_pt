@@ -17,6 +17,16 @@
           media="screen">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/css测试.css" type="text/css"/>
     <link href="${pageContext.request.contextPath}/dist/foreEnd3/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/lib/jquery/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".aud_sa").hover(function(){
+                $(".aud_oi").css("display","block");
+            },function(){
+                $(".aud_oi").css("display","none");
+            });
+        });
+    </script>
 </head>
 <body style="background-color: #EEEEEE">
 <jsp:include page="headerforeEnd.jsp"/>
@@ -35,7 +45,9 @@
                         <div style="position: relative">
                             <span class="aud_span" style="">营业执照&nbsp;</span>&emsp;
                             <input type="file" name="file" class="nicefile" style="float: left"/>
-                            <span class="fa fa-envelope" style="position: absolute;right: -40px;top: 30px"></span>
+                            <span style="margin-left: 40px">
+                                <span style="color: #fc6866">请上传加盖公司公章（红章）的营业执照扫描件</span> 查看示例
+                                <span class="fa fa-exclamation-triangle aud_sa"></span></span>
                         </div>
                         <button class="aud_button" type="submit">提 交</button>
                     </div>
@@ -49,8 +61,9 @@
                     <p>企业资料仅用于资质审核，先知平台绝不向第三方泄露，请您放心填写。</p>
                 </div>
             </div>
-
         </form>
+
+        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ying.jpg" alt="" class="aud_oi">
     </div>
 </div>
 

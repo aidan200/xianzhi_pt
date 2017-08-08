@@ -365,6 +365,7 @@ ORDER BY e.graduate_date DESC
   <update id="updateState" parameterType="java.lang.Long" >
     update xz_postion_send set
     send_state=2
+    send_time=now()
     WHERE send_id=#{sendId,jdbcType=BIGINT}
   </update>
 
