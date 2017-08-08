@@ -68,6 +68,7 @@
   <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
   <result column="resume_state" jdbcType="VARCHAR" property="resumeState" />
   <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime"/>
     <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
       <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
