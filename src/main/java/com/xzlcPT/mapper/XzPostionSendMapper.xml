@@ -89,7 +89,7 @@
   </sql>
   <sql id="selById">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
-    r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife
+    r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type
   </sql>
   <!--投递计数-->
   <select id="selSendCountByCorRId" parameterType="Map" resultMap="theCount">
