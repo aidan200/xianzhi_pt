@@ -38,6 +38,14 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function () {
+            $(".hamburger").click(function () {
+                $(".rem_cen2").slideToggle(500);
+            });
+        });
+    </script>
+
 </head>
 <body style="background-color: #F0F0F0">
 

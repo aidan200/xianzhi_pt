@@ -4239,6 +4239,7 @@ input[type="button"].fileInputButton {
 
 .zp_pl {
     width: 620px;
+    overflow: hidden;
     margin: 0 auto;
     height: auto;
 }
