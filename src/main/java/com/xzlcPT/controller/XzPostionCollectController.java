@@ -6,10 +6,7 @@ import com.xzlcPT.bean.XzPostionCollect;
 import com.xzlcPT.service.XzPostionCollectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +16,12 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("PostionCollect")
+@SessionAttributes({"userLogin"})
 public class XzPostionCollectController {
     @Autowired
     private XzPostionCollectService postionCollectService;
 
-    //我关注的职位
+    //我收藏的职位
     @ResponseBody
     @RequestMapping("selCollectByMemberId.do")
     public Map selCollectByMemberId(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows, @ModelAttribute("userLogin")XzLogin login){

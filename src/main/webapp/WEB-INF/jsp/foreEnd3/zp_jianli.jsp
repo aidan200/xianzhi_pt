@@ -37,9 +37,7 @@
 <body>
 
 <jsp:include page="headerforeEnd.jsp"/>
-<c:if test="${msg!='err'}">
-    <jsp:include page="personnav.jsp"/>
-</c:if>
+<jsp:include page="personnav.jsp"/>
 
 <section class="zp_jianli_tt">
     <div class="zp_jianli_cont">
@@ -449,7 +447,7 @@
 </c:if>
 <%----%>
 
-
+<div id="noClick" style="position: absolute;width: 100%;height: 40px;top:65px"></div>
 </body>
 </html>
 
@@ -497,4 +495,7 @@
             }
         });
     }
+    $('#noClick').on('click',function () {
+        alert("请完善简历至80%以上");
+    })
 </script>

@@ -21,7 +21,7 @@
     <div class="dot_allin">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active">
-                <a href="#dot_one" data-toggle="tab" class="dot_tab">
+                <a href="#dot_one" data-toggle="tab" class="dot_tab" id="to_dot_one">
                     我收藏的职位
                 </a>
             </li>
@@ -34,11 +34,11 @@
 
                 <%--我收藏的职位--%>
                 <div class="tab-pane fade in active" id="dot_one">
-                    <div class="dot_top2">
+                    <%--<div class="dot_top2">
                         <span class="dot_span">我收藏的职位（<span>10</span>）</span>
                     </div>
 
-                    <%--每个公司列表--%>
+                    &lt;%&ndash;每个公司列表&ndash;%&gt;
                     <div class="dot_have">
                         <div class="dot_left2">
                             <a href="">
@@ -69,37 +69,9 @@
                             <b>国</b>
                         </div>
                     </div>
-                    <div class="dot_have">
-                        <div class="dot_left2">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""
-                                 class="dot_head">
-                            <div class="dot_test2">
-                                <h4>网站美工/网页设计师</h4>
-                                <div>
-                                    <span class="dot_sp" style="color: #fc6866;margin-left: 10px">10万</span>|
-                                    <span class="dot_sp">沈阳</span>|
-                                    <span class="dot_sp">1年经验</span>|
-                                    <span class="dot_sp">本科</span>
-                                </div>
-                            </div>
-                            <div class="dot_test3">
-                                <div class="dot_t3s">吉林省江山网络科技公司</div>
-                                <div class="dot_t3s" style="margin-top: 5px">互联网/移动联网/电子商务</div>
-                                <span style="margin-left: 190px;color: #666">4小时前</span>
-                            </div>
-                            <div style="float: left;width: 100px;height: auto;overflow: hidden">
-                                <button class="dot_but">取消收藏</button>
-
-                            </div>
-                        </div>
-
-                        <div class="pop-right-bottom">
-                            <b>国</b>
-                        </div>
-                    </div>
 
 
-                    <%--分页--%>
+                    &lt;%&ndash;分页&ndash;%&gt;
                     <div class="zp_botv">
                         <div class="zp_pl">
                             <ul class="pagination zp_pa">
@@ -115,17 +87,19 @@
                         </div>
                     </div>
 
-                    <%--<div class="pop_no">--%>
-                    <%--<div class="pop_allimg">--%>
-                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                    <%--class="rem_img">--%>
-                    <%--<p class="all_p">暂无收藏记录</p>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
+                    &lt;%&ndash;<div class="pop_no">&ndash;%&gt;
+                    &lt;%&ndash;<div class="pop_allimg">&ndash;%&gt;
+                    &lt;%&ndash;<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""&ndash;%&gt;
+                    &lt;%&ndash;class="rem_img">&ndash;%&gt;
+                    &lt;%&ndash;<p class="all_p">暂无收藏记录</p>&ndash;%&gt;
+                    &lt;%&ndash;</div>&ndash;%&gt;
+                    &lt;%&ndash;</div>&ndash;%&gt;
+                    --%>
                 </div>
 
                 <%--谁查看了我的简历--%>
                 <div class="tab-pane fade" id="dot_two">
+                    <%--
                     <div class="dot_top2">
                         <span class="dot_span">谁看过我（<span>10</span>）</span>
                     </div>
@@ -155,11 +129,11 @@
                                 <div style="margin-top: 5px"><a href="">Java高级工程师</a></div>
                                 <div style="margin-top: 5px"><a href="">更多</a></div>
                             </div>
-                            <%--<div style="float: left;width: 150px;height: auto;overflow: hidden;margin-top: 20px">--%>
-                            <%--<span class="fa fa-envelope" style="color: #fc6866;display: inline-block"></span>--%>
-                            <%--<span class="fa fa-envelope-open-o" style="color: #cccccc"></span>--%>
-                            <%--<div class="dot_sma">时间在这呢</div>--%>
-                            <%--</div>--%>
+                            &lt;%&ndash;<div style="float: left;width: 150px;height: auto;overflow: hidden;margin-top: 20px">&ndash;%&gt;
+                            &lt;%&ndash;<span class="fa fa-envelope" style="color: #fc6866;display: inline-block"></span>&ndash;%&gt;
+                            &lt;%&ndash;<span class="fa fa-envelope-open-o" style="color: #cccccc"></span>&ndash;%&gt;
+                            &lt;%&ndash;<div class="dot_sma">时间在这呢</div>&ndash;%&gt;
+                            &lt;%&ndash;</div>&ndash;%&gt;
                             <div style="margin-top: 70px;width: 150px;float: left">
                                 <span class="dot_sma">2017-08-08</span>&emsp;
                                 <span class="fa fa-envelope" style="color: #fc6866;"></span>
@@ -173,7 +147,7 @@
                         </div>
                     </div>
 
-                    <%--分页--%>
+                    &lt;%&ndash;分页&ndash;%&gt;
                     <div class="zp_botv">
                         <div class="zp_pl">
                             <ul class="pagination zp_pa">
@@ -188,17 +162,19 @@
                             <div class="zp_page">共 <span>100</span> 页</div>
                         </div>
                     </div>
-                    <%--<div class="pop_no">--%>
-                    <%--<div class="pop_allimg">--%>
-                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                    <%--class="rem_img">--%>
-                    <%--<p class="all_p">暂无查看记录</p>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
+                    &lt;%&ndash;<div class="pop_no">&ndash;%&gt;
+                    &lt;%&ndash;<div class="pop_allimg">&ndash;%&gt;
+                    &lt;%&ndash;<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""&ndash;%&gt;
+                    &lt;%&ndash;class="rem_img">&ndash;%&gt;
+                    &lt;%&ndash;<p class="all_p">暂无查看记录</p>&ndash;%&gt;
+                    &lt;%&ndash;</div>&ndash;%&gt;
+                    &lt;%&ndash;</div>&ndash;%&gt;
+                    --%>
                 </div>
 
                 <%--我关注的企业--%>
                 <div class="tab-pane fade" id="dot_three">
+                    <%--
                     <div class="dot_top2">
                         <span class="dot_span">我关注的企业（<span>10</span>）</span>
                     </div>
@@ -239,7 +215,7 @@
                         </div>
                     </div>
 
-                    <%--分页--%>
+                    &lt;%&ndash;分页&ndash;%&gt;
                     <div class="zp_botv">
                         <div class="zp_pl">
                             <ul class="pagination zp_pa">
@@ -254,16 +230,8 @@
                             <div class="zp_page">共 <span>100</span> 页</div>
                         </div>
                     </div>
-
-                    <%--<div class="pop_no">--%>
-                    <%--<div class="pop_allimg">--%>
-                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                    <%--class="rem_img">--%>
-                    <%--<p class="all_p">暂无关注记录</p>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
+                    --%>
                 </div>
-
 
             </div>
         </div>
@@ -302,11 +270,27 @@
             dataType: 'json',
             success: function (data) {
                 callBack(data);
-                _self.fen(10, data.page, data.pages);
+                if(data.total>0){
+                    _self.fen(10, data.page, data.pages);
+                }else{
+                    _self.nothing();
+                }
             }, error: function () {
                 alert("超时，请重新登陆");
             }
         });
+    }
+    BaseBox.prototype.nothing = function () {
+        var _self = this;
+        var html = '';
+        html += '<div class="pop_no"><div class="pop_allimg">';
+        html += '<img src="'+path+'/dist/foreEnd3/img/sfs.png" class="rem_img">';
+        html += '<p class="all_p">暂无关注记录</p></div></div>';
+        $(_self.dataBox).append(html);
+    }
+    //跳页
+    BaseBox.prototype.toPage = function(page) {
+        this.go(page);
     }
     BaseBox.prototype.fen = function (length, page, pages) {
         var _self = this;
@@ -331,22 +315,26 @@
         if (page == 1) {
             html += '<li class="b"><a>上一页</a></li>';
         } else {
-            html += '<li class="a"><a onclick="toPage(' + (page - 1) + ')" href="#">上一页</a></li>';
+            html += '<li class="a"><a class="toPage" page = ' + (page - 1) + ' >上一页</a></li>';
         }
         for (var i = pBegin; i <= pEnd; i++) {
             if (i == page) {
                 html += '<li class="active"><a>' + i + '</a></li> ';
             } else {
-                html += '<li class="a"><a onclick="toPage(' + i + ')">' + i + '</a></li> ';
+                html += '<li class="a"><a class="toPage" page = ' + i + ' >' + i + '</a></li> ';
             }
         }
         if (page == pages) {
             html += '<li class="b"><a>下一页</a></li>';
         } else {
-            html += '<li class="a"><a onclick="toPage(' + (page + 1) + ')">下一页</a></li>';
+            html += '<li class="a"><a class="toPage" page = ' + (page + 1) + ' >下一页</a></li>';
         }
         html += '</ul><div class="zp_page">共 <span>' + pages + '</span> 页</div></div></div>';
         $(_self.dataBox).append(html);
+
+        $('.toPage').on('click',function () {
+            _self.toPage($(this).attr('page'));
+        })
     }
 
 
@@ -453,7 +441,7 @@
                 str += '<div class="dot_t5">' + rbList[i].company.companyName + '</div></a>';
                 str += '<div class="dot_ss"><span>' + rbList[i].company.companyCity + '</span>|';
                 str += '<span>';
-                for(j=0;j<rbList[i].company.domains.length;j++){
+                for(var j=0;j<rbList[i].company.domains.length;j++){
                     str +=rbList[i].company.domains[j].field.fieldName;
                     if(j>=2)break;
                     str +='/';
@@ -469,10 +457,6 @@
                     str += '<div style="margin-top: 5px"><a target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].company.postions[j].postionId+'">' + rbList[i].company.postions[j].postionName + '</a></div>';
                     if (j >= 1)break;
                 }
-            /*<div style="float: left;width: 100px;height: auto;overflow: hidden">
-                    <button class="dot_but">取消关注</button>
-                    <div class="dot_sma">时间在这呢</div>
-                </div>*/
                 str += '</div>';
                 str += '<div style="float: left;width: 100px;height: auto;overflow: hidden">';
                 str += '<button class="dot_but" onclick="removeFollow('+rbList[i].followId+')">取消关注</button>';
@@ -494,12 +478,72 @@
         });
     }
 
+    function collect(dataBox) {
+        BaseBox.call(this);
+        this.dataBox = dataBox;
+    }
+    collect.prototype = new BaseBox();
+    collect.prototype.go = function (page) {
+        var _self = this;
+        _self.getData(path + "/PostionCollect/selCollectByMemberId.do", {page: page, rows: _self.rows}, function (data) {
+            _self.dataBox.innerHTML = '<div class="dot_top2">' +
+                '<span class="dot_span">我收藏的职位（<span>' + data.total + '</span>）</span></div>';
+            var rbList = data.postionCollectList;
+            for (var i = 0; i < rbList.length; i++) {
+                var str = '';
+                str +='<div class="dot_have"><div class="dot_left2"><a target="_blank" href="'+path+'/CompanyInfo/selCompanyInf.do?companyId='+rbList[i].postion.company.companyId+'">';
+                if(rbList[i].postion.company.companyPicture){
+                    str +='<img src="'+path+'/uploadImg/'+rbList[i].postion.company.companyPicture+'" class="dot_head">';
+                }else{
+                    str +='<img src="'+path+'/dist/foreEnd3/img/huilogo.png" class="dot_head">';
+                }
+                str +='</a><div class="dot_test2">';
+                str +='<a target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].postion.postionId+'"><h4>'+rbList[i].postion.postionName+'</h4></a>';
+                str +='<div><span class="dot_sp" style="color: #fc6866;margin-left: 10px">';
+                var salary;//薪资
+                if (rbList[i].postion.postionMm == -1) {
+                    salary = '面议';
+                } else if (rbList[i].postion.postionMm == rbList[i].postion.postionYm) {
+                    salary = Math.round(rbList[i].postion.postionMm * 12 / 10000) + '万';
+                } else {
+                    salary = Math.round(rbList[i].postion.postionMm * 12 / 10000) + '万-' + Math.round(rbList[i].postion.postionYm * 12 / 10000) + '万';
+                }
+                str += salary;
+                str +='</span>|<span class="dot_sp">'+rbList[i].postion.postionSpace+'</span>|<span class="dot_sp">'+rbList[i].postion.postionExp+'年经验</span>|<span class="dot_sp">'+rbList[i].postion.postionEducation+'</span>';
+                str +='</div></div><div class="dot_test3">';
+                str +='<div class="dot_t3s"><a target="_blank" href="'+path+'/CompanyInfo/selCompanyInf.do?companyId='+rbList[i].postion.company.companyId+'">'+rbList[i].postion.company.companyName+'</a></div>';
+                str +='<div class="dot_t3s" style="margin-top: 5px">';
+                for(var j=0;j<rbList[i].postion.company.domains.length;j++){
+                    str +=rbList[i].postion.company.domains[j].field.fieldName;
+                    if(j>=2)break;
+                    str +='/';
+                }
+                str +='</div><span style="margin-left: 190px;color: #666">'+getNowFormatDate(rbList[i].collectTime)+'</span>';
+                str +='</div><div style="float: left;width: 100px;height: auto;overflow: hidden">';
+                str +='<button class="dot_but" onclick="removeCollect('+rbList[i].collectId+')">取消收藏</button></div></div><div class="pop-right-bottom"><b>';
+                if (rbList[i].postion.company.companyNature == '1') {
+                    str += '国';
+                } else if (rbList[i].postion.company.companyNature == '2') {
+                    str += '民';
+                } else if (rbList[i].postion.company.companyNature == '3') {
+                    str += '外';
+                } else if (rbList[i].postion.company.companyNature == '4') {
+                    str += '政';
+                }
+                str +='</b></div></div>';
+                $(_self.dataBox).append(str);
+            }
+        });
+    }
 
 
-
+    var cc = new collect(document.getElementById("dot_one"));
     var sm = new sawMe(document.getElementById("dot_two"));
     var ff = new follow(document.getElementById("dot_three"));
 
+    $('#to_dot_one').on("click", function () {
+        cc.init();
+    })
     $('#to_dot_two').on("click", function () {
         sm.init();
     })
@@ -516,4 +560,28 @@
             }
         });
     }
+    //取消收藏
+    function removeCollect(id) {
+        $.ajax({
+            url:path+'/PCollect/deleteCollect.do ',
+            data:{collectId:id},
+            success:function (data) {
+                cc.init();
+            }
+        });
+    }
+
+    $(function () {
+        if('${param.type}'){
+            if('${param.type}'=='cc'){
+                cc.init();
+            }else if('${param.type}'=='ff'){
+                ff.init();
+            }else if('${param.type}'=='sm'){
+                sm.init();
+            }
+        }else{
+            cc.init();
+        }
+    })
 </script>

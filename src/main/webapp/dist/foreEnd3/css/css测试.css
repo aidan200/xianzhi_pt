@@ -4239,6 +4239,7 @@ input[type="button"].fileInputButton {
 
 .zp_pl {
     width: 620px;
+    overflow: hidden;
     margin: 0 auto;
     height: auto;
 }
@@ -5917,6 +5918,14 @@ input[type="button"].fileInputButton {
     word-break: keep-all;
 }
 
+.rem_sp {
+    margin-left: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
 .pom_tr th {
     font-size: 13px;
     font-weight: normal;
@@ -5934,6 +5943,10 @@ input[type="button"].fileInputButton {
 .pom_h1 {
     height: 50px;
     position: relative;
+}
+.pom_h2{
+    height: auto;
+    display: none;
 }
 
 .rem_d {
@@ -7701,7 +7714,8 @@ footer {
     border-radius: 3px;
     padding-left: 10px;
 }
-.aud_oi{
+
+.aud_oi {
     width: 300px;
     height: 370px;
     position: absolute;
