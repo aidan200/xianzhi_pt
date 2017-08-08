@@ -136,4 +136,30 @@ public class PostionSendController extends BaseController{
         map.put("page",list.getPageNum());
         return map;
     }
+    //按sendId删除
+    @ResponseBody
+    @RequestMapping("deleteByPrimaryKey.do")
+    public Map deleteByPrimaryKey(Long sendId){
+        int i=postionSendService.deleteByPrimaryKey(sendId);
+        Map map=new HashMap();
+        if (i==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","err");
+        }
+        return map;
+    }
+    //邀请面试
+    @ResponseBody
+    @RequestMapping("updateState.do")
+    public Map updateState(Long sendId){
+        int i=postionSendService.updateState(sendId);
+            Map map=new HashMap();
+            if (i==1){
+                map.put("msg","ok");
+            }else {
+                map.put("msg","err");
+            }
+            return map;
+    }
 }

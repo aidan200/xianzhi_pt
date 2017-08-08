@@ -33,4 +33,6 @@ public interface XzPostionSendMapper {
     List<XzPostionSend> selBysendId(List list);
 
     List<XzResume> selComCollect(Long companyId);
+
+    int updateState(Long sendId);
 }
