@@ -58,6 +58,21 @@
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
     </collection>
   </resultMap>
+  <resultMap id="ResumeInformation" type="com.xzlcPT.bean.XzResume">
+  <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
+  <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
+  <result column="resume_sex" jdbcType="INTEGER" property="resumeSex" />
+  <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
+  <result column="resume_ym" jdbcType="INTEGER" property="resumeYm" />
+  <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
+  <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
+  <result column="resume_state" jdbcType="VARCHAR" property="resumeState" />
+  <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+    <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
+      <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
+      <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+    </collection>
+  </resultMap>
   
   <sql id="Base_Column_List">
     send_id, resume_id, company_id, postion_id, send_time, send_state, send_visual, send_msg, 
@@ -71,6 +86,10 @@
   <sql id="selCollect">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,r.resume_id,r.resume_intent_ym,
     r.resume_position,c.collect_time
+  </sql>
+  <sql id="selById">
+    e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
+    r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife
   </sql>
   <!--投递计数-->
   <select id="selSendCountByCorRId" parameterType="Map" resultMap="theCount">
@@ -306,7 +325,7 @@
     and send_state=#{sendState,jdbcType=INTEGER}
     </if>
   </select>
-  <select id="selComCollect" parameterType="java.lang.Long" resultMap="selState">
+  <select id="selComCollect" parameterType="java.lang.Long" resultMap="ResumeInformation">
     SELECT * from(
     SELECT
     <include refid="selCollect"/>
@@ -320,8 +339,7 @@
   <select id="selBysendId" parameterType="java.util.List" resultMap="selState">
     SELECT * FROM (
     select
-		e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
-    r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife
+	<include refid="selById"/>
     from xz_postion_send ps
     LEFT JOIN  xz_resume r ON r.resume_id = ps.resume_id
     LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id
