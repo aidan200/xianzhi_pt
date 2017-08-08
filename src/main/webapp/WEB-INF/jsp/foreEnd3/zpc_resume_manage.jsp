@@ -19,7 +19,7 @@
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
-    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zpc_resume_manage.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zpc_resume_manage.js"></script>--%>
     <style>
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
             background-color: #ffffff;
@@ -32,16 +32,8 @@
             $(".hamburger").click(function () {
                 $(".rem_cen2").slideToggle(500);
             });
-//            $(".rem_d").click(function () {
-//                $(".rem_many").slideToggle(500);
-//            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            $(".hamburger").click(function () {
-                $(".rem_cen2").slideToggle(500);
+            $(".rem_sp").click(function () {
+                $("#divContainer").toggle(300);
             });
         });
     </script>
@@ -53,8 +45,6 @@
 <jsp:include page="companynav.jsp"/>
 
 <a href="###" class="newtan"><span>点我</span></a>
-
-
 
 
 <%----%>
@@ -380,7 +370,7 @@
                                 </tr>
                                 </thead>
 
-                                <tbody >
+                                <tbody>
                                 </tbody>
                             </table>
 
@@ -426,7 +416,6 @@
                                     <th width="50">性别</th>
                                     <th width="50">年龄</th>
                                     <th width="50">学历</th>
-
                                     <th width="70">工作年限</th>
                                     <th width="100">目前职位</th>
                                     <th width="100">面试职位</th>
@@ -437,6 +426,42 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <tr class="pom_h">
+                                    <td>
+                                        <div class="checkboxWrapper theme3 extraSmallCheckboxSize">
+                                            <input type="checkbox" id="rem507" class="choose2">
+                                            <label for="rem507" style="font-weight: normal;margin-bottom: 0">
+                                                <jsp:include page="checksvg.jsp"/>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="all_no"><a href="">郑秀妍</a></td>
+                                    <td class="all_no">女</td>
+                                    <td class="all_no">28</td>
+                                    <td class="all_no">本科</td>
+                                    <td class="all_no">1</td>
+                                    <td class="all_no">设计师发生尽快答复哈经费和巴基二环附近爱的嘎哈反抗军</td>
+                                    <td class="all_no">设计师</td>
+                                    <td class="all_no">在职</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">2017-7-25</td>
+                                    <td class="all_no">
+                                        <a href="">删除</a>
+                                        <button class="rem_sp" type="button">
+                                            <span class="fa fa-hand-o-down"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="pom_h2" id="divContainer">
+                                    <td colspan="12" style="padding-left: 40px">
+                                        ssahdkfjadfjkdsfajksdfjdbfjsdbjsdnbjkasndfkjsdnckjadsncjk
+                                        adfcakjdfndksjfsdfnv dskjnvfkajewhfjednbfvjdanksdnfajksdds
+                                        ssahdkfjadfjkdsfajksdfjdbfjsdbjsdnbjkasndfkjsdnckjadsncjk
+                                        adfcakjdfndksjfsdfnv dskjnvfkajewhfjednbfvjdanksdnfajksdds
+                                        ssahdkfjadfjkdsfajksdfjdbfjsdbjsdnbjkasndfkjsdnckjadsncjk
+                                        adfcakjdfndksjfsdfnv dskjnvfkajewhfjednbfvjdanksdnfajksdds
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
 
@@ -558,13 +583,11 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td class="all_no">001</td>
                                     <td class="all_no"><a href="">郑秀妍</a></td>
                                     <td class="all_no">女</td>
                                     <td class="all_no">28</td>
                                     <td class="all_no">本科</td>
                                     <td class="all_no">设计师发生尽快答复哈经费和巴基二环附近爱的嘎哈反抗军</td>
-                                    <td class="all_no">小除号</td>
                                     <td class="all_no">设计师</td>
                                     <td class="all_no">在职</td>
                                     <td class="all_no">2017-7-25</td>
