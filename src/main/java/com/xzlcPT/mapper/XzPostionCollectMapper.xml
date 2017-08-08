@@ -35,9 +35,6 @@
   <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostionCollect">
     insert into xz_postion_collect
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="collectId != null">
-        collect_id,
-      </if>
       <if test="postionId != null">
         postion_id,
       </if>
@@ -49,9 +46,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="collectId != null">
-        #{collectId,jdbcType=BIGINT},
-      </if>
       <if test="postionId != null">
         #{postionId,jdbcType=BIGINT},
       </if>
@@ -85,4 +79,10 @@
       collect_time = #{collectTime,jdbcType=TIMESTAMP}
     where collect_id = #{collectId,jdbcType=BIGINT}
   </update>
+  <select id="selCollectState" parameterType="com.xzlcPT.bean.XzPostionCollect" resultType="java.lang.Integer">
+    SELECT COUNT(*) from xz_postion_collect WHERE member_id=#{memberId,jdbcType=BIGINT} and postion_id=#{postionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteCollect" parameterType="java.lang.Long">
+    delete from xz_postion_collect where collect_id=#{collectId,jdbcType=BIGINT}
+  </delete>
 </mapper>

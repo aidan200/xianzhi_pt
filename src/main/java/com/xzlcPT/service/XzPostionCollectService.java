@@ -10,4 +10,10 @@ public interface XzPostionCollectService {
 
     PageBean<XzPostionCollect> selCollectByMemberId(int page, int rows, Long memberId);
 
+    int insertSelective(XzPostionCollect xzPostionCollect);
+
+    int selCollectState(XzPostionCollect xzPostionCollect);
+
+    int deleteCollect(Long collectId);
+
 }

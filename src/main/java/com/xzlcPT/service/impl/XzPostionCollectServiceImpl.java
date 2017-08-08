@@ -45,4 +45,22 @@ public class XzPostionCollectServiceImpl implements XzPostionCollectService {
         });
         return new PageBean<>(collectList);
     }
+
+    @Override
+    public int insertSelective(XzPostionCollect xzPostionCollect) {
+       int i=postionCollectMapper.insertSelective(xzPostionCollect);
+        return i;
+    }
+
+    @Override
+    public int selCollectState(XzPostionCollect xzPostionCollect) {
+       int i=postionCollectMapper.selCollectState(xzPostionCollect);
+        return i;
+    }
+
+    @Override
+    public int deleteCollect(Long collectId) {
+        int i=postionCollectMapper.deleteCollect(collectId);
+        return i;
+    }
 }
