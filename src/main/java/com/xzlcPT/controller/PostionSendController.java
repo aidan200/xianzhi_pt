@@ -162,4 +162,17 @@ public class PostionSendController extends BaseController{
             }
             return map;
     }
+    //意向沟通
+    @ResponseBody
+    @RequestMapping("updateState1.do")
+    public Map updateState1(Long sendId){
+        int i=postionSendService.updateState1(sendId);
+        Map map=new HashMap();
+        if (i==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","err");
+        }
+        return map;
+    }
 }

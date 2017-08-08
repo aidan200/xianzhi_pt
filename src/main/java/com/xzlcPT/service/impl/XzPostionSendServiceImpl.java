@@ -97,5 +97,11 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         return i;
     }
 
+    @Override
+    public int updateState1(Long sendId) {
+       int i=postionSendMapper.updateState1(sendId);
+        return i;
+    }
+
 
 }
