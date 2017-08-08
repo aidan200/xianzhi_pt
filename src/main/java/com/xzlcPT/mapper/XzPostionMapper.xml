@@ -720,4 +720,7 @@
   <select id="selCollectState" parameterType="java.util.Map" resultType="java.lang.Integer">
     SELECT COUNT(*) from xz_postion_collect WHERE member_id=#{memberId,jdbcType=BIGINT} and postion_id=#{postionId,jdbcType=BIGINT}
   </select>
+  <select id="selByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT postion_id,postion_name from xz_postion where company_id=#{companyId,jdbcType=BIGINT}
+  </select>
 </mapper>
