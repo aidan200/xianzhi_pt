@@ -357,4 +357,9 @@ ORDER BY e.graduate_date DESC
     </if>
     GROUP BY s.send_id
   </select>
+  <select id="selByType" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  SELECT send_id FROM xz_postion_send
+  WHERE company_id=#{companyId,jdbcType=BIGINT}
+    and send_type=1
+  </select>
 </mapper>
