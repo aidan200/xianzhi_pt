@@ -28,6 +28,8 @@ public interface XzPostionSendMapper {
 
     List<XzPostionSend> selByState(Map map);
 
+    List<XzPostionSend> selByType(Long companyId);
+
     List<XzPostionSend> selBysendId(List list);
 
     List<XzResume> selComCollect(Long companyId);

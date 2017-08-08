@@ -1,10 +1,7 @@
 package com.xzlcPT.controller;
 
 import com.util.PageBean;
-import com.xzlcPT.bean.XzLogin;
-import com.xzlcPT.bean.XzPostion;
-import com.xzlcPT.bean.XzPostionSend;
-import com.xzlcPT.bean.XzResume;
+import com.xzlcPT.bean.*;
 import com.xzlcPT.service.XzPostionSendService;
 import com.xzlcPT.service.XzPostionService;
 import com.xzlcPT.service.XzResumeService;
@@ -100,6 +97,7 @@ public class PostionSendController extends BaseController{
         map.put("i",i);
         return map;
     }
+    //按投递状态查询简历
     @ResponseBody
     @RequestMapping("selByState.do")
     public Map selByState(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer sendState){
@@ -114,12 +112,25 @@ public class PostionSendController extends BaseController{
         map1.put("page",list.getPageNum());
         return map1;
     }
+    //公司主动下载的简历
+    @ResponseBody
+    @RequestMapping("selByType.do")
+    public Map selByType(@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin){
+       PageBean<XzPostionSend> list=postionSendService.selByType(page,rows,userLogin.getCompany().getCompanyId());
+       Map map=new HashMap();
+       map.put("list",list.getList());
+       map.put("pages",list.getPages());
+       map.put("total",list.getTotal());
+       map.put("page",list.getPageNum());
+       return map;
+    }
+    //公司收藏的简历
     @ResponseBody
     @RequestMapping("selComCollect.do")
     public Map selComCollect(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin){
         PageBean<XzResume> list=postionSendService.selComCollect(page,rows,userLogin.getCompany().getCompanyId());
         Map map=new HashMap();
-        map.put("list",list);
+        map.put("list",list.getList());
         map.put("pages",list.getPages());
         map.put("total",list.getTotal());
         map.put("page",list.getPageNum());
