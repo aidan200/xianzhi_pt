@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzPostionCollectMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzPostionCollect">
+    <id column="collect_id" jdbcType="BIGINT" property="collectId" />
+    <result column="postion_id" jdbcType="BIGINT" property="postionId" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    collect_id, postion_id, member_id, collect_time
+  </sql>
+  <select id="selectByMemberId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_postion_collect
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_postion_collect
+    where collect_id = #{collectId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_postion_collect
+    where collect_id = #{collectId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzPostionCollect">
+    insert into xz_postion_collect (collect_id, postion_id, member_id, 
+      collect_time)
+    values (#{collectId,jdbcType=BIGINT}, #{postionId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, 
+      #{collectTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostionCollect">
+    insert into xz_postion_collect
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="collectId != null">
+        collect_id,
+      </if>
+      <if test="postionId != null">
+        postion_id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="collectTime != null">
+        collect_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="collectId != null">
+        #{collectId,jdbcType=BIGINT},
+      </if>
+      <if test="postionId != null">
+        #{postionId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="collectTime != null">
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzPostionCollect">
+    update xz_postion_collect
+    <set>
+      <if test="postionId != null">
+        postion_id = #{postionId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="collectTime != null">
+        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where collect_id = #{collectId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostionCollect">
+    update xz_postion_collect
+    set postion_id = #{postionId,jdbcType=BIGINT},
+      member_id = #{memberId,jdbcType=BIGINT},
+      collect_time = #{collectTime,jdbcType=TIMESTAMP}
+    where collect_id = #{collectId,jdbcType=BIGINT}
+  </update>
+</mapper>

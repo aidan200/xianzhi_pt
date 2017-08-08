@@ -475,8 +475,8 @@
                 </div>*/
                 str += '</div>';
                 str += '<div style="float: left;width: 100px;height: auto;overflow: hidden">';
-                str += '<button class="dot_but">取消关注</button>';
-                str += '<div class="dot_sma">'+getNowFormatDateSS(rbList[i].followTime)+'</div></div>';
+                str += '<button class="dot_but" onclick="removeFollow('+rbList[i].followId+')">取消关注</button>';
+                str += '<div class="dot_sma">'+getNowFormatDateSS(rbList[i].browseTime)+'</div></div>';
 
                 str += '</div><div class="pop-right-bottom"><b>';
                 if (rbList[i].company.companyNature == '1') {
@@ -506,4 +506,14 @@
     $('#to_dot_three').on('click',function () {
         ff.init();
     })
+    //取消关注
+    function removeFollow(id) {
+        $.ajax({
+            url:path+'/Follow/deleteByPrimaryKey.do ',
+            data:{followId:id},
+            success:function (data) {
+                ff.init();
+            }
+        });
+    }
 </script>
