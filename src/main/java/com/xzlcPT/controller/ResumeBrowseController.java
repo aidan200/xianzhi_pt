@@ -75,7 +75,6 @@ public class ResumeBrowseController extends BaseController{
         Map map = new HashMap();
         XzResume resume = resumeService.selectByMemberId(login.getMember().getMemberId());
         PageBean<XzResumeBrowse> pageBean = xzResumeBrowseService.selWhoSawMe(page,rows,resume.getResumeId());
-        //xzResumeBrowseService.updateIsRead(pageBean.getList());
         map.put("resumeBrowseList",pageBean.getList());
         map.put("page", pageBean.getPageNum());
         map.put("pages", pageBean.getPages());
