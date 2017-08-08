@@ -303,7 +303,7 @@
     function insertFollow() {
         if($('#gz').attr("isFollow")=='f'){
             $.ajax({
-                url:"${pageContext.request.contextPath}/CompanyInfo/insertFollow.do",
+                url:"${pageContext.request.contextPath}/Follow/insertSelective.do",
                 data:{companyId:aa},
                 type:"get",
                 dataType:"json",
@@ -324,7 +324,7 @@
     })
     function isFollow() {
         $.ajax({
-            url:"${pageContext.request.contextPath}/CompanyInfo/selFollowState.do",
+            url:"${pageContext.request.contextPath}/Follow/selFollowState.do",
             data:{companyId:aa},
             type:"get",
             dataType:"json",

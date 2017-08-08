@@ -22,7 +22,7 @@
   <sql id="domainFieldList">
     cd.domain_id, cd.company_id, f.field_id, f.field_name
   </sql>
-  <select id="selectByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+  <select id="selectByCompanyId" parameterType="java.lang.Long" resultMap="domainField">
     select
     <include refid="domainFieldList" />
     from xz_company_domain cd left JOIN  xz_field f on cd.field_id = f.field_id

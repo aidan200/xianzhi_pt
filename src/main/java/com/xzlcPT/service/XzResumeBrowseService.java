@@ -22,5 +22,5 @@ public interface XzResumeBrowseService {
 
     PageBean<XzResumeBrowse> selWhoSawMe(int page, int rows, Long resumeId);
     //修改已读
-    int updateIsRead(List<XzResumeBrowse> resumeBrowseList);
+    int updateIsRead(Long resumeBrowseId);
 }

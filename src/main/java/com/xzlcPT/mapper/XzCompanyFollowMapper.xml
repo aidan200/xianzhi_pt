@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzCompanyFollowMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzCompanyFollow">
+    <id column="follow_id" jdbcType="BIGINT" property="followId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="member_id" jdbcType="BIGINT" property="memberId" />
+    <result column="follow_time" jdbcType="TIMESTAMP" property="followTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    follow_id, company_id, member_id, follow_time
+  </sql>
+  <select id="selectByMemberId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_company_follow
+    where member_id = #{memberId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_company_follow
+    where follow_id = #{followId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_company_follow
+    where follow_id = #{followId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzCompanyFollow">
+    insert into xz_company_follow (follow_id, company_id, member_id, 
+      follow_time)
+    values (#{followId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, #{memberId,jdbcType=BIGINT}, 
+      #{followTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzCompanyFollow">
+    insert into xz_company_follow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+      <if test="followTime != null">
+        follow_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="followTime != null">
+        #{followTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzCompanyFollow">
+    update xz_company_follow
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=BIGINT},
+      </if>
+      <if test="followTime != null">
+        follow_time = #{followTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where follow_id = #{followId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzCompanyFollow">
+    update xz_company_follow
+    set company_id = #{companyId,jdbcType=BIGINT},
+      member_id = #{memberId,jdbcType=BIGINT},
+      follow_time = #{followTime,jdbcType=TIMESTAMP}
+    where follow_id = #{followId,jdbcType=BIGINT}
+  </update>
+  <select id="selFollowState" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(follow_id) from xz_company_follow where member_id=#{memberId,jdbcType=INTEGER}
+    and company_id=#{companyId,jdbcType=BIGINT}
+  </select>
+</mapper>

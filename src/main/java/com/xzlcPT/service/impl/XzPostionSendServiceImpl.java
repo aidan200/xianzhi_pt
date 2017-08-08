@@ -9,6 +9,7 @@ import com.xzlcPT.service.XzPostionSendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,8 +56,23 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         for(XzPostionSend xzPostionSend:list1){
             list.add(xzPostionSend.getSendId());
         }
-        List<XzPostionSend> resumeList=postionSendMapper.selBysendId(list);
-        pageBean.setList(resumeList);
+        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(list);
+        pageBean.setList(postionSendList);
+        return pageBean;
+    }
+
+    @Override
+    public PageBean<XzPostionSend> selByType(int page, int rows, Long companyId) {
+        PageHelper.startPage(page,rows);
+        List<XzPostionSend> list2=postionSendMapper.selByType(companyId);
+        PageBean pageBean=new PageBean(list2);
+        List<XzPostionSend> list1=pageBean.getList();
+        List<Long> list=new ArrayList<>();
+        for(XzPostionSend xzPostionSend:list1){
+            list.add(xzPostionSend.getSendId());
+        }
+        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(list);
+        pageBean.setList(postionSendList);
         return pageBean;
     }
 
@@ -67,6 +83,24 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         PageBean pageBean=new PageBean(list);
         List<XzResume> list1=pageBean.getList();
         return pageBean;
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Long sendId) {
+        int i=postionSendMapper.deleteByPrimaryKey(sendId);
+        return i;
+    }
+
+    @Override
+    public int updateState(Long sendId) {
+        int i=postionSendMapper.updateState(sendId);
+        return i;
+    }
+
+    @Override
+    public int updateState1(Long sendId) {
+       int i=postionSendMapper.updateState1(sendId);
+        return i;
     }
 
 
