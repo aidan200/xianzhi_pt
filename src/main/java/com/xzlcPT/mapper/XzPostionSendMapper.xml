@@ -367,4 +367,9 @@ ORDER BY e.graduate_date DESC
     send_state=2
     WHERE send_id=#{sendId,jdbcType=BIGINT}
   </update>
+  <update id="updateState1" parameterType="java.lang.Long">
+  update xz_postion_send set
+    send_state=1
+    WHERE send_id=#{sendId,jdbcType=BIGINT}
+  </update>
 </mapper>

@@ -164,6 +164,25 @@
 
 <div class="index_all">
 
+    <%--个人企业入口--%>
+    <div class="index_00">
+        <h3>招聘中心快速入口</h3>
+        <%--<p>先知平台联合众多企业为IT互联网人才提供精准的定位、优质的服务，助你飞跃发展。</p>--%>
+        <div id="wrapper" style="margin-top: 40px">
+            <div class="index_tt">
+                <a class="shake shake-slow" href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/person.png" alt="" class="index_01img">
+                <h1 class="h1">个人入口</h1></a>
+                <p>上传简历为你找寻最适合你的工作。</p>
+            </div>
+            <div class="index_tt">
+                <a class="shake shake-slow" href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/house.png" alt="" class="index_01img">
+                <h1 class="h1">企业入口</h1></a>
+                <p>寻找最稀缺的精英人才</p>
+            </div>
+        </div>
+    </div>
+
+
     <!--全民开发计划-->
     <div class="index_01">
         <h3>国内最专业、最权威的企业级IT人才资源库</h3>
@@ -496,7 +515,6 @@
     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/dfdf.png" alt="" id="goTopBtn">
 </div>
 <a href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ghh.png" alt="" class="index_gh"></a>
-
 
 
 <jsp:include page="behindforeEnd.jsp"/>
