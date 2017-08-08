@@ -184,7 +184,7 @@ public class XzResumeServiceImpl implements XzResumeService{
         try {
             for (Field f : fs) {
                 if(f.getName().startsWith("resume")||f.getType().equals(List.class)){
-                    if(!f.getName().equals("resumeId")){
+                    if(!f.getName().equals("resumeId")&&!f.getName().equals("resumeField")&&!f.getName().equals("resumeNationality")){
                         f.setAccessible(true);
                         size++;
                         if(f.getType().equals(List.class)){

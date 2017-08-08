@@ -3283,6 +3283,11 @@ function flashResume() {                    //刷新简历
                 $('.zp_jianli_wcd div').css({"width":completion+"%"})
                 $('#jl_wcd').html(completion)
                 $('#js_sxsj').html(getNowFormatDateSS(date))
+                if(Number(completion)>=80){
+                    $('#noClick').hide();
+                }else{
+                    $('#noClick').show();
+                }
             }
 
         },error:function (){ //报错执行的
@@ -3304,7 +3309,11 @@ function flashResume2(){  //查看简历完成度
                 $('.zp_jianli_wcd div').css({"width":completion+"%"})
                 $('#jl_wcd').html(completion)
                 $('#js_sxsj').html(getNowFormatDateSS(date))
-
+                if(Number(completion)>=80){
+                    $('#noClick').hide();
+                }else{
+                    $('#noClick').show();
+                }
         },error:function (){ //报错执行的
             alert('基本资料修改错误')
         }

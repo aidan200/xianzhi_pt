@@ -53,12 +53,11 @@ public class GoIndexController extends BaseController {
             mv.setViewName("foreEnd3/zp_index");
             XzResume resume = xzResumeService.selectByMemberId(userLogin.getMember().getMemberId());
             Integer completion = resume.getResumeCompletion();
-            if(null!=completion&&completion>=60){
+            if(null!=completion&&completion>=80){
 
             }else{
                 mv.setViewName("foreEnd3/zp_jianli");
                 //简历完善程度低
-                mv.addObject("msg","err");
             }
             mv.addObject("resumeId",resume.getResumeId());
             mv.addObject("resume",resume);

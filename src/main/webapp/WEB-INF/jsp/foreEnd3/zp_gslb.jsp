@@ -183,10 +183,10 @@
                                         面议
                                     </c:when>
                                     <c:when test="${p.postionMm==p.postionYm}">
-                                        ${fn:replace((p.postionMm*12/10000),".0","")}万
+                                        <fmt:formatNumber value="${p.postionMm*12/10000}" maxFractionDigits="0"/>万
                                     </c:when>
                                     <c:otherwise>
-                                        ${fn:replace((p.postionMm*12/10000),".0","")}万-${fn:replace((p.postionYm*12/10000),".0","")}万
+                                        <fmt:formatNumber value="${p.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${p.postionYm*12/10000}" maxFractionDigits="0"/>万
                                     </c:otherwise>
                                 </c:choose>
                             </span>&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${p.postionExp}
