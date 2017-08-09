@@ -50,7 +50,7 @@
                         <a href="" style="">
                             <li class="login1">
                                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hahaha.png" alt="" class="allheader">
-                                <span id="newMsg" style="width: 5px;height: 5px;background-color: red;display:inline-block;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
+                                <span id="newMsg" style="width: 5px;height: 5px;background-color: red;display:none;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
                                 <ul class="head-menu">
                                     <li class="head_new2">
                                         <span class="fa fa-user" style="color: #666;float: left;font-size: 16px;margin-right: 5px;line-height: 22px"></span>

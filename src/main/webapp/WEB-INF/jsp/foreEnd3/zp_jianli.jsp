@@ -438,7 +438,7 @@
             </div>
         </div>
         <div class="zhe_many2">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr23.png" alt="" class="zhe_arr1">
         </div>
 
         <div class="zhe_every3">
@@ -448,7 +448,7 @@
             </div>
         </div>
         <div class="zhe_many3">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr24.png" alt="" class="zhe_arr1">
         </div>
 
         <button class="jianli_zhe">我知道了</button>

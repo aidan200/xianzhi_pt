@@ -3,9 +3,11 @@
     margin: 0;
     padding: 0;
 }
-textarea{
+
+textarea {
     resize: none;
 }
+
 body {
     font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
 
@@ -114,12 +116,14 @@ ul, li {
     height: 30px;
     line-height: 30px;
 }
-.jianli_tree{
+
+.jianli_tree {
     width: 70px;
     height: 70px;
     position: relative;
     top: -50px;
 }
+
 .zp_jianli_wcd {
     width: 140px;
     background: #CCCCCC;
@@ -1934,7 +1938,8 @@ ul, li {
     width: 80%;
     float: left;
 }
-.em666{
+
+.em666 {
     background: url(../img/zp_gsxq_hy_k.png);
     width: 30px;
     height: 30px;
@@ -1955,7 +1960,7 @@ ul, li {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 999999;
-    visibility: hidden;
+    visibility: visible;
     opacity: 1;
     -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
     -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
@@ -1986,24 +1991,24 @@ ul, li {
 
 .zhe_img {
     width: 330px;
-    height:300px;
+    height: 300px;
 }
 
 /*.zhe_d {*/
-    /*width: 200px;*/
-    /*height: 100px;*/
-    /*position: relative;*/
-    /*display: inline-block;*/
-    /*left: -250px;*/
-    /*top: 25px;*/
-    /*text-align: center;*/
+/*width: 200px;*/
+/*height: 100px;*/
+/*position: relative;*/
+/*display: inline-block;*/
+/*left: -250px;*/
+/*top: 25px;*/
+/*text-align: center;*/
 /*}*/
 
 .zhe_span {
     font-size: 18px;
     color: #FFFFff;
     position: absolute;
-    top:160px;
+    top: 160px;
     left: 80px;
 }
 
@@ -2028,9 +2033,10 @@ ul, li {
 
 .zhe_many2 {
     position: absolute;
-    top: 400px;
-    left: 780px;
+    top: 330px;
+    left: 860px;
 }
+
 .zhe_every3 {
     position: absolute;
     left: 40px;
@@ -2039,8 +2045,8 @@ ul, li {
 
 .zhe_many3 {
     position: absolute;
-    top: 400px;
-    left: 780px;
+    top: 450px;
+    left: 320px;
 }
 
 .jianli_zhe {
@@ -2056,14 +2062,14 @@ ul, li {
     font-size: 20px;
     box-shadow: 0 2px 4px rgba(255, 255, 255, .2);
 }
-#tx{
+
+#tx {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-
-#loading{
+#loading {
     height: 50px;
     width: 50px;
     position: absolute;
@@ -2073,11 +2079,13 @@ ul, li {
     bottom: 10px;
 
 }
-#loading-center{
+
+#loading-center {
     width: 100%;
     height: 100%;
     position: relative;
 }
+
 #loading-center-absolute {
     position: absolute;
     left: 50%;
@@ -2090,7 +2098,8 @@ ul, li {
     transform: rotate(-135deg);
 
 }
-.object{
+
+.object {
 
     -moz-border-radius: 50% 50% 50% 50%;
     -webkit-border-radius: 50% 50% 50% 50%;
@@ -2098,7 +2107,7 @@ ul, li {
     position: absolute;
     border-top: 2px solid #6be7ff;
     border-bottom: 2px solid transparent;
-    border-left:  2px solid #6be7ff;
+    border-left: 2px solid #6be7ff;
     border-right: 2px solid transparent;
 
     -webkit-animation: animate 2s infinite;
@@ -2106,15 +2115,14 @@ ul, li {
 
 }
 
-
-#object_one{
+#object_one {
     left: 75px;
     top: 75px;
     width: 10px;
     height: 10px;
 }
 
-#object_two{
+#object_two {
     left: 70px;
     top: 70px;
     width: 20px;
@@ -2123,7 +2131,7 @@ ul, li {
     animation-delay: 0.2s;
 }
 
-#object_three{
+#object_three {
     left: 65px;
     top: 65px;
     width: 30px;
@@ -2131,7 +2139,8 @@ ul, li {
     -webkit-animation-delay: 0.4s;
     animation-delay: 0.4s;
 }
-#object_four{
+
+#object_four {
     left: 60px;
     top: 60px;
     width: 40px;
@@ -2143,15 +2152,12 @@ ul, li {
 
 @-webkit-keyframes animate {
 
-
     50% {
 
         -ms-transform: rotate(360deg) scale(0.8);
         -webkit-transform: rotate(360deg) scale(0.8);
         transform: rotate(360deg) scale(0.8);
     }
-
-
 
 }
 
