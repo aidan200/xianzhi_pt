@@ -1841,6 +1841,80 @@ textarea {
     height: 200px;
 }
 
+/*--加的公司信息---*/
+.index_oa {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.index_line {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.lunbo {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#index_ou {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+
+
+}
+
+#index_ou li {
+    width: 90%;
+    height: 50px;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px dashed #666666;
+    margin: 0 auto;
+}
+
+#index_ou li span {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.index_lim {
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+}
+
+.index_s1 {
+    width: 220px;
+    line-height: 50px;
+}
+
+.index_s2 {
+    width: 220px;
+    line-height: 50px;
+}
+
+.index_s3 {
+    width: 200px;
+    line-height: 50px;
+}
+
+.index_s4 {
+    width: 150px;
+    line-height: 50px;
+}
+
 /*--摇摆的--*/
 .shake {
     display: inline-block;
