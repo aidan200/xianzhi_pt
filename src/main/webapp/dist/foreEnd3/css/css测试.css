@@ -5944,7 +5944,8 @@ input[type="button"].fileInputButton {
     height: 50px;
     position: relative;
 }
-.pom_h2{
+
+.pom_h2 {
     height: auto;
     display: none;
 }
@@ -7572,9 +7573,46 @@ footer {
     width: 700px;
     margin: 40px auto;
     border: 1px solid #EEEEEE;
-    height: 800px;
-    background: url("../../../dist/foreEnd3/img/qi.png") no-repeat;
-    background-size: cover;
+    height: 900px;
+    background: url("../../../dist/foreEnd3/img/email2.png") no-repeat;
+    background-size: contain;
+    padding: 40px;
+}
+
+.ema_img {
+    width: 150px;
+    height: 60px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.ema_center {
+    padding: 20px;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+.ema_d1 {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.ema_hr {
+    border-top: 1px dashed #FFFFff;
+}
+
+.ema_button {
+    width: 230px;
+    height: 40px;
+    margin-top: 30px;
+    background-color: #FFA500;
+    border: none;
+    color: #FFFFff;
+    outline: none;
+    border-radius: 3px;
+    font-size: 15px;
 }
 
 /*---------------------状态审核-------------------------*/
