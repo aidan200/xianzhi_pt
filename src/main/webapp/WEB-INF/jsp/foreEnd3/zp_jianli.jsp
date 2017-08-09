@@ -417,32 +417,44 @@
     </div>
 </div>
 
+<button class="haha">asgfjchbasdjf</button>
+
 <%--遮罩--%>
-    <div class="zhe">
-        <div class="zhe_all">
-            <div class="zhe_every1">
-                <div style="position: relative">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle1.png" alt="" class="zhe_img">
-                    <span class="zhe_span">请完善你的简历信息,使你的简历完成度达60%以上</span>
-                </div>
+<div class="zhe">
+    <div class="zhe_all">
+        <div class="zhe_every1">
+            <div style="position: relative">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle1.png" alt="" class="zhe_img">
+                <span class="zhe_span">请完善你的简历信息,使你的简历完成度达60%以上</span>
             </div>
-            <div class="zhe_many1">
-                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr1.png" alt="" class="zhe_arr1">
-            </div>
-
-            <div class="zhe_every2">
-                <div style="position: relative">
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle2.png" alt="" class="zhe_img">
-                    <span class="zhe_span">所有带必填的都必须填写</span>
-                </div>
-            </div>
-            <div class="zhe_many2">
-                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
-            </div>
-
-            <button class="jianli_zhe">我知道了</button>
         </div>
+        <div class="zhe_many1">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr1.png" alt="" class="zhe_arr1">
+        </div>
+
+        <div class="zhe_every2">
+            <div style="position: relative">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle25.png" alt="" class="zhe_img">
+                <span class="zhe_span">点击按钮编辑简历</span>
+            </div>
+        </div>
+        <div class="zhe_many2">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
+        </div>
+
+        <div class="zhe_every3">
+            <div style="position: relative">
+                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle23.png" alt="" class="zhe_img">
+                <span class="zhe_span">所有带必填的都必须填写</span>
+            </div>
+        </div>
+        <div class="zhe_many3">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arr2.png" alt="" class="zhe_arr1">
+        </div>
+
+        <button class="jianli_zhe">我知道了</button>
     </div>
+</div>
 <%----%>
 
 <div id="noClick" style="position: absolute;width: 100%;height: 40px;top:65px"></div>
@@ -452,6 +464,11 @@
 <script>
     jQuery(document).ready(function ($) {
         //close popup
+
+        $(".haha").click(function () {
+            $(".zhe").css("visibility", " visible");
+        });
+
         $('.zhe').on('click', function (event) {
             if ($(event.target).is('.jianli_zhe') || $(event.target).is('.zhe')) {
                 event.preventDefault();
@@ -478,7 +495,7 @@
             type: 'get',
             url: '${pageContext.request.contextPath}/ResumeBrowse/selCount.do',
             data: {resumeId: '${resume.resumeId}'},
-            success:function (data) {
+            success: function (data) {
                 $('.wsis').html(data.i);
             }
         });
@@ -488,12 +505,12 @@
             type: 'get',
             url: '${pageContext.request.contextPath}/PostionSend/selSendCount.do',
             data: {resumeId: '${resume.resumeId}'},
-            success:function (data) {
+            success: function (data) {
                 $('.iss').html(data.i);
             }
         });
     }
-    $('#noClick').on('click',function () {
+    $('#noClick').on('click', function () {
         alert("请完善简历至80%以上");
     })
 </script>

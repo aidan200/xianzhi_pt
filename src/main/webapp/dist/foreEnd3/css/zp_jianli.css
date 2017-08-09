@@ -1955,7 +1955,7 @@ ul, li {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 999999;
-    visibility: visible;
+    visibility: hidden;
     opacity: 1;
     -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
     -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
@@ -2027,6 +2027,17 @@ ul, li {
 }
 
 .zhe_many2 {
+    position: absolute;
+    top: 400px;
+    left: 780px;
+}
+.zhe_every3 {
+    position: absolute;
+    left: 40px;
+    top: 450px;
+}
+
+.zhe_many3 {
     position: absolute;
     top: 400px;
     left: 780px;
