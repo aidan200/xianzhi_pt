@@ -1960,7 +1960,7 @@ ul, li {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 999999;
-    visibility: visible;
+    visibility: hidden;
     opacity: 1;
     -webkit-transition: opacity 0.3s 0s, visibility 0s 0s;
     -moz-transition: opacity 0.3s 0s, visibility 0s 0s;
@@ -1968,13 +1968,13 @@ ul, li {
     overflow-y: visible;
 }
 
-.nozhe {
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
-    -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
-    transition: opacity 0.3s 0s, visibility 0s 0.3s;
-}
+/*.nozhe {*/
+    /*opacity: 0;*/
+    /*visibility: hidden;*/
+    /*-webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
+    /*-moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
+    /*transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
+/*}*/
 
 .zhe_all {
     width: 100%;

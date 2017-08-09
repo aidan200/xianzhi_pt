@@ -466,7 +466,8 @@
         $('.zhe').on('click', function (event) {
             if ($(event.target).is('.jianli_zhe') || $(event.target).is('.zhe')) {
                 event.preventDefault();
-                $(this).addClass('nozhe');
+//                $(this).addClass('nozhe');
+                $(this).hide();
             }
         });
         whoSeeI();
