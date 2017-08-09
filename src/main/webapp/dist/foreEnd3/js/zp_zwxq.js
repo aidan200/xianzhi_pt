@@ -22,7 +22,9 @@ Knzw.prototype.huoqu=function (data){   //加载方法
                 str+='<li>'
                 str+='<p>'
                 str+='<a href="" class="zp_zwxq_a1">'+data.plist[i].postionName+'</a>'
-                str+='<span class="zp_zwxq_span1">'+data.plist[i].postionMm+'-'+data.plist[i].postionYm+'</span>'
+                var mm=data.plist[i].postionMm*12/10000
+                var yy=data.plist[i].postionYm*12/10000
+                str+='<span class="zp_zwxq_span1">'+mm+'万-'+yy+'万</span>'
                 str+='<a href="" class="zp_zwxq_a2">'+data.plist[i].company.companyName+'</a>'
                 str+='</p>'
                 str+=' <p>'

@@ -1,80 +1,35 @@
-package com.xzlcPT.controller;/**
- * Created by Administrator on 2017/8/8.
- */
+package com.xzlcPT.controller;
 
+import com.util.PageBean;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzPostionCollect;
 import com.xzlcPT.service.XzPostionCollectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author 甘汝雷
- * @create 2017-08-08 14:58
- **/
 @Controller
-@RequestMapping("PCollect")
+@RequestMapping("PostionCollect")
 @SessionAttributes({"userLogin"})
-public class PostionCollectController extends BaseController{
+public class PostionCollectController {
     @Autowired
-    private XzPostionCollectService xzPostionCollectService;
+    private XzPostionCollectService postionCollectService;
 
-
-    //添加收藏
+    //我收藏的职位
     @ResponseBody
-    @RequestMapping("insertSelective.do")
-    public Map insertSelective(@ModelAttribute("userLogin")XzLogin xzLogin,Long postionId){
-        XzPostionCollect xzPostionCollect=new XzPostionCollect();
-        Date date=new Date();
-        xzPostionCollect.setPostionId(postionId);
-        xzPostionCollect.setMemberId(xzLogin.getMember().getMemberId());
-        xzPostionCollect.setCollectTime(date);
-        int i=xzPostionCollectService.insertSelective(xzPostionCollect);
-        Map map=new HashMap();
-        if(i==1){
-            map.put("msg","ok");
-        }else {
-            map.put("msg","err");
-        }
+    @RequestMapping("selCollectByMemberId.do")
+    public Map selCollectByMemberId(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows, @ModelAttribute("userLogin")XzLogin login){
+        Map map = new HashMap();
+        PageBean<XzPostionCollect> pageBean = postionCollectService.selCollectByMemberId(page,rows,login.getMember().getMemberId());
+        map.put("postionCollectList",pageBean.getList());
+        map.put("page", pageBean.getPageNum());
+        map.put("pages", pageBean.getPages());
+        map.put("rows", pageBean.getPageSize());
+        map.put("total", pageBean.getTotal());
         return map;
     }
-    //查看收藏状态
-    @ResponseBody
-    @RequestMapping("selCollectState.do")
-    public Map selCollectState(@ModelAttribute("userLogin")XzLogin xzLogin,Long postionId){
-        XzPostionCollect xzPostionCollect=new XzPostionCollect();
-        xzPostionCollect.setPostionId(postionId);
-        xzPostionCollect.setMemberId(xzLogin.getMember().getMemberId());
-        Date date=new Date();
-        xzPostionCollect.setCollectTime(date);
-        int i=xzPostionCollectService.selCollectState(xzPostionCollect);
-        Map map=new HashMap();
-        if (i == 1) {
-        map.put("msg","ok");
-        }else {
-            map.put("msg","err");
-        }
-        return map;
-    }
-    //取消收藏
-    @ResponseBody
-    @RequestMapping("deleteCollect.do")
-    public Map deleteCollect(Long collectId){
-        Map map=new HashMap();
-        int i=xzPostionCollectService.deleteCollect(collectId);
-        if (i==1){
-            map.put("msg","ok");
-        }else {
-            map.put("msg","err");
-        }
-    return map;
-    }
+
 }

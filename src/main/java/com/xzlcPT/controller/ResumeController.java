@@ -303,4 +303,11 @@ public class ResumeController extends BaseController {
         map1.put("postionList",postionList);
          return map1;
     }
+    @RequestMapping("selResumeInfoCom.do")
+    public ModelAndView selResumeInfoCom(Long resumeId){
+        ModelAndView mv=new ModelAndView("foreEnd3/zp_resumein");
+        XzResume xzResume=resumeService.selResumeInformation(resumeId);
+        mv.addObject("xzResume",xzResume);
+        return mv;
+    }
 }
