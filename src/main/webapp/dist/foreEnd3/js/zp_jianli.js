@@ -3286,6 +3286,7 @@ function flashResume() {                    //刷新简历
                 if(Number(completion)>=80){
                     $('#noClick').hide();
                 }else{
+                    $(".zhe").css("visibility", " visible");
                     $('#noClick').show();
                 }
             }
@@ -3312,6 +3313,7 @@ function flashResume2(){  //查看简历完成度
                 if(Number(completion)>=80){
                     $('#noClick').hide();
                 }else{
+                    $(".zhe").css("visibility", " visible");
                     $('#noClick').show();
                 }
         },error:function (){ //报错执行的

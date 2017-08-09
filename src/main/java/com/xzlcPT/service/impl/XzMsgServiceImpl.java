@@ -24,4 +24,33 @@ public class XzMsgServiceImpl implements XzMsgService{
         List<XzMsg> msgs = msgMapper.selectByReceiveId(msgReceiveId);
         return new PageBean<>(msgs);
     }
+
+    @Override
+    public int deleteById(Long msgId) {
+        return msgMapper.deleteByPrimaryKey(msgId);
+    }
+
+    @Override
+    public XzMsg updateToReadById(Long msgId) {
+        XzMsg msg = msgMapper.selectByPrimaryKey(msgId);
+        if(msg.getMsgIsread()==0){
+            msg.setMsgIsread(1);
+            msgMapper.updateByPrimaryKeySelective(msg);
+        }
+        return msg;
+    }
+
+    @Override
+    public int deleteAll(Long[] ids) {
+        int i = 0;
+        for (Long id : ids) {
+            i += msgMapper.deleteByPrimaryKey(id);
+        }
+        return i;
+    }
+
+    @Override
+    public int noReadCount(Long msgReceiveId) {
+        return msgMapper.onReadCount(msgReceiveId);
+    }
 }

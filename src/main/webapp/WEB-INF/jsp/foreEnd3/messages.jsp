@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="myPage" uri="/xianzhiOA/pageTag" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
@@ -29,9 +30,11 @@
         <ul class="news_ul">
             <c:forEach items="${msgList}" var="msg">
                 <li>
-                    <span class="new_s" style="width: 50px"><input type="checkbox" class="choose2"></span>
-                    <span class="new_s" style="width: 450px"><a href="">${msg.msgContent}</a></span>
-                    <span class="new_s" style="width: 150px">2017-08-23</span>
+                    <span class="new_s" style="width: 50px"><input type="checkbox" class="choose2" value="${msg.msgId}"></span>
+                    <span class="new_s" style="width: 400px"><a href="${pageContext.request.contextPath}/xzMsg/selMsgById.do?msgId=${msg.msgId}">${msg.msgContent}</a></span>
+                    <span class="new_s" style="width: 200px">
+                        <fmt:formatDate value="${msg.msgTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+                    </span>
                     <span class="new_s" style="width: 100px">
                         <c:choose>
                             <c:when test="${msg.msgType==0}">
@@ -43,33 +46,23 @@
                         </c:choose>
                     </span>
                     <span class="new_s" style="width: 100px">
-                        <span class="fa fa-envelope news_have"></span>
-                        <span class="fa fa-envelope-open-o news_em"></span>
+                        <c:choose>
+                            <c:when test="${msg.msgIsread==0}">
+                                <span class="fa fa-envelope news_have"></span>
+                            </c:when>
+                            <c:when test="${msg.msgIsread==1}">
+                                <span class="fa fa-envelope-open-o news_em"></span>
+                            </c:when>
+                        </c:choose>
                     </span>
-                    <span class="new_s" style="width: 100px"><button class="news_bu" type="">删除</button></span>
+                    <span class="new_s" style="width: 100px"><a class="news_bu" href="${pageContext.request.contextPath}/xzMsg/deleteById.do?msgId=${msg.msgId}">删除</a></span>
                 </li>
             </c:forEach>
-            <%--<li>
-                <span class="new_s" style="width: 50px"><input type="checkbox" class="choose2"></span>
-                <span class="new_s" style="width: 450px"><a href="">面试邀请。。。。。。</a></span>
-                <span class="new_s" style="width: 150px">2017-08-23</span>
-                <span class="new_s" style="width: 100px">消息类型</span>
-                <span class="new_s" style="width: 100px"><span class="fa fa-envelope news_have"></span><span class="fa fa-envelope-open-o news_em"></span></span>
-                <span class="new_s" style="width: 100px"><button class="news_bu" type="">删除</button></span>
-            </li>
-            <li>
-                <span class="new_s" style="width: 50px"><input type="checkbox" class="choose2"></span>
-                <span class="new_s" style="width: 450px"><a href="">谁看过我的简历。。。。。。</a></span>
-                <span class="new_s" style="width: 150px">2017-08-23</span>
-                <span class="new_s" style="width: 100px">消息类型</span>
-                <span class="new_s" style="width: 100px"><span class="fa fa-envelope news_have"></span><span class="fa fa-envelope-open-o news_em"></span></span>
-                <span class="new_s" style="width: 100px"><button class="news_bu" type="">删除</button></span>
-            </li>--%>
         </ul>
         <%--全选删除--%>
         <div class="news_bottom">
             <input type="checkbox" class="qxan" name="choose1" onclick="DoCheck3(this)"/>
-            <button type="button" class="scan">删除</button>
+            <button type="button" onclick="deleteAll()" class="scan">删除</button>
             <span style="float: right;margin: 15px;color: #999">共 <span style="color: #fc6866">${total} </span>条消息</span>
         </div>
         <%--分页--%>
@@ -90,7 +83,9 @@
         </div>
     </div>
 </div>
-
+<form id="hform" action="${pageContext.request.contextPath}/xzMsg/selMsgAll.do" method="post">
+    <input type="hidden" id="hmid" name="page" value="${page}">
+</form>
 
 <%--多选--%>
 <script>
@@ -110,8 +105,27 @@
     }
     function pToSub(page) {
         if(page){
-            alert(1);
+            $('#hmid').val(page);
+            $('#hform').submit();
         }
+    }
+    //批量删除
+    function deleteAll() {
+        var ids = [];
+        $('.choose2').each(function () {
+            if($(this).is(':checked')){
+                ids.push($(this).val())
+            }
+        });
+        $.ajax({
+            url:'${pageContext.request.contextPath}/xzMsg/deleteAll.do',
+            type:'post',
+            data:{ids:ids},
+            traditional: true,
+            success:function (data) {
+                window.location.reload();
+            }
+        })
     }
 </script>
 </body>

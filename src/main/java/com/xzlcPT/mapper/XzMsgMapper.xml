@@ -21,7 +21,12 @@
     msg_id, msg_tital, msg_content, msg_send_id, msg_receive_id, msg_time, msg_type, 
     msg_isread, out_id, create_time, delete_time, filed1, filed2, filed3
   </sql>
-
+  <select id="onReadCount" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    SELECT count(*)
+    from xz_msg
+    where msg_receive_id = #{msgReceiveId,jdbcType=BIGINT}
+    and msg_isread = 0;
+  </select>
   <select id="selectByReceiveId" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
