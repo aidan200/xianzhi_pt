@@ -417,7 +417,6 @@
     </div>
 </div>
 
-<button class="haha">asgfjchbasdjf</button>
 
 <%--遮罩--%>
 <div class="zhe">
@@ -464,11 +463,6 @@
 <script>
     jQuery(document).ready(function ($) {
         //close popup
-
-        $(".haha").click(function () {
-            $(".zhe").css("visibility", " visible");
-        });
-
         $('.zhe').on('click', function (event) {
             if ($(event.target).is('.jianli_zhe') || $(event.target).is('.zhe')) {
                 event.preventDefault();
