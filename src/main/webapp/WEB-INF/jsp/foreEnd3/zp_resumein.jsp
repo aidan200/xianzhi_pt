@@ -146,11 +146,11 @@
             </div>
             <div style="clear: both"></div>
             <div class="rei_bottom">
-                <form id="f1" action="${pageContext.request.contextPath}/ResumeCollect/insertSelective.do">
+                <form id="f1" action="${pageContext.request.contextPath}/ResumeCollect/insertSelective.do" style="display: inline-block">
                    <input type="hidden" name="resumeId" value="${xzResume.resumeId}">
                     <button class="rei_button">收藏简历</button>
                 </form>
-                <form id="f2" action="${pageContext.request.contextPath}/PostionSend/comInsert.do">
+                <form id="f2" action="${pageContext.request.contextPath}/PostionSend/comInsert.do" style="display: inline-block">
                     <input type="hidden" name="resumeId" value="${xzResume.resumeId}">
                     <button class="rei_button">下载简历</button>
                 </form>
