@@ -15,9 +15,7 @@
 <body>
 <label>结果</label><br>
 <div>
-<c:forEach items="${list}" var="li">
-    <span>${li.resumeName}</span>
-    </c:forEach>
+    <span>${i}</span>
 
 </body>
 </html>

@@ -175,6 +175,7 @@ public class PostionSendController extends BaseController{
         }
         return map;
     }
+    //查询所有简历
     @ResponseBody
     @RequestMapping("selAll.do")
     public Map selAll(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin){
@@ -185,5 +186,53 @@ public class PostionSendController extends BaseController{
         map1.put("total",list.getTotal());
         map1.put("page",list.getPageNum());
         return map1;
+    }
+    @ResponseBody
+    @RequestMapping("insertSelective.do")
+    public Map insertSelective(@ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,Long resumeId){
+        Map map=new HashMap();
+        map.put("postionId",postionId);
+        map.put("resumeId",resumeId);
+        map.put("companyId",xzLogin.getCompany().getCompanyId());
+        Date date=new Date();
+        map.put("sendTime",date);
+        map.put("sendState",2);
+        map.put("sendType",0);
+        int i=postionSendService.insertSelective(map);
+        Map map1=new HashMap();
+        if (i==1){
+            map1.put("msg","ok");
+        }else {
+            map1.put("msg","err");
+        }
+        return map1;
+    }
+    @RequestMapping("insert.do")
+    public ModelAndView insert(Long companyId,Long postionId,Long resumeId){
+        ModelAndView mv=new ModelAndView("foreEnd3/test2");
+        Map map=new HashMap();
+        map.put("postionId",postionId);
+        map.put("resumeId",resumeId);
+        map.put("companyId",companyId);
+        Date date=new Date();
+        map.put("sendTime",date);
+        map.put("sendState",2);
+        map.put("sendType",0);
+        int i=postionSendService.insertSelective(map);
+        mv.addObject("i",i);
+        return mv;
+    }
+    @RequestMapping("comInsert.do")
+    public ModelAndView comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long resumeId){
+        ModelAndView mv=new ModelAndView("/foreEnd3/index");
+        Map map=new HashMap();
+        map.put("resumeId",resumeId);
+        map.put("companyId",xzLogin.getCompany().getCompanyId());
+        Date date=new Date();
+        map.put("sendTime",date);
+        map.put("sendType",1);
+        int i=postionSendService.insertSelective(map);
+        mv.addObject("i",i);
+        return mv;
     }
 }

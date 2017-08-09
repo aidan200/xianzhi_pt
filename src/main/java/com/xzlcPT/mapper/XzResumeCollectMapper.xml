@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzResumeCollectMapper">
+    <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzResumeCollect">
+        <id column="collect_id" jdbcType="BIGINT" property="collectId" />
+        <result column="resume_id" jdbcType="BIGINT" property="resumeId" />
+        <result column="company_id" jdbcType="BIGINT" property="companyId" />
+        <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        collect_id, resume_id, company_id, collect_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from xz_resume_collect
+        where collect_id = #{collectId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from xz_resume_collect
+        where collect_id = #{collectId,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.xzlcPT.bean.XzResumeCollect">
+        insert into xz_resume_collect (collect_id, resume_id, company_id,
+        collect_time)
+        values (#{collectId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT},
+        #{collectTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzResumeCollect">
+        insert into xz_resume_collect
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="collectId != null">
+                collect_id,
+            </if>
+            <if test="resumeId != null">
+                resume_id,
+            </if>
+            <if test="companyId != null">
+                company_id,
+            </if>
+            <if test="collectTime != null">
+                collect_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="collectId != null">
+                #{collectId,jdbcType=BIGINT},
+            </if>
+            <if test="resumeId != null">
+                #{resumeId,jdbcType=BIGINT},
+            </if>
+            <if test="companyId != null">
+                #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="collectTime != null">
+                #{collectTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzResumeCollect">
+        update xz_resume_collect
+        <set>
+            <if test="resumeId != null">
+                resume_id = #{resumeId,jdbcType=BIGINT},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId,jdbcType=BIGINT},
+            </if>
+            <if test="collectTime != null">
+                collect_time = #{collectTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where collect_id = #{collectId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzResumeCollect">
+        update xz_resume_collect
+        set resume_id = #{resumeId,jdbcType=BIGINT},
+        company_id = #{companyId,jdbcType=BIGINT},
+        collect_time = #{collectTime,jdbcType=TIMESTAMP}
+        where collect_id = #{collectId,jdbcType=BIGINT}
+    </update>
+    <select id="selByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from xz_resume_collect WHERE company_id=#{companyId,jdbcType=BIGINT}
+    </select>
+</mapper>

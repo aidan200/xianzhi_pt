@@ -156,7 +156,7 @@
         <div class="ses_left">
             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt="" class="comh_head">
             <div class="ses_test">
-                <h4>${r1.resumeName}</h4>
+                <h4><a  href="${pageContext.request.contextPath}/Resume/selResumeInfoCom.do?resumeId=${r1.resumeId}">${r1.resumeName}</a></h4>
                 <div class="ses_in">
                     <span>${r1.resumeSex eq 0?'男':''}${r1.resumeSex eq 1?'女':''}</span>|
                     <span><age:getAge year="${r1.resumeBirth.year+1900}"/></span>|
