@@ -47,7 +47,7 @@ public class XzMsgController {
     @RequestMapping("selMsgById.do")
     public ModelAndView selMsgById(Long msgId){
         ModelAndView mv = new ModelAndView("foreEnd3/message_info");
-        XzMsg xzMsg = msgService.selectById(msgId);
+        XzMsg xzMsg = msgService.updateToReadById(msgId);
         mv.addObject("xzMsg",xzMsg);
         return mv;
     }
@@ -57,6 +57,19 @@ public class XzMsgController {
         Map map = new HashMap();
         int i = msgService.deleteAll(ids);
         map.put("i",i);
+        return map;
+    }
+    @ResponseBody
+    @RequestMapping("noRaadCount.do")
+    public Map conut(@ModelAttribute("userLogin") XzLogin xzLogin){
+        Map map = new HashMap();
+        int i = 0;
+        if(xzLogin.getLoginType()==0){
+            i = msgService.noReadCount(xzLogin.getMember().getMemberId());
+        }else if(xzLogin.getLoginType()==1){
+            i = msgService.noReadCount(xzLogin.getCompany().getCompanyId());
+        }
+        map.put("count",i);
         return map;
     }
 

@@ -9,6 +9,7 @@ import com.xzlcPT.bean.XzMsg;
 public interface XzMsgService {
     PageBean<XzMsg> selectByReceiveId(int page,int rows,Long msgReceiveId);
     int deleteById (Long msgId);
-    XzMsg selectById(Long msgId);
+    XzMsg updateToReadById(Long msgId);
     int deleteAll(Long [] ids);
+    int noReadCount(Long msgReceiveId);
 }

@@ -31,8 +31,13 @@ public class XzMsgServiceImpl implements XzMsgService{
     }
 
     @Override
-    public XzMsg selectById(Long msgId) {
-        return msgMapper.selectByPrimaryKey(msgId);
+    public XzMsg updateToReadById(Long msgId) {
+        XzMsg msg = msgMapper.selectByPrimaryKey(msgId);
+        if(msg.getMsgIsread()==0){
+            msg.setMsgIsread(1);
+            msgMapper.updateByPrimaryKeySelective(msg);
+        }
+        return msg;
     }
 
     @Override
@@ -42,5 +47,10 @@ public class XzMsgServiceImpl implements XzMsgService{
             i += msgMapper.deleteByPrimaryKey(id);
         }
         return i;
+    }
+
+    @Override
+    public int noReadCount(Long msgReceiveId) {
+        return msgMapper.onReadCount(msgReceiveId);
     }
 }

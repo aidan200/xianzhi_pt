@@ -50,13 +50,13 @@
                         <a href="" style="">
                             <li class="login1">
                                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hahaha.png" alt="" class="allheader">
-                                <span style="width: 5px;height: 5px;background-color: red;display:inline-block;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
+                                <span id="newMsg" style="width: 5px;height: 5px;background-color: red;display:inline-block;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
                                 <ul class="head-menu">
                                     <li class="head_new2">
                                         <span class="fa fa-user" style="color: #666;float: left;font-size: 16px;margin-right: 5px;line-height: 22px"></span>
                                         <span style="float: left"><a href="###" style="width: 80px;display: inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height: 22px">郑秀妍</a></span>
                                         <span style="float: right"><a href="${pageContext.request.contextPath}/XzLogin/ExitUser.do">注销</a></span>
-                                        <span style="float: right;margin-right: 5px"><a href="${pageContext.request.contextPath}/xzMsg/selMsgAll.do" class="fa fa-envelope" style="color: #fc6866"> (<span>10</span>)</a></span>
+                                        <span style="float: right;margin-right: 5px"><a href="${pageContext.request.contextPath}/xzMsg/selMsgAll.do" class="fa fa-envelope" style="color: #fc6866"> (<span id="noread">10</span>)</a></span>
                                     </li>
                                     <li><span class="head_new"></span><a href="#">我的简历</a></li>
                                     <li><span class="head_new"></span><a href="#">查看职位信息</a></li>
@@ -128,6 +128,33 @@
                     }
                 });
             }
+        }else{
+            $.ajax({
+                url:'${pageContext.request.contextPath}/xzMsg/noRaadCount.do',
+                success:function (data) {
+                    if(data.count>0){
+                        $('#newMsg').show();
+                        $('#noread').text(data.count);
+                    }else{
+                        $('#newMsg').hide();
+                        $('#noread').text("0");
+                    }
+                    setTimeout(function () {
+                        $.ajax({
+                            url:'${pageContext.request.contextPath}/xzMsg/noRaadCount.do',
+                            success:function (data) {
+                                if(data.count>0){
+                                    $('#newMsg').show();
+                                    $('#noread').text(data.count);
+                                }else{
+                                    $('#newMsg').hide();
+                                    $('#noread').text("0");
+                                }
+                            }
+                        });
+                    },10000);
+                }
+            });
         }
     })
     function getCookie(name)
