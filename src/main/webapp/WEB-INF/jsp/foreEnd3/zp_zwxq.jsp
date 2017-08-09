@@ -84,11 +84,11 @@
                         <c:when test="${xzPostion.postionMm<0}">
                             面议
                         </c:when>
-                        <c:when test="${xzPostion.postionMm==xzPostion.postionYm}">
-                            ${fn:replace((xzPostion.postionMm*12/10000),".0","")}万
+                        <c:when test="${xzPostion.postionMm==p.postionYm}">
+                            <fmt:formatNumber value="${xzPostion.postionMm*12/10000}" maxFractionDigits="0"/>万
                         </c:when>
                         <c:otherwise>
-                            ${fn:replace((xzPostion.postionMm*12/10000),".0","")}万-${fn:replace((xzPostion.postionYm*12/10000),".0","")}万
+                            <fmt:formatNumber value="${xzPostion.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${xzPostion.postionYm*12/10000}" maxFractionDigits="0"/>万
                         </c:otherwise>
                     </c:choose>
                     <span>72小时反馈</span>

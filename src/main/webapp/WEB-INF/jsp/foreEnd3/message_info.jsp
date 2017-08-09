@@ -8,6 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,19 +24,25 @@
         <div class="nei_out">
             <div style="text-align: center;margin: 30px">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/env2.png" alt="" class="nei_img">
-                <h4>消息标题</h4>
+                <h4>${xzMsg.msgTital}</h4>
             </div>
             <div class="nei_sec">
-                让你来面试 别逼逼了 快点。。。
+                ${xzMsg.msgContent}
             </div>
             <div class="nei_many">
-                <span style="margin-right: 20px"><span class="fa fa-calendar-minus-o"></span> 2017-08-08</span>
-                <span>面试邀约</span>
+                <span style="margin-right: 20px"><span class="fa fa-calendar-minus-o"></span>
+                    <fmt:formatDate value="${xzMsg.msgTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                </span>
+                <c:choose>
+                    <c:when test="${xzMsg.msgType==0}">
+                        <span>系统消息</span>
+                    </c:when>
+                    <c:when test="${xzMsg.msgType==1}">
+                        <span>面试邀约</span>
+                    </c:when>
+                </c:choose>
             </div>
-
-
         </div>
-
 
     </div>
 </div>

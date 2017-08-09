@@ -12,6 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="myPage" uri="/xianzhiOA/pageTag" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -178,7 +179,19 @@
                                         <button type="button" class="gsxq_bu">立即应聘</button>
                                     </p>
                                     <p><span>
-                            ${fn:replace((po.postionMm*12/10000),".0","")}-${fn:replace((po.postionYm*12/10000),".0","")}万</span>&nbsp;&nbsp;${po.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionExp}工作经验
+                                        <c:choose>
+                                            <c:when test="${po.postionMm<0}">
+                                                面议
+                                            </c:when>
+                                            <c:when test="${po.postionMm==p.postionYm}">
+                                                <fmt:formatNumber value="${po.postionMm*12/10000}" maxFractionDigits="0"/>万
+                                            </c:when>
+                                            <c:otherwise>
+                                                <fmt:formatNumber value="${po.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${po.postionYm*12/10000}" maxFractionDigits="0"/>万
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </span>
+                                        &nbsp;&nbsp;${po.postionSpace}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionEducation}&nbsp;&nbsp;|&nbsp;&nbsp;${po.postionExp}工作经验
                                     </p>
                                 </div>
                                 <div class="zp_gsxq_zpzw_li_right">
