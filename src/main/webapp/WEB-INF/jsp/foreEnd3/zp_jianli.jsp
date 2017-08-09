@@ -418,7 +418,6 @@
 </div>
 
 <%--遮罩--%>
-<c:if test="${msg=='err'}">
     <div class="zhe">
         <div class="zhe_all">
             <div class="zhe_every1">
@@ -444,7 +443,6 @@
             <button class="jianli_zhe">我知道了</button>
         </div>
     </div>
-</c:if>
 <%----%>
 
 <div id="noClick" style="position: absolute;width: 100%;height: 40px;top:65px"></div>
