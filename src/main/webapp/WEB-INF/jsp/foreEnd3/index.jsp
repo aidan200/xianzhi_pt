@@ -166,19 +166,66 @@
 
     <%--个人企业入口--%>
     <div class="index_00">
-        <h3>招聘中心快速入口</h3>
-        <%--<p>先知平台联合众多企业为IT互联网人才提供精准的定位、优质的服务，助你飞跃发展。</p>--%>
-        <div id="wrapper" style="margin-top: 40px">
-            <div class="index_tt">
-                <a class="shake shake-slow" href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/person.png" alt="" class="index_01img">
-                <h1 class="h1">个人入口</h1></a>
-                <p>上传简历为你找寻最适合你的工作。</p>
+        <h3>最新职位发布</h3>
+
+        <%--<div id="wrapper" style="margin-top: 40px">--%>
+        <%--<div class="index_tt">--%>
+        <%--<a class="shake shake-slow" href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/person.png" alt="" class="index_01img">--%>
+        <%--<h1 class="h1">个人入口</h1></a>--%>
+        <%--<p>上传简历为你找寻最适合你的工作。</p>--%>
+        <%--</div>--%>
+        <%--<div class="index_tt">--%>
+        <%--<a class="shake shake-slow" href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/house.png" alt="" class="index_01img">--%>
+        <%--<h1 class="h1">企业入口</h1></a>--%>
+        <%--<p>寻找最稀缺的精英人才</p>--%>
+        <%--</div>--%>
+        <%--</div>--%>
+
+        <div class="index_oa">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hblue.png" alt="" class="index_line">
+            <div class="lunbo">
+                <ul id="index_ou">
+                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                                   class="index_lim"></span>
+                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
+                                class="index_s4">2017-08-08</span>
+                    </li>
+                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                                   class="index_lim"></span>
+                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
+                                class="index_s4">2017-08-08</span>
+                    </li>
+                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                                   class="index_lim"></span>
+                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
+                                class="index_s4">2017-08-08</span>
+                    </li>
+                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                                   class="index_lim"></span>
+                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
+                                class="index_s4">2017-08-08</span>
+                    </li>
+                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                                   class="index_lim"></span>
+                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
+                                class="index_s4">2017-08-08</span>
+                    </li>
+                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                                   class="index_lim"></span>
+                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
+                                class="index_s4">2017-08-08</span>
+                    </li>
+                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_lim"></span>
+                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span class="index_s4">2017-08-08</span>
+                    </li>
+                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_lim"></span>
+                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span class="index_s4">2017-08-08</span>
+                    </li>
+
+                </ul>
             </div>
-            <div class="index_tt">
-                <a class="shake shake-slow" href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/house.png" alt="" class="index_01img">
-                <h1 class="h1">企业入口</h1></a>
-                <p>寻找最稀缺的精英人才</p>
-            </div>
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hblue.png" alt="" class="index_line">
+
         </div>
     </div>
 
@@ -322,7 +369,7 @@
                     <div>
                         <span>Intellij-idea</span> | <span>Webstorm</span> | <span>Eclipse</span>
                     </div>
-                    <div> <span>Sublime-text</span> | <span>Visual-studio</span> | <span>Xcode</span>
+                    <div><span>Sublime-text</span> | <span>Visual-studio</span> | <span>Xcode</span>
                     </div>
                 </a>
             </div>
@@ -333,7 +380,7 @@
                     <div>
                         <span>MEAN框架</span> | <span>预装JAVA</span> | <span>预装ASP/.NET</span>
                     </div>
-                    <div> <span>预装建站系统</span> | <span>服务器软件</span> | <span>应用开发工具</span>
+                    <div><span>预装建站系统</span> | <span>服务器软件</span> | <span>应用开发工具</span>
                     </div>
                 </a>
             </div>
@@ -344,7 +391,7 @@
                     <div>
                         <span>JDK文档</span> | <span>Maven手册</span> | <span> Mybatis-3.1</span>
                     </div>
-                    <div> <span> Tomcat </span> | <span> MySQL中文文档</span> | <span> Node.js</span>
+                    <div><span> Tomcat </span> | <span> MySQL中文文档</span> | <span> Node.js</span>
                     </div>
                 </a>
             </div>
@@ -355,7 +402,7 @@
                     <div>
                         <span>支付模块</span> | <span>视频模块</span> | <span>电商平台</span>
                     </div>
-                    <div> <span>博客模块</span> | <span>招聘模块</span> | <span>OV</span>
+                    <div><span>博客模块</span> | <span>招聘模块</span> | <span>OV</span>
                     </div>
                 </a>
             </div>
@@ -366,7 +413,7 @@
                     <div>
                         <span>技术文章</span> | <span>技术文章</span> | <span>技术文章</span>
                     </div>
-                    <div> <span>技术文章</span> | <span>技术文章</span> | <span>技术文章</span>
+                    <div><span>技术文章</span> | <span>技术文章</span> | <span>技术文章</span>
                     </div>
                 </a>
             </div>
@@ -377,7 +424,7 @@
                     <div>
                         <span>需求管理</span> | <span>需求开发</span> | <span>系统设计</span>
                     </div>
-                    <div> <span>项目规划</span> | <span>项目监控</span> | <span>服务与维护</span>
+                    <div><span>项目规划</span> | <span>项目监控</span> | <span>服务与维护</span>
                     </div>
                 </a>
             </div>
@@ -515,6 +562,8 @@
 
 </div>
 
+
+<%--小箭头小邮箱--%>
 <div id="index_bb">
     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/dfdf.png" alt="" id="goTopBtn">
 </div>
@@ -627,6 +676,20 @@
             new RigelFx(stackEl);
         });
     })();
+</script>
+
+<%--职位--%>
+<script>
+    function lunbo(id, height) {
+        var ul = $(id);
+        var liFirst = ul.find('li:first');
+        $(id).animate({top: height}).animate({"top": 0}, 0, function () {
+            var clone = liFirst.clone();
+            $(id).append(clone);
+            liFirst.remove();
+        })
+    }
+    setInterval("lunbo('#index_ou','-50px')", 4000)
 </script>
 
 
