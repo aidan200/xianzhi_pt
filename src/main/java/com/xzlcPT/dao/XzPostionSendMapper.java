@@ -18,7 +18,7 @@ public interface XzPostionSendMapper {
 
     int insert(XzPostionSend record);
 
-    int insertSelective(Map map);
+    int insertSelective(XzPostionSend xzPostionSend);
 
     XzPostionSend selectByPrimaryKey(Long sendId);
 

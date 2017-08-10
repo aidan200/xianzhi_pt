@@ -35,8 +35,8 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     }
 
     @Override
-    public int insertSelective(Map map) {
-        int i=postionSendMapper.insertSelective(map);
+    public int insertSelective(XzPostionSend xzPostionSend) {
+        int i=postionSendMapper.insertSelective(xzPostionSend);
         return i;
     }
 
