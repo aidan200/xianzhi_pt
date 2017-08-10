@@ -121,7 +121,7 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<img src="'+path+'dist/foreEnd3/img/small.jpg" alt=""'
                     str+='class="pop_head">'
                     str+='<div class="pop_test2">'
-                    str+='<h4 style="display: inline-block">网站美工/网页设计师</h4>'
+                    str+='<h4 style="display: inline-block">'+data.postionSendList[i].postion.postionName+'</h4>'
                     str+='<div style="color: #fc6866;display: inline-block;margin-left: 10px">10万</div>'
                     str+='<div style="display: inline-block;margin-left: 20px">'+data.postionSendList[i].company.companyName+'</div>'
                     str+='<div class="pop_in2">'
