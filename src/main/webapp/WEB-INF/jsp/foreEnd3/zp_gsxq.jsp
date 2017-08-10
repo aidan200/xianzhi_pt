@@ -261,7 +261,7 @@
                         <li>
                             <div><span>地址：</span>${xzCompany.companyCity}</div>
                             <div style="padding-left: 42px">${xzCompany.companyLocation}</div>
-                            <div style="padding-left: 42px;padding-right: 5px">${xzCompany.companySpace}sdnkvjhnsjfsehiofhaedfjnsdkfbejfhwebfkjdnafkjwenfjkewnfjkwefnjnbj</div></li>
+                            <div style="padding-left: 42px;padding-right: 5px">${xzCompany.companySpace}</div></li>
                     </ul>
                     <div id="zp_spxq_dts" class="zp_spxq_dt">
                     </div>
