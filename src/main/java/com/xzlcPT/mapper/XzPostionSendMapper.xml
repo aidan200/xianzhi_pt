@@ -393,4 +393,12 @@
     resume_id = #{resumeId,jdbcType=BIGINT} and postion_id = #{postionId,jdbcType=BIGINT}
     and send_time = #{sendTime,jdbcType=TIMESTAMP}
   </select>
+  <select id="selByConditions" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT send_id from xz_postion_send ps
+    LEFT JOIN  xz_resume r ON r.resume_id = ps.resume_id
+    LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id
+    LEFT JOIN xz_postion p ON ps.postion_id = p.postion_id
+    WHERE ps.company_id=#{companyId,jdbcType=BIGINT}
+    <if test=""
+  </select>
 </mapper>

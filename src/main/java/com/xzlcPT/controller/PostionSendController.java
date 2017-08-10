@@ -251,4 +251,26 @@ public class PostionSendController extends BaseController{
         map.put("theCount",postionSend);
         return map;
     }
+    //按条件查询简历
+    @ResponseBody
+    @RequestMapping("selByConditions.do")
+    public Map selByConditions(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,
+                               @ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,String educationLevel,
+                                Integer resumeSex,String resumeName,String resumeWorkspace,Integer birthMin,Integer birthMax,
+                               String resumePostion){
+        Map map=new HashMap();
+        map.put("companyId",xzLogin.getCompany().getCompanyId());
+        map.put("postionId",postionId);
+        map.put("educationLevel",educationLevel);
+        map.put("resumeSex",resumeSex);
+        map.put("resumeName",resumeName);
+        map.put("resumeWorkspace",resumeWorkspace);
+        map.put("birthMin",birthMin);
+        map.put("birthMax",birthMax);
+        map.put("resumePostion",resumePostion);
+        Date now=new Date();
+        map.put("now",now);
+
+        return map;
+    }
 }
