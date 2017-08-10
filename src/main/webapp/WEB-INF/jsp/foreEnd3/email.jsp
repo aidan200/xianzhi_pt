@@ -21,7 +21,7 @@
             min-width: 1100px;
             height: auto;
             overflow: hidden'>
-    <div style='width: 630px;
+    <div style='width: 600px;
             margin: 40px auto;
             height: 680px;
             border: 3px dashed #3d9ccc;
