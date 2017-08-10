@@ -121,7 +121,7 @@
 
 <script type="text/javascript">
     $(function () {
-        var state = 3;
+        var state = 1;
         stepBar.init("stepBar", {
             step: state,
             change: false,
