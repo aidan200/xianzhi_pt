@@ -1899,7 +1899,8 @@ textarea {
     height: 25px;
     overflow: hidden;
 }
-.index_pos > a{
+
+.index_pos > a {
     color: #3d9ccc;
 }
 
@@ -7843,3 +7844,106 @@ footer {
     right: 140px;
     display: none;
 }
+
+/*----------------------------修改密码3步骤----------------------------*/
+.rep_out {
+    max-width: 1100px;
+    height: auto;
+    margin: 0 auto;
+    padding: 0 40px 40px 40px;
+    overflow: hidden;
+}
+
+.rep_bgimg {
+    width: 700px;
+    height: 550px;
+    background: url("../../../dist/foreEnd3/img/code.png") center no-repeat;
+    position: relative;
+    margin: 0 auto;
+    /*background-size: contain;*/
+    overflow: hidden;
+    margin-top: -20px;
+}
+
+.rep_bgin {
+    width: 450px;
+    height: auto;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 170px;
+}
+
+.rep_text {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 50px;
+    /*text-align: left;*/
+    /*margin-left: 30px;*/
+}
+
+.rep_input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.rep_input2 {
+    width: 250px;
+    height: 30px;
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+.rep_button {
+    width: 80px;
+    height: 30px;
+    background-color: #3d9ccc;
+    color: #FFFFff;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    margin-left: 10px;
+}
+
+.rep_error {
+    color: #fc6866;
+    text-align: left;
+    margin-left: 35px;
+    margin-top: 5px;
+    /*display: none;*/
+}
+.rep_error2 {
+    color: #fc6866;
+    margin-top: 10px;
+    font-size: 14px;
+    /*display: none;*/
+}
+
+.rep_next {
+    margin-top: 70px;
+    width: 120px;
+    height: 30px;
+    border: none;
+    background-color: #FFA500;
+    color: #FFFFff;
+    outline: none;
+    border-radius: 3px;
+    font-size: 16px;
+}
+.rep_next2 {
+    margin-top: 70px;
+    width: 120px;
+    height: 30px;
+    border: none;
+    background-color: #3d9ccc;
+    color: #FFFFff;
+    outline: none;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+/*------------------------账号安全------------------------------*/
