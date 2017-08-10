@@ -100,7 +100,7 @@
             <h3><span>${xzCompany.companyName}</span> <a isFollow="f" onclick="insertFollow()" id="gz">关注</a>
                 <div class="zp_gsxq_gzrs">121人关注</div>
             </h3>
-            <ul>
+            <ul style="width: ">
                 <c:forEach var="w1" items="${xzCompany.welfares}">
                     <li>${w1.welfareName}</li>
                 </c:forEach>
@@ -129,7 +129,7 @@
                         <c:forEach var="p1" items="${xzCompany.products}">
                             <div class="clearfix" style="display: block;">
                                 <img src="${pageContext.request.contextPath}/uploadImg/${p1.productUrl}" alt="">
-                                <p data-selector="detail">${p1.productIntro}</p>
+                                <p data-selector="detail" style="padding-left: 20px;padding-top: 10px">${p1.productIntro}</p>
                             </div>
                         </c:forEach>
                     </div>
@@ -258,9 +258,10 @@
                             </c:forEach></li>
                         <li>融资：<span>${xzCompany.financing}</span></li>
                         <li>规模：<span>${xzCompany.companyScale}人</span></li>
-                        <li style="height: auto">地址：<span>${xzCompany.companyCity}</span><br>
-                            <span>${xzCompany.companyLocation}</span><br>
-                            <span>${xzCompany.companySpace}</span></li>
+                        <li>
+                            <div><span>地址：</span>${xzCompany.companyCity}</div>
+                            <div style="padding-left: 42px">${xzCompany.companyLocation}</div>
+                            <div style="padding-left: 42px;padding-right: 5px">${xzCompany.companySpace}sdnkvjhnsjfsehiofhaedfjnsdkfbejfhwebfkjdnafkjwenfjkewnfjkwefnjnbj</div></li>
                     </ul>
                     <div id="zp_spxq_dts" class="zp_spxq_dt">
                     </div>
