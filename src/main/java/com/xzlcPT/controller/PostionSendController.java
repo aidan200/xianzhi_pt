@@ -234,7 +234,7 @@ public class PostionSendController extends BaseController{
         map.put("companyId",xzLogin.getCompany().getCompanyId());
         Date date=new Date();
         map.put("sendTime",date);
-        map.put("sendType",1);
+        map.put("sendState",2);
         int i=postionSendService.insertSelective(map);
         Map map1=new HashMap();
         if (i==1){
