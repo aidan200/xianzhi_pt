@@ -14,15 +14,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>用户注册</title>
-    <link href="${pageContext.request.contextPath}/dist/foreEnd3/lib/bootstrap/css/bootstrap.css" rel="stylesheet"
-          media="screen">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/css测试.css" type="text/css"/>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/dist/foreEnd3/lib/jquery/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath}/dist/foreEnd3/lib/bootstrap/js/bootstrap.min.js"></script>
+    <jsp:include page="distforeEnd.jsp"/>
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/dist/foreEnd3/js/stepBar.js"></script>
