@@ -222,9 +222,9 @@ public class PostionSendController extends BaseController{
         mv.addObject("i",i);
         return mv;
     }
+    @ResponseBody
     @RequestMapping("comInsert.do")
-    public ModelAndView comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long resumeId){
-        ModelAndView mv=new ModelAndView("/foreEnd3/index");
+    public Map comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long resumeId){
         Map map=new HashMap();
         map.put("resumeId",resumeId);
         map.put("companyId",xzLogin.getCompany().getCompanyId());
@@ -232,7 +232,12 @@ public class PostionSendController extends BaseController{
         map.put("sendTime",date);
         map.put("sendType",1);
         int i=postionSendService.insertSelective(map);
-        mv.addObject("i",i);
-        return mv;
+        Map map1=new HashMap();
+        if (i==1){
+            map1.put("msg","ok");
+        }else {
+            map1.put("msg","err");
+        }
+        return map;
     }
 }
