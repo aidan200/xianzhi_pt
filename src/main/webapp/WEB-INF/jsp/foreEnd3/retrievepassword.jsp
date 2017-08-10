@@ -121,14 +121,14 @@
 
 <script type="text/javascript">
     $(function () {
-        var state = 1;
+        var state2 = 3;
         stepBar.init("stepBar", {
-            step: state,
+            step: state2,
             change: false,
             animation: false
         });
         $('.myTab').hide();
-        $('#repall_' + state).show();
+        $('#repall_' + state2).show();
     });
 </script>
 </body>
