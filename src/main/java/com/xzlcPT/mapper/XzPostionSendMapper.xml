@@ -86,7 +86,7 @@
   </sql>
   <sql id="selCollect">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,r.resume_id,r.resume_intent_ym,
-    r.resume_position,c.collect_time
+    r.resume_position,c.collect_time,c.collect_id
   </sql>
   <sql id="selById">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
