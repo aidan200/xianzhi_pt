@@ -32,22 +32,6 @@ public class PostionSendController extends BaseController{
     @Autowired
     private XzPostionSendMsgService xzPostionSendMsgService;
 
-    //企业职位管理查询
-    @ResponseBody
-    @RequestMapping("count7.do")
-    public Map count7(Long selId,Integer type,Integer day){
-        Map map = new HashMap();
-        Map serachMap = new HashMap();
-        serachMap.put("cday",day);
-        if(type==1){
-            serachMap.put("companyId",selId);
-        }else if (type==2){
-            serachMap.put("resumeId",selId);
-        }
-        List<XzPostionSend> postionSend = postionSendService.selSendCountByCorRId(serachMap);
-        map.put("theCount",postionSend);
-        return map;
-    }
 
     //简历投递
     @ResponseBody
@@ -99,6 +83,7 @@ public class PostionSendController extends BaseController{
         map.put("i",i);
         return map;
     }
+    //--------------------------------以下为公司操作--------------------------------------------
     //按投递状态查询简历
     @ResponseBody
     @RequestMapping("selByState.do")
@@ -248,6 +233,22 @@ public class PostionSendController extends BaseController{
         }else {
             map.put("msg","err");
         }
+        return map;
+    }
+    //企业职位管理查询
+    @ResponseBody
+    @RequestMapping("count7.do")
+    public Map count7(Long selId,Integer type,Integer day){
+        Map map = new HashMap();
+        Map serachMap = new HashMap();
+        serachMap.put("cday",day);
+        if(type==1){
+            serachMap.put("companyId",selId);
+        }else if (type==2){
+            serachMap.put("resumeId",selId);
+        }
+        List<XzPostionSend> postionSend = postionSendService.selSendCountByCorRId(serachMap);
+        map.put("theCount",postionSend);
         return map;
     }
 }

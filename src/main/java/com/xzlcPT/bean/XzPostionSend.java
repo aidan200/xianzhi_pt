@@ -40,6 +40,8 @@ public class XzPostionSend {
 
     private Date interviewTime;
 
+    private String pmsgValue;
+
     private Integer ct;
 
     private List<XzResume> resumes;
@@ -222,5 +224,13 @@ public class XzPostionSend {
 
     public Date getInterviewTime() {
         return interviewTime;
+    }
+
+    public void setPmsgValue(String pmsgValue) {
+        this.pmsgValue = pmsgValue;
+    }
+
+    public String getPmsgValue() {
+        return pmsgValue;
     }
 }
