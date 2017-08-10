@@ -3284,6 +3284,7 @@ function flashResume() {                    //刷新简历
                 $('#jl_wcd').html(completion)
                 $('#js_sxsj').html(getNowFormatDateSS(date))
                 if(Number(completion)>=80){
+                    $(".zhe").hide();
                     $('#noClick').hide();
                 }else{
                     $(".zhe").css("visibility", " visible");
@@ -3311,6 +3312,7 @@ function flashResume2(){  //查看简历完成度
                 $('#jl_wcd').html(completion)
                 $('#js_sxsj').html(getNowFormatDateSS(date))
                 if(Number(completion)>=80){
+                    $(".zhe").hide();
                     $('#noClick').hide();
                 }else{
                     $(".zhe").css("visibility", " visible");

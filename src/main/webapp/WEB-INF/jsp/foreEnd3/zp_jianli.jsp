@@ -290,7 +290,7 @@
                         <li>
                             <div class="zp_index_ww1"><span class="wsis">0</span></div>
                             <div class="zp_index_ww2">
-                                <p><a href=""><span class="wsis">0</span>个人看过你的简历</a></p>
+                                <p><a href="${pageContext.request.contextPath}/view/foreEnd3/zp_dongtai.html?type=sm"><span class="wsis">0</span>个人看过你的简历</a></p>
                                 <p>刷新简历能增加被查看概率</p>
                             </div>
                         </li>
@@ -466,7 +466,8 @@
         $('.zhe').on('click', function (event) {
             if ($(event.target).is('.jianli_zhe') || $(event.target).is('.zhe')) {
                 event.preventDefault();
-                $(this).addClass('nozhe');
+//                $(this).addClass('nozhe');
+                $(this).hide();
             }
         });
         whoSeeI();

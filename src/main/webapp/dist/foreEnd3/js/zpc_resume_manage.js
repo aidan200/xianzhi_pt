@@ -744,7 +744,9 @@ Zdxz.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     str+=svn_btn
                     str+='</label>'
                     str+='</div>'
-                    str+='</td>'
+
+
+                    str+='</td> '
                     str+='<td class="all_no">'+data.list[i].resumes[0].resumeName+'</td>'
                     if(data.list[i].resumes[0].resumeSex==0){
                         str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">男</td>'
