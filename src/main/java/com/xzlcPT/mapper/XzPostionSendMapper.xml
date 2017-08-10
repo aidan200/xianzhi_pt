@@ -383,4 +383,9 @@
     SELECT send_id from xz_postion_send WHERE
     company_id=#{companyId,jdbcType=BIGINT}
   </select>
+  <select id="selByCollect" parameterType="com.xzlcPT.bean.XzPostionSend" resultType="java.lang.Long">
+    select send_id from xz_postion_send WHERE
+    resume_id = #{resumeId,jdbcType=BIGINT} and postion_id = #{postionId,jdbcType=BIGINT}
+    and send_time = #{sendTime,jdbcType=TIMESTAMP}
+  </select>
 </mapper>

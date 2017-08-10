@@ -681,6 +681,7 @@
     from xz_postion p
     where p.company_id = #{companyId,jdbcType=BIGINT} AND
     p.postion_name LIKE CONCAT('%',#{postionName,jdbcType=VARCHAR},'%')
+    and p.postion_id &lt;&gt;#{postionId,jdbcType=BIGINT}
   </select>
   <insert id="insertCollect" parameterType="java.util.Map">
     insert into xz_postion_collect

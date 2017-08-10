@@ -2,10 +2,7 @@ package com.xzlcPT.controller;
 
 import com.util.PageBean;
 import com.xzlcPT.bean.*;
-import com.xzlcPT.service.XzPostionSendService;
-import com.xzlcPT.service.XzPostionService;
-import com.xzlcPT.service.XzResumeCollectService;
-import com.xzlcPT.service.XzResumeService;
+import com.xzlcPT.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +29,8 @@ public class PostionSendController extends BaseController{
     private XzPostionService xzPostionService;
     @Autowired
     private XzResumeCollectService xzResumeCollectService;
+    @Autowired
+    private XzPostionSendMsgService xzPostionSendMsgService;
 
     //企业职位管理查询
     @ResponseBody
@@ -190,6 +189,7 @@ public class PostionSendController extends BaseController{
         map1.put("page",list.getPageNum());
         return map1;
     }
+    //
     @ResponseBody
     @RequestMapping("insertSelective.do")
     public Map insertSelective(@ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,Long resumeId){
@@ -213,7 +213,8 @@ public class PostionSendController extends BaseController{
     //收藏→邀请面试
     @ResponseBody
     @RequestMapping("comInsert.do")
-    public Map comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long collectId){
+    public Map comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long collectId,String pmsgValue,
+                        Date interviewTime,Long postionId){
         XzResumeCollect xzResumeCollect=xzResumeCollectService.selectByPrimaryKey(collectId);
         Map map=new HashMap();
         map.put("resumeId",xzResumeCollect.getResumeId());
@@ -221,9 +222,20 @@ public class PostionSendController extends BaseController{
         Date date=new Date();
         map.put("sendTime",date);
         map.put("sendState",2);
+        map.put("postionId",postionId);
         int i=postionSendService.insertSelective(map);
+        XzPostionSend xzPostionSend=new XzPostionSend();
+        xzPostionSend.setResumeId(xzResumeCollect.getResumeId());
+        xzPostionSend.setSendTime(date);
+        xzPostionSend.setPostionId(postionId);
+        Long sendId=postionSendService.selByCollect(xzPostionSend);
+        XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
+        xzPostionSendMsg.setSendId(sendId);
+        xzPostionSendMsg.setInterviewTime(interviewTime);
+        xzPostionSendMsg.setPmsgValue(pmsgValue);
+        int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map1=new HashMap();
-        if (i==1){
+        if (j==1){
             map1.put("msg","ok");
         }else {
             map1.put("msg","err");

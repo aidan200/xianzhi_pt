@@ -218,7 +218,7 @@
                         <h3>企业简介</h3>
                         <h4>
                             <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${xzPostion.companyId}" class="zp_zwxq_cont_right_cont_middle_a1"> ${xzPostion.company.companyName}</a>
-                            <a href="" class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
+                            <a isFollow="f" onclick="insertFollow()" id="gz" class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
                         </h4>
                         <ul>
                             <li>
@@ -400,6 +400,46 @@
             }
         })
 
+    }
+    var aa='${xzPostion.companyId}';
+    function insertFollow() {
+        if($('#gz').attr("isFollow")=='f'){
+            $.ajax({
+                url:"${pageContext.request.contextPath}/Follow/insertSelective.do",
+                data:{companyId:aa},
+                type:"get",
+                dataType:"json",
+                success:function(data){
+                    if(data.msg=="ok"){
+                        $('#gz').html("已关注");
+                        $('#gz').attr("isFollow","t");
+                    }
+                }
+            })
+        }else {
+            $('#gz').html("已关注");
+            $('#gz').attr("isFollow","t");
+        }
+    }
+    $(function () {
+        isFollow();
+    })
+    function isFollow() {
+        $.ajax({
+            url:"${pageContext.request.contextPath}/Follow/selFollowState.do",
+            data:{companyId:aa},
+            type:"get",
+            dataType:"json",
+            success:function(data) {
+                if (data.msg == "ok") {
+                    $('#gz').html("已关注");
+                    $('#gz').attr("isFollow", "t");
+                }else {
+                    $('#gz').html("关注");
+                    $('#gz').attr("isFollow", "f");
+                }
+            }
+        })
     }
 </script>
 

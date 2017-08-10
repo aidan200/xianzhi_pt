@@ -13,6 +13,8 @@ public class XzPostionSendMsg {
 
     private String pmsgValue;
 
+    private Date interviewTime;
+
     private Integer pmsgType;
 
     private Date createTime;
@@ -121,5 +123,13 @@ public class XzPostionSendMsg {
 
     public void setFiled3(String filed3) {
         this.filed3 = filed3 == null ? null : filed3.trim();
+    }
+
+    public void setInterviewTime(Date interviewTime) {
+        this.interviewTime = interviewTime;
+    }
+
+    public Date getInterviewTime() {
+        return interviewTime;
     }
 }

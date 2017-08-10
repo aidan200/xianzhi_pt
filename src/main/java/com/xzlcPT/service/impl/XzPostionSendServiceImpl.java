@@ -118,5 +118,11 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         return pageBean;
     }
 
+    @Override
+    public Long selByCollect(XzPostionSend xzPostionSend) {
+        Long sendId = postionSendMapper.selByCollect(xzPostionSend);
+        return sendId;
+    }
+
 
 }
