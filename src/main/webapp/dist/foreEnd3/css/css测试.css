@@ -1851,29 +1851,76 @@ textarea {
 
 .index_ii0 {
     width: 80%;
-    height: 30px;
+    height: 50px;
 }
 
 .index_1u {
     width: 100%;
-    height: 440px;
+    height: 450px;
     margin-top: 30px;
+    overflow: hidden;
 }
 
 .index_li1 {
     width: 180px;
-    height: 200px;
-    border: 1px solid #c0c0c0;
+    height: 210px;
+    border: 1px dashed #c0c0c0;
     margin: 10px;
     float: left;
     position: relative;
+    padding: 10px;
 }
 
 .index_no {
     cursor: pointer;
     position: absolute;
-    top: 5px;
+    top: 8px;
     right: 10px;
+    color: #c0c0c0;
+}
+
+.index_hui {
+    width: 120px;
+    height: 60px;
+}
+
+.index_com {
+    width: 100%;
+    height: 24px;
+    margin-top: 10px;
+    overflow: hidden;
+
+}
+
+.index_pos {
+    margin-top: 3px;
+    font-size: 17px;
+    width: 100%;
+    height: 25px;
+    overflow: hidden;
+}
+.index_pos > a{
+    color: #3d9ccc;
+}
+
+.index_01tag {
+    width: 100%;
+    height: 25px;
+    margin-top: 17px;
+    overflow: hidden;
+}
+
+.index_01s {
+    padding: 3px 5px;
+    background-color: #EEEEEE;
+    color: #666;
+}
+
+.index_01time {
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: right;
+    padding-right: 10px;
 }
 
 /*--摇摆的--*/

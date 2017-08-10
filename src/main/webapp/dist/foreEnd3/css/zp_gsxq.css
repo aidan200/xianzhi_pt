@@ -82,8 +82,10 @@ ul {
 
 .zp_spxq_cont_top > div {
     padding-top: 10px;
-    height: 110px;
-
+    height: auto;
+    overflow: hidden;
+    float: left;
+    width: 700px;
 }
 
 .zp_spxq_cont_top > div > h3 {
@@ -136,6 +138,7 @@ ul {
     font-size: 12px;
     color: #666;
     background-color: #fff;
+    margin-top: 5px;
 }
 
 .zp_spxq_cont_cont {
@@ -193,11 +196,13 @@ ul {
     float: left;
     margin-right: 15px;
 }
-li{
+
+li {
     list-style-type: none;
 }
+
 .zp_gsxq_cpjs img {
-    width: 600px;
+    width: 580px;
     height: 300px;
     display: block;
 }
@@ -293,7 +298,8 @@ li{
     margin-right: 50px;
     color: #666;
 }
-.gsxq_bu{
+
+.gsxq_bu {
     float: right;
     width: 80px;
     height: 30px;
@@ -305,6 +311,7 @@ li{
     line-height: 20px;
     outline: none;
 }
+
 .zp_gsxq_zpzw_li_left > p {
     height: 40px;
     line-height: 40px;
@@ -436,13 +443,14 @@ li{
 }
 
 .zp_spxq_cont_right_middle ul > li {
-    height: 30px;
-    line-height: 30px;
-    display: inline-block;
+    height: auto;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 235px;
+    line-height: 30px;
+    display: block;
+    word-break: break-all;
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis;*/
+    /*width: 235px;*/
 }
 
 .zp_spxq_dt {
@@ -515,7 +523,7 @@ li{
 
 .read-more {
     padding: 5px;
-    border-top: 4px double #ddd;
+    /*border-top: 4px double #ddd;*/
     background: #fff;
     color: #333;
 }
@@ -535,7 +543,7 @@ li{
 
 .read-more3 {
     padding: 5px;
-    border-top: 4px double #ddd;
+    /*border-top: 4px double #ddd;*/
     background: #fff;
     color: #333;
 }
