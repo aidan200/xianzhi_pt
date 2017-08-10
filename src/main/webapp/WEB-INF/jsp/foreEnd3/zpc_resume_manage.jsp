@@ -16,12 +16,12 @@
         var companyId = '${userLogin.company.companyId}';     //公司ID
         var path = '${pageContext.request.contextPath}/';     //全局路径
         var companyName='${userLogin.company.companyName}'             //公司名称
-        var companyLocation='${userLogin.company.companyLocation}'             //公司名称
+        var companyLocation='${userLogin.company.companyLocation}'             //地点
 
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
-    <%--<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zpc_resume_manage.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zpc_resume_manage.js"></script>
     <style>
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
             background-color: #ffffff;
@@ -60,11 +60,20 @@
             时间:<input type="text" class="tan3_input"><br>
             地点:<input type="text" class="tan3_input"><br>
             附加信息:<input type="text" class="tan3_input"><br>
+            <div class="zw">
+                选择职位:
+                <select class="">
+                    <option value="工作1">工作1</option>
+                    <option value="工作2">工作2</option>
+                    <option value="工作3">工作3</option>
+                </select>
+            </div>
+
 
         </div>
         <div>
-            <button class="bee_one">确定</button>
-            <button class="all_close3 bee_two">取消</button>
+            <button type="button" class="bee_one">确定</button>
+            <button type="button" class="all_close3 bee_two">取消</button>
         </div>
 
         <a href="###" class="all_close3 tan_close3 fa fa-remove"></a>
@@ -194,7 +203,7 @@
                             <input type="text" class="rem_input3">
                             <span style="margin-left: 10px">目前公司</span>
                             <input type="text" class="rem_input3">
-                            <button class="rem_b">搜索</button>
+                            <button type="button" class="rem_b">搜索</button>
 
                         </div>
 
@@ -259,7 +268,7 @@
                             <input type="text" class="rem_input3">
                             <span style="margin-left: 10px">目前公司</span>
                             <input type="text" class="rem_input3">
-                            <button class="rem_b">搜索</button>
+                            <button type="button" class="rem_b">搜索</button>
 
                         </div>
 
