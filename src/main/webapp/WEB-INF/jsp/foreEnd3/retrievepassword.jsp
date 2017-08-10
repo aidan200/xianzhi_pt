@@ -129,6 +129,7 @@
         });
         $('.myTab').hide();
         $('#repall_' + state2).show();
+        alert();
     });
 </script>
 </body>
