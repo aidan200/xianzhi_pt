@@ -45,7 +45,7 @@ parent.prototype.fy=function (pages,page){  //总页数  当前页数
     str+='</div>'
     return str              //返回
 }
-parent.prototype.fy_sj=function (parent,pages,page,This){        //参数1父级
+parent.prototype.fy_sj=function (parent,pages,page,obj){        //参数1父级
 
     var aa=$(parent).find('.zp_botv a')
     $(parent).find('.zp_botv a').each(function (i,e){
@@ -57,16 +57,18 @@ parent.prototype.fy_sj=function (parent,pages,page,This){        //参数1父级
         }
         if(i==0&&page!=1){                         //上一页事件(如果是第一页不设置事件)
             $(e).unbind().on('click',function (){
-                page-=1;                         //减少1页
-                This.init();
+                page-=1;         //减少1页
+                var data=obj.seekCont();
+                data.page=page
+                obj.loader(data,obj.cg,obj.sb);
             })
         }
         if(i!=0&&i!=aa.length-1&&i!=page){   //点击选页(当前页不设置事件)
             $(e).unbind().on('click',function (){
-
                 page=i;                          //设置你点的位置
-
-                This.init();
+                var data=obj.seekCont();
+                data.page=page
+                obj.loader(data,obj.cg,obj.sb);
             })
         }
         if(i==aa.length-1&&pages==page){              //样式
@@ -77,8 +79,9 @@ parent.prototype.fy_sj=function (parent,pages,page,This){        //参数1父级
         if(i==aa.length-1&&pages!=page){   //下一页(如果是最后一页不设置时间)
             $(e).unbind().on('click',function (){
                 page+=1;                         //增加1页
-
-                This.init();
+                var data=obj.seekCont();
+                data.page=page
+                obj.loader(data,obj.cg,obj.sb);
             })
         }
 
@@ -108,6 +111,8 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
 
             qxdx.pages=data.pages;
             qxdx.jl.qbzt=data.page;
+            qxdx.total=data.total;
+            $('#pop_one .pop_span span').html(qxdx.total);          //总记录数
             if(data.postionSendList.length!=0){
                 for(var i=0;i<data.postionSendList.length;i++){
                     str+='<div class="pop_cont">'
@@ -118,11 +123,17 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<div class="pop_test2">'
                     str+='<h4 style="display: inline-block">网站美工/网页设计师</h4>'
                     str+='<div style="color: #fc6866;display: inline-block;margin-left: 10px">10万</div>'
-                    str+='<div style="display: inline-block;margin-left: 20px">吉林省江山网络科技公司</div>'
+                    str+='<div style="display: inline-block;margin-left: 20px">'+data.postionSendList[i].company.companyName+'</div>'
                     str+='<div class="pop_in2">'
-                    str+='<span class="pop_sp">沈阳</span>|'
+                    str+='<span class="pop_sp">'+data.postionSendList[i].company.companyLocation+'</span>|'
                     str+='<span>1年经验</span>|'
-                    str+='<span>互联网/移动联网/电子商务</span>'
+                    var attr="";
+                    for(var j=0;j<data.postionSendList[i].company.domains.length;j++){
+                        var aa= data.postionSendList[i].company.domains[j].field.fieldName
+                        attr+=aa+'/'
+                    }
+                    attr=attr.substr(0,attr.length-1);
+                    str+='<span>'+attr+'</span>'                                       //行业插入完毕
                     str+='</div>'
                     str+='<div style="margin-top: -10px">'
                     str+='<button class="pop_but" style="margin-left: 200px">'
@@ -190,21 +201,19 @@ Qbzt.prototype.seekCont=function (){
     var _public_ssk={}
     _public_ssk.resumeId=resumeId;                              //ID
     _public_ssk.page=qxdx.jl.qbzt;                              //全部状态分页
-    _public_ssk.type=8;
+    _public_ssk.type=8;                                         //8是全查
     return _public_ssk
 }
 Qbzt.prototype.init=function (){            //初始化载入数据
     var This=this;
     var data=This.seekCont();
-
-    function cg(){
+    This.cg=function (){
         var fy= This.fy(qxdx.pages,qxdx.jl.qbzt);
         $('#pop_one .zp_botv').html(fy);                     //分页插入完成
         This.fy_sj('#pop_one',qxdx.pages,qxdx.jl.qbzt,This);  //事件插入完成
-
         This.xl_sj('#pop_one')
     }
-    function sb(){
+    This.sb=function (){
         //没找到数据
         $('#pop_one > div').each(function (i,e){                //清除之前记录
             if(i!=0&&$(e).attr('class')!='zp_botv'){
@@ -214,7 +223,7 @@ Qbzt.prototype.init=function (){            //初始化载入数据
         $('#pop_one .pop_top2').after(mzd);
 
     }
-    This.loader(data,cg,sb);                //加载数据
+    This.loader(data,This.cg,This.sb);                //加载数据
 
 
 
@@ -230,6 +239,8 @@ Qbzt.prototype.xxk_sj=function (){            //初始化载入数据
     })
 
 }
+
+
 
 
 function Ytd(){         //已投递
