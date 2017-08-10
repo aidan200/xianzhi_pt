@@ -181,53 +181,26 @@
         <%--</div>--%>
         <%--</div>--%>
 
+        <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/henblue.png" alt="" class="index_ii0">--%>
         <div class="index_oa">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hblue.png" alt="" class="index_line">
-            <div class="lunbo">
-                <ul id="index_ou">
-                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                                   class="index_lim"></span>
-                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
-                                class="index_s4">2017-08-08</span>
-                    </li>
-                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                                   class="index_lim"></span>
-                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
-                                class="index_s4">2017-08-08</span>
-                    </li>
-                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                                   class="index_lim"></span>
-                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
-                                class="index_s4">2017-08-08</span>
-                    </li>
-                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                                   class="index_lim"></span>
-                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
-                                class="index_s4">2017-08-08</span>
-                    </li>
-                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                                   class="index_lim"></span>
-                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
-                                class="index_s4">2017-08-08</span>
-                    </li>
-                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                                   class="index_lim"></span>
-                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span
-                                class="index_s4">2017-08-08</span>
-                    </li>
-                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_lim"></span>
-                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span class="index_s4">2017-08-08</span>
-                    </li>
-                    <li><span><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_lim"></span>
-                        <span class="index_s1">首席服装设计师</span><span class="index_s2">路易威登集团</span><span class="index_s3">年薪1000万</span><span class="index_s4">2017-08-08</span>
-                    </li>
 
-                </ul>
-            </div>
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hblue.png" alt="" class="index_line">
-
+            <ul class="index_1u">
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>1</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>2</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>3</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>4</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>5</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>6</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>7</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>8</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>9</li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>0</li>
+            </ul>
         </div>
+
+
     </div>
+
 
     <!--全民开发计划-->
     <div class="index_01">
@@ -680,16 +653,11 @@
 
 <%--职位--%>
 <script>
-    function lunbo(id, height) {
-        var ul = $(id);
-        var liFirst = ul.find('li:first');
-        $(id).animate({top: height}).animate({"top": 0}, 0, function () {
-            var clone = liFirst.clone();
-            $(id).append(clone);
-            liFirst.remove();
-        })
-    }
-    setInterval("lunbo('#index_ou','-50px')", 4000)
+    jQuery(".index_no").click(function () {
+        jQuery(this).closest('li').fadeOut(500, function () {
+            $(this).remove();
+        });
+    })
 </script>
 
 
