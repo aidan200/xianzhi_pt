@@ -243,7 +243,7 @@
                         <%--${xzPostion.company.companyNature eq 4?"政府":''}--%>
                         <%--</li>--%>
                         <%--</ul>--%>
-                        <div style="padding-left: 10px">
+                        <div style="padding-left: 10px;margin-bottom: 10px">
                             <div>
                                 <c:forEach items="${xzPostion.company.fields}" var="f1" varStatus="stat">
                                     <c:if test="${!stat.last}">
