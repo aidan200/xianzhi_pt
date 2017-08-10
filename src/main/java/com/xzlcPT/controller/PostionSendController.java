@@ -163,6 +163,9 @@ public class PostionSendController extends BaseController{
         xzPostionSendMsg.setFiled1(filed1);
         xzPostionSendMsg.setFiled1(filed2);
         xzPostionSendMsg.setPmsgValue(pmsgValue);
+        System.out.println("pmsgValue::::::::::::::::::::::"+pmsgValue);
+        System.out.println("filed1:::::::::::::::::::::::::::::::"+filed1);
+        System.out.println("sendId:::::::::::::::::::::::::::::::::"+sendId);
         int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map=new HashMap();
         if (j==1){
@@ -175,18 +178,10 @@ public class PostionSendController extends BaseController{
     //意向沟通
     @ResponseBody
     @RequestMapping("updateState1.do")
-    public Map updateState1(@ModelAttribute("userLogin")XzLogin xzLogin,String pmsgValue,
-                            Date interviewTime,String filed1,String filed2,Long sendId){
+    public Map updateState1(Long sendId){
         int i=postionSendService.updateState1(sendId);
-        XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
-        xzPostionSendMsg.setSendId(sendId);
-        xzPostionSendMsg.setPmsgValue(pmsgValue);
-        xzPostionSendMsg.setInterviewTime(interviewTime);
-        xzPostionSendMsg.setFiled1(filed1);
-        xzPostionSendMsg.setFiled2(filed2);
-        int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map=new HashMap();
-        if (j==1){
+        if (i==1){
             map.put("msg","ok");
         }else {
             map.put("msg","err");
