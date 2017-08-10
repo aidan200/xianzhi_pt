@@ -257,9 +257,9 @@
                     if (data.postionList[i].postionMm == -1) {
                         salary = '面议';
                     } else if (data.postionList[i].postionMm == data.postionList[i].postionYm) {
-                        salary = ((data.postionList[i].postionMm * 12 / 10000) + '').replace('.0', '') + '万';
+                        salary = Math.round(data.postionList[i].postionMm * 12 / 10000) + '万';
                     } else {
-                        salary = ((data.postionList[i].postionMm * 12 / 10000) + '').replace('.0', '') + '万-' + ((data.postionList[i].postionYm * 12 / 10000) + '').replace('.0', '') + '万';
+                        salary = Math.round(data.postionList[i].postionMm * 12 / 10000) + '万-' + Math.round(data.postionList[i].postionYm * 12 / 10000) + '万';
                     }
                     var time;//发布时间
                     var date = new Date(data.postionList[i].postionTime);

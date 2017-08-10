@@ -73,16 +73,6 @@ public class XzResumeServiceImpl implements XzResumeService{
     @Override
     public XzResume selResumeInformation(Long resumeId) {
        XzResume xzResume=resumeMapper.selResumeInformation(resumeId);
-        /*List<XzField> fieldList=xzResume.getFields();
-        Map map=new HashMap();
-        List<XzField> flist=new ArrayList<>();
-        for (int i=0;i<fieldList.size();i++){
-            Long fieldId=fieldList.get(i).getFieldId();
-            map.put("fieldId",fieldId);
-            XzField xzField=fieldMapper.selectByFieldId(map);
-            flist.add(xzField);
-        }
-        xzResume.setFields(flist);*/
         return xzResume;
     }
 
@@ -184,7 +174,7 @@ public class XzResumeServiceImpl implements XzResumeService{
         try {
             for (Field f : fs) {
                 if(f.getName().startsWith("resume")||f.getType().equals(List.class)){
-                    if(!f.getName().equals("resumeId")){
+                    if(!f.getName().equals("resumeId")&&!f.getName().equals("resumeField")&&!f.getName().equals("resumeNationality")){
                         f.setAccessible(true);
                         size++;
                         if(f.getType().equals(List.class)){

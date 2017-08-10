@@ -178,7 +178,7 @@
     j.jobexp_subordinate, j.jobexp_begin_time, j.jobexp_end_time, j.jobexp_duty, j.jobexp_dept,
     j.jobexp_company_scale, j.jobexp_company_type, j.jobexp_mm, j.jobexp_ym,
     s.skill_id, s.skill_name, s.skill_type, s.skill_value,
-    f2.field_name f2_name,f2.field_id f2_id
+    f2.field_name f2_name,f2.field_id f2_id,f2.field_type
   </sql>
   <sql id="selResumeInf">
     r.resume_id,r.resume_name,r.resume_sex,r.resume_intent_field,r.resume_birth,r.resume_workspace,

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzlcPT.dao.XzMsgMapper">
+  <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzMsg">
+    <id column="msg_id" jdbcType="BIGINT" property="msgId" />
+    <result column="msg_tital" jdbcType="VARCHAR" property="msgTital" />
+    <result column="msg_content" jdbcType="VARCHAR" property="msgContent" />
+    <result column="msg_send_id" jdbcType="BIGINT" property="msgSendId" />
+    <result column="msg_receive_id" jdbcType="BIGINT" property="msgReceiveId" />
+    <result column="msg_time" jdbcType="TIMESTAMP" property="msgTime" />
+    <result column="msg_type" jdbcType="INTEGER" property="msgType" />
+    <result column="msg_isread" jdbcType="INTEGER" property="msgIsread" />
+    <result column="out_id" jdbcType="BIGINT" property="outId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+    <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+    <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+    <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    msg_id, msg_tital, msg_content, msg_send_id, msg_receive_id, msg_time, msg_type, 
+    msg_isread, out_id, create_time, delete_time, filed1, filed2, filed3
+  </sql>
+  <select id="onReadCount" parameterType="java.lang.Long" resultType="java.lang.Integer">
+    SELECT count(*)
+    from xz_msg
+    where msg_receive_id = #{msgReceiveId,jdbcType=BIGINT}
+    and msg_isread = 0;
+  </select>
+  <select id="selectByReceiveId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_msg
+    where msg_receive_id = #{msgReceiveId,jdbcType=BIGINT}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xz_msg
+    where msg_id = #{msgId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from xz_msg
+    where msg_id = #{msgId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzlcPT.bean.XzMsg">
+    insert into xz_msg (msg_id, msg_tital, msg_content, 
+      msg_send_id, msg_receive_id, msg_time, 
+      msg_type, msg_isread, out_id, 
+      create_time, delete_time, filed1, 
+      filed2, filed3)
+    values (#{msgId,jdbcType=BIGINT}, #{msgTital,jdbcType=VARCHAR}, #{msgContent,jdbcType=VARCHAR}, 
+      #{msgSendId,jdbcType=BIGINT}, #{msgReceiveId,jdbcType=BIGINT}, #{msgTime,jdbcType=TIMESTAMP}, 
+      #{msgType,jdbcType=INTEGER}, #{msgIsread,jdbcType=INTEGER}, #{outId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, #{filed1,jdbcType=VARCHAR}, 
+      #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzMsg">
+    insert into xz_msg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="msgId != null">
+        msg_id,
+      </if>
+      <if test="msgTital != null">
+        msg_tital,
+      </if>
+      <if test="msgContent != null">
+        msg_content,
+      </if>
+      <if test="msgSendId != null">
+        msg_send_id,
+      </if>
+      <if test="msgReceiveId != null">
+        msg_receive_id,
+      </if>
+      <if test="msgTime != null">
+        msg_time,
+      </if>
+      <if test="msgType != null">
+        msg_type,
+      </if>
+      <if test="msgIsread != null">
+        msg_isread,
+      </if>
+      <if test="outId != null">
+        out_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="filed1 != null">
+        filed1,
+      </if>
+      <if test="filed2 != null">
+        filed2,
+      </if>
+      <if test="filed3 != null">
+        filed3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="msgId != null">
+        #{msgId,jdbcType=BIGINT},
+      </if>
+      <if test="msgTital != null">
+        #{msgTital,jdbcType=VARCHAR},
+      </if>
+      <if test="msgContent != null">
+        #{msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSendId != null">
+        #{msgSendId,jdbcType=BIGINT},
+      </if>
+      <if test="msgReceiveId != null">
+        #{msgReceiveId,jdbcType=BIGINT},
+      </if>
+      <if test="msgTime != null">
+        #{msgTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgType != null">
+        #{msgType,jdbcType=INTEGER},
+      </if>
+      <if test="msgIsread != null">
+        #{msgIsread,jdbcType=INTEGER},
+      </if>
+      <if test="outId != null">
+        #{outId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        #{filed3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xzlcPT.bean.XzMsg">
+    update xz_msg
+    <set>
+      <if test="msgTital != null">
+        msg_tital = #{msgTital,jdbcType=VARCHAR},
+      </if>
+      <if test="msgContent != null">
+        msg_content = #{msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSendId != null">
+        msg_send_id = #{msgSendId,jdbcType=BIGINT},
+      </if>
+      <if test="msgReceiveId != null">
+        msg_receive_id = #{msgReceiveId,jdbcType=BIGINT},
+      </if>
+      <if test="msgTime != null">
+        msg_time = #{msgTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgType != null">
+        msg_type = #{msgType,jdbcType=INTEGER},
+      </if>
+      <if test="msgIsread != null">
+        msg_isread = #{msgIsread,jdbcType=INTEGER},
+      </if>
+      <if test="outId != null">
+        out_id = #{outId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteTime != null">
+        delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filed1 != null">
+        filed1 = #{filed1,jdbcType=VARCHAR},
+      </if>
+      <if test="filed2 != null">
+        filed2 = #{filed2,jdbcType=VARCHAR},
+      </if>
+      <if test="filed3 != null">
+        filed3 = #{filed3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where msg_id = #{msgId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzMsg">
+    update xz_msg
+    set msg_tital = #{msgTital,jdbcType=VARCHAR},
+      msg_content = #{msgContent,jdbcType=VARCHAR},
+      msg_send_id = #{msgSendId,jdbcType=BIGINT},
+      msg_receive_id = #{msgReceiveId,jdbcType=BIGINT},
+      msg_time = #{msgTime,jdbcType=TIMESTAMP},
+      msg_type = #{msgType,jdbcType=INTEGER},
+      msg_isread = #{msgIsread,jdbcType=INTEGER},
+      out_id = #{outId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+      filed1 = #{filed1,jdbcType=VARCHAR},
+      filed2 = #{filed2,jdbcType=VARCHAR},
+      filed3 = #{filed3,jdbcType=VARCHAR}
+    where msg_id = #{msgId,jdbcType=BIGINT}
+  </update>
+</mapper>

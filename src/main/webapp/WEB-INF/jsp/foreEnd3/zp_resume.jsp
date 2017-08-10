@@ -80,7 +80,7 @@
                         </div>
                         <div class="resume_every">
                             婚姻状况：
-                            <span>${xzResume.resumeMarriage eq 0?'已婚':''}${xzResume.resumeMarriage eq 1?'未婚':''}</span>
+                            <span>${xzResume.resumeMarriage eq 0?'已婚':''}${xzResume.resumeMarriage eq 1?'未婚':''}${xzResume.resumeMarriage eq 2?'保密':''}</span>
                         </div>
                         <div class="resume_every">
                             目前状态：

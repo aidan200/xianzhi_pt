@@ -1841,6 +1841,80 @@ textarea {
     height: 200px;
 }
 
+/*--加的公司信息---*/
+.index_oa {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.index_line {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.lunbo {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#index_ou {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+
+
+}
+
+#index_ou li {
+    width: 90%;
+    height: 50px;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px dashed #666666;
+    margin: 0 auto;
+}
+
+#index_ou li span {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.index_lim {
+    width: 100px;
+    height: 50px;
+    display: inline-block;
+}
+
+.index_s1 {
+    width: 220px;
+    line-height: 50px;
+}
+
+.index_s2 {
+    width: 220px;
+    line-height: 50px;
+}
+
+.index_s3 {
+    width: 200px;
+    line-height: 50px;
+}
+
+.index_s4 {
+    width: 150px;
+    line-height: 50px;
+}
+
 /*--摇摆的--*/
 .shake {
     display: inline-block;
@@ -4239,6 +4313,7 @@ input[type="button"].fileInputButton {
 
 .zp_pl {
     width: 620px;
+    overflow: hidden;
     margin: 0 auto;
     height: auto;
 }
@@ -5917,6 +5992,14 @@ input[type="button"].fileInputButton {
     word-break: keep-all;
 }
 
+.rem_sp {
+    margin-left: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
 .pom_tr th {
     font-size: 13px;
     font-weight: normal;
@@ -5934,6 +6017,11 @@ input[type="button"].fileInputButton {
 .pom_h1 {
     height: 50px;
     position: relative;
+}
+
+.pom_h2 {
+    height: auto;
+    display: none;
 }
 
 .rem_d {
@@ -7559,9 +7647,46 @@ footer {
     width: 700px;
     margin: 40px auto;
     border: 1px solid #EEEEEE;
-    height: 800px;
-    background: url("../../../dist/foreEnd3/img/qi.png") no-repeat;
-    background-size: cover;
+    height: 900px;
+    background: url("../../../dist/foreEnd3/img/email2.png") no-repeat;
+    background-size: contain;
+    padding: 40px;
+}
+
+.ema_img {
+    width: 150px;
+    height: 60px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.ema_center {
+    padding: 20px;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+
+}
+
+.ema_d1 {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.ema_hr {
+    border-top: 1px dashed #FFFFff;
+}
+
+.ema_button {
+    width: 230px;
+    height: 40px;
+    margin-top: 30px;
+    background-color: #FFA500;
+    border: none;
+    color: #FFFFff;
+    outline: none;
+    border-radius: 3px;
+    font-size: 15px;
 }
 
 /*---------------------状态审核-------------------------*/
@@ -7701,7 +7826,8 @@ footer {
     border-radius: 3px;
     padding-left: 10px;
 }
-.aud_oi{
+
+.aud_oi {
     width: 300px;
     height: 370px;
     position: absolute;

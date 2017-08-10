@@ -59,29 +59,29 @@
     </collection>
   </resultMap>
   <resultMap id="ResumeInformation" type="com.xzlcPT.bean.XzResume">
-  <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
-  <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
-  <result column="resume_sex" jdbcType="INTEGER" property="resumeSex" />
-  <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
-  <result column="resume_ym" jdbcType="INTEGER" property="resumeYm" />
-  <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
-  <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
-  <result column="resume_state" jdbcType="VARCHAR" property="resumeState" />
-  <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+    <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
+    <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
+    <result column="resume_sex" jdbcType="INTEGER" property="resumeSex" />
+    <result column="resume_birth" jdbcType="DATE" property="resumeBirth" />
+    <result column="resume_ym" jdbcType="INTEGER" property="resumeYm" />
+    <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
+    <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
+    <result column="resume_state" jdbcType="VARCHAR" property="resumeState" />
+    <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
     <result column="collect_time" jdbcType="TIMESTAMP" property="collectTime"/>
     <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
       <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
     </collection>
   </resultMap>
-  
+
   <sql id="Base_Column_List">
-    send_id, resume_id, company_id, postion_id, send_time, send_state, send_visual, send_msg, 
-    send_time1, rs_time1, send_type, create_time, delete_time, field1, field2, field3, 
+    send_id, resume_id, company_id, postion_id, send_time, send_state, send_visual, send_msg,
+    send_time1, rs_time1, send_type, create_time, delete_time, field1, field2, field3,
     delete_falt
   </sql>
   <sql id="selResume">
-   e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
+    e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
     r.resume_position,p.postion_name,ps.send_state,ps.send_id
   </sql>
   <sql id="selCollect">
@@ -115,7 +115,7 @@
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from xz_postion_send
     where send_id = #{sendId,jdbcType=BIGINT}
@@ -125,18 +125,18 @@
     where send_id = #{sendId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.xzlcPT.bean.XzPostionSend">
-    insert into xz_postion_send (send_id, resume_id, company_id, 
-      postion_id, send_time, send_state, 
-      send_visual, send_msg, send_time1, 
-      rs_time1, send_type, create_time, 
-      delete_time, field1, field2, 
-      field3, delete_falt)
-    values (#{sendId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT}, 
-      #{postionId,jdbcType=BIGINT}, #{sendTime,jdbcType=TIMESTAMP}, #{sendState,jdbcType=INTEGER}, 
-      #{sendVisual,jdbcType=INTEGER}, #{sendMsg,jdbcType=VARCHAR}, #{sendTime1,jdbcType=TIMESTAMP}, 
-      #{rsTime1,jdbcType=TIMESTAMP}, #{sendType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{deleteTime,jdbcType=TIMESTAMP}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR}, 
-      #{field3,jdbcType=VARCHAR}, #{deleteFalt,jdbcType=TIMESTAMP})
+    insert into xz_postion_send (send_id, resume_id, company_id,
+    postion_id, send_time, send_state,
+    send_visual, send_msg, send_time1,
+    rs_time1, send_type, create_time,
+    delete_time, field1, field2,
+    field3, delete_falt)
+    values (#{sendId,jdbcType=BIGINT}, #{resumeId,jdbcType=BIGINT}, #{companyId,jdbcType=BIGINT},
+    #{postionId,jdbcType=BIGINT}, #{sendTime,jdbcType=TIMESTAMP}, #{sendState,jdbcType=INTEGER},
+    #{sendVisual,jdbcType=INTEGER}, #{sendMsg,jdbcType=VARCHAR}, #{sendTime1,jdbcType=TIMESTAMP},
+    #{rsTime1,jdbcType=TIMESTAMP}, #{sendType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+    #{deleteTime,jdbcType=TIMESTAMP}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR},
+    #{field3,jdbcType=VARCHAR}, #{deleteFalt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="java.util.Map">
     insert into xz_postion_send
@@ -298,33 +298,33 @@
   <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzPostionSend">
     update xz_postion_send
     set resume_id = #{resumeId,jdbcType=BIGINT},
-      company_id = #{companyId,jdbcType=BIGINT},
-      postion_id = #{postionId,jdbcType=BIGINT},
-      send_time = #{sendTime,jdbcType=TIMESTAMP},
-      send_state = #{sendState,jdbcType=INTEGER},
-      send_visual = #{sendVisual,jdbcType=INTEGER},
-      send_msg = #{sendMsg,jdbcType=VARCHAR},
-      send_time1 = #{sendTime1,jdbcType=TIMESTAMP},
-      rs_time1 = #{rsTime1,jdbcType=TIMESTAMP},
-      send_type = #{sendType,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
-      field1 = #{field1,jdbcType=VARCHAR},
-      field2 = #{field2,jdbcType=VARCHAR},
-      field3 = #{field3,jdbcType=VARCHAR},
-      delete_falt = #{deleteFalt,jdbcType=TIMESTAMP}
+    company_id = #{companyId,jdbcType=BIGINT},
+    postion_id = #{postionId,jdbcType=BIGINT},
+    send_time = #{sendTime,jdbcType=TIMESTAMP},
+    send_state = #{sendState,jdbcType=INTEGER},
+    send_visual = #{sendVisual,jdbcType=INTEGER},
+    send_msg = #{sendMsg,jdbcType=VARCHAR},
+    send_time1 = #{sendTime1,jdbcType=TIMESTAMP},
+    rs_time1 = #{rsTime1,jdbcType=TIMESTAMP},
+    send_type = #{sendType,jdbcType=INTEGER},
+    create_time = #{createTime,jdbcType=TIMESTAMP},
+    delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+    field1 = #{field1,jdbcType=VARCHAR},
+    field2 = #{field2,jdbcType=VARCHAR},
+    field3 = #{field3,jdbcType=VARCHAR},
+    delete_falt = #{deleteFalt,jdbcType=TIMESTAMP}
     where send_id = #{sendId,jdbcType=BIGINT}
   </update>
   <select id="selSendCount" parameterType="java.lang.Long" resultType="java.lang.Integer">
     select count(send_id) from xz_postion_send where delete_falt=0
-      and resume_id=#{resumeId,jdbcType=BIGINT}
-      and DATEDIFF(send_time,NOW()) =0
+    and resume_id=#{resumeId,jdbcType=BIGINT}
+    and DATEDIFF(send_time,NOW()) =0
   </select>
   <select id="selByState" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT send_id FROM xz_postion_send
     WHERE company_id=#{companyId,jdbcType=BIGINT}
     <if test="sendState != null and sendState !=null">
-    and send_state=#{sendState,jdbcType=INTEGER}
+      and send_state=#{sendState,jdbcType=INTEGER}
     </if>
     and send_type=0
   </select>
@@ -342,27 +342,27 @@
   <select id="selBysendId" parameterType="java.util.List" resultMap="selState">
     SELECT * FROM (
     select
-	<include refid="selById"/>
+    <include refid="selById"/>
     from xz_postion_send ps
     LEFT JOIN  xz_resume r ON r.resume_id = ps.resume_id
     LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id
     LEFT JOIN xz_postion p ON ps.postion_id = p.postion_id
-ORDER BY e.graduate_date DESC
-) s  WHERE s.delete_falt=0
-  <if test="list.size>0">
-  and s.send_id in
-    <foreach collection="list" item="sendId" index="index" open="(" close=")" separator=",">
-      #{sendId,jdbcType=BIGINT}
-    </foreach>
-  </if>
+    ORDER BY e.graduate_date DESC
+    ) s  WHERE s.delete_falt=0
+    <if test="list.size>0">
+      and s.send_id in
+      <foreach collection="list" item="sendId" index="index" open="(" close=")" separator=",">
+        #{sendId,jdbcType=BIGINT}
+      </foreach>
+    </if>
     <if test="list.size==0">
       and 1=2
     </if>
     GROUP BY s.send_id
   </select>
   <select id="selByType" parameterType="java.lang.Long" resultMap="BaseResultMap">
-  SELECT send_id FROM xz_postion_send
-  WHERE company_id=#{companyId,jdbcType=BIGINT}
+    SELECT send_id FROM xz_postion_send
+    WHERE company_id=#{companyId,jdbcType=BIGINT}
     and send_type=1
   </select>
   <update id="updateState" parameterType="java.lang.Long" >
@@ -373,7 +373,7 @@ ORDER BY e.graduate_date DESC
     WHERE send_id=#{sendId,jdbcType=BIGINT}
   </update>
   <update id="updateState1" parameterType="java.lang.Long">
-  update xz_postion_send set
+    update xz_postion_send set
     send_state=1,
     send_time=now()
     WHERE send_id=#{sendId,jdbcType=BIGINT}

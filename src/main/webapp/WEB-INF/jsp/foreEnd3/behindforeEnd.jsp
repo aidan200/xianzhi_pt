@@ -30,7 +30,7 @@
                 <li>先知平台</li>
             </ul>
             <div class="allcopy">
-                Copyright © 2017 imooc.com All Rights Reserved | 京ICP备 13046642号-2
+                Copyright © 2017 xianzhilanchuang.com All Rights Reserved | 辽ICP备17005906号-2
             </div>
         </div>
         <div class="allwei">
