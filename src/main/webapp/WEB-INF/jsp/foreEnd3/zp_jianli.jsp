@@ -456,7 +456,6 @@
 </div>
 <%----%>
 
-<div id="noClick" style="position: absolute;width: 100%;height: 40px;top:65px"></div>
 </body>
 </html>
 

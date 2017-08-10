@@ -152,7 +152,7 @@
         $('.myTab').hide();
         $('#register_'+state).show();
         if(state=='3'){
-            var i = 2;
+            var i = 4;
             setInterval(function () {
                 if (i == 0) {
                     location.href = "${pageContext.request.contextPath}/";
