@@ -44,9 +44,9 @@ public class XzPostionSend {
 
     private Integer ct;
 
-    private List<XzResume> resumes;
+    private XzResume resumes;
 
-    private List<XzResumeEducation> xzResumeEducations;
+    private XzResumeEducation xzResumeEducations;
 
     private String postionName;
 
@@ -232,19 +232,19 @@ public class XzPostionSend {
         return postionName;
     }
 
-    public void setResumes(List<XzResume> resumes) {
+    public void setResumes(XzResume resumes) {
         this.resumes = resumes;
     }
 
-    public List<XzResume> getResumes() {
+    public XzResume getResumes() {
         return resumes;
     }
 
-    public void setXzResumeEducations(List<XzResumeEducation> xzResumeEducations) {
+    public void setXzResumeEducations(XzResumeEducation xzResumeEducations) {
         this.xzResumeEducations = xzResumeEducations;
     }
 
-    public List<XzResumeEducation> getXzResumeEducations() {
+    public XzResumeEducation getXzResumeEducations() {
         return xzResumeEducations;
     }
 

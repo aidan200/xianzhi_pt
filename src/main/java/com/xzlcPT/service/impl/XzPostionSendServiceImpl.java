@@ -94,9 +94,9 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     }
 
     @Override
-    public PageBean<XzPostionSend> selByType(int page, int rows, Long companyId) {
+    public PageBean<XzPostionSend> selByType(int page, int rows, Map map) {
         PageHelper.startPage(page,rows);
-        List<XzPostionSend> list2=postionSendMapper.selByType(companyId);
+        List<XzPostionSend> list2=postionSendMapper.selByType(map);
         PageBean pageBean=new PageBean(list2);
         List<XzPostionSend> list1=pageBean.getList();
         List<Long> list=new ArrayList<>();
@@ -109,9 +109,9 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     }
 
     @Override
-    public PageBean<XzResume> selComCollect(int page, int rows, Long companyId) {
+    public PageBean<XzResume> selComCollect(int page, int rows,Map map) {
         PageHelper.startPage(page,rows);
-        List<XzResume> list=postionSendMapper.selComCollect(companyId);
+        List<XzResume> list=postionSendMapper.selComCollect(map);
         PageBean pageBean=new PageBean(list);
         List<XzResume> list1=pageBean.getList();
         return pageBean;
