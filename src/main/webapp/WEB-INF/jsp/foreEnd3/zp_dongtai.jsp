@@ -574,11 +574,11 @@
     $(function () {
         if('${param.type}'){
             if('${param.type}'=='cc'){
-                cc.init();
+                $('#to_dot_one').click();
             }else if('${param.type}'=='ff'){
-                ff.init();
+                $('#to_dot_three').click();
             }else if('${param.type}'=='sm'){
-                sm.init();
+                $('#to_dot_two').click();
             }
         }else{
             cc.init();

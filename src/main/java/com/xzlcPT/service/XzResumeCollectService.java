@@ -15,4 +15,6 @@ public interface XzResumeCollectService {
     List<XzResumeCollect> selByCompanyId(Long companyId);
 
     int insertSelective(XzResumeCollect xzResumeCollect);
+
+    XzResumeCollect selectByPrimaryKey(Long collectId);
 }
