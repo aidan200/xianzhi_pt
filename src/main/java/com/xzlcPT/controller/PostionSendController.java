@@ -210,21 +210,7 @@ public class PostionSendController extends BaseController{
         }
         return map1;
     }
-    @RequestMapping("insert.do")
-    public ModelAndView insert(Long companyId,Long postionId,Long resumeId){
-        ModelAndView mv=new ModelAndView("foreEnd3/test2");
-        Map map=new HashMap();
-        map.put("postionId",postionId);
-        map.put("resumeId",resumeId);
-        map.put("companyId",companyId);
-        Date date=new Date();
-        map.put("sendTime",date);
-        map.put("sendState",2);
-        map.put("sendType",0);
-        int i=postionSendService.insertSelective(map);
-        mv.addObject("i",i);
-        return mv;
-    }
+    //收藏→邀请面试
     @ResponseBody
     @RequestMapping("comInsert.do")
     public Map comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long collectId){

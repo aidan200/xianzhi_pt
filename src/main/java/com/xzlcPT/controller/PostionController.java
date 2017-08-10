@@ -1,6 +1,7 @@
 package com.xzlcPT.controller;
 
 import com.amazonaws.services.dynamodbv2.xspec.L;
+import com.util.MailUtil;
 import com.util.PageBean;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzPostion;
@@ -326,5 +327,14 @@ public class PostionController extends BaseController{
             map1.put("msg","err");
         }
         return map1;
+    }
+    //按公司Id查职位
+    @ResponseBody
+    @RequestMapping("selByCompanyId.do")
+    public Map selByCompanyId(@ModelAttribute("userLogin")XzLogin xzLogin){
+        Map map=new HashMap();
+        List<XzPostion> list=postionService.selByCompanyId(xzLogin.getCompany().getCompanyId());
+        map.put("list",list);
+        return map;
     }
 }
