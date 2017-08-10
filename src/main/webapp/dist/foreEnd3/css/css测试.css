@@ -1845,74 +1845,35 @@ textarea {
 .index_oa {
     width: 1000px;
     height: auto;
+    overflow: hidden;
     margin: 0 auto;
 }
 
-.index_line {
-    width: 100%;
+.index_ii0 {
+    width: 80%;
     height: 30px;
-    margin-top: 10px;
 }
 
-.lunbo {
+.index_1u {
+    width: 100%;
+    height: 440px;
+    margin-top: 30px;
+}
+
+.index_li1 {
+    width: 180px;
+    height: 200px;
+    border: 1px solid #c0c0c0;
+    margin: 10px;
+    float: left;
     position: relative;
-    width: 100%;
-    height: 350px;
-    overflow: hidden;
-    padding: 20px;
 }
 
-#index_ou {
+.index_no {
+    cursor: pointer;
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-
-
-}
-
-#index_ou li {
-    width: 90%;
-    height: 50px;
-    font-size: 16px;
-    color: #333;
-    border-bottom: 1px dashed #666666;
-    margin: 0 auto;
-}
-
-#index_ou li span {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-}
-
-.index_lim {
-    width: 100px;
-    height: 50px;
-    display: inline-block;
-}
-
-.index_s1 {
-    width: 220px;
-    line-height: 50px;
-}
-
-.index_s2 {
-    width: 220px;
-    line-height: 50px;
-}
-
-.index_s3 {
-    width: 200px;
-    line-height: 50px;
-}
-
-.index_s4 {
-    width: 150px;
-    line-height: 50px;
+    top: 5px;
+    right: 10px;
 }
 
 /*--摇摆的--*/
