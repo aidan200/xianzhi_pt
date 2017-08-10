@@ -1,14 +1,14 @@
 package com.xzlcPT.dao;
 
-import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.bean.XzPostionSend;
 import com.xzlcPT.bean.XzResume;
-import com.xzlcPT.service.XzPostionService;
 
 import java.util.List;
 import java.util.Map;
 
 public interface XzPostionSendMapper {
+
+    List<XzPostionSend> selSendByRIdAndType(Map map);
 
     Integer selisSend(Map map);
 

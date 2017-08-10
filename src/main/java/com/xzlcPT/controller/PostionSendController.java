@@ -32,6 +32,19 @@ public class PostionSendController extends BaseController{
     @Autowired
     private XzPostionSendMsgService xzPostionSendMsgService;
 
+    //个人简历投递查询
+    @ResponseBody
+    @RequestMapping("selSendByMember.do")
+    public Map selSendByMember(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer type){
+        Map map = new HashMap();
+        XzResume resume = xzResumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        PageBean<XzPostionSend> pageBean = postionSendService.selSendByRIdAndType(page,rows,resume.getResumeId(),type);
+        map.put("postionSendList",pageBean.getList());
+        map.put("page",pageBean.getPageNum());
+        map.put("pages",pageBean.getPages());
+        map.put("total",pageBean.getTotal());
+        return map;
+    }
 
     //简历投递
     @ResponseBody
