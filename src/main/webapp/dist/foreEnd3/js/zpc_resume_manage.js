@@ -19,6 +19,27 @@ mzd+='<class="rem_img">'
 mzd+='<p class="all_p"> 你暂时没有未处理的简历</p>'
 mzd+='</div>'
 mzd+='</div>'
+var Gszw;           //公司职位
+
+function gszw(){
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        dataType:'json',
+        url:path+'Postion/selByCompanyId.do',
+        success:function (data){
+            Gszw=data
+            var str='';
+            for(var i=0;i<Gszw.list.length;i++){
+            str+='<option value="'+Gszw.list[i].postionId+'">'+Gszw.list[i].postionName+'</option>'
+            }
+            $('.allnew3_tan select').html(str)
+        },error:function (){ //报错执行的
+            alert('基本资料修改错误')
+        }
+    })
+
+}
 
 
 function Jl(){
@@ -188,12 +209,20 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //面试职业
                         str+='<td class="all_no">空着呢</td>'  //发送时间
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'  //发送时间
-                        str+='<td class="all_no">空着呢</td>'  //面试时间
+                        str+='<td class="all_no">'+getNowFormatDate(data.list[i].interviewTime)+'</td>'  //面试时间
                         str+='<td class="all_no">'
                         str+='<a href="javascript:;" class="zw_yl">预览</a>'
                         str+='&nbsp;'
                         str+='<a href="javascript:;" class="zw_sc">删除</a>'
+                        str+='<button class="rem_sp" type="button">'
+                        str+='<span class="fa fa-hand-o-down"></span>'
+                        str+='</button>'
 
+                        str+='</td>'
+                        str+='</tr>'
+                        str+='<tr class="pom_h2" id="divContainer">'
+                        str+='<td colspan="12" style="padding-left: 40px;line-height: 25px">'
+                        str+='ssahdkfjadfjkdsfajksdfjdbfjsdbjsdnbjkasndfkjsdnckjadsncjk'
                         str+='</td>'
                         str+='</tr>'
 
@@ -341,7 +370,20 @@ Public.prototype.sc=function (parent,This){
 Public.prototype.yyms=function (parent,This){        //面试通知
 
     $(parent).find('.zw_yums').unbind().on('click',function(){        //预约面试
+
         var parent2=$(this).parent().parent();               //获取到
+        if(parent=='#rem_five'){
+            $('.allnew3_tan .zw').css({"display":"none"});
+        }else{
+            $('.allnew3_tan .zw').css({"display":"inline-block"});
+        }
+
+        $('.allnew3_tan input').eq(0).val(companyName);
+        $('.allnew3_tan input').eq(1).val('');
+        $('.allnew3_tan input').eq(2).val(companyLocation);
+        $('.allnew3_tan input').eq(3).val('');
+
+
         $('.newpop3').addClass('is-visible');
 
         $('.bee_one').unbind().on('click',function (){
@@ -350,11 +392,17 @@ Public.prototype.yyms=function (parent,This){        //面试通知
             var aa=$('.allnew3_tan input')
             var data={
                 sendId:parent2.attr('data-id'),
-                gsmc:aa.eq(0).val(),                            //公司名称
-                sj:aa.eq(1).val(),                              //时间
-                dd:aa.eq(2).val(),                              //地点
-                fjxx:aa.eq(3).val(),                            //附加信息
+                filed2:aa.eq(0).val(),                            //公司名称
+                interviewTime:aa.eq(1).val(),                                  //时间
+                filed1:aa.eq(2).val(),                              //地点
+                pmsgValue:aa.eq(3).val(),                            //附加信息
+
             };
+            if(parent=='#rem_five'){
+
+            }else{
+                data.postionId=$('.allnew3_tan select').val();             //职位信息
+            }
             $.ajax({
                 type:"post",    //提交方式
                 async:true,  //是否异步
@@ -413,13 +461,15 @@ Jlrzp.prototype.upload=function (){     //初始化加载
     }
     This.huoqu('#rem_one',data,This.cg,This.sb);    //调用加载方法（参数1 选择给谁加，参数2 参数)
 }
-Jlrzp.prototype.JS=function (){                     //点击事件加载
+Jlrzp.prototype.JS=function (){                     //
+
     var This=this
     $('#myTab li a').eq(0).unbind().on('click',function (){      //经理人应聘选项卡加载
         This.upload();
     })
-    $(This.DOM.parent).find('.rem_b').unbind().on('click',function (){   //搜索事件按钮
+    $('#rem_one').find('.rem_b').unbind().on('click',function (){   //搜索事件按钮
         jl.page=1;                                              //搜索时候
+
         This.upload();
     })
 }
@@ -557,7 +607,12 @@ Mstz.prototype.yl=function (){     //预览事件
     $('#rem_seven').find('.zw_yl').unbind().on('click',function(){        //预览事件
         alert('aaa')
     })
-    This.sc('#rem_seven',This)                 //删除方法
+    This.sc('#rem_seven',This)                  //删除方法
+    $(".rem_sp").click(function () {            //点击展开方法
+        var aa=$(this).parent().parent().next();
+        $(aa).toggle(300);
+    });
+
 }
 
 function Qb(){                   //未查看
@@ -702,13 +757,11 @@ Qb.prototype.yl=function (){     //预览事件
     $('#rem_six').find('.zw_yl').unbind().on('click',function(){        //预览事件
         alert('aaa')
     })
-    $('#rem_six').find('.zw_sc').unbind().on('click',function(){        //删除事件
-        This.sc('#rem_seven',This)                                       //删除方法
-    })
+    This.sc('#rem_six',This)                 //删除方法
 }
 
-//主动下载开始
 
+//主动下载开始
 function Zdxz(){                   //未查看
     this.DOM={
         parent:$('#rem_three')
@@ -867,8 +920,7 @@ Wdsc.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     ////////////////////////////////////////////////////
                     $('#rem_four .jl_length').html( jl.total);
                     $(tbody).find('');
-
-                    str+='<tr class="pom_h" data-id="'+data.list[i].resumeId+'">'
+                    str+='<tr class="pom_h"  data-id="'+data.list[i].resumeId+'" data-id3="'+data.list[i].collectId+'" >'
                     str+='<td>'
                     str+='<div class="checkboxWrapper theme3 extraSmallCheckboxSize">'
                     str+='<input type="checkbox" id="'+tbody+i+'" class="choose2">'
@@ -968,7 +1020,49 @@ Wdsc.prototype.JS=function (){                     //点击事件加载
 Wdsc.prototype.yl=function (){     //预览事件
     var This=this;
     $('#rem_four').find('.zw_yl').unbind().on('click',function(){        //预览事件
-        alert('aa')
+        var parent2=$(this).parent().parent();               //获取到
+        if(parent=='#rem_five'){
+            $('.allnew3_tan .zw').css({"display":"none"});
+        }else{
+            $('.allnew3_tan .zw').css({"display":"inline-block"});
+        }
+
+        $('.allnew3_tan input').eq(0).val(companyName);
+        $('.allnew3_tan input').eq(1).val('');
+        $('.allnew3_tan input').eq(2).val(companyLocation);
+        $('.allnew3_tan input').eq(3).val('');
+
+        $('.newpop3').addClass('is-visible');
+
+        $('.bee_one').unbind().on('click',function (){
+
+            $('.newpop3').removeClass('is-visible');            //关闭
+            var aa=$('.allnew3_tan input')
+            var data={
+                collectId:$(parent2).attr('data-id3'),
+                filed2:aa.eq(0).val(),                            //公司名称
+                interviewTime:aa.eq(1).val(),                   //时间
+                filed1:aa.eq(2).val(),                              //地点                 2
+                pmsgValue:aa.eq(3).val(),                       //附加信息
+                postionId:$('.allnew3_tan select').val(),       //职位信息
+            };
+            $.ajax({
+                type:"post",    //提交方式
+                async:true,  //是否异步
+                data:data,        //转为JSON格式
+                dataType:'text',                   //定义返回data类型
+                url:path+'PostionSend/comInsert.do',    //路径
+                success:function (data){//data 就是数据 json
+
+
+                    This.upload();
+                },error:function (){ //报错执行的
+                    alert('基本资料修改错误')
+                }
+
+            })
+
+        })
     })
     $('#rem_four').find('.zw_sc').unbind().on('click',function(){        //删除事件
         alert('aa')
@@ -982,6 +1076,9 @@ Wdsc.prototype.yl=function (){     //预览事件
 
 
 $(function (){
+    gszw();
+
+
     var  jlrzp=new Jlrzp();
     jlrzp.upload();
 
@@ -989,7 +1086,7 @@ $(function (){
      yxgt.JS();             //点击时候执行
 
     var  mstz=new Mstz();
-    mstz.JS();             //点击时候执行
+     mstz.JS();             //点击时候执行
 
     var  qb=new Qb();
     qb.JS();             //点击时候执行
