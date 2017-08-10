@@ -38,7 +38,7 @@
             <div class="aud_in">
                 <div class="aud_left" style="margin-top: 100px">
                     <div class="aud_ne">
-                        <input type="hidden" name="companyId" value="">
+                        <%--<input type="hidden" name="companyId" value="">--%>
                         <div class="aud_every">
                             <span>公司名称</span>&emsp;<input type="text" name="companyName" placeholder="请填写公司营业执照上的公司名称全称" class="aud_g">
                         </div>

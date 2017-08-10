@@ -59,8 +59,7 @@
                                         <span style="float: right;margin-right: 5px"><a href="${pageContext.request.contextPath}/xzMsg/selMsgAll.do" class="fa fa-envelope" style="color: #fc6866"> (<span id="noread">10</span>)</a></span>
                                     </li>
                                     <li><span class="head_new"></span><a href="#">我的简历</a></li>
-                                    <li><span class="head_new"></span><a href="#">查看职位信息</a></li>
-                                    <li><span class="head_new"></span><a href="#">balabala</a></li>
+                                    <li><span class="head_new"></span><a href="#">账号安全</a></li>
                                 </ul>
                             </li>
                         </a>
