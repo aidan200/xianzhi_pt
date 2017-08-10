@@ -46,12 +46,9 @@
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="companynav.jsp"/>
 
-<a href="###" class="newtan"><span>点我</span></a>
 
 
-<%----%>
-<%--带input--%>
-<a href="###" class="newtan3"><span>点我</span></a>
+
 <div class="newpop3" role="alert">
     <div class="newpop3_container">
         <div class="allnew3_tan">
