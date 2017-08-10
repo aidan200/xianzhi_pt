@@ -50,6 +50,26 @@ public class XzPostionSend {
 
     private String postionName;
 
+    private XzPostion postion;
+
+    private XzCompany company;
+
+    public XzCompany getCompany() {
+        return company;
+    }
+
+    public void setCompany(XzCompany company) {
+        this.company = company;
+    }
+
+    public XzPostion getPostion() {
+        return postion;
+    }
+
+    public void setPostion(XzPostion postion) {
+        this.postion = postion;
+    }
+
     public Integer getCt() {
         return ct;
     }

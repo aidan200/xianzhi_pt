@@ -1,5 +1,7 @@
 
 
+import com.util.MakeKey;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.math.BigInteger;
@@ -14,6 +16,7 @@ public class TestC {
         Matcher m = p.matcher("aidan200@sina.student.com");
         boolean bl = m.matches();
         System.out.println(bl);*/
-
+        String key = MakeKey.makeKey();
+        System.out.println(key);
     }
 }

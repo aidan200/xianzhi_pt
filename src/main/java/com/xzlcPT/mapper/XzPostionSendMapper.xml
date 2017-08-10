@@ -95,6 +95,16 @@
     r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type,
     ps.send_time,m.interview_time
   </sql>
+  <!--按简历id和状态查询投递-->
+  <select id="selSendByRIdAndType" parameterType="Map" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_postion_send
+    where resume_id = #{resumeId,jdbcType=BIGINT}
+    <if test="type != null">
+      and send_state = #{type,jdbcType=INTEGER}
+    </if>
+  </select>
   <!--投递计数-->
   <select id="selSendCountByCorRId" parameterType="Map" resultMap="theCount">
     SELECT count(send_id) ct,send_time

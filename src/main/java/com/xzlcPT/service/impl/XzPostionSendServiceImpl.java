@@ -1,17 +1,22 @@
 package com.xzlcPT.service.impl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.util.PageBean;
-import com.xzlcPT.bean.XzPostionSend;
-import com.xzlcPT.bean.XzResume;
+import com.xzlcPT.bean.*;
+import com.xzlcPT.dao.XzCompanyDomainMapper;
+import com.xzlcPT.dao.XzCompanyMapper;
+import com.xzlcPT.dao.XzPostionMapper;
 import com.xzlcPT.dao.XzPostionSendMapper;
 import com.xzlcPT.service.XzPostionSendService;
+import com.xzlcPT.service.XzPostionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +28,33 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
 
     @Autowired
     private XzPostionSendMapper postionSendMapper;
+    @Autowired
+    private XzPostionMapper postionMapper;
+    @Autowired
+    private XzCompanyMapper companyMapper;
+    @Autowired
+    private XzCompanyDomainMapper companyDomainMapper;
+
+
+    @Override
+    public PageBean<XzPostionSend> selSendByRIdAndType(int page,int rows,Long resumeId, Integer type) {
+        Map sMap = new HashMap();
+        if(type!=8){
+            sMap.put("type",type);
+        }
+        sMap.put("resumeId",resumeId);
+        PageHelper.startPage(page,rows);
+        List<XzPostionSend> postionSends = postionSendMapper.selSendByRIdAndType(sMap);
+        postionSends.forEach(ps->{
+            XzPostion postion = postionMapper.selectByPrimaryKey(ps.getPostionId());
+            XzCompany company = companyMapper.selectByPrimaryKey(ps.getCompanyId());
+            List<XzCompanyDomain> companyDomains = companyDomainMapper.selectByCompanyId(company.getCompanyId());
+            company.setDomains(companyDomains);
+            ps.setPostion(postion);
+            ps.setCompany(company);
+        });
+        return new PageBean<>(postionSends);
+    }
 
     @Override
     public List<XzPostionSend> selSendCountByCorRId(Map map) {
