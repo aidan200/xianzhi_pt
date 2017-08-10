@@ -27,7 +27,6 @@
 
         .ema_center {
 
-
         }
 
         .ema_d1 {
@@ -72,7 +71,7 @@
                 &emsp;&emsp;同时，为了您能够快速收到企业HR和猎头顾问的精准职位邀请，让简历曝光机会提升68%，成功应聘率提升23%，我们强烈建议您完善简历。
             </div>
 
-            <button style="width: 230px;
+            <a style="width: 230px;
             height: 40px;
             margin-top: 30px;
             background-color: #FFA500;
@@ -80,7 +79,9 @@
             color: #FFFFff;
             outline: none;
             border-radius: 3px;
-            font-size: 15px;">开启邮箱验证，走进先知世界</button>
+            display: block;
+            font-size: 15px;
+text-align: center;line-height: 40px" href="###">开启邮箱验证，走进先知世界</a>
 
         </div>
     </div>

@@ -26,7 +26,7 @@
 
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/lib/jquery/jquery-3.2.1.min.js"></script>
     <style>
-        *{
+        * {
             -webkit-box-sizing: content-box;
             -moz-box-sizing: content-box;
             box-sizing: content-box;
@@ -126,18 +126,12 @@
                 <%----%>
                 <div class="wrap3">
                     <div>
-                        <div>
-                            <c:forEach var="p1" items="${xzCompany.products}">
-                                <dl class="clearfix" style="display: block;">
-                                    <dt><img src="${pageContext.request.contextPath}/uploadImg/${p1.productUrl}" alt=""></dt>
-                                    <dd>
-                                        <p data-selector="detail">${p1.productIntro}</p>
-                                    </dd>
-                                </dl>
-                            </c:forEach>
-                        </div>
-
-
+                        <c:forEach var="p1" items="${xzCompany.products}">
+                            <div class="clearfix" style="display: block;">
+                                <img src="${pageContext.request.contextPath}/uploadImg/${p1.productUrl}" alt="">
+                                <p data-selector="detail">${p1.productIntro}</p>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="read-more3"></div>
@@ -174,7 +168,8 @@
                         <c:forEach var="po" items="${plist}">
                             <li>
                                 <div class="zp_gsxq_zpzw_li_left">
-                                    <p><a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${po.postionId}">${po.postionName}</a>
+                                    <p>
+                                        <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${po.postionId}">${po.postionName}</a>
                                         <button type="button" class="gsxq_bu">立即应聘</button>
                                     </p>
                                     <p><span>
@@ -183,10 +178,13 @@
                                                 面议
                                             </c:when>
                                             <c:when test="${po.postionMm==p.postionYm}">
-                                                <fmt:formatNumber value="${po.postionMm*12/10000}" maxFractionDigits="0"/>万
+                                                <fmt:formatNumber value="${po.postionMm*12/10000}"
+                                                                  maxFractionDigits="0"/>万
                                             </c:when>
                                             <c:otherwise>
-                                                <fmt:formatNumber value="${po.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${po.postionYm*12/10000}" maxFractionDigits="0"/>万
+                                                <fmt:formatNumber value="${po.postionMm*12/10000}"
+                                                                  maxFractionDigits="0"/>万-<fmt:formatNumber
+                                                    value="${po.postionYm*12/10000}" maxFractionDigits="0"/>万
                                             </c:otherwise>
                                         </c:choose>
                                     </span>
@@ -273,12 +271,12 @@
                         <hr>
                     </h2>
 
-                        <c:forEach var="m1" items="${xzCompany.miens}">
-                            <img src="${pageContext.request.contextPath}/uploadImg/${m1.mienUrl}" alt="">
-                            <li>
-                                        ${m1.mienIntro}
-                            </li>
-                        </c:forEach>
+                    <c:forEach var="m1" items="${xzCompany.miens}">
+                        <img src="${pageContext.request.contextPath}/uploadImg/${m1.mienUrl}" alt="">
+                        <li>
+                                ${m1.mienIntro}
+                        </li>
+                    </c:forEach>
 
                 </div>
             </div>
@@ -305,7 +303,7 @@
     postion.container = "zp_spxq_dts";
     postion.x = '${xzCompany.companyX}';
     postion.y = '${xzCompany.companyY}';
-    var aa='${xzCompany.companyId}';
+    var aa = '${xzCompany.companyId}';
     console.log(postion);
     var myMap = new myMap(postion);
     $(function () {
@@ -313,22 +311,22 @@
     })
 
     function insertFollow() {
-        if($('#gz').attr("isFollow")=='f'){
+        if ($('#gz').attr("isFollow") == 'f') {
             $.ajax({
-                url:"${pageContext.request.contextPath}/Follow/insertSelective.do",
-                data:{companyId:aa},
-                type:"get",
-                dataType:"json",
-                success:function(data){
-                    if(data.msg=="ok"){
+                url: "${pageContext.request.contextPath}/Follow/insertSelective.do",
+                data: {companyId: aa},
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    if (data.msg == "ok") {
                         $('#gz').html("已关注");
-                        $('#gz').attr("isFollow","t");
+                        $('#gz').attr("isFollow", "t");
                     }
                 }
             })
-        }else {
+        } else {
             $('#gz').html("已关注");
-            $('#gz').attr("isFollow","t");
+            $('#gz').attr("isFollow", "t");
         }
     }
     $(function () {
@@ -336,15 +334,15 @@
     })
     function isFollow() {
         $.ajax({
-            url:"${pageContext.request.contextPath}/Follow/selFollowState.do",
-            data:{companyId:aa},
-            type:"get",
-            dataType:"json",
-            success:function(data) {
+            url: "${pageContext.request.contextPath}/Follow/selFollowState.do",
+            data: {companyId: aa},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
                 if (data.msg == "ok") {
                     $('#gz').html("已关注");
                     $('#gz').attr("isFollow", "t");
-                }else {
+                } else {
                     $('#gz').html("关注");
                     $('#gz').attr("isFollow", "f");
                 }
