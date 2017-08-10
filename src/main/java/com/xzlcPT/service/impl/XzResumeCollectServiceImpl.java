@@ -30,4 +30,10 @@ public class XzResumeCollectServiceImpl implements XzResumeCollectService{
         int i=resumeCollectMapper.insertSelective(xzResumeCollect);
         return i;
     }
+
+    @Override
+    public XzResumeCollect selectByPrimaryKey(Long collectId) {
+        XzResumeCollect xzResumeCollect=resumeCollectMapper.selectByPrimaryKey(collectId);
+        return xzResumeCollect;
+    }
 }

@@ -4,6 +4,7 @@ import com.util.PageBean;
 import com.xzlcPT.bean.*;
 import com.xzlcPT.service.XzPostionSendService;
 import com.xzlcPT.service.XzPostionService;
+import com.xzlcPT.service.XzResumeCollectService;
 import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class PostionSendController extends BaseController{
     private XzResumeService xzResumeService;
     @Autowired
     private XzPostionService xzPostionService;
+    @Autowired
+    private XzResumeCollectService xzResumeCollectService;
 
     //企业职位管理查询
     @ResponseBody
@@ -224,9 +227,10 @@ public class PostionSendController extends BaseController{
     }
     @ResponseBody
     @RequestMapping("comInsert.do")
-    public Map comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long resumeId){
+    public Map comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long collectId){
+        XzResumeCollect xzResumeCollect=xzResumeCollectService.selectByPrimaryKey(collectId);
         Map map=new HashMap();
-        map.put("resumeId",resumeId);
+        map.put("resumeId",xzResumeCollect.getResumeId());
         map.put("companyId",xzLogin.getCompany().getCompanyId());
         Date date=new Date();
         map.put("sendTime",date);

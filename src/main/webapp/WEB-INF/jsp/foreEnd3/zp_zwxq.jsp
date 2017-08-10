@@ -217,9 +217,8 @@
                     <div class="zp_zwxq_cont_right_cont_middle">
                         <h3>企业简介</h3>
                         <h4>
-                            <a href="" class="zp_zwxq_cont_right_cont_middle_a1"> ${xzPostion.company.companyName}</a>
-                            <a href="javascript:;"
-                               class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
+                            <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${xzPostion.companyId}" class="zp_zwxq_cont_right_cont_middle_a1"> ${xzPostion.company.companyName}</a>
+                            <a href="" class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
                         </h4>
                         <ul>
                             <li>
