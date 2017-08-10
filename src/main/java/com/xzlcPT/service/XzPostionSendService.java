@@ -25,9 +25,9 @@ public interface XzPostionSendService {
 
     PageBean<XzPostionSend> selByState(int page,int rows,Map map);
 
-    PageBean<XzPostionSend> selByType(int page,int rows,Long companyId);
+    PageBean<XzPostionSend> selByType(int page,int rows,Map map);
 
-    PageBean<XzResume> selComCollect(int page,int rows,Long companyId);
+    PageBean<XzResume> selComCollect(int page,int rows,Map map);
 
     int deleteByPrimaryKey(Long sendId);
 
