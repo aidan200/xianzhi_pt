@@ -165,10 +165,10 @@
                         </div>
                         <div class="col-lg-5 zp_index_cont_right_bottom_right">
                             <ul>
-                                <li><a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}" target="_blank"><span class="fa fa-eye"></span></a></li>
-                                <li><a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}"><span class="fa fa-download"></span></a></li>
-                                <li><a onclick="flashResume()"><span class="fa fa-refresh" ></span></a></li>
-                                <li><a href="${pageContext.request.contextPath}/Resume/goEditResume.do"><span class="fa fa-pencil"></span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/Resume/selResumeInformation.do?resumeId=${resume.resumeId}" style="color: #9d9d9d" target="_blank"><span class="fa fa-eye"></span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/Resume/ResumeDownload.do?resumeId=${resume.resumeId}" style="color: #9d9d9d"><span class="fa fa-download"></span></a></li>
+                                <li><a onclick="flashResume()" style="color: #9d9d9d"><span class="fa fa-refresh" ></span></a></li>
+                                <li><a href="${pageContext.request.contextPath}/Resume/goEditResume.do" style="color: #9d9d9d"><span class="fa fa-pencil"></span></a></li>
                             </ul>
                         </div>
                     </div>

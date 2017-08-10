@@ -34,7 +34,7 @@ parent.prototype.fy=function (pages,page){  //总页数  当前页数
     str+='</div>'
     return str              //返回
 }
-parent.prototype.fy_sj=function (parent,pages,page){        //参数1父级
+parent.prototype.fy_sj=function (parent,pages,page,This){        //参数1父级
     var This=this;
     var aa=$(parent).find('.zp_botv a')
     $(parent).find('.zp_botv a').each(function (i,e){
@@ -46,8 +46,8 @@ parent.prototype.fy_sj=function (parent,pages,page){        //参数1父级
         }
         if(i==0&&page!=1){                         //上一页事件(如果是第一页不设置事件)
             $(e).unbind().on('click',function (){
-
                 data.page-=1;                         //减少1页
+                This.init();
 
             })
         }
@@ -55,7 +55,7 @@ parent.prototype.fy_sj=function (parent,pages,page){        //参数1父级
             $(e).unbind().on('click',function (){
 
                 data.page=i;                          //设置你点的位置
-
+                This.init();
             })
         }
         if(i==aa.length-1&&pages==page){              //样式
@@ -65,15 +65,19 @@ parent.prototype.fy_sj=function (parent,pages,page){        //参数1父级
         }
         if(i==aa.length-1&&pages!=page){   //下一页(如果是最后一页不设置时间)
             $(e).unbind().on('click',function (){
-
                 data.page+=1;                         //增加1页
-
+                This.init();
             })
         }
 
     })
 }
-
+parent.prototype.xl_sj=function (parent){
+        $(parent).find('.pop_but').unbind().on('click',function (){
+            var aa=$(this).parent().parent().parent().parent().parent().next();
+            $(aa).slideToggle(500);
+        })
+}
 
 function Qbzt(){
 
@@ -91,9 +95,11 @@ Qbzt.prototype.loader=function (obj,url){
     qxdx.jl.qbzt=data.page;
 
     for(var i=0;i<data.cont.length;i++){
+     str+='<div class="pop_cont">'
         str+='<div class="pop_have">'
         str+='<div class="pop_left2">'
-        str+='<img src="'+path+'dist/foreEnd3/img/small.jpg" alt="" class="pop_head">'
+        str+='<img src="'+path+'dist/foreEnd3/img/small.jpg" alt=""'
+        str+='class="pop_head">'
         str+='<div class="pop_test2">'
         str+='<h4 style="display: inline-block">网站美工/网页设计师</h4>'
         str+='<div style="color: #fc6866;display: inline-block;margin-left: 10px">10万</div>'
@@ -115,8 +121,37 @@ Qbzt.prototype.loader=function (obj,url){
         str+='<b>快</b>'
         str+='</div>'
         str+='</div>'
-    }
+        str+='</div>'
+        str+='<div class="pop_more">'
+        str+='<div class="pop_m1">'
+        str+='<div class="pop_min">'
+        str+='已投递'
+        str+='</div>'
+        str+='</div>'
+        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+        str+='class="pop_ar">'
+        str+='<div class="pop_m1">'
+        str+='<div class="pop_min">'
+        str+='已查看'
+        str+='</div>'
+        str+='</div>'
+        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+        str+='class="pop_ar">'
+        str+='<div class="pop_m1">'
+        str+='<div class="pop_min">'
+        str+='约面试'
+        str+='</div>'
+        str+='</div>'
+        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+        str+='class="pop_ar">'
+        str+='<div class="pop_m1">'
+        str+='<div class="pop_min">'
+        str+='不匹配'
+        str+='</div>'
+        str+='</div>'
+        str+='</div>'
 
+    }
     return str   //返回
 }
 Qbzt.prototype.seekCont=function (){
@@ -130,16 +165,17 @@ Qbzt.prototype.init=function (){            //初始化载入数据
     var This=this;
     var data=This.seekCont();
     var cont=This.loader(data,"/dada");
-    $('#pop_one .pop_cont').html(cont);
+    $('#pop_one .pop_top2').after(cont);
     var fy= This.fy(qxdx.pages,qxdx.jl.qbzt);
-    $('#pop_one .zp_botv').html(fy);
-
+    $('#pop_one .zp_botv').html(fy);                     //分页插入完成
+    This.fy_sj('#pop_one',qxdx.pages,qxdx.jl.qbzt,This)  //事件插入完成
+    This.xl_sj('#pop_one')
 }
 
 
 $(function (){
 
-    // var qbzt=new Qbzt();
-    // qbzt.init();
+      var qbzt=new Qbzt();
+     qbzt.init();
 
 })
