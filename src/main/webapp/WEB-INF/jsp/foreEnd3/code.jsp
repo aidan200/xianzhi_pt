@@ -56,7 +56,7 @@
 text-align: center;line-height: 40px;margin-left: 150px
 ' href='###'>密码找回</a>
             <div style='font-size: 12px;
-            margin-top: 30px;color: rgba(175,175,175,0.91)'>&emsp;&emsp;点击按钮进行密码找回，此邮件由猎聘网系统发出，系统不接收回信，请勿直接回复。</div>
+            margin-top: 30px;color: rgba(175,175,175,0.91)'>&emsp;&emsp;点击按钮进行密码找回，此邮件由先知网系统发出，系统不接收回信，请勿直接回复。</div>
 
         </div>
     </div>
