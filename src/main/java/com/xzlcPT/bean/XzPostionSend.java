@@ -38,6 +38,8 @@ public class XzPostionSend {
 
     private int deleteFalt;
 
+    private Date interviewTime;
+
     private Integer ct;
 
     private List<XzResume> resumes;
@@ -212,5 +214,13 @@ public class XzPostionSend {
 
     public List<XzResumeEducation> getXzResumeEducations() {
         return xzResumeEducations;
+    }
+
+    public void setInterviewTime(Date interviewTime) {
+        this.interviewTime = interviewTime;
+    }
+
+    public Date getInterviewTime() {
+        return interviewTime;
     }
 }
