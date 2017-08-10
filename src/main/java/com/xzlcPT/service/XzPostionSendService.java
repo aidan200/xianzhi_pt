@@ -36,4 +36,6 @@ public interface XzPostionSendService {
     PageBean<XzPostionSend> selAll(int page,int rows,Long companyId);
 
     Long selByCollect(XzPostionSend xzPostionSend);
+
+    PageBean<XzPostionSend> selByConditions(int page,int rows,Map map);
 }

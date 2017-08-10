@@ -270,7 +270,8 @@ public class PostionSendController extends BaseController{
         map.put("resumePostion",resumePostion);
         Date now=new Date();
         map.put("now",now);
-
+        PageBean list=postionSendService.selByConditions(page,rows,map);
+        map.put("list",list);
         return map;
     }
 }

@@ -394,11 +394,31 @@
     and send_time = #{sendTime,jdbcType=TIMESTAMP}
   </select>
   <select id="selByConditions" parameterType="java.util.Map" resultMap="BaseResultMap">
-    SELECT send_id from xz_postion_send ps
+    select
+    ps.send_id FROM xz_postion_send ps
     LEFT JOIN  xz_resume r ON r.resume_id = ps.resume_id
     LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id
-    LEFT JOIN xz_postion p ON ps.postion_id = p.postion_id
-    WHERE ps.company_id=#{companyId,jdbcType=BIGINT}
-    <if test=""
+    LEFT JOIN xz_postion p ON p.postion_id = ps.postion_id
+    WHERE
+    ps.company_id=#{companyId,jdbcType=BIGINT}
+    <if test="postionId !=null">
+    and p.postion_id=#{postionId,jdbcType=BIGINT}
+    </if>
+    <if test="educationLevel !=null">
+    and e.education_level=#{educationLevel,jdbcType=VARCHAR}
+    </if>
+    <if test="resumeSex != null">
+    and r.resume_sex=#{resumeSex,jdbcType=INTEGER}
+    </if>
+    <if test="resumeName != null">
+    and r.resume_name=#{resumeName,jdbcType=VARVHAR}
+    </if>
+    <if test="resumeWorkspace != null">
+    and r.resume_workspace=#{resumeWorkspace,jdbcType=VARCHAR}
+    </if>
+    <if test="resumeBirth != null">
+    and YEAR(#{date,jdbcType=TIMESTAMP})-YEAR(r.resume_birth)&gt;#{resumeBirthMin,jdbcType=INTEGER}
+    </if>
+    and YEAR(#{date,jdbcType=TIMESTAMP})-YEAR(r.resume_birth)&lt;#{resumeBirthMax,jdbcType=INTEGER}
   </select>
 </mapper>

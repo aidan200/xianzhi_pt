@@ -43,4 +43,6 @@ public interface XzPostionSendMapper {
     List<XzPostionSend> selAll(Long companyId);
 
     Long selByCollect(XzPostionSend xzPostionSend);
+
+    List<XzPostionSend> selByConditions(Map map);
 }
