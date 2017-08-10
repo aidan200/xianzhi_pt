@@ -7916,6 +7916,7 @@ footer {
     margin-top: 5px;
     /*display: none;*/
 }
+
 .rep_error2 {
     color: #fc6866;
     margin-top: 10px;
@@ -7934,6 +7935,7 @@ footer {
     border-radius: 3px;
     font-size: 16px;
 }
+
 .rep_next2 {
     margin-top: 70px;
     width: 120px;
@@ -7947,3 +7949,36 @@ footer {
 }
 
 /*------------------------账号安全------------------------------*/
+.saf_all {
+    width: 100%;
+    min-width: 1200px;
+    height: auto;
+    overflow: hidden;
+}
+
+.saf_allin {
+    width: 980px;
+    height: 500px;
+    border: 1px solid #E5E5E5;
+    margin: 0 auto;
+    background-color: #FFFFff;
+    margin-top: 10px;
+    padding: 40px;
+}
+
+.saf_top {
+    width: 980px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 40px;
+    font-size: 25px;
+    color: #666;
+}
+
+.saf_every {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #e6e6e6;
+    background-color: #fafafa;
+    margin: 5px auto;
+}

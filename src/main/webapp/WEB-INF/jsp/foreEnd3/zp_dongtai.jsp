@@ -13,7 +13,7 @@
 <head>
     <jsp:include page="distforeEnd.jsp"/>
 </head>
-<body style="background-color: #EEEEEE">
+<body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 
