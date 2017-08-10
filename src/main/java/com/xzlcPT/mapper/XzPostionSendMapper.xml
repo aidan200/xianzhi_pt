@@ -44,6 +44,7 @@
     <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
     <result column="postion_id" jdbcType="BIGINT" property="postionId"/>
     <result column="postion_name" jdbcType="VARCHAR" property="postionName"/>
+    <result column="interview_time" jdbcType="TIMESTAMP" property="interviewTime"/>
     <collection property="resumes" ofType="com.xzlcPT.bean.XzResume">
       <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
       <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
