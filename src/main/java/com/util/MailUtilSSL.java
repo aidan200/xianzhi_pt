@@ -3,10 +3,10 @@ package com.util;
 import com.util.bean.EmailConf;
 import com.util.bean.MessageInfo;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.*;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import javax.mail.internet.*;
 import java.io.IOException;
 import java.security.Security;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.Properties;
  * Created by Administrator on 2017/7/19.
  */
 public class MailUtilSSL {
-    public static boolean sslSend(MessageInfo msg1, EmailConf emailAccount)
+    public static boolean sslSend(MessageInfo msg1, EmailConf emailAccount,MimeBodyPart ...images)
             throws AddressException, MessagingException, IOException {
         Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
         final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
@@ -39,6 +39,7 @@ public class MailUtilSSL {
             }});
         Message msg = new MimeMessage(session);
 
+
         // 设置发件人和收件人
         msg.setFrom(new InternetAddress(emailAccount.getUsername()));
         List<String> tos = msg1.getTo();
@@ -49,7 +50,29 @@ public class MailUtilSSL {
         // 多个收件人地址
         msg.setRecipients(Message.RecipientType.TO, to);
         msg.setSubject(msg1.getSubject()); // 标题
-        msg.setText(msg1.getMsg());// 内容
+        //msg.setContent(msg1.getMsg(), "text/html;charset = gbk");
+        // 内容
+        MimeBodyPart text = new MimeBodyPart();
+        //text.setContent(msg1.getMsg(), "text/html");
+        text.setContent(msg1.getMsg(), "text/html;charset = utf-8");
+
+        /*MimeBodyPart image = new MimeBodyPart();
+        image.setDataHandler(new DataHandler(new FileDataSource("e:\\timg.jpg")));  //javamail jaf
+        image.setContentID("g.jpg");*/
+
+        //5.描述数据关系
+        MimeMultipart mm = new MimeMultipart();
+        mm.addBodyPart(text);
+        if(images!=null&&images.length>0){
+            for (MimeBodyPart image : images) {
+                mm.addBodyPart(image);
+            }
+        }
+        mm.setSubType("related");
+
+        msg.setContent(mm);
+        msg.saveChanges(); //保存更新
+
         msg.setSentDate(new Date());
         Transport.send(msg);
         System.out.println("EmailUtil ssl协议邮件发送打印" +msg.toString());
@@ -70,7 +93,12 @@ public class MailUtilSSL {
         mi.setSubject("先知平台测试邮件");
         mi.setMsg("测试一下");
         try {
-            sslSend(mi,ec);
+            //添加图片
+            MimeBodyPart image = new MimeBodyPart();
+            image.setDataHandler(new DataHandler(new FileDataSource("e:\\timg.jpg")));  //javamail jaf
+            image.setContentID("g.jpg");
+            //发送邮件
+            sslSend(mi,ec,image);
         } catch (MessagingException e) {
             e.printStackTrace();
         } catch (IOException e) {
