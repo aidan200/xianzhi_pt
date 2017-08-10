@@ -104,7 +104,6 @@
                 <c:forEach var="w1" items="${xzCompany.welfares}">
                     <li>${w1.welfareName}</li>
                 </c:forEach>
-                <li>更多...</li>
             </ul>
         </div>
 

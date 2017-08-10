@@ -8,6 +8,7 @@
         <result column="company_name" jdbcType="VARCHAR" property="companyName" />
         <result column="pmsg_value" jdbcType="VARCHAR" property="pmsgValue" />
         <result column="pmsg_type" jdbcType="INTEGER" property="pmsgType" />
+        <result column="interview_time" jdbcType="TIMESTAMP" property="interviewTime"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
         <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
@@ -17,7 +18,7 @@
     </resultMap>
     <sql id="Base_Column_List">
         pmsg_id, send_id, pmsg_name, company_name, pmsg_value, pmsg_type, create_time, delete_time,
-        delete_falt, filed1, filed2, filed3
+        delete_falt, filed1, filed2, filed3,interview_time
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
@@ -33,12 +34,12 @@
         insert into xz_postion_send_msg (pmsg_id, send_id, pmsg_name,
         company_name, pmsg_value, pmsg_type,
         create_time, delete_time, delete_falt,
-        filed1, filed2, filed3
+        filed1, filed2, filed3,interview_time
         )
         values (#{pmsgId,jdbcType=BIGINT}, #{sendId,jdbcType=BIGINT}, #{pmsgName,jdbcType=VARCHAR},
         #{companyName,jdbcType=VARCHAR}, #{pmsgValue,jdbcType=VARCHAR}, #{pmsgType,jdbcType=INTEGER},
         #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, #{deleteFalt,jdbcType=INTEGER},
-        #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR}
+        #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR},#{interviewTime,jdbcType=TIMESTAMP}
         )
     </insert>
     <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostionSendMsg">
@@ -80,6 +81,9 @@
             <if test="filed3 != null">
                 filed3,
             </if>
+            <if test="interviewTime != null">
+                interview_time,
+            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="pmsgId != null">
@@ -117,6 +121,9 @@
             </if>
             <if test="filed3 != null">
                 #{filed3,jdbcType=VARCHAR},
+            </if>
+            <if test="interviewTime != null">
+                #{interviewTime,jdbcType=TIMESTAMP}
             </if>
         </trim>
     </insert>
@@ -156,6 +163,9 @@
             <if test="filed3 != null">
                 filed3 = #{filed3,jdbcType=VARCHAR},
             </if>
+            <if test="interviewTime != null">
+                interview_time=#{interviewTime,jdbcType=TIMESTAMP}
+            </if>
         </set>
         where pmsg_id = #{pmsgId,jdbcType=BIGINT}
     </update>
@@ -171,7 +181,8 @@
         delete_falt = #{deleteFalt,jdbcType=INTEGER},
         filed1 = #{filed1,jdbcType=VARCHAR},
         filed2 = #{filed2,jdbcType=VARCHAR},
-        filed3 = #{filed3,jdbcType=VARCHAR}
+        filed3 = #{filed3,jdbcType=VARCHAR},
+        interview_time = #{interviewTime,jdbcType=TIMESTAMP}
         where pmsg_id = #{pmsgId,jdbcType=BIGINT}
     </update>
 </mapper>

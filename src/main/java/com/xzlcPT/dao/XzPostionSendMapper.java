@@ -41,4 +41,6 @@ public interface XzPostionSendMapper {
     int updateState1(Long sendId);
 
     List<XzPostionSend> selAll(Long companyId);
+
+    Long selByCollect(XzPostionSend xzPostionSend);
 }
