@@ -181,7 +181,7 @@
         <%--</div>--%>
         <%--</div>--%>
 
-        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/chang.png" alt="" class="index_ii0">
+        <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/chang.png" alt="" class="index_ii0">--%>
         <div class="index_oa">
 
             <ul class="index_1u">

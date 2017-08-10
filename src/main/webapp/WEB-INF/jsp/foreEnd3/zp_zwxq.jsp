@@ -29,11 +29,11 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/mapUtil.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_zwxq.js" type="text/javascript"></script>
     <%--<style>--%>
-        <%--*{--%>
-            <%---webkit-box-sizing: content-box;--%>
-            <%---moz-box-sizing: content-box;--%>
-            <%--box-sizing: content-box;--%>
-        <%--}--%>
+    <%--*{--%>
+    <%---webkit-box-sizing: content-box;--%>
+    <%---moz-box-sizing: content-box;--%>
+    <%--box-sizing: content-box;--%>
+    <%--}--%>
     <%--</style>--%>
     <script>
         $(function () {
@@ -88,7 +88,9 @@
                             <fmt:formatNumber value="${xzPostion.postionMm*12/10000}" maxFractionDigits="0"/>万
                         </c:when>
                         <c:otherwise>
-                            <fmt:formatNumber value="${xzPostion.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${xzPostion.postionYm*12/10000}" maxFractionDigits="0"/>万
+                            <fmt:formatNumber value="${xzPostion.postionMm*12/10000}"
+                                              maxFractionDigits="0"/>万-<fmt:formatNumber
+                                value="${xzPostion.postionYm*12/10000}" maxFractionDigits="0"/>万
                         </c:otherwise>
                     </c:choose>
                     <span>72小时反馈</span>
@@ -108,7 +110,7 @@
                 <h3>职位描述：</h3>
                 <div>
                     <div class="zp_awxq_t">
-                              ${xzPostion.postionDescription}
+                        ${xzPostion.postionDescription}
                     </div>
                 </div>
             </div>
@@ -200,7 +202,7 @@
                                 ${xzPostion.company.companyName}
                             </p>
                             <%--<p>--%>
-                                <%--<a class="btn btn-primary" href="javascript:;">立即沟通</a>--%>
+                            <%--<a class="btn btn-primary" href="javascript:;">立即沟通</a>--%>
                             <%--</p>--%>
                             <div>
                                 <div style="border-right: 1px dotted #d8d8d8;">
@@ -217,11 +219,32 @@
                     <div class="zp_zwxq_cont_right_cont_middle">
                         <h3>企业简介</h3>
                         <h4>
-                            <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${xzPostion.companyId}" class="zp_zwxq_cont_right_cont_middle_a1"> ${xzPostion.company.companyName}</a>
-                            <a isFollow="f" onclick="insertFollow()" id="gz" class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
+                            <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${xzPostion.companyId}"
+                               class="zp_zwxq_cont_right_cont_middle_a1"> ${xzPostion.company.companyName}</a>
+                            <a isFollow="f" onclick="insertFollow()" id="gz"
+                               class="btn-attention btn-info btn-attention-add zp_zwxq_cont_right_cont_middle_a2">关注</a>
                         </h4>
-                        <ul>
-                            <li>
+                        <%--<ul>--%>
+                        <%--<li>--%>
+                        <%--<c:forEach items="${xzPostion.company.fields}" var="f1" varStatus="stat">--%>
+                        <%--<c:if test="${!stat.last}">--%>
+                        <%--${f1.fieldName}/--%>
+                        <%--</c:if>--%>
+                        <%--<c:if test="${stat.last}">--%>
+                        <%--${f1.fieldName}--%>
+                        <%--</c:if>--%>
+                        <%--</c:forEach>--%>
+                        <%--</li>--%>
+                        <%--<li>${xzPostion.company.companyScale}人</li>--%>
+                        <%--<li>--%>
+                        <%--${xzPostion.company.companyNature eq 1?"国企":''}--%>
+                        <%--${xzPostion.company.companyNature eq 2?"民营":''}--%>
+                        <%--${xzPostion.company.companyNature eq 3?"外企":''}--%>
+                        <%--${xzPostion.company.companyNature eq 4?"政府":''}--%>
+                        <%--</li>--%>
+                        <%--</ul>--%>
+                        <div style="padding-left: 10px">
+                            <div>
                                 <c:forEach items="${xzPostion.company.fields}" var="f1" varStatus="stat">
                                     <c:if test="${!stat.last}">
                                         ${f1.fieldName}/
@@ -230,18 +253,19 @@
                                         ${f1.fieldName}
                                     </c:if>
                                 </c:forEach>
-                            </li>
-                            <li>${xzPostion.company.companyScale}人</li>
-                            <li>
+                            </div>
+                            <div style="margin-top: 5px;display: inline-block">${xzPostion.company.companyScale}人</div>
+                            <div style="display: inline-block;margin-left: 10px">
                                 ${xzPostion.company.companyNature eq 1?"国企":''}
                                 ${xzPostion.company.companyNature eq 2?"民营":''}
                                 ${xzPostion.company.companyNature eq 3?"外企":''}
                                 ${xzPostion.company.companyNature eq 4?"政府":''}
-                            </li>
-                        </ul>
-                        <p>${xzPostion.company.companyCity}</p>
-                        <p>${xzPostion.company.companyLocation}</p>
-                        <p>${xzPostion.company.companySpace}</p>
+                            </div>
+                            <div style="margin-top: 5px">${xzPostion.company.companyCity}</div>
+                            <div style="margin-top: 5px">${xzPostion.company.companyLocation}</div>
+                            <div style="margin-top: 5px">${xzPostion.company.companySpace}</div>
+                        </div>
+
                         <div id="zp_zwxq_dt" class="zp_zwxq_dt"></div>
                     </div>
                     <div class="zp_zwxq_cont_right_cont_bottom">
@@ -315,7 +339,7 @@
     postion.x = '${xzPostion.company.companyX}';
     postion.y = '${xzPostion.company.companyY}';
     console.log(postion);
-    var id='${xzPostion.postionId}';
+    var id = '${xzPostion.postionId}';
     var myMap = new myMap(postion);
     $(function () {
         myMap.init();
@@ -365,60 +389,60 @@
         })
     }
     function insertCollect() {
-        if($('#sc').attr("isCollect")=="f"){
+        if ($('#sc').attr("isCollect") == "f") {
             $.ajax({
-                url:"${pageContext.request.contextPath}/PCollect/insertSelective.do",
-                data:{postionId:id},
-                type:"get",
-                dataType:"json",
-                success:function(data){
-                    if(data.msg=="ok"){
+                url: "${pageContext.request.contextPath}/PCollect/insertSelective.do",
+                data: {postionId: id},
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    if (data.msg == "ok") {
                         $('#sc').html("已收藏");
-                        $('#sc').attr("isCollect","t");
+                        $('#sc').attr("isCollect", "t");
                     }
                 }
             })
-        }else {
+        } else {
             $('#sc').html("已收藏");
-            $('#sc').attr("isCollect","t");
+            $('#sc').attr("isCollect", "t");
         }
     }
     function isCollect() {
         $.ajax({
-            url:"${pageContext.request.contextPath}/PCollect/selCollectState.do",
-            data:{postionId:id},
-            type:"get",
-            dataType:"json",
-            success:function (data) {
-                if(data.msg=="ok"){
+            url: "${pageContext.request.contextPath}/PCollect/selCollectState.do",
+            data: {postionId: id},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                if (data.msg == "ok") {
                     $('#sc').html("已收藏");
-                    $('#sc').attr("isCollect","t");
-                }else {
+                    $('#sc').attr("isCollect", "t");
+                } else {
                     $('#sc').html("收藏");
-                    $('#sc').attr("isCollect","f");
+                    $('#sc').attr("isCollect", "f");
                 }
             }
         })
 
     }
-    var aa='${xzPostion.companyId}';
+    var aa = '${xzPostion.companyId}';
     function insertFollow() {
-        if($('#gz').attr("isFollow")=='f'){
+        if ($('#gz').attr("isFollow") == 'f') {
             $.ajax({
-                url:"${pageContext.request.contextPath}/Follow/insertSelective.do",
-                data:{companyId:aa},
-                type:"get",
-                dataType:"json",
-                success:function(data){
-                    if(data.msg=="ok"){
+                url: "${pageContext.request.contextPath}/Follow/insertSelective.do",
+                data: {companyId: aa},
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    if (data.msg == "ok") {
                         $('#gz').html("已关注");
-                        $('#gz').attr("isFollow","t");
+                        $('#gz').attr("isFollow", "t");
                     }
                 }
             })
-        }else {
+        } else {
             $('#gz').html("已关注");
-            $('#gz').attr("isFollow","t");
+            $('#gz').attr("isFollow", "t");
         }
     }
     $(function () {
@@ -426,15 +450,15 @@
     })
     function isFollow() {
         $.ajax({
-            url:"${pageContext.request.contextPath}/Follow/selFollowState.do",
-            data:{companyId:aa},
-            type:"get",
-            dataType:"json",
-            success:function(data) {
+            url: "${pageContext.request.contextPath}/Follow/selFollowState.do",
+            data: {companyId: aa},
+            type: "get",
+            dataType: "json",
+            success: function (data) {
                 if (data.msg == "ok") {
                     $('#gz').html("已关注");
                     $('#gz').attr("isFollow", "t");
-                }else {
+                } else {
                     $('#gz').html("关注");
                     $('#gz').attr("isFollow", "f");
                 }

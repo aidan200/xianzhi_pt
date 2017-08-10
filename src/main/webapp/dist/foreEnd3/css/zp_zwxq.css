@@ -409,10 +409,9 @@ textarea {
 }
 
 .zp_zwxq_cont_left_ss {
-
     padding: 30px 0 0 35px;
     background: #fff;
-    border: 1px solid #e6e6e6;
+    /*border: 1px solid #e6e6e6;*/
     border-top: 0;
 }
 
@@ -540,6 +539,9 @@ textarea {
     padding: 20px 20px;
     border-bottom: 1px dotted #d8d8d8;
 }
+ul li {
+    list-style-type: none;
+}
 
 .zp_zwxq_cont_right_cont_middle > h4 {
     height: 25px;
@@ -555,6 +557,7 @@ textarea {
     float: left;
     height: 20px;
     line-height: 20px;
+    padding-left: 10px;
 }
 
 .zp_zwxq_cont_right_cont_middle_a2 {
@@ -644,9 +647,10 @@ textarea {
 }
 
 .zp_zwxq_cont_2 {
-    margin-top: 24px;
+    margin-top: 15px;
     padding: 20px;
     background: #ffffff;
+    border: 1px solid #e6e6e6;
 }
 
 .zp_zwxq_cont_2 ul {
