@@ -3285,10 +3285,8 @@ function flashResume() {                    //刷新简历
                 $('#js_sxsj').html(getNowFormatDateSS(date))
                 if(Number(completion)>=80){
                     $(".zhe").hide();
-                    $('#noClick').hide();
                 }else{
                     $(".zhe").css("visibility", " visible");
-                    $('#noClick').show();
                 }
             }
 
@@ -3313,10 +3311,8 @@ function flashResume2(){  //查看简历完成度
                 $('#js_sxsj').html(getNowFormatDateSS(date))
                 if(Number(completion)>=80){
                     $(".zhe").hide();
-                    $('#noClick').hide();
                 }else{
                     $(".zhe").css("visibility", " visible");
-                    $('#noClick').show();
                 }
         },error:function (){ //报错执行的
             alert('基本资料修改错误')

@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.MessagingException;
+import javax.mail.internet.MimeBodyPart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -297,7 +300,7 @@ public class RegisterController extends BaseController {
         System.out.println("发邮件:" + xzLogin.getLoginEmail());
         long newTime = System.currentTimeMillis();
         String args = "?username=" + xzLogin.getLoginCount() + "&newTime=" + newTime;
-        String user = "测试邮件:" + xzLogin.getLoginCount();
+        String user = xzLogin.getLoginCount();
         String toMail = xzLogin.getLoginEmail();
         String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         EmailConf ec = new EmailConf("sina");
@@ -305,15 +308,64 @@ public class RegisterController extends BaseController {
         List<String> toMails =  new ArrayList<>();
         toMails.add(toMail);
         mi.setTo(toMails);
-        mi.setMsg("<a href='" + path + callBack + args + "'> 点我点我 </a>：<b>" + user + "<br/>" + information + "</b>");
-        MailUtilSSL.sslSend(mi,ec);
+        String html = "<div style='width: 100%;" +
+                "            min-width: 1100px;" +
+                "            height: auto;" +
+                "            overflow: hidden'>" +
+                "    <div style='width: 600px;" +
+                "            margin: 40px auto;" +
+                "            height: 680px;" +
+                "            border: 3px dashed #3d9ccc;" +
+                "    padding: 40px'>" +
+                "        <img src='cid:g.png' style='width: 150px;" +
+                "            height: 60px;" +
+                "            margin-left: 30px;" +
+                "            margin-top: 30px'>" +
+                "        <div style='padding: 20px;" +
+                "            width: 90%;" +
+                "            height: auto;" +
+                "            margin: 0 auto'>" +
+                "            <h3 style='color: #fc6866;margin-bottom: 30px'><b>亲爱的"+user+" ,您好</b></h3>" +
+                "            <div style='font-size: 17px;" +
+                "            margin-top: 10px'>" +
+                "                &emsp;&emsp;欢迎您成为先知网注册用户，为了您能随时接收与您匹配的高薪职位推荐，邀请您完成 邮箱验证。" +
+                "            </div>" +
+                "            <div style='font-size: 17px;" +
+                "            margin-top: 10px'>" +
+                "                &emsp;&emsp;同时，为了您能够快速收到企业HR和猎头顾问的精准职位邀请，让简历曝光机会提升68%，成功应聘率提升23%，我们强烈建议您完善简历。" +
+                "            </div>" +
+                "" +
+                "            <a style='width: 230px;" +
+                "            height: 40px;" +
+                "            margin-top: 30px;" +
+                "            background-color: #FFA500;" +
+                "            border: none;" +
+                "            color: #FFFFff;" +
+                "            outline: none;" +
+                "            border-radius: 3px;" +
+                "            display: block;" +
+                "            font-size: 15px;" +
+                "text-align: center;line-height: 40px' href='" + path + callBack + args + "'>开启邮箱验证，走进先知世界</a>" +
+                "            <img src='cid:e.png' style='width: 200px;height: 130px;margin-top: 30px;float: right'>" +
+                "        </div>" +
+                "    </div>" +
+                "</div>";
+        mi.setMsg(html);
+        //添加图片
+        MimeBodyPart image = new MimeBodyPart();
+        image.setDataHandler(new DataHandler(new FileDataSource(request.getSession().getServletContext().getRealPath("dist/foreEnd3/img/LOGO12.png"))));  //javamail jaf
+        image.setContentID("g.png");
+        MimeBodyPart image2 = new MimeBodyPart();
+        image2.setDataHandler(new DataHandler(new FileDataSource(request.getSession().getServletContext().getRealPath("dist/foreEnd3/img/celebrate.png"))));  //javamail jaf
+        image2.setContentID("e.png");
+        //发送
+        MailUtilSSL.sslSend(mi,ec,image,image2);
     }
 
     //    根据用户名查询
     public XzLogin selActiveUser(String str) {
         XzLogin loginU = new XzLogin(); //接收前台传入值
         loginU.setLoginCount(str);
-        Map<String, Object> map = new HashMap<>();
         XzLogin newUser = registerService.selectByUser(loginU);
         return newUser;
     }

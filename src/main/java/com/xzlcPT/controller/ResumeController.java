@@ -86,6 +86,16 @@ public class ResumeController extends BaseController {
         return map;
     }
 
+    //查看完成度Session
+    @ResponseBody
+    @RequestMapping("flashResumeByMember.do")
+    public Map<String,Object> flashResumeByMember(@ModelAttribute("userLogin") XzLogin userLogin){
+        Map<String,Object> map = new HashMap<>();
+        XzResume rss = resumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        map.put("resumeCompletion",rss.getResumeCompletion());
+        return map;
+    }
+
     //简历下载
     @ResponseBody
     @RequestMapping("ResumeDownload.do")

@@ -154,15 +154,23 @@ public class PostionSendController extends BaseController{
     //邀请面试
     @ResponseBody
     @RequestMapping("updateState.do")
-    public Map updateState(Long sendId){
+    public Map updateState(@ModelAttribute("userLogin")XzLogin xzLogin,String pmsgValue,
+                           Date interviewTime,String filed1,String filed2,Long sendId){
         int i=postionSendService.updateState(sendId);
-            Map map=new HashMap();
-            if (i==1){
-                map.put("msg","ok");
-            }else {
-                map.put("msg","err");
-            }
-            return map;
+        XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
+        xzPostionSendMsg.setSendId(sendId);
+        xzPostionSendMsg.setInterviewTime(interviewTime);
+        xzPostionSendMsg.setFiled1(filed1);
+        xzPostionSendMsg.setFiled1(filed2);
+        xzPostionSendMsg.setPmsgValue(pmsgValue);
+        int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
+        Map map=new HashMap();
+        if (j==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","err");
+        }
+        return map;
     }
     //意向沟通
     @ResponseBody
