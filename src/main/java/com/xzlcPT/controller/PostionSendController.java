@@ -58,13 +58,13 @@ public class PostionSendController extends BaseController{
         Long companyId=postion.getCompanyId();
         Long resumeId=resume.getResumeId();
         Date sendTime=new Date();
+        XzPostionSend xzPostionSend=new XzPostionSend();
+        xzPostionSend.setResumeId(resumeId);
+        xzPostionSend.setPostionId(postionId);
+        xzPostionSend.setCompanyId(companyId);
+        xzPostionSend.setSendTime(sendTime);
+        int i=postionSendService.insertSelective(xzPostionSend);
         Map map = new HashMap();
-        map.put("resumeId",resumeId);
-        map.put("postionId",postionId);
-        map.put("companyId",companyId);
-        map.put("sendTime",sendTime);
-        int i=postionSendService.insertSelective(map);
-        map = new HashMap();
         if(i==1){
             map.put("msg","ok");
         }else{
@@ -167,8 +167,15 @@ public class PostionSendController extends BaseController{
     //意向沟通
     @ResponseBody
     @RequestMapping("updateState1.do")
-    public Map updateState1(Long sendId){
+    public Map updateState1(@ModelAttribute("userLogin")XzLogin xzLogin,Long collectId,String pmsgValue,
+                            Date interviewTime,String filed1,String filed2,Long sendId){
         int i=postionSendService.updateState1(sendId);
+        XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
+        xzPostionSendMsg.setSendId(sendId);
+        xzPostionSendMsg.setPmsgValue(pmsgValue);
+        xzPostionSendMsg.setInterviewTime(interviewTime);
+        xzPostionSendMsg.setFiled1(filed1);
+        xzPostionSendMsg.setFiled2(filed2);
         Map map=new HashMap();
         if (i==1){
             map.put("msg","ok");
@@ -193,52 +200,49 @@ public class PostionSendController extends BaseController{
     @ResponseBody
     @RequestMapping("insertSelective.do")
     public Map insertSelective(@ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,Long resumeId){
-        Map map=new HashMap();
-        map.put("postionId",postionId);
-        map.put("resumeId",resumeId);
-        map.put("companyId",xzLogin.getCompany().getCompanyId());
+        XzPostionSend xzPostionSend=new XzPostionSend();
+        xzPostionSend.setPostionId(postionId);
+        xzPostionSend.setResumeId(resumeId);
+        xzPostionSend.setCompanyId(xzLogin.getCompany().getCompanyId());
         Date date=new Date();
-        map.put("sendTime",date);
-        map.put("sendState",2);
-        map.put("sendType",0);
-        int i=postionSendService.insertSelective(map);
-        Map map1=new HashMap();
+        xzPostionSend.setSendTime(date);
+        xzPostionSend.setSendState(2);
+        xzPostionSend.setSendType(0);
+        int i=postionSendService.insertSelective(xzPostionSend);
+        Map map=new HashMap();
         if (i==1){
-            map1.put("msg","ok");
+            map.put("msg","ok");
         }else {
-            map1.put("msg","err");
+            map.put("msg","err");
         }
-        return map1;
+        return map;
     }
     //收藏→邀请面试
     @ResponseBody
     @RequestMapping("comInsert.do")
     public Map comInsert(@ModelAttribute("userLogin")XzLogin xzLogin,Long collectId,String pmsgValue,
-                        Date interviewTime,Long postionId){
+                        Date interviewTime,Long postionId,String filed1,String filed2){
         XzResumeCollect xzResumeCollect=xzResumeCollectService.selectByPrimaryKey(collectId);
-        Map map=new HashMap();
-        map.put("resumeId",xzResumeCollect.getResumeId());
-        map.put("companyId",xzLogin.getCompany().getCompanyId());
-        Date date=new Date();
-        map.put("sendTime",date);
-        map.put("sendState",2);
-        map.put("postionId",postionId);
-        int i=postionSendService.insertSelective(map);
         XzPostionSend xzPostionSend=new XzPostionSend();
         xzPostionSend.setResumeId(xzResumeCollect.getResumeId());
+        xzPostionSend.setCompanyId(xzLogin.getCompany().getCompanyId());
+        Date date=new Date();
         xzPostionSend.setSendTime(date);
+        xzPostionSend.setSendState(2);
         xzPostionSend.setPostionId(postionId);
-        Long sendId=postionSendService.selByCollect(xzPostionSend);
+        int i=postionSendService.insertSelective(xzPostionSend);
         XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
-        xzPostionSendMsg.setSendId(sendId);
+        xzPostionSendMsg.setSendId(xzPostionSend.getSendId());
         xzPostionSendMsg.setInterviewTime(interviewTime);
+        xzPostionSendMsg.setFiled1(filed1);
+        xzPostionSendMsg.setFiled1(filed2);
         xzPostionSendMsg.setPmsgValue(pmsgValue);
         int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
-        Map map1=new HashMap();
+        Map map=new HashMap();
         if (j==1){
-            map1.put("msg","ok");
+            map.put("msg","ok");
         }else {
-            map1.put("msg","err");
+            map.put("msg","err");
         }
         return map;
     }

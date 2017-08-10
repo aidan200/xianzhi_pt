@@ -139,7 +139,10 @@
     #{deleteTime,jdbcType=TIMESTAMP}, #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR},
     #{field3,jdbcType=VARCHAR}, #{deleteFalt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="java.util.Map">
+  <insert id="insertSelective" parameterType="com.xzlcPT.bean.XzPostionSend">
+    <selectKey resultType="java.lang.Long" keyProperty="sendId">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into xz_postion_send
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="resumeId != null">

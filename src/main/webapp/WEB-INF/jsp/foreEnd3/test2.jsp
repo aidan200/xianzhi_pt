@@ -15,7 +15,8 @@
 <body>
 <label>结果</label><br>
 <div>
-    <span>${i}</span>
-
+    sendId:  <span>${xzPostionSend.sendId}</span><br>
+    resumeId:<span>${xzPostionSend.resumeId}</span>
+</div>
 </body>
 </html>

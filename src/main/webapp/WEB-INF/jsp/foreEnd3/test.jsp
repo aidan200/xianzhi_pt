@@ -20,8 +20,8 @@
 </head>
 <body>
 <label>输入textarea</label><br>
-<form id="sendState" action="${pageContext.request.contextPath}/Resume/selResumeInfoCom.do">
-    resumeId:  <input type="text" name="resumeId"><br>
+<form id="sendState" action="${pageContext.request.contextPath}/PostionSend/Ins.do">
+    collectId:  <input type="text" name="collectId"><br>
     <input type="submit"><br>
 </form>
 
