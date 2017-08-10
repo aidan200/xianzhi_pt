@@ -4,10 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.util.PageBean;
 import com.xzlcPT.bean.*;
-import com.xzlcPT.dao.XzCompanyDomainMapper;
-import com.xzlcPT.dao.XzCompanyMapper;
-import com.xzlcPT.dao.XzPostionMapper;
-import com.xzlcPT.dao.XzPostionSendMapper;
+import com.xzlcPT.dao.*;
 import com.xzlcPT.service.XzPostionSendService;
 import com.xzlcPT.service.XzPostionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +31,8 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     private XzCompanyMapper companyMapper;
     @Autowired
     private XzCompanyDomainMapper companyDomainMapper;
-
+    @Autowired
+    private XzPostionSendMsgMapper postionSendMsgMapper;
 
     @Override
     public PageBean<XzPostionSend> selSendByRIdAndType(int page,int rows,Long resumeId, Integer type) {
@@ -48,10 +46,12 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         postionSends.forEach(ps->{
             XzPostion postion = postionMapper.selectByPrimaryKey(ps.getPostionId());
             XzCompany company = companyMapper.selectByPrimaryKey(ps.getCompanyId());
+            XzPostionSendMsg postionSendMsg = postionSendMsgMapper.selectBySendId(ps.getSendId());
             List<XzCompanyDomain> companyDomains = companyDomainMapper.selectByCompanyId(company.getCompanyId());
             company.setDomains(companyDomains);
             ps.setPostion(postion);
             ps.setCompany(company);
+            ps.setPostionSendMsg(postionSendMsg);
         });
         return new PageBean<>(postionSends);
     }

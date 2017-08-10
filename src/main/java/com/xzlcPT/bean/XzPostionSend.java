@@ -54,6 +54,16 @@ public class XzPostionSend {
 
     private XzCompany company;
 
+    private XzPostionSendMsg postionSendMsg;
+
+    public XzPostionSendMsg getPostionSendMsg() {
+        return postionSendMsg;
+    }
+
+    public void setPostionSendMsg(XzPostionSendMsg postionSendMsg) {
+        this.postionSendMsg = postionSendMsg;
+    }
+
     public XzCompany getCompany() {
         return company;
     }
