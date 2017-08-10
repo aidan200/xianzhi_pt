@@ -97,14 +97,14 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</label>'
                         str+='</div>'
                         str+='</td>'
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumeName+'</td>'
-                        if(data.list[i].resumes[0].resumeSex==0){
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">男</td>'
+                        str+='<td class="all_no">'+data.list[i].resumes.resumeName+'</td>'
+                        if(data.list[i].resumes.resumeSex==0){
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">男</td>'
                         }else{
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">女</td>'
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">女</td>'
                         }
 
-                        var aa= getNowFormatDate(data.list[i].resumes[0].resumeBirth).substring(0, 4)
+                        var aa= getNowFormatDate(data.list[i].resumes.resumeBirth).substring(0, 4)
                         var bb=getNowFormatDate(new Date()).substring(0, 4);
                         var sj=bb-aa;
                         str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
@@ -112,14 +112,14 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         if(data.list[i].xzResumeEducations.length==0){
                             str+='<td class="all_no">没有</td>'
                         }else{
-                            str+='<td class="all_no">'+data.list[i].xzResumeEducations[0].educationLevel+'</td>'
+                            str+='<td class="all_no">'+data.list[i].xzResumeEducations.educationLevel+'</td>'
                         }
-                        //学历有问题'+data.resumeList[i].xzResumeEducations+'
 
-                        var cc=data.list[i].resumes[0].resumeWorkinglife     //计算出开始工作年限
+
+                        var cc=data.list[i].resumes.resumeWorkinglife     //计算出开始工作年限
                         var js2=bb-cc;
                         str+='<td class="all_no">'+js2+'</td>'
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumePosition  +'</td>' //目前职位
+                        str+='<td class="all_no">'+data.list[i].resumes.resumePosition  +'</td>' //目前职位
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //应聘职位
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'  //应聘职位
                         str+='<td class="all_no">'

@@ -56,86 +56,11 @@
                         <div class="pop_top2">
                             <span class="pop_span">全部状态（<span>10</span>）</span>
                         </div>
-                        <%--每个公司列表--%>
-                        <%--<div class="pop_cont">--%>
-                            <%--<div class="pop_have">--%>
-                                <%--<div class="pop_left2">--%>
-                                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt=""--%>
-                                         <%--class="pop_head">--%>
-                                    <%--<div class="pop_test2">--%>
-                                        <%--<h4 style="display: inline-block">网站美工/网页设计师</h4>--%>
-                                        <%--<div style="color: #fc6866;display: inline-block;margin-left: 10px">10万</div>--%>
-                                        <%--<div style="display: inline-block;margin-left: 20px">吉林省江山网络科技公司</div>--%>
-
-                                        <%--<div class="pop_in2">--%>
-                                            <%--<span class="pop_sp">沈阳</span>|--%>
-                                            <%--<span>1年经验</span>|--%>
-                                            <%--<span>互联网/移动联网/电子商务</span>--%>
-
-                                        <%--</div>--%>
-
-                                        <%--<div style="margin-top: -10px">--%>
-                                            <%--<button class="pop_but" style="margin-left: 200px">--%>
-                                                <%--<span class="fa fa-chevron-down"></span>--%>
-
-                                            <%--</button>--%>
-                                            <%--<span style="margin-left: 190px;color: #666">4小时前</span>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-
-
-                                <%--<div class="pop-right-bottom">--%>
-                                    <%--<b>快</b>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-
-
-                        <%--<div class="pop_more">--%>
-                            <%--<div class="pop_m1">--%>
-                                <%--<div class="pop_min">--%>
-                                    <%--已投递--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt=""--%>
-                                 <%--class="pop_ar">--%>
-                            <%--<div class="pop_m1">--%>
-                                <%--<div class="pop_min">--%>
-                                    <%--已查看--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt=""--%>
-                                 <%--class="pop_ar">--%>
-                            <%--<div class="pop_m1">--%>
-                                <%--<div class="pop_min">--%>
-                                    <%--约面试--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowr.png" alt=""--%>
-                                 <%--class="pop_ar">--%>
-                            <%--<div class="pop_m1">--%>
-                                <%--<div class="pop_min">--%>
-                                    <%--不匹配--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
 
 
                         <%--分页--%>
                         <div class="zp_botv">
-                            <div class="zp_pl">
-                                <ul class="pagination zp_pa">
-                                    <li class="b"><a href="#">上一页</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li class="a"><a href="#">2</a></li>
-                                    <li class="a"><a href="#">3</a></li>
-                                    <li class="a"><a href="#">4</a></li>
-                                    <li class="a"><a href="#">5</a></li>
-                                    <li class="a"><a href="#">下一页</a></li>
-                                </ul>
-                                <div class="zp_page">共 <span>100</span> 页</div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -144,28 +69,17 @@
                         <div class="pop_top2">
                             <span class="pop_span">已投递（<span>10</span>）</span>
                         </div>
-                        <div class="pop_tou">
-                            <ul>
-                                <li class="pop_tl">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>
-                                <li class="pop_tl1">职位名：<span></span></li>
-                                <li class="pop_tl2">投递时间：<span>2017-07-08</span></li>
-                            </ul>
-                        </div>
+                        <%--<div class="pop_tou">--%>
+                            <%--<ul>--%>
+                                <%--<li class="pop_tl">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>--%>
+                                <%--<li class="pop_tl1">职位名：<span></span></li>--%>
+                                <%--<li class="pop_tl2">投递时间：<span>2017-07-08</span></li>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
 
                         <%--分页--%>
                         <div class="zp_botv">
-                            <div class="zp_pl">
-                                <ul class="pagination zp_pa">
-                                    <li class="b"><a href="#">上一页</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li class="a"><a href="#">2</a></li>
-                                    <li class="a"><a href="#">3</a></li>
-                                    <li class="a"><a href="#">4</a></li>
-                                    <li class="a"><a href="#">5</a></li>
-                                    <li class="a"><a href="#">下一页</a></li>
-                                </ul>
-                                <div class="zp_page">共 <span>100</span> 页</div>
-                            </div>
+
                         </div>
                         <%--<div class="pop_no">--%>
                         <%--<div class="pop_allimg">--%>
