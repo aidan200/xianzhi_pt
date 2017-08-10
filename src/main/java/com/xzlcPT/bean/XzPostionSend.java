@@ -40,6 +40,8 @@ public class XzPostionSend {
 
     private Date interviewTime;
 
+    private String pmsgValue;
+
     private Integer ct;
 
     private List<XzResume> resumes;
@@ -47,6 +49,36 @@ public class XzPostionSend {
     private List<XzResumeEducation> xzResumeEducations;
 
     private String postionName;
+
+    private XzPostion postion;
+
+    private XzCompany company;
+
+    private XzPostionSendMsg postionSendMsg;
+
+    public XzPostionSendMsg getPostionSendMsg() {
+        return postionSendMsg;
+    }
+
+    public void setPostionSendMsg(XzPostionSendMsg postionSendMsg) {
+        this.postionSendMsg = postionSendMsg;
+    }
+
+    public XzCompany getCompany() {
+        return company;
+    }
+
+    public void setCompany(XzCompany company) {
+        this.company = company;
+    }
+
+    public XzPostion getPostion() {
+        return postion;
+    }
+
+    public void setPostion(XzPostion postion) {
+        this.postion = postion;
+    }
 
     public Integer getCt() {
         return ct;
@@ -222,5 +254,13 @@ public class XzPostionSend {
 
     public Date getInterviewTime() {
         return interviewTime;
+    }
+
+    public void setPmsgValue(String pmsgValue) {
+        this.pmsgValue = pmsgValue;
+    }
+
+    public String getPmsgValue() {
+        return pmsgValue;
     }
 }

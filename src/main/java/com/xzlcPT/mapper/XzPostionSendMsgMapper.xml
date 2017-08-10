@@ -5,7 +5,6 @@
         <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
         <result column="send_id" jdbcType="BIGINT" property="sendId" />
         <result column="pmsg_name" jdbcType="VARCHAR" property="pmsgName" />
-        <result column="company_name" jdbcType="VARCHAR" property="companyName" />
         <result column="pmsg_value" jdbcType="VARCHAR" property="pmsgValue" />
         <result column="pmsg_type" jdbcType="INTEGER" property="pmsgType" />
         <result column="interview_time" jdbcType="TIMESTAMP" property="interviewTime"/>
@@ -17,9 +16,15 @@
         <result column="filed3" jdbcType="VARCHAR" property="filed3" />
     </resultMap>
     <sql id="Base_Column_List">
-        pmsg_id, send_id, pmsg_name, company_name, pmsg_value, pmsg_type, create_time, delete_time,
+        pmsg_id, send_id, pmsg_name, pmsg_value, pmsg_type, create_time, delete_time,
         delete_falt, filed1, filed2, filed3,interview_time
     </sql>
+    <select id="selectBySendId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from xz_postion_send_msg
+        where send_id = #{sendId,jdbcType=BIGINT}
+    </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
@@ -32,12 +37,12 @@
     </delete>
     <insert id="insert" parameterType="com.xzlcPT.bean.XzPostionSendMsg">
         insert into xz_postion_send_msg (pmsg_id, send_id, pmsg_name,
-        company_name, pmsg_value, pmsg_type,
+         pmsg_value, pmsg_type,
         create_time, delete_time, delete_falt,
         filed1, filed2, filed3,interview_time
         )
         values (#{pmsgId,jdbcType=BIGINT}, #{sendId,jdbcType=BIGINT}, #{pmsgName,jdbcType=VARCHAR},
-        #{companyName,jdbcType=VARCHAR}, #{pmsgValue,jdbcType=VARCHAR}, #{pmsgType,jdbcType=INTEGER},
+        #{pmsgValue,jdbcType=VARCHAR}, #{pmsgType,jdbcType=INTEGER},
         #{createTime,jdbcType=TIMESTAMP}, #{deleteTime,jdbcType=TIMESTAMP}, #{deleteFalt,jdbcType=INTEGER},
         #{filed1,jdbcType=VARCHAR}, #{filed2,jdbcType=VARCHAR}, #{filed3,jdbcType=VARCHAR},#{interviewTime,jdbcType=TIMESTAMP}
         )
@@ -53,9 +58,6 @@
             </if>
             <if test="pmsgName != null">
                 pmsg_name,
-            </if>
-            <if test="companyName != null">
-                company_name,
             </if>
             <if test="pmsgValue != null">
                 pmsg_value,
@@ -95,9 +97,6 @@
             <if test="pmsgName != null">
                 #{pmsgName,jdbcType=VARCHAR},
             </if>
-            <if test="companyName != null">
-                #{companyName,jdbcType=VARCHAR},
-            </if>
             <if test="pmsgValue != null">
                 #{pmsgValue,jdbcType=VARCHAR},
             </if>
@@ -136,9 +135,6 @@
             <if test="pmsgName != null">
                 pmsg_name = #{pmsgName,jdbcType=VARCHAR},
             </if>
-            <if test="companyName != null">
-                company_name = #{companyName,jdbcType=VARCHAR},
-            </if>
             <if test="pmsgValue != null">
                 pmsg_value = #{pmsgValue,jdbcType=VARCHAR},
             </if>
@@ -173,7 +169,6 @@
         update xz_postion_send_msg
         set send_id = #{sendId,jdbcType=BIGINT},
         pmsg_name = #{pmsgName,jdbcType=VARCHAR},
-        company_name = #{companyName,jdbcType=VARCHAR},
         pmsg_value = #{pmsgValue,jdbcType=VARCHAR},
         pmsg_type = #{pmsgType,jdbcType=INTEGER},
         create_time = #{createTime,jdbcType=TIMESTAMP},

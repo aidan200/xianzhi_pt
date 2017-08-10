@@ -13,6 +13,8 @@ import java.util.Map;
  */
 public interface XzPostionSendService {
 
+    PageBean<XzPostionSend> selSendByRIdAndType(int page,int rows,Long resumeId,Integer type);
+
     List<XzPostionSend> selSendCountByCorRId(Map map);
 
     Integer selisSend(Map map);
@@ -36,4 +38,6 @@ public interface XzPostionSendService {
     PageBean<XzPostionSend> selAll(int page,int rows,Long companyId);
 
     Long selByCollect(XzPostionSend xzPostionSend);
+
+    PageBean<XzPostionSend> selByConditions(int page,int rows,Map map);
 }

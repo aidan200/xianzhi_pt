@@ -3,6 +3,9 @@ package com.xzlcPT.dao;
 import com.xzlcPT.bean.XzPostionSendMsg;
 
 public interface XzPostionSendMsgMapper {
+
+    XzPostionSendMsg selectBySendId(Long sendId);
+
     int deleteByPrimaryKey(Long pmsgId);
 
     int insert(XzPostionSendMsg record);

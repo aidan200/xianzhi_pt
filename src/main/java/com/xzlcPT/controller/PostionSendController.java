@@ -32,20 +32,17 @@ public class PostionSendController extends BaseController{
     @Autowired
     private XzPostionSendMsgService xzPostionSendMsgService;
 
-    //企业职位管理查询
+    //个人简历投递查询
     @ResponseBody
-    @RequestMapping("count7.do")
-    public Map count7(Long selId,Integer type,Integer day){
+    @RequestMapping("selSendByMember.do")
+    public Map selSendByMember(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "5") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer type){
         Map map = new HashMap();
-        Map serachMap = new HashMap();
-        serachMap.put("cday",day);
-        if(type==1){
-            serachMap.put("companyId",selId);
-        }else if (type==2){
-            serachMap.put("resumeId",selId);
-        }
-        List<XzPostionSend> postionSend = postionSendService.selSendCountByCorRId(serachMap);
-        map.put("theCount",postionSend);
+        XzResume resume = xzResumeService.selectByMemberId(userLogin.getMember().getMemberId());
+        PageBean<XzPostionSend> pageBean = postionSendService.selSendByRIdAndType(page,rows,resume.getResumeId(),type);
+        map.put("postionSendList",pageBean.getList());
+        map.put("page",pageBean.getPageNum());
+        map.put("pages",pageBean.getPages());
+        map.put("total",pageBean.getTotal());
         return map;
     }
 
@@ -99,6 +96,7 @@ public class PostionSendController extends BaseController{
         map.put("i",i);
         return map;
     }
+    //--------------------------------以下为公司操作--------------------------------------------
     //按投递状态查询简历
     @ResponseBody
     @RequestMapping("selByState.do")
@@ -163,6 +161,9 @@ public class PostionSendController extends BaseController{
         xzPostionSendMsg.setFiled1(filed1);
         xzPostionSendMsg.setFiled1(filed2);
         xzPostionSendMsg.setPmsgValue(pmsgValue);
+        System.out.println("pmsgValue::::::::::::::::::::::"+pmsgValue);
+        System.out.println("filed1:::::::::::::::::::::::::::::::"+filed1);
+        System.out.println("sendId:::::::::::::::::::::::::::::::::"+sendId);
         int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map=new HashMap();
         if (j==1){
@@ -175,18 +176,10 @@ public class PostionSendController extends BaseController{
     //意向沟通
     @ResponseBody
     @RequestMapping("updateState1.do")
-    public Map updateState1(@ModelAttribute("userLogin")XzLogin xzLogin,String pmsgValue,
-                            Date interviewTime,String filed1,String filed2,Long sendId){
+    public Map updateState1(Long sendId){
         int i=postionSendService.updateState1(sendId);
-        XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
-        xzPostionSendMsg.setSendId(sendId);
-        xzPostionSendMsg.setPmsgValue(pmsgValue);
-        xzPostionSendMsg.setInterviewTime(interviewTime);
-        xzPostionSendMsg.setFiled1(filed1);
-        xzPostionSendMsg.setFiled2(filed2);
-        int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map=new HashMap();
-        if (j==1){
+        if (i==1){
             map.put("msg","ok");
         }else {
             map.put("msg","err");
@@ -253,6 +246,45 @@ public class PostionSendController extends BaseController{
         }else {
             map.put("msg","err");
         }
+        return map;
+    }
+    //企业职位管理查询
+    @ResponseBody
+    @RequestMapping("count7.do")
+    public Map count7(Long selId,Integer type,Integer day){
+        Map map = new HashMap();
+        Map serachMap = new HashMap();
+        serachMap.put("cday",day);
+        if(type==1){
+            serachMap.put("companyId",selId);
+        }else if (type==2){
+            serachMap.put("resumeId",selId);
+        }
+        List<XzPostionSend> postionSend = postionSendService.selSendCountByCorRId(serachMap);
+        map.put("theCount",postionSend);
+        return map;
+    }
+    //按条件查询简历
+    @ResponseBody
+    @RequestMapping("selByConditions.do")
+    public Map selByConditions(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,
+                               @ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,String educationLevel,
+                                Integer resumeSex,String resumeName,String resumeWorkspace,Integer birthMin,Integer birthMax,
+                               String resumePostion){
+        Map map=new HashMap();
+        map.put("companyId",xzLogin.getCompany().getCompanyId());
+        map.put("postionId",postionId);
+        map.put("educationLevel",educationLevel);
+        map.put("resumeSex",resumeSex);
+        map.put("resumeName",resumeName);
+        map.put("resumeWorkspace",resumeWorkspace);
+        map.put("birthMin",birthMin);
+        map.put("birthMax",birthMax);
+        map.put("resumePostion",resumePostion);
+        Date now=new Date();
+        map.put("now",now);
+        PageBean list=postionSendService.selByConditions(page,rows,map);
+        map.put("list",list);
         return map;
     }
 }
