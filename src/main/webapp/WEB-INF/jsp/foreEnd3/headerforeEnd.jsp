@@ -58,8 +58,8 @@
                                         <span style="float: right"><a href="${pageContext.request.contextPath}/XzLogin/ExitUser.do">注销</a></span>
                                         <span style="float: right;margin-right: 5px"><a href="${pageContext.request.contextPath}/xzMsg/selMsgAll.do" class="fa fa-envelope" style="color: #fc6866"> (<span id="noread">10</span>)</a></span>
                                     </li>
-                                    <li><span class="head_new"></span><a href="#">招聘中心</a></li>
-                                    <li><span class="head_new"></span><a href="#">账号安全</a></li>
+                                    <li><span class="head_new"></span><a href="${pageContext.request.contextPath}/zp_index">招聘中心</a></li>
+                                    <li><span class="head_new"></span><a href="${pageContext.request.contextPath}/view/foreEnd3/safe.html">账号安全</a></li>
                                 </ul>
                             </li>
                         </a>
