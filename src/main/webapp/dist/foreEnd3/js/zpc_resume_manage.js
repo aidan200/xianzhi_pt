@@ -627,7 +627,7 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
         async:true,  //是否异步
         data:obj,        //转为JSON格式
         dataType:'json',                   //定义返回data类型
-        url:path+'PostionSend/selAll.do ',    //路径
+        url:path+'PostionSend/selByConditions.do',    //路径
         success:function (data){//data 就是数据 json
             jl.pages=data.pages;              //获取总页
             jl.page=data.page;               //获取当前页
@@ -651,25 +651,25 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</label>'
                         str+='</div>'
                         str+='</td>'
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumeName+'</td>'
-                        if(data.list[i].resumes[0].resumeSex==0){
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">男</td>'
+                        str+='<td class="all_no">'+data.list[i].resumes.resumeName+'</td>'
+                        if(data.list[i].resumes.resumeSex==0){
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">男</td>'
                         }else{
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">女</td>'
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">女</td>'
                         }
 
-                        var aa= getNowFormatDate(data.list[i].resumes[0].resumeBirth).substring(0, 4)
+                        var aa= getNowFormatDate(data.list[i].resumes.resumeBirth).substring(0, 4)
                         var bb=getNowFormatDate(new Date()).substring(0, 4);
                         var sj=bb-aa;
                         str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
 
-                        if(data.list[i].xzResumeEducations.length==0){
+                        if(data.list[i].xzResumeEducations==null||data.list[i].xzResumeEducations.educationLevel==''){
                             str+='<td class="all_no">没有</td>'
                         }else{
-                            str+='<td class="all_no">'+data.list[i].xzResumeEducations[0].educationLevel+'</td>'
+                            str+='<td class="all_no">'+data.list[i].xzResumeEducations.educationLevel+'</td>'
                         }
 
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumePosition  +'</td>' //目前职位
+                        str+='<td class="all_no">'+data.list[i].resumes.resumePosition  +'</td>' //目前职位
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //面试职位
 
                         if(data.list[i].sendState==0){
@@ -892,6 +892,7 @@ Zdxz.prototype.yl=function (){     //预览事件
     This.yyms('#rem_three',This);                //预约面试
     This.sc('#rem_three',This)                 //删除方法
 }
+
 
 function Wdsc(){                   //我的收藏
     this.DOM={

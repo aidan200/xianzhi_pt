@@ -122,7 +122,16 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='class="pop_head">'
                     str+='<div class="pop_test2">'
                     str+='<h4 style="display: inline-block">'+data.postionSendList[i].postion.postionName+'</h4>'
-                    str+='<div style="color: #fc6866;display: inline-block;margin-left: 10px">10万</div>'
+
+                    var aa=data.postionSendList[i].postion.postionMm;
+                    var bb=data.postionSendList[i].postion.postionYm;
+                    if(aa!=-1){
+                        str+='<div style="color: #fc6866;display: inline-block;margin-left: 10px">'+aa*12+"-"+bb*12+'</div>'
+                    }else if(aa==bb){
+                        str+='<div style="color: #fc6866;display: inline-block;margin-left: 10px">'+aa*12+'</div>'
+                    }else{
+                        str+='<div style="color: #fc6866;display: inline-block;margin-left: 10px">面议</div>'
+                    }
                     str+='<div style="display: inline-block;margin-left: 20px">'+data.postionSendList[i].company.companyName+'</div>'
                     str+='<div class="pop_in2">'
                     str+='<span class="pop_sp">'+data.postionSendList[i].company.companyLocation+'</span>|'
