@@ -172,7 +172,7 @@ public class PostionSendController extends BaseController{
         xzPostionSendMsg.setSendId(sendId);
         xzPostionSendMsg.setInterviewTime(interviewTime);
         xzPostionSendMsg.setFiled1(filed1);
-        xzPostionSendMsg.setFiled1(filed2);
+        xzPostionSendMsg.setFiled2(filed2);
         xzPostionSendMsg.setPmsgValue(pmsgValue);
         int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map=new HashMap();
@@ -247,7 +247,7 @@ public class PostionSendController extends BaseController{
         xzPostionSendMsg.setSendId(xzPostionSend.getSendId());
         xzPostionSendMsg.setInterviewTime(interviewTime);
         xzPostionSendMsg.setFiled1(filed1);
-        xzPostionSendMsg.setFiled1(filed2);
+        xzPostionSendMsg.setFiled2(filed2);
         xzPostionSendMsg.setPmsgValue(pmsgValue);
         int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map=new HashMap();
@@ -301,4 +301,5 @@ public class PostionSendController extends BaseController{
         map1.put("page",list.getPageNum());
         return map1;
     }
+
 }

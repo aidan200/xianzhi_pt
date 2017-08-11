@@ -17,4 +17,6 @@ public interface XzResumeCollectService {
     int insertSelective(XzResumeCollect xzResumeCollect);
 
     XzResumeCollect selectByPrimaryKey(Long collectId);
+
+    int deleteByPrimaryKey(Long collectId);
 }
