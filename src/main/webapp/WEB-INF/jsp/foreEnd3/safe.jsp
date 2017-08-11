@@ -14,13 +14,18 @@
     <title>账号安全</title>
     <jsp:include page="distforeEnd.jsp"/>
 </head>
-<body>
+<body style="background-color: #f9f9f9">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 
 <div class="saf_all">
+    <h2 class="saf_top"><span class="fa fa-cog" style="font-size: 35px">&nbsp;</span>安全中心</h2>
     <div class="saf_allin">
 
+        <div style="font-size: 18px;color: #fc6866">账号安全</div>
+        <div class="saf_every">
+            sfhvgksj
+        </div>
     </div>
 
 </div>
