@@ -201,7 +201,7 @@ public class ResumeController extends BaseController {
 
     @RequestMapping("selResumeByConditions.do")
     public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,String fieldName,String educationLevel,
-                                                String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String createTime,String resumeState){
+                                                String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String createTime,String resumeState,String workspace){
         ModelAndView mv=new ModelAndView("foreEnd3/zpc_selectresume");
         Map  map=new HashMap();
         map.put("fieldName",fieldName);
@@ -213,6 +213,7 @@ public class ResumeController extends BaseController {
         map.put("resumeSex",resumeSex);
         map.put("createTime",createTime);
         map.put("resumeState",resumeState);
+        map.put("workspace",workspace);
         List<String> flist=new ArrayList<>();
         if (fieldName!=null){
             flist.add(fieldName);
@@ -249,7 +250,7 @@ public class ResumeController extends BaseController {
         mv.addObject("pages",pageBean.getPages());
         mv.addObject("rows",pageBean.getPageSize());
         mv.addObject("total",pageBean.getTotal());
-        mv.addObject("map",map);
+        mv.addObject("workspace",workspace);
         return mv;
     }
     //添加收藏

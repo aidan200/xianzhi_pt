@@ -18,6 +18,7 @@
     <script>
         var path = '${pageContext.request.contextPath}'
         var postionId = '${xzPostion.postionId}'
+        var resumeId='${userLogin.member.resume.resumeId}'
     </script>
 
     <jsp:include page="distforeEnd.jsp"/>
@@ -94,7 +95,7 @@
                         </c:otherwise>
                     </c:choose>
                     <span>72小时反馈</span>
-                    <a id="lxw" isSend="f" onclick="sendResume()">我感兴趣 请联系我</a></h3>
+                    <a id="lxw" isSend="f" onclick="flashResume2()">我感兴趣 请联系我</a></h3>
                 <p><span>${xzPostion.postionSpace}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span><fmt:formatDate
                         value="${xzPostion.postionTime}" pattern="yyyy-MM-dd"/> </span>
                     <a isCollect="f" onclick="insertCollect()" id="sc">收藏</a></p>
@@ -346,6 +347,25 @@
         isSend();
         isCollect();
     })
+
+    function flashResume2(){  //查看简历完成度
+        $.ajax({
+            type:"get",
+            data: {resumeId:resumeId},
+            dataType:'json',
+            url:"${pageContext.request.contextPath}/Resume/flashResumeByMember.do",
+            success:function (data){
+            var completion = data.resumeCompletion;//完成度
+            if(Number(completion)>=80){
+                sendResume();
+            }else{
+                alert("简历完成度不足80%")
+            }
+        },error:function (){ //报错执行的
+            alert('基本资料修改错误')
+        }
+        });
+    }
 
     function sendResume() {
         if ($('#lxw').attr("isSend") == "f") {

@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,17 +30,17 @@
         <div style="font-size: 18px;color: #FFA500">账号安全</div>
         <div class="saf_every">
             <span class="saf_s" style="width: 200px">邮箱</span>
-            <span class="saf_s" style="width: 450px;color: #3d9ccc">1245********@qq.com</span>
+            <span class="saf_s" id="theEmail" style="width: 450px;color: #3d9ccc"></span>
             <span class="saf_s">
-                <span class="fa fa-remove" style="color: #666"></span> 未验证
-                <a href="###">验证</a>
-                <a href="###">修改</a>
+                <span class="fa fa-remove" style="color: #666"></span> 未开放
+                <%--<a href="###">验证</a>
+                <a href="###">修改</a>--%>
             </span>
         </div>
         <div class="saf_every">
             <span class="saf_s" style="width: 770px">修改密码</span>
             <span class="saf_s">
-                <a>修改</a>
+                <a href="${pageContext.request.contextPath}/view/foreEnd3/retrievepassword.html">修改</a>
             </span>
         </div>
         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/safe.png" alt="" class="saf_safe">
@@ -50,3 +51,12 @@
 <jsp:include page="behindforeEnd.jsp"/>
 </body>
 </html>
+<script>
+    $(function () {
+        var email = "${userLogin.loginEmail}";
+        var str = email.substring(3,email.indexOf("@"));
+        str = str.replace(/(.{1})/g,"*");
+        var email = email.replace(email.substring(3,email.indexOf("@")),str);
+        $('#theEmail').text(email);
+    })
+</script>

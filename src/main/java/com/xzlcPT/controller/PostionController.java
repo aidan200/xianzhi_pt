@@ -165,6 +165,7 @@ public class PostionController extends BaseController{
         postionBrowseService.insertPostionBrowse(postionId,userLogin.getMember().getMemberId());//职位浏览记录
         mv.addObject("cplist",cplist);
         mv.addObject("xzPostion",xzPostion);
+        mv.addObject("userLogin",userLogin);
         return mv;
     }
     //可能感兴趣的职位

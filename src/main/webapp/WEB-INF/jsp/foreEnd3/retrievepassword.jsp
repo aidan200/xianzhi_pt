@@ -265,7 +265,13 @@
                         $("#toEmail").removeClass("ddds");
                     } else {
                         $("#toEmail").val("邮件发送失败");
+                        $('#emailGo').attr("disabled",false);
+                        $("#emailGo").removeClass("ddds");
                     }
+                },error:function () {
+                    $("#toEmail").val("邮件发送失败");
+                    $('#emailGo').attr("disabled",false);
+                    $("#emailGo").removeClass("ddds");
                 }
             });
         }
