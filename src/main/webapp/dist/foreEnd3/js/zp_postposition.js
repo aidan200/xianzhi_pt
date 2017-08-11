@@ -152,12 +152,12 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     var date1= data.postionSendList[i].sendTime1;          //计算几小时以前
                     var date2=new Date();
                     var date3=date2-date1;
-                    if(date3<3600000){
+                    if(date3<60000*60){
                         str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/60000)+'分钟前</span>'
-                    }else if(date3<3600000*24){
-                        str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/6000/24)+'小时前</span>'
-                    }else if (date3>3600000*24){
-                        str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/3600000/24)+'天前</span>'
+                    }else if(date3<60000*60*24){
+                        str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/60000/60)+'小时前</span>'
+                    }else if (date3>60000*60*24){
+                        str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/60000/60/24)+'天前</span>'
                     }
 
                     str+='</div>'
@@ -354,56 +354,51 @@ Ytd.prototype.loader=function (data,fn1,fn2){
         dataType:'json',
         url:path+'PostionSend/selSendByMember.do',
         success:function (data){
+
             qxdx.pages=data.pages;
             qxdx.jl.ytd=data.page;
             qxdx.total=data.total;
             $('#pop_two .pop_span span').html(qxdx.total);          //总记录数
-            var attr2=[];
             if(data.postionSendList.length!=0){
+
+
                 for(var i=0;i<data.postionSendList.length;i++){
-                    if(data.postionSendList[i].sendState==0){
-                        attr2.push(data.postionSendList[i])
-                    }
-                }
-                if(attr2.length!=0){
-                    for(var j=0;j<attr2.length;j++){
 
-                        str+='<div class="pop_tou">'
-                        str+='<ul>'
-                        str+='<li class="pop_tl">公司名：<span>'+attr2[j].company.companyName+'</span></li>'
-                        str+='<li class="pop_tl1">职位名：<span>'+attr2[j].postion.postionName+'</span></li>'
+                    str+='<div class="pop_tou">'
+                    str+='<ul>'
+                    str+='<li class="pop_tl">公司名：<span>'+data.postionSendList[i].company.companyName+'</span></li>'
+                    str+='<li class="pop_tl1">职位名：<span>'+data.postionSendList[i].postion.postionName+'</span></li>'
 
-                        var date1= attr2[j].sendTime1;          //计算几小时以前
-                        var date2=new Date();
-                        var date3=date2-date1;
-                        if(date3<3600000){
-                            str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000)+'分钟前</span></li>'
+                    var date1= data.postionSendList[i].sendTime1;          //计算几小时以前
+                    var date2=new Date();
+                    var date3=date2-date1;
 
-                        }else if(date3<3600000*24){
-                            str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/6000/24)+'小时前</span></li>'
 
-                        }else if (date3>3600000*24){
-                            str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/3600000/24)+'天前</span></li>'
+                    if(date3<60000*60){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000)+'分钟前</span></li>'
 
-                        }
-                        str+='</ul>'
-                        str+='</div>'
+                    }else if(date3<60000*60*24){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000/60)+'小时前</span></li>'
+
+                    }else if (date3>60000*60*24){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000/60/24)+'天前</span></li>'
 
                     }
-                    $('#pop_two > div').each(function (i,e){                //清除之前记录
-                        if(i!=0&&$(e).attr('class')!='zp_botv'){
-                            $(e).remove();
-                        }
-                    })
-                    $('#pop_two .pop_top2 ').after(str);
-                    fn1()
-                }else{
-                    fn2()
-                }
+                    str+='</ul>'
+                    str+='</div>'
 
+                }
+                $('#pop_two > div').each(function (i,e){                //清除之前记录
+                    if(i!=0&&$(e).attr('class')!='zp_botv'){
+                        $(e).remove();
+                    }
+                })
+                $('#pop_two .pop_top2 ').after(str)
+                fn1()
             }else{
                 fn2()
             }
+
         },error:function (){
             alert('基本资料修改错误')
         }
@@ -417,7 +412,7 @@ Ytd.prototype.seekCont=function (){
     var _public_ssk={}
     _public_ssk.resumeId=resumeId;                              //ID
     _public_ssk.page=qxdx.jl.ytd;                              //全部状态分页
-    _public_ssk.type=8;                                         //8是全查
+    _public_ssk.type=0;                                         //0是已投递
     return _public_ssk
 }
 Ytd.prototype.init=function (){            //初始化载入数据
@@ -427,8 +422,8 @@ Ytd.prototype.init=function (){            //初始化载入数据
     This.cg=function (){
         var fy= This.fy(qxdx.pages,qxdx.jl.ytd);
         $('#pop_two .zp_botv').html(fy);                     //分页插入完成
-        This.fy_sj('#pop_one',qxdx.pages,qxdx.jl.ytd,This);  //事件插入完成
-        This.xl_sj('#pop_one')
+        This.fy_sj('#pop_two',qxdx.pages,qxdx.jl.ytd,This);  //事件插入完成
+        This.xl_sj('#pop_two')
     }
     This.sb=function (){
         //没找到数据
@@ -447,6 +442,330 @@ Ytd.prototype.init=function (){            //初始化载入数据
 
 
 }
+Ytd.prototype.xxk_sj=function (){            //初始化载入数据
+    var This=this;
+    This.init();
+    $('#myTab li a').eq(1).unbind().on('click',function (){
+        This.init();
+    })
+
+}
+
+
+function Yck(){         //已投递
+
+}
+Yck.prototype=new parent();
+Yck.prototype.loader=function (data,fn1,fn2){
+var This=this;
+    var str='';
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:data,        //转为JSON格式
+        dataType:'json',
+        url:path+'PostionSend/selSendByMember.do',
+        success:function (data){
+
+            qxdx.pages=data.pages;
+            qxdx.jl.yck=data.page;
+            qxdx.total=data.total;
+            $('#pop_three .pop_span span').html(qxdx.total);          //总记录数
+            if(data.postionSendList.length!=0){
+
+
+                for(var i=0;i<data.postionSendList.length;i++){
+
+                    str+='<div class="pop_tou">'
+                    str+='<ul>'
+                    str+='<li class="pop_tl">公司名：<span>'+data.postionSendList[i].company.companyName+'</span></li>'
+                    str+='<li class="pop_tl1">职位名：<span>'+data.postionSendList[i].postion.postionName+'</span></li>'
+
+                    var date1= data.postionSendList[i].sendTime1;          //计算几小时以前
+                    var date2=new Date();
+                    var date3=date2-date1;
+                    if(date3<3600000){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000)+'分钟前</span></li>'
+
+                    }else if(date3<3600000*24){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/6000/60)+'小时前</span></li>'
+
+                    }else if (date3>3600000*24){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/3600000/24)+'天前</span></li>'
+
+                    }
+                    str+='</ul>'
+                    str+='</div>'
+
+                }
+                $('#pop_three > div').each(function (i,e){                //清除之前记录
+                    if(i!=0&&$(e).attr('class')!='zp_botv'){
+                        $(e).remove();
+                    }
+                })
+                $('#pop_three .pop_top2 ').after(str)
+                fn1()
+            }else{
+                fn2()
+            }
+
+        },error:function (){
+            alert('基本资料修改错误')
+        }
+
+    })
+
+
+
+}
+Yck.prototype.seekCont=function (){
+    var _public_ssk={}
+    _public_ssk.resumeId=resumeId;                              //ID
+    _public_ssk.page=qxdx.jl.yck;                              //全部状态分页
+    _public_ssk.type=1;                                         //0是已投递
+    return _public_ssk
+}
+Yck.prototype.init=function (){            //初始化载入数据
+
+    var This=this;
+    var data=This.seekCont();
+    This.cg=function (){
+        var fy= This.fy(qxdx.pages,qxdx.jl.yck);
+        $('#pop_three .zp_botv').html(fy);                     //分页插入完成
+        This.fy_sj('#pop_three',qxdx.pages,qxdx.jl.yck,This);  //事件插入完成
+        This.xl_sj('#pop_three')
+    }
+    This.sb=function (){
+        //没找到数据
+        $('#pop_three > div').each(function (i,e){                //清除之前记录
+            if(i!=0&&$(e).attr('class')!='zp_botv'){
+                $(e).remove();
+            }
+        })
+        $('#pop_three .pop_top2').after(mzd);
+
+    }
+    This.loader(data,This.cg,This.sb);                //加载数据
+
+
+
+
+
+}
+Yck.prototype.xxk_sj=function (){            //初始化载入数据
+    var This=this;
+    This.init();
+    $('#myTab li a').eq(2).unbind().on('click',function (){
+        This.init();
+    })
+
+}
+
+function Msyy(){         //已投递
+
+}
+Msyy.prototype=new parent();
+Msyy.prototype.loader=function (data,fn1,fn2){
+    var This=this;
+    var str='';
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:data,        //转为JSON格式
+        dataType:'json',
+        url:path+'PostionSend/selSendByMember.do',
+        success:function (data){
+
+            qxdx.pages=data.pages;
+            qxdx.jl.msyy=data.page;
+            qxdx.total=data.total;
+            $('#pop_four .pop_span span').html(qxdx.total);          //总记录数
+            if(data.postionSendList.length!=0){
+
+                for(var i=0;i<data.postionSendList.length;i++){
+
+                    if(data.postionSendList[i].postionSendMsg!=null){
+                        str+='<div class="pop_tou" data-pmsgName="'+data.postionSendList[i].postionSendMsg.pmsgName+'" data-pmsgId="'+data.postionSendList[i].postionSendMsg.pmsgId+'" >'
+                    }else{
+                        str+='<div class="pop_tou" >'
+                    }
+                    str+='<ul>'
+                    str+='<li class="pop_tl3">公司名：<span>'+data.postionSendList[i].company.companyName+'</span></li>'
+                    str+='<li class="pop_tl3">职位名：<span>'+data.postionSendList[i].postion.postionName+'</span></li>'
+                    str+='</ul>'
+                    if(data.postionSendList[i].postionSendMsg!=null){
+                        str+='<span class="fa fa-chevron-down pop_d"></span>'
+                    }else{
+
+                    }
+                    str+='</div>'
+                    str+='<div class="pop_dd">'
+                    str+='<ul>'
+                    str+='<li class="pop_tl4">面试信息：';
+                    str+='<span>面试公司：'+data.postionSendList[i].postionSendMsg.filed2+'</span><br>';
+                    str+='<span>面试地点：'+data.postionSendList[i].postionSendMsg.filed1+'</span><br>';
+                    str+='<span>面试时间：'+getNowFormatDate(data.postionSendList[i].postionSendMsg.interviewTime)+'</span><br>';
+                    str+='<span>面试地点：'+data.postionSendList[i].postionSendMsg.pmsgValue+'</span><br>';
+                    str+='</li>'
+                    str+='<li class="pop_tl5 an_cz" >'
+                    if(data.postionSendList[i].postionSendMsg.pmsgName=='2'){
+                        str+='<p >你已同意</p>'
+                    }else if(data.postionSendList[i].postionSendMsg.pmsgName=='3'){
+                        str+='<p >你已拒绝</p>'
+                    }else{
+                        str+='<button type="button" class="ty_zw">同意</button>'
+                        str+='<button type="button" class="jj_zw">拒绝</button>'
+                    }
+
+                    str+='</li>'
+                    str+='</ul>'
+                    str+='</div>'
+                }
+                $('#pop_four > div').each(function (i,e){                //清除之前记录
+                    if(i!=0&&$(e).attr('class')!='zp_botv'){
+                        $(e).remove();
+                    }
+                })
+                $('#pop_four .pop_top2 ').after(str)
+                fn1()
+            }else{
+                fn2()
+            }
+
+        },error:function (){
+            alert('基本资料修改错误')
+        }
+
+    })
+
+
+
+}
+Msyy.prototype.seekCont=function (){
+    var _public_ssk={}
+    _public_ssk.resumeId=resumeId;                              //ID
+    _public_ssk.page=qxdx.jl.msyy;                              //全部状态分页
+    _public_ssk.type=2;                                         //0是已投递
+    return _public_ssk
+}
+Msyy.prototype.init=function (){            //初始化载入数据
+
+    var This=this;
+    var data=This.seekCont();
+    This.cg=function (){
+        var fy= This.fy(qxdx.pages,qxdx.jl.msyy);
+        $('#pop_four .zp_botv').html(fy);                     //分页插入完成
+        This.fy_sj('#pop_four',qxdx.pages,qxdx.jl.msyy,This);  //事件插入完成
+        This.sj();
+        $('#pop_four').find('.pop_d').unbind().on('click',function (){
+            var aa=$(this).parent().next()
+            var bb=$(this).parent()
+            console.log(bb.attr('data-pmsgName'));
+            if(bb.attr('data-pmsgName')==0){
+
+                var data2={
+                    pmsgId:bb.attr('data-pmsgId'),
+                    pmsgName:1,                     //已查看
+                }
+                $.ajax({
+                    type: "post",    //提交方式
+                    async: true,  //是否异步
+                    data: data2,        //转为JSON格式
+                    dataType: 'text',
+                    url: path +'PostionSend/updateType.do',
+                    success: function (data) {
+
+
+                        $(aa).slideToggle(500);
+
+                    }, error: function () {
+                        alert('基本资料修改错误')
+                    }
+
+                });
+            }else{
+                $(aa).slideToggle(500);
+            }
+
+
+        })
+
+    }
+    This.sb=function (){
+        //没找到数据
+        $('#pop_four > div').each(function (i,e){                //清除之前记录
+            if(i!=0&&$(e).attr('class')!='zp_botv'){
+                $(e).remove();
+            }
+        })
+        $('#pop_four .pop_top2').after(mzd);
+
+    }
+    This.loader(data,This.cg,This.sb);                //加载数据
+
+
+
+
+
+}
+Msyy.prototype.xxk_sj=function (){            //初始化载入数据
+    var This=this;
+    This.init();
+    $('#myTab li a').eq(3).unbind().on('click',function (){
+        This.init();
+    })
+
+}
+Msyy.prototype.sj=function (){
+    var This=this;
+    $('#pop_four').find('.ty_zw').unbind().on('click',function (){          //同意
+        var aa=$(this).parent().parent().parent().prev();
+        var pmsgId=aa.attr('data-pmsgId');
+        var data={
+            pmsgId:pmsgId,
+            pmsgName:2,                     //同意
+        }
+        $.ajax({
+            type: "post",    //提交方式
+            async: true,  //是否异步
+            data: data,        //转为JSON格式
+            dataType: 'text',
+            url: path +'PostionSend/updateType.do',
+            success: function (data) {
+                alert(1);
+                This.init()
+            }, error: function () {
+                alert('基本资料修改错误')
+            }
+
+        });
+
+    })
+    $('#pop_four').find('.jj_zw').unbind().on('click',function (){              //拒绝
+        var aa=$(this).parent().parent().parent().prev();
+        var pmsgId=aa.attr('data-pmsgId');
+
+        var data={
+            pmsgId:pmsgId,
+            pmsgName:3,                     //同意
+        }
+        $.ajax({
+            type: "post",    //提交方式
+            async: true,  //是否异步
+            data: data,        //转为JSON格式
+            dataType: 'json',
+            url: path + 'PostionSend/updateType.do',
+            success: function (data) {
+
+                This.init()
+            }, error: function () {
+                alert('基本资料修改错误')
+            }
+
+        });
+    })
+}
+
 
 
 
@@ -455,11 +774,17 @@ Ytd.prototype.init=function (){            //初始化载入数据
 
 $(function (){
 
-      var qbzt=new Qbzt();
+     var qbzt=new Qbzt();
      qbzt.xxk_sj();
 
      var ytd=new Ytd();
-    ytd.init();
+     ytd.xxk_sj();
+
+    var yck=new Yck();
+    yck.xxk_sj();
+
+    var msyy=new Msyy();
+    msyy.xxk_sj();
 
 
 })
