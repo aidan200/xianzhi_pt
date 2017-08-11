@@ -58,6 +58,20 @@
       <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
     </association>
+    <association property="sendmsg" javaType="com.xzlcPT.bean.XzPostionSendMsg">
+      <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
+      <result column="send_id" jdbcType="BIGINT" property="sendId" />
+      <result column="pmsg_name" jdbcType="VARCHAR" property="pmsgName" />
+      <result column="pmsg_value" jdbcType="VARCHAR" property="pmsgValue" />
+      <result column="pmsg_type" jdbcType="INTEGER" property="pmsgType" />
+      <result column="interview_time" jdbcType="TIMESTAMP" property="interviewTime"/>
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+      <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
+      <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+      <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+      <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    </association>
   </resultMap>
   <resultMap id="ResumeInformation" type="com.xzlcPT.bean.XzResume">
     <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
@@ -93,7 +107,7 @@
   <sql id="selById">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
     r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type,
-    ps.send_time,m.interview_time
+    ps.send_time,m.interview_time,m.pmsg_value,m.filed1,m.filed2
   </sql>
   <!--按简历id和状态查询投递-->
   <select id="selSendByRIdAndType" parameterType="Map" resultMap="BaseResultMap">

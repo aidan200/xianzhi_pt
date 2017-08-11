@@ -136,7 +136,7 @@ public class PostionSendController extends BaseController{
     @ResponseBody
     @RequestMapping("selComCollect.do")
     public Map selComCollect(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin xzLogin,
-                             String resumeName,String resumePostion,int px){
+                             String resumeName,String resumePostion){
         Map map1=new HashMap();
         map1.put("companyId",xzLogin.getCompany().getCompanyId());
         map1.put("resumeName",resumeName);
