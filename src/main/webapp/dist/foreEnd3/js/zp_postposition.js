@@ -148,12 +148,25 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<button class="pop_but" style="margin-left: 200px">'
                     str+='<span class="fa fa-chevron-down"></span>'
                     str+='</button>'
+
+                    var date1= data.postionSendList[i].postion.publishMonth;          //计算几小时以前
+                    var data2=new Date();
+                    var cc=data2-date1;
+
                     str+='<span style="margin-left: 190px;color: #666">4小时前</span>'     //创建时间
                     str+='</div>'
                     str+='</div>'
                     str+='</div>'
                     str+='<div class="pop-right-bottom">'
-                    str+='<b>快</b>'
+                    if(data.postionSendList[i].company.companyNature==1){
+                        str+='<b>国</b>'
+                    }else if(data.postionSendList[i].company.companyNature==2){
+                        str+='<b>民</b>'
+                    }else if(data.postionSendList[i].company.companyNature==3){
+                        str+='<b>外</b>'
+                    }else if(data.postionSendList[i].company.companyNature==4){
+                        str+='<b>政</b>'
+                    }
                     str+='</div>'
                     str+='</div>'
                     str+='</div>'
