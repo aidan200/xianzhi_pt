@@ -16,9 +16,10 @@
     <link href="${pageContext.request.contextPath}/dist/foreEnd3/lib/bootstrap/css/bootstrap.css" rel="stylesheet"
           media="screen">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/css测试.css" type="text/css"/>
-    <link href="${pageContext.request.contextPath}/dist/foreEnd3/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/dist/foreEnd3/css/font-awesome.min.css" type="text/css"
+          rel="stylesheet">
     <style>
-        .ddds{
+        .ddds {
             background-color: #d9d3d4;
         }
     </style>
@@ -46,6 +47,10 @@
                     <a class="ui-stepSequence">3</a>
                     <p class="ui-stepName">修改密码</p>
                 </td>
+                <td class="ui-stepInfo">
+                    <a class="ui-stepSequence">4</a>
+                    <p class="ui-stepName">修改结果</p>
+                </td>
             </tr>
         </table>
     </div>
@@ -55,59 +60,79 @@
 <%--1--%>
 <div class="myTab" id="repall_1">
     <div class="rep_out">
-            <div class="rep_bgimg">
-                <div class="rep_bgin">
-                    <div class="rep_text">输入邮箱发送验证码</div>
-                    <div>
-                        <span style="font-size: 16px">输入邮箱：</span><input type="text" id="email1" onblur="validateEmail()" class="rep_input">
-                        <button class="rep_button"  id="emailGo" onclick="sendMail()" >发 送</button>
-                    </div>
-
-                    <%--错误信息--%>
-                    <div class="rep_error" id="emailMsg1Box" style="display: none"> <span class="fa fa-exclamation-circle">&nbsp;</span><span id="emailMsg1" >邮箱输入不正确</span></div>
-                    <button class="rep_next ddds" id="toEmail" onclick="remailgo()" disabled >到邮箱验证</button>
+        <div class="rep_bgimg">
+            <div class="rep_bgin">
+                <div class="rep_text">输入邮箱发送验证码</div>
+                <div>
+                    <span style="font-size: 16px">输入邮箱：</span><input type="text" id="email1" onblur="validateEmail()"
+                                                                     class="rep_input">
+                    <button class="rep_button" id="emailGo" onclick="sendMail()">发 送</button>
                 </div>
+
+                <%--错误信息--%>
+                <div class="rep_error" id="emailMsg1Box" style="display: none"><span class="fa fa-exclamation-circle">&nbsp;</span><span
+                        id="emailMsg1">邮箱输入不正确</span></div>
+                <button class="rep_next ddds" id="toEmail" onclick="remailgo()" disabled>到邮箱验证</button>
             </div>
+        </div>
     </div>
 </div>
 
 <%--2--%>
 <div class="myTab" id="repall_2">
     <div class="rep_out">
-            <div class="rep_bgimg">
-                <div class="rep_bgin">
-                    <div class="rep_text">输入发送到邮箱的验证码</div>
-                    <div>
-                        <span style="font-size: 16px">输入验证码：</span><input id="valiKey" type="text" class="rep_input">
-                        <%--<button class="rep_button">确 定</button>--%>
-                    </div>
-
-                    <%--错误信息--%>
-                    <div class="rep_error" id="emailMsg2Box" style="display: none"> <span class="fa fa-exclamation-circle">&nbsp;</span><span id="emailMsg2">验证码不正确</span></div>
-                    <button class="rep_next" onclick="validateKey()">下一步</button>
+        <div class="rep_bgimg">
+            <div class="rep_bgin">
+                <div class="rep_text">输入发送到邮箱的验证码</div>
+                <div>
+                    <span style="font-size: 16px">输入验证码：</span><input id="valiKey" type="text" class="rep_input">
+                    <%--<button class="rep_button">确 定</button>--%>
                 </div>
+
+                <%--错误信息--%>
+                <div class="rep_error" id="emailMsg2Box" style="display: none"><span class="fa fa-exclamation-circle">&nbsp;</span><span
+                        id="emailMsg2">验证码不正确</span></div>
+                <button class="rep_next" onclick="validateKey()">下一步</button>
             </div>
+        </div>
     </div>
 </div>
 
 <%--3--%>
 <div class="myTab" id="repall_3">
     <div class="rep_out">
-            <div class="rep_bgimg">
-                <div class="rep_bgin">
-                    <div class="rep_text">新密码</div>
-                    <div style="text-align: left;margin-left: 40px">
-                        <span style="font-size: 16px">输入密码：</span><input id="password1" type="password" class="rep_input2">
-                    </div>
-                    <div style="text-align: left;margin-left: 40px;margin-top: 10px">
-                        <span style="font-size: 16px">确认密码：</span><input id="password2" type="password" class="rep_input2">
-                    </div>
+        <div class="rep_bgimg">
+            <div class="rep_bgin">
+                <div class="rep_text">新密码</div>
+                <div style="text-align: left;margin-left: 40px">
+                    <span style="font-size: 16px">输入密码：</span><input id="password1" type="password" class="rep_input2">
+                </div>
+                <div style="text-align: left;margin-left: 40px;margin-top: 10px">
+                    <span style="font-size: 16px">确认密码：</span><input id="password2" type="password" class="rep_input2">
+                </div>
 
-                    <%--错误信息--%>
-                    <div class="rep_error2" id="emailMsg3Box" style="display: none"> <span class="fa fa-exclamation-circle">&nbsp;</span><span id="emailMsg3">两次输入密码不一样</span></div>
-                    <button class="rep_next2" onclick="updatePwd(this)">确 定</button>
+                <%--错误信息--%>
+                <div class="rep_error2" id="emailMsg3Box" style="display: none"><span class="fa fa-exclamation-circle">&nbsp;</span><span
+                        id="emailMsg3">两次输入密码不一样</span></div>
+                <button class="rep_next2" onclick="updatePwd(this)">确 定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%--4--%>
+
+<div class="myTab" id="repall_4">
+    <div class="rep_out">
+        <div class="rep_bgimg">
+            <div class="rep_bgin">
+                <h2 style="color: #fc6866">修改成功</h2>
+                <a href="" class="rep_b4">返回首页</a>
+                <div style="margin-top: 40px;font-size: 15px">
+                    <span id="rep_time" style="font-size: 25px;color: #FFA500">5</span>秒后自动跳转
                 </div>
             </div>
+        </div>
     </div>
 </div>
 
@@ -121,7 +146,7 @@
 <script type="text/javascript">
     $(function () {
         var state2 = 1;
-        if('${param.type}'!=''){
+        if ('${param.type}' != '') {
             state2 = "${param.type}";
         }
         stepBar.init("stepBar", {
@@ -131,29 +156,39 @@
         });
         $('.myTab').hide();
         $('#repall_' + state2).show();
+
+        if (state2 == '4') {
+            var i = 4;
+            setInterval(function () {
+                if (i == 0) {
+                    location.href = "${pageContext.request.contextPath}/";
+                }
+                document.getElementById("rep_time").innerHTML = i--;
+            }, 1200);
+        }
     });
     function updatePwd(btn) {
         var p1 = $('#password1').val();
         var p2 = $('#password2').val();
         console.log(p1);
         console.log(p2);
-        if(p1==""||p2==""){
+        if (p1 == "" || p2 == "") {
             $("#emailMsg3Box").show();
             $("#emailMsg3").text("密码不能为空");
-        }else if(p1.length<6||p1.length>18){
+        } else if (p1.length < 6 || p1.length > 18) {
             $("#emailMsg3Box").show();
             $("#emailMsg3").text("长度必须在6到18字符之间");
-        }else if(p1!=p2){
+        } else if (p1 != p2) {
             $("#emailMsg3Box").show();
             $("#emailMsg3").text("密码不一致");
-        }else{
+        } else {
             $(btn).addClass("ddds");
-            $(btn).attr("disabled",true);
+            $(btn).attr("disabled", true);
             $.ajax({
-                url:'${pageContext.request.contextPath}/XzRegister/findBack3.do',
-                data:{key:$("#valiKey").val(),email:'${param.email}',password:p2},
-                success:function (data) {
-                    if(data.msg=="ok"){
+                url: '${pageContext.request.contextPath}/XzRegister/findBack3.do',
+                data: {key: $("#valiKey").val(), email: '${param.email}', password: p2},
+                success: function (data) {
+                    if (data.msg == "ok") {
                         var state2 = 4;
                         stepBar.init("stepBar", {
                             step: state2,
@@ -162,7 +197,7 @@
                         });
                         $('.myTab').hide();
                         $('#repall_' + state2).show();
-                    }else{
+                    } else {
                         alert("修改失败");
                     }
                 }
@@ -171,15 +206,15 @@
     }
     function validateKey() {
         var key = $("#valiKey").val();
-        if(key==""){
+        if (key == "") {
             $("#emailMsg2Box").show();
             $("#emailMsg2").text("验证码不能为空");
-        }else {
+        } else {
             $.ajax({
-                url:'${pageContext.request.contextPath}/XzRegister/findBack2.do',
-                data:{key:key,email:'${param.email}'},
-                success:function (data) {
-                    if(data.msg=="ok"){
+                url: '${pageContext.request.contextPath}/XzRegister/findBack2.do',
+                data: {key: key, email: '${param.email}'},
+                success: function (data) {
+                    if (data.msg == "ok") {
                         var state2 = 3;
                         stepBar.init("stepBar", {
                             step: state2,
@@ -188,7 +223,7 @@
                         });
                         $('.myTab').hide();
                         $('#repall_' + state2).show();
-                    }else{
+                    } else {
                         $("#emailMsg2Box").show();
                         $("#emailMsg2").text("验证码错误");
                     }
@@ -201,40 +236,40 @@
         var email = $('#email1').val();
         var reg = /^[\w,\.,-]*@[0-9A-Za-z]{1,20}((\.com)|(\.net)|(\.com.cn)){1}$/;
         var b = reg.test(email);
-        if(b){
+        if (b) {
             $.ajax({
-                url:'${pageContext.request.contextPath}/XzRegister/selByEmail.do',
-                data:{email:email},
-                success:function (data) {
-                    if(data.msg=="ok"){
+                url: '${pageContext.request.contextPath}/XzRegister/selByEmail.do',
+                data: {email: email},
+                success: function (data) {
+                    if (data.msg == "ok") {
                         isOK = true;
-                    }else{
+                    } else {
                         $('#emailMsg1Box').show();
                         $('#emailMsg1').text("邮箱不存在");
                     }
                 }
             });
-        }else{
+        } else {
             $('#emailMsg1Box').show();
             $('#emailMsg1').text("邮箱格式不正确");
         }
     }
     function sendMail() {
         validateEmail();
-        $('#emailGo').attr("disabled",true);
+        $('#emailGo').attr("disabled", true);
         $("#emailGo").addClass("ddds");
         var email = $('#email1').val();
-        if(isOK){
+        if (isOK) {
             $("#toEmail").val("邮件发送中...");
             $.ajax({
-                url:'${pageContext.request.contextPath}/XzRegister/findBack1.do',
-                data:{email:email},
-                success:function (data) {
-                    if(data.msg=="ok"){
+                url: '${pageContext.request.contextPath}/XzRegister/findBack1.do',
+                data: {email: email},
+                success: function (data) {
+                    if (data.msg == "ok") {
                         $("#toEmail").val("到邮箱验证");
-                        $("#toEmail").attr("disabled",false);
+                        $("#toEmail").attr("disabled", false);
                         $("#toEmail").removeClass("ddds");
-                    }else{
+                    } else {
                         $("#toEmail").val("邮件发送失败");
                         $('#emailGo').attr("disabled",false);
                         $("#emailGo").removeClass("ddds");
@@ -247,12 +282,12 @@
             });
         }
     }
-    
+
     function remailgo() {
         var email = $('#email1').val();
         var uurl = gotoEmail(email);
         if (uurl != "") {
-            window.open("http://"+uurl, "_blank");
+            window.open("http://" + uurl, "_blank");
         } else {
             alert("抱歉!未找到对应的邮箱登录地址，请自己登录邮箱查看邮件！");
         }
@@ -306,7 +341,8 @@
         } else {
             return '';
         }
-    };
+    }
+    ;
 </script>
 </body>
 </html>
