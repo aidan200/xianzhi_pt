@@ -351,18 +351,19 @@
   </select>
   <!--按投递状态查简历-->
   <select id="selByState" parameterType="java.util.Map" resultMap="BaseResultMap">
-    SELECT send_id FROM xz_postion_send
-    WHERE company_id=#{companyId,jdbcType=BIGINT}
+    SELECT ps.send_id FROM xz_postion_send ps
+    LEFT JOIN xz_resume r ON ps.resume_id=r.resume_id
+    WHERE ps.company_id=#{companyId,jdbcType=BIGINT}
     <if test="sendState != null and sendState !=null">
-      and send_state=#{sendState,jdbcType=INTEGER}
+      and ps.send_state=#{sendState,jdbcType=INTEGER}
     </if>
     <if test="resumeName != null">
-      and r.resume_name like concat('%',#{resumeName,jdbcType=VARVHAR},'%')
+      and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
     </if>
     <if test="resumePostion != null">
       and r.resume_position like concat('%',#{resumePostion,jdbcType=VARCHAR},'%')
     </if>
-    and send_type=0
+    and ps.send_type=0
   </select>
   <!--公司收藏的简历-->
   <select id="selComCollect" parameterType="java.util.Map" resultMap="ResumeInformation">
@@ -374,7 +375,7 @@
     LEFT JOIN xz_resume_collect c on r.resume_id=c.resume_id
     WHERE c.company_id=#{companyId,jdbcType=BIGINT}
     <if test="resumeName != null">
-      and r.resume_name like concat('%',#{resumeName,jdbcType=VARVHAR},'%')
+      and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
     </if>
     <if test="resumePostion != null">
       and r.resume_position like concat('%',#{resumePostion,jdbcType=VARCHAR},'%')
@@ -452,7 +453,7 @@
     and r.resume_sex=#{resumeSex,jdbcType=INTEGER}
     </if>
     <if test="resumeName != null">
-    and r.resume_name like concat('%',#{resumeName,jdbcType=VARVHAR},'%')
+    and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
     </if>
     <if test="resumeWorkspace != null">
     and r.resume_workspace like concat('%',#{resumeWorkspace,jdbcType=VARCHAR},'%')
