@@ -58,7 +58,7 @@
       <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
     </association>
-    <association property="sendmsg" javaType="com.xzlcPT.bean.XzPostionSendMsg">
+    <association property="postionSendMsg" javaType="com.xzlcPT.bean.XzPostionSendMsg">
       <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
       <result column="send_id" jdbcType="BIGINT" property="sendId" />
       <result column="pmsg_name" jdbcType="VARCHAR" property="pmsgName" />
