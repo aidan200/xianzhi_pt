@@ -7873,6 +7873,16 @@ footer {
     margin: 0 auto;
     margin-top: 170px;
 }
+.rep_b4{
+    width: 100px;
+    height: 30px;
+    background-color: #3d9ccc;
+    color: #FFFFff;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    line-height: 30px;
+}
 
 .rep_text {
     color: #666;
