@@ -25,7 +25,7 @@
 <div class="ses_top">
     <div class="container ses_select">
         <div class="ses_selectl">
-            <span id="this_space">默认</span>
+            <span id="this_space">全国</span>
         </div>
         <div class="ses_selectr">
                 <input type="text" placeholder="请输入职能关键词：如 项目经理等" id="resumePosition">
@@ -300,13 +300,13 @@
 </script>
 <jsp:include page="cityUtil.jsp"></jsp:include>
 <script>
-    $(document).ready(function () {
-        if('${queryPostion.workspace}'){
-            cityBoxInit('${queryPostion.workspace}');
+    $(function () {
+        if('${workspace}'!=""){
+            cityBoxInit('${workspace}');
         }
-        if('后台的值'){
+        /*if('后台的值'){
             $('#').val()
-        }
+        }*/
     });
 </script>
 </body>
