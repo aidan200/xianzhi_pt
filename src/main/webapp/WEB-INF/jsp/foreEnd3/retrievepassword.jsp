@@ -154,9 +154,16 @@
                 data:{key:$("#valiKey").val(),email:'${param.email}',password:p2},
                 success:function (data) {
                     if(data.msg=="ok"){
-                        alert(1);
+                        var state2 = 4;
+                        stepBar.init("stepBar", {
+                            step: state2,
+                            change: false,
+                            animation: false
+                        });
+                        $('.myTab').hide();
+                        $('#repall_' + state2).show();
                     }else{
-                        alert(2);
+                        alert("修改失败");
                     }
                 }
             });
