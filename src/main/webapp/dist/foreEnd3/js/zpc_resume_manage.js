@@ -109,7 +109,7 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         var sj=bb-aa;
                         str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
 
-                        if(data.list[i].xzResumeEducations.length==0){
+                        if(data.list[i].xzResumeEducation==null||data.list[i].xzResumeEducations.educationLevel==''){
                             str+='<td class="all_no">没有</td>'
                         }else{
                             str+='<td class="all_no">'+data.list[i].xzResumeEducations.educationLevel+'</td>'
