@@ -149,7 +149,7 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<span class="fa fa-chevron-down"></span>'
                     str+='</button>'
 
-                    var date1= data.postionSendList[i].postion.publishMonth;          //计算几小时以前
+                    var date1= data.postionSendList[i].createTime;          //计算几小时以前
                     var data2=new Date();
                     var cc=data2-date1;
 
