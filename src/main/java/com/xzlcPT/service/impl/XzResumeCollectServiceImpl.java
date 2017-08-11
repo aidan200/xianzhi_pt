@@ -36,4 +36,10 @@ public class XzResumeCollectServiceImpl implements XzResumeCollectService{
         XzResumeCollect xzResumeCollect=resumeCollectMapper.selectByPrimaryKey(collectId);
         return xzResumeCollect;
     }
+
+    @Override
+    public int deleteByPrimaryKey(Long collectId) {
+        int i=resumeCollectMapper.deleteByPrimaryKey(collectId);
+        return i;
+    }
 }

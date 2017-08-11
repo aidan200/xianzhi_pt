@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,5 +40,17 @@ public class ResumeCollectController extends BaseController{
         int i = resumeCollectService.insertSelective(xzResumeCollect);
         mv.addObject("i",i);
         return mv;
+    }
+    @ResponseBody
+    @RequestMapping("deleteByPrimaryKey.do")
+    public Map deleteByPrimaryKey(Long collectId){
+        int i=resumeCollectService.deleteByPrimaryKey(collectId);
+        Map map=new HashMap();
+        if(i==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","ok");
+        }
+        return map;
     }
 }
