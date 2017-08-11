@@ -436,9 +436,8 @@ Jlrzp.prototype.seekCont=function (parent){
     var _public_ssk=jl;                                       //创建搜索对象
     _public_ssk.page=jl.wck_page;                              //替换分页
     _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
-
     _public_ssk.resumeName=parent.find('input').eq(0).val();         //获取姓名
-    _public_ssk.resumePostion=parent.find('input').eq(0).val();         //目前任职
+    _public_ssk.resumePostion=parent.find('input').eq(1).val();         //目前任职
 
     _public_ssk.sendState=0;
     delete _public_ssk.pages;
@@ -446,7 +445,7 @@ Jlrzp.prototype.seekCont=function (parent){
 }
 Jlrzp.prototype.upload=function (){     //初始化加载
     var This=this;
-    var data=This.seekCont('#rem_one .rem_cen');                                 //获取到条件信息
+    var data=This.seekCont('#rem_one');                                 //获取到条件信息
 
     This.cg=function (){   //成功执行函数
 

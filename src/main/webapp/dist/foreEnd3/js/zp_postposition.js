@@ -118,7 +118,7 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<div class="pop_cont">'
                     str+='<div class="pop_have">'
                     str+='<div class="pop_left2">'
-                    str+='<img src="'+path+'dist/foreEnd3/img/small.jpg" alt=""'
+                    str+='<img src="'+path+'uploadImg/ '+data.postionSendList[i].company.companyPicture+'" alt=""'
                     str+='class="pop_head">'
                     str+='<div class="pop_test2">'
                     str+='<h4 style="display: inline-block">'+data.postionSendList[i].postion.postionName+'</h4>'
@@ -149,11 +149,17 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<span class="fa fa-chevron-down"></span>'
                     str+='</button>'
 
-                    var date1= data.postionSendList[i].createTime;          //计算几小时以前
-                    var data2=new Date();
-                    var cc=data2-date1;
+                    var date1= data.postionSendList[i].sendTime1;          //计算几小时以前
+                    var date2=new Date();
+                    var date3=date2-date1;
+                    if(date3<3600000){
+                        str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/60000)+'分钟前</span>'
+                    }else if(date3<3600000*24){
+                        str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/6000/24)+'小时前</span>'
+                    }else if (date3>3600000*24){
+                        str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/3600000/24)+'天前</span>'
+                    }
 
-                    str+='<span style="margin-left: 190px;color: #666">4小时前</span>'     //创建时间
                     str+='</div>'
                     str+='</div>'
                     str+='</div>'
@@ -170,34 +176,103 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='</div>'
                     str+='</div>'
                     str+='</div>'
-                    str+='<div class="pop_more">'
-                    str+='<div class="pop_m1">'
-                    str+='<div class="pop_min">'
-                    str+='已投递'
-                    str+='</div>'
-                    str+='</div>'
-                    str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
-                    str+='class="pop_ar">'
-                    str+='<div class="pop_m1">'
-                    str+='<div class="pop_min">'
-                    str+='已查看'
-                    str+='</div>'
-                    str+='</div>'
-                    str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
-                    str+='class="pop_ar">'
-                    str+='<div class="pop_m1">'
-                    str+='<div class="pop_min">'
-                    str+='约面试'
-                    str+='</div>'
-                    str+='</div>'
-                    str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
-                    str+='class="pop_ar">'
-                    str+='<div class="pop_m1">'
-                    str+='<div class="pop_min">'
-                    str+='不匹配'
-                    str+='</div>'
-                    str+='</div>'
-                    str+='</div>'
+
+
+
+
+
+
+                    if(data.postionSendList[i].sendState==0){           // 0未查看
+                        str+='<div class="pop_more">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='已投递'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+                        str+='</div>'
+                    }else if(data.postionSendList[i].sendState==1){     //1意向沟通(已查看）
+                        str+='<div class="pop_more">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='已投递'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='已查看'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+                        str+='</div>'
+                    }else if(data.postionSendList[i].sendState==2){     // 2面试通知
+                        str+='<div class="pop_more">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='已投递'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='已查看'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='约面试'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+
+                        str+='</div>'
+                    }else if(data.postionSendList[i].sendState==3){     //3不匹配
+                        str+='<div class="pop_more">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='已投递'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='已查看'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='约面试'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='<img src="'+path+'dist/foreEnd3/img/arrowr.png" alt=""'
+                        str+='class="pop_ar">'
+                        str+='<div class="pop_m1">'
+                        str+='<div class="pop_min">'
+                        str+='不匹配'
+                        str+='</div>'
+                        str+='</div>'
+                        str+='</div>'
+                    }
+
+
+
+
+
+
+
+
+
                 }
                 $('#pop_one > div').each(function (i,e){                //清除之前记录
                     if(i!=0&&$(e).attr('class')!='zp_botv'){
@@ -269,30 +344,72 @@ function Ytd(){         //已投递
 
 }
 Ytd.prototype=new parent();
-Ytd.prototype.loader=function (obj,url) {
+Ytd.prototype.loader=function (data,fn1,fn2){
     var This=this;
     var str='';
-    var data={
-        pages:3,
-        page:1,
-        cont:[{},{},{}]
-    };
-    qxdx.pages=data.pages;
-    qxdx.jl.ytd=data.page;
-    if(data.cont.length){
-        for(var i=0;i<data.cont.length;i++){
-            str+='<div class="pop_tou">'
-            str+='<ul>'
-            str+='<li class="pop_tl">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>'
-            str+='<li class="pop_tl1">职位名：<span></span></li>'
-            str+='<li class="pop_tl2">投递时间：<span>2017-07-08</span></li>'
-            str+='</ul>'
-            str+='</div>'
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:data,        //转为JSON格式
+        dataType:'json',
+        url:path+'PostionSend/selSendByMember.do',
+        success:function (data){
+            qxdx.pages=data.pages;
+            qxdx.jl.ytd=data.page;
+            qxdx.total=data.total;
+            $('#pop_two .pop_span span').html(qxdx.total);          //总记录数
+            var attr2=[];
+            if(data.postionSendList.length!=0){
+                for(var i=0;i<data.postionSendList.length;i++){
+                    if(data.postionSendList[i].sendState==0){
+                        attr2.push(data.postionSendList[i])
+                    }
+                }
+                if(attr2.length!=0){
+                    for(var j=0;j<attr2.length;j++){
+
+                        str+='<div class="pop_tou">'
+                        str+='<ul>'
+                        str+='<li class="pop_tl">公司名：<span>'+attr2[j].company.companyName+'</span></li>'
+                        str+='<li class="pop_tl1">职位名：<span>'+attr2[j].postion.postionName+'</span></li>'
+
+                        var date1= attr2[j].sendTime1;          //计算几小时以前
+                        var date2=new Date();
+                        var date3=date2-date1;
+                        if(date3<3600000){
+                            str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000)+'分钟前</span></li>'
+
+                        }else if(date3<3600000*24){
+                            str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/6000/24)+'小时前</span></li>'
+
+                        }else if (date3>3600000*24){
+                            str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/3600000/24)+'天前</span></li>'
+
+                        }
+                        str+='</ul>'
+                        str+='</div>'
+
+                    }
+                    $('#pop_two > div').each(function (i,e){                //清除之前记录
+                        if(i!=0&&$(e).attr('class')!='zp_botv'){
+                            $(e).remove();
+                        }
+                    })
+                    $('#pop_two .pop_top2 ').after(str);
+                    fn1()
+                }else{
+                    fn2()
+                }
+
+            }else{
+                fn2()
+            }
+        },error:function (){
+            alert('基本资料修改错误')
         }
-        return str
-    }else{
-        return 0
-    }
+
+    })
+
 
 
 }
@@ -300,45 +417,36 @@ Ytd.prototype.seekCont=function (){
     var _public_ssk={}
     _public_ssk.resumeId=resumeId;                              //ID
     _public_ssk.page=qxdx.jl.ytd;                              //全部状态分页
-    _public_ssk.zt=1                                            //状态
+    _public_ssk.type=8;                                         //8是全查
     return _public_ssk
 }
 Ytd.prototype.init=function (){            //初始化载入数据
+
     var This=this;
     var data=This.seekCont();
-    var cont=This.loader(data,"/dada");
-
-    if(cont!=0){   //返回0代表没查到数据
+    This.cg=function (){
+        var fy= This.fy(qxdx.pages,qxdx.jl.ytd);
+        $('#pop_two .zp_botv').html(fy);                     //分页插入完成
+        This.fy_sj('#pop_one',qxdx.pages,qxdx.jl.ytd,This);  //事件插入完成
+        This.xl_sj('#pop_one')
+    }
+    This.sb=function (){
+        //没找到数据
         $('#pop_two > div').each(function (i,e){                //清除之前记录
             if(i!=0&&$(e).attr('class')!='zp_botv'){
                 $(e).remove();
             }
         })
-        $('#pop_two .pop_top2').after(cont);
-        var fy= This.fy(qxdx.pages,qxdx.jl.ytd);
-        $('#pop_two .zp_botv').html(fy);                     //分页插入完成
-        This.fy_sj('#pop_one',qxdx.pages,qxdx.jl.ytd,This)  //事件插入完成
-    }else{          //没找到数据
         $('#pop_two .pop_top2').after(mzd);
+
     }
+    This.loader(data,This.cg,This.sb);                //加载数据
 
 
 
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -409,7 +409,7 @@
     }
     function isCollect() {
         $.ajax({
-            url: "${pageContext.request.contextPath}/PCollect/selCollectState.do",
+            url: "${pageContext.request.contextPath}/PostionCollect/selCollectState.do",
             data: {postionId: id},
             type: "get",
             dataType: "json",

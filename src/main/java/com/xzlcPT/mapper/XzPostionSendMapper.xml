@@ -436,7 +436,7 @@
   </update>
   <!--查所有的信息-->
   <select id="selByConditions" parameterType="java.util.Map" resultMap="BaseResultMap">
-    select
+    select DISTINCT
     ps.send_id FROM xz_postion_send ps
     LEFT JOIN  xz_resume r ON r.resume_id = ps.resume_id
     LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id

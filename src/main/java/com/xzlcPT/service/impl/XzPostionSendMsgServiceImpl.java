@@ -23,4 +23,10 @@ public class XzPostionSendMsgServiceImpl implements XzPostionSendMsgService{
         int i=postionSendMsgMapper.insertSelective(xzPostionSendMsg);
         return i;
     }
+
+    @Override
+    public int updateType(XzPostionSendMsg xzPostionSendMsg) {
+        int i=postionSendMsgMapper.updateType(xzPostionSendMsg);
+        return i;
+    }
 }

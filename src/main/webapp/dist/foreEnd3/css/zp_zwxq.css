@@ -552,7 +552,7 @@ ul li {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 180px;
+    width: 160px;
     font-size: 14px;
     float: left;
     height: 20px;

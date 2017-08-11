@@ -1,5 +1,6 @@
 package com.xzlcPT.dao;
 
+import com.xzlcPT.bean.XzPostionSend;
 import com.xzlcPT.bean.XzPostionSendMsg;
 
 public interface XzPostionSendMsgMapper {
@@ -17,4 +18,6 @@ public interface XzPostionSendMsgMapper {
     int updateByPrimaryKeySelective(XzPostionSendMsg record);
 
     int updateByPrimaryKey(XzPostionSendMsg record);
+
+    int updateType(XzPostionSendMsg record);
 }
