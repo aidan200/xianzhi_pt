@@ -13,5 +13,6 @@ public interface XzPostionSendMsgService {
 
     int insertSelective(XzPostionSendMsg xzPostionSendMsg);
 
+    int updateType(XzPostionSendMsg xzPostionSendMsg);
 
 }

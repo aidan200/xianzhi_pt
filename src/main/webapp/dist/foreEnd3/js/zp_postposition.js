@@ -363,13 +363,17 @@ Ytd.prototype.loader=function (data,fn1,fn2){
                 for(var i=0;i<data.postionSendList.length;i++){
                     if(data.postionSendList[i].sendState==0){
                         attr2.push(data.postionSendList[i])
+                    }
+                }
+                if(attr2.length!=0){
+                    for(var j=0;j<attr2.length;j++){
 
                         str+='<div class="pop_tou">'
                         str+='<ul>'
-                        str+='<li class="pop_tl">公司名：<span>'+data.postionSendList[i].company.companyName+'</span></li>'
-                        str+='<li class="pop_tl1">职位名：<span>'+data.postionSendList[i].postion.postionName+'</span></li>'
+                        str+='<li class="pop_tl">公司名：<span>'+attr2[j].company.companyName+'</span></li>'
+                        str+='<li class="pop_tl1">职位名：<span>'+attr2[j].postion.postionName+'</span></li>'
 
-                        var date1= data.postionSendList[i].sendTime1;          //计算几小时以前
+                        var date1= attr2[j].sendTime1;          //计算几小时以前
                         var date2=new Date();
                         var date3=date2-date1;
                         if(date3<3600000){
@@ -384,6 +388,7 @@ Ytd.prototype.loader=function (data,fn1,fn2){
                         }
                         str+='</ul>'
                         str+='</div>'
+
                     }
                     $('#pop_two > div').each(function (i,e){                //清除之前记录
                         if(i!=0&&$(e).attr('class')!='zp_botv'){
@@ -392,12 +397,13 @@ Ytd.prototype.loader=function (data,fn1,fn2){
                     })
                     $('#pop_two .pop_top2 ').after(str);
                     fn1()
-                    }
+                }else{
+                    fn2()
+                }
 
             }else{
                 fn2()
             }
-
         },error:function (){
             alert('基本资料修改错误')
         }
@@ -415,41 +421,32 @@ Ytd.prototype.seekCont=function (){
     return _public_ssk
 }
 Ytd.prototype.init=function (){            //初始化载入数据
+
     var This=this;
     var data=This.seekCont();
-    var cont=This.loader(data,"/dada");
-
-    if(cont!=0){   //返回0代表没查到数据
+    This.cg=function (){
+        var fy= This.fy(qxdx.pages,qxdx.jl.ytd);
+        $('#pop_two .zp_botv').html(fy);                     //分页插入完成
+        This.fy_sj('#pop_one',qxdx.pages,qxdx.jl.ytd,This);  //事件插入完成
+        This.xl_sj('#pop_one')
+    }
+    This.sb=function (){
+        //没找到数据
         $('#pop_two > div').each(function (i,e){                //清除之前记录
             if(i!=0&&$(e).attr('class')!='zp_botv'){
                 $(e).remove();
             }
         })
-        $('#pop_two .pop_top2').after(cont);
-        var fy= This.fy(qxdx.pages,qxdx.jl.ytd);
-        $('#pop_two .zp_botv').html(fy);                     //分页插入完成
-        This.fy_sj('#pop_one',qxdx.pages,qxdx.jl.ytd,This)  //事件插入完成
-    }else{          //没找到数据
         $('#pop_two .pop_top2').after(mzd);
+
     }
+    This.loader(data,This.cg,This.sb);                //加载数据
 
 
 
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -140,12 +140,6 @@ public class XzPostionServiceImpl implements XzPostionService{
     }
 
     @Override
-    public int  selCollectState(Map map) {
-        int i=postionMapper.selCollectState(map);
-        return i;
-    }
-
-    @Override
     public List<XzPostion> selByCompanyId(Long companyId) {
        List<XzPostion> postionList=postionMapper.selByCompanyId(companyId);
         return postionList;

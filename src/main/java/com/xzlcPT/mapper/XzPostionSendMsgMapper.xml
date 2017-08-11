@@ -180,4 +180,9 @@
         interview_time = #{interviewTime,jdbcType=TIMESTAMP}
         where pmsg_id = #{pmsgId,jdbcType=BIGINT}
     </update>
+    <update id="updateType" parameterType="com.xzlcPT.bean.XzPostionSendMsg">
+        update xz_postion_send_msg
+        set pmsg_type = #{pmsgType,jdbcType=INTEGER}
+        WHERE pmsg_id = #{pmsgId,jdbcType=BIGINT}
+    </update>
 </mapper>

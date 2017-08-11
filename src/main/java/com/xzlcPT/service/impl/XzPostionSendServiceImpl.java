@@ -166,6 +166,9 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         for(XzPostionSend xzPostionSend:list1){
             list.add(xzPostionSend.getSendId());
         }
+        for(int i=0;i<list.size();i++){
+            System.out.println(list.get(i));
+        }
         List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(list);
         pageBean.setList(postionSendList);
         return pageBean;
