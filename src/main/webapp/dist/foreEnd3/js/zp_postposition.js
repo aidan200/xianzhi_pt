@@ -135,7 +135,7 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<div style="display: inline-block;margin-left: 20px">'+data.postionSendList[i].company.companyName+'</div>'
                     str+='<div class="pop_in2">'
                     str+='<span class="pop_sp">'+data.postionSendList[i].company.companyLocation+'</span>|'
-                    str+='<span>1年经验</span>|'
+                    str+='<span>'+data.postionSendList[i].postion.postionExp+'年经验</span>|'
                     var attr="";
                     for(var j=0;j<data.postionSendList[i].company.domains.length;j++){
                         var aa= data.postionSendList[i].company.domains[j].field.fieldName
@@ -148,7 +148,7 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<button class="pop_but" style="margin-left: 200px">'
                     str+='<span class="fa fa-chevron-down"></span>'
                     str+='</button>'
-                    str+='<span style="margin-left: 190px;color: #666">4小时前</span>'
+                    str+='<span style="margin-left: 190px;color: #666">4小时前</span>'     //创建时间
                     str+='</div>'
                     str+='</div>'
                     str+='</div>'
