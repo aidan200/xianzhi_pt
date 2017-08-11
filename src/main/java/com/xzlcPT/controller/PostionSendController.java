@@ -54,12 +54,14 @@ public class PostionSendController extends BaseController{
         XzPostion postion=xzPostionService.selPostionInfo(postionId);
         Long companyId=postion.getCompanyId();
         Long resumeId=resume.getResumeId();
-        Date sendTime=new Date();
+        Date date=new Date();
         XzPostionSend xzPostionSend=new XzPostionSend();
         xzPostionSend.setResumeId(resumeId);
         xzPostionSend.setPostionId(postionId);
         xzPostionSend.setCompanyId(companyId);
-        xzPostionSend.setSendTime(sendTime);
+        xzPostionSend.setSendTime(date);
+        xzPostionSend.setCreateTime(date);
+        xzPostionSend.setSendTime1(date);
         int i=postionSendService.insertSelective(xzPostionSend);
         Map map = new HashMap();
         if(i==1){
