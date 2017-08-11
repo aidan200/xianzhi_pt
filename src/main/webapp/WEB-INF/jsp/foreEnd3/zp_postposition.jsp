@@ -12,6 +12,7 @@
 <html lang="en">
 <head>
     <jsp:include page="distforeEnd.jsp"/>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script>
         var path = '${pageContext.request.contextPath}/';     //全局路径
         var resumeId = '${resume.resumeId}';                  //ID
@@ -57,7 +58,6 @@
                             <span class="pop_span">全部状态（<span>10</span>）</span>
                         </div>
 
-
                         <%--分页--%>
                         <div class="zp_botv">
 
@@ -69,31 +69,18 @@
                         <div class="pop_top2">
                             <span class="pop_span">已投递（<span>10</span>）</span>
                         </div>
-                        <%--<div class="pop_tou">--%>
-                            <%--<ul>--%>
-                                <%--<li class="pop_tl">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>--%>
-                                <%--<li class="pop_tl1">职位名：<span></span></li>--%>
-                                <%--<li class="pop_tl2">投递时间：<span>2017-07-08</span></li>--%>
-                            <%--</ul>--%>
-                        <%--</div>--%>
 
                         <%--分页--%>
                         <div class="zp_botv">
 
                         </div>
-                        <%--<div class="pop_no">--%>
-                        <%--<div class="pop_allimg">--%>
-                        <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                        <%--class="rem_img">--%>
-                        <%--<p class="all_p">暂无简历记录</p>--%>
-                        <%--</div>--%>
-                        <%--</div>--%>
+
                     </div>
 
                     <%--已查看--%>
                     <div class="tab-pane fade" id="pop_three">
                         <div class="pop_top2">
-                            <span class="comh_span">已查看（<span>10</span>）</span>
+                            <span class="comh_span">已查看（<span>0</span>）</span>
                         </div>
 
                         <div class="pop_tou">
@@ -103,76 +90,38 @@
                                 <li class="pop_tl2">查看时间：<span>2017-07-08</span></li>
                             </ul>
                         </div>
-
                         <%--分页--%>
                         <div class="zp_botv">
-                            <div class="zp_pl">
-                                <ul class="pagination zp_pa">
-                                    <li class="b"><a href="#">上一页</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li class="a"><a href="#">2</a></li>
-                                    <li class="a"><a href="#">3</a></li>
-                                    <li class="a"><a href="#">4</a></li>
-                                    <li class="a"><a href="#">5</a></li>
-                                    <li class="a"><a href="#">下一页</a></li>
-                                </ul>
-                                <div class="zp_page">共 <span>100</span> 页</div>
-                            </div>
-                        </div>
-                        <%--<div class="pop_no">--%>
-                            <%--<div class="pop_allimg">--%>
-                                <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                                     <%--class="rem_img">--%>
-                                <%--<p class="all_p">暂无简历记录</p>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    </div>
 
+                        </div>
+                    </div>
                     <%--面试邀约--%>
                     <div class="tab-pane fade" id="pop_four">
                         <div class="pop_top2">
                             <span class="pop_span">面试邀约（<span>10</span>）</span>
                         </div>
 
-                        <div class="pop_tou">
-                            <ul>
-                                <li class="pop_tl3">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>
-                                <li class="pop_tl3">职位名：<span></span></li>
-                            </ul>
-                            <span class="fa fa-chevron-down pop_d"></span>
-                        </div>
-                        <div class="pop_dd">
-                            <ul>
-                                <li class="pop_tl4">面试信息：<span>afgagaeggfgga</span></li>
-                                <li class="pop_tl5">
-                                    <button>同意</button>
-                                    <button>拒绝</button>
-                                </li>
-                            </ul>
-                        </div>
-
+                        <%--<div class="pop_tou">--%>
+                            <%--<ul>--%>
+                                <%--<li class="pop_tl3">公司名：<span>发嘎达嘎梵蒂冈梵蒂冈大师国防大厦的风格</span></li>--%>
+                                <%--<li class="pop_tl3">职位名：<span></span></li>--%>
+                            <%--</ul>--%>
+                            <%--<span class="fa fa-chevron-down pop_d"></span>--%>
+                        <%--</div>--%>
+                        <%--<div class="pop_dd">--%>
+                            <%--<ul>--%>
+                                <%--<li class="pop_tl4">面试信息：<span>afgagaeggfgga</span></li>--%>
+                                <%--<li class="pop_tl5">--%>
+                                    <%--<button>同意</button>--%>
+                                    <%--<button>拒绝</button>--%>
+                                <%--</li>--%>
+                            <%--</ul>--%>
+                        <%--</div>--%>
                         <%--分页--%>
                         <div class="zp_botv">
-                            <div class="zp_pl">
-                                <ul class="pagination zp_pa">
-                                    <li class="b"><a href="#">上一页</a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li class="a"><a href="#">2</a></li>
-                                    <li class="a"><a href="#">3</a></li>
-                                    <li class="a"><a href="#">4</a></li>
-                                    <li class="a"><a href="#">5</a></li>
-                                    <li class="a"><a href="#">下一页</a></li>
-                                </ul>
-                                <div class="zp_page">共 <span>100</span> 页</div>
-                            </div>
+
                         </div>
-                        <%--<div class="pop_no">--%>
-                            <%--<div class="pop_allimg">--%>
-                                <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/sfs.png" alt=""--%>
-                                     <%--class="rem_img">--%>
-                                <%--<p class="all_p">暂无简历记录</p>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
+
                     </div>
 
                 </div>
