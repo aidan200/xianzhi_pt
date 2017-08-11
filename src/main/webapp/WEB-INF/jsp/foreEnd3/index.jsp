@@ -186,18 +186,8 @@
 
             <ul class="index_1u">
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
-                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <%--<div class="index_01tag">--%>
-                        <%--<span class="index_01s">haha</span>--%>
-                        <%--<span class="index_01s">haha</span>--%>
-                        <%--<span class="index_01s">haha</span>--%>
-                    <%--</div>--%>
-                    <div class="index_01time">2017-08-10</div>
-                </li>
-                <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -208,7 +198,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -219,7 +210,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -230,7 +222,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -241,7 +234,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -252,7 +246,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -263,7 +258,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -274,7 +270,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -285,7 +282,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -296,7 +294,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -307,7 +306,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -318,7 +318,8 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -329,7 +330,20 @@
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
+                    <div class="index_01time">2017-08-10</div>
+                </li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
@@ -797,11 +811,14 @@
 
 <%--职位--%>
 <script>
-    jQuery(".index_no").click(function () {
-        jQuery(this).closest('li').fadeOut(500, function () {
-            $(this).remove();
-        });
-    })
+        jQuery(".index_no").click(function () {
+            jQuery(this).closest('li').fadeOut(500, function () {
+                $(this).remove();
+            });
+            $(this).animate({
+                right:'250px'
+            });
+        })
 </script>
 
 
