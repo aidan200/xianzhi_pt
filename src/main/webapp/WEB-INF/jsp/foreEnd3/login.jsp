@@ -58,7 +58,7 @@
                     </div>
 
                     <div style="margin-top: 15px;overflow: hidden">
-                        <a class="login_forget" href="###">忘记密码?</a>
+                        <a class="login_forget" href="${pageContext.request.contextPath}/view/foreEnd3/retrievepassword.html">忘记密码?</a>
                         <span class="login_remember">
                             <input type="checkbox" name="remember" value="true">
                         记住我

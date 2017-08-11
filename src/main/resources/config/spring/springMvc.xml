@@ -63,6 +63,7 @@
             <mvc:exclude-mapping path="/XzRegister/**"/>
             <mvc:exclude-mapping path="/view/foreEnd3/registerc_1.html"/>
             <mvc:exclude-mapping path="/view/foreEnd3/registeru_1.html"/>
+            <mvc:exclude-mapping path="/view/foreEnd3/retrievepassword.html"/>
             <mvc:exclude-mapping path="/view/foreEnd3/login.html"/>
             <bean class="com.Interceptor.ForeEndInterceptor"></bean>
         </mvc:interceptor>

@@ -3,6 +3,7 @@ package com.xzlcPT.controller;
 import com.util.MD5;
 import com.util.MailUtil;
 import com.util.MailUtilSSL;
+import com.util.MakeKey;
 import com.util.bean.EmailConf;
 import com.util.bean.MessageInfo;
 import com.xzlcPT.bean.*;
@@ -88,7 +89,7 @@ public class RegisterController extends BaseController {
             mv.addObject("state",2);
                 // 发送激活邮件
                 try {
-                    sentEmail(xzLogin,"/XzRegister/activeCount.do","呵呵哒",request);
+                    sentEmail1(xzLogin,"/XzRegister/activeCount.do","呵呵哒",request);
                     //加密
                     String strMd5 = MD5.md5(xzLogin.getLoginPassword());
                     xzLogin.setLoginPassword(strMd5);
@@ -164,7 +165,7 @@ public class RegisterController extends BaseController {
         map = new HashMap();
         if(login!=null){
             try {
-                sentEmail(login,"/XzRegister/activeCount.do","呵呵哒",request);
+                sentEmail1(login,"/XzRegister/activeCount.do","呵呵哒",request);
                 map.put("msg","邮件发送成功，请到邮箱中激活账号");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -244,30 +245,16 @@ public class RegisterController extends BaseController {
         return map;
     }
 
-    //    判定邮箱是否重复
+    // 查询邮箱是否存在
     @ResponseBody
     @RequestMapping("selByEmail.do")
-    public Map<String, Object> selByEmail(String str) {
+    public Map<String, Object> selByEmail(String email) {
         Map<String, Object> map = new HashMap<>();
-        if (str != null) {
-            Pattern p = Pattern.compile("^[\\w,\\.,-]*@[0-9A-Za-z]{1,20}((\\.com)|(\\.net)|(\\.com.cn)){1}$");
-            Matcher m = p.matcher(str);
-            boolean b = m.matches();
-            if (b) {
-                XzLogin loginU = new XzLogin(); //接收前台传入值
-                loginU.setLoginEmail(str);
-                XzLogin newUser = registerService.selectByEmail(loginU);
-                if (newUser == null) {
-                    map.put("selEmail", "√");
-                    map.put("spanColor", "true");
-                } else {
-                    map.put("selEmail", "ｘ 该邮箱已被注册!");
-                    map.put("spanColor", "false");
-                }
-            } else {
-                map.put("selEmail", "ｘ 邮箱格式不正确!");
-                map.put("spanColor", "false");
-            }
+        XzLogin login = registerService.selectEmail(email);
+        if (login != null) {
+            map.put("msg", "ok");
+        } else {
+            map.put("msg", "err");
         }
         return map;
     }
@@ -295,8 +282,120 @@ public class RegisterController extends BaseController {
         return map;
     }
 
-    //    发送邮件方法
-    private void sentEmail(XzLogin xzLogin, String callBack,String information, HttpServletRequest request) throws IOException, MessagingException {
+    //密码找回1 发送邮件
+    @ResponseBody
+    @RequestMapping("findBack1.do")
+    public Map findBack1(String email,HttpServletRequest request){
+        Map map = new HashMap();
+        try {
+            sentEmail2(email,"/view/foreEnd3/retrievepassword.html",request);
+            map.put("msg","ok");
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("msg","err");
+        }
+        return map;
+    }
+
+    //密码找回2 验证 验证码
+    @ResponseBody
+    @RequestMapping("findBack2.do")
+    public Map findBack2(String email,String key){
+        Map map = new HashMap();
+        XzLogin login = registerService.selectEmail(email);
+        if(key!=null&&key.equals(login.getFiled3())){
+            map.put("msg","ok");
+        }else{
+            map.put("msg","err");
+        }
+        return map;
+    }
+    //密码找回3 修改密码
+    @ResponseBody
+    @RequestMapping("findBack3.do")
+    public Map findBack3(String password,String email,String key){
+        Map map = new HashMap();
+        XzLogin login = registerService.selectEmail(email);
+        if(key!=null&&key.equals(login.getFiled3())){
+            login.setFiled3(null);
+            String strMd5 = MD5.md5(password);
+            login.setLoginPassword(strMd5);
+            int i = loginUserService.updateByPrimaryKey(login);
+            if(i>0){
+                map.put("msg","ok");
+            }else{
+                map.put("msg","err");
+            }
+        }else{
+            map.put("msg","miss");
+        }
+        return map;
+    }
+
+    //发送密码找回
+    private void sentEmail2(String email, String callBack, HttpServletRequest request) throws IOException, MessagingException {
+        String args = "?type=2&email="+email;
+        String toMail = email;
+        XzLogin login = registerService.selectEmail(email);
+        String key = MakeKey.makeKey();
+        login.setFiled3(key);
+        loginUserService.updateByPrimaryKey(login);
+        String path = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        EmailConf ec = new EmailConf("sina");
+        MessageInfo mi = new MessageInfo("findBack");
+        List<String> toMails =  new ArrayList<>();
+        toMails.add(toMail);
+        mi.setTo(toMails);
+        String html ="<div style='width: 100%;" +
+                "            min-width: 1100px;" +
+                "            height: auto;" +
+                "            overflow: hidden'>" +
+                "    <div style='width: 600px;" +
+                "            margin: 40px auto;" +
+                "            height: 480px;" +
+                "            border: 3px dashed #3d9ccc;" +
+                "    padding: 40px'>" +
+                "        <img src='cid:g.png' style='width: 150px;" +
+                "            height: 60px;" +
+                "            margin-left: 30px;" +
+                "            margin-top: 20px'>" +
+                "        <div style='padding: 20px;" +
+                "            width: 90%;" +
+                "            height: auto;" +
+                "            margin: 0 auto'>" +
+                "            <h3 style='color: #3d9ccc;margin-bottom: 30px'><b>先知网用户 您好</b></h3>" +
+                "            <div style='font-size: 17px;" +
+                "            margin-top: 10px'>" +
+                "                &emsp;&emsp;感谢您使用先知网，修改密码的验证码为" +
+                "                <div style='color: #fc6866;font-size: 30px;text-align: center;margin-top: 10px'>"+key+"</div>" +
+                "            </div>" +
+                "            <a style='width: 120px;" +
+                "            height: 40px;" +
+                "            margin-top: 30px;" +
+                "            background-color: #FFA500;" +
+                "            border: none;" +
+                "            color: #FFFFff;" +
+                "            outline: none;" +
+                "            border-radius: 3px;" +
+                "            display: block;" +
+                "            font-size: 15px;" +
+                "text-align: center;line-height: 40px;margin-left: 150px" +
+                "' href='"+path+callBack+args+"'>密码找回</a>" +
+                "            <div style='font-size: 12px;" +
+                "            margin-top: 30px;color: rgba(175,175,175,0.91)'>&emsp;&emsp;点击按钮进行密码找回，此邮件由先知网系统发出，系统不接收回信，请勿直接回复。</div>" +
+                "        </div>" +
+                "    </div>" +
+                "</div>";
+        mi.setMsg(html);
+        //添加图片
+        MimeBodyPart image = new MimeBodyPart();
+        image.setDataHandler(new DataHandler(new FileDataSource(request.getSession().getServletContext().getRealPath("dist/foreEnd3/img/LOGO12.png"))));  //javamail jaf
+        image.setContentID("g.png");
+        //发送
+        MailUtilSSL.sslSend(mi,ec,image);
+    }
+    //    发送注册邮件方法
+    private void sentEmail1(XzLogin xzLogin, String callBack,String information, HttpServletRequest request) throws IOException, MessagingException {
         System.out.println("发邮件:" + xzLogin.getLoginEmail());
         long newTime = System.currentTimeMillis();
         String args = "?username=" + xzLogin.getLoginCount() + "&newTime=" + newTime;
