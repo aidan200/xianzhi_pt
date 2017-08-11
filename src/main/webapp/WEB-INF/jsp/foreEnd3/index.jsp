@@ -181,135 +181,164 @@
         <%--</div>--%>
         <%--</div>--%>
 
-        <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/chang.png" alt="" class="index_ii0">--%>
+        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/chang.png" alt="" class="index_ii0">
         <div class="index_oa">
 
             <ul class="index_1u">
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                        <%--<span class="index_01s">haha</span>--%>
+                        <%--<span class="index_01s">haha</span>--%>
+                        <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
-                    <div class="index_com"><a href="">公司叫什么名公司叫什么名</a></div>
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <div class="index_01tag">
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                        <span class="index_01s">haha</span>
-                    </div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
                     <div class="index_01time">2017-08-10</div>
                 </li>
-
-
-                
-                
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
+                    <div class="index_01time">2017-08-10</div>
+                </li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
+                    <div class="index_01time">2017-08-10</div>
+                </li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt="" class="index_hui">
+                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
+                    <div class="index_01time">2017-08-10</div>
+                </li>
             </ul>
         </div>
 
