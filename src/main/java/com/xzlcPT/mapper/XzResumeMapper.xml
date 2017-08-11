@@ -590,6 +590,9 @@
     <if test="resumeState !=null and resumeState !=''">
       AND r.resume_state = #{resumeState,jdbcType=VARCHAR}
     </if>
+    <if test="workspace != null and workspace !='' ">
+      AND r.resume_workspace = #{workspace,jdbcType=VARCHAR}
+    </if>
     <if test="list.size>0">
       and r.resume_id in
       <foreach collection="list" item="resume_id" open="(" close=")" separator="," >
