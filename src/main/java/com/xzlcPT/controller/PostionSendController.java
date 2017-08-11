@@ -102,10 +102,11 @@ public class PostionSendController extends BaseController{
     //修改查看状态
     @ResponseBody
     @RequestMapping("updateType.do")
-    public Map updateType(Long pmsgId,Integer pmsgType){
+    public Map updateType(Long pmsgId,String pmsgName,String filed3){
         XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
         xzPostionSendMsg.setPmsgId(pmsgId);
-        xzPostionSendMsg.setPmsgType(pmsgType);
+        xzPostionSendMsg.setPmsgName(pmsgName);
+        xzPostionSendMsg.setFiled3(filed3);
         Map map=new HashMap();
         int i=xzPostionSendMsgService.updateType(xzPostionSendMsg);
         if (i==1){
@@ -127,6 +128,7 @@ public class PostionSendController extends BaseController{
         map.put("resumeName",resumeName);
         map.put("resumePostion",resumePostion);
         map.put("zw",zw);
+        System.out.println("zw:::::::::::::::::::"+zw);
         PageBean<XzPostionSend> list=postionSendService.selByState(page,rows,map);
         Map map1=new HashMap();
         map1.put("list",list.getList());

@@ -182,7 +182,10 @@
     </update>
     <update id="updateType" parameterType="com.xzlcPT.bean.XzPostionSendMsg">
         update xz_postion_send_msg
-        set pmsg_type = #{pmsgType,jdbcType=INTEGER}
+        set pmsg_name = #{pmsgName,jdbcType=VARCHAR},
+        <if test="filed3 != null and filed3 !=''">
+            filed3 = #{filed3,jdbcType=VARCHAR}
+        </if>
         WHERE pmsg_id = #{pmsgId,jdbcType=BIGINT}
     </update>
 </mapper>
