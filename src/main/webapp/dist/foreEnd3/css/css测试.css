@@ -1867,7 +1867,7 @@ textarea {
 .index_li1 {
     width: 180px;
     height: 210px;
-    border: 2px solid #3d9ccc;
+    border: 2px solid #EEEEEE;
     margin: 10px;
     float: left;
     position: relative;
@@ -1906,7 +1906,7 @@ textarea {
 }
 
 .index_pos > a {
-    color: #fc6866;
+    color: #3d9ccc;
 }
 
 .index_01tag {
