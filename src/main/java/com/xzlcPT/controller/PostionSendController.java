@@ -294,7 +294,10 @@ public class PostionSendController extends BaseController{
         Date now=new Date();
         map.put("now",now);
         PageBean list=postionSendService.selByConditions(page,rows,map);
-        map.put("list",list);
+        map.put("list",list.getList());
+        map.put("pages",list.getPages());
+        map.put("total",list.getTotal());
+        map.put("page",list.getPageNum());
         return map;
     }
 }
