@@ -1541,6 +1541,9 @@ textarea {
     text-align: center;
     border-radius: 3px;
 }
+.btn2:hover {
+    color: #fff;
+}
 
 /*-------------一堆东西动-----------------*/
 /*--------------------------------后改的轮播里的东西-------------------------------*/
@@ -1864,7 +1867,7 @@ textarea {
 .index_li1 {
     width: 180px;
     height: 210px;
-    border: 1px dashed #c0c0c0;
+    border: 2px solid #3d9ccc;
     margin: 10px;
     float: left;
     position: relative;
@@ -1880,8 +1883,10 @@ textarea {
 }
 
 .index_hui {
+    margin-top: 10px;
     width: 120px;
     height: 60px;
+    margin-bottom: 10px;
 }
 
 .index_com {
@@ -1894,14 +1899,14 @@ textarea {
 
 .index_pos {
     margin-top: 3px;
-    font-size: 17px;
+    font-size: 14px;
     width: 100%;
     height: 25px;
     overflow: hidden;
 }
 
 .index_pos > a {
-    color: #3d9ccc;
+    color: #fc6866;
 }
 
 .index_01tag {
@@ -1919,7 +1924,7 @@ textarea {
 
 .index_01time {
     font-size: 12px;
-    margin-top: 10px;
+    margin-top: 20px;
     text-align: right;
     padding-right: 10px;
 }
