@@ -7961,18 +7961,30 @@ footer {
     height: 500px;
     border: 1px solid #E5E5E5;
     margin: 0 auto;
-    background-color: #FFFFff;
-    margin-top: 10px;
     padding: 40px;
+    background-color: #FFFFff;
+    position: relative;
 }
 
 .saf_top {
     width: 980px;
     height: auto;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 20px;
     font-size: 25px;
     color: #666;
+
+}
+.saf_top h2{
+    display: inline-block;
+}
+
+.saf_safe {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
 }
 
 .saf_every {
@@ -7981,4 +7993,14 @@ footer {
     border: 1px solid #e6e6e6;
     background-color: #fafafa;
     margin: 5px auto;
+}
+
+.saf_s {
+    display: inline-block;
+    line-height: 50px;
+    padding-left: 20px;
+}
+
+.saf_s a {
+    padding-left: 20px;
 }
