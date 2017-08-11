@@ -273,6 +273,21 @@
         where login_id = #{loginId,jdbcType=BIGINT}
     </delete>
 
+    <update id="updateByPrimaryKey" parameterType="com.xzlcPT.bean.XzLogin">
+        update xz_login
+        set login_count = #{loginCount,jdbcType=VARCHAR},
+        login_password = #{loginPassword,jdbcType=VARCHAR},
+        login_type = #{loginType,jdbcType=INTEGER},
+        login_email = #{loginEmail,jdbcType=VARCHAR},
+        login_active = #{loginActive,jdbcType=INTEGER},
+        delete_login_date = #{deleteLoginDate,jdbcType=DATE},
+        filed1 = #{filed1,jdbcType=VARCHAR},
+        filed2 = #{filed2,jdbcType=VARCHAR},
+        filed3 = #{filed3,jdbcType=VARCHAR},
+        delete_falt = #{deleteFalt,jdbcType=INTEGER}
+        where login_id = #{loginId,jdbcType=BIGINT}
+    </update>
+
     <select id="selByloginIdEnd" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzLogin">
         select
         <include refid="Base_Column_List1"/>

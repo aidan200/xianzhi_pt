@@ -26,6 +26,7 @@ public interface LoginUserService {
     XzLogin selLoginForMOrCById(Map map);
     //按类型和用户名查询企业和个人信息
     XzLogin selLoginForMOrCByName(Map map);
+    int updateByPrimaryKey(XzLogin login);
 
     //      后台
     // 管理员登陆

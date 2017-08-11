@@ -23,6 +23,7 @@ public interface LoginUserMapper {
     //按用户名和类型查询企业或个人信息
     XzLogin selLoginForMOrCByName(Map map);
 
+    int updateByPrimaryKey(XzLogin login);
     //    后台
     //    查询登录表全部信息
     List<XzLogin> selAllLoginEnd(XzLogin xzLogin);

@@ -2,16 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xzlcPT.dao.RegisterMapper">
     <resultMap id="BaseResultMap" type="com.xzlcPT.bean.XzLogin">
-        <id column="login_id" jdbcType="BIGINT" property="loginId"/>
-        <result column="login_count" jdbcType="VARCHAR" property="loginCount"/>
-        <result column="login_password" jdbcType="VARCHAR" property="loginPassword"/>
-        <result column="login_email" jdbcType="VARCHAR" property="loginEmail"/>
-        <result column="login_type" jdbcType="INTEGER" property="loginType"/>
-        <result column="login_active" jdbcType="INTEGER" property="loginActive"/>
+        <id column="login_id" jdbcType="BIGINT" property="loginId" />
+        <result column="login_count" jdbcType="VARCHAR" property="loginCount" />
+        <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
+        <result column="login_type" jdbcType="INTEGER" property="loginType" />
+        <result column="login_email" jdbcType="VARCHAR" property="loginEmail" />
+        <result column="login_active" jdbcType="INTEGER" property="loginActive" />
+        <result column="delete_login_date" jdbcType="DATE" property="deleteLoginDate" />
+        <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+        <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+        <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+        <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
     </resultMap>
 
     <sql id="Base_Column_List">
-    login_id, login_count, login_password, login_email, login_type,login_active
+    login_id, login_count, login_password, login_type, login_email, login_active, delete_login_date,
+    filed1, filed2, filed3, delete_falt
   </sql>
 
     <insert id="insertUser" parameterType="com.xzlcPT.bean.XzLogin">

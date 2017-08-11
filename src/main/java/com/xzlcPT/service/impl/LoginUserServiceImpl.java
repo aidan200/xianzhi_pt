@@ -148,6 +148,11 @@ public class LoginUserServiceImpl implements LoginUserService {
 
         return loginUserMapper.selLoginByCountEnd(xzLogin);
     }
+    public int updateByPrimaryKey(XzLogin login){
+
+        return  loginUserMapper.updateByPrimaryKey(login);
+    }
+
 
     /**
      * 添加用户信息
