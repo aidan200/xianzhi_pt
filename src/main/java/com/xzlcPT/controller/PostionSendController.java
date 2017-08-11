@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.xml.ws.RequestWrapper;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -98,17 +99,34 @@ public class PostionSendController extends BaseController{
         map.put("i",i);
         return map;
     }
+    //修改查看状态
+    @ResponseBody
+    @RequestMapping("updateType.do")
+    public Map updateType(Long pmsgId,Integer pmsgType){
+        XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
+        xzPostionSendMsg.setPmsgId(pmsgId);
+        xzPostionSendMsg.setPmsgType(pmsgType);
+        Map map=new HashMap();
+        int i=xzPostionSendMsgService.updateType(xzPostionSendMsg);
+        if (i==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","err");
+        }
+        return map;
+    }
     //--------------------------------以下为公司操作--------------------------------------------
     //按投递状态查询简历
     @ResponseBody
     @RequestMapping("selByState.do")
     public Map selByState(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer sendState,
-                          String resumeName,String resumePostion){
+                          String resumeName,String resumePostion,String zw){
         Map map=new HashMap();
         map.put("companyId",userLogin.getCompany().getCompanyId());
         map.put("sendState",sendState);
         map.put("resumeName",resumeName);
         map.put("resumePostion",resumePostion);
+        map.put("zw",zw);
         PageBean<XzPostionSend> list=postionSendService.selByState(page,rows,map);
         Map map1=new HashMap();
         map1.put("list",list.getList());
@@ -298,8 +316,11 @@ public class PostionSendController extends BaseController{
         PageBean list=postionSendService.selByConditions(page,rows,map);
         Map map1=new HashMap();
         map1.put("list",list.getList());
+        System.out.println("pages:::::::::::::::::::::::::::::"+list.getPages());
         map1.put("pages",list.getPages());
+        System.out.println("total:::::::::::::::::::::::::::::"+list.getTotal());
         map1.put("total",list.getTotal());
+        System.out.println("page::::::::::::::::::::::::::::::"+list.getPageNum());
         map1.put("page",list.getPageNum());
         return map1;
     }
