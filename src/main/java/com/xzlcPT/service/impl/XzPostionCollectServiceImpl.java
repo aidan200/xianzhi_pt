@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/8/8.
@@ -63,4 +64,10 @@ public class XzPostionCollectServiceImpl implements XzPostionCollectService {
         int i=postionCollectMapper.deleteCollect(collectId);
         return i;
     }
+    @Override
+    public int  selCollectState(Map map) {
+        int i=postionMapper.selCollectState(map);
+        return i;
+    }
+
 }

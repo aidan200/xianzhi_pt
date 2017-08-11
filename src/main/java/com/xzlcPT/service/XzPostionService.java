@@ -42,7 +42,5 @@ public interface XzPostionService {
 
     int updateState(XzPostion xzPostion);
 
-    int selCollectState(Map map);
-
     List<XzPostion> selByCompanyId(Long companyId);
 }

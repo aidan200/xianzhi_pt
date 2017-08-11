@@ -312,22 +312,6 @@ public class PostionController extends BaseController{
         map.put("i",i);
         return map;
     }
-    //查询是否收藏
-    @ResponseBody
-    @RequestMapping("selCollectState.do")
-    public Map selCollectState(@ModelAttribute("userLogin") XzLogin userLogin,Long postionId){
-        Map map=new HashMap();
-        map.put("memberId",userLogin.getMember().getMemberId());
-        map.put("postionId",postionId);
-      int i=postionService.selCollectState(map);
-        Map map1=new HashMap();
-        if(i==1){
-            map1.put("msg","ok");
-        }else {
-            map1.put("msg","err");
-        }
-        return map1;
-    }
     //按公司Id查职位
     @ResponseBody
     @RequestMapping("selByCompanyId.do")
