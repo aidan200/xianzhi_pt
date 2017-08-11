@@ -100,10 +100,13 @@ public class PostionSendController extends BaseController{
     //按投递状态查询简历
     @ResponseBody
     @RequestMapping("selByState.do")
-    public Map selByState(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer sendState){
+    public Map selByState(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer sendState,
+                          String resumeName,String resumePostion){
         Map map=new HashMap();
         map.put("companyId",userLogin.getCompany().getCompanyId());
         map.put("sendState",sendState);
+        map.put("resumeName",resumeName);
+        map.put("resumePostion",resumePostion);
         PageBean<XzPostionSend> list=postionSendService.selByState(page,rows,map);
         Map map1=new HashMap();
         map1.put("list",list.getList());
@@ -115,8 +118,13 @@ public class PostionSendController extends BaseController{
     //公司主动下载的简历
     @ResponseBody
     @RequestMapping("selByType.do")
-    public Map selByType(@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin){
-       PageBean<XzPostionSend> list=postionSendService.selByType(page,rows,userLogin.getCompany().getCompanyId());
+    public Map selByType(@RequestParam(defaultValue = "1")Integer page,@RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,
+                        String resumeName,String resumePostion){
+       Map map1=new HashMap();
+        map1.put("companyId",userLogin.getCompany().getCompanyId());
+        map1.put("resumeName",resumeName);
+        map1.put("resumePostion",resumePostion);
+        PageBean<XzPostionSend> list=postionSendService.selByType(page,rows,map1);
        Map map=new HashMap();
        map.put("list",list.getList());
        map.put("pages",list.getPages());
@@ -127,8 +135,13 @@ public class PostionSendController extends BaseController{
     //公司收藏的简历
     @ResponseBody
     @RequestMapping("selComCollect.do")
-    public Map selComCollect(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin){
-        PageBean<XzResume> list=postionSendService.selComCollect(page,rows,userLogin.getCompany().getCompanyId());
+    public Map selComCollect(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin xzLogin,
+                             String resumeName,String resumePostion){
+        Map map1=new HashMap();
+        map1.put("companyId",xzLogin.getCompany().getCompanyId());
+        map1.put("resumeName",resumeName);
+        map1.put("resumePostion",resumePostion);
+        PageBean<XzResume> list=postionSendService.selComCollect(page,rows,map1);
         Map map=new HashMap();
         map.put("list",list.getList());
         map.put("pages",list.getPages());
@@ -159,11 +172,8 @@ public class PostionSendController extends BaseController{
         xzPostionSendMsg.setSendId(sendId);
         xzPostionSendMsg.setInterviewTime(interviewTime);
         xzPostionSendMsg.setFiled1(filed1);
-        xzPostionSendMsg.setFiled1(filed2);
+        xzPostionSendMsg.setFiled2(filed2);
         xzPostionSendMsg.setPmsgValue(pmsgValue);
-        System.out.println("pmsgValue::::::::::::::::::::::"+pmsgValue);
-        System.out.println("filed1:::::::::::::::::::::::::::::::"+filed1);
-        System.out.println("sendId:::::::::::::::::::::::::::::::::"+sendId);
         int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map=new HashMap();
         if (j==1){
@@ -237,7 +247,7 @@ public class PostionSendController extends BaseController{
         xzPostionSendMsg.setSendId(xzPostionSend.getSendId());
         xzPostionSendMsg.setInterviewTime(interviewTime);
         xzPostionSendMsg.setFiled1(filed1);
-        xzPostionSendMsg.setFiled1(filed2);
+        xzPostionSendMsg.setFiled2(filed2);
         xzPostionSendMsg.setPmsgValue(pmsgValue);
         int j=xzPostionSendMsgService.insertSelective(xzPostionSendMsg);
         Map map=new HashMap();
@@ -284,7 +294,12 @@ public class PostionSendController extends BaseController{
         Date now=new Date();
         map.put("now",now);
         PageBean list=postionSendService.selByConditions(page,rows,map);
-        map.put("list",list);
-        return map;
+        Map map1=new HashMap();
+        map1.put("list",list.getList());
+        map1.put("pages",list.getPages());
+        map1.put("total",list.getTotal());
+        map1.put("page",list.getPageNum());
+        return map1;
     }
+
 }

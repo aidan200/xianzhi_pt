@@ -45,7 +45,7 @@
     <result column="postion_id" jdbcType="BIGINT" property="postionId"/>
     <result column="postion_name" jdbcType="VARCHAR" property="postionName"/>
     <result column="interview_time" jdbcType="TIMESTAMP" property="interviewTime"/>
-    <collection property="resumes" ofType="com.xzlcPT.bean.XzResume">
+    <association property="resumes" javaType="com.xzlcPT.bean.XzResume">
       <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
       <result column="resume_name" jdbcType="VARCHAR" property="resumeName" />
       <result column="resume_sex" jdbcType="INTEGER" property="resumeSex" />
@@ -53,11 +53,25 @@
       <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
       <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
       <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
-    </collection>
-    <collection property="xzResumeEducations" ofType="com.xzlcPT.bean.XzResumeEducation">
+    </association>
+    <association property="xzResumeEducations" javaType="com.xzlcPT.bean.XzResumeEducation">
       <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
-    </collection>
+    </association>
+    <association property="postionSendMsg" javaType="com.xzlcPT.bean.XzPostionSendMsg">
+      <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
+      <result column="send_id" jdbcType="BIGINT" property="sendId" />
+      <result column="pmsg_name" jdbcType="VARCHAR" property="pmsgName" />
+      <result column="pmsg_value" jdbcType="VARCHAR" property="pmsgValue" />
+      <result column="pmsg_type" jdbcType="INTEGER" property="pmsgType" />
+      <result column="interview_time" jdbcType="TIMESTAMP" property="interviewTime"/>
+      <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+      <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
+      <result column="delete_falt" jdbcType="INTEGER" property="deleteFalt" />
+      <result column="filed1" jdbcType="VARCHAR" property="filed1" />
+      <result column="filed2" jdbcType="VARCHAR" property="filed2" />
+      <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    </association>
   </resultMap>
   <resultMap id="ResumeInformation" type="com.xzlcPT.bean.XzResume">
     <id column="resume_id" jdbcType="BIGINT" property="resumeId" />
@@ -93,7 +107,7 @@
   <sql id="selById">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
     r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type,
-    ps.send_time,m.interview_time
+    ps.send_time,m.interview_time,m.pmsg_value,m.filed1,m.filed2
   </sql>
   <!--按简历id和状态查询投递-->
   <select id="selSendByRIdAndType" parameterType="Map" resultMap="BaseResultMap">
@@ -335,15 +349,24 @@
     and resume_id=#{resumeId,jdbcType=BIGINT}
     and DATEDIFF(send_time,NOW()) =0
   </select>
+  <!--按投递状态查简历-->
   <select id="selByState" parameterType="java.util.Map" resultMap="BaseResultMap">
-    SELECT send_id FROM xz_postion_send
-    WHERE company_id=#{companyId,jdbcType=BIGINT}
+    SELECT ps.send_id FROM xz_postion_send ps
+    LEFT JOIN xz_resume r ON ps.resume_id=r.resume_id
+    WHERE ps.company_id=#{companyId,jdbcType=BIGINT}
     <if test="sendState != null and sendState !=null">
-      and send_state=#{sendState,jdbcType=INTEGER}
+      and ps.send_state=#{sendState,jdbcType=INTEGER}
     </if>
-    and send_type=0
+    <if test="resumeName != null">
+      and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="resumePostion != null">
+      and r.resume_position like concat('%',#{resumePostion,jdbcType=VARCHAR},'%')
+    </if>
+    and ps.send_type=0
   </select>
-  <select id="selComCollect" parameterType="java.lang.Long" resultMap="ResumeInformation">
+  <!--公司收藏的简历-->
+  <select id="selComCollect" parameterType="java.util.Map" resultMap="ResumeInformation">
     SELECT * from(
     SELECT
     <include refid="selCollect"/>
@@ -351,9 +374,16 @@
     LEFT JOIN xz_resume_education e on r.resume_id=e.resume_id
     LEFT JOIN xz_resume_collect c on r.resume_id=c.resume_id
     WHERE c.company_id=#{companyId,jdbcType=BIGINT}
+    <if test="resumeName != null">
+      and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
+    </if>
+    <if test="resumePostion != null">
+      and r.resume_position like concat('%',#{resumePostion,jdbcType=VARCHAR},'%')
+    </if>
     ORDER BY e.graduate_date DESC) s
     GROUP BY s.resume_id
   </select>
+  <!--按sendid的集合查简历-->
   <select id="selBysendId" parameterType="java.util.List" resultMap="selState">
     SELECT * FROM (
     select
@@ -376,11 +406,20 @@
     </if>
     GROUP BY s.send_id
   </select>
-  <select id="selByType" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    SELECT send_id FROM xz_postion_send
-    WHERE company_id=#{companyId,jdbcType=BIGINT}
-    and send_type=1
+  <!--主动下载的简历-->
+  <select id="selByType" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT ps.send_id FROM xz_postion_send ps
+    LEFT JOIN xz_resume r ON ps.resume_id = r.resume_id
+    WHERE ps.company_id=#{companyId,jdbcType=BIGINT}
+    <if test="resumeName != null">
+      and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'')
+    </if>
+    <if test="resumePostion != null">
+    and r.resume_position like concat('%',#{resumePostion,jdbcType=VARCHAR},'%')
+    </if>
+    and ps.send_type=1
   </select>
+  <!--面试通知-->
   <update id="updateState" parameterType="java.lang.Long" >
     update xz_postion_send set
     send_state=2,
@@ -388,21 +427,14 @@
     send_time=now()
     WHERE send_id=#{sendId,jdbcType=BIGINT}
   </update>
+  <!--意向沟通-->
   <update id="updateState1" parameterType="java.lang.Long">
     update xz_postion_send set
     send_state=1,
     send_time=now()
     WHERE send_id=#{sendId,jdbcType=BIGINT}
   </update>
-  <select id="selAll" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    SELECT send_id from xz_postion_send WHERE
-    company_id=#{companyId,jdbcType=BIGINT}
-  </select>
-  <select id="selByCollect" parameterType="com.xzlcPT.bean.XzPostionSend" resultType="java.lang.Long">
-    select send_id from xz_postion_send WHERE
-    resume_id = #{resumeId,jdbcType=BIGINT} and postion_id = #{postionId,jdbcType=BIGINT}
-    and send_time = #{sendTime,jdbcType=TIMESTAMP}
-  </select>
+  <!--查所有的信息-->
   <select id="selByConditions" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
     ps.send_id FROM xz_postion_send ps
@@ -421,14 +453,16 @@
     and r.resume_sex=#{resumeSex,jdbcType=INTEGER}
     </if>
     <if test="resumeName != null">
-    and r.resume_name=#{resumeName,jdbcType=VARVHAR}
+    and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
     </if>
     <if test="resumeWorkspace != null">
-    and r.resume_workspace=#{resumeWorkspace,jdbcType=VARCHAR}
+    and r.resume_workspace like concat('%',#{resumeWorkspace,jdbcType=VARCHAR},'%')
     </if>
-    <if test="resumeBirth != null">
+    <if test="resumeBirthMin != null">
     and YEAR(#{date,jdbcType=TIMESTAMP})-YEAR(r.resume_birth)&gt;#{resumeBirthMin,jdbcType=INTEGER}
     </if>
+    <if test="resumeBirthMax != null">
     and YEAR(#{date,jdbcType=TIMESTAMP})-YEAR(r.resume_birth)&lt;#{resumeBirthMax,jdbcType=INTEGER}
+    </if>
   </select>
 </mapper>

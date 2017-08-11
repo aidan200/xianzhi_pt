@@ -30,11 +30,11 @@ public interface XzPostionSendMapper {
 
     List<XzPostionSend> selByState(Map map);
 
-    List<XzPostionSend> selByType(Long companyId);
+    List<XzPostionSend> selByType(Map map);
 
     List<XzPostionSend> selBysendId(List list);
 
-    List<XzResume> selComCollect(Long companyId);
+    List<XzResume> selComCollect(Map map);
 
     int updateState(Long sendId);
 

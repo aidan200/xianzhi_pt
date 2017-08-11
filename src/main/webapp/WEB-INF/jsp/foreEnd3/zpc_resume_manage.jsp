@@ -46,12 +46,9 @@
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="companynav.jsp"/>
 
-<a href="###" class="newtan"><span>点我</span></a>
 
 
-<%----%>
-<%--带input--%>
-<a href="###" class="newtan3"><span>点我</span></a>
+
 <div class="newpop3" role="alert">
     <div class="newpop3_container">
         <div class="allnew3_tan">
@@ -118,13 +115,10 @@
 
                             </select>
 
-                            <span style="margin-left: 10px">简历编号</span>
-                            <input type="text" class="rem_input3">
+
                             <span style="margin-left: 10px">姓名</span>
                             <input type="text" class="rem_input4">
                             <span style="margin-left: 10px">目前任职</span>
-                            <input type="text" class="rem_input3">
-                            <span style="margin-left: 10px">目前公司</span>
                             <input type="text" class="rem_input3">
                             <button type="button" class="rem_b">搜索</button>
 

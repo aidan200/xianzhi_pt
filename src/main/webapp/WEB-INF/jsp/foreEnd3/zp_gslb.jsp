@@ -23,7 +23,7 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_lb.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
 </head>
-<body style="background-color: #EEEEEE">
+<body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 <div class="zp_lb_top">

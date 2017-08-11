@@ -97,29 +97,29 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</label>'
                         str+='</div>'
                         str+='</td>'
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumeName+'</td>'
-                        if(data.list[i].resumes[0].resumeSex==0){
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">男</td>'
+                        str+='<td class="all_no">'+data.list[i].resumes.resumeName+'</td>'
+                        if(data.list[i].resumes.resumeSex==0){
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">男</td>'
                         }else{
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">女</td>'
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">女</td>'
                         }
 
-                        var aa= getNowFormatDate(data.list[i].resumes[0].resumeBirth).substring(0, 4)
+                        var aa= getNowFormatDate(data.list[i].resumes.resumeBirth).substring(0, 4)
                         var bb=getNowFormatDate(new Date()).substring(0, 4);
                         var sj=bb-aa;
                         str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
 
-                        if(data.list[i].xzResumeEducations.length==0){
+                        if(data.list[i].xzResumeEducation==null||data.list[i].xzResumeEducations.educationLevel==''){
                             str+='<td class="all_no">没有</td>'
                         }else{
-                            str+='<td class="all_no">'+data.list[i].xzResumeEducations[0].educationLevel+'</td>'
+                            str+='<td class="all_no">'+data.list[i].xzResumeEducations.educationLevel+'</td>'
                         }
-                        //学历有问题'+data.resumeList[i].xzResumeEducations+'
 
-                        var cc=data.list[i].resumes[0].resumeWorkinglife     //计算出开始工作年限
+
+                        var cc=data.list[i].resumes.resumeWorkinglife     //计算出开始工作年限
                         var js2=bb-cc;
                         str+='<td class="all_no">'+js2+'</td>'
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumePosition  +'</td>' //目前职位
+                        str+='<td class="all_no">'+data.list[i].resumes.resumePosition  +'</td>' //目前职位
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //应聘职位
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'  //应聘职位
                         str+='<td class="all_no">'
@@ -148,18 +148,18 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</div>'
                         str+='</td>'
 
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumeName+'</td>'
-                        if(data.list[i].resumes[0].resumeSex==0){
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">男</td>'
+                        str+='<td class="all_no">'+data.list[i].resumes.resumeName+'</td>'
+                        if(data.list[i].resumes.resumeSex==0){
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">男</td>'
                         }else{
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">女</td>'
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">女</td>'
                         }
 
-                        var aa= getNowFormatDate(data.list[i].resumes[0].resumeBirth).substring(0, 4)
+                        var aa= getNowFormatDate(data.list[i].resumes.resumeBirth).substring(0, 4)
                         var bb=getNowFormatDate(new Date()).substring(0, 4);
                         var sj=bb-aa;
                         str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumePosition+'</td>' //页面负责运算计算年龄
+                        str+='<td class="all_no">'+data.list[i].resumes.resumePosition+'</td>' //页面负责运算计算年龄
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'               //页面负责运算计算年龄
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'         //沟通时间
                         str+='<td class="all_no">'
@@ -183,29 +183,29 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</label>'
                         str+='</div>'
                         str+='</td>'
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumeName+'</td>'
-                        if(data.list[i].resumes[0].resumeSex==0){
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">男</td>'
+                        str+='<td class="all_no">'+data.list[i].resumes.resumeName+'</td>'
+                        if(data.list[i].resumes.resumeSex==0){
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">男</td>'
                         }else{
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">女</td>'
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">女</td>'
                         }
 
-                        var aa= getNowFormatDate(data.list[i].resumes[0].resumeBirth).substring(0, 4)
+                        var aa= getNowFormatDate(data.list[i].resumes.resumeBirth).substring(0, 4)
                         var bb=getNowFormatDate(new Date()).substring(0, 4);
                         var sj=bb-aa;
                         str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
 
-                        if(data.list[i].xzResumeEducations.length==0){
+                        if(data.list[i].xzResumeEducations==null||data.list[i].xzResumeEducations.educationLevel==''){
                             str+='<td class="all_no">没有</td>'
                         }else{
-                            str+='<td class="all_no">'+data.list[i].xzResumeEducations[0].educationLevel+'</td>'
+                            str+='<td class="all_no">'+data.list[i].xzResumeEducations.educationLevel+'</td>'
                         }
 
 
-                        var cc=data.list[i].resumes[0].resumeWorkinglife     //计算出开始工作年限
+                        var cc=data.list[i].resumes.resumeWorkinglife     //计算出开始工作年限
                         var js2=bb-cc;
                         str+='<td class="all_no">'+js2+'</td>'
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumePosition  +'</td>' //目前职位
+                        str+='<td class="all_no">'+data.list[i].resumes.resumePosition  +'</td>' //目前职位
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //面试职业
                         str+='<td class="all_no">空着呢</td>'  //发送时间
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'  //发送时间
@@ -222,7 +222,10 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</tr>'
                         str+='<tr class="pom_h2" id="divContainer">'
                         str+='<td colspan="12" style="padding-left: 40px;line-height: 25px">'
-                        str+='ssahdkfjadfjkdsfajksdfjdbfjsdbjsdnbjkasndfkjsdnckjadsncjk'
+                        str+='公司名称：'+data.list[i].postionSendMsg.filed2+''
+                        str+='面试时间：'+data.list[i].postionSendMsg.interviewTime+''
+                        str+='面试地点：'+data.list[i].postionSendMsg.filed1+''
+                        str+='附加信息：'+data.list[i].postionSendMsg.pmsgValue+''
                         str+='</td>'
                         str+='</tr>'
 
@@ -245,7 +248,6 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
         }
     })
 }
-
 Public.prototype.fy=function (pages,page){  //总页数  当前页数
     var str=''
         str+='<div class="zp_botv">'
@@ -434,10 +436,10 @@ Jlrzp.prototype.seekCont=function (parent){
     var _public_ssk=jl;                                       //创建搜索对象
     _public_ssk.page=jl.wck_page;                              //替换分页
     _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
-    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
-    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
-    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
-    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+
+    _public_ssk.resumeName=parent.find('input').eq(1).val();         //获取姓名
+    _public_ssk.resumePostion=parent.find('input').eq(2).val();         //目前任职
+
     _public_ssk.sendState=0;
     delete _public_ssk.pages;
     return _public_ssk
@@ -628,7 +630,7 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
         async:true,  //是否异步
         data:obj,        //转为JSON格式
         dataType:'json',                   //定义返回data类型
-        url:path+'PostionSend/selAll.do ',    //路径
+        url:path+'PostionSend/selByConditions.do',    //路径
         success:function (data){//data 就是数据 json
             jl.pages=data.pages;              //获取总页
             jl.page=data.page;               //获取当前页
@@ -652,25 +654,25 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</label>'
                         str+='</div>'
                         str+='</td>'
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumeName+'</td>'
-                        if(data.list[i].resumes[0].resumeSex==0){
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">男</td>'
+                        str+='<td class="all_no">'+data.list[i].resumes.resumeName+'</td>'
+                        if(data.list[i].resumes.resumeSex==0){
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">男</td>'
                         }else{
-                            str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">女</td>'
+                            str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">女</td>'
                         }
 
-                        var aa= getNowFormatDate(data.list[i].resumes[0].resumeBirth).substring(0, 4)
+                        var aa= getNowFormatDate(data.list[i].resumes.resumeBirth).substring(0, 4)
                         var bb=getNowFormatDate(new Date()).substring(0, 4);
                         var sj=bb-aa;
                         str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
 
-                        if(data.list[i].xzResumeEducations.length==0){
+                        if(data.list[i].xzResumeEducations==null||data.list[i].xzResumeEducations.educationLevel==''){
                             str+='<td class="all_no">没有</td>'
                         }else{
-                            str+='<td class="all_no">'+data.list[i].xzResumeEducations[0].educationLevel+'</td>'
+                            str+='<td class="all_no">'+data.list[i].xzResumeEducations.educationLevel+'</td>'
                         }
 
-                        str+='<td class="all_no">'+data.list[i].resumes[0].resumePosition  +'</td>' //目前职位
+                        str+='<td class="all_no">'+data.list[i].resumes.resumePosition  +'</td>' //目前职位
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //面试职位
 
                         if(data.list[i].sendState==0){
@@ -800,14 +802,14 @@ Zdxz.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 
 
                     str+='</td> '
-                    str+='<td class="all_no">'+data.list[i].resumes[0].resumeName+'</td>'
-                    if(data.list[i].resumes[0].resumeSex==0){
-                        str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">男</td>'
+                    str+='<td class="all_no">'+data.list[i].resumes.resumeName+'</td>'
+                    if(data.list[i].resumes.resumeSex==0){
+                        str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">男</td>'
                     }else{
-                        str+='<td class="all_no" data-xb="'+data.list[i].resumes[0].resumeSex+'">女</td>'
+                        str+='<td class="all_no" data-xb="'+data.list[i].resumes.resumeSex+'">女</td>'
                     }
 
-                    var aa= getNowFormatDate(data.list[i].resumes[0].resumeBirth).substring(0, 4)
+                    var aa= getNowFormatDate(data.list[i].resumes.resumeBirth).substring(0, 4)
                     var bb=getNowFormatDate(new Date()).substring(0, 4);
                     var sj=bb-aa;
                     str+='<td class="all_no">'+sj+'</td>'           //页面负责运算计算年龄
@@ -815,10 +817,10 @@ Zdxz.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     if(data.list[i].xzResumeEducations.length==0){
                         str+='<td class="all_no">没有</td>'
                     }else{
-                        str+='<td class="all_no">'+data.list[i].xzResumeEducations[0].educationLevel+'</td>'
+                        str+='<td class="all_no">'+data.list[i].xzResumeEducations.educationLevel+'</td>'
                     }
 
-                    str+='<td class="all_no">'+data.list[i].resumes[0].resumePosition  +'</td>' //目前职位
+                    str+='<td class="all_no">'+data.list[i].resumes.resumePosition  +'</td>' //目前职位
                     str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //面试职位
 
 
@@ -893,6 +895,7 @@ Zdxz.prototype.yl=function (){     //预览事件
     This.yyms('#rem_three',This);                //预约面试
     This.sc('#rem_three',This)                 //删除方法
 }
+
 
 function Wdsc(){                   //我的收藏
     this.DOM={
@@ -1065,7 +1068,26 @@ Wdsc.prototype.yl=function (){     //预览事件
         })
     })
     $('#rem_four').find('.zw_sc').unbind().on('click',function(){        //删除事件
-        alert('aa')
+        var parent=$(this).parent().parent();               //获取到
+        var data={
+            collectId:parent.attr('data-id3')
+        };
+        $.ajax({
+            type:"post",    //提交方式
+            async:true,  //是否异步
+            data:data,        //转为JSON格式
+            dataType:'text',                   //定义返回data类型
+            url:path+'ResumeCollect/deleteByPrimaryKey.do',    //路径
+            success:function (data){//data 就是数据 json
+                This.upload();
+            },error:function (){ //报错执行的
+                alert('基本资料修改错误')
+            }
+
+        })
+
+
+
     })
 }
 
