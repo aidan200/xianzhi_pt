@@ -1425,7 +1425,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                         isinitVal:true, //显示时间
                         isTime:true,
                         festival: true, //显示节日
-                        minDate:"2014-09-19"
+                        minDate:"1960-01-01"
                     })
                 })
                 $('.ttk_jl').find('.em3').eq(1).unbind().on('click',function (){
@@ -1435,7 +1435,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                         isinitVal:true, //显示时间
                         isTime:true,
                         festival: true, //显示节日
-                        minDate:"2014-09-19"
+                        minDate:"1960-01-01"
                     })
                 })
                 $('#gzjl').siblings('div').eq(index).css({"display":"none"});
