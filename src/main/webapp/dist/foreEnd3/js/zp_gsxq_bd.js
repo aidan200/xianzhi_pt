@@ -563,7 +563,7 @@ $(function (){
                         $('#gslyBox').append("<div class='skilldiv'>"+
                             "<div>"+val+"</div>"+
                             "<a class='skillBtn'>x</a>"+
-                            "<input type='hidden' form='zp_gsxq_form' name='domains' value='"+id+"'>"+
+                            "<input type='hidden' form='zp_gsxq_form' name='domainss' value='"+id+"'>"+
                             "</div>");
                     }
                 })

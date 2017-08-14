@@ -107,11 +107,11 @@
                             <div class='skilldiv'>
                                 <div>${f.fieldName}</div>
                                 <a class="skillBtn fa fa-remove"></a>
-                                <input form='zp_gsxq_form' type="hidden" name="domains" value="${f.fieldId}">
+                                <input form='zp_gsxq_form' type="hidden" name="domainss" value="${f.fieldId}">
                             </div>
                         </c:forEach>
                     </div>
-                    <a id="gslyEdit">edit</a>
+                    <a id="gslyEdit" style="color: #00ACED">编辑</a>
                 </div>
                 <div class="_right"></div>
 
@@ -207,10 +207,10 @@
 
                 <div class="zp_gsxq_dz gsdd__">
                     <div class="_left">
-                        <input  id="this_space" form="zp_gsxq_form" name="companyCity" type="text" value="${company.companyCity}" placeholder="请选择省/市/区"><em></em>
-                        <input  id="gsdh" form="zp_gsxq_form" style="float: right" name="companyPhone" type="text" value="${company.companyPhone}" placeholder="公司座机电话">
-                        <input  id="gsdz_ssk" form="zp_gsxq_form" name="companyLocation" type="text" value="${company.companyLocation}" placeholder="请输入大致区域如：同方广场">
-                        <input  form="zp_gsxq_form" style="float: right" name="companySpace" type="text" value="${company.companySpace}" placeholder="请填写街道、楼宇详细地址">
+                        <input  id="this_space" form="zp_gsxq_form" class="noNull" name="companyCity" type="text" value="${company.companyCity}" placeholder="请选择省/市/区"><em></em>
+                        <input  id="gsdh" form="zp_gsxq_form" style="float: right" class="noNull tPhone" name="companyPhone" type="text" value="${company.companyPhone}" placeholder="公司座机电话(xxx-xxxxxxxx)">
+                        <input  id="gsdz_ssk" form="zp_gsxq_form" class="noNull" name="companyLocation" type="text" value="${company.companyLocation}" placeholder="请输入大致区域如：同方广场">
+                        <input  form="zp_gsxq_form" style="float: right" class="noNull" name="companySpace" type="text" value="${company.companySpace}" placeholder="请填写街道、楼宇详细地址">
                     </div>
                     <div class="_right"></div>
 
@@ -262,15 +262,13 @@
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error">* </span>公司介绍：</label>
                 <div class="zp_gsxq_js">
-                    <textarea  id="gsxq_gsjs" form="zp_gsxq_form" name="companyIntro">${company.companyIntro}</textarea>
+                    <textarea  id="gsxq_gsjs" form="zp_gsxq_form" class="noNull" name="companyIntro">${company.companyIntro}</textarea>
                     <p>注：职位描述中请勿填写涉及歧视的内容，例如：女性优先，只招男士，残疾，乙肝等</p>
                 </div>
             </div>
             <div class="control-group clearfix">
                 <label class="group-title"><span class="text-error"></span>产品介绍：</label>
                 <div class="zp_gsxq_cpjs" id="gsxq_cpjs">
-
-
                     <script id="tj_gscp" type="text/html">
                         <div class="zp_gsxq_cpjs_cp" data-id="{{productId}}">
                             <div class="zp_gsxq_cpjs_cp_left">
@@ -355,5 +353,31 @@
     $(function () {
         myMap.init();
     })
+    var isOK = true;
+    function makeText() {
+        $('.noNull').each(function (index,e) {
+            if($(e).val()==""){
+                $(e).css({"border-color":"#FF4600"});
+                isOK = false;
+                return isOK;
+            }else{
+                isOK = true;
+                $(e).css({"border-color":"#cccccc"});
+            }
+        })
+        $('.tPhone').each(function (index,e) {
+            var s = /^([0-9]{3,4}-[0-9]{7,8})$/;
+            alert(s.test($(e).val()))
+            if(!s.test($(e).val())){
+                $(e).css({"border-color":"#FF4600"});
+                isOK = false
+                return isOK;
+            }else{
+                isOK = true;
+                $(e).css({"border-color":"#cccccc"});
+            }
+        })
+        return isOK;
+    }
 </script>
 </html>
