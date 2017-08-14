@@ -429,6 +429,9 @@
     <if test="zw==8">
       ORDER BY s.create_time ASC
     </if>
+    <if test="zw==''">
+      ORDER BY s.send_time DESC
+    </if>
   </select>
   <!--主动下载的简历-->
   <select id="selByType" parameterType="java.util.Map" resultMap="BaseResultMap">
