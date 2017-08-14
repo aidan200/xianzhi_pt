@@ -23,7 +23,7 @@ public interface XzResumeMapper {
 
     XzResume selResumeInformation(Long resumeId);
 
-    List<XzResume> selResumeByConditions(Map map);
+    List<XzResume> selResumeByConditions(List<Long> list);
 
     List<XzResume> selectRcount(Map map);
 

@@ -106,7 +106,16 @@ public class XzResumeServiceImpl implements XzResumeService{
                 map.put("resumeSex",1);
             }
         }
-
+        if (map.get("resumeState")!=null){
+            String resumeState=map.get("resumeState").toString();
+            if (resumeState.equals("在职")){
+                map.put("resumeState",1);
+            }else if(resumeState.equals("离职")){
+                map.put("resumeState",2);
+            }
+        }
+        Date date1=new Date();
+        map.put("date1",date1);
         PageHelper.startPage(page,rows);
         List<XzResume> rlist=resumeMapper.selectRcount(map);
         PageBean<XzResume> pageBean=new PageBean<>(rlist);
@@ -115,8 +124,7 @@ public class XzResumeServiceImpl implements XzResumeService{
         for (XzResume xzResume :tlist){
             list.add(xzResume.getResumeId());
         }
-        map.put("list",list);
-        List<XzResume> resumeList=resumeMapper.selResumeByConditions(map);
+        List<XzResume> resumeList=resumeMapper.selResumeByConditions(list);
        List<XzResumeEducation> elist=new ArrayList<>();
         for(int i=0;i<resumeList.size();i++){
           if (resumeList.get(i).getXzResumeEducations().size()>1){

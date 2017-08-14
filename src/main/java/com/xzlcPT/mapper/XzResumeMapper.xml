@@ -184,7 +184,8 @@
     r.resume_id,r.resume_name,r.resume_sex,r.resume_intent_field,r.resume_birth,r.resume_workspace,
     e.education_level,r.resume_workinglife,r.resume_intent_position,e.enrollment_date,
 	e.graduate_date,e.education_school,e.education_major,j.jobexp_begin_time,j.jobexp_company_name,
-	j.jobexp_end_time,j.jobexp_postion
+	j.jobexp_end_time,j.jobexp_postion,r.resume_position,r.resume_mm,f.field_name f1_name,f.field_id f1_id,
+	f.field_type f1_type
   </sql>
   <sql id="selResume">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,r.resume_workinglife,r.resume_position,
@@ -548,7 +549,7 @@
     left join xz_field f2 on jd.field_id = f2.field_id
     WHERE r.resume_id = #{resumeId,jdbcType=BIGINT}
   </select>
-  <select id="selResumeByConditions" resultMap="ResumeInformation" parameterType="java.util.Map">
+  <select id="selResumeByConditions" resultMap="ResumeInformation" parameterType="java.util.List">
   SELECT
   <include refid="selResumeInf"/>
     FROM xz_resume r LEFT JOIN
@@ -556,43 +557,7 @@
   xz_field f ON d.field_id = f.field_id LEFT JOIN
   xz_resume_education e ON r.resume_id = e.resume_id LEFT JOIN
   xz_job_exp j ON  r.resume_id = j.resume_id
-  WHERE 1=1
-  <if test="resumePosition !=null and resumePosition !=''">
-    AND r.resume_position LIKE CONCAT('%',#{resumePosition,jdbcType=VARCHAR},'%')
-  </if>
-  <if test="educationLevel !=null and educationLevel !=''">
-    AND e.education_level = #{educationLevel,jdbcType=VARCHAR}
-  </if>
-  <if test="fieldName !=null and fieldName!=''">
-    AND f.field_name = #{fieldName,jdbcType=VARCHAR}
-  </if>
-  <if test="resumeMmMin !=null and resumeMmMin !=''">
-    AND r.resume_mm &gt;= #{resumeMmMin,jdbcType=INTEGER}
-  </if>
-    <if test="resumeMmMax !=null and jobexpMmMax !=''">
-      AND r.resume_mm &lt;= #{resumeMmMax,jdbcType=INTEGER}
-    </if>
-    <if test="resumeIntentYm !=null and resumeIntentYm!=''">
-      AND r.resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER}
-    </if>
-    <if test="resumeBirthMin !=null and resumeBirthMin != ''">
-      AND 2017-YEAR(r.resume_birth) &gt;= #{resumeBirthMin,jdbcType=INTEGER}
-    </if>
-    <if test="resumeBirthMax !=null and resumeBirthMax !=''">
-      AND 2017-YEAR(r.resume_birth) &lt;= #{resumeBirthMax,jdbcType=INTEGER}
-    </if>
-    <if test="resumeSex !=null and resumeSex !=''">
-      AND r.resume_sex = #{resumeSex,jdbcType=INTEGER}
-    </if>
-    <if test="createTime !=null and createTime != ''">
-      AND TO_DAYS(NOW()) - TO_DAYS(r.create_time) &lt;= #{createTime,jdbcType=INTEGER}
-    </if>
-    <if test="resumeState !=null and resumeState !=''">
-      AND r.resume_state = #{resumeState,jdbcType=VARCHAR}
-    </if>
-    <if test="workspace != null and workspace !='' ">
-      AND r.resume_workspace = #{workspace,jdbcType=VARCHAR}
-    </if>
+  WHERE r.delete_falt=0
     <if test="list.size>0">
       and r.resume_id in
       <foreach collection="list" item="resume_id" open="(" close=")" separator="," >
@@ -629,16 +594,16 @@
       AND r.resume_intent_ym = #{resumeIntentYm,jdbcType=INTEGER}
     </if>
     <if test="resumeBirthMin !=null and resumeBirthMin != ''">
-      AND 2017-YEAR(r.resume_birth) &gt;= #{resumeBirthMin,jdbcType=INTEGER}
+      AND YEAR (#{date1,jdbcType=TIMESTAMP})-YEAR(r.resume_birth) &gt;= #{resumeBirthMin,jdbcType=INTEGER}
     </if>
     <if test="resumeBirthMax !=null and resumeBirthMax !=''">
-      AND 2017-YEAR(r.resume_birth) &lt;= #{resumeBirthMax,jdbcType=INTEGER}
+      AND YEAR (#{date1,jdbcType=TIMESTAMP})-YEAR(r.resume_birth) &lt;= #{resumeBirthMax,jdbcType=INTEGER}
     </if>
     <if test="resumeSex !=null">
       AND r.resume_sex = #{resumeSex,jdbcType=INTEGER}
     </if>
-    <if test="createTime !=null and createTime != ''">
-      AND TO_DAYS(NOW()) - TO_DAYS(r.create_time) &lt;= #{createTime,jdbcType=INTEGER}
+    <if test="resumeFlash !=null and resumeFlash != ''">
+      AND TO_DAYS(NOW()) - TO_DAYS(r.resume_flash) &lt;= #{resumeFlash,jdbcType=INTEGER}
     </if>
     <if test="resumeState !=null and resumeState !=''">
       AND r.resume_state = #{resumeState,jdbcType=VARCHAR}

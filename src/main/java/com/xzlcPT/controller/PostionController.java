@@ -217,6 +217,11 @@ public class PostionController extends BaseController{
         map.put("companyId",userLogin.getCompany().getCompanyId());
         map.put("educationEntrance",educationEntrance);
         map.put("postionWelfare",postionWelfare);
+        Date cdate =new Date();
+        if (postionWelfare==1){
+            map.put("deleteTime",cdate);
+        }
+        map.put("createTime",cdate);
         if (check!=null&&check==1){
             map.put("forceAgeMax",postionAgeMax);
             map.put("forceAgeMin",postionAgeMin);
