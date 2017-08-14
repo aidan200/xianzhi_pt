@@ -36,9 +36,9 @@ public class CompanyInfoController {
     private XzPostionService xzPostionService;
 
     @RequestMapping("editCompany.do")
-    public ModelAndView editCompany(XzCompany company, String[] welfaress, String[] domains, String[] skillss){
+    public ModelAndView editCompany(XzCompany company, String[] welfaress, String[] domainss, String[] skillss){
         ModelAndView mv = new ModelAndView("foreEnd3/zpc_company_home");
-        int i = companyService.editCompany(company,welfaress,domains,skillss);
+        int i = companyService.editCompany(company,welfaress,domainss,skillss);
         if(i==1){
             mv.addObject("msg","ok");
         }else{
