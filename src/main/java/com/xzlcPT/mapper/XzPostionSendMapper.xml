@@ -54,6 +54,7 @@
       <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
       <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
       <result column="resume_intent_field" jdbcType="VARCHAR" property="resumeIntentField"/>
+      <result column="resume_workspace" jdbcType="VARCHAR" property="resumeWorkspace"/>
     </association>
     <association property="xzResumeEducations" javaType="com.xzlcPT.bean.XzResumeEducation">
       <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
@@ -129,7 +130,7 @@
     r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type,
     ps.send_time,m.interview_time,m.pmsg_value,m.filed1,m.filed2,ps.create_time,r.resume_intent_field,
     e.education_school,e.education_major,e.enrollment_date,e.graduate_date,j.jobexp_company_name,j.jobexp_begin_time,
-    j.jobexp_end_time,j.jobexp_postion,j.jobexp_mm
+    j.jobexp_end_time,j.jobexp_postion,j.jobexp_mm,r.resume_workspace
   </sql>
   <!--按简历id和状态查询投递-->
   <select id="selSendByRIdAndType" parameterType="Map" resultMap="BaseResultMap">

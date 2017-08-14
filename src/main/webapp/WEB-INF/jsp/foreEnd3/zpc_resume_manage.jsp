@@ -176,7 +176,7 @@
                         <div class="rem_cen">
                             <span style="margin-left: 20px">查看</span>
                             <select name="" id="" class="rem_input3">
-                                <option value="7">下载时间由近到远1</option>
+                                <option value="7">下载时间由近到远</option>
                                 <option value="8">下载时间由远到近</option>
                                 <option value="3">年龄从大到小</option>
                                 <option value="4">年龄从小到大</option>
@@ -239,10 +239,8 @@
                         <div class="rem_cen">
                             <span style="margin-left: 20px">查看</span>
                             <select name="" id="" class="rem_input3">
-                                <option value="">下载时间由近到远</option>
-                                <option value="">下载时间由远到近</option>
-                                <option value="">更新时间从近到远</option>
-                                <option value="">更新时间从远到近</option>
+                                <option value="">收藏时间由近到远</option>
+                                <option value="">收藏时间由远到近</option>
                                 <option value="">年龄从大到小</option>
                                 <option value="">年龄从小到大</option>
                                 <option value="">工作年限从长到短</option>
