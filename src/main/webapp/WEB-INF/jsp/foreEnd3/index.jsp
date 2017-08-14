@@ -189,6 +189,54 @@
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_pos"><a href="">招聘预言家</a></div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
+                    <div class="index_01time">2017-08-10</div>
+                </li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
+                    <div class="index_com"><a href="">什么什么</a></div>
+                    <div class="index_pos"><a href="">内务总管</a></div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
+                    <div class="index_01time">2017-08-10</div>
+                </li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
+                    <div class="index_com"><a href="">都有什么公司</a></div>
+                    <div class="index_pos"><a href="">招聘九尾妖狐</a></div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
+                    <div class="index_01time">2017-08-10</div>
+                </li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
+                    <div class="index_com"><a href="">你叫什么公司</a></div>
+                    <div class="index_pos"><a href="">招聘哈哈哈哈</a></div>
+                    <%--<div class="index_01tag">--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--<span class="index_01s">haha</span>--%>
+                    <%--</div>--%>
+                    <div class="index_01time">2017-08-10</div>
+                </li>
+                <li class="index_li1"><span class="index_no fa fa-remove"></span>
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
+                         class="index_hui">
+                    <div class="index_com"><a href="">公司叫什么系列</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
                     <%--<span class="index_01s">haha</span>--%>
@@ -200,7 +248,7 @@
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_com"><a href="">游戏公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
                     <%--<span class="index_01s">haha</span>--%>
@@ -212,7 +260,7 @@
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_com"><a href="">你叫什么公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
                     <%--<span class="index_01s">haha</span>--%>
@@ -224,7 +272,7 @@
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_com"><a href="">我叫什么公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
                     <%--<span class="index_01s">haha</span>--%>
@@ -236,7 +284,7 @@
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_com"><a href="">哈哈哈哈公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
                     <%--<span class="index_01s">haha</span>--%>
@@ -248,7 +296,7 @@
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_com"><a href="">嘿嘿嘿嘿公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
                     <%--<span class="index_01s">haha</span>--%>
@@ -260,7 +308,7 @@
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_com"><a href="">嘻嘻嘻嘻公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
                     <%--<span class="index_01s">haha</span>--%>
@@ -272,55 +320,7 @@
                 <li class="index_li1"><span class="index_no fa fa-remove"></span>
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
-                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <%--<div class="index_01tag">--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--</div>--%>
-                    <div class="index_01time">2017-08-10</div>
-                </li>
-                <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                         class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
-                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <%--<div class="index_01tag">--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--</div>--%>
-                    <div class="index_01time">2017-08-10</div>
-                </li>
-                <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                         class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
-                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <%--<div class="index_01tag">--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--</div>--%>
-                    <div class="index_01time">2017-08-10</div>
-                </li>
-                <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                         class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
-                    <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
-                    <%--<div class="index_01tag">--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--<span class="index_01s">haha</span>--%>
-                    <%--</div>--%>
-                    <div class="index_01time">2017-08-10</div>
-                </li>
-                <li class="index_li1"><span class="index_no fa fa-remove"></span>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
-                         class="index_hui">
-                    <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
+                    <div class="index_com"><a href="">呵呵呵呵有限公司</a></div>
                     <div class="index_pos"><a href="">职位叫什么名呀叫gt</a></div>
                     <%--<div class="index_01tag">--%>
                     <%--<span class="index_01s">haha</span>--%>
