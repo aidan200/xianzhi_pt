@@ -53,6 +53,7 @@
       <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
       <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
       <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+      <result column="resume_intent_field" jdbcType="VARCHAR" property="resumeIntentField"/>
     </association>
     <association property="xzResumeEducations" javaType="com.xzlcPT.bean.XzResumeEducation">
       <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
