@@ -53,10 +53,16 @@
       <result column="resume_position" jdbcType="VARCHAR" property="resumePosition" />
       <result column="resume_workinglife" jdbcType="VARCHAR" property="resumeWorkinglife" />
       <result column="resume_intent_ym" jdbcType="INTEGER" property="resumeIntentYm" />
+      <result column="resume_intent_field" jdbcType="VARCHAR" property="resumeIntentField"/>
+      <result column="resume_workspace" jdbcType="VARCHAR" property="resumeWorkspace"/>
     </association>
     <association property="xzResumeEducations" javaType="com.xzlcPT.bean.XzResumeEducation">
       <id column="education_id" jdbcType="BIGINT" property="educationId"></id>
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
+      <result column="education_school" jdbcType="VARCHAR" property="educationSchool"/>
+      <result column="education_major" jdbcType="VARCHAR" property="educationMajor"/>
+      <result column="enrollment_date" jdbcType="TIMESTAMP" property="enrollmentDate"/>
+      <result column="graduate_date" jdbcType="TIMESTAMP" property="graduateDate"/>
     </association>
     <association property="postionSendMsg" javaType="com.xzlcPT.bean.XzPostionSendMsg">
       <id column="pmsg_id" jdbcType="BIGINT" property="pmsgId" />
@@ -71,6 +77,21 @@
       <result column="filed1" jdbcType="VARCHAR" property="filed1" />
       <result column="filed2" jdbcType="VARCHAR" property="filed2" />
       <result column="filed3" jdbcType="VARCHAR" property="filed3" />
+    </association>
+    <association property="jobExps" javaType="com.xzlcPT.bean.XzJobExp">
+      <id column="jobexp_id" jdbcType="BIGINT" property="jobexpId" />
+      <result column="jobexp_company_name" jdbcType="VARCHAR" property="jobexpCompanyName" />
+      <result column="jobexp_field" jdbcType="VARCHAR" property="jobexpField" />
+      <result column="jobexp_postion" jdbcType="VARCHAR" property="jobexpPostion" />
+      <result column="jobexp_workspace" jdbcType="VARCHAR" property="jobexpWorkspace" />
+      <result column="jobexp_begin_time" jdbcType="TIMESTAMP" property="jobexpBeginTime" />
+      <result column="jobexp_end_time" jdbcType="TIMESTAMP" property="jobexpEndTime" />
+      <result column="jobexp_duty" jdbcType="VARCHAR" property="jobexpDuty" />
+      <result column="jobexp_dept" jdbcType="VARCHAR" property="jobexpDept" />
+      <result column="jobexp_company_scale" jdbcType="VARCHAR" property="jobexpCompanyScale" />
+      <result column="jobexp_company_type" jdbcType="VARCHAR" property="jobexpCompanyType" />
+      <result column="jobexp_mm" jdbcType="INTEGER" property="jobexpMm" />
+      <result column="jobexp_ym" jdbcType="INTEGER" property="jobexpYm" />
     </association>
   </resultMap>
   <resultMap id="ResumeInformation" type="com.xzlcPT.bean.XzResume">
@@ -107,7 +128,9 @@
   <sql id="selById">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
     r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type,
-    ps.send_time,m.interview_time,m.pmsg_value,m.filed1,m.filed2
+    ps.send_time,m.interview_time,m.pmsg_value,m.filed1,m.filed2,ps.create_time,r.resume_intent_field,
+    e.education_school,e.education_major,e.enrollment_date,e.graduate_date,j.jobexp_company_name,j.jobexp_begin_time,
+    j.jobexp_end_time,j.jobexp_postion,j.jobexp_mm,r.resume_workspace
   </sql>
   <!--按简历id和状态查询投递-->
   <select id="selSendByRIdAndType" parameterType="Map" resultMap="BaseResultMap">
@@ -384,13 +407,14 @@
     GROUP BY s.resume_id
   </select>
   <!--按sendid的集合查简历-->
-  <select id="selBysendId" parameterType="java.util.List" resultMap="selState">
+  <select id="selBysendId" parameterType="java.util.Map" resultMap="selState">
     SELECT * FROM (
     select
     <include refid="selById"/>
     from xz_postion_send ps
     LEFT JOIN  xz_resume r ON r.resume_id = ps.resume_id
     LEFT JOIN xz_resume_education e ON r.resume_id = e.resume_id
+    LEFT JOIN xz_job_exp j ON r.resume_id = j.resume_id
     LEFT JOIN xz_postion p ON ps.postion_id = p.postion_id
     LEFT JOIN xz_postion_send_msg m ON  ps.send_id=m.send_id
     ORDER BY e.graduate_date DESC
@@ -405,6 +429,33 @@
       and 1=2
     </if>
     GROUP BY s.send_id
+    <if test="zw==1">
+      ORDER BY s.send_time DESC
+    </if>
+    <if test="zw==2">
+      ORDER BY s.send_time ASC
+    </if>
+    <if test="zw==3">
+      ORDER BY s.resume_birth ASC
+    </if>
+    <if test="zw==4">
+      ORDER BY s.resume_birth DESC
+    </if>
+    <if test="zw==5">
+      ORDER BY s.resume_intent_ym DESC
+    </if>
+    <if test="zw==6">
+      ORDER BY s.resume_intent_ym ASC
+    </if>
+    <if test="zw==7">
+      ORDER BY s.create_time DESC
+    </if>
+    <if test="zw==8">
+      ORDER BY s.create_time ASC
+    </if>
+    <if test="zw==''">
+      ORDER BY s.send_time DESC
+    </if>
   </select>
   <!--主动下载的简历-->
   <select id="selByType" parameterType="java.util.Map" resultMap="BaseResultMap">

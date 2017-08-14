@@ -54,6 +54,8 @@ public class XzPostionSend {
 
     private XzCompany company;
 
+    private XzJobExp jobExps;
+
     private XzPostionSendMsg postionSendMsg;
 
     public XzPostionSendMsg getPostionSendMsg() {
@@ -262,5 +264,13 @@ public class XzPostionSend {
 
     public String getPmsgValue() {
         return pmsgValue;
+    }
+
+    public void setJobExps(XzJobExp jobExps) {
+        this.jobExps = jobExps;
+    }
+
+    public XzJobExp getJobExps() {
+        return jobExps;
     }
 }
