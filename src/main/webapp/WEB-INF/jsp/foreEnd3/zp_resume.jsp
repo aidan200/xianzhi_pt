@@ -29,14 +29,21 @@
             <div class="resume_outimg">
                 <c:choose>
                     <c:when test="${xzResume.resumeIntentField!=undefined}">
-                        <img src="${pageContext.request.contextPath}/uploadImg/${xzResume.resumeIntentField}" alt="" class="resume_head">
+                        <div class="rem_ht">
+                            <img src="${pageContext.request.contextPath}/uploadImg/${xzResume.resumeIntentField}" alt=""
+                                 class="resume_head">
+                        </div>
                     </c:when>
                     <c:otherwise>
                         <c:when test="${xzResume.resumeSex==1}">
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt="" class="resume_head">
+                            <div class="rem_ht">
+                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt=""
+                                     class="resume_head"></div>
                         </c:when>
                         <c:otherwise>
-                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="resume_head">
+                            <div class="rem_ht">
+                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt=""
+                                     class="resume_head"></div>
                         </c:otherwise>
                     </c:otherwise>
                 </c:choose>
@@ -320,15 +327,15 @@
     $(function () {
         var n = $("#s1").text().trim();
         console.log(n);
-        if(n!=""){
+        if (n != "") {
             var date = new Date();
             var year = date.getFullYear();
             var c = parseInt(year) - parseInt(n);
             $("#s1").text(c);
-        }else{
+        } else {
             $("#s1").text(n);
         }
-        $('.hydd').each(function (index,e) {
+        $('.hydd').each(function (index, e) {
             $(e).text($(e).text().trim().substring(1));
         })
     });
@@ -338,23 +345,23 @@
             $("#s2").text("至今");
         }
     });
-    if($("#h1").val()!=undefined){
+    if ($("#h1").val() != undefined) {
         var content = $("#h1").val().replace(/\n/g, "<br>");
         $("#sp1").html(content);
     }
-    if($("#h2").val()!=undefined) {
+    if ($("#h2").val() != undefined) {
         var content1 = $("#h2").val().replace(/\n/g, "<br>");
         $("#sp2").html(content1);
     }
-    if($("#h3").val()!=undefined) {
+    if ($("#h3").val() != undefined) {
         var content2 = $("#h3").val().replace(/\n/g, "<br>");
         $("#sp3").html(content2);
     }
-    if($("#h4").val()!=undefined) {
+    if ($("#h4").val() != undefined) {
         var content3 = $("#h4").val().replace(/\n/g, "<br>");
         $("#sp4").html(content3);
     }
-    if($("#h5").val()!=undefined) {
+    if ($("#h5").val() != undefined) {
         var content4 = $("#h5").val().replace(/\n/g, "<br>");
         $("#sp5").html(content4);
     }

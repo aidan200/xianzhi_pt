@@ -4440,9 +4440,17 @@ input[type="button"].fileInputButton {
     border-top: 5px solid #3d9ccc;
 }
 
+.rem_ht {
+    width: 122px;
+    height: 122px;
+    overflow: hidden;
+    text-align: center;
+}
+
 .resume_head {
-    width: 120px;
+    width: auto;
     height: 120px;
+    margin: 0 auto;
 }
 
 .resume_outimg {
@@ -8081,7 +8089,8 @@ footer {
 .pef_sec ul li {
     margin-top: 10px;
 }
-.pef_sec ul li span{
+
+.pef_sec ul li span {
     color: #666;
 }
 
