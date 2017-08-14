@@ -22,13 +22,24 @@
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 
-
 <div class="resume_container">
     <div class="resume_all">
         <!--上面基本信息-->
         <div class="resume_top">
             <div class="resume_outimg">
-                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="resume_head">
+                <c:choose>
+                    <c:when test="${xzResume.resumeIntentField!=undefined}">
+                        <img src="${pageContext.request.contextPath}/uploadImg/${xzResume.resumeIntentField}" alt="" class="resume_head">
+                    </c:when>
+                    <c:otherwise>
+                        <c:when test="${xzResume.resumeSex==1}">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt="" class="resume_head">
+                        </c:when>
+                        <c:otherwise>
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="resume_head">
+                        </c:otherwise>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div class="resume_right">
                 <%--<h3>${xzResume.resumeName}</h3>--%>
@@ -72,8 +83,9 @@
                             手&emsp;&emsp;机：<span>${xzResume.resumePhone}</span>
                         </div>
                         <div class="resume_every">
-                            年&emsp;&emsp;龄：<span id="s1"><fmt:formatDate value="${xzResume.resumeBirth}"
-                                                                         pattern="yyyy"/></span>
+                            年&emsp;&emsp;龄：<span id="s1">
+                            <fmt:formatDate value="${xzResume.resumeBirth}" pattern="yyyy"/>
+                        </span>
                         </div>
                         <div class="resume_every">
                             出生日期： <span>
@@ -98,20 +110,25 @@
                 <div class="resume_more">
                     <h4><span class="fa fa-map-signs"></span>职业意向</h4>
                     <div class="resume_two">
-                        <div class="resume_every3">
+                        <div class="resume_every3 ">
                             目前行业：
-                        </div>
-                        <div class="resume_every3">
-                            期望行业：<span>
+                            <span class="hydd">
                             <c:forEach var="f1" items="${xzResume.fields}" varStatus="stat">
-                                <c:if test="${!stat.last}">
-                                    ${f1.fieldName}/
-                                </c:if>
-                                <c:if test="${stat.last}">
-                                    ${f1.fieldName}
+                                <c:if test="${f1.fieldType==2}">
+                                    /${f1.fieldName}
                                 </c:if>
                             </c:forEach>
-                        </span>
+                            </span>
+                        </div>
+                        <div class="resume_every3 ">
+                            期望行业：
+                            <span class="hydd">
+                            <c:forEach var="f1" items="${xzResume.fields}" varStatus="stat">
+                                <c:if test="${f1.fieldType==3}">
+                                    /${f1.fieldName}
+                                </c:if>
+                            </c:forEach>
+                            </span>
                         </div>
                         <div class="resume_every">
                             期望地点：<span>${xzResume.resumeIntentWorkspace}</span>
@@ -123,7 +140,7 @@
                             目前薪资： <span> 多少元</span>
                         </div>
                         <div class="resume_every">
-                            期望薪资： <span> ${fn:replace((xzResume.resumeIntentMm*12/10000),".0","")}万</span>
+                            期望薪资： <span> ${fn:replace((xzResume.resumeIntentMm*12/10000),".0","")}万/年</span>
                         </div>
                     </div>
 
@@ -301,11 +318,19 @@
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>
 <script>
     $(function () {
-        var n = $("#s1").text();
-        var date = new Date();
-        var year = date.getYear();
-        var c = parseInt(year) + 1900 - parseInt(n);
-        $("#s1").text(c);
+        var n = $("#s1").text().trim();
+        console.log(n);
+        if(n!=""){
+            var date = new Date();
+            var year = date.getFullYear();
+            var c = parseInt(year) - parseInt(n);
+            $("#s1").text(c);
+        }else{
+            $("#s1").text(n);
+        }
+        $('.hydd').each(function (index,e) {
+            $(e).text($(e).text().trim().substring(1));
+        })
     });
     $(function () {
         var s = $("#s2").text();
@@ -313,16 +338,26 @@
             $("#s2").text("至今");
         }
     });
-    var content = $("#h1").val().replace(/\n/g, "<br>");
-    $("#sp1").html(content);
-    var content1 = $("#h2").val().replace(/\n/g, "<br>");
-    $("#sp2").html(content1);
-    var content2 = $("#h3").val().replace(/\n/g, "<br>");
-    $("#sp3").html(content2);
-    var content3 = $("#h4").val().replace(/\n/g, "<br>");
-    $("#sp4").html(content3);
-    var content4 = $("#h5").val().replace(/\n/g, "<br>");
-    $("#sp5").html(content4);
+    if($("#h1").val()!=undefined){
+        var content = $("#h1").val().replace(/\n/g, "<br>");
+        $("#sp1").html(content);
+    }
+    if($("#h2").val()!=undefined) {
+        var content1 = $("#h2").val().replace(/\n/g, "<br>");
+        $("#sp2").html(content1);
+    }
+    if($("#h3").val()!=undefined) {
+        var content2 = $("#h3").val().replace(/\n/g, "<br>");
+        $("#sp3").html(content2);
+    }
+    if($("#h4").val()!=undefined) {
+        var content3 = $("#h4").val().replace(/\n/g, "<br>");
+        $("#sp4").html(content3);
+    }
+    if($("#h5").val()!=undefined) {
+        var content4 = $("#h5").val().replace(/\n/g, "<br>");
+        $("#sp5").html(content4);
+    }
 </script>
 </body>
 </html>

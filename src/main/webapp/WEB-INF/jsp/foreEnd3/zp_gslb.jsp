@@ -170,7 +170,7 @@
                                 <c:when test="${p.company.companyNature=='2'}">
                                     民
                                 </c:when>
-                                <c:when test="${p.company.companyNature=='3'}'">
+                                <c:when test="${p.company.companyNature=='3'}">
                                     外
                                 </c:when>
                             </c:choose>
