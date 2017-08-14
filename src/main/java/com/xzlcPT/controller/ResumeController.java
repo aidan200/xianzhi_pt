@@ -200,8 +200,8 @@ public class ResumeController extends BaseController {
     }
 
     @RequestMapping("selResumeByConditions.do")
-    public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="4")int rows,String fieldName,String educationLevel,
-                                                String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String createTime,String resumeState,String workspace){
+    public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="10")int rows,String fieldName,String educationLevel,
+                                                String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String resumeFlash,String resumeState,String workspace){
         ModelAndView mv=new ModelAndView("foreEnd3/zpc_selectresume");
         Map  map=new HashMap();
         map.put("fieldName",fieldName);
@@ -211,7 +211,7 @@ public class ResumeController extends BaseController {
         map.put("resumeIntentYm",resumeIntentYm);
         map.put("resumeBirth",resumeBirth);
         map.put("resumeSex",resumeSex);
-        map.put("createTime",createTime);
+        map.put("resumeFlash",resumeFlash);
         map.put("resumeState",resumeState);
         map.put("workspace",workspace);
         List<String> flist=new ArrayList<>();
@@ -236,8 +236,8 @@ public class ResumeController extends BaseController {
         if (resumeSex!=null){
             flist.add(resumeSex);
         }
-        if (createTime!=null){
-            flist.add(createTime);
+        if (resumeFlash!=null){
+            flist.add(resumeFlash);
         }
         if (resumeState!=null){
             flist.add(resumeState);
@@ -245,6 +245,7 @@ public class ResumeController extends BaseController {
         PageBean<XzResume> pageBean=resumeService.selectRcount(page,rows,map);
         List<XzResume> resumeList=pageBean.getList();
         mv.addObject("flist",flist);
+        mv.addObject("resumePosition",resumePosition);
         mv.addObject("resumeList",resumeList);
         mv.addObject("page",pageBean.getPageNum());
         mv.addObject("pages",pageBean.getPages());

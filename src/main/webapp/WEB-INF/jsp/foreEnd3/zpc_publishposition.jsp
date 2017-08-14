@@ -72,7 +72,7 @@
                         <span class="tag_bubble" id="postionMmdx"><div class="tag2">最低月薪不能高于最高月薪</div></span>
                     </div>
                     <div class="pup_form">
-                        <span> <span class="pup_span1">*</span>发放月数：</span>
+                        <span> <span class="pup_span1">*</span>发布月数：</span>
                         <input type="text" class="pup_input" style="width: 180px" name="publishMonth" id="publishMonth">个月
                         <span class="tag_bubble2"><div class="tag2">发放月数不能为空</div></span>
                         <span class="tag_bubble2"><div class="tag2">请输入数字</div></span>
@@ -222,6 +222,7 @@
             </div>
             <div style="text-align: center;margin-bottom: 80px;margin-top: 40px">
                 <input type="hidden" name="postionWelfare" id="postionWelfare">
+                <input type="hidden" name="deleteTime" id="deleteTime">
                 <input type="button" id="sub1"  class="pup_but1" value="发布职位"/>
                 <input type="button" id="sub2" class="pup_but2" value="保存为草稿职位"/>
             </div>
@@ -453,8 +454,10 @@
     }
 </script>
 <script>
+    var da=new Date();
     $('#sub1').click(function () {
         $('#postionWelfare').val(1);
+        $('#deleteTime').val(da);
         $('#f1').submit();
     })
     $('#sub2').click(function () {

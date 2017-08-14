@@ -363,21 +363,27 @@
                 str += '<div class="dot_t5">' + rbList[i].company.companyName + '</div></a>';
                 str += '<div class="dot_ss"><span>' + rbList[i].company.companyCity + '</span>|';
                 str += '<span>';
-                for(j=0;j<rbList[i].company.domains.length;j++){
-                    str +=rbList[i].company.domains[j].field.fieldName;
-                    if(j>=2)break;
-                    str +='/';
+                if(rbList[i].company.domains!=null){
+                    for(j=0;j<rbList[i].company.domains.length;j++){
+                        str +=rbList[i].company.domains[j].field.fieldName;
+                        if(j>=2)break;
+                        str +='/';
+                    }
                 }
                 str += '</span>';
                 str += '</div><div class="dot_spe">';
-                for (var j = 0; j < rbList[i].company.welfares.length; j++) {
-                    str += '<span>' + rbList[i].company.welfares[j].welfareName + '</span>';
-                    if (j > 3)break;
+                if(rbList[i].company.welfares!=null){
+                    for (var j = 0; j < rbList[i].company.welfares.length; j++) {
+                        str += '<span>' + rbList[i].company.welfares[j].welfareName + '</span>';
+                        if (j > 3)break;
+                    }
                 }
                 str += '</div></div><div class="dot_com2">';
-                for (var j = 0; rbList[i].company.postions.length; j++) {
-                    str += '<div style="margin-top: 5px"><a class="isRead" data-readId="'+rbList[i].browseId+'" target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].company.postions[j].postionId+'">' + rbList[i].company.postions[j].postionName + '</a></div>';
-                    if (j >= 1)break;
+                if(rbList[i].company.postions!=null){
+                    for (var j = 0; j < rbList[i].company.postions.length; j++) {
+                        str += '<div style="margin-top: 5px"><a class="isRead" data-readId="'+rbList[i].browseId+'" target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].company.postions[j].postionId+'">' + rbList[i].company.postions[j].postionName + '</a></div>';
+                        if (j >= 1)break;
+                    }
                 }
                 str += '</div>';
                 str += '<div style="margin-top: 70px;width: 150px;float: left">';
@@ -441,21 +447,27 @@
                 str += '<div class="dot_t5">' + rbList[i].company.companyName + '</div></a>';
                 str += '<div class="dot_ss"><span>' + rbList[i].company.companyCity + '</span>|';
                 str += '<span>';
-                for(var j=0;j<rbList[i].company.domains.length;j++){
-                    str +=rbList[i].company.domains[j].field.fieldName;
-                    if(j>=2)break;
-                    str +='/';
+                if(rbList[i].company.domains!=null){
+                    for(var j=0;j<rbList[i].company.domains.length;j++){
+                        str +=rbList[i].company.domains[j].field.fieldName;
+                        if(j>=2)break;
+                        str +='/';
+                    }
                 }
                 str += '</span>';
                 str += '</div><div class="dot_spe">';
-                for (var j = 0; j < rbList[i].company.welfares.length; j++) {
-                    str += '<span>' + rbList[i].company.welfares[j].welfareName + '</span>';
-                    if (j > 3)break;
+                if(rbList[i].company.welfares!=null){
+                    for (var j = 0; j < rbList[i].company.welfares.length; j++) {
+                        str += '<span>' + rbList[i].company.welfares[j].welfareName + '</span>';
+                        if (j > 3)break;
+                    }
                 }
                 str += '</div></div><div class="dot_com2">';
-                for (var j = 0; rbList[i].company.postions.length; j++) {
-                    str += '<div style="margin-top: 5px"><a target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].company.postions[j].postionId+'">' + rbList[i].company.postions[j].postionName + '</a></div>';
-                    if (j >= 1)break;
+                if(rbList[i].company.postions!=null){
+                    for (var j = 0; j < rbList[i].company.postions.length; j++) {
+                        str += '<div style="margin-top: 5px"><a target="_blank" href="'+path+'/Postion/selPostionInfo.do?postionId='+rbList[i].company.postions[j].postionId+'">' + rbList[i].company.postions[j].postionName + '</a></div>';
+                        if (j >= 1)break;
+                    }
                 }
                 str += '</div>';
                 str += '<div style="float: left;width: 100px;height: auto;overflow: hidden">';
@@ -513,10 +525,12 @@
                 str +='</div></div><div class="dot_test3">';
                 str +='<div class="dot_t3s"><a target="_blank" href="'+path+'/CompanyInfo/selCompanyInf.do?companyId='+rbList[i].postion.company.companyId+'">'+rbList[i].postion.company.companyName+'</a></div>';
                 str +='<div class="dot_t3s" style="margin-top: 5px">';
-                for(var j=0;j<rbList[i].postion.company.domains.length;j++){
-                    str +=rbList[i].postion.company.domains[j].field.fieldName;
-                    if(j>=2)break;
-                    str +='/';
+                if(rbList[i].postion.company!=null){
+                    for(var j=0;j<rbList[i].postion.company.domains.length;j++){
+                        str +=rbList[i].postion.company.domains[j].field.fieldName;
+                        if(j>=2)break;
+                        str +='/';
+                    }
                 }
                 str +='</div><span style="margin-left: 190px;color: #666">'+getNowFormatDate(rbList[i].collectTime)+'</span>';
                 str +='</div><div style="float: left;width: 100px;height: auto;overflow: hidden">';

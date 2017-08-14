@@ -387,9 +387,7 @@ public class PdfUtil {
                 for (XzResumeSkill xzResumeSkill : resume.getXzResumeSkills()) {
                     temp.append(xzResumeSkill.getSkillName()).append("  ");
                 }
-                if(temp.length()>1){
-                    skills = temp.substring(1);
-                }
+                skills = temp.toString();
                 cell1 = makeCellNoLine(skills,content);
                 cell1.setPaddingTop(10f);
                 cell1.setColspan(4);
