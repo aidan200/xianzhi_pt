@@ -9,9 +9,8 @@
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>公司未审核状态</title>
     <jsp:include page="distforeEnd.jsp"/>
     <script>
@@ -62,7 +61,7 @@
         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ying.jpg" alt="" class="aud_oi">
     </div>
 </div>
-
+<jsp:include page="behindforeEnd.jsp"/>
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery.nice-file-input.js"></script>
 <script type="text/javascript">
