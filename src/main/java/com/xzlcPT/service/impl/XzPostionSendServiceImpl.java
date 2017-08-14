@@ -90,7 +90,9 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         }
         Map map1=new HashMap();
         map1.put("list",list);
-        map1.put("zw",map.get("zw").toString());
+        if (map.get("zw")!=null) {
+            map1.put("zw", map.get("zw").toString());
+        }
         List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(map1);
         pageBean.setList(postionSendList);
         return pageBean;
@@ -108,7 +110,9 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         }
         Map map1=new HashMap();
         map1.put("list",list);
-        map1.put("zw",map.get("zw").toString());
+        if (map.get("zw")!=null) {
+            map1.put("zw", map.get("zw").toString());
+        }
         List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(map1);
         pageBean.setList(postionSendList);
         return pageBean;
@@ -162,7 +166,9 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         }
         Map map1=new HashMap();
         map1.put("list",list);
-        map1.put("zw",map.get("zw").toString());
+        if (map.get("zw")!=null) {
+            map1.put("zw", map.get("zw").toString());
+        }
         List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(map1);
         pageBean.setList(postionSendList);
         return pageBean;
