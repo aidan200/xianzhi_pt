@@ -60,7 +60,7 @@
       <result column="education_level" jdbcType="VARCHAR" property="educationLevel" />
       <result column="education_school" jdbcType="VARCHAR" property="educationSchool"/>
       <result column="education_major" jdbcType="VARCHAR" property="educationMajor"/>
-      <result column="enrollment_date" jdbcType="TIMESTAMP" property="enrollmendDate"/>
+      <result column="enrollment_date" jdbcType="TIMESTAMP" property="enrollmentDate"/>
       <result column="graduate_date" jdbcType="TIMESTAMP" property="graduateDate"/>
     </association>
     <association property="postionSendMsg" javaType="com.xzlcPT.bean.XzPostionSendMsg">
