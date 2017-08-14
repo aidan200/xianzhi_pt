@@ -96,7 +96,7 @@
                                 </span>
 
                                 <span class="every_test">
-                                    婚姻状况： &nbsp; <span id="hyzk"></span>
+                                    婚姻状况：<span id="hyzk"></span>
                                 </span>
 
                                 <span class="every_test">
