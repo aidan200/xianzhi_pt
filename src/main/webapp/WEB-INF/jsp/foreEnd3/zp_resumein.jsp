@@ -150,7 +150,7 @@
                    <input type="hidden" name="resumeId" value="${xzResume.resumeId}">
                     <button class="rei_button">收藏简历</button>
                 </form>
-                <form id="f2" action="${pageContext.request.contextPath}/PostionSend/comInsert.do" style="display: inline-block">
+                <form id="f2" action="${pageContext.request.contextPath}/PostionSend/downResume.do" style="display: inline-block">
                     <input type="hidden" name="resumeId" value="${xzResume.resumeId}">
                     <button class="rei_button">下载简历</button>
                 </form>

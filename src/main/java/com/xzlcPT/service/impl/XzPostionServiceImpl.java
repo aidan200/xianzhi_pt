@@ -111,6 +111,7 @@ public class XzPostionServiceImpl implements XzPostionService{
             String forceAge = string1 + string3 + string2;
             map.put("forceAge", forceAge);
         }
+
         int i=postionMapper.insertPostion(map);
         return i;
     }

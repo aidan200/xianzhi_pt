@@ -12,6 +12,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="age" uri="/xianzhipt/ageTag" %>
 <%@ taglib prefix="myPage" uri="/xianzhiOA/pageTag" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -28,7 +29,7 @@
             <span id="this_space">全国</span>
         </div>
         <div class="ses_selectr">
-                <input type="text" placeholder="请输入职能关键词：如 项目经理等" id="resumePosition">
+                <input type="text" placeholder="请输入职能关键词：如 项目经理等" id="resumePosition" value="${resumePosition}">
                 <button type="submit" form="hidForm" onclick="p()">搜索</button>
         </div>
     </div>
@@ -111,10 +112,10 @@
                             <a>更新时间</a>
                             <ul>
                                 <%--<li><a  id="g1" class="divSmall5" rel="type7">不限</a></li>--%>
-                                <li><a  id="1天" class="divSmall5" rel="type7" inpName="createTime" inpValue="1天">一天以内</a></li>
-                                <li><a  id="3天" class="divSmall5" rel="type7" inpName="createTime" inpValue="3天">三天以内</a></li>
-                                <li><a  id="7天" class="divSmall5" rel="type7" inpName="createTime" inpValue="7天">一周以内</a></li>
-                                <li><a  id="30天" class="divSmall5" rel="type7" inpName="createTime" inpValue="30天">一个月以内</a></li>
+                                <li><a  id="1天" class="divSmall5" rel="type7" inpName="resumeFlash" inpValue="1天">一天以内</a></li>
+                                <li><a  id="3天" class="divSmall5" rel="type7" inpName="resumeFlash" inpValue="3天">三天以内</a></li>
+                                <li><a  id="7天" class="divSmall5" rel="type7" inpName="resumeFlash" inpValue="7天">一周以内</a></li>
+                                <li><a  id="30天" class="divSmall5" rel="type7" inpName="resumeFlash" inpValue="30天">一个月以内</a></li>
                             </ul>
                         </li>
                         <li class="zp_lb_li">
@@ -138,23 +139,27 @@
                 <div class="ses_tr" id="mainSelect5">
                 </div>
                 <div class="ses_tr2">
-                    共找到 <span>10000+</span>简历
+                    共找到 <span>${total}</span>个简历
                 </div>
             </div>
 
         </div>
 
-        <select name="" id="" style="float: right;margin: 10px 10px 0 10px;outline: none">
-            <option value="">按更新时间</option>
-            <option value="">按。。。</option>
-            <option value="">按。。。</option>
-            <option value="">按。。。</option>
-        </select>
     <div style="clear: both"></div>
     <c:forEach var="r1" items="${resumeList}">
     <div class="ses_have">
         <div class="ses_left">
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/small.jpg" alt="" class="comh_head">
+            <c:choose>
+                <c:when test="${r1.resumeIntentField.equals('') && r1.resumeSex==0}">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="comh_head">
+                </c:when>
+                <c:when test="${r1.resumeIntentField.equals('') && r1.resumeSex==1}">
+                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt="" class="comh_head">
+                </c:when>
+                <c:when test="${r1.resumeIntentField != null}">
+                    <img src="${pageContext.request.contextPath}/uploadImg/${r1.resumeIntentField}" alt="" class="comh_head">
+                </c:when>
+            </c:choose>
             <div class="ses_test">
                 <h4><a  href="${pageContext.request.contextPath}/Resume/selResumeInfoCom.do?resumeId=${r1.resumeId}">${r1.resumeName}</a></h4>
                 <div class="ses_in">
@@ -167,8 +172,14 @@
 
                 </div>
                 <div style="margin-top: 10px;margin-left: 10px">
-                    <span style="color: #fc6866;margin-right: 10px">${r1.resumeIntentPosition}</span>|
-                    <span style="margin-left: 10px"><age:getAge year="${r1.resumeWorkinglife}"/>年经验</span>
+                    <span style="color: #fc6866;margin-right: 10px">${r1.resumePosition}</span>|
+                    <span style="margin-left: 10px"><age:getAge year="${r1.resumeWorkinglife}"/>年经验</span>|
+                    <span style="color: #fc6866;margin-right: 10px">${fn:replace((r1.resumeMm*12/10000),".0","")}万</span>
+                </div>
+                <div style="margin-top: 10px;margin-left: 10px">
+                    <span style="margin-left: 10px"><c:forEach items="${r1.fields}" var="f" end="3">
+                        ${f.fieldName}
+                    </c:forEach></span>
                 </div>
             </div>
         </div>
