@@ -222,7 +222,6 @@
             </div>
             <div style="text-align: center;margin-bottom: 80px;margin-top: 40px">
                 <input type="hidden" name="postionWelfare" id="postionWelfare">
-                <input type="hidden" name="deleteTime" id="deleteTime">
                 <input type="button" id="sub1"  class="pup_but1" value="发布职位"/>
                 <input type="button" id="sub2" class="pup_but2" value="保存为草稿职位"/>
             </div>
@@ -457,7 +456,6 @@
     var da=new Date();
     $('#sub1').click(function () {
         $('#postionWelfare').val(1);
-        $('#deleteTime').val(da);
         $('#f1').submit();
     })
     $('#sub2').click(function () {
