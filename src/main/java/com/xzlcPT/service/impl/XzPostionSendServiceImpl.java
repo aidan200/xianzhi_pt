@@ -88,7 +88,10 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         for(XzPostionSend xzPostionSend:list1){
             list.add(xzPostionSend.getSendId());
         }
-        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(list);
+        Map map1=new HashMap();
+        map1.put("list",list);
+        map1.put("zw",map.get("zw").toString());
+        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(map1);
         pageBean.setList(postionSendList);
         return pageBean;
     }
@@ -103,7 +106,10 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         for(XzPostionSend xzPostionSend:list1){
             list.add(xzPostionSend.getSendId());
         }
-        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(list);
+        Map map1=new HashMap();
+        map1.put("list",list);
+        map1.put("zw",map.get("zw").toString());
+        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(map1);
         pageBean.setList(postionSendList);
         return pageBean;
     }
@@ -136,21 +142,6 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
     }
 
     @Override
-    public PageBean<XzPostionSend> selAll(int page, int rows, Long companyId) {
-        PageHelper.startPage(page,rows);
-        List<XzPostionSend> list2=postionSendMapper.selAll(companyId);
-        PageBean pageBean=new PageBean(list2);
-        List<XzPostionSend> list1=pageBean.getList();
-        List<Long> list=new ArrayList<>();
-        for(XzPostionSend xzPostionSend:list1){
-            list.add(xzPostionSend.getSendId());
-        }
-        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(list);
-        pageBean.setList(postionSendList);
-        return pageBean;
-    }
-
-    @Override
     public Long selByCollect(XzPostionSend xzPostionSend) {
         Long sendId = postionSendMapper.selByCollect(xzPostionSend);
         return sendId;
@@ -169,7 +160,10 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         for(int i=0;i<list.size();i++){
             System.out.println(list.get(i));
         }
-        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(list);
+        Map map1=new HashMap();
+        map1.put("list",list);
+        map1.put("zw",map.get("zw").toString());
+        List<XzPostionSend> postionSendList=postionSendMapper.selBysendId(map1);
         pageBean.setList(postionSendList);
         return pageBean;
     }

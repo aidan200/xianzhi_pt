@@ -32,7 +32,7 @@ public interface XzPostionSendMapper {
 
     List<XzPostionSend> selByType(Map map);
 
-    List<XzPostionSend> selBysendId(List list);
+    List<XzPostionSend> selBysendId(Map map);
 
     List<XzResume> selComCollect(Map map);
 

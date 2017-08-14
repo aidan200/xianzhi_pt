@@ -107,7 +107,7 @@
   <sql id="selById">
     e.education_level,r.resume_name,r.resume_sex,r.resume_birth,ps.postion_id,r.resume_id,r.resume_intent_ym,
     r.resume_position,p.postion_name,ps.send_state,ps.send_id,ps.delete_falt,r.resume_workinglife,ps.send_type,
-    ps.send_time,m.interview_time,m.pmsg_value,m.filed1,m.filed2
+    ps.send_time,m.interview_time,m.pmsg_value,m.filed1,m.filed2,ps.create_time
   </sql>
   <!--按简历id和状态查询投递-->
   <select id="selSendByRIdAndType" parameterType="Map" resultMap="BaseResultMap">
@@ -384,7 +384,7 @@
     GROUP BY s.resume_id
   </select>
   <!--按sendid的集合查简历-->
-  <select id="selBysendId" parameterType="java.util.List" resultMap="selState">
+  <select id="selBysendId" parameterType="java.util.Map" resultMap="selState">
     SELECT * FROM (
     select
     <include refid="selById"/>
@@ -405,6 +405,30 @@
       and 1=2
     </if>
     GROUP BY s.send_id
+    <if test="zw==1">
+      ORDER BY s.send_time DESC
+    </if>
+    <if test="zw==2">
+      ORDER BY s.send_time ASC
+    </if>
+    <if test="zw==3">
+      ORDER BY s.resume_birth ASC
+    </if>
+    <if test="zw==4">
+      ORDER BY s.resume_birth DESC
+    </if>
+    <if test="zw==5">
+      ORDER BY s.resume_intent_ym DESC
+    </if>
+    <if test="zw==6">
+      ORDER BY s.resume_intent_ym ASC
+    </if>
+    <if test="zw==7">
+      ORDER BY s.create_time DESC
+    </if>
+    <if test="zw==8">
+      ORDER BY s.create_time ASC
+    </if>
   </select>
   <!--主动下载的简历-->
   <select id="selByType" parameterType="java.util.Map" resultMap="BaseResultMap">

@@ -411,7 +411,7 @@
     function insertCollect() {
         if ($('#sc').attr("isCollect") == "f") {
             $.ajax({
-                url: "${pageContext.request.contextPath}/PCollect/insertSelective.do",
+                url: "${pageContext.request.contextPath}/Postion/insertCollect.do",
                 data: {postionId: id},
                 type: "get",
                 dataType: "json",
