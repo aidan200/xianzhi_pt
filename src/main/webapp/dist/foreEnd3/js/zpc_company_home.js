@@ -16,12 +16,12 @@ function scsj(data){                                    //计算时间
 
 
 function Qxdx(){        //全局对象
-    this.pages=0;       //总页数
+    this.pages=1;       //总页数
     this.total=0;       //总记录数
     this.jl={           //记录全部页数
-        xypjl:0,         //新应聘简历
-        yxgk:0,          //意向沟通
-        msk:0,         //面试快
+        xypjl:1,         //新应聘简历
+        yxgk:1,          //意向沟通
+        msyy:1,         //面试快
     }
 
 
@@ -110,7 +110,7 @@ Xjl.prototype.loader=function (data,fn1,fn2,obj){
         url:path+'PostionSend/selByState.do',
         success:function (data){
             qxdx.pages=data.pages;
-            qxdx.jl.xypjl=data.page;
+            qxdx.jl.yxgk=data.page;
             qxdx.total=data.total;
             $(obj).find('.comh_span span').html(qxdx.total);          //总记录数
             var str=''
@@ -143,15 +143,15 @@ Xjl.prototype.loader=function (data,fn1,fn2,obj){
                     str+='</div>'
                     str+='<div class="comh_right">'
                     str+='<div class="comh_rt">'
-                    str+='<span>2015-至今</span>|'
-                    str+='<span class="comh_more" style="max-width: 150px">阿里巴巴有限公司ahtsrtgfkajfhkadf</span>|'
-                    str+='<span class="comh_more" style="max-width: 130px">资深产品经理adsertssfasd</span>'
+                    str+='<span>'+getNowFormatDate(data.list[i].jobExps.jobexpBeginTime).substring(0,7)+'--'+getNowFormatDate(data.list[i].jobExps.jobexpEndTime).substring(0,7)+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 150px">'+data.list[i].jobExps.jobexpCompanyName+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 130px">'+data.list[i].jobExps.jobexpPostion+'</span>'
                     str+='</div>'
                     str+='<div class="comh_rt">'
-                    str+='<span>'+getNowFormatDate(data.list[i].xzResumeEducations.enrollmentDate).substring(0,4)+'--'+getNowFormatDate(data.list[i].xzResumeEducations.graduateDate).substring(0,4)+'</span>|'      //教育经历开始enrollmentDate/graduateDate
-                    str+='<span class="comh_more" style="max-width: 120px">复旦大学aewrwerfdfadfadfad</span>|'
-                    str+='<span class="comh_more" style="max-width: 120px">信息管理werfweaewe与信息系统a</span>|'
-                    str+='<span>本科</span>'
+                    str+='<span>'+getNowFormatDate(data.list[i].xzResumeEducations.enrollmentDate).substring(0,7)+'--'+getNowFormatDate(data.list[i].xzResumeEducations.graduateDate).substring(0,7)+'</span>|'      //教育经历开始enrollmentDate/graduateDate
+                    str+='<span class="comh_more" style="max-width: 120px">'+data.list[i].xzResumeEducations.educationSchool+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 120px">'+data.list[i].xzResumeEducations.educationMajor+'</span>|'
+                    str+='<span>'+data.list[i].xzResumeEducations.educationLevel+'</span>'
                     str+='</div>'
                     str+='<div style="margin-top: 10px;margin-right: 3px;float: right;color: #a8a8a8">'
 
@@ -217,6 +217,7 @@ Xjl.prototype.init=function (){            //初始化载入数据
     }
     This.sb=function (){
         //没找到数据
+        $('#pop_one .zp_botv').html('')
         $('#pop_one > div').each(function (i,e){        //每次载入更新
             if(i!=0&&$(e).attr('class')!='zp_botv'){
                 $(e).remove();
@@ -289,15 +290,15 @@ Yxgt.prototype.loader=function (data,fn1,fn2,obj){
                     str+='</div>'
                     str+='<div class="comh_right">'
                     str+='<div class="comh_rt">'
-                    str+='<span>2015-至今</span>|'
-                    str+='<span class="comh_more" style="max-width: 150px">阿里巴巴有限公司ahtsrtgfkajfhkadf</span>|'
-                    str+='<span class="comh_more" style="max-width: 130px">资深产品经理adsertssfasd</span>'
+                    str+='<span>'+getNowFormatDate(data.list[i].jobExps.jobexpBeginTime).substring(0,7)+'--'+getNowFormatDate(data.list[i].jobExps.jobexpEndTime).substring(0,7)+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 150px">'+data.list[i].jobExps.jobexpCompanyName+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 130px">'+data.list[i].jobExps.jobexpPostion+'</span>'
                     str+='</div>'
                     str+='<div class="comh_rt">'
-                    str+='<span>'+getNowFormatDate(data.list[i].xzResumeEducations.enrollmentDate).substring(0,4)+'--'+getNowFormatDate(data.list[i].xzResumeEducations.graduateDate).substring(0,4)+'</span>|'      //教育经历开始enrollmentDate/graduateDate
-                    str+='<span class="comh_more" style="max-width: 120px">复旦大学aewrwerfdfadfadfad</span>|'
-                    str+='<span class="comh_more" style="max-width: 120px">信息管理werfweaewe与信息系统a</span>|'
-                    str+='<span>本科</span>'
+                    str+='<span>'+getNowFormatDate(data.list[i].xzResumeEducations.enrollmentDate).substring(0,7)+'--'+getNowFormatDate(data.list[i].xzResumeEducations.graduateDate).substring(0,7)+'</span>|'      //教育经历开始enrollmentDate/graduateDate
+                    str+='<span class="comh_more" style="max-width: 120px">'+data.list[i].xzResumeEducations.educationSchool+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 120px">'+data.list[i].xzResumeEducations.educationMajor+'</span>|'
+                    str+='<span>'+data.list[i].xzResumeEducations.educationLevel+'</span>'
                     str+='</div>'
                     str+='<div style="margin-top: 10px;margin-right: 3px;float: right;color: #a8a8a8">'
 
@@ -348,7 +349,7 @@ Yxgt.prototype.seekCont=function (){
     var _public_ssk={}
     _public_ssk.companyId=companyId;                                //ID
     _public_ssk.page=qxdx.jl.yxgk;                              //全部状态分页
-    _public_ssk.sendState=0;                                        //未查看
+    _public_ssk.sendState=1;                                        //未查看
     _public_ssk.zw=1;
     return _public_ssk
 }
@@ -363,6 +364,7 @@ Yxgt.prototype.init=function (){            //初始化载入数据
     }
     This.sb=function (){
         //没找到数据
+        $('#pop_three .zp_botv').html('')
         $('#pop_three > div').each(function (i,e){        //每次载入更新
             if(i!=0&&$(e).attr('class')!='zp_botv'){
                 $(e).remove();
@@ -389,6 +391,152 @@ Yxgt.prototype.xxk_sj=function (){            //初始化载入数据
 }
 
 
+function Msyy(){        //全部状态
+
+}
+Msyy.prototype=new parent();
+Msyy.prototype.loader=function (data,fn1,fn2,obj){
+    var This=this;
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        data:data,        //转为JSON格式
+        dataType:'json',
+        url:path+'PostionSend/selByState.do',
+        success:function (data){
+            qxdx.pages=data.pages;
+            qxdx.jl.msyy=data.page;
+            qxdx.total=data.total;
+            $(obj).find('.comh_span span').html(qxdx.total);          //总记录数
+            var str=''
+            if(data.list.length!=0){
+                for(var i=0;i<data.list.length;i++){
+                    str+='<div class="comh_have">'
+                    str+='<div class="comh_left">'
+                    str+='<img src="'+path+'uploadImg/'+data.list[i].resumes.resumeIntentField+'" alt=""'        //空着呢
+                    str+='class="comh_head">'
+                    str+='<div class="comh_test">'
+                    str+='<h4>'+data.list[i].resumes.resumeName+'</h4>'
+                    str+='<div class="comh_in">'
+                    if(data.list[i].resumes.resumeSex==0){
+                        str+='<span>男</span>|'
+                    }else{
+                        str+='<span>女</span>|'
+                    }
+
+
+                    str+='<span>'+ scsj(data.list[i].resumes.resumeBirth)+'</span>|'     //我是年龄
+                    str+='<span class="comh_more" style="max-width: 83px">'+data.list[i].resumes.resumeWorkspace+'</span>|'//我是地点
+                    str+='<span>'+data.list[i].xzResumeEducations.educationLevel+'</span>'      //我是学历
+                    str+='</div>'
+                    str+='<div class="comh_in">'
+                    str+='<span class="comh_more" style="max-width: 130px">'+data.list[i].resumes.resumePosition+'</span>|' //当前职位
+
+                    str+='<span>'+ scsj(data.list[i].resumes.resumeWorkinglife)+'年经验</span>'    //工作经验
+                    str+='</div>'
+                    str+='</div>'
+                    str+='</div>'
+                    str+='<div class="comh_right">'
+                    str+='<div class="comh_rt">'
+                    str+='<span>'+getNowFormatDate(data.list[i].jobExps.jobexpBeginTime).substring(0,7)+'--'+getNowFormatDate(data.list[i].jobExps.jobexpEndTime).substring(0,7)+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 150px">'+data.list[i].jobExps.jobexpCompanyName+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 130px">'+data.list[i].jobExps.jobexpPostion+'</span>'
+                    str+='</div>'
+                    str+='<div class="comh_rt">'
+                    str+='<span>'+getNowFormatDate(data.list[i].xzResumeEducations.enrollmentDate).substring(0,7)+'--'+getNowFormatDate(data.list[i].xzResumeEducations.graduateDate).substring(0,7)+'</span>|'      //教育经历开始enrollmentDate/graduateDate
+                    str+='<span class="comh_more" style="max-width: 120px">'+data.list[i].xzResumeEducations.educationSchool+'</span>|'
+                    str+='<span class="comh_more" style="max-width: 120px">'+data.list[i].xzResumeEducations.educationMajor+'</span>|'
+                    str+='<span>'+data.list[i].xzResumeEducations.educationLevel+'</span>'
+                    str+='</div>'
+                    str+='<div style="margin-top: 10px;margin-right: 3px;float: right;color: #a8a8a8">'
+
+                    var date1= data.list[i].sendTime;          //计算几小时以前
+                    var date2=new Date();
+                    var date3=date2-date1;
+                    if(date3<60000*60){
+                        str+='<span><span>'+Math.floor(date3/60000)+'</span>分钟前</span>'          //投递时间
+
+                    }else if(date3<60000*60*24){
+                        str+='<span><span>'+Math.floor(date3/60000/60)+'</span>小时前</span>'          //投递时间
+
+                    }else if (date3>60000*60*24){
+                        str+='<span><span>'+Math.floor(date3/60000/60/24)+'</span>天前</span>'          //投递时间
+
+                    }
+                    str+='</div>'
+                    str+='</div>'
+                    str+='</div>'
+                }
+                $(obj+' > div').each(function (i,e){        //每次载入更新
+                    if(i!=0&&$(e).attr('class')!='zp_botv'){
+                        $(e).remove();
+                    }
+                });
+                $(obj).find('.comh_top ').after(str);          //输出页面
+                fn1()
+            }else{
+
+                fn2()
+            }
+
+
+
+
+
+
+        },error:function (){
+            alert('基本资料修改错误')
+        }
+
+    })
+
+
+
+}
+Msyy.prototype.seekCont=function (){
+    var _public_ssk={}
+    _public_ssk.companyId=companyId;                                //ID
+    _public_ssk.page=qxdx.jl.yxgk;                              //全部状态分页
+    _public_ssk.sendState=2;                                        //未查看
+    _public_ssk.zw=1;
+    return _public_ssk
+}
+Msyy.prototype.init=function (){            //初始化载入数据
+    var This=this;
+    var data=This.seekCont();
+    This.cg=function (){
+        var fy= This.fy(qxdx.pages,qxdx.jl.msyy);
+        $('#pop_four .zp_botv').html(fy);                     //分页插入完成
+        This.fy_sj('#pop_three',qxdx.pages,qxdx.jl.msyy,This);  //事件插入完成
+    }
+    This.sb=function (){
+        //没找到数据
+        $('#pop_four .zp_botv').html('')
+        $('#pop_four > div').each(function (i,e){        //每次载入更新
+            if(i!=0&&$(e).attr('class')!='zp_botv'){
+                $(e).remove();
+            }
+        });
+        $('#pop_four .comh_top').after(mzd);
+
+    }
+    This.loader(data,This.cg,This.sb,'#pop_four');                //加载数据
+
+
+
+
+
+
+}
+Msyy.prototype.xxk_sj=function (){            //初始化载入数据
+    var This=this;
+    $('#myTab li a').eq(2).unbind().on('click',function (){
+        This.init();
+    })
+
+}
+
+
 
 
 
@@ -399,5 +547,8 @@ $(function (){
 
     var yxgt=new Yxgt();
     yxgt.xxk_sj();
+
+    var msyy=new Msyy();
+    msyy.xxk_sj();
 
 })

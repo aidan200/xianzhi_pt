@@ -279,7 +279,7 @@
                             <div class="zp_gsxq_cpjs_cp_right"><input class="_gsmc" form="zp_gsxq_form" value="{{filed1}}" type="text" placeholder="请输入产品名称">
                                 <textarea form="zp_gsxq_form" placeholder="请输入产品描述">{{productIntro}}</textarea>
                             </div>
-                            <div style="clear:both"></div><a class="fa fa-times"></a><span class="fa fa-remove"></span>
+                            <div style="clear:both"></div><a class="fa fa-check"></a><span class="fa fa-remove"></span>
                         </div>
                     </script>
 
