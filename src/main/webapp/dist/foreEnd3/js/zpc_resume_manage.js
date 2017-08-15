@@ -705,15 +705,21 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
     })
 }
 Qb.prototype.seekCont=function (parent){
-    var parent=$(parent).find('.rem_six');
+    var parent=$(parent).find('.rem_cen');
     var _public_ssk=jl;                                       //创建搜索对象
 
     _public_ssk.page=_public_ssk.qb_page                       //保留分页
-    _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
-    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
-    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
-    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
-    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+
+    _public_ssk.postionId=_public_ssk.qb_page                   //职位ID
+    _public_ssk.educationLevel=_public_ssk.qb_page              //学历
+    _public_ssk.resumeSex=_public_ssk.qb_page                    //保留分页
+    _public_ssk.resumeName=_public_ssk.qb_page                   //姓名
+    _public_ssk.resumeWorkspace=_public_ssk.qb_page              //所在地
+    _public_ssk.ageMin=_public_ssk.qb_page                       //年龄   小
+    _public_ssk.ageMax=_public_ssk.qb_page                       //年龄   大
+    _public_ssk.lifeMin=_public_ssk.qb_page                     //年限 小
+    _public_ssk.lifeMax=_public_ssk.qb_page                     //年限 大
+    _public_ssk.resumePosition=_public_ssk.qb_page              //目前职位
 
     delete _public_ssk.pages;                                 //删除总页数
     delete _public_ssk.sendState;                             //删除类型
@@ -972,14 +978,13 @@ Wdsc.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
     })
 }
 Wdsc.prototype.seekCont=function (parent){
-    var parent=$(parent).find('.rem_three');
+
+    var parent2=$(parent).find('.rem_cen');
     var _public_ssk=jl;                                       //创建搜索对象
     _public_ssk.page=_public_ssk.wdsc_page                       //保留分页
-    _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
-    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
-    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
-    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
-    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+    _public_ssk.zw=parent2.find('select').eq(0).val() ;         //查看
+    _public_ssk.resumeName=parent2.find('input').eq(0).val();         //获取姓名
+    _public_ssk.resumePostion=parent2.find('input').eq(1).val();         //目前任职
 
     delete _public_ssk.pages;                                 //删除总页数
     delete _public_ssk.sendState;                             //删除类型

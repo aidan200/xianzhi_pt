@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li><a href="#pop_three" data-toggle="tab">意向沟通</a></li>
-            <li><a href="#pop_four" data-toggle="tab">面试邀越</a></li>
+            <li><a href="#pop_four" data-toggle="tab">面试邀约</a></li>
         </ul>
 
         <div class="comh_alla">
