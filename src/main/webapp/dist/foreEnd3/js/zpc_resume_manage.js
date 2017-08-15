@@ -78,6 +78,8 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
             jl.pages=data.pages;              //获取总页
             jl.page=data.page;               //获取当前页
             jl.total=data.total;
+            var attr=[];                    //下拉框
+            var attr2=[];                    //下拉框
             if(data.list.length!=0){
                 var str=''
 
@@ -133,6 +135,9 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     }  //未查看
 
                     if(data.list[i].sendState==1){           //意向沟通
+                        if(data.postionList!=0){
+                            attr.push({id:data.postionList[data.postionList.length-1].postionId,name:data.postionList[data.postionList.length-1].postionName})
+                        }
 
                         jl.yxgg_page=data.page;             //保留页数
 
@@ -172,6 +177,10 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     }
                     if(data.list[i].sendState==2){          //面试通知
                         jl.mstz_page=data.page;             //保留页数
+
+                        if(data.postionList!=0){
+                            attr2.push({id:data.postionList[data.postionList.length-1].postionId,name:data.postionList[data.postionList.length-1].postionName})
+                        }
 
                         $('#rem_seven .jl_length').html( jl.total);  //改变总页数
                         str+='<tr class="pom_h"  data-id="'+data.list[i].sendId+'" data-id2="'+data.list[i].resumeId+'">'
@@ -234,6 +243,25 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 
 
                 }
+                var options=''
+                if(attr.length!=0){
+                    for(var j=0;j<attr.length;j++){
+                        options+='<option value="'+attr[j].id+'">'+attr[j].name+'</option>'
+                    }
+                    $(tbody+' .yxgt_select').html(options);
+                    attr=null;
+                }
+                var options2=''
+
+                if(attr2.length!=0){
+                    for(var j=0;j<attr2.length;j++){
+                        options2+='<option value="'+attr2[j].id+'">'+attr2[j].name+'</option>'
+                    }
+                    $(tbody+' .yxgt_select').html(options2);
+                    attr2=null;
+                }
+
+
                 $(tbody+' tbody').html(str);
                 fn1()
 
@@ -423,6 +451,10 @@ Public.prototype.yyms=function (parent,This){        //面试通知
 
         })
     })
+}
+Public.prototype.xlk=function (parent,cont){        //面试通知
+
+    $(parent).find('.yxgt_select').html(cont)
 }
 
 function Jlrzp(){                   //未查看
@@ -619,6 +651,7 @@ function Qb(){                   //未查看
 Qb.prototype=new Public();   //继承父类原型方法
 Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
     var This=this;
+
     $.ajax({
         type:"post",    //提交方式
         async:true,  //是否异步
@@ -629,11 +662,14 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
             jl.pages=data.pages;              //获取总页
             jl.page=data.page;               //获取当前页
             jl.total=data.total;
+            var attr=[];
             if(data.list.length!=0){
                 var str=''
                 jl.qb_page=data.page;             //保留页数
                 for(var i=0;i<data.list.length;i++){
-
+                    if(data.postionList!=0){
+                        attr.push({id:data.postionList[data.postionList.length-1].postionId,name:data.postionList[data.postionList.length-1].postionName})
+                    }
 
                         ////////////////////////////////////////////////////
                         $('#rem_six .jl_length').html( jl.total);
@@ -690,7 +726,18 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</tr>'
 
                 }
+                var options=''
+
+                if(attr.length!=0){
+                    for(var j=0;j<attr.length;j++){
+                        options+='<option value="'+attr[j].id+'">'+attr[j].name+'</option>'
+                    }
+                    $(tbody+' .yxgt_select').html(options);
+                    attr=null;
+                }
                 $(tbody+' tbody').html(str);
+
+
                 fn1()
 
 
