@@ -470,7 +470,6 @@ Jlrzp.prototype.JS=function (){                     //
     })
     $('#rem_one').find('.rem_b').unbind().on('click',function (){   //搜索事件按钮
         jl.page=1;                                              //搜索时候
-
         This.upload();
     })
 }
@@ -740,7 +739,9 @@ Qb.prototype.upload=function (){     //初始化加载
     This.huoqu('#rem_six',data,This.cg,This.sb);    //调用加载方法（参数1 选择给谁加，参数2 参数)
 }
 Qb.prototype.JS=function (){                     //点击事件加载
+
     var This=this
+
     $('#myTab li a').eq(5).unbind().on('click',function (){      //经理人应聘选项卡加载
         This.upload();
     })

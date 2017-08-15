@@ -115,6 +115,10 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
             $('#pop_one .pop_span span').html(qxdx.total);          //总记录数
             if(data.postionSendList.length!=0){
                 for(var i=0;i<data.postionSendList.length;i++){
+
+                    if(data.postionSendList[i].sendType==1){
+                            continue
+                    }
                     str+='<div class="pop_cont">'
                     str+='<div class="pop_have">'
                     str+='<div class="pop_left2">'
@@ -363,7 +367,9 @@ Ytd.prototype.loader=function (data,fn1,fn2){
 
 
                 for(var i=0;i<data.postionSendList.length;i++){
-
+                    if(data.postionSendList[i].sendType==1){
+                        continue
+                    }
                     str+='<div class="pop_tou">'
                     str+='<ul>'
                     str+='<li class="pop_tl">公司名：<span>'+data.postionSendList[i].company.companyName+'</span></li>'
@@ -473,8 +479,10 @@ var This=this;
             $('#pop_three .pop_span span').html(qxdx.total);          //总记录数
             if(data.postionSendList.length!=0){
 
-
                 for(var i=0;i<data.postionSendList.length;i++){
+                    if(data.postionSendList[i].sendType==1){
+                        continue
+                    }
 
                     str+='<div class="pop_tou">'
                     str+='<ul>'
@@ -710,7 +718,6 @@ Msyy.prototype.init=function (){            //初始化载入数据
 }
 Msyy.prototype.xxk_sj=function (){            //初始化载入数据
     var This=this;
-    This.init();
     $('#myTab li a').eq(3).unbind().on('click',function (){
         This.init();
     })
@@ -773,18 +780,30 @@ Msyy.prototype.sj=function (){
 
 
 $(function (){
+    var qbzt=new Qbzt();
+    qbzt.xxk_sj();
 
-     var qbzt=new Qbzt();
-     qbzt.xxk_sj();
-
-     var ytd=new Ytd();
-     ytd.xxk_sj();
+    var ytd=new Ytd();
+    ytd.xxk_sj();
 
     var yck=new Yck();
     yck.xxk_sj();
 
     var msyy=new Msyy();
     msyy.xxk_sj();
+
+
+    if(type){
+        if(type=='ytd'){
+            $('#myTab a').eq(1).click();
+        }
+    }else{
+        qbzt.init()             //默认初始化
+    }
+
+
+
+
 
 
 })
