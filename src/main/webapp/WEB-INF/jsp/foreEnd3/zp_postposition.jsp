@@ -38,7 +38,7 @@
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/echarts.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/zp_postposition.js"></script>
 </head>
-<body style="background-color: #F0F0F0">
+<body style="background-color: #f6f6f6">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 
