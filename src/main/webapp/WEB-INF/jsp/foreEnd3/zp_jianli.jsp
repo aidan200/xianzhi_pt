@@ -47,6 +47,7 @@
                     <div class="zp_jianli_mc">
                         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/tree.png" alt=""
                              class="jianli_tree">
+
                     </div>
                     <div class="zp_jianli_wcd">
                         <span>完成度<span class="zl_wcd"></span>%</span>

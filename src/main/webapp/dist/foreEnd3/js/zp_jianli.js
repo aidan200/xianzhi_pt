@@ -185,7 +185,7 @@ obj_yhxx.prototype.bindingSJ=function (){
             for(var i=0;i<_self.dqhy.length;i++){
                 if(_self.dqhy[i].fieldType=="2"&&_self.dqhy[i].fieldName!=''){
                     qq++;        //检测有几个当前行业
-                    str+='<div><div data-fieldid='+_self.dqhy[i].fieldId+' data-fieldtype='+_self.dqhy[i].fieldType+'>'+_self.dqhy[i].fieldName+'</div><a href="javascript:;">x</a></div>'
+                    str+='<div><div data-fieldid='+_self.dqhy[i].fieldId+' data-fieldtype='+_self.dqhy[i].fieldType+'>'+_self.dqhy[i].fieldName+'</div><a href="javascript:;"> <span class="fa fa-remove"></span></a></div>'
                 }
             }
 
@@ -843,7 +843,7 @@ obj_zyyx.prototype.bindingSJ=function (){
             //这块循环出来  需要判断是否有内容没有给li设置一个高度
             for(var i=0;i<_self.qwhy.length;i++){
                 if(_self.qwhy[i].fieldType=="3"&&_self.qwhy[i].fieldName!=''){
-                    str+='<div><div data-fieldId='+_self.qwhy[i].fieldId+' data-fieldtype='+_self.qwhy[i].fieldType+'>'+_self.qwhy[i].fieldName+'</div><a href="javascript:;">x</a></div>'
+                    str+='<div><div data-fieldId='+_self.qwhy[i].fieldId+' data-fieldtype='+_self.qwhy[i].fieldType+'>'+_self.qwhy[i].fieldName+'</div><a href="javascript:;"><span class="fa fa-remove"></span></a></div>'
                 }
             }
             str+='</div>'
@@ -1021,7 +1021,7 @@ obj_zyyx.prototype.bindingSJ=function (){
 
                 var str_qwhy=''                 //所选的期望行业
                 for(var i=0;i<attr_1.length;i++){
-                    str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
+                    str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;"><span class="fa fa-remove"></span></a></div>'
                 }
                 $('#zp_qwhy').html(str_qwhy);        //赋值
                 $('.cd-popuph').removeClass('is-visible');
@@ -1316,7 +1316,7 @@ obj_gzjl.prototype.bindingSJ=function (){
 
                         var str_qwhy=''                 //所选的期望行业
                         for(var i=0;i<attr_1.length;i++){
-                            str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;">x</a></div>'
+                            str_qwhy+='<div><div data-fieldId='+attr_1[i].fieldId+' data-fieldtype='+attr_1[i].fieldtype+'>'+attr_1[i].value+'</div><a href="javascript:;"<span class="fa fa-remove"></span></a></div>'
                         }
                         $('.gsly_xg').html(str_qwhy);
                         $('.cd-popuph').removeClass('is-visible');
@@ -1351,7 +1351,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='公司领域<div class="gsly_xg" >'
                     for(var j=0;j<_self.obj_s[index].gshy.length;j++){
                         if(_self.obj_s[index].gshy[j].fieldType==1){        //1是公司
-                            str+='<div><div data-fieldid="'+_self.obj_s[index].gshy[j].fieldId+'" data-fieldtype="'+_self.obj_s[index].gshy[j].fieldType+'">'+_self.obj_s[index].gshy[j].fieldName+'</div><a href="javascript:;">x</a></div>'
+                            str+='<div><div data-fieldid="'+_self.obj_s[index].gshy[j].fieldId+'" data-fieldtype="'+_self.obj_s[index].gshy[j].fieldType+'">'+_self.obj_s[index].gshy[j].fieldName+'</div><a href="javascript:;"><span class="fa fa-remove"></span></a></div>'
                         }
                     }
 
@@ -2960,7 +2960,7 @@ obj_scjn.prototype.bindingSJ=function () {
         $('.zp_jianli_zl_10').find('input').keydown(function (event){       //回车插入事件
             if(event.which==13){        //13是代表回车
                 if($(this).val().length<15&&$(this).val()!=''){
-                    var ojn='<div><div>'+$(this).val()+'</div><a href="javascript:;">x</a></div>';
+                    var ojn='<div><div>'+$(this).val()+'</div><a href="javascript:;"><span class="fa fa-remove"></span></a></div>';
                     $('#jn_content').append(ojn);
                     $(this).val(null)
                     jnzs();
@@ -3020,7 +3020,7 @@ obj_scjn.prototype.bindingSJ=function () {
             str2+='<p>已添加:</p>'
             str2+='<div id="jn_content">'
             for(var i=0;i<_self.scjc.length;i++){
-                str2+='<div><div data-id="'+_self.scjc[i].skillId+'">'+_self.scjc[i].skillName+'</div><a href="javascript:;">x</a></div>'
+                str2+='<div><div data-id="'+_self.scjc[i].skillId+'">'+_self.scjc[i].skillName+'</div><a href="javascript:;"><span class="fa fa-remove"></span></a></div>'
             }
             //循环技能
             str2+='</div>'

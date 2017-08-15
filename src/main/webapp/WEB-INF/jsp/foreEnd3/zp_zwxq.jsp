@@ -64,7 +64,7 @@
         });
     </script>
 </head>
-<body>
+<body style="background-color: #f6f6f6">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="personnav.jsp"/>
 
@@ -244,7 +244,7 @@
                         <%--${xzPostion.company.companyNature eq 4?"政府":''}--%>
                         <%--</li>--%>
                         <%--</ul>--%>
-                        <div style="padding-left: 10px;margin-bottom: 10px">
+                        <div style="padding-left: 10px;margin-bottom: 10px;font-size: 12px">
                             <div>
                                 <c:forEach items="${xzPostion.company.fields}" var="f1" varStatus="stat">
                                     <c:if test="${!stat.last}">

@@ -13,8 +13,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-
-
     <title>首页</title>
     <jsp:include page="distforeEnd.jsp"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/zp_index.css">
