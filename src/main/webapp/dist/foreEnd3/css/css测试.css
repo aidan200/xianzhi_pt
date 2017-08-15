@@ -5750,7 +5750,7 @@ input[type="button"].fileInputButton {
     width: auto;
     /*height: 20px;*/
     float: left;
-    margin-left: 5px;
+    margin-left: 10px;
     margin-top: 4px;
     line-height: 1px;
     padding: 3px;
@@ -8293,6 +8293,8 @@ footer {
     margin-left: 120px;
 
 }
+
+
 
 /*---404---*/
 .four_img {
