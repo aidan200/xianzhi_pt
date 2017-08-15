@@ -382,9 +382,6 @@
                             <span style="margin-left: 20px">查看</span>
                             <select name="" id="" class="rem_input1 yxgt_select">
                                 <option value="">全部职位</option>
-                                <option value="83">83</option>
-                                <option value="84">84</option>
-                                <option value="85">85</option>
                             </select>
 
                             <span style="margin-left: 10px">姓名</span>
