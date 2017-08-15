@@ -313,7 +313,7 @@ public class PostionSendController extends BaseController{
     public Map selByConditions(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,
                                @ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,String educationLevel,
                                 Integer resumeSex,String resumeName,String resumeWorkspace,Integer ageMin,Integer ageMax,
-                                 Integer lifeMin,Integer lifeMax,String resumePostion){
+                                 Integer lifeMin,Integer lifeMax,String resumePosition){
         Map map=new HashMap();
         map.put("companyId",xzLogin.getCompany().getCompanyId());
         map.put("postionId",postionId);
@@ -329,7 +329,7 @@ public class PostionSendController extends BaseController{
         map.put("birthMax",ageMax);
         map.put("lifeMin",lifeMin);
         map.put("lifeMax",lifeMax);
-        map.put("resumePostion",resumePostion);
+        map.put("resumePostion",resumePosition);
         Date now=new Date();
         map.put("now",now);
         PageBean list=postionSendService.selByConditions(page,rows,map);
