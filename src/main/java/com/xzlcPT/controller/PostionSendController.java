@@ -192,7 +192,7 @@ public class PostionSendController extends BaseController{
                            Date interviewTime,String filed1,String filed2,Long sendId,Long postionId){
         Map map1=new HashMap();
         map1.put("sendId",sendId);
-        map1.put("postioonId",postionId);
+        map1.put("postionId",postionId);
         int i=postionSendService.updateState(map1);
         XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
         xzPostionSendMsg.setSendId(sendId);

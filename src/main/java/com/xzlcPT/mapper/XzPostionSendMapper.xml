@@ -476,13 +476,13 @@
   <!--面试通知-->
   <update id="updateState" parameterType="java.util.Map" >
     update xz_postion_send set
+    <if test="postionId != null and postionId !=''">
+      postion_id=#{postionId,jdbcType=BIGINT},
+    </if>
     send_state=2,
     send_type=0,
     send_time=now()
     WHERE
-    <if test="postionId != null and postionId !=''">
-      postion_id=#{postionId,jdbcType=BIGINT},
-    </if>
     send_id=#{sendId,jdbcType=BIGINT}
 
   </update>
