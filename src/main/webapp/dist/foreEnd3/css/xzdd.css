@@ -6,7 +6,10 @@
     display: none;
     top: 0 ;
     background-color: rgba(127, 127, 127, 0.5);
-
+    overflow: hidden;
+}
+#div6{
+    color: #FFA500;
 }
 .yp_cs ul{
     background: #fcfcfc;
@@ -18,13 +21,13 @@
     overflow: hidden;
     padding-left: 40px;
     padding-right: 40px;
-
+    padding-bottom: 280px;
     padding-top: 10px;
     margin-top: 5px;
     position: absolute;
     bottom: 0;
     cursor: pointer;
-    padding-bottom: 280px;
+
 
 }
 .yp_cs li {
@@ -51,6 +54,8 @@
 }
 
 #zp_gsxq_bd_tck > div {
+
+    overflow:auto;
     position: relative;
     width:0;
     height:0;
@@ -98,7 +103,7 @@
     margin-top: 20px;
     text-align: right;
     line-height: 50px;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     padding-right: 40px;

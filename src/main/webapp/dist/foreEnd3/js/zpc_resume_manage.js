@@ -222,9 +222,9 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</tr>'
                         str+='<tr class="pom_h2" id="divContainer">'
                         str+='<td colspan="12" style="padding-left: 40px;line-height: 25px">'
-                        str+='公司名称：'+data.list[i].postionSendMsg.filed2+''
-                        str+='面试时间：'+data.list[i].postionSendMsg.interviewTime+''
-                        str+='面试地点：'+data.list[i].postionSendMsg.filed1+''
+                        str+='公司名称：'+data.list[i].postionSendMsg.filed2+'&nbsp;'
+                        str+='面试时间：'+data.list[i].postionSendMsg.interviewTime+'&nbsp;'
+                        str+='面试地点：'+data.list[i].postionSendMsg.filed1+'&nbsp;'
                         str+='附加信息：'+data.list[i].postionSendMsg.pmsgValue+''
                         str+='</td>'
                         str+='</tr>'
@@ -507,14 +507,12 @@ function Yxgt(){                   //未查看
 }
 Yxgt.prototype=new Public();   //继承父类原型方法
 Yxgt.prototype.seekCont=function (parent){
-    var parent=$(parent).find('.rem_five');
+    var parent=$(parent).find('.rem_cen');
     var _public_ssk=jl;                                       //创建搜索对象
     _public_ssk.page=_public_ssk.yxgg_page                     //保留分页
     _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
-    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
-    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
-    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
-    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+    _public_ssk.resumeName=parent.find('input').eq(0).val();         //获取姓名
+    _public_ssk.resumePostion=parent.find('input').eq(1).val();         //目前任职
     _public_ssk.sendState=1;
     delete _public_ssk.pages;
     return _public_ssk
@@ -562,14 +560,12 @@ function Mstz(){                   //未查看
 }
 Mstz.prototype=new Public();   //继承父类原型方法
 Mstz.prototype.seekCont=function (parent){
-    var parent=$(parent).find('.rem_seven');
+    var parent=$(parent).find('.rem_cen');
     var _public_ssk=jl;                                       //创建搜索对象
     _public_ssk.page=_public_ssk.mstz_page;                    //保留分页
     _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
-    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
-    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
-    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
-    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+    _public_ssk.resumeName=parent.find('input').eq(0).val();         //获取姓名
+    _public_ssk.resumePostion=parent.find('input').eq(1).val();         //目前任职
     _public_ssk.sendState=2;
     delete _public_ssk.pages;
     return _public_ssk
@@ -847,14 +843,12 @@ Zdxz.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
     })
 }
 Zdxz.prototype.seekCont=function (parent){
-    var parent=$(parent).find('.rem_three');
+    var parent2=$(parent).find('.rem_cen');
     var _public_ssk=jl;                                       //创建搜索对象
     _public_ssk.page=_public_ssk.zdxz_page                       //保留分页
-    _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
-    _public_ssk.jlbh=parent.find('input').eq(0).val();         //获取到简历编号
-    _public_ssk.name=parent.find('input').eq(1).val();         //获取姓名
-    _public_ssk.mqrz=parent.find('input').eq(2).val();         //目前任职
-    _public_ssk.mqgs=parent.find('input').eq(3).val();         //姓名
+    _public_ssk.zw=parent2.find('select').eq(0).val() ;         //查看
+    _public_ssk.resumeName=parent2.find('input').eq(0).val();         //获取姓名
+    _public_ssk.resumePostion=parent2.find('input').eq(1).val();         //目前任职
 
     delete _public_ssk.pages;                                 //删除总页数
     delete _public_ssk.sendState;                             //删除类型

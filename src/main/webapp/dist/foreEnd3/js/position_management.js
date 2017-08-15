@@ -105,6 +105,7 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         zzzp.wcl=data.postionList[i].wcl;
                         zzzp.zdxz=data.postionList[i].zdxz;
                         zzzp.yxgt=data.postionList[i].yxgt;
+                    alert(data.postionList[i].publishTime)
                         zzzp.publishTime=data.postionList[i].publishTime;
                         zzzp.ms=data.postionList[i].ms;
                         This.cont[i]=zzzp;
@@ -132,6 +133,7 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                         str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
                         str+='<td class="all_no">'+This.cont[i].ms+'</td>'
+
                         str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].publishTime)+'</td>'
                         str+='<td class="all_no">'
                         str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
@@ -461,6 +463,7 @@ Shz.prototype.cshjz=function (obj){               //初始化加载
                 shz.createTime=data.postionList[i].createTime;
 
 
+
                 //缺少方法现在
 
 
@@ -485,6 +488,7 @@ Shz.prototype.cshjz=function (obj){               //初始化加载
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
                     str+='<td class="all_no">审核中</td>'
+
                     str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].deleteTime)+'</td>'
                     str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].createTime)+'</td>'
                     str+='</tr>'
@@ -2085,7 +2089,7 @@ Qbzw.prototype.cshjz=function (obj){               //初始化加载
                 var qbzw =new Qbzw();
                 qbzw.postionId=data.postionList[i].postionId;
                 qbzw.postionName=data.postionList[i].postionName;
-                qbzw.zt="空着呢";
+                qbzw.zt=data.postionList[i].postionWelfare;             //状态
                 qbzw.createTime=data.postionList[i].createTime;
                 This.cont[i]=qbzw;
             }
@@ -2107,7 +2111,19 @@ Qbzw.prototype.cshjz=function (obj){               //初始化加载
                     str+='</div>'
                     str+='</td>'
                     str+='<td class="all_no"><a href="">'+This.cont[i].postionName+'</a></td>'
-                    str+='<td class="all_no">'+This.cont[i].zt+'</td>'
+                    if(This.cont[i].zt==0){
+                        str+='<td class="all_no">草稿</td>'
+                    }else if(This.cont[i].zt==1){
+                        str+='<td class="all_no">审核中</td>'
+                    }else if(This.cont[i].zt==2){
+                        str+='<td class="all_no">审核未通过</td>'
+                    }else if(This.cont[i].zt==3){
+                        str+='<td class="all_no">正在招聘</td>'
+                    }else if(This.cont[i].zt==4){
+                        str+='<td class="all_no">暂停</td>'
+                    }else if(This.cont[i].zt==5){
+                        str+='<td class="all_no">结束</td>'
+                    }
                     str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].createTime)+'</td>'
                     str+='</tr>'
                 }

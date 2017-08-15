@@ -68,10 +68,16 @@ var map = [ ['朝阳区', '海淀区', '通州区', '房山区', '丰台区', '�
 ];
 function didian(obj1,obj2,cgzx){
     $(obj1).on('click',function (){
+
+        var bb=document.documentElement.clientHeight ;  //屏幕可视区宽度
+
+
+
+
         $('#zp_gsxq_bd_tck').css({"display":"block"});               //最外层
         $('#zp_gsxq_bd_tck_cont2').animate({
             "width":"700px",
-            "height":"650px"
+            "height":bb-100+'px',
         })
         $('.zp_ul1 a').each(function (i,e){
             $(e).unbind().on('click',function (){
@@ -89,7 +95,13 @@ function didian(obj1,obj2,cgzx){
                 }
                 str+='</ul>'
                 $('.yp_cs').html(str).css({"display":"block"});
+                if(bb<700){
+                    $("#zp_gsxq_bd_tck  .yp_cs  ul").css({
+                        "padding-bottom":"0",
 
+
+                    })
+                }
                 $('.yp_cs ul').unbind().on('click',function (ev){
                     ev.stopPropagation();
                 });
@@ -108,6 +120,13 @@ function didian(obj1,obj2,cgzx){
 
 
 
+            })
+        })
+        $('#zp_gsxq_bd_tck .gb').unbind().on('click',function (){
+            $('#zp_gsxq_bd_tck').css({"display":"none"});  //最外层
+            $('#zp_gsxq_bd_tck_cont2').css({
+                "width": "0",
+                "height": "0"
             })
         })
         $('#zp_gsxq_bd_tck .zp_button').unbind().on('click',function (){      //取消
