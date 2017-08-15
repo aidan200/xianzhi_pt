@@ -78,10 +78,10 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
             jl.pages=data.pages;              //获取总页
             jl.page=data.page;               //获取当前页
             jl.total=data.total;
-            var attr=[];                    //下拉框
-            var attr2=[];                    //下拉框
+
             if(data.list.length!=0){
                 var str=''
+
 
                 for(var i=0;i<data.list.length;i++){
                     if(data.list[i].sendState==0){
@@ -135,9 +135,7 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     }  //未查看
 
                     if(data.list[i].sendState==1){           //意向沟通
-                        if(data.postionList!=0){
-                            attr.push({id:data.postionList[data.postionList.length-1].postionId,name:data.postionList[data.postionList.length-1].postionName})
-                        }
+
 
                         jl.yxgg_page=data.page;             //保留页数
 
@@ -178,9 +176,7 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                     if(data.list[i].sendState==2){          //面试通知
                         jl.mstz_page=data.page;             //保留页数
 
-                        if(data.postionList!=0){
-                            attr2.push({id:data.postionList[data.postionList.length-1].postionId,name:data.postionList[data.postionList.length-1].postionName})
-                        }
+
 
                         $('#rem_seven .jl_length').html( jl.total);  //改变总页数
                         str+='<tr class="pom_h"  data-id="'+data.list[i].sendId+'" data-id2="'+data.list[i].resumeId+'">'
@@ -216,7 +212,19 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='<td class="all_no">'+js2+'</td>'
                         str+='<td class="all_no">'+data.list[i].resumes.resumePosition  +'</td>' //目前职位
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //面试职业
-                        str+='<td class="all_no">空着呢</td>'  //发送时间
+
+
+                        //  假数据
+                        if(data.list[i].sendState='0'){
+                            str+='<td class="all_no">未查看</td>'      //面试状态
+                        }else if(data.list[i].sendState='1'){
+                            str+='<td class="all_no">已查看</td>'      //面试状态
+                        }else if(data.list[i].sendState='2'){
+                            str+='<td class="all_no">同意</td>'      //面试状态
+                        }else if(data.list[i].sendState='3'){
+                            str+='<td class="all_no">拒绝</td>'      //面试状态
+                        }
+
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'  //发送时间
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].interviewTime)+'</td>'  //面试时间
                         str+='<td class="all_no">'
@@ -243,24 +251,6 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 
 
                 }
-                var options=''
-                if(attr.length!=0){
-                    for(var j=0;j<attr.length;j++){
-                        options+='<option value="'+attr[j].id+'">'+attr[j].name+'</option>'
-                    }
-                    $(tbody+' .yxgt_select').html(options);
-                    attr=null;
-                }
-                var options2=''
-
-                if(attr2.length!=0){
-                    for(var j=0;j<attr2.length;j++){
-                        options2+='<option value="'+attr2[j].id+'">'+attr2[j].name+'</option>'
-                    }
-                    $(tbody+' .yxgt_select').html(options2);
-                    attr2=null;
-                }
-
 
                 $(tbody+' tbody').html(str);
                 fn1()
@@ -541,10 +531,11 @@ Yxgt.prototype.seekCont=function (parent){
     var parent=$(parent).find('.rem_cen');
     var _public_ssk=jl;                                       //创建搜索对象
     _public_ssk.page=_public_ssk.yxgg_page                     //保留分页
-    _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
+    _public_ssk.postionId=parent.find('select').eq(0).val() ;         //查看
     _public_ssk.resumeName=parent.find('input').eq(0).val();         //获取姓名
     _public_ssk.resumePostion=parent.find('input').eq(1).val();         //目前任职
     _public_ssk.sendState=1;
+
     delete _public_ssk.pages;
     return _public_ssk
 }
@@ -594,7 +585,7 @@ Mstz.prototype.seekCont=function (parent){
     var parent=$(parent).find('.rem_cen');
     var _public_ssk=jl;                                       //创建搜索对象
     _public_ssk.page=_public_ssk.mstz_page;                    //保留分页
-    _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
+    _public_ssk.postionId=parent.find('select').eq(0).val() ;         //查看
     _public_ssk.resumeName=parent.find('input').eq(0).val();         //获取姓名
     _public_ssk.resumePostion=parent.find('input').eq(1).val();         //目前任职
     _public_ssk.sendState=2;
@@ -667,9 +658,7 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                 var str=''
                 jl.qb_page=data.page;             //保留页数
                 for(var i=0;i<data.list.length;i++){
-                    if(data.postionList!=0){
-                        attr.push({id:data.postionList[data.postionList.length-1].postionId,name:data.postionList[data.postionList.length-1].postionName})
-                    }
+
 
                         ////////////////////////////////////////////////////
                         $('#rem_six .jl_length').html( jl.total);
@@ -726,15 +715,9 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='</tr>'
 
                 }
-                var options=''
 
-                if(attr.length!=0){
-                    for(var j=0;j<attr.length;j++){
-                        options+='<option value="'+attr[j].id+'">'+attr[j].name+'</option>'
-                    }
-                    $(tbody+' .yxgt_select').html(options);
-                    attr=null;
-                }
+
+
                 $(tbody+' tbody').html(str);
 
 
@@ -769,6 +752,7 @@ Qb.prototype.seekCont=function (parent){
     _public_ssk.lifeMin=parent2.find('input').eq(3).val()                   //年限 小
     _public_ssk.lifeMax=parent2.find('input').eq(4).val()                    //年限 大
     _public_ssk.resumePosition=parent2.find('input').eq(5).val()              //目前职位
+
 
     delete _public_ssk.pages;                                 //删除总页数
     delete _public_ssk.sendState;                             //删除类型
@@ -1141,14 +1125,35 @@ Wdsc.prototype.yl=function (){     //预览事件
 }
 
 
+function aa(){
 
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        dataType:'json',                   //定义返回data类型
+        url:path+'Postion/selByCompanyId.do',    //路径
+        success:function (data){//data 就是数据 json
+            var options=''
+            options+='<option value="">全部职位</option>'
+            if(data.list!=0){
+                for(var i=0;i<data.list.length;i++){
+                    options+='<option value="'+data.list[data.list.length-1].postionId+'">'+data.list[data.list.length-1].postionName+'</option>'
+                }
+            }
+            $('.yxgt_select').html(options)
+
+        },error:function (){ //报错执行的
+            alert('基本资料修改错误')
+        }
+    })
+}
 
 
 
 
 $(function (){
     gszw();
-
+    aa()
 
     var  jlrzp=new Jlrzp();
     jlrzp.upload();
