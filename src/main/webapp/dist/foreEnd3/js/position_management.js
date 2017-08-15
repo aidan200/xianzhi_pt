@@ -105,6 +105,7 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         zzzp.wcl=data.postionList[i].wcl;
                         zzzp.zdxz=data.postionList[i].zdxz;
                         zzzp.yxgt=data.postionList[i].yxgt;
+                    alert(data.postionList[i].publishTime)
                         zzzp.publishTime=data.postionList[i].publishTime;
                         zzzp.ms=data.postionList[i].ms;
                         This.cont[i]=zzzp;
@@ -132,7 +133,7 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         str+='<td class="all_no">'+This.cont[i].zdxz+'</td>'
                         str+='<td class="all_no">'+This.cont[i].yxgt+'</td>'
                         str+='<td class="all_no">'+This.cont[i].ms+'</td>'
-                        alert(This.cont[i].publishTime)
+
                         str+='<td class="all_no">'+getNowFormatDateSS(This.cont[i].publishTime)+'</td>'
                         str+='<td class="all_no">'
                         str+=' <a href="javascript:;" class="dg_xg">暂停</a> '
