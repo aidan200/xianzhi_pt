@@ -36,7 +36,7 @@ public interface XzPostionSendMapper {
 
     List<XzResume> selComCollect(Map map);
 
-    int updateState(Long sendId);
+    int updateState(Map map);
 
     int updateState1(Long sendId);
 

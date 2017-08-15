@@ -31,7 +31,7 @@ public interface XzPostionSendService {
 
     int deleteByPrimaryKey(Long sendId);
 
-    int updateState(Long sendId);
+    int updateState(Map map);
 
     int updateState1(Long sendId);
 

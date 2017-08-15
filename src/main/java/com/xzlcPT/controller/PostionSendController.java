@@ -189,8 +189,11 @@ public class PostionSendController extends BaseController{
     @ResponseBody
     @RequestMapping("updateState.do")
     public Map updateState(@ModelAttribute("userLogin")XzLogin xzLogin,String pmsgValue,
-                           Date interviewTime,String filed1,String filed2,Long sendId){
-        int i=postionSendService.updateState(sendId);
+                           Date interviewTime,String filed1,String filed2,Long sendId,Long postionId){
+        Map map1=new HashMap();
+        map1.put("sendId",sendId);
+        map1.put("postionId",postionId);
+        int i=postionSendService.updateState(map1);
         XzPostionSendMsg xzPostionSendMsg=new XzPostionSendMsg();
         xzPostionSendMsg.setSendId(sendId);
         xzPostionSendMsg.setInterviewTime(interviewTime);
@@ -250,6 +253,7 @@ public class PostionSendController extends BaseController{
         Date date=new Date();
         xzPostionSend.setSendTime(date);
         xzPostionSend.setSendType(1);
+        xzPostionSend.setCreateTime(date);
         int i=postionSendService.insertSelective(xzPostionSend);
         mv.addObject("i",i);
         return mv;
