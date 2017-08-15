@@ -235,12 +235,12 @@
                         <div class="rem_cen">
                             <span style="margin-left: 20px">查看</span>
                             <select name="" id="" class="rem_input3">
-                                <option value="">收藏时间由近到远</option>
-                                <option value="">收藏时间由远到近</option>
-                                <option value="">年龄从大到小</option>
-                                <option value="">年龄从小到大</option>
-                                <option value="">工作年限从长到短</option>
-                                <option value="">工作年限从短到长</option>
+                                <option value="9">收藏时间由近到远</option>
+                                <option value="10">收藏时间由远到近</option>
+                                <option value="3">年龄从大到小</option>
+                                <option value="4">年龄从小到大</option>
+                                <option value="5">工作年限从长到短</option>
+                                <option value="6">工作年限从短到长</option>
 
                             </select>
                             <span style="margin-left: 10px">姓名</span>
