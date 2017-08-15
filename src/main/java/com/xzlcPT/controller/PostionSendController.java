@@ -312,8 +312,8 @@ public class PostionSendController extends BaseController{
     @RequestMapping("selByConditions.do")
     public Map selByConditions(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,
                                @ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,String educationLevel,
-                                Integer resumeSex,String resumeName,String resumeWorkspace,Integer birthMin,Integer birthMax,
-                               String resumePostion){
+                                Integer resumeSex,String resumeName,String resumeWorkspace,Integer ageMin,Integer ageMax,
+                                 Integer lifeMin,Integer lifeMax,String resumePostion){
         Map map=new HashMap();
         map.put("companyId",xzLogin.getCompany().getCompanyId());
         map.put("postionId",postionId);
@@ -325,8 +325,10 @@ public class PostionSendController extends BaseController{
         map.put("resumeSex",resumeSex);
         map.put("resumeName",resumeName);
         map.put("resumeWorkspace",resumeWorkspace);
-        map.put("birthMin",birthMin);
-        map.put("birthMax",birthMax);
+        map.put("birthMin",ageMin);
+        map.put("birthMax",ageMax);
+        map.put("lifeMin",lifeMin);
+        map.put("lifeMax",lifeMax);
         map.put("resumePostion",resumePostion);
         Date now=new Date();
         map.put("now",now);
