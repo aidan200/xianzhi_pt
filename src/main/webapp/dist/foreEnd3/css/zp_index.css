@@ -429,7 +429,7 @@ ul,li{
     padding:10px 0;
 }
 .zp_index_cont_right_bottom_middle{
-    height: 150px;
+    height: auto;
     border-bottom: 1px solid #E5E5E5;
     padding: 20px 20px;
 }

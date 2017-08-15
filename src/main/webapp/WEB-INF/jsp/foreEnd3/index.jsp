@@ -624,11 +624,11 @@
 </div>
 
 
-<%--小箭头小邮箱--%>
-<div id="index_bb">
-    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/dfdf.png" alt="" id="goTopBtn">
-</div>
-<a href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ghh.png" alt="" class="index_gh"></a>
+<%--&lt;%&ndash;小箭头小邮箱&ndash;%&gt;--%>
+<%--<div id="index_bb">--%>
+    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/dfdf.png" alt="" id="goTopBtn">--%>
+<%--</div>--%>
+<%--<a href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ghh.png" alt="" class="index_gh"></a>--%>
 
 
 <jsp:include page="behindforeEnd.jsp"/>
@@ -714,7 +714,7 @@
         });
     })(jQuery);
 </script>
-<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>
+<%--<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>--%>
 <!--轮播里的小东西-->
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/haha.js"></script>
 <script>
