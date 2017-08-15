@@ -744,7 +744,7 @@ Qb.prototype.seekCont=function (parent){
     _public_ssk.companyId=jl.companyId;                              //替换分页
 
 
-    _public_ssk.page=_public_ssk.qb_page                       //保留分页
+    _public_ssk.page=jl.qb_page                       //保留分页
     _public_ssk.postionId= parent1.find('select').eq(0).val();        //职位ID
     _public_ssk.educationLevel=parent1.find('select').eq(1).val();             //学历
     _public_ssk.resumeSex=parent1.find('select').eq(2).val();                   //保留分页
