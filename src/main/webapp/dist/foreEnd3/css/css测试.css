@@ -8270,15 +8270,22 @@ footer {
     width: 120px;
     height: 120px;
 }
-/*地点小按钮*/
-.em_dz{
-    background: url("../../../dist/foreEnd3/img/zp_gsxq_hy_k.png");
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 4px;
-    right: 235px;
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: center;
+.pef_input{
+    width: 280px;
+    height: 35px;
+    border: 1px solid #c0c0c0;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+.pef_but{
+    width: 120px;
+    height: 35px;
+    background-color: #FFA500;
+    color: #FFFFff;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-left: 120px;
+
 }

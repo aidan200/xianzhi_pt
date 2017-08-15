@@ -12,6 +12,9 @@
 <html lang="en">
 <head>
     <jsp:include page="distforeEnd.jsp"/>
+    <style>
+        .readonly input{border:none}
+    </style>
 </head>
 <body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
@@ -27,20 +30,33 @@
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="pef_head">
             </div>
             <div class="pef_sec">
-                <ul>
-                    <li>姓名：<span>郑秀妍</span></li>
-                    <li>性别：<span>女</span></li>
-                    <li>年龄：<span>28</span></li>
-                    <li>生日：<span>1989-04-18</span></li>
-                    <li>电话：<span>13641789439</span></li>
-                    <li>身份证：<span>614897123948832</span></li>
-                    <li>地址：<span>案发过去啊噶尔尕而阿尔</span></li>
+                <ul id="dvInput" class="readonly">
+                    <li>姓&emsp;名：<input type="text" readonly value="郑秀妍" class="pef_input"/></li>
+                    <li>性&emsp;别：<input type="text" readonly value="女"  class="pef_input"/></li>
+                    <li>年&emsp;龄：<input type="text" readonly value="28" class="pef_input" /></li>
+                    <li>生&emsp;日：<input type="text" readonly value="1989-04-18" class="pef_input" /></li>
+                    <li>电&emsp;话：<input type="text" readonly value="1355576656754" class="pef_input" /></li>
+                    <li>身份证：<input type="text" readonly value="242465474568776" class="pef_input" /></li>
+                    <li>地&emsp;址：<input type="text" readonly value="而且为人发给我二个发生过法国诗人" class="pef_input" /></li>
                 </ul>
+                <input type="button" value="修改信息" onclick="btnClick(this)" id="btn0" class="pef_but"/>
             </div>
         </div>
     </div>
 </div>
+
 <jsp:include page="behindforeEnd.jsp"/>
+<script>
+    var btn0 = document.getElementById('btn0');
+    function btnClick(btn0) {
+        var toEdit = btn0.value == '修改信息';
+        $('#dvInput')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
+            .attr('readonly', toEdit ? false : true);
+        btn0.value = toEdit ? '保存信息' : '修改信息';
+        if (!toEdit) {//保存的ajax代码
+        }
+    }
+</script>
 
 </body>
 </html>
