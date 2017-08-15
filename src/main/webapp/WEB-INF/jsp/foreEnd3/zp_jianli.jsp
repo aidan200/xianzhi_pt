@@ -304,7 +304,7 @@
                     <div>
                         <div class="zp_index_ww1"><span class="iss">0</span></div>
                         <div class="zp_index_ww2">
-                            <p><a href="">今日已投递<span class="iss">0</span>个职位</a></p>
+                            <p><a href="${pageContext.request.contextPath}selPostionBySelf.do?type=ytd">今日已投递<span class="iss">0</span>个职位</a></p>
                             <p>每天最多投递50个</p>
 
                         </div>

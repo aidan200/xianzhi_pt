@@ -16,9 +16,17 @@
     <script>
         var path = '${pageContext.request.contextPath}/';     //全局路径
         var resumeId = '${resume.resumeId}';                  //ID
+        var type='${param.type}'
     </script>
     <script>
+
+
+
+
+
         $(document).ready(function () {
+
+
             $(".pop_but").click(function () {
                 $(".pop_more").slideToggle(500);
             });

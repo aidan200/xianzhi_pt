@@ -150,10 +150,10 @@
     <div class="ses_have">
         <div class="ses_left">
             <c:choose>
-                <c:when test="${r1.resumeIntentField.equals('') && r1.resumeSex==0}">
+                <c:when test="${r1.resumeIntentField==null && r1.resumeSex==0}">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="comh_head">
                 </c:when>
-                <c:when test="${r1.resumeIntentField.equals('') && r1.resumeSex==1}">
+                <c:when test="${r1.resumeIntentField==null && r1.resumeSex==1}">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt="" class="comh_head">
                 </c:when>
                 <c:when test="${r1.resumeIntentField != null}">

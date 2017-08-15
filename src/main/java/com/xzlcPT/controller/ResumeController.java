@@ -68,10 +68,13 @@ public class ResumeController extends BaseController {
     }
     //个人投递职位查询
     @RequestMapping("selPostionBySelf.do")
-    public ModelAndView selPostionBySelf(@ModelAttribute("userLogin") XzLogin userLogin){
+    public ModelAndView selPostionBySelf(@ModelAttribute("userLogin") XzLogin userLogin,String type){
         ModelAndView mv = new ModelAndView("foreEnd3/zp_postposition");
         XzResume resume =  resumeService.selectByMemberId(userLogin.getMember().getMemberId());
         mv.addObject("resume",resume);
+        if(null!=type){
+            mv.addObject("type",type);
+        }
         return mv;
     }
     //查看完成度
