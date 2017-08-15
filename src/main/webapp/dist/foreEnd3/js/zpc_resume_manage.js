@@ -53,12 +53,12 @@ function Jl(){
     }
     this.postionWelfare;        //查询类型
 
-    this. wck_page=0              //未查看页数
-    this. yxgg_page=0             //意向沟通页数
-    this. mstz_page=0             //面试通知页数
-    this. qb_page=0               //全部选项卡页数
-    this.zdxz_page=0              //主动下载页数
-    this.wdsc_page=0              //我的收藏
+    this. wck_page=1              //未查看页数
+    this. yxgg_page=1             //意向沟通页数
+    this. mstz_page=1             //面试通知页数
+    this. qb_page=1               //全部选项卡页数
+    this.zdxz_page=1              //主动下载页数
+    this.wdsc_page=1              //我的收藏
 
 
 }
@@ -455,14 +455,15 @@ function Jlrzp(){                   //未查看
 Jlrzp.prototype=new Public();   //继承父类原型方法
 Jlrzp.prototype.seekCont=function (parent){
     var parent=$(parent).find('.rem_cen');
-    var _public_ssk=jl;                                       //创建搜索对象
+    var _public_ssk={}
+    _public_ssk.companyId=jl.companyId;                              //替换分页
     _public_ssk.page=jl.wck_page;                              //替换分页
     _public_ssk.zw=parent.find('select').eq(0).val() ;         //查看
     _public_ssk.resumeName=parent.find('input').eq(0).val();         //获取姓名
     _public_ssk.resumePostion=parent.find('input').eq(1).val();         //目前任职
 
     _public_ssk.sendState=0;
-    delete _public_ssk.pages;
+
     return _public_ssk
 }
 Jlrzp.prototype.upload=function (){     //初始化加载
@@ -529,7 +530,8 @@ function Yxgt(){                   //未查看
 Yxgt.prototype=new Public();   //继承父类原型方法
 Yxgt.prototype.seekCont=function (parent){
     var parent=$(parent).find('.rem_cen');
-    var _public_ssk=jl;                                       //创建搜索对象
+    var _public_ssk={};                                       //创建搜索对象
+    _public_ssk.companyId=jl.companyId;                              //替换分页
     _public_ssk.page=_public_ssk.yxgg_page                     //保留分页
     _public_ssk.postionId=parent.find('select').eq(0).val() ;         //查看
     _public_ssk.resumeName=parent.find('input').eq(0).val();         //获取姓名
@@ -547,7 +549,7 @@ Yxgt.prototype.upload=function (){     //初始化加载
 
         This.zdl('#rem_five');//成功显示
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
-        This.fy_sj('#rem_five',jl.pages,jl.page,This);                       //分页事件完成
+        This.fy_sj('#rem_five',jl.pages,jl.yxgg_page,This);                       //分页事件完成
         This.qx('#rem_five');                                                //加载全选事件以及单选完成
         This.dcjl('#rem_five');
         This.JS();                                                          //选项卡点击事件加载完成
@@ -583,7 +585,8 @@ function Mstz(){                   //未查看
 Mstz.prototype=new Public();   //继承父类原型方法
 Mstz.prototype.seekCont=function (parent){
     var parent=$(parent).find('.rem_cen');
-    var _public_ssk=jl;                                       //创建搜索对象
+    var _public_ssk={};                                       //创建搜索对象
+    _public_ssk.companyId=jl.companyId;                              //替换分页
     _public_ssk.page=_public_ssk.mstz_page;                    //保留分页
     _public_ssk.postionId=parent.find('select').eq(0).val() ;         //查看
     _public_ssk.resumeName=parent.find('input').eq(0).val();         //获取姓名
@@ -600,7 +603,7 @@ Mstz.prototype.upload=function (){     //初始化加载
 
         This.zdl('#rem_seven');//成功显示
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
-        This.fy_sj('#rem_seven',jl.pages,jl.page,This);                       //分页事件完成
+        This.fy_sj('#rem_seven',jl.pages,jl.mstz_page,This);                       //分页事件完成
         This.qx('#rem_seven');                                                //加载全选事件以及单选完成
         This.dcjl('#rem_seven');
         This.JS();                                                          //选项卡点击事件加载完成
@@ -737,7 +740,8 @@ Qb.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 Qb.prototype.seekCont=function (parent){
     var parent1=$(parent).find('.rem_cen');
     var parent2=$(parent).find('.rem_cen2');
-    var _public_ssk=jl;                                       //创建搜索对象
+    var _public_ssk={};                                       //创建搜索对象
+    _public_ssk.companyId=jl.companyId;                              //替换分页
 
 
     _public_ssk.page=_public_ssk.qb_page                       //保留分页
@@ -766,7 +770,7 @@ Qb.prototype.upload=function (){     //初始化加载
 
         This.zdl('#rem_six');//成功显示
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
-        This.fy_sj('#rem_six',jl.pages,jl.page,This);                       //分页事件完成
+        This.fy_sj('#rem_six',jl.pages,jl.qb_page,This);                       //分页事件完成
         This.qx('#rem_six');                                                //加载全选事件以及单选完成
         This.dcjl('#rem_six');
         This.JS();                                                          //选项卡点击事件加载完成
@@ -884,7 +888,8 @@ Zdxz.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 }
 Zdxz.prototype.seekCont=function (parent){
     var parent2=$(parent).find('.rem_cen');
-    var _public_ssk=jl;                                       //创建搜索对象
+    var _public_ssk={};                                       //创建搜索对象
+    _public_ssk.companyId=jl.companyId;                              //替换分页
     _public_ssk.page=_public_ssk.zdxz_page                       //保留分页
     _public_ssk.zw=parent2.find('select').eq(0).val() ;         //查看
     _public_ssk.resumeName=parent2.find('input').eq(0).val();         //获取姓名
@@ -902,7 +907,7 @@ Zdxz.prototype.upload=function (){     //初始化加载
 
         This.zdl('#rem_three');//成功显示
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
-        This.fy_sj('#rem_three',jl.pages,jl.page,This);                       //分页事件完成
+        This.fy_sj('#rem_three',jl.pages,jl.zdxz_page,This);                       //分页事件完成
         This.qx('#rem_three');                                                //加载全选事件以及单选完成
         This.dcjl('#rem_three');
         This.JS();                                                          //选项卡点击事件加载完成
@@ -1013,7 +1018,8 @@ Wdsc.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 Wdsc.prototype.seekCont=function (parent){
 
     var parent2=$(parent).find('.rem_cen');
-    var _public_ssk=jl;                                       //创建搜索对象
+    var _public_ssk={};                                       //创建搜索对象
+    _public_ssk.companyId=jl.companyId;                              //替换分页
 
     _public_ssk.page=_public_ssk.wdsc_page                       //保留分页
     _public_ssk.zw=parent2.find('select').eq(0).val() ;         //查看
@@ -1032,7 +1038,7 @@ Wdsc.prototype.upload=function (){     //初始化加载
 
         This.zdl('#rem_four');//成功显示
         This.DOM.parent.find('.rem_bb').after(This.fy(jl.pages,jl.page));  //分页加载完成
-        This.fy_sj('#rem_four',jl.pages,jl.page,This);                       //分页事件完成
+        This.fy_sj('#rem_four',jl.pages,jl.wdsc_page,This);                       //分页事件完成
         This.qx('#rem_four');                                                //加载全选事件以及单选完成
         This.dcjl('#rem_four');
         This.JS();                                                          //选项卡点击事件加载完成
@@ -1137,7 +1143,7 @@ function aa(){
             options+='<option value="">全部职位</option>'
             if(data.list!=0){
                 for(var i=0;i<data.list.length;i++){
-                    options+='<option value="'+data.list[data.list.length-1].postionId+'">'+data.list[data.list.length-1].postionName+'</option>'
+                    options+='<option value="'+data.list[i].postionId+'">'+data.list[i].postionName+'</option>'
                 }
             }
             $('.yxgt_select').html(options)
