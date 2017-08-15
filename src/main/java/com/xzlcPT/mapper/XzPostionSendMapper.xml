@@ -463,7 +463,7 @@
     LEFT JOIN xz_resume r ON ps.resume_id = r.resume_id
     WHERE ps.company_id=#{companyId,jdbcType=BIGINT}
     <if test="resumeName != null">
-      and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'')
+      and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
     </if>
     <if test="resumePostion != null">
     and r.resume_position like concat('%',#{resumePostion,jdbcType=VARCHAR},'%')
@@ -471,12 +471,17 @@
     and ps.send_type=1
   </select>
   <!--面试通知-->
-  <update id="updateState" parameterType="java.lang.Long" >
+  <update id="updateState" parameterType="java.util.Map" >
     update xz_postion_send set
     send_state=2,
     send_type=0,
     send_time=now()
-    WHERE send_id=#{sendId,jdbcType=BIGINT}
+    WHERE
+    <if test="postionId != null and postionId !=''">
+      postion_id=#{postionId,jdbcType=BIGINT},
+    </if>
+    send_id=#{sendId,jdbcType=BIGINT}
+
   </update>
   <!--意向沟通-->
   <update id="updateState1" parameterType="java.lang.Long">
