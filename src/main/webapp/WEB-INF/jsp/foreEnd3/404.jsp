@@ -14,7 +14,13 @@
     <title>404</title>
     <jsp:include page="distforeEnd.jsp"/>
 </head>
-<body>
-
+<body style="background-color: #fc6866">
+<div style="text-align: center;position: relative">
+    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/404.png" alt="" class="four_img">
+    <div class="four_out">
+        <p>页面不知道去哪了</p>
+        <a href="###" class="btn-3" onClick="javascript:history.back(-1)">返回</a>
+    </div>
+</div>
 </body>
 </html>

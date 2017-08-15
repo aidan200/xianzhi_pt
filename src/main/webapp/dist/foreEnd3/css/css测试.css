@@ -7377,7 +7377,6 @@ footer {
     transform: scale(1);
 }
 
-
 /*------------------------动态------------------------*/
 .dot_allin {
     width: 980px;
@@ -7995,6 +7994,7 @@ footer {
     right: 140px;
     display: none;
 }
+
 /*---------------------------审核中---------------------------*/
 .aud_all2 {
     margin-top: 60px
@@ -8010,7 +8010,8 @@ footer {
     text-align: center;
     position: relative;
 }
-.aud_line{
+
+.aud_line {
     width: 80%;
     height: auto;
     border: 4px double #c0c0c0;
@@ -8018,12 +8019,13 @@ footer {
     position: relative;
 }
 
-.aud_img2{
+.aud_img2 {
     width: 300px;
     height: 370px;
     margin-bottom: 80px;
 }
-.aud_topimg{
+
+.aud_topimg {
     width: 140px;
     height: 100px;
     position: absolute;
@@ -8270,14 +8272,16 @@ footer {
     width: 120px;
     height: 120px;
 }
-.pef_input{
+
+.pef_input {
     width: 280px;
     height: 35px;
     border: 1px solid #c0c0c0;
     border-radius: 3px;
     padding-left: 10px;
 }
-.pef_but{
+
+.pef_but {
     width: 120px;
     height: 35px;
     background-color: #FFA500;
@@ -8288,4 +8292,47 @@ footer {
     margin-top: 10px;
     margin-left: 120px;
 
+}
+
+/*---404---*/
+.four_img {
+    width: 800px;
+    height: 700px;
+    margin-top: 30px;
+}
+
+.four_out {
+    position: absolute;
+    right: 320px;
+    bottom: 130px;
+}
+
+.four_out p {
+    font-size: 20px;
+}
+
+.btn-3 {
+    background: #e3403a;
+    border: 1px solid #da251f;
+    box-shadow: 0px 2px 0 #d6251f, 2px 4px 6px #e02a24;
+    letter-spacing: 1px;
+    -webkit-transition: all 150ms linear;
+    transition: all 150ms linear;
+    color: #FFFFff;
+    padding: 6px 30px 6px 30px;
+    border-radius: 3px;
+    font-size: 16px;
+    margin-left: 150px;
+}
+
+.btn-3:hover {
+    background: #e02c26;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+    color: #ec817d;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 #c2211c;
+    -webkit-transition: all 250ms linear;
+    transition: all 250ms linear;
+    border-radius: 3px;
 }
