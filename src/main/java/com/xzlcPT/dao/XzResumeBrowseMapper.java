@@ -20,4 +20,6 @@ public interface XzResumeBrowseMapper {
     int selCountByResumeId(Long resumeId);
 
     List<XzResumeBrowse> selectByResumeId(Long resumeId);
+
+    int selectByComIdAndRId(XzResumeBrowse record);
 }

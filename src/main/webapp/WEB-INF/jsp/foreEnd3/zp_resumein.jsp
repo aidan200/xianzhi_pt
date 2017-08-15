@@ -31,7 +31,18 @@
         <div class="rei_very">
             <div class="rei_left">
                 <div class="rei_headout">
-                    <img src="${pageContext.request.contextPath}/uploadImg/${xzResume.resumeIntentField}" alt="" class="rei_head">
+                    <c:choose>
+                        <c:when test="${xzResume.resumeIntentField==null && xzResume.resumeSex==0}">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="rei_head">
+                        </c:when>
+                        <c:when test="${xzResume.resumeIntentField==null && xzResume.resumeSex==1}">
+                            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt="" class="rei_head">
+                        </c:when>
+                        <c:when test="${xzResume.resumeIntentField != null}">
+                            <img src="${pageContext.request.contextPath}/uploadImg/${xzResume.resumeIntentField}" alt="" class="rei_head">
+                        </c:when>
+                    </c:choose>
+                    <%--<img src="${pageContext.request.contextPath}/uploadImg/${xzResume.resumeIntentField}" alt="" class="rei_head">--%>
                     <h4>${xzResume.resumeName}</h4>
                 </div>
                 <div class="rei_leftop">

@@ -327,7 +327,7 @@
                     <form action="">
                         <div class="rem_cen">
                             <span style="margin-left: 20px">查看</span>
-                            <select name="" id="" class="rem_input1">
+                            <select name=""  class="rem_input1 yxgt_select">
                                 <option value="">全部职位</option>
                                 <option value=""></option>
                             </select>
@@ -380,9 +380,11 @@
                     <form action="">
                         <div class="rem_cen">
                             <span style="margin-left: 20px">查看</span>
-                            <select name="" id="" class="rem_input1">
+                            <select name="" id="" class="rem_input1 yxgt_select">
                                 <option value="">全部职位</option>
-                                <option value=""></option>
+                                <option value="83">83</option>
+                                <option value="84">84</option>
+                                <option value="85">85</option>
                             </select>
 
                             <span style="margin-left: 10px">姓名</span>
@@ -488,7 +490,7 @@
                         <%--条件搜索--%>
                         <div class="rem_cen">
                             <span style="margin-left: 20px">职位</span>
-                            <select name="" id="" class="rem_input1">
+                            <select name="" id="" class="rem_input1 yxgt_select">
                                 <option value="1">全部职位</option>
                                 <option value="2">啦啦啦</option>
                             </select>
