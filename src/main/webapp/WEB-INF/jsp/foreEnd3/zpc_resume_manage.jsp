@@ -176,8 +176,8 @@
                         <div class="rem_cen">
                             <span style="margin-left: 20px">查看</span>
                             <select name="" id="" class="rem_input3">
-                                <option value="7">下载时间由近到远</option>
-                                <option value="8">下载时间由远到近</option>
+                                <option value="1">下载时间由近到远</option>
+                                <option value="2">下载时间由远到近</option>
                                 <option value="3">年龄从大到小</option>
                                 <option value="4">年龄从小到大</option>
                                 <option value="5">工作年限从长到短</option>
@@ -185,13 +185,9 @@
 
                             </select>
 
-                            <span style="margin-left: 10px">简历编号</span>
-                            <input type="text" class="rem_input3">
                             <span style="margin-left: 10px">姓名</span>
                             <input type="text" class="rem_input4">
                             <span style="margin-left: 10px">目前任职</span>
-                            <input type="text" class="rem_input3">
-                            <span style="margin-left: 10px">目前公司</span>
                             <input type="text" class="rem_input3">
                             <button type="button" class="rem_b">搜索</button>
 
@@ -247,14 +243,9 @@
                                 <option value="">工作年限从短到长</option>
 
                             </select>
-
-                            <span style="margin-left: 10px">简历编号</span>
-                            <input type="text" class="rem_input3">
                             <span style="margin-left: 10px">姓名</span>
                             <input type="text" class="rem_input4">
                             <span style="margin-left: 10px">目前任职</span>
-                            <input type="text" class="rem_input3">
-                            <span style="margin-left: 10px">目前公司</span>
                             <input type="text" class="rem_input3">
                             <button type="button" class="rem_b">搜索</button>
 
@@ -309,7 +300,7 @@
                                 <button>删除简历</button>
                                 <button>收藏简历</button>
                                 <button>批量标记</button>
-                                <span style="float: right;margin: 15px;color: #999">共 <span class="jl_length">1</span>个简历</span>
+                                <span style="float: right;margin: 15px;color: #999">共 <span class="jl_length">0</span>个简历</span>
                             </div>
 
                             <%--分页--%>
@@ -341,14 +332,11 @@
                                 <option value=""></option>
                             </select>
 
-                            <span style="margin-left: 10px">简历编号</span>
-                            <input type="text" class="rem_input3">
                             <span style="margin-left: 10px">姓名</span>
                             <input type="text" class="rem_input4">
                             <span style="margin-left: 10px">目前任职</span>
                             <input type="text" class="rem_input3">
-                            <span style="margin-left: 10px">目前公司</span>
-                            <input type="text" class="rem_input3">
+
                             <button type="button" class="rem_b">搜索</button>
 
                         </div>
@@ -397,8 +385,6 @@
                                 <option value=""></option>
                             </select>
 
-                            <span style="margin-left: 10px">简历编号</span>
-                            <input type="text" class="rem_input3">
                             <span style="margin-left: 10px">姓名</span>
                             <input type="text" class="rem_input4">
                             <span style="margin-left: 10px">面试时间</span>
@@ -516,13 +502,11 @@
                                 <option value="本科">本科</option>
                                 <option value="大专">大专</option>
                             </select>
-                            <input type="checkbox">及以上
                             <span style="margin-left: 10px">性别</span>
                             <select name="" id="" class="rem_input1">
                                 <option value="">不限</option>
                                 <option value="">男</option>
                                 <option value="">女</option>
-
                             </select>
                             <span style="margin-left: 10px">姓名</span>
                             <input type="text" class="rem_input">
@@ -547,8 +531,6 @@
                             <input type="text" class="rem_input2">
                             <span>至</span>
                             <input type="text" class="rem_input2">
-                            <span style="margin-left: 20px">目前公司</span>
-                            <input type="text" class="rem_input3">
                             <span style="margin-left: 20px">目前职位</span>
                             <input type="text" class="rem_input3">
                         </div>
