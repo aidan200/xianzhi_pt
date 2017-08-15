@@ -31,13 +31,13 @@
             </div>
             <div class="pef_sec">
                 <ul id="dvInput" class="readonly">
-                    <li>姓名：<input type="text" readonly value="郑秀妍" class="pef_input"/></li>
-                    <li>性别：<input type="text" readonly value="女"  class="pef_input"/></li>
-                    <li>年龄：<input type="text" readonly value="28" class="pef_input" /></li>
-                    <li>生日：<input type="text" readonly value="1989-04-18" class="pef_input" /></li>
-                    <li>电话：<input type="text" readonly value="1355576656754" class="pef_input" /></li>
+                    <li>姓&emsp;名：<input type="text" readonly value="郑秀妍" class="pef_input"/></li>
+                    <li>性&emsp;别：<input type="text" readonly value="女"  class="pef_input"/></li>
+                    <li>年&emsp;龄：<input type="text" readonly value="28" class="pef_input" /></li>
+                    <li>生&emsp;日：<input type="text" readonly value="1989-04-18" class="pef_input" /></li>
+                    <li>电&emsp;话：<input type="text" readonly value="1355576656754" class="pef_input" /></li>
                     <li>身份证：<input type="text" readonly value="242465474568776" class="pef_input" /></li>
-                    <li>地址：<input type="text" readonly value="而且为人发给我二个发生过法国诗人" class="pef_input" /></li>
+                    <li>地&emsp;址：<input type="text" readonly value="而且为人发给我二个发生过法国诗人" class="pef_input" /></li>
                 </ul>
                 <input type="button" value="修改信息" onclick="btnClick(this)" id="btn0" class="pef_but"/>
             </div>
