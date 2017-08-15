@@ -407,6 +407,24 @@
     </if>
     ORDER BY e.graduate_date DESC) s
     GROUP BY s.resume_id
+    <if test="zw==3">
+      ORDER BY s.resume_birth ASC
+    </if>
+    <if test="zw==4">
+      ORDER BY s.resume_birth DESC
+    </if>
+    <if test="zw==5">
+      ORDER BY s.resume_intent_ym DESC
+    </if>
+    <if test="zw==6">
+      ORDER BY s.resume_intent_ym ASC
+    </if>
+    <if test="zw==9">
+      ORDER BY s.collect_time DESC
+    </if>
+    <if test="zw==10">
+      ORDER BY s.collect_time ASC
+    </if>
   </select>
   <!--按sendid的集合查简历-->
   <select id="selBysendId" parameterType="java.util.Map" resultMap="selState">

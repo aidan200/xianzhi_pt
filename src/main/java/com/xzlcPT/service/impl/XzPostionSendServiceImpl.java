@@ -123,7 +123,6 @@ public class XzPostionSendServiceImpl implements XzPostionSendService {
         PageHelper.startPage(page,rows);
         List<XzResume> list=postionSendMapper.selComCollect(map);
         PageBean pageBean=new PageBean(list);
-        List<XzResume> list1=pageBean.getList();
         return pageBean;
     }
 
