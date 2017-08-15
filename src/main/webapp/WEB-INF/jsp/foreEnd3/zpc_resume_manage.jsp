@@ -491,8 +491,8 @@
                         <div class="rem_cen">
                             <span style="margin-left: 20px">职位</span>
                             <select name="" id="" class="rem_input1">
-                                <option value="全部职位">全部职位</option>
-                                <option value="啦啦啦">啦啦啦</option>
+                                <option value="1">全部职位</option>
+                                <option value="2">啦啦啦</option>
                             </select>
                             <span style="margin-left: 10px">学历</span>
                             <select name="" id="" class="rem_input1">
@@ -506,9 +506,9 @@
                             </select>
                             <span style="margin-left: 10px">性别</span>
                             <select name="" id="" class="rem_input1">
-                                <option value="">不限</option>
-                                <option value="">男</option>
-                                <option value="">女</option>
+                                <option value="0">不限</option>
+                                <option value="1">男</option>
+                                <option value="2">女</option>
                             </select>
                             <span style="margin-left: 10px">姓名</span>
                             <input type="text" class="rem_input">

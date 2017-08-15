@@ -173,10 +173,10 @@
                 </div>
                 <div style="margin-top: 10px;margin-left: 10px">
                     <span style="color: #fc6866;margin-right: 10px">${r1.resumePosition}</span>|
-                    <span style="margin-left: 10px"><age:getAge year="${r1.resumeWorkinglife}"/>年经验</span>|
+                    <span style="margin-left: 10px;margin-right: 10px"><age:getAge year="${r1.resumeWorkinglife}"/>年经验</span>|
                     <span style="color: #fc6866;margin-right: 10px">${fn:replace((r1.resumeMm*12/10000),".0","")}万</span>
                 </div>
-                <div style="margin-top: 10px;margin-left: 10px">
+                <div style="margin-top: 10px">
                     <span style="margin-left: 10px"><c:forEach items="${r1.fields}" var="f" end="3">
                         ${f.fieldName}
                     </c:forEach></span>
