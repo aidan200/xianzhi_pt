@@ -71,4 +71,16 @@ public class XzResumeBrowseServiceImpl implements XzResumeBrowseService {
         xzResumeBrowse.setIsread(1);
         return xzResumeBrowseMapper.updateByPrimaryKeySelective(xzResumeBrowse);
     }
+
+    @Override
+    public int insertSelective(XzResumeBrowse resumeBrowse) {
+        int i=xzResumeBrowseMapper.insertSelective(resumeBrowse);
+        return i;
+    }
+
+    @Override
+    public int selectByComIdAndRId(XzResumeBrowse xzResumeBrowse) {
+        int i=xzResumeBrowseMapper.selectByComIdAndRId(xzResumeBrowse);
+        return i;
+    }
 }

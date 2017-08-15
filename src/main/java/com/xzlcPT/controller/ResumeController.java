@@ -6,7 +6,9 @@ import com.util.ZipUtil;
 import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzPostion;
 import com.xzlcPT.bean.XzResume;
+import com.xzlcPT.bean.XzResumeBrowse;
 import com.xzlcPT.service.XzPostionService;
+import com.xzlcPT.service.XzResumeBrowseService;
 import com.xzlcPT.service.XzResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,9 @@ public class ResumeController extends BaseController {
     private XzResumeService resumeService;
     @Autowired
     private XzPostionService postionService;
+    @Autowired
+    private XzResumeBrowseService resumeBrowseService;
+
     //跳转到个人简历编辑
     @RequestMapping("goEditResume.do")
     public ModelAndView goEditResume(@ModelAttribute("userLogin")XzLogin userLogin){
@@ -319,9 +324,19 @@ public class ResumeController extends BaseController {
          return map1;
     }
     @RequestMapping("selResumeInfoCom.do")
-    public ModelAndView selResumeInfoCom(Long resumeId){
+    public ModelAndView selResumeInfoCom(@ModelAttribute("userLogin")XzLogin xzLogin,Long resumeId){
         ModelAndView mv=new ModelAndView("foreEnd3/zp_resumein");
         XzResume xzResume=resumeService.selResumeInformation(resumeId);
+
+        XzResumeBrowse resumeBrowse=new XzResumeBrowse();
+        resumeBrowse.setResumeId(resumeId);
+        resumeBrowse.setCompanyId(xzLogin.getCompany().getCompanyId());
+        Date t1=new Date();
+        resumeBrowse.setBrowseTime(t1);
+        int j=resumeBrowseService.selectByComIdAndRId(resumeBrowse);
+        if (j==0) {
+            int i = resumeBrowseService.insertSelective(resumeBrowse);
+        }
         mv.addObject("xzResume",xzResume);
         return mv;
     }

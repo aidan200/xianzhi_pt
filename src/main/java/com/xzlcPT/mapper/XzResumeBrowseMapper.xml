@@ -94,7 +94,12 @@
         where browse_id = #{browseId,jdbcType=BIGINT}
     </update>
     <select id="selCountByResumeId" parameterType="java.lang.Long" resultType="java.lang.Integer">
-        select count(*) FROM xz_resume_browse WHERE isRead=1
+        select count(*) FROM xz_resume_browse WHERE isRead=0
         and resume_id=#{resumeId,jdbcType=BIGINT}
+    </select>
+    <select id="selectByComIdAndRId" parameterType="com.xzlcPT.bean.XzResumeBrowse" resultType="java.lang.Integer">
+       select count(*) FROM xz_resume_browse WHERE isRead=0
+        and resume_id=#{resumeId,jdbcType=BIGINT}
+        and company_id=#{companyId,jdbcType=BIGINT}
     </select>
 </mapper>
