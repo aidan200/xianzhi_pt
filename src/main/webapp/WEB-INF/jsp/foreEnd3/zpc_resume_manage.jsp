@@ -488,8 +488,6 @@
                         <div class="rem_cen">
                             <span style="margin-left: 20px">职位</span>
                             <select name="" id="" class="rem_input1 yxgt_select">
-                                <option value="1">全部职位</option>
-                                <option value="2">啦啦啦</option>
                             </select>
                             <span style="margin-left: 10px">学历</span>
                             <select name="" id="" class="rem_input1">

@@ -389,6 +389,9 @@
     <if test="resumePostion != null">
       and r.resume_position like concat('%',#{resumePostion,jdbcType=VARCHAR},'%')
     </if>
+    <if test="postionId !=null and postionId !=''">
+      and ps.postion_id = #{postionId,jdbcType=BIGINT}
+    </if>
   </select>
   <!--公司收藏的简历-->
   <select id="selComCollect" parameterType="java.util.Map" resultMap="ResumeInformation">

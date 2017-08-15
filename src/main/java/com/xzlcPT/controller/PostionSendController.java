@@ -121,12 +121,15 @@ public class PostionSendController extends BaseController{
     @ResponseBody
     @RequestMapping("selByState.do")
     public Map selByState(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,@ModelAttribute("userLogin")XzLogin userLogin,Integer sendState,
-                          String resumeName,String resumePostion,String zw){
+                          String resumeName,String resumePostion,String zw,Long postionId){
         Map map=new HashMap();
         map.put("companyId",userLogin.getCompany().getCompanyId());
         map.put("sendState",sendState);
         map.put("resumeName",resumeName);
         map.put("resumePostion",resumePostion);
+        if(postionId!=null){
+            map.put("postionId",postionId);
+        }
         map.put("zw",zw);
         PageBean<XzPostionSend> list=postionSendService.selByState(page,rows,map);
         Map map1=new HashMap();
@@ -310,11 +313,16 @@ public class PostionSendController extends BaseController{
     public Map selByConditions(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "4") Integer rows,
                                @ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,String educationLevel,
                                 Integer resumeSex,String resumeName,String resumeWorkspace,Integer birthMin,Integer birthMax,
-                               String resumePostion,String zw){
+                               String resumePostion){
         Map map=new HashMap();
         map.put("companyId",xzLogin.getCompany().getCompanyId());
+
         map.put("postionId",postionId);
-        map.put("educationLevel",educationLevel);
+        if (educationLevel.equals("不限")){
+            map.put("educationLevel","");
+        }else {
+            map.put("educationLevel", educationLevel);
+        }
         map.put("resumeSex",resumeSex);
         map.put("resumeName",resumeName);
         map.put("resumeWorkspace",resumeWorkspace);
@@ -323,7 +331,6 @@ public class PostionSendController extends BaseController{
         map.put("resumePostion",resumePostion);
         Date now=new Date();
         map.put("now",now);
-        map.put("zw",zw);
         PageBean list=postionSendService.selByConditions(page,rows,map);
         Map map1=new HashMap();
         map1.put("list",list.getList());
