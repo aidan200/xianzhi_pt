@@ -13,6 +13,9 @@
 <html lang="en">
 <head>
     <jsp:include page="distforeEnd.jsp"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/xzdd.css">
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/xzdd.js"></script>
+
 </head>
 <body style="background-color: #f0f0f0">
 
@@ -40,7 +43,10 @@
 
                     <div class="pup_form">
                         <span> <span class="pup_span1">*</span>工作地址：</span>
+
+
                         <input type="text" class="pup_input" style="width: 380px" name="postionSpace" id="postionSpace">
+                        <em  id="em_postionSpace" class="em_dz"></em>
                         <div class="pup_text">注：1.职位发布后省/市/区不可以修改。2.填写街道、楼宇详细地址，有利于职位曝光。</div>
                         <span class="tag_bubble"><div class="tag2">工作名不能为空</div></span>
                     </div>
@@ -72,7 +78,7 @@
                         <span class="tag_bubble" id="postionMmdx"><div class="tag2">最低月薪不能高于最高月薪</div></span>
                     </div>
                     <div class="pup_form">
-                        <span> <span class="pup_span1">*</span>发放月数：</span>
+                        <span> <span class="pup_span1">*</span>发布月数：</span>
                         <input type="text" class="pup_input" style="width: 180px" name="publishMonth" id="publishMonth">个月
                         <span class="tag_bubble2"><div class="tag2">发放月数不能为空</div></span>
                         <span class="tag_bubble2"><div class="tag2">请输入数字</div></span>
@@ -236,6 +242,11 @@
     }
 </script>
 <script>
+    $(function (){
+        didian('#em_postionSpace','#postionSpace')
+    })
+
+
     $('#pupnum1').click(function () {
         if ($(this).is(":checked") == true) {
             $('#postionMm').attr("disabled", "disabled");
@@ -453,6 +464,7 @@
     }
 </script>
 <script>
+    var da=new Date();
     $('#sub1').click(function () {
         $('#postionWelfare').val(1);
         $('#f1').submit();
@@ -463,5 +475,90 @@
     })
 </script>
 
+
+
+<div id='zp_gsxq_bd_tck'>
+    <div id='zp_gsxq_bd_tck_cont2'>
+        <div class="zp_gsxq_bd_tck_top">
+            <span class="pull-left">选择城市信息</span>
+            <a class="pull-right gb"><span class="fa fa-close"></span></a>
+        </div>
+
+        <div class="zp_one"> 最多选择一项：<span id="div6"></span>
+        </div>
+
+        <div class="zp_gsxq_bd_tck_cont2_cont" style="padding-top: 10px">
+            <div style="padding-left: 20px;height: 30px">热门城市</div>
+            <ul class="zp_ul1">
+                <li><a href="javascript:void(0)" class="hotCity">北京市</a></li>
+                <li><a class="hotCity">上海市</a></li>
+                <li><a class="hotCity">广州市</a></li>
+                <li><a class="hotCity">深圳市</a></li>
+                <li><a class="hotCity">天津市</a></li>
+                <li><a class="hotCity">苏州市</a></li>
+                <li><a class="hotCity">重庆市</a></li>
+                <li><a class="hotCity">南京市</a></li>
+                <li><a class="hotCity">杭州市</a></li>
+                <li><a class="hotCity">大连市</a></li>
+                <li><a class="hotCity">成都市</a></li>
+                <li><a class="hotCity">武汉市</a></li>
+            </ul>
+        </div>
+
+        <hr style="width: 90%;margin: 0 auto">
+
+        <div id="div2"></div>
+        <div class="zp_gsxq_bd_tck_cont2_cont">
+            <div style="padding-left: 20px">请选择省份</div>
+            <ul class="zp_ul">
+                <li><a class="cd-popup-trigger">北京市</a></li>
+                <li><a href="#0" class="cd-popup-trigger">广东省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">山东省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">江苏省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">河南省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">上海市</a></li>
+                <li><a href="#0" class="cd-popup-trigger">河北省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">浙江省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">香港特别行政区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">陕西省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">湖南省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">重庆市</a></li>
+                <li><a href="#0" class="cd-popup-trigger">福建省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">天津市</a></li>
+                <li><a href="#0" class="cd-popup-trigger">云南省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">四川省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">广西壮族自治区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">安徽省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">海南省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">江西省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">湖北省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">山西省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">辽宁省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">台湾省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">黑龙江</a></li>
+                <li><a href="#0" class="cd-popup-trigger">内蒙古自治区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">澳门特别行政区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">贵州省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">甘肃省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">青海省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">新疆维吾尔自治区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">西藏区</a></li>
+                <li><a href="#0" class="cd-popup-trigger">吉林省</a></li>
+                <li><a href="#0" class="cd-popup-trigger">宁夏回族自治区</a></li>
+            </ul>
+
+        </div>
+
+        <div class="yp_cs">
+
+        </div>
+
+        <div class="zp_gsxq_bd_tck_bottom">
+            <a class="zp_button1">确定</a>
+            <button type="button" class="zp_button">取消</button>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

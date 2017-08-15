@@ -9,72 +9,32 @@
 <%--解析表达式--%>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <jsp:include page="distforeEnd.jsp"/>
-    <script>
-        $(document).ready(function(){
-            $(".aud_sa").hover(function(){
-                $(".aud_oi").css("display","block");
-            },function(){
-                $(".aud_oi").css("display","none");
-            });
-        });
-    </script>
+    <title>公司审核中状态</title>
 </head>
 <body style="background-color: #EEEEEE">
 <jsp:include page="headerforeEnd.jsp"/>
 <jsp:include page="companynav.jsp"/>
 
-<div class="aud_all">
-    <div class="aud1_all">
-        <form>
-            <div class="aud_in">
-                <div class="aud_left" style="margin-top: 100px">
-                    <div class="aud_ne">
-                        <%--<input type="hidden" name="companyId" value="">--%>
-                        <div class="aud_every">
-                            <span>公司名称</span>&emsp;<input type="text" name="companyName" placeholder="请填写公司营业执照上的公司名称全称" class="aud_g">
-                        </div>
-                        <div style="position: relative">
-                            <span class="aud_span" style="">营业执照&nbsp;</span>&emsp;
-                            <input type="file" name="file" class="nicefile" style="float: left"/>
-                            <span style="margin-left: 40px">
-                                <span style="color: #fc6866">请上传加盖公司公章（红章）的营业执照扫描件</span> 查看示例
-                                <span class="fa fa-exclamation-triangle aud_sa"></span></span>
-                        </div>
-                        <button class="aud_button" type="submit">提 交</button>
-                    </div>
+<div class="aud_all2">
+    <div style="width: 980px;margin: 0 auto;color: #666">
+        <h3><span class="fa fa-cogs"></span> 公司信息审核中</h3>
+    </div>
+    <div class="aud_all2in">
+        <div class="aud_line">
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/person.png" alt="" class="aud_topimg">
 
-                </div>
-            </div>
-            <div class="aud_bottom">
-                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bvbv.png" alt="">
-                <div>
-                    <h4>先知承诺</h4>
-                    <p>企业资料仅用于资质审核，先知平台绝不向第三方泄露，请您放心填写。</p>
-                </div>
-            </div>
-        </form>
+            <div style="font-size: 20px;margin-top: 80px;margin-bottom: 10px">公司名称：<span>先知蓝创科技有限公司</span></div>
+            <div style="font-size: 20px;margin-bottom: 10px;color: #666">营业执照：</div>
+            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ying.jpg" alt="" class="aud_img2">
+        </div>
 
-        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ying.jpg" alt="" class="aud_oi">
     </div>
 </div>
 
-<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
-<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery.nice-file-input.js"></script>
-<script type="text/javascript">
-    $('document').ready(function () {
-        $(".nicefile").niceFileInput({
-            'width': '390',
-            'height': '35',
-            'btnText': '浏 览',
-            'btnWidth': '100',
-            'margin': '20',
-            'background-color': '#f8a91e'
-        });
+<jsp:include page="behindforeEnd.jsp"/>
 
-    });
-</script>
 </body>
 </html>

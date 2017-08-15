@@ -16,7 +16,7 @@ ojdt+='</div>'
 
 function th(obj){
     // var qwe=/\n/.test(obj);
-    var ss = obj.replace(/\n/,"<br>");
+    var ss = obj.replace(/\n/g,"<br>");
     return ss
 }
 
@@ -1193,6 +1193,7 @@ obj_gzjl.prototype.init=function (){
                 obj__gzjl.gzjlID=data.jobExpList[i].jobexpId             //工作经历ID
                 _self.obj_s[i]=obj__gzjl;                  //插进数组
             }
+
             var jlgs=0;                             //计算多少个工作经历
             for (var i=0;i<_self.obj_s.length;i++){       //绑定元素开始
                 str+='<div id="gzjl_'+jlgs+++'" data-id="'+_self.obj_s[i].gzjlID+'">'
@@ -1209,7 +1210,7 @@ obj_gzjl.prototype.init=function (){
                     str+='<p>工作地点：'+_self.obj_s[i].gzdd+' | 月薪：</p>'
                 }
 
-                var ss = _self.obj_s[i].zzyj.replace(/\n/,"<br>");
+                var ss = _self.obj_s[i].zzyj.replace(/\n/g,"<br>");
 
                 str+='<p>'+ss+'</p>'  //职责业绩
                 str+='</div>'
@@ -1424,7 +1425,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                         isinitVal:true, //显示时间
                         isTime:true,
                         festival: true, //显示节日
-                        minDate:"2014-09-19"
+                        minDate:"1960-01-01"
                     })
                 })
                 $('.ttk_jl').find('.em3').eq(1).unbind().on('click',function (){
@@ -1434,7 +1435,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                         isinitVal:true, //显示时间
                         isTime:true,
                         festival: true, //显示节日
-                        minDate:"2014-09-19"
+                        minDate:"1960-01-01"
                     })
                 })
                 $('#gzjl').siblings('div').eq(index).css({"display":"none"});
@@ -2357,6 +2358,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                     var qrxg={
                         proexpName:xmjy.find('input').eq(0).val(),
                         proexpPostion:xmjy.find('input').eq(1).val(),
+
                         proexpBeginTime:xmjy.find('input').eq(2).val(),         //时间
                         proexpEndTime:xmjy.find('input').eq(3).val(),
                         proexpDescribe:xmjy.find('textarea').eq(0).val(),
@@ -2526,8 +2528,8 @@ obj_xmjy.prototype.bindingSJ=function (){
                  var qrxg={
                      proexpName:trim(xmjy.find('input').eq(0).val()),
                      proexpPostion:trim(xmjy.find('input').eq(1).val()),
-                     createTime:trim(xmjy.find('input').eq(2).val()),         //时间
-                     deleteTime:trim(xmjy.find('input').eq(3).val()),
+                     proexpBeginTime:xmjy.find('input').eq(2).val(),         //时间
+                     proexpEndTime:xmjy.find('input').eq(3).val(),
                      proexpDescribe:trim(xmjy.find('textarea').eq(0).val()),
                      proexpDuty:trim(xmjy.find('textarea').eq(1).val()),
                      resumeId:ID,
@@ -2544,12 +2546,12 @@ obj_xmjy.prototype.bindingSJ=function (){
                          $('#ttk_xmzw').focus()
                          return
                      }
-                     if(qrxg.createTime==''||qrxg.createTime==null){
+                     if(qrxg.proexpBeginTime==''||qrxg.proexpBeginTime==null){
                          $('#xmjy_kssj').addClass('jl_name')
                          $('#xmjy_kssj').focus()
                          return
                      }
-                     if(qrxg.deleteTime==''||qrxg.deleteTime==null){
+                     if(qrxg.proexpEndTime==''||qrxg.proexpEndTime==null){
                          $('#xmjy_jssj').addClass('jl_name')
                          $('#xmjy_jssj').focus()
                          return
@@ -2566,7 +2568,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                      }
                  }
                  bdxy()
-                 if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.createTime!=''&&qrxg.createTime!=null&&qrxg.deleteTime!=''&&qrxg.deleteTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
+                 if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.proexpBeginTime!=''&&qrxg.proexpBeginTime!=null&&qrxg.proexpEndTime!=''&&qrxg.proexpEndTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
                      $('.zp_jianli_zl_7').append(ojdt);
                     $(this).unbind()
                      $.ajax({
@@ -3369,9 +3371,7 @@ $(function (){                              //入口函数
 
     flashResume2();                           //加载完成度
 
-    didian(".btn1","#intpu1",function (){
 
-    })
 
 });
 

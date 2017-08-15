@@ -219,7 +219,7 @@ public class PostionSendController extends BaseController{
         }
         return map;
     }
-    //
+    //收藏简历
     @ResponseBody
     @RequestMapping("insertSelective.do")
     public Map insertSelective(@ModelAttribute("userLogin")XzLogin xzLogin,Long postionId,Long resumeId){
@@ -239,6 +239,20 @@ public class PostionSendController extends BaseController{
             map.put("msg","err");
         }
         return map;
+    }
+    //下载简历
+    @RequestMapping("downResume.do")
+    public ModelAndView downResume(@ModelAttribute("userLogin")XzLogin xzLogin,Long resumeId){
+        ModelAndView mv=new ModelAndView("foreEnd3/index");
+        XzPostionSend xzPostionSend=new XzPostionSend();
+        xzPostionSend.setResumeId(resumeId);
+        xzPostionSend.setCompanyId(xzLogin.getCompany().getCompanyId());
+        Date date=new Date();
+        xzPostionSend.setSendTime(date);
+        xzPostionSend.setSendType(1);
+        int i=postionSendService.insertSelective(xzPostionSend);
+        mv.addObject("i",i);
+        return mv;
     }
     //收藏→邀请面试
     @ResponseBody

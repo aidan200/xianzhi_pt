@@ -50,6 +50,36 @@
     </div>
 </div>
 
+<%--成功--%>
+<a href="###" class="new_success"><span>点我</span></a>
+<div class="successpop" role="alert">
+    <div class="successpop_container">
+        <div class="allsuccess_tan">
+            什么什么什么成功了
+        </div>
+        <div>
+            <button class="bee_one">确定</button>
+            <button class="success_close bee_two">取消</button>
+        </div>
+        <a href="###" class="success_close tan_close0 fa fa-remove"></a>
+    </div>
+</div>
+
+<%--失败--%>
+<a href="###" class="new_fail"><span>点我</span></a>
+<div class="failpop" role="alert">
+    <div class="failpop_container">
+        <div class="allfail_tan">
+            失败失败太失败了
+        </div>
+        <div>
+            <button class="bee_one">确定</button>
+            <button class="fail_close bee_two">取消</button>
+        </div>
+        <a href="###" class="fail_close tan_close1 fa fa-remove"></a>
+    </div>
+</div>
+
 
 <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/tanthree.js"></script>
 </body>
