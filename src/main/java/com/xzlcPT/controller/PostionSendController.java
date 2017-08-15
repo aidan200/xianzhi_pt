@@ -316,7 +316,6 @@ public class PostionSendController extends BaseController{
                                String resumePostion){
         Map map=new HashMap();
         map.put("companyId",xzLogin.getCompany().getCompanyId());
-
         map.put("postionId",postionId);
         if (educationLevel.equals("不限")){
             map.put("educationLevel","");
