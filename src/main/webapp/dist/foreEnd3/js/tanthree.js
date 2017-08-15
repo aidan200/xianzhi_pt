@@ -46,7 +46,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-
 //    带输入框的弹出框
     $('.newtan3').on('click', function (event) {
         event.preventDefault();
@@ -66,4 +65,51 @@ jQuery(document).ready(function ($) {
             $('.newpop3').removeClass('is-visible');
         }
     });
+
+
+    //成功
+    $('.new_success').on('click', function (event) {
+        event.preventDefault();
+        $('.successpop').addClass('is-visible');
+    });
+
+    //close popup
+    $('.successpop').on('click', function (event) {
+        if ($(event.target).is('.success_close') || $(event.target).is('.successpop')) {
+            event.preventDefault();
+            $(this).removeClass('is-visible');
+        }
+    });
+    //close popup when clicking the esc keyboard button
+    $(document).keyup(function (event) {
+        if (event.which == '27') {
+            $('.successpop').removeClass('is-visible');
+        }
+    });
+
+
+    //失败
+    $('.new_fail').on('click', function (event) {
+        event.preventDefault();
+        $('.failpop').addClass('is-visible');
+    });
+
+    //close popup
+    $('.failpop').on('click', function (event) {
+        if ($(event.target).is('.fail_close') || $(event.target).is('.failpop')) {
+            event.preventDefault();
+            $(this).removeClass('is-visible');
+        }
+    });
+    //close popup when clicking the esc keyboard button
+    $(document).keyup(function (event) {
+        if (event.which == '27') {
+            $('.failpop').removeClass('is-visible');
+        }
+    });
+
+
 });
+
+
+
