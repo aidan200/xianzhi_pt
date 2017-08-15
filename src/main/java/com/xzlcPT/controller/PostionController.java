@@ -222,6 +222,13 @@ public class PostionController extends BaseController{
             map.put("deleteTime",cdate);
         }
         map.put("createTime",cdate);
+        map.put("publishTime",cdate);
+       Calendar calendar=new GregorianCalendar();
+       calendar.setTime(cdate);
+       calendar.add(calendar.MONTH,publishMonth);
+       Date adate=calendar.getTime();
+       map.put("overTime",adate);
+        map.put("postionTime",cdate);
         if (check!=null&&check==1){
             map.put("forceAgeMax",postionAgeMax);
             map.put("forceAgeMin",postionAgeMin);
