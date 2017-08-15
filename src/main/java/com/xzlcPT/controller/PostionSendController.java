@@ -128,12 +128,14 @@ public class PostionSendController extends BaseController{
         map.put("resumeName",resumeName);
         map.put("resumePostion",resumePostion);
         map.put("zw",zw);
+        List<XzPostion> postionList=xzPostionService.selectByComId(userLogin.getCompany().getCompanyId());
         PageBean<XzPostionSend> list=postionSendService.selByState(page,rows,map);
         Map map1=new HashMap();
         map1.put("list",list.getList());
         map1.put("pages",list.getPages());
         map1.put("total",list.getTotal());
         map1.put("page",list.getPageNum());
+        map1.put("postionList",postionList);
         return map1;
     }
     //公司主动下载的简历
@@ -254,6 +256,7 @@ public class PostionSendController extends BaseController{
         xzPostionSend.setSendTime(date);
         xzPostionSend.setSendType(1);
         xzPostionSend.setCreateTime(date);
+        xzPostionSend.setSendState(4);
         int i=postionSendService.insertSelective(xzPostionSend);
         mv.addObject("i",i);
         return mv;
@@ -324,11 +327,13 @@ public class PostionSendController extends BaseController{
         map.put("now",now);
         map.put("zw",zw);
         PageBean list=postionSendService.selByConditions(page,rows,map);
+        List<XzPostion> postionList=xzPostionService.selectByComId(xzLogin.getCompany().getCompanyId());
         Map map1=new HashMap();
         map1.put("list",list.getList());
         map1.put("pages",list.getPages());
         map1.put("total",list.getTotal());
         map1.put("page",list.getPageNum());
+        map1.put("postionList",postionList);
         return map1;
     }
 

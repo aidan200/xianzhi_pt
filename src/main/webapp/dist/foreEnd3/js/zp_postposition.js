@@ -153,9 +153,11 @@ Qbzt.prototype.loader=function (data,fn1,fn2){
                     str+='<span class="fa fa-chevron-down"></span>'
                     str+='</button>'
 
+
                     var date1= data.postionSendList[i].sendTime1;          //计算几小时以前
                     var date2=new Date();
                     var date3=date2-date1;
+
                     if(date3<60000*60){
                         str+='<span style="margin-left: 190px;color: #666">'+Math.floor(date3/60000)+'分钟前</span>'
                     }else if(date3<60000*60*24){
