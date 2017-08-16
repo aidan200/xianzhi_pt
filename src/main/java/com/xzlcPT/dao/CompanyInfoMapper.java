@@ -35,6 +35,4 @@ public interface CompanyInfoMapper {
     //    删除企业用户信息
     int deleteCompanyEnd(long loginID);
 
-
-
 }

@@ -152,6 +152,16 @@
         where company_id = #{companyID,jdbcType=BIGINT}
     </update>
 
+    <update id="updateCompanyLic" parameterType="com.xzlcPT.bean.XzCompany">
+        update xz_company
+        <set>
+            <if test="companyName != null and companyName != '' ">
+                licence = #{licence},
+            </if>
+        </set>
+        where company_id = #{companyID,jdbcType=BIGINT}
+    </update>
+
     <delete id="deleteCompanyEnd" parameterType="java.lang.Long">
     delete from xz_company
     where login_id = #{loginID,jdbcType=BIGINT}

@@ -27,21 +27,22 @@
     <div class="pef_allin">
         <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/pink.png" alt="" class="pef_top">--%>
         <div class="pef_small">
-            <form action="">
+            <form id="saveForm" action = "${pageContext.request.contextPath}/Member/updateMemberInfo.do">
                 <div style="text-align: center">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/person.png" alt="" class="pef_text">
 
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt="" class="pef_head">
                 </div>
                 <div class="pef_sec">
+                    <input type="hidden" name="memberId" value="${member.memberId}">
                     <ul id="dvInput" class="readonly">
-                        <li>姓&emsp;名：<input type="text" readonly value="郑秀妍" class="pef_input"/></li>
-                        <li>性&emsp;别：<input type="text" readonly value="女" class="pef_input"/></li>
-                        <li>年&emsp;龄：<input type="text" readonly value="28" class="pef_input"/></li>
-                        <li>生&emsp;日：<input type="text" readonly value="1989-04-18" class="pef_input"/></li>
-                        <li>电&emsp;话：<input type="text" readonly value="1355576656754" class="pef_input"/></li>
-                        <li>身份证：<input type="text" readonly value="242465474568776" class="pef_input"/></li>
-                        <li>地&emsp;址：<input type="text" readonly value="而且为人发给我二个发生过法国诗人" class="pef_input"/></li>
+                        <li>姓&emsp;名：<input type="text" name="memberName" readonly value="${member.memberName}" class="pef_input"/></li>
+                        <li>性&emsp;别：<input type="text" name="memberSex" readonly value="${member.memberSex}" class="pef_input"/></li>
+                        <li>年&emsp;龄：<input type="text" name="memberAge" readonly value="${member.memberAge}" class="pef_input"/></li>
+                        <li>生&emsp;日：<input type="text" name="memberBirth" readonly value="${member.memberBirth}" class="pef_input"/></li>
+                        <li>电&emsp;话：<input type="text" name="memberPhone" readonly value="${member.memberPhone}" class="pef_input"/></li>
+                        <li>身份证：<input type="text" name="memberIdcard" readonly value="${member.memberIdcard}" class="pef_input"/></li>
+                        <li>地&emsp;址：<input type="text" name="memberAddress" readonly value="${member.memberAddress}" class="pef_input"/></li>
                     </ul>
                     <input type="button" value="修改信息" onclick="btnClick(this)" id="btn0" class="pef_but"/>
                 </div>
@@ -55,10 +56,11 @@
     var btn0 = document.getElementById('btn0');
     function btnClick(btn0) {
         var toEdit = btn0.value == '修改信息';
-        $('#dvInput')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input')
-            .attr('readonly', toEdit ? false : true);
+        $('#dvInput')[toEdit ? 'removeClass' : 'addClass']('readonly').find(':input').attr('readonly', toEdit ? false : true);
         btn0.value = toEdit ? '保存信息' : '修改信息';
+        alert(toEdit);
         if (!toEdit) {//保存的ajax代码
+            document.getElementById("saveForm").submit();
         }
     }
 </script>
