@@ -502,7 +502,7 @@
                             <span style="margin-left: 10px">性别</span>
                             <select name="" id="" class="rem_input1">
                                 <option value="">不限</option>
-                                <option value="0">男</option>
+                                <option value="3">男</option>
                                 <option value="1">女</option>
                             </select>
                             <span style="margin-left: 10px">姓名</span>

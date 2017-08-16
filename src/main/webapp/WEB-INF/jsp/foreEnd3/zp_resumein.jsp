@@ -72,14 +72,15 @@
                     <div>目前行业：<span class="rei_spans">
                         <c:forEach items="${xzResume.fields}" var="fi" varStatus="stat1">
                            <c:if test="${fi.fieldType.equals('2')}">
-                                ${fi.fieldName}&nbsp;&nbsp;
+                                ${fi.fieldName}
                            </c:if>
                         </c:forEach>
-                    </span></div>
-                    <div>期望行业：<span>
+                    </span>
+                    </div>
+                    <div>期望行业：<span class="rei_spans">
                          <c:forEach items="${xzResume.fields}" var="fi" varStatus="stat1">
                              <c:if test="${fi.fieldType.equals('3')}">
-                                 ${fi.fieldName}&nbsp;&nbsp;
+                                 ${fi.fieldName}
                              </c:if>
                          </c:forEach>
                     </span></div>
@@ -108,7 +109,8 @@
                     </span></div>
                     <div class="rei_two">职位名称：<span>${jo.jobexpPostion}</span></div>
                     <div class="rei_two2">下属人数：<span>${jo.jobexpSubordinate}</span></div>
-                    <div>职位业绩：<span></span></div>
+                        <input type="hidden" id="h5" value="${jo.jobexpDuty}">
+                    <div>职位业绩：<span id="sp5"></span></div>
                     </c:forEach>
                 </div>
 
@@ -178,7 +180,8 @@
     $("#sp3").html(content3);
     var content4 = $("#h4").val().replace(/\n/g, "<br>");
     $("#sp4").html(content4);
-
+    var content5 = $("#h5").val().replace(/\n/g, "<br>");
+    $("#sp5").html(content5);
 </script>
 </body>
 </html>
