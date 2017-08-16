@@ -19,8 +19,7 @@ window.onscroll = function () {
         nav.style.backgroundColor = "rgba("+vlu+","+kj+")";
     }
     var ddds = document.getElementsByClassName("ddds")[0];
-    console.log(ddds.getBoundingClientRect().top);
-    if(ddds.getBoundingClientRect().top< 400){
+    if(ddds.getBoundingClientRect().top< 800){
         gozhiweig();
     }
 }
