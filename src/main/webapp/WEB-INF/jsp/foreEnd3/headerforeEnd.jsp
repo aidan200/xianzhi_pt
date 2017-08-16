@@ -27,8 +27,7 @@
                     <a href="/" class="sim-button button01"><span data-hover="先知首页">&nbsp;先知首页&nbsp;</span></a>
                 </li>
                 <li>
-                    <a href="###" class="sim-button button01"><span
-                            data-hover="在线直播">&nbsp;在线直播&nbsp;</span></a>
+                    <a href="###" class="sim-button button01"><span data-hover="在线直播">&nbsp;在线直播&nbsp;</span></a>
                 </li>
                 <li>
                     <a href="###" class="sim-button button01"><span data-hover="会员中心">&nbsp;会员中心&nbsp;</span></a>
@@ -37,8 +36,7 @@
                     <a href="###" class="sim-button button01"><span data-hover="先知社区">&nbsp;先知社区&nbsp;</span></a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/zp_index" class="sim-button button01"><span
-                            data-hover="招聘中心">&nbsp;招聘中心&nbsp;</span></a>
+                    <a href="${pageContext.request.contextPath}/zp_index" class="sim-button button01"><span data-hover="招聘中心">&nbsp;招聘中心&nbsp;</span></a>
                 </li>
                 <li>
                     <a href="###" class="sim-button button01"><span data-hover="活动中心">&nbsp;活动中心&nbsp;</span></a>
@@ -49,17 +47,28 @@
                     <c:when test="${userLogin!=undefined}">
                         <a href="" style="">
                             <li class="login1">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hahaha.png" alt="" class="allheader">
-                                <span id="newMsg" style="width: 5px;height: 5px;background-color: red;display:none;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
+                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hahaha.png" alt=""
+                                     class="allheader">
+                                <span id="newMsg"
+                                      style="width: 5px;height: 5px;background-color: red;display:none;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
                                 <ul class="head-menu">
                                     <li class="head_new2">
-                                        <span class="fa fa-user" style="color: #666;float: left;font-size: 16px;margin-right: 5px;line-height: 22px"></span>
-                                        <span style="float: left"><a href="###" style="width: 80px;display: inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height: 22px">${userLogin.loginCount}</a></span>
+                                        <span class="fa fa-user"
+                                              style="color: #666;float: left;font-size: 16px;margin-right: 5px;line-height: 22px"></span>
+                                        <span style="float: left">
+                                            <c:if test="${userLogin.loginType == 0}">
+                                                <a href="${pageContext.request.contextPath}/Member/selMemberInfo.do" style="width: 80px;display: inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height: 22px">${userLogin.loginCount}</a>
+                                            </c:if>
+                                            <c:if test="${userLogin.loginType == 1}">
+                                                <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyName.do" style="width: 80px;display: inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height: 22px">${userLogin.loginCount}</a>
+                                            </c:if>
+                                        </span>
                                         <span style="float: right"><a href="${pageContext.request.contextPath}/XzLogin/ExitUser.do">注销</a></span>
                                         <span style="float: right;margin-right: 5px"><a href="${pageContext.request.contextPath}/xzMsg/selMsgAll.do" class="fa fa-envelope" style="color: #fc6866"> (<span id="noread">10</span>)</a></span>
                                     </li>
                                     <li><span class="head_new"></span><a href="${pageContext.request.contextPath}/zp_index">招聘中心</a></li>
-                                    <li><span class="head_new"></span><a href="${pageContext.request.contextPath}/view/foreEnd3/safe.html">账号安全</a></li>
+                                    <li><span class="head_new"></span><a href="${pageContext.request.contextPath}/view/foreEnd3/safe.html">账号安全</a>
+                                    </li>
                                 </ul>
                             </li>
                         </a>
@@ -69,8 +78,7 @@
                             <a href="#0" class="allregister" style="margin-top: 13px"><span>注册</span></a>
                         </li>
                         <li class="login1">
-                            <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html"
-                               style="margin-top: 13px"><span>登录</span></a>
+                            <a href="${pageContext.request.contextPath}/view/foreEnd3/login.html" style="margin-top: 13px"><span>登录</span></a>
                         </li>
                     </c:otherwise>
                 </c:choose>
@@ -89,7 +97,7 @@
             </a>
             <a href="${pageContext.request.contextPath}/XzRegister/goRegisterC.do">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/gong.png" alt="" class="re_im">
-               <span class="head_span">企业注册</span>
+                <span class="head_span">企业注册</span>
             </a>
         </div>
         <a href="#0" class="all_close cmd_close"></a>
@@ -115,51 +123,50 @@
 </body>
 <script>
     $(function () {
-        if(${userLogin==null}){
-            if(getCookie("count")!=null&&getCookie("pw")!=null){
+        if (${userLogin==null}) {
+            if (getCookie("count") != null && getCookie("pw") != null) {
                 $.ajax({
-                    url:'${pageContext.request.contextPath}/XzLogin/LoginCookie.do',
-                    data:{username:getCookie("count"),password:getCookie("pw")},
-                    success:function (data) {
-                        if(data.msg=="ok"){
+                    url: '${pageContext.request.contextPath}/XzLogin/LoginCookie.do',
+                    data: {username: getCookie("count"), password: getCookie("pw")},
+                    success: function (data) {
+                        if (data.msg == "ok") {
                             window.location.reload();
                         }
                     }
                 });
             }
-        }else{
+        } else {
             $.ajax({
-                url:'${pageContext.request.contextPath}/xzMsg/noRaadCount.do',
-                success:function (data) {
-                    if(data.count>0){
+                url: '${pageContext.request.contextPath}/xzMsg/noRaadCount.do',
+                success: function (data) {
+                    if (data.count > 0) {
                         $('#newMsg').show();
                         $('#noread').text(data.count);
-                    }else{
+                    } else {
                         $('#newMsg').hide();
                         $('#noread').text("0");
                     }
                     setTimeout(function () {
                         $.ajax({
-                            url:'${pageContext.request.contextPath}/xzMsg/noRaadCount.do',
-                            success:function (data) {
-                                if(data.count>0){
+                            url: '${pageContext.request.contextPath}/xzMsg/noRaadCount.do',
+                            success: function (data) {
+                                if (data.count > 0) {
                                     $('#newMsg').show();
                                     $('#noread').text(data.count);
-                                }else{
+                                } else {
                                     $('#newMsg').hide();
                                     $('#noread').text("0");
                                 }
                             }
                         });
-                    },10000);
+                    }, 10000);
                 }
             });
         }
     })
-    function getCookie(name)
-    {
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-        if(arr=document.cookie.match(reg))
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg))
             return arr[2];
         else
             return null;

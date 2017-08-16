@@ -167,10 +167,10 @@
       <if test="loginId != null">
         login_id = #{loginId,jdbcType=BIGINT},
       </if>
-      <if test="memberName != null">
+      <if test="memberName != null and memberName !=''">
         member_name = #{memberName,jdbcType=VARCHAR},
       </if>
-      <if test="memberSex != null">
+      <if test="memberSex != null and memberSex !=''">
         member_sex = #{memberSex,jdbcType=INTEGER},
       </if>
       <if test="memberAge != null">
@@ -179,34 +179,34 @@
       <if test="memberBirth != null">
         member_birth = #{memberBirth,jdbcType=DATE},
       </if>
-      <if test="memberEducation != null">
+      <if test="memberEducation != null and memberEducation !=''">
         member_education = #{memberEducation,jdbcType=VARCHAR},
       </if>
-      <if test="memberIdcard != null">
+      <if test="memberIdcard != null and memberIdcard !=''">
         member_Idcard = #{memberIdcard,jdbcType=VARCHAR},
       </if>
-      <if test="memberPicture != null">
+      <if test="memberPicture != null and memberPicture !=''">
         member_picture = #{memberPicture,jdbcType=VARCHAR},
       </if>
-      <if test="memberPhone != null">
+      <if test="memberPhone != null and memberPhone != ''">
         member_phone = #{memberPhone,jdbcType=VARCHAR},
       </if>
-      <if test="memberAddress != null">
+      <if test="memberAddress != null and memberAddress!=''">
         member_address = #{memberAddress,jdbcType=VARCHAR},
       </if>
-      <if test="memberEmail != null">
+      <if test="memberEmail != null and memberEmail !=''">
         member_email = #{memberEmail,jdbcType=VARCHAR},
       </if>
       <if test="deleteMemberDate != null">
         delete_member_date = #{deleteMemberDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="filed1 != null">
+      <if test="filed1 != null and filed1 !=''">
         filed1 = #{filed1,jdbcType=VARCHAR},
       </if>
-      <if test="filed2 != null">
+      <if test="filed2 != null and filed2 !=''">
         filed2 = #{filed2,jdbcType=VARCHAR},
       </if>
-      <if test="filed3 != null">
+      <if test="filed3 != null and filed3 !=''">
         filed3 = #{filed3,jdbcType=VARCHAR},
       </if>
       <if test="deleteFalt != null">
