@@ -34,6 +34,9 @@
     <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.0.0-M2" level="project" />
     <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.0.0-M4" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-codec:commons-codec:1.9" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:itext-asian:5.2.0" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf:itextpdf:5.5.1" level="project" />
+    <orderEntry type="library" name="Maven: com.itextpdf.tool:xmlworker:5.5.7" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk:1.10.26" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-support:1.10.26" level="project" />
     <orderEntry type="library" name="Maven: com.amazonaws:aws-java-sdk-simpledb:1.10.26" level="project" />
@@ -140,7 +143,7 @@
     <orderEntry type="library" name="Maven: org.ow2.asm:asm:4.2" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.17.1-GA" level="project" />
     <orderEntry type="library" name="Maven: com.sun.mail:javax.mail:1.5.2" level="project" />
-    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.0.2" level="project" />

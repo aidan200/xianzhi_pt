@@ -7,4 +7,7 @@ import com.xzlcPT.bean.XzMember;
  */
 public interface XzMemberService {
     int updateMember(XzMember member);
+    XzMember selXzMemberInf(Long memberId);
+    int updateByPrimaryKeyInfo(XzMember record);
+    int updateByPrimaryKeySelective(XzMember xzMember);
 }
