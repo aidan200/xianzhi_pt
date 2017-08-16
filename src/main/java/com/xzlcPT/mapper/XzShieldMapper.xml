@@ -20,4 +20,9 @@
     <delete id="deleteById" parameterType="com.xzlcPT.bean.XzShield">
         delete from  xz_shield where  resume_id=#{resumeId,jdbcType=BIGINT} AND company_id=#{companyId,jdbcType=BIGINT}
     </delete>
+    <select id="selByCompanyId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM xz_shield WHERE company_id = #{companyId,jdbcType=BIGINT}
+    </select>
 </mapper>

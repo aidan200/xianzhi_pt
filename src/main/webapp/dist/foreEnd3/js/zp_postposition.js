@@ -308,6 +308,7 @@ Qbzt.prototype.seekCont=function (){
     return _public_ssk
 }
 Qbzt.prototype.init=function (){            //初始化载入数据
+    alert()
     var This=this;
     var data=This.seekCont();
     This.cg=function (){
@@ -452,7 +453,7 @@ Ytd.prototype.init=function (){            //初始化载入数据
 }
 Ytd.prototype.xxk_sj=function (){            //初始化载入数据
     var This=this;
-    This.init();
+
     $('#myTab li a').eq(1).unbind().on('click',function (){
         This.init();
     })
@@ -564,7 +565,7 @@ Yck.prototype.init=function (){            //初始化载入数据
 }
 Yck.prototype.xxk_sj=function (){            //初始化载入数据
     var This=this;
-    This.init();
+
     $('#myTab li a').eq(2).unbind().on('click',function (){
         This.init();
     })
@@ -783,7 +784,7 @@ Msyy.prototype.sj=function (){
 
 $(function (){
     var qbzt=new Qbzt();
-    qbzt.xxk_sj();
+
 
     var ytd=new Ytd();
     ytd.xxk_sj();
@@ -800,7 +801,7 @@ $(function (){
             $('#myTab a').eq(1).click();
         }
     }else{
-        qbzt.init()             //默认初始化
+        qbzt.xxk_sj()             //默认初始化
     }
 
 
