@@ -1884,9 +1884,11 @@ textarea {
 }
 
 .index_hui {
+    padding-left: 10px;
     margin-top: 10px;
-    width: 120px;
-    height: 60px;
+    float: left;
+    width: 80px;
+    height: 40px;
     margin-bottom: 10px;
 }
 
@@ -1899,6 +1901,7 @@ textarea {
 }
 
 .index_pos {
+    float: left;
     margin-top: 3px;
     font-size: 14px;
     width: 100%;

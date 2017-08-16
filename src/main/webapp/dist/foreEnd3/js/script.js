@@ -18,6 +18,11 @@ window.onscroll = function () {
     }else{
         nav.style.backgroundColor = "rgba("+vlu+","+kj+")";
     }
+    var ddds = document.getElementsByClassName("ddds")[0];
+    console.log(ddds.getBoundingClientRect().top);
+    if(ddds.getBoundingClientRect().top< 400){
+        gozhiweig();
+    }
 }
 //获取真实样式
 var getStyle = function (element,attr) {
