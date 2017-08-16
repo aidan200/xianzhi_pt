@@ -3120,7 +3120,7 @@ obj_gssc.prototype.init=function (){
             }else{
                 var str=''
                 for(var i=0;i<This.pb.clist.length;i++){
-                    str+='<li><span data-id="'+This.pb.clist[i].companyId+'">'+This.pb.clist[i].companyName+'</span><a href="javascript:;" class="li_sc"><span class="fa fa-times"></span></a></li>'
+                    str+='<li><span class="zp_no" data-id="'+This.pb.clist[i].companyId+'">'+This.pb.clist[i].companyName+'</span><a href="javascript:;" class="li_sc"><span class="fa fa-times"></span></a></li>'
                 }
                 $('#pb_gs').html(str);
                 This.bindingSJ();
@@ -3216,7 +3216,7 @@ obj_gssc.prototype.bindingSJ=function (){
                         //AJAX成功后执行的
                         var str=''
                         for(var i=0;i<data.plist.length;i++){
-                            str+='<li><span  data-id="'+data.plist[i].companyId+'">'+data.plist[i].companyName+'</span><a href="javascript:;" class="li_sc"> <span class="fa fa-check" style="color: #FFFFff"></span></a></li>'
+                            str+='<li><span class="zp_no" data-id="'+data.plist[i].companyId+'">'+data.plist[i].companyName+'</span><a href="javascript:;" class="li_sc"> <span class="fa fa-check" style="color: #FFFFff"></span></a></li>'
                         }
                         $('#sy > ul').html(str);
                         $('#sy > ul').find('li').on('click',function (){             //添加公司的事件
