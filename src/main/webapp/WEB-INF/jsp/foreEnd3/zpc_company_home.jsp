@@ -99,18 +99,19 @@
             </div>
             <div class="comh_rz">
                 <h4>公司审核状态</h4>
-                <div class="comh_rr" style="padding-bottom: 20px">
-                    <a href="###">
-                        <div class="comh_cir">已提交</div>
-                    </a>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowx.png" alt="" class="comh_arr">
-                    <a href="###">
-                        <div class="comh_cir">审核中</div>
-                    </a>
-                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowx.png" alt="" class="comh_arr">
-                    <a href="###">
-                        <div class="comh_cir">已完成</div>
-                    </a>
+
+                <div class="comh_rr" id="gs_shzt" style="padding-bottom: 20px">
+                    <%--<a href="###">--%>
+                        <%--<div class="comh_cir">已提交</div>--%>
+                    <%--</a>--%>
+                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowx.png" alt="" class="comh_arr">--%>
+                    <%--<a href="###">--%>
+                        <%--<div class="comh_cir">审核中</div>--%>
+                    <%--</a>--%>
+                    <%--<img src="${pageContext.request.contextPath}/dist/foreEnd3/img/arrowx.png" alt="" class="comh_arr">--%>
+                    <%--<a href="###">--%>
+                        <%--<div class="comh_cir">已完成</div>--%>
+                    <%--</a>--%>
                 </div>
 
             </div>

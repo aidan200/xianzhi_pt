@@ -308,7 +308,7 @@ Qbzt.prototype.seekCont=function (){
     return _public_ssk
 }
 Qbzt.prototype.init=function (){            //初始化载入数据
-    alert()
+
     var This=this;
     var data=This.seekCont();
     This.cg=function (){
@@ -479,7 +479,7 @@ var This=this;
             qxdx.pages=data.pages;
             qxdx.jl.yck=data.page;
             qxdx.total=data.total;
-            $('#pop_three .pop_span span').html(qxdx.total);          //总记录数
+            $('#pop_three .comh_span span').html(qxdx.total);          //总记录数
             if(data.postionSendList.length!=0){
 
                 for(var i=0;i<data.postionSendList.length;i++){
@@ -495,16 +495,18 @@ var This=this;
                     var date1= data.postionSendList[i].sendTime1;          //计算几小时以前
                     var date2=new Date();
                     var date3=date2-date1;
-                    if(date3<3600000){
+
+                    if(date3<60000*60){
                         str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000)+'分钟前</span></li>'
 
-                    }else if(date3<3600000*24){
-                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/6000/60)+'小时前</span></li>'
+                    }else if(date3<60000*60*24){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000/60)+'小时前</span></li>'
 
-                    }else if (date3>3600000*24){
-                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/3600000/24)+'天前</span></li>'
+                    }else if (date3>60000*60*24){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000/60/24)+'天前</span></li>'
 
                     }
+
                     str+='</ul>'
                     str+='</div>'
 
@@ -571,6 +573,7 @@ Yck.prototype.xxk_sj=function (){            //初始化载入数据
     })
 
 }
+
 
 function Msyy(){         //已投递
 
@@ -784,7 +787,6 @@ Msyy.prototype.sj=function (){
 
 $(function (){
     var qbzt=new Qbzt();
-
 
     var ytd=new Ytd();
     ytd.xxk_sj();
