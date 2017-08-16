@@ -125,7 +125,7 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //应聘职位
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'  //应聘职位
                         str+='<td class="all_no">'
-                        str+='<a href="javascript:;" class="zw_yl">预览</a>'
+                        str+='<a href="'+path+'Resume/selResumeInfoCom.do?resumeId='+data.list[i].resumeId+'"  target="_blank" class="zw_yl">预览</a>'
                         str+='&nbsp;'
                         str+='<a href="javascript:;" class="zw_sc">删除</a>'
 
@@ -442,9 +442,18 @@ Public.prototype.yyms=function (parent,This){        //面试通知
         })
     })
 }
-Public.prototype.xlk=function (parent,cont){        //面试通知
+Public.prototype.yl_jl=function (parent,fn){        //面试通知
+    $(parent).find('.zw_yl').unbind().on('click',function (){
+        var parent=$(this).parent().parent();               //获取到
+        var data={
+            sendId:parent.attr('data-id')
+        };
+        if(fn){
+            var click=$('#myTab a').eq(3);
+            fn(data,click)
+        }
+    })
 
-    $(parent).find('.yxgt_select').html(cont)
 }
 
 function Jlrzp(){                   //未查看
@@ -498,11 +507,8 @@ Jlrzp.prototype.JS=function (){                     //
 }
 Jlrzp.prototype.yl=function (){     //预览事件
     var This=this;
-    $('#rem_one').find('.zw_yl').unbind().on('click',function(){        //意向沟通事件
-        var parent=$(this).parent().parent();               //获取到
-        var data={
-            sendId:parent.attr('data-id')
-        };
+    function cg(data,click){
+        alert('我执行了函数');
         $.ajax({
             type:"post",    //提交方式
             async:true,  //是否异步
@@ -510,13 +516,14 @@ Jlrzp.prototype.yl=function (){     //预览事件
             dataType:'text',                   //定义返回data类型
             url:path+'PostionSend/updateState1.do',    //路径
             success:function (data){//data 就是数据 json
-                This.upload();
+                click.click();
             },error:function (){ //报错执行的
                 alert('基本资料修改错误')
             }
 
         })
-    })
+    }
+    This.yl_jl('#rem_one',cg)                //这是简历预览
     This.sc('#rem_one',This)                 //删除方法
 
 }
@@ -864,6 +871,8 @@ Zdxz.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 
 
                     str+='<td class="all_no">'
+                    str+='<a href="'+path+'Resume/selResumeInfoCom.do?resumeId='+data.list[i].resumeId+'"  target="_blank" class="zw_yl">预览</a>'
+                    str+='&nbsp;'
                     str+='<a href="javascript:;" class="zw_yums">预约面试</a>'
                     str+='&nbsp;'
                     str+='<a href="javascript:;" class="zw_sc">删除</a>'
@@ -920,6 +929,8 @@ Zdxz.prototype.upload=function (){     //初始化加载
 }
 Zdxz.prototype.JS=function (){                     //点击事件加载
     var This=this
+    This.yl_jl('#rem_three');
+
     $('#myTab li a').eq(1).unbind().on('click',function (){      //经理人应聘选项卡加载
         This.upload();
     })
@@ -993,7 +1004,9 @@ Wdsc.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
 
 
                     str+='<td class="all_no">'
-                    str+='<a href="javascript:;" class="zw_yl">预约面试</a>'
+                    str+='<a href="'+path+'Resume/selResumeInfoCom.do?resumeId='+data.list[i].resumeId+'"  target="_blank" class="zw_yl">预览</a>'
+                    str+='&nbsp;'
+                    str+='<a href="javascript:;" class="zw_yy">预约面试</a>'
                     str+='&nbsp;'
                     str+='<a href="javascript:;" class="zw_sc">删除</a>'
 
@@ -1061,7 +1074,7 @@ Wdsc.prototype.JS=function (){                     //点击事件加载
 }
 Wdsc.prototype.yl=function (){     //预览事件
     var This=this;
-    $('#rem_four').find('.zw_yl').unbind().on('click',function(){        //预览事件
+    $('#rem_four').find('.zw_yy').unbind().on('click',function(){        //预览事件
         var parent2=$(this).parent().parent();               //获取到
         if(parent=='#rem_five'){
             $('.allnew3_tan .zw').css({"display":"none"});
@@ -1177,7 +1190,7 @@ $(function (){
     zdxz.JS();             //点击时候执行
 
     var  wdsc=new Wdsc();
-    wdsc.JS();             //点击时候执行
+    wdsc.JS();
 
 
     //    带确定和取消的弹出框
