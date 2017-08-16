@@ -31,7 +31,7 @@ public class ShieldController  extends BaseController{
 
     @Autowired
     private XzCompanyService xzCompanyService;
-
+    //查看我屏蔽的公司
     @ResponseBody
     @RequestMapping("selByResumeId")
     private Map selByResumeId(Long resumeId){
@@ -49,18 +49,21 @@ public class ShieldController  extends BaseController{
         }
         return map;
     }
+    //屏蔽公司
     @ResponseBody
     @RequestMapping("insertShield")
     private int insertShield(@RequestBody XzShield xzShield){
         int i=xzShieldService.insertShield(xzShield);
         return i;
     }
+    //取消屏蔽
     @ResponseBody
     @RequestMapping("deleteById")
     private  int deleteById(@RequestBody XzShield xzShield){
         int i=xzShieldService.deleteById(xzShield);
         return i;
     }
+
 
 
 }

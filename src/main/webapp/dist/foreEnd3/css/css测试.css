@@ -8347,3 +8347,17 @@ footer {
     transition: all 250ms linear;
     border-radius: 3px;
 }
+
+/*地点小按钮*/
+
+.m_dd_button{
+    background: url('../../../dist/foreEnd3/img/zp_gsxq_hy_k.png');
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 3px;
+    right: 240px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+}

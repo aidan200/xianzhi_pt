@@ -18,6 +18,9 @@
 <head>
     <jsp:include page="distforeEnd.jsp"/>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jquery-v1.8.2.js"></script>
+    <script>
+        var cs=0;
+    </script>
 </head>
 <body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
@@ -146,7 +149,7 @@
         </div>
 
     <div style="clear: both"></div>
-    <c:forEach var="r1" items="${resumeList}">
+    <c:forEach var="r1" items="${resumeList}" varStatus="count">
     <div class="ses_have">
         <div class="ses_left">
             <c:choose>
@@ -201,8 +204,30 @@
             </div>
             </c:forEach>
             <div class="ses_time">
-                <span><span>4</span>个小时前</span>
+                <span class="sph"></span>
             </div>
+            <script>
+                (function aa(){
+                    var b='${count.index}'
+
+                    var data1='${r1.resumeFlash.time}'
+                    var data2=new Date().getTime();
+                    var data3=data2-data1;
+
+                    var str=''
+                    if(data3<60000*60){
+                        str+='<span>'+Math.floor(data3/60000)+'分钟前</span>'
+                    }else if(data3<60000*60*24){
+                        str+='<span>'+Math.floor(data3/60000/60)+'小时前</span>'
+                    }else if (data3>60000*60*24){
+                        str+='<span >'+Math.floor(data3/60000/60/24)+'天前</span>'
+                    }
+                    $('.ses_have').eq(b).find('.sph').html(str)
+                }())
+
+            </script>
+
+
         </div>
     </div>
     </c:forEach>
@@ -319,6 +344,7 @@
             $('#').val()
         }*/
     });
+
 </script>
 </body>
 </html>
