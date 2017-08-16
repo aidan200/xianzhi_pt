@@ -1899,6 +1899,9 @@ textarea {
     overflow: hidden;
 
 }
+.index_com > a{
+    color: #FFFFff;
+}
 
 .index_pos {
     float: left;
@@ -1910,7 +1913,7 @@ textarea {
 }
 
 .index_pos > a {
-    color: #3d9ccc;
+    color: #FFFFff;
 }
 
 .index_01tag {
