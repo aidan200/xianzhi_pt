@@ -8,7 +8,7 @@
     <result column="member_sex" jdbcType="INTEGER" property="memberSex" />
     <result column="member_age" jdbcType="INTEGER" property="memberAge" />
     <result column="member_education" jdbcType="VARCHAR" property="memberEducation" />
-    <result column="member_IDcard" jdbcType="VARCHAR" property="memberIDcard" />
+    <result column="member_Idcard" jdbcType="VARCHAR" property="memberIdcard" />
     <result column="member_phone" jdbcType="VARCHAR" property="memberPhone" />
     <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
     <result column="member_address" jdbcType="VARCHAR" property="memberAddress" />
@@ -20,10 +20,10 @@
     <result column="login_id" jdbcType="BIGINT" property="loginID" />
   </resultMap>
   <sql id="Base_Column_List">
-    member_id, login_id, member_name, member_sex, member_age, member_education, member_IDcard, member_phone, member_picture,member_address,member_email
+    member_id, login_id, member_name, member_sex, member_age, member_education, member_Idcard, member_phone, member_picture,member_address,member_email
   </sql>
   <sql id="Base_Column_List1">
-    member_id, login_id, member_name, member_sex, member_age, member_education, member_IDcard, member_phone, member_picture,member_address,member_email,delete_member_date, delete_falt
+    member_id, login_id, member_name, member_sex, member_age, member_education, member_Idcard, member_phone, member_picture,member_address,member_email,delete_member_date, delete_falt
   </sql>
 
   <select id="selectUserByID" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzMember">
@@ -50,7 +50,7 @@
     member_sex = #{memberSex,jdbcType=INTEGER},
     member_age = #{memberAge,jdbcType=INTEGER},
     member_education = #{memberEducation,jdbcType=VARCHAR},
-    member_IDcard = #{memberIDcard,jdbcType=VARCHAR},
+    member_Idcard = #{memberIdcard,jdbcType=VARCHAR},
     member_phone = #{memberPhone,jdbcType=VARCHAR},
     member_picture = #{memberPicture,jdbcType=VARCHAR},
     member_address = #{memberAddress,jdbcType=VARCHAR},
@@ -69,8 +69,8 @@
     <if test="memberSex!=null and memberSex!=0 ">
       and member_sex = #{memberSex}
     </if>
-    <if test="memberIDcard!=null and memberIDcard!=''">
-      and member_IDcard like CONCAT('%', #{memberIDcard},'%')
+    <if test="memberIdcard!=null and memberIdcard!=''">
+      and member_Idcard like CONCAT('%', #{memberIdcard},'%')
     </if>
   </select>
 
@@ -98,8 +98,8 @@
       <if test="memberEducation != null">
         member_education = #{memberEducation},
       </if>
-      <if test="memberIDcard != null">
-        member_IDcard = #{memberIDcard},
+      <if test="memberIdcard != null">
+        member_Idcard = #{memberIdcard},
       </if>
       <if test="memberPhone != null">
         member_phone = #{memberPhone},

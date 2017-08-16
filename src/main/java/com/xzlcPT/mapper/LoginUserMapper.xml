@@ -28,7 +28,7 @@
             <result column="member_age" jdbcType="INTEGER" property="memberAge" />
             <result column="member_birth" jdbcType="DATE" property="memberBirth" />
             <result column="member_education" jdbcType="VARCHAR" property="memberEducation" />
-            <result column="member_IDcard" jdbcType="VARCHAR" property="memberIDcard" />
+            <result column="member_Idcard" jdbcType="VARCHAR" property="memberIdcard" />
             <result column="member_phone" jdbcType="VARCHAR" property="memberPhone" />
             <result column="member_picture" jdbcType="VARCHAR" property="memberPicture" />
             <result column="member_address" jdbcType="VARCHAR" property="memberAddress" />
