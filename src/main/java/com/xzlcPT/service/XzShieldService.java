@@ -16,4 +16,6 @@ public interface XzShieldService {
     int insertShield(XzShield xzShield);
 
     int deleteById(XzShield xzShield);
+
+    List<XzShield> selByCompanyId(Long companyId);
 }

@@ -130,10 +130,6 @@
 <%--</div>--%>
 
 <jsp:include page="behindforeEnd.jsp"/>
-<div id="index_bb">
-    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/dfdf.png" alt="" id="goTopBtn">
-</div>
-<a href="###"><img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ghh.png" alt="" class="index_gh"></a>
 
 
 <script type="text/javascript">
@@ -228,7 +224,7 @@
 
     })
 </script>
-<script src="${pageContext.request.contextPath}/dist/foreEnd3/js/gotop.js"></script>
+
 
 </body>
 </html>

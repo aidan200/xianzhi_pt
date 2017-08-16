@@ -110,8 +110,9 @@
             <div class="zp_zwxq_cont_left_zwms">
                 <h3>职位描述：</h3>
                 <div>
-                    <div class="zp_awxq_t">
-                        ${xzPostion.postionDescription}
+                    <input type="hidden" id="h1" value="${xzPostion.postionDescription}">
+                    <div class="zp_awxq_t" id="sp1">
+
                     </div>
                 </div>
             </div>
@@ -128,8 +129,9 @@
                 <h3>企业介绍：</h3>
 
                 <div class="wrap5">
-                    <div>
-                        ${xzPostion.company.companyIntro}
+                    <input type="hidden" id="h2" value="${xzPostion.company.companyIntro}">
+                    <div id="d2">
+
                     </div>
                 </div>
                 <div class="read-more5"></div>
@@ -485,6 +487,10 @@
             }
         })
     }
+    var intro1 = $('#h1').val().replace(/\n/g, "<br>");
+    $('#sp1').html(intro1);
+    var intro2 = $('#h2').val().replace(/\n/g, "<br>");
+    $('#d2').html(intro2);
 </script>
 
 </body>

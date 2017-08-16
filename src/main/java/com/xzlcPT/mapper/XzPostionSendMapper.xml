@@ -527,8 +527,11 @@
     <if test="educationLevel !=null and educationLevel !=''">
     and e.education_level=#{educationLevel,jdbcType=VARCHAR}
     </if>
-    <if test="resumeSex != null and resumeSex !=''">
-    and r.resume_sex=#{resumeSex,jdbcType=INTEGER}
+    <if test="resumeSex == 0">
+      and r.resume_sex = #{resumeSex,jdbcType=INTEGER}
+    </if>
+    <if test="resumeSex == 1">
+      and r.resume_sex = #{resumeSex,jdbcType=INTEGER}
     </if>
     <if test="resumeName != null and resumeName !=''">
     and r.resume_name like concat('%',#{resumeName,jdbcType=VARCHAR},'%')
@@ -536,11 +539,20 @@
     <if test="resumeWorkspace != null and resumeWorkspace !=''">
     and r.resume_workspace like concat('%',#{resumeWorkspace,jdbcType=VARCHAR},'%')
     </if>
-    <if test="resumeBirthMin != null and resumeBirthMin !=''">
-    and YEAR(#{date,jdbcType=TIMESTAMP})-YEAR(r.resume_birth)&gt;#{resumeBirthMin,jdbcType=INTEGER}
+    <if test="birthMin != null and birthMin !=''">
+    and YEAR(NOW())-YEAR(r.resume_birth) &gt; #{birthMin,jdbcType=INTEGER}
     </if>
-    <if test="resumeBirthMax != null and resumeBirthMax !=''">
-    and YEAR(#{date,jdbcType=TIMESTAMP})-YEAR(r.resume_birth)&lt;#{resumeBirthMax,jdbcType=INTEGER}
+    <if test="birthMax != null and birthMax !=''">
+    and YEAR(NOW())-YEAR(r.resume_birth) &lt; #{birthMax,jdbcType=INTEGER}
+    </if>
+    <if test="lifeMin !=null and lifeMin !=''">
+      and r.resume_intent_ym &gt;#{lifeMin,jdbcType=INTEGER}
+    </if>
+    <if test="lifeMax !=null and lifeMax !=''">
+      and r.resume_intent_ym &lt;#{lifeMax,jdbcType=INTEGER}
+    </if>
+    <if test="resumePostion != null and resumePostion !=''">
+      and r.resume_position like concat('%',#{resumePostion,jdbcType=VARCHAR},'%')
     </if>
   </select>
 </mapper>

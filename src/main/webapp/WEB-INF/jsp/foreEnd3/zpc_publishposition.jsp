@@ -46,7 +46,7 @@
 
 
                         <input type="text" class="pup_input" style="width: 380px" name="postionSpace" id="postionSpace">
-                        <em  id="em_postionSpace" class="em_dz"></em>
+                        <em  id="em_postionSpace" class="m_dd_button"></em>
                         <div class="pup_text">注：1.职位发布后省/市/区不可以修改。2.填写街道、楼宇详细地址，有利于职位曝光。</div>
                         <span class="tag_bubble"><div class="tag2">工作名不能为空</div></span>
                     </div>

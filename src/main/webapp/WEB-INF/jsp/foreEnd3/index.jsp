@@ -751,7 +751,11 @@
         })
 //$(function () {
 //    $(".index_no").click(function () {
-//        $(this).parent().remove();
+//        $(this).animate({
+//            width:'50px',
+//            height:'50px'
+//        });
+////        $(this).parent().remove();
 //
 //    })
 //})

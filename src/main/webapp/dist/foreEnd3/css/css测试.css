@@ -7773,6 +7773,13 @@ footer {
     color: #3d9ccc;
 }
 
+.rei_spans{
+    text-align: center;
+    padding: 2px 3px;
+    margin-right: 10px;
+    background-color: #EEEEEE;
+}
+
 .rei_leftop {
     margin-top: 50px;
     padding-left: 20px;
@@ -7786,11 +7793,13 @@ footer {
 }
 
 .rei_ji {
+    min-width: 50px;
     padding: 3px 5px 3px 5px;
     background-color: #FFA500;
     color: #FFFFff;
     margin: 5px 5px 5px 0;
     display: inline-block;
+    text-align: center;
 }
 
 .rei_bottom {
@@ -8337,4 +8346,18 @@ footer {
     -webkit-transition: all 250ms linear;
     transition: all 250ms linear;
     border-radius: 3px;
+}
+
+/*地点小按钮*/
+
+.m_dd_button{
+    background: url('../../../dist/foreEnd3/img/zp_gsxq_hy_k.png');
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 3px;
+    right: 240px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
 }
