@@ -11,12 +11,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/Time.css">
     <jsp:include page="distforeEnd.jsp"/>
     <style>
         .readonly input {
             border: none
         }
+        .readonly select {
+            border: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        button[disabled],
+        html input[disabled] {
+            cursor: default;
+            background-color: #FFFFff;
+        }
     </style>
+    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
 </head>
 <body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
@@ -36,9 +49,14 @@
                 <div class="pef_sec">
                     <ul id="dvInput" class="readonly">
                         <li>姓&emsp;名：<input type="text" name="memberName" readonly value="${member.memberName}" class="pef_input"/></li>
-                        <li>性&emsp;别：<input type="text" name="memberSex" readonly value="${member.memberSex}" class="pef_input"/></li>
+                        <li>性&emsp;别：<select class="pef_input" name="memberSex" disabled="true" id="selectid">
+                                <option value="">男</option>
+                                <option value="">女</option>
+                            </select>
+                            <%--<input type="text" name="memberSex" readonly value="${member.memberSex}" class="pef_input"/>--%>
+                        </li>
                         <li>年&emsp;龄：<input type="text" name="memberAge" readonly value="${member.memberAge}" class="pef_input"/></li>
-                        <li>生&emsp;日：<input type="text" name="memberBirth" readonly value="${member.memberBirth}" class="pef_input"/></li>
+                        <li>生&emsp;日：<input type="text" name="memberBirth" readonly value="${member.memberBirth}" class="pef_input" id="indate" disabled="true"/></li>
                         <li>电&emsp;话：<input type="text" name="memberPhone" readonly value="${member.memberPhone}" class="pef_input"/></li>
                         <li>身份证：<input type="text" name="memberIdcard" readonly value="${member.memberIdcard}" class="pef_input"/></li>
                         <li>地&emsp;址：<input type="text" name="memberAddress" readonly value="${member.memberAddress}" class="pef_input"/></li>
