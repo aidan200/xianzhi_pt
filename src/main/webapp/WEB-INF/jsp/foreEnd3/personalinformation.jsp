@@ -16,18 +16,7 @@
         .readonly input {
             border: none
         }
-        .readonly select {
-            border: none;
-            outline: none;
-        }
-        button[disabled],
-        html input[disabled] {
-            cursor: default;
-            background-color: #FFFFff;
-        }
     </style>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/Time.css">
-    <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
 </head>
 <body style="background-color: #f0f0f0">
 <jsp:include page="headerforeEnd.jsp"/>
@@ -46,19 +35,13 @@
                 </div>
                 <div class="pef_sec">
                     <ul id="dvInput" class="readonly">
-                        <li>姓&emsp;名：<input type="text" readonly value="郑秀妍" class="pef_input"/></li>
-                        <li>
-                            性&emsp;别：<select  id="selectid" disabled="disabled"  class="pef_input" style="-webkit-appearance: none;-moz-appearance: none;appearance: none;">
-                            <option value="男">男</option>
-                            <option value="女">女</option>
-                        </select>
-                        </li>
-                        <li>年&emsp;龄：<input type="text" readonly value="28" class="pef_input"/></li>
-                        <li>生&emsp;日：<input type="text" disabled="disabled" value="1989-04-18" readonly id="indate"  class="pef_input"/></li>
-
-                        <li>电&emsp;话：<input type="text" readonly value="1355576656754" class="pef_input"/></li>
-                        <li>身份证：<input type="text" readonly value="242465474568776" class="pef_input"/></li>
-                        <li>地&emsp;址：<input type="text" readonly value="而且为人发给我二个发生过法国诗人" class="pef_input"/></li>
+                        <li>姓&emsp;名：<input type="text" name="memberName" readonly value="${member.memberName}" class="pef_input"/></li>
+                        <li>性&emsp;别：<input type="text" name="memberSex" readonly value="${member.memberSex}" class="pef_input"/></li>
+                        <li>年&emsp;龄：<input type="text" name="memberAge" readonly value="${member.memberAge}" class="pef_input"/></li>
+                        <li>生&emsp;日：<input type="text" name="memberBirth" readonly value="${member.memberBirth}" class="pef_input"/></li>
+                        <li>电&emsp;话：<input type="text" name="memberPhone" readonly value="${member.memberPhone}" class="pef_input"/></li>
+                        <li>身份证：<input type="text" name="memberIdcard" readonly value="${member.memberIdcard}" class="pef_input"/></li>
+                        <li>地&emsp;址：<input type="text" name="memberAddress" readonly value="${member.memberAddress}" class="pef_input"/></li>
                     </ul>
                     <input type="button" value="修改信息" onclick="btnClick(this)" id="btn0" class="pef_but"/>
                 </div>

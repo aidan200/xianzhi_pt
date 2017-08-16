@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.*;
 
 /**
@@ -404,6 +405,55 @@ public class CompanyInfoController {
             map1.put("msg","err");
         }
         return map1;
+    }
+
+    //按公司id查询公司详情
+    @RequestMapping("selCompanyName.do")
+    public ModelAndView selCompanyName(@ModelAttribute("userLogin") XzLogin userLogin){
+        ModelAndView mv = new ModelAndView("foreEnd3/zpc_auditing");  //跳转到zpc_auditing页面
+        XzCompany xzCompany = companyService.selCompanyInf(userLogin.getCompany().getCompanyId());
+        System.out.println(xzCompany);
+        if(xzCompany.getCompanyState()==1){
+            mv.setViewName("foreEnd3/zpc_auditing2");
+        }
+        mv.addObject("company",xzCompany);
+        return mv;
+    }
+
+    //
+    @RequestMapping("updateCompanyLic.do")
+    public ModelAndView updateCompanyLic(MultipartFile file, HttpServletRequest request, @ModelAttribute("userLogin") XzLogin userLogin,XzCompany company){
+        ModelAndView mv=new ModelAndView("foreEnd3/zpc_auditing2");
+        XzCompany xzCompany = companyService.selCompanyInf(userLogin.getCompany().getCompanyId());
+        Map<String,Object> map = new HashMap<>();
+        String fileName = (file.getOriginalFilename());
+        System.out.println("开始");
+        String path = request.getSession().getServletContext().getRealPath("uploadImg");
+        String prefix=fileName.substring(fileName.lastIndexOf(".")+1);
+        fileName = new Date().getTime()+"."+prefix;
+        System.out.println(path);
+        if(company.getCompanyName() != "" && company.getCompanyName() != null){
+            xzCompany.setCompanyName(company.getCompanyName());
+        }
+        xzCompany.setLicence(fileName);// 设置营业执照
+        xzCompany.setCompanyState(1);// 设置营业执照状态
+        companyService.updateByPrimaryKeySelective(xzCompany);
+        File targetFile = new File(path, fileName);
+        if(!targetFile.exists()){
+            targetFile.mkdirs();
+        }
+        //保存
+        try {
+            file.transferTo(targetFile);
+            map.put("msg","ok");
+            map.put("imgName",fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            map.put("msg","err");
+        }
+        mv.addObject("company",xzCompany);
+        mv.addObject("map",map);
+        return mv;
     }
 
 }

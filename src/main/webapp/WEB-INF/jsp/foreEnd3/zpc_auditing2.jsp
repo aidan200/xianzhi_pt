@@ -26,11 +26,10 @@
         <div class="aud_line">
             <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/person.png" alt="" class="aud_topimg">
 
-            <div style="font-size: 20px;margin-top: 80px;margin-bottom: 10px">公司名称：<span>先知蓝创科技有限公司</span></div>
+            <div style="font-size: 20px;margin-top: 80px;margin-bottom: 10px">公司名称：<span>${company.companyName}</span></div>
             <div style="font-size: 20px;margin-bottom: 10px;color: #666">营业执照：</div>
-            <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/ying.jpg" alt="" class="aud_img2">
+            <img src="${pageContext.request.contextPath}/uploadImg/${company.licence}" alt="" class="aud_img2">
         </div>
-
     </div>
 </div>
 
