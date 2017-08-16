@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/jedate.css">--%>
+
         <link rel="stylesheet" href="${pageContext.request.contextPath}/dist/foreEnd3/css/Time.css">
     <jsp:include page="distforeEnd.jsp"/>
     <style>
@@ -36,6 +36,7 @@
             });
 
         });
+
     </script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/myDate.js"></script>
     <script src="${pageContext.request.contextPath}/dist/foreEnd3/js/jeDate.js"></script>
@@ -87,30 +88,10 @@
                         </span>
                             <span>
                         <button class="pom_b" id="xxk_01" type="button">搜索</button></span>
-                            <div class="hamburger hamburger--elastic">
-                                <div class="hamburger-box">
-                                    <div class="hamburger-inner"></div>
-                                </div>
-                            </div>
+
                         </div>
 
-                        <%--条件处理--%>
-                        <div class="rem_cen2">
-                            <span style="margin-left: 20px">所在地</span>
-                            <input type="text" class="rem_input3">
-                            <span style="margin-left: 10px">年龄</span>
-                            <input type="text" class="rem_input2">
-                            <span>至</span>
-                            <input type="text" class="rem_input2">
-                            <span style="margin-left: 10px">工作年限</span>
-                            <input type="text" class="rem_input2">
-                            <span>至</span>
-                            <input type="text" class="rem_input2">
-                            <span style="margin-left: 20px">目前公司</span>
-                            <input type="text" class="rem_input3">
-                            <span style="margin-left: 20px">目前职位</span>
-                            <input type="text" class="rem_input3">
-                        </div>
+
 
                         <%--表格--%>
                         <div class="pom_table">
@@ -756,89 +737,89 @@
         dateCell: "#indate",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate2",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate3",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate4",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate5 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate6 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate7 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate8 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate9 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
     jeDate({
         dateCell: "#indate10 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
 
     jeDate({
         dateCell: "#indate11 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
 
     jeDate({
         dateCell: "#indate12 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
 
     jeDate({
         dateCell: "#indate13 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
 
     jeDate({
         dateCell: "#indate14 ",
         format: "YYYY-MM-DD",
         isTime: false, //isClear:false,
-        minDate: "2000-01-01 00:00:00"
+        minDate: "1960-01-01 00:00:00"
     })
 
 
