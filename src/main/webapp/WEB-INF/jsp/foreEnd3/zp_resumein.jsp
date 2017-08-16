@@ -19,7 +19,6 @@
 </head>
 <body style="background-color: #EEEEEE">
 <jsp:include page="headerforeEnd.jsp"/>
-<jsp:include page="personnav.jsp"/>
 
 
 <div class="rei_all">
@@ -70,7 +69,7 @@
             <div class="rei_right">
                 <div class="rei_topr">
                     <h4><span class="fa fa-map-signs rei_col"></span> 职业意向</h4>
-                    <div>目前行业：<span>
+                    <div>目前行业：<span class="rei_spans">
                         <c:forEach items="${xzResume.fields}" var="fi" varStatus="stat1">
                            <c:if test="${fi.fieldType.equals('2')}">
                                 ${fi.fieldName}&nbsp;&nbsp;

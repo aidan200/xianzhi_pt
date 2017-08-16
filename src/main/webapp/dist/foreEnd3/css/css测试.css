@@ -7773,6 +7773,14 @@ footer {
     color: #3d9ccc;
 }
 
+.rei_spans{
+    border: 1px dashed #c0c0c0;
+    background-color: #eeeeee;
+    text-align: center;
+    padding: 2px 5px;
+    margin-right: 10px;
+}
+
 .rei_leftop {
     margin-top: 50px;
     padding-left: 20px;
@@ -7786,11 +7794,13 @@ footer {
 }
 
 .rei_ji {
+    min-width: 50px;
     padding: 3px 5px 3px 5px;
     background-color: #FFA500;
     color: #FFFFff;
     margin: 5px 5px 5px 0;
     display: inline-block;
+    text-align: center;
 }
 
 .rei_bottom {
