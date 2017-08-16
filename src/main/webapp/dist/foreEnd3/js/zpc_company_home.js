@@ -121,7 +121,7 @@ Xjl.prototype.loader=function (data,fn1,fn2,obj){
                     str+='<img src="'+path+'uploadImg/'+data.list[i].resumes.resumeIntentField+'" alt=""'        //空着呢
                     str+='class="comh_head">'
                     str+='<div class="comh_test">'
-                    str+='<h4>'+data.list[i].resumes.resumeName+'</h4>'
+                    str+='<h4><a href='+path+'Resume/selResumeInfoCom.do?resumeId='+data.list[i].resumes.resumeId+' target="_blank"">'+data.list[i].resumes.resumeName+'</a></h4>'
                     str+='<div class="comh_in">'
                     if(data.list[i].resumes.resumeSex==0){
                         str+='<span>男</span>|'
@@ -268,7 +268,7 @@ Yxgt.prototype.loader=function (data,fn1,fn2,obj){
                     str+='<img src="'+path+'uploadImg/'+data.list[i].resumes.resumeIntentField+'" alt=""'        //空着呢
                     str+='class="comh_head">'
                     str+='<div class="comh_test">'
-                    str+='<h4>'+data.list[i].resumes.resumeName+'</h4>'
+                    str+='<h4><a href='+path+'Resume/selResumeInfoCom.do?resumeId='+data.list[i].resumes.resumeId+' target="_blank"">'+data.list[i].resumes.resumeName+'</a></h4>'
                     str+='<div class="comh_in">'
                     if(data.list[i].resumes.resumeSex==0){
                         str+='<span>男</span>|'
@@ -416,7 +416,7 @@ Msyy.prototype.loader=function (data,fn1,fn2,obj){
                     str+='<img src="'+path+'uploadImg/'+data.list[i].resumes.resumeIntentField+'" alt=""'        //空着呢
                     str+='class="comh_head">'
                     str+='<div class="comh_test">'
-                    str+='<h4>'+data.list[i].resumes.resumeName+'</h4>'
+                    str+='<h4><a href='+path+'Resume/selResumeInfoCom.do?resumeId='+data.list[i].resumes.resumeId+' target="_blank"">'+data.list[i].resumes.resumeName+'</a></h4>'
                     str+='<div class="comh_in">'
                     if(data.list[i].resumes.resumeSex==0){
                         str+='<span>男</span>|'
@@ -536,12 +536,52 @@ Msyy.prototype.xxk_sj=function (){            //初始化载入数据
 
 }
 
+function gszt(){
 
+    $.ajax({
+        type:"post",    //提交方式
+        async:true,  //是否异步
+        dataType:'json',                   //定义返回data类型
+        url:path+'CompanyInfo/selCompanyInfroation.do',    //路径
+        success:function (data){//data 就是数据 json
+            var str=''
+
+            if(data.xzCompany.companyState==0){
+                str+='<a href="###">'
+                str+='<div class="comh_cir">未提交</div>'
+                str+='</a>'
+            }else if(data.xzCompany.companyState==1){
+                str+='<a href="###">'
+                str+='<div class="comh_cir">审核中</div>'
+                str+='</a>'
+            }else if(data.xzCompany.companyState==2){
+                str+='<a href="###">'
+                str+='<div class="comh_cir">已完成</div>'
+                str+='</a>'
+            }else if(data.xzCompany.companyState==3){
+                str+='<a href="###">'
+                str+='<div class="comh_cir">未通过</div>'
+                str+='</a>'
+            }
+
+            $('#gs_shzt').html(str);
+
+
+
+
+        },error:function (){ //报错执行的
+            alert('基本资料修改错误')
+        }
+
+    })
+}
 
 
 
 
 $(function (){
+
+    gszt()
     var xjl=new Xjl();
     xjl.xxk_sj();
 

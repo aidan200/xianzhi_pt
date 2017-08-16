@@ -646,7 +646,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
             eee('#jl_cstime')
@@ -1694,7 +1694,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
             $('.ttk_jl').find('.em3').eq(1).unbind().on('click',function (){
@@ -1704,7 +1704,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
 
@@ -1940,7 +1940,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                             isinitVal:true, //显示时间
                             isTime:true,
                             festival: true, //显示节日
-                            minDate:"2014-09-19"
+                            minDate:"1960-01-1"
                         })
                     })
                     $('#tck_jy').find('.em3').eq(1).unbind().on('click',function (){
@@ -1950,7 +1950,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                             isinitVal:true, //显示时间
                             isTime:true,
                             festival: true, //显示节日
-                            minDate:"2014-09-19"
+                            minDate:"1960-01-1"
                         })
                     })
 
@@ -2120,7 +2120,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
             $('#tck_jy').find('.em3').eq(1).unbind().on('click',function (){
@@ -2130,7 +2130,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
 
@@ -2333,7 +2333,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                         isinitVal:true, //显示时间
                         isTime:true,
                         festival: true, //显示节日
-                        minDate:"2014-09-19"
+                        minDate:"1960-01-1"
                     })
                 })
                 $('#ttk_xmjy').find('.em3').eq(1).unbind().on('click',function (){
@@ -2343,7 +2343,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                         isinitVal:true, //显示时间
                         isTime:true,
                         festival: true, //显示节日
-                        minDate:"2014-09-19"
+                        minDate:"1960-01-1"
                     })
                 })
                 $(this).parent().css({"display":"none"})
@@ -2505,7 +2505,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                      isinitVal:true, //显示时间
                      isTime:true,
                      festival: true, //显示节日
-                     minDate:"2014-09-19"
+                     minDate:"1960-01-1"
                  })
              })
              $('#ttk_xmjy').find('.em3').eq(1).unbind().on('click',function (){
@@ -2515,7 +2515,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                      isinitVal:true, //显示时间
                      isTime:true,
                      festival: true, //显示节日
-                     minDate:"2014-09-19"
+                     minDate:"1960-01-1"
                  })
              })
              $('.zp_jianli_zl_7').find('button').eq(1).on('click',function (){
