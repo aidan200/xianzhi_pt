@@ -105,7 +105,7 @@ Zzzp.prototype.cshjz=function (obj){               //初始化加载
                         zzzp.wcl=data.postionList[i].wcl;
                         zzzp.zdxz=data.postionList[i].zdxz;
                         zzzp.yxgt=data.postionList[i].yxgt;
-                    alert(data.postionList[i].publishTime)
+
                         zzzp.publishTime=data.postionList[i].publishTime;
                         zzzp.ms=data.postionList[i].ms;
                         This.cont[i]=zzzp;
@@ -781,9 +781,9 @@ Shwtg.prototype.cshjz=function (obj){               //初始化加载
                 var shwtg =new Shwtg();
                 shwtg.postionId=data.postionList[i].postionId;
                 shwtg.postionName=data.postionList[i].postionName;
-                shwtg.wtgyx="看你不爽"
-                shwtg.shsj="aaa"
-                shwtg.cjsj="aaa"
+                shwtg.wtgyx="空着呢"
+                shwtg.shsj=data.postionList[i].postionTime
+                shwtg.cjsj=data.postionList[i].createTime
                 This.cont[i]=shwtg;
             }
             if( This.cont.length!=0){       //判断如果后台没有查到正在招聘数据

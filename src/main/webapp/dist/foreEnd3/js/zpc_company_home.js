@@ -547,19 +547,19 @@ function gszt(){
             var str=''
 
             if(data.xzCompany.companyState==0){
-                str+='<a href="###">'
+                str+='<a href="'+path+'CompanyInfo/selCompanyName.do">'
                 str+='<div class="comh_cir">未提交</div>'
                 str+='</a>'
             }else if(data.xzCompany.companyState==1){
-                str+='<a href="###">'
+                str+='<a href="'+path+'CompanyInfo/selCompanyName.do">'
                 str+='<div class="comh_cir">审核中</div>'
                 str+='</a>'
             }else if(data.xzCompany.companyState==2){
-                str+='<a href="###">'
+                str+='<a href="'+path+'CompanyInfo/selCompanyName.do">'
                 str+='<div class="comh_cir">已完成</div>'
                 str+='</a>'
             }else if(data.xzCompany.companyState==3){
-                str+='<a href="###">'
+                str+='<a href="'+path+'CompanyInfo/selCompanyName.do">'
                 str+='<div class="comh_cir">未通过</div>'
                 str+='</a>'
             }
