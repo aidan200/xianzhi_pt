@@ -108,7 +108,8 @@
                     </span></div>
                     <div class="rei_two">职位名称：<span>${jo.jobexpPostion}</span></div>
                     <div class="rei_two2">下属人数：<span>${jo.jobexpSubordinate}</span></div>
-                    <div>职位业绩：<span></span></div>
+                        <input type="hidden" id="h5" value="${jo.jobexpDuty}">
+                    <div>职位业绩：<span id="sp5"></span></div>
                     </c:forEach>
                 </div>
 
@@ -178,7 +179,8 @@
     $("#sp3").html(content3);
     var content4 = $("#h4").val().replace(/\n/g, "<br>");
     $("#sp4").html(content4);
-
+    var content5 = $("#h5").val().replace(/\n/g, "<br>");
+    $("#sp5").html(content5);
 </script>
 </body>
 </html>
