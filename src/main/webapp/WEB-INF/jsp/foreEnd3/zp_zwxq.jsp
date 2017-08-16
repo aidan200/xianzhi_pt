@@ -152,140 +152,34 @@
                     <div class="carousel-inner" style="width: 580px">
                         <div class="item active">
                             <ul>
+                                <c:forEach items="${plist}" var="p1">
                                 <li class="zwxq_li">
                                     <div class="zwxq_new">
                                         <div>
-                                            <a href=""><span class="zw_po">职位</span></a>
+                                            <a href=""><span class="zw_po">${p1.postionName}</span></a>
                                             <button class="zw_bu">立即应聘</button>
                                         </div>
                                         <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
+                                            <span class="zw_o">
+                                                 <c:choose>
+                                                     <c:when test="${p1.postionMm<0}">
+                                                         面议
+                                                     </c:when>
+                                                     <c:when test="${p1.postionMm==cp.postionYm}">
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:when>
+                                                     <c:otherwise>
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${p1.postionYm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:otherwise>
+                                                 </c:choose>
+                                            </span>
+                                            <span class="zw_all">${p1.postionSpace}</span>|
+                                            <span class="zw_all">${p1.postionEducation}</span>|
+                                            <span class="zw_all">${p1.postionExp}年工作经验</span>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="zwxq_li">
-                                    <div class="zwxq_new">
-                                        <div>
-                                            <span class="zw_po">职位</span>
-                                            <button class="zw_bu">立即应聘</button>
-                                        </div>
-                                        <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="zwxq_li">
-                                    <div class="zwxq_new">
-                                        <div>
-                                            <span class="zw_po">职位</span>
-                                            <button class="zw_bu">立即应聘</button>
-                                        </div>
-                                        <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="item">
-                            <ul>
-                                <li class="zwxq_li">
-                                    <div class="zwxq_new">
-                                        <div>
-                                            <a href=""><span class="zw_po">职位</span></a>
-                                            <button class="zw_bu">立即应聘</button>
-                                        </div>
-                                        <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="zwxq_li">
-                                    <div class="zwxq_new">
-                                        <div>
-                                            <span class="zw_po">职位</span>
-                                            <button class="zw_bu">立即应聘</button>
-                                        </div>
-                                        <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="zwxq_li">
-                                    <div class="zwxq_new">
-                                        <div>
-                                            <span class="zw_po">职位</span>
-                                            <button class="zw_bu">立即应聘</button>
-                                        </div>
-                                        <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="item">
-                            <ul>
-                                <li class="zwxq_li">
-                                    <div class="zwxq_new">
-                                        <div>
-                                            <a href=""><span class="zw_po">职位</span></a>
-                                            <button class="zw_bu">立即应聘</button>
-                                        </div>
-                                        <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="zwxq_li">
-                                    <div class="zwxq_new">
-                                        <div>
-                                            <span class="zw_po">职位</span>
-                                            <button class="zw_bu">立即应聘</button>
-                                        </div>
-                                        <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="zwxq_li">
-                                    <div class="zwxq_new">
-                                        <div>
-                                            <span class="zw_po">职位</span>
-                                            <button class="zw_bu">立即应聘</button>
-                                        </div>
-                                        <div class="zw_we">
-                                            <span class="zw_o">面议</span>
-                                            <span class="zw_all">沈阳</span>|
-                                            <span class="zw_all">硕士</span>|
-                                            <span class="zw_all">一年工作经验</span>
-                                        </div>
-                                    </div>
-                                </li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </div>
@@ -441,10 +335,10 @@
                                             面议
                                         </c:when>
                                         <c:when test="${cp.postionMm==cp.postionYm}">
-                                            ${fn:replace((cp.postionMm*12/10000),".0","")}万
+                                            <fmt:formatNumber value="${cp.postionMm*12/10000}" maxFractionDigits="0"/>万
                                         </c:when>
                                         <c:otherwise>
-                                            ${fn:replace((cp.postionMm*12/10000),".0","")}万-${fn:replace((cp.postionYm*12/10000),".0","")}万
+                                            <fmt:formatNumber value="${cp.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${cp.postionYm*12/10000}" maxFractionDigits="0"/>万
                                         </c:otherwise>
                                     </c:choose>
                                 </span>

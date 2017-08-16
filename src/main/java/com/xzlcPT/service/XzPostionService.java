@@ -28,9 +28,9 @@ public interface XzPostionService {
 
     XzPostion selPostionInfo(Long postionId);
 
-    List<XzPostion> selInfoByName(XzPostion xzPostion);
+    PageBean<XzPostion> selInfoByName(int page,int rows,XzPostion xzPostion);
 
-    List<XzPostion> selInfoByComId(XzPostion xzPostion);
+    PageBean<XzPostion> selInfoByComId(int page,int rows,XzPostion xzPostion);
 
     int insertPostion(Map map);
 

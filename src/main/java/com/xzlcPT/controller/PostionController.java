@@ -161,11 +161,15 @@ public class PostionController extends BaseController{
     public ModelAndView selPostionInfo(@ModelAttribute("userLogin") XzLogin userLogin,Long postionId){
         ModelAndView mv=new ModelAndView("/foreEnd3/zp_zwxq");
         XzPostion xzPostion=postionService.selPostionInfo(postionId);
-        List<XzPostion> cplist=postionService.selInfoByComId(xzPostion);//该公司相似职位
+        PageBean<XzPostion> pageBean1=postionService.selInfoByComId(1,3,xzPostion);//该公司相似职位
+        List<XzPostion> cplist=pageBean1.getList();
+        PageBean<XzPostion> pageBean =postionService.selInfoByName(1,9,xzPostion);//感兴趣的职位
+        List<XzPostion> plist=pageBean.getList();
         postionBrowseService.insertPostionBrowse(postionId,userLogin.getMember().getMemberId());//职位浏览记录
         mv.addObject("cplist",cplist);
         mv.addObject("xzPostion",xzPostion);
         mv.addObject("userLogin",userLogin);
+        mv.addObject("plist",plist);
         return mv;
     }
     //可能感兴趣的职位
@@ -173,7 +177,8 @@ public class PostionController extends BaseController{
     @RequestMapping("selInfoByName.do")
     public Map selInfoByName(Long postionId){
         XzPostion xzPostion=postionService.selPostionInfo(postionId);
-        List<XzPostion> plist =postionService.selInfoByName(xzPostion);
+        PageBean<XzPostion> pageBean =postionService.selInfoByName(1,9,xzPostion);
+        List<XzPostion> plist=pageBean.getList();
         Map map=new HashMap();
         map.put("plist",plist);
         return map;
@@ -184,7 +189,8 @@ public class PostionController extends BaseController{
         ModelAndView mv=new ModelAndView("/foreEnd3/test2");
         XzPostion xzPostion=new XzPostion();
         xzPostion.setPostionName(postionName);
-        List<XzPostion> plist=postionService.selInfoByName(xzPostion);
+        PageBean<XzPostion> pageBean=postionService.selInfoByName(1,100,xzPostion);
+        List plist=pageBean.getList();
         mv.addObject("plist",plist);
         return mv;
     }
