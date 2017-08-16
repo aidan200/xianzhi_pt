@@ -3,13 +3,11 @@ package com.xzlcPT.controller;
 import com.util.PageBean;
 import com.util.PdfUtil;
 import com.util.ZipUtil;
-import com.xzlcPT.bean.XzLogin;
-import com.xzlcPT.bean.XzPostion;
-import com.xzlcPT.bean.XzResume;
-import com.xzlcPT.bean.XzResumeBrowse;
+import com.xzlcPT.bean.*;
 import com.xzlcPT.service.XzPostionService;
 import com.xzlcPT.service.XzResumeBrowseService;
 import com.xzlcPT.service.XzResumeService;
+import com.xzlcPT.service.XzShieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +32,8 @@ public class ResumeController extends BaseController {
     private XzPostionService postionService;
     @Autowired
     private XzResumeBrowseService resumeBrowseService;
+    @Autowired
+    private XzShieldService shieldService;
 
     //跳转到个人简历编辑
     @RequestMapping("goEditResume.do")
@@ -206,9 +206,9 @@ public class ResumeController extends BaseController {
         mv.addObject("xzResume",xzResume);
         return mv;
     }
-
+    //按条件搜索简历
     @RequestMapping("selResumeByConditions.do")
-    public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="10")int rows,String fieldName,String educationLevel,
+    public ModelAndView selResumeByConditions(@RequestParam(defaultValue="1")int page, @RequestParam(defaultValue="10")int rows,@ModelAttribute("userLogin")XzLogin xzLogin,String fieldName,String educationLevel,
                                                 String resumePosition,String resumeMm,Integer resumeIntentYm,String resumeBirth,String resumeSex,String resumeFlash,String resumeState,String workspace){
         ModelAndView mv=new ModelAndView("foreEnd3/zpc_selectresume");
         Map  map=new HashMap();
@@ -222,6 +222,12 @@ public class ResumeController extends BaseController {
         map.put("resumeFlash",resumeFlash);
         map.put("resumeState",resumeState);
         map.put("workspace",workspace);
+        List<XzShield> shieldList=shieldService.selByCompanyId(xzLogin.getCompany().getCompanyId());
+        List<Long> list=new ArrayList<>();
+        for (XzShield xzShield:shieldList){
+            list.add(xzShield.getResumeId());
+        }
+        map.put("list",list);
         List<String> flist=new ArrayList<>();
         if (fieldName!=null){
             flist.add(fieldName);

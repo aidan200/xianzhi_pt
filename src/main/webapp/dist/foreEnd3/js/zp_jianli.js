@@ -646,7 +646,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
             eee('#jl_cstime')
@@ -1694,7 +1694,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
             $('.ttk_jl').find('.em3').eq(1).unbind().on('click',function (){
@@ -1704,7 +1704,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
 
@@ -1940,7 +1940,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                             isinitVal:true, //显示时间
                             isTime:true,
                             festival: true, //显示节日
-                            minDate:"2014-09-19"
+                            minDate:"1960-01-1"
                         })
                     })
                     $('#tck_jy').find('.em3').eq(1).unbind().on('click',function (){
@@ -1950,7 +1950,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                             isinitVal:true, //显示时间
                             isTime:true,
                             festival: true, //显示节日
-                            minDate:"2014-09-19"
+                            minDate:"1960-01-1"
                         })
                     })
 
@@ -2120,7 +2120,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
             $('#tck_jy').find('.em3').eq(1).unbind().on('click',function (){
@@ -2130,7 +2130,7 @@ obj_yyjl.prototype.bindingSJ=function (){
                     isinitVal:true, //显示时间
                     isTime:true,
                     festival: true, //显示节日
-                    minDate:"2014-09-19"
+                    minDate:"1960-01-1"
                 })
             })
 
@@ -2333,7 +2333,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                         isinitVal:true, //显示时间
                         isTime:true,
                         festival: true, //显示节日
-                        minDate:"2014-09-19"
+                        minDate:"1960-01-1"
                     })
                 })
                 $('#ttk_xmjy').find('.em3').eq(1).unbind().on('click',function (){
@@ -2343,7 +2343,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                         isinitVal:true, //显示时间
                         isTime:true,
                         festival: true, //显示节日
-                        minDate:"2014-09-19"
+                        minDate:"1960-01-1"
                     })
                 })
                 $(this).parent().css({"display":"none"})
@@ -2505,7 +2505,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                      isinitVal:true, //显示时间
                      isTime:true,
                      festival: true, //显示节日
-                     minDate:"2014-09-19"
+                     minDate:"1960-01-1"
                  })
              })
              $('#ttk_xmjy').find('.em3').eq(1).unbind().on('click',function (){
@@ -2515,7 +2515,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                      isinitVal:true, //显示时间
                      isTime:true,
                      festival: true, //显示节日
-                     minDate:"2014-09-19"
+                     minDate:"1960-01-1"
                  })
              })
              $('.zp_jianli_zl_7').find('button').eq(1).on('click',function (){
@@ -3120,7 +3120,7 @@ obj_gssc.prototype.init=function (){
             }else{
                 var str=''
                 for(var i=0;i<This.pb.clist.length;i++){
-                    str+='<li><span data-id="'+This.pb.clist[i].companyId+'">'+This.pb.clist[i].companyName+'</span><a href="javascript:;" class="li_sc"><span class="fa fa-times"></span></a></li>'
+                    str+='<li><span class="zp_no" data-id="'+This.pb.clist[i].companyId+'">'+This.pb.clist[i].companyName+'</span><a href="javascript:;" class="li_sc"><span class="fa fa-times"></span></a></li>'
                 }
                 $('#pb_gs').html(str);
                 This.bindingSJ();
@@ -3140,6 +3140,7 @@ obj_gssc.prototype.bindingSJ=function (){
         $('#pbqy').find('button').eq(1).css({"display":"inline-block"})
         $('#sy').css({"display":"block"})
     })
+
     $('#pbqy').find('button').eq(1).unbind().on('click',function (){                 //这是取消按钮
         $('#pbqy').find('button').eq(0).css({'display':'inline-block'})
         $(this).siblings('input').css({"display":"none"})
@@ -3216,7 +3217,7 @@ obj_gssc.prototype.bindingSJ=function (){
                         //AJAX成功后执行的
                         var str=''
                         for(var i=0;i<data.plist.length;i++){
-                            str+='<li><span  data-id="'+data.plist[i].companyId+'">'+data.plist[i].companyName+'</span><a href="javascript:;" class="li_sc"> <span class="fa fa-check" style="color: #FFFFff"></span></a></li>'
+                            str+='<li><span class="zp_no" data-id="'+data.plist[i].companyId+'">'+data.plist[i].companyName+'</span><a href="javascript:;" class="li_sc"> <span class="fa fa-check" style="color: #FFFFff"></span></a></li>'
                         }
                         $('#sy > ul').html(str);
                         $('#sy > ul').find('li').on('click',function (){             //添加公司的事件
@@ -3259,6 +3260,8 @@ obj_gssc.prototype.bindingSJ=function (){
             dataType:'text',                   //定义返回data类型
             url:path+'Shield/insertShield',    //路径
             success:function (data){//data 就是数据 json
+                $('#pbqy').find('button').eq(1).click();
+
                 btn.css({"display":"none"})
                     This.init()
             },error:function (){ //报错执行的

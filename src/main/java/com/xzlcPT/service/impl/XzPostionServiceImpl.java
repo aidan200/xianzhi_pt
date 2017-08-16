@@ -86,15 +86,19 @@ public class XzPostionServiceImpl implements XzPostionService{
     }
 
     @Override
-    public List<XzPostion> selInfoByName(XzPostion xzPostion) {
+    public PageBean<XzPostion> selInfoByName(int page,int rows,XzPostion xzPostion) {
+        PageHelper.startPage(page,rows);
        List<XzPostion> plist = postionMapper.selInfoByName(xzPostion);
-        return plist;
+        PageBean<XzPostion> pageBean=new PageBean<>(plist);
+        return pageBean;
     }
 
     @Override
-    public List<XzPostion> selInfoByComId(XzPostion xzPostion) {
+    public PageBean<XzPostion> selInfoByComId(int page,int rows,XzPostion xzPostion) {
+        PageHelper.startPage(page,rows);
         List<XzPostion> cplist=postionMapper.selInfoByComId(xzPostion);
-        return cplist;
+        PageBean<XzPostion> pageBean=new PageBean<>(cplist);
+        return pageBean;
     }
 
     @Override

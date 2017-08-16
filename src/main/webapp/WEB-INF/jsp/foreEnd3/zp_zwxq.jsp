@@ -110,8 +110,9 @@
             <div class="zp_zwxq_cont_left_zwms">
                 <h3>职位描述：</h3>
                 <div>
-                    <div class="zp_awxq_t">
-                        ${xzPostion.postionDescription}
+                    <input type="hidden" id="h1" value="${xzPostion.postionDescription}">
+                    <div class="zp_awxq_t" id="sp1">
+
                     </div>
                 </div>
             </div>
@@ -128,8 +129,9 @@
                 <h3>企业介绍：</h3>
 
                 <div class="wrap5">
-                    <div>
-                        ${xzPostion.company.companyIntro}
+                    <input type="hidden" id="h2" value="${xzPostion.company.companyIntro}">
+                    <div id="d2">
+
                     </div>
                 </div>
                 <div class="read-more5"></div>
@@ -139,44 +141,156 @@
 
             <div class="zp_zwxq_cont_left_xq">
                 <h3>可能感兴趣的职位：</h3>
-                <div>
-                    <div>
-                        <ul id="bbb">
-                            <%--<c:forEach items="${plist}" var="p1">
-                            <li>
-                                <p>
-                                    <a href="" class="zp_zwxq_a1">${p1.postionName}</a>
-                                    <span class="zp_zwxq_span1">${fn:replace((p1.postionMm*12/10000),".0","")}-${fn:replace((p1.postionYm*12/10000),".0","")}万</span>
-                                    <a href="" class="zp_zwxq_a2">${p1.company.companyName}</a>
-                                </p>
-                                <p>
-                                    <span class="edu">${p1.postionEducation} |${p1.postionExp}工作经验</span>
-                                    <span class="place" title="${p1.postionSpace}">${p1.postionSpace}</span>
-                                        <c:forEach items="${p1.company.fields}" var="f1" varStatus="stat">
-                                            <c:if test="${!stat.last}">
-                                                ${f1.fieldName}/
-                                            </c:if>
-                                            <c:if test="${stat.last}">
-                                                ${f1.fieldName}
-                                            </c:if>
-                                        </c:forEach>
+                <div id="myCarousel" class="carousel slide" style="overflow: inherit">
+                    <!-- 轮播（Carousel）指标 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- 轮播（Carousel）项目 -->
+                    <div class="carousel-inner" style="width: 580px">
+                        <div class="item active">
+                            <ul>
+                                <c:forEach items="${plist}" var="p1"  begin="0" end="2">
+                                <li class="zwxq_li">
+                                    <div class="zwxq_new">
+                                        <div>
+                                            <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><span class="zw_po">${p1.postionName}</span></a>
+                                           <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><button class="zw_bu">立即应聘</button></a>
+                                        </div>
+                                        <div class="zw_we">
+                                            <span class="zw_o">
+                                                 <c:choose>
+                                                     <c:when test="${p1.postionMm<0}">
+                                                         面议
+                                                     </c:when>
+                                                     <c:when test="${p1.postionMm==cp.postionYm}">
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:when>
+                                                     <c:otherwise>
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${p1.postionYm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:otherwise>
+                                                 </c:choose>
                                             </span>
-                                </p>
-                            </li>
-                            </c:forEach>--%>
-                        </ul>
+                                            <span class="zw_all">${p1.postionSpace}</span>|
+                                            <span class="zw_all">${p1.postionEducation}</span>|
+                                            <span class="zw_all">${p1.postionExp}年工作经验</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul>
+                                <c:forEach items="${plist}" var="p1"  begin="3" end="5">
+                                    <li class="zwxq_li">
+                                        <div class="zwxq_new">
+                                            <div>
+                                                <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><span class="zw_po">${p1.postionName}</span></a>
+                                               <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><button class="zw_bu">立即应聘</button></a>
+                                            </div>
+                                            <div class="zw_we">
+                                            <span class="zw_o">
+                                                 <c:choose>
+                                                     <c:when test="${p1.postionMm<0}">
+                                                         面议
+                                                     </c:when>
+                                                     <c:when test="${p1.postionMm==cp.postionYm}">
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:when>
+                                                     <c:otherwise>
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${p1.postionYm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:otherwise>
+                                                 </c:choose>
+                                            </span>
+                                                <span class="zw_all">${p1.postionSpace}</span>|
+                                                <span class="zw_all">${p1.postionEducation}</span>|
+                                                <span class="zw_all">${p1.postionExp}年工作经验</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul>
+                                <c:forEach items="${plist}" var="p1"  begin="6" end="8">
+                                    <li class="zwxq_li">
+                                        <div class="zwxq_new">
+                                            <div>
+                                                <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><span class="zw_po">${p1.postionName}</span></a>
+                                               <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"> <button class="zw_bu">立即应聘</button></a>
+                                            </div>
+                                            <div class="zw_we">
+                                            <span class="zw_o">
+                                                 <c:choose>
+                                                     <c:when test="${p1.postionMm<0}">
+                                                         面议
+                                                     </c:when>
+                                                     <c:when test="${p1.postionMm==cp.postionYm}">
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:when>
+                                                     <c:otherwise>
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${p1.postionYm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:otherwise>
+                                                 </c:choose>
+                                            </span>
+                                                <span class="zw_all">${p1.postionSpace}</span>|
+                                                <span class="zw_all">${p1.postionEducation}</span>|
+                                                <span class="zw_all">${p1.postionExp}年工作经验</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
                     </div>
+                    <!-- 轮播（Carousel）导航 -->
+                    <a class="carousel-control left" href="#myCarousel"
+                       data-slide="prev">&lsaquo;</a>
+                    <a class="carousel-control right" href="#myCarousel"
+                       data-slide="next">&rsaquo;</a>
                 </div>
-                <p>
-                    <span style="background: #3D9CCC"></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </p>
-                <a href="" class="zp_zwxq_cont_a_left"></a>
-                <a href="" class="zp_zwxq_cont_a_right"></a>
+                <%--<div>--%>
+                    <%--<div>--%>
+                        <%--<ul id="bbb">--%>
+                            <%--&lt;%&ndash;<c:forEach items="${plist}" var="p1">--%>
+                            <%--<li>--%>
+                                <%--<p>--%>
+                                    <%--<a href="" class="zp_zwxq_a1">${p1.postionName}</a>--%>
+                                    <%--<span class="zp_zwxq_span1">${fn:replace((p1.postionMm*12/10000),".0","")}-${fn:replace((p1.postionYm*12/10000),".0","")}万</span>--%>
+                                    <%--<a href="" class="zp_zwxq_a2">${p1.company.companyName}</a>--%>
+                                <%--</p>--%>
+                                <%--<p>--%>
+                                    <%--<span class="edu">${p1.postionEducation} |${p1.postionExp}工作经验</span>--%>
+                                    <%--<span class="place" title="${p1.postionSpace}">${p1.postionSpace}</span>--%>
+                                        <%--<c:forEach items="${p1.company.fields}" var="f1" varStatus="stat">--%>
+                                            <%--<c:if test="${!stat.last}">--%>
+                                                <%--${f1.fieldName}/--%>
+                                            <%--</c:if>--%>
+                                            <%--<c:if test="${stat.last}">--%>
+                                                <%--${f1.fieldName}--%>
+                                            <%--</c:if>--%>
+                                        <%--</c:forEach>--%>
+                                            <%--</span>--%>
+                                <%--</p>--%>
+                            <%--</li>--%>
+                            <%--</c:forEach>&ndash;%&gt;--%>
+                        <%--</ul>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+                <%--<p>--%>
+                    <%--<span style="background: #3D9CCC"></span>--%>
+                    <%--<span></span>--%>
+                    <%--<span></span>--%>
+                    <%--<span></span>--%>
+                    <%--<span></span>--%>
+                    <%--<span></span>--%>
+                <%--</p>--%>
+                <%--<a href="" class="zp_zwxq_cont_a_left"></a>--%>
+                <%--<a href="" class="zp_zwxq_cont_a_right"></a>--%>
             </div>
             <div class="zp_zwxq_cont_left_ss">
                 <form action="${pageContext.request.contextPath}/Postion/selPostionIndex.do" method="post">
@@ -277,7 +391,7 @@
                         <ul>
                             <c:forEach items="${cplist}" var="cp">
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${cp.postionId}">${cp.postionName}</a>
+                                    <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${cp.postionId}" class="zw_what">${cp.postionName}</a>
                                     <span class="zp_zwxq_span1">${cp.postionSpace}</span>
                                     <span class="zp_zwxq_span2">
                                     <c:choose>
@@ -285,10 +399,10 @@
                                             面议
                                         </c:when>
                                         <c:when test="${cp.postionMm==cp.postionYm}">
-                                            ${fn:replace((cp.postionMm*12/10000),".0","")}万
+                                            <fmt:formatNumber value="${cp.postionMm*12/10000}" maxFractionDigits="0"/>万
                                         </c:when>
                                         <c:otherwise>
-                                            ${fn:replace((cp.postionMm*12/10000),".0","")}万-${fn:replace((cp.postionYm*12/10000),".0","")}万
+                                            <fmt:formatNumber value="${cp.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${cp.postionYm*12/10000}" maxFractionDigits="0"/>万
                                         </c:otherwise>
                                     </c:choose>
                                 </span>
@@ -355,15 +469,15 @@
             dataType:'json',
             url:"${pageContext.request.contextPath}/Resume/flashResumeByMember.do",
             success:function (data){
-            var completion = data.resumeCompletion;//完成度
-            if(Number(completion)>=80){
-                sendResume();
-            }else{
-                alert("简历完成度不足80%")
+                var completion = data.resumeCompletion;//完成度
+                if(Number(completion)>=80){
+                    sendResume();
+                }else{
+                    alert("简历完成度不足80%")
+                }
+            },error:function (){ //报错执行的
+                alert('基本资料修改错误')
             }
-        },error:function (){ //报错执行的
-            alert('基本资料修改错误')
-        }
         });
     }
 
@@ -485,6 +599,16 @@
             }
         })
     }
+    var intro1 = $('#h1').val().replace(/\n/g, "<br>");
+    $('#sp1').html(intro1);
+    var intro2 = $('#h2').val().replace(/\n/g, "<br>");
+    $('#d2').html(intro2);
+</script>
+<script>
+    $('#myCarousel').carousel({
+        pause: true,
+        interval: false
+    });
 </script>
 
 </body>

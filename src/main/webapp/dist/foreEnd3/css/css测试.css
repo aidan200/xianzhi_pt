@@ -1884,9 +1884,11 @@ textarea {
 }
 
 .index_hui {
+    padding-left: 10px;
     margin-top: 10px;
-    width: 120px;
-    height: 60px;
+    float: left;
+    width: 80px;
+    height: 35px;
     margin-bottom: 10px;
 }
 
@@ -1897,9 +1899,13 @@ textarea {
     overflow: hidden;
 
 }
+.index_com > a{
+    color: #FFFFff;
+}
 
 .index_pos {
-    margin-top: 3px;
+    float: left;
+    /*margin-top: 3px;*/
     font-size: 14px;
     width: 100%;
     height: 25px;
@@ -1907,7 +1913,7 @@ textarea {
 }
 
 .index_pos > a {
-    color: #3d9ccc;
+    color: #FFFFff;
 }
 
 .index_01tag {
@@ -7773,6 +7779,14 @@ footer {
     color: #3d9ccc;
 }
 
+.rei_spans{
+    display: inline-block;
+    text-align: center;
+    padding: 2px 5px;
+    margin-right: 10px;
+    border: 1px dashed #c0c0c0;
+}
+
 .rei_leftop {
     margin-top: 50px;
     padding-left: 20px;
@@ -7786,11 +7800,13 @@ footer {
 }
 
 .rei_ji {
+    min-width: 50px;
     padding: 3px 5px 3px 5px;
     background-color: #FFA500;
     color: #FFFFff;
     margin: 5px 5px 5px 0;
     display: inline-block;
+    text-align: center;
 }
 
 .rei_bottom {
@@ -8337,4 +8353,18 @@ footer {
     -webkit-transition: all 250ms linear;
     transition: all 250ms linear;
     border-radius: 3px;
+}
+
+/*地点小按钮*/
+
+.m_dd_button{
+    background: url('../../../dist/foreEnd3/img/zp_gsxq_hy_k.png');
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 3px;
+    right: 240px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
 }

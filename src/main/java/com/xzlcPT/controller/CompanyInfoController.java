@@ -1,5 +1,6 @@
 package com.xzlcPT.controller;
 
+import com.amazonaws.services.dynamodbv2.xspec.M;
 import com.util.MobileAndPersonID;
 import com.util.PageBean;
 import com.util.SavePicture;
@@ -53,11 +54,17 @@ public class CompanyInfoController {
     public ModelAndView selCompanyInfo(@ModelAttribute("userLogin") XzLogin userLogin){
         ModelAndView mv = new ModelAndView("foreEnd3/zp_gsxq_bd");
         XzCompany xzCompany = companyService.selCompanyInf(userLogin.getCompany().getCompanyId());
-        System.out.println(xzCompany);
         mv.addObject("company",xzCompany);
         return mv;
     }
-
+    @ResponseBody
+    @RequestMapping("selCompanyInfroation.do")
+    public Map selCompanyInfroation(@ModelAttribute("userLogin")XzLogin xzLogin){
+        Map map=new HashMap();
+        XzCompany xzCompany=companyService.selCompanyInf(xzLogin.getCompany().getCompanyId());
+        map.put("xzCompany",xzCompany);
+        return map;
+    }
 
     @RequestMapping("goCompanyInfo.do")
     public ModelAndView goCompanyInfoEnd(@ModelAttribute("userLogin") XzLogin userLogin) {

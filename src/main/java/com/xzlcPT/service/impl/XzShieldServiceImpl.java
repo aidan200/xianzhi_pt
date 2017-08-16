@@ -38,4 +38,10 @@ public class XzShieldServiceImpl  implements XzShieldService{
         return i;
     }
 
+    @Override
+    public List<XzShield> selByCompanyId(Long companyId) {
+        List<XzShield> shieldList=xzShieldMapper.selByCompanyId(companyId);
+        return shieldList;
+    }
+
 }

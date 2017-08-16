@@ -3,6 +3,7 @@ package com.xzlcPT.dao;/**
  */
 
 import com.xzlcPT.bean.XzCompany;
+import com.xzlcPT.bean.XzLogin;
 import com.xzlcPT.bean.XzShield;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface XzShieldMapper {
     int insertShield(XzShield xzShield);
 
     int deleteById(XzShield xzShield);
+
+    List<XzShield> selByCompanyId(Long companyId);
 }

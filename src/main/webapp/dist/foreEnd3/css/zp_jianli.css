@@ -505,7 +505,6 @@ ul, li {
 
 .zp_index_cont_right_middle li > span {
     float: left;
-
 }
 
 .zp_index_cont_right_middle li > div {
@@ -1720,14 +1719,27 @@ ul, li {
 }
 
 #pbqy > div > ul > li {
-    width: 200px;
+    width: 230px;
     height: 30px;
     line-height: 30px;
     /*border-bottom: 1px solid #c0c0c0;*/
     border-radius: 3px;
     background: #EEEEEE;
-    padding-right: 0;
     margin-bottom: 1px;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.li_sc:hover {
+    color: #FFFFff;
+}
+
+.zp_no {
+    display: inline-block;
+    width: 185px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .jianli_ul {
@@ -1969,11 +1981,11 @@ ul, li {
 }
 
 /*.nozhe {*/
-    /*opacity: 0;*/
-    /*visibility: hidden;*/
-    /*-webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
-    /*-moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
-    /*transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
+/*opacity: 0;*/
+/*visibility: hidden;*/
+/*-webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
+/*-moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
+/*transition: opacity 0.3s 0s, visibility 0s 0.3s;*/
 /*}*/
 
 .zhe_all {
@@ -2171,3 +2183,4 @@ ul, li {
     }
 
 }
+

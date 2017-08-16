@@ -308,6 +308,7 @@ Qbzt.prototype.seekCont=function (){
     return _public_ssk
 }
 Qbzt.prototype.init=function (){            //初始化载入数据
+
     var This=this;
     var data=This.seekCont();
     This.cg=function (){
@@ -336,7 +337,6 @@ Qbzt.prototype.init=function (){            //初始化载入数据
 }
 Qbzt.prototype.xxk_sj=function (){            //初始化载入数据
    var This=this;
-    This.init();
     $('#myTab li a').eq(0).unbind().on('click',function (){
         This.init();
     })
@@ -452,7 +452,7 @@ Ytd.prototype.init=function (){            //初始化载入数据
 }
 Ytd.prototype.xxk_sj=function (){            //初始化载入数据
     var This=this;
-    This.init();
+
     $('#myTab li a').eq(1).unbind().on('click',function (){
         This.init();
     })
@@ -478,7 +478,7 @@ var This=this;
             qxdx.pages=data.pages;
             qxdx.jl.yck=data.page;
             qxdx.total=data.total;
-            $('#pop_three .pop_span span').html(qxdx.total);          //总记录数
+            $('#pop_three .comh_span span').html(qxdx.total);          //总记录数
             if(data.postionSendList.length!=0){
 
                 for(var i=0;i<data.postionSendList.length;i++){
@@ -494,16 +494,18 @@ var This=this;
                     var date1= data.postionSendList[i].sendTime1;          //计算几小时以前
                     var date2=new Date();
                     var date3=date2-date1;
-                    if(date3<3600000){
+
+                    if(date3<60000*60){
                         str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000)+'分钟前</span></li>'
 
-                    }else if(date3<3600000*24){
-                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/6000/60)+'小时前</span></li>'
+                    }else if(date3<60000*60*24){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000/60)+'小时前</span></li>'
 
-                    }else if (date3>3600000*24){
-                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/3600000/24)+'天前</span></li>'
+                    }else if (date3>60000*60*24){
+                        str+='<li class="pop_tl2">投递时间：<span>'+Math.floor(date3/60000/60/24)+'天前</span></li>'
 
                     }
+
                     str+='</ul>'
                     str+='</div>'
 
@@ -564,12 +566,13 @@ Yck.prototype.init=function (){            //初始化载入数据
 }
 Yck.prototype.xxk_sj=function (){            //初始化载入数据
     var This=this;
-    This.init();
+
     $('#myTab li a').eq(2).unbind().on('click',function (){
         This.init();
     })
 
 }
+
 
 function Msyy(){         //已投递
 
@@ -783,10 +786,19 @@ Msyy.prototype.sj=function (){
 
 $(function (){
     var qbzt=new Qbzt();
-    qbzt.xxk_sj();
+
 
     var ytd=new Ytd();
     ytd.xxk_sj();
+
+    if(type){
+        if(type=='ytd'){
+            qbzt.xxk_sj()             //默认初始化
+            $('#myTab a').eq(1).click();
+        }
+    }else{
+        qbzt.init()             //默认初始化
+    }
 
     var yck=new Yck();
     yck.xxk_sj();
@@ -795,13 +807,7 @@ $(function (){
     msyy.xxk_sj();
 
 
-    if(type){
-        if(type=='ytd'){
-            $('#myTab a').eq(1).click();
-        }
-    }else{
-        qbzt.init()             //默认初始化
-    }
+
 
 
 
