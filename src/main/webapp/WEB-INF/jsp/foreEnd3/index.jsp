@@ -185,35 +185,35 @@
         <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/chang.png" alt="" class="index_ii0">
         <div class="index_oa">
             <div class="grid">
-                <div class="ddds">
+                <div class="ddds" style="background-color: #8baca1">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
                     <div class="index_pos"><a href="">招聘预言家</a></div>
                     <div class="index_01time">2017-08-10</div>
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                 </div>
-                <div class="ddds">
+                <div class="ddds" style="background-color: ">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
                     <div class="index_pos"><a href="">招聘预言家</a></div>
                     <div class="index_01time">2017-08-10</div>
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                 </div>
-                <div class="ddds">
+                <div class="ddds" style="background-color: ">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
                     <div class="index_pos"><a href="">招聘预言家</a></div>
                     <div class="index_01time">2017-08-10</div>
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                 </div>
-                <div class="ddds">
+                <div class="ddds" style="background-color: ">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
                     <div class="index_pos"><a href="">招聘预言家</a></div>
                     <div class="index_01time">2017-08-10</div>
                     <div class="index_com"><a href="">先知蓝创科技有限公司</a></div>
                 </div>
-                <div class="ddds">
+                <div class="ddds" style="background-color: ">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/huilogo.png" alt=""
                          class="index_hui">
                     <div class="index_pos"><a href="">招聘预言家</a></div>

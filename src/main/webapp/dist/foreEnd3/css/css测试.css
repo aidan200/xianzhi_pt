@@ -1888,7 +1888,7 @@ textarea {
     margin-top: 10px;
     float: left;
     width: 80px;
-    height: 40px;
+    height: 35px;
     margin-bottom: 10px;
 }
 
@@ -1902,7 +1902,7 @@ textarea {
 
 .index_pos {
     float: left;
-    margin-top: 3px;
+    /*margin-top: 3px;*/
     font-size: 14px;
     width: 100%;
     height: 25px;
