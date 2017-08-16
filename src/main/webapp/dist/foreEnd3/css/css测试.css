@@ -7774,11 +7774,10 @@ footer {
 }
 
 .rei_spans{
-    border: 1px dashed #c0c0c0;
-    background-color: #eeeeee;
     text-align: center;
-    padding: 2px 5px;
+    padding: 2px 3px;
     margin-right: 10px;
+    background-color: #EEEEEE;
 }
 
 .rei_leftop {
