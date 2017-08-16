@@ -152,12 +152,12 @@
                     <div class="carousel-inner" style="width: 580px">
                         <div class="item active">
                             <ul>
-                                <c:forEach items="${plist}" var="p1">
+                                <c:forEach items="${plist}" var="p1"  begin="0" end="2">
                                 <li class="zwxq_li">
                                     <div class="zwxq_new">
                                         <div>
-                                            <a href=""><span class="zw_po">${p1.postionName}</span></a>
-                                            <button class="zw_bu">立即应聘</button>
+                                            <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><span class="zw_po">${p1.postionName}</span></a>
+                                           <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><button class="zw_bu">立即应聘</button></a>
                                         </div>
                                         <div class="zw_we">
                                             <span class="zw_o">
@@ -179,6 +179,70 @@
                                         </div>
                                     </div>
                                 </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul>
+                                <c:forEach items="${plist}" var="p1"  begin="3" end="5">
+                                    <li class="zwxq_li">
+                                        <div class="zwxq_new">
+                                            <div>
+                                                <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><span class="zw_po">${p1.postionName}</span></a>
+                                               <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><button class="zw_bu">立即应聘</button></a>
+                                            </div>
+                                            <div class="zw_we">
+                                            <span class="zw_o">
+                                                 <c:choose>
+                                                     <c:when test="${p1.postionMm<0}">
+                                                         面议
+                                                     </c:when>
+                                                     <c:when test="${p1.postionMm==cp.postionYm}">
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:when>
+                                                     <c:otherwise>
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${p1.postionYm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:otherwise>
+                                                 </c:choose>
+                                            </span>
+                                                <span class="zw_all">${p1.postionSpace}</span>|
+                                                <span class="zw_all">${p1.postionEducation}</span>|
+                                                <span class="zw_all">${p1.postionExp}年工作经验</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                        <div class="item">
+                            <ul>
+                                <c:forEach items="${plist}" var="p1"  begin="6" end="8">
+                                    <li class="zwxq_li">
+                                        <div class="zwxq_new">
+                                            <div>
+                                                <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"><span class="zw_po">${p1.postionName}</span></a>
+                                               <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${p1.postionId}"> <button class="zw_bu">立即应聘</button></a>
+                                            </div>
+                                            <div class="zw_we">
+                                            <span class="zw_o">
+                                                 <c:choose>
+                                                     <c:when test="${p1.postionMm<0}">
+                                                         面议
+                                                     </c:when>
+                                                     <c:when test="${p1.postionMm==cp.postionYm}">
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:when>
+                                                     <c:otherwise>
+                                                         <fmt:formatNumber value="${p1.postionMm*12/10000}" maxFractionDigits="0"/>万-<fmt:formatNumber value="${p1.postionYm*12/10000}" maxFractionDigits="0"/>万
+                                                     </c:otherwise>
+                                                 </c:choose>
+                                            </span>
+                                                <span class="zw_all">${p1.postionSpace}</span>|
+                                                <span class="zw_all">${p1.postionEducation}</span>|
+                                                <span class="zw_all">${p1.postionExp}年工作经验</span>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </c:forEach>
                             </ul>
                         </div>
