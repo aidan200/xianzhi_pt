@@ -1719,7 +1719,7 @@ ul, li {
 }
 
 #pbqy > div > ul > li {
-    /*width: 220px;*/
+    width: 230px;
     height: 30px;
     line-height: 30px;
     /*border-bottom: 1px solid #c0c0c0;*/
