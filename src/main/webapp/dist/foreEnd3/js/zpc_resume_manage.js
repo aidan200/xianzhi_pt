@@ -125,6 +125,7 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='<td class="all_no">'+data.list[i].postionName+'</td>'  //应聘职位
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'  //应聘职位
                         str+='<td class="all_no">'
+
                         str+='<a href="'+path+'Resume/selResumeInfoCom.do?resumeId='+data.list[i].resumeId+'"  target="_blank" class="zw_yl">预览</a>'
                         str+='&nbsp;'
                         str+='<a href="javascript:;" class="zw_sc">删除</a>'
@@ -228,7 +229,7 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].sendTime)+'</td>'  //发送时间
                         str+='<td class="all_no">'+getNowFormatDate(data.list[i].interviewTime)+'</td>'  //面试时间
                         str+='<td class="all_no">'
-                        str+='<a href="javascript:;" class="zw_yl">预览</a>'
+                        str+='<a class="zw_yl" target="_blank" href="'+path+'Resume/selResumeInfoCom.do?resumeId='+data.list[i].resumeId+'">预览</a>'
                         str+='&nbsp;'
                         str+='<a href="javascript:;" class="zw_sc">删除</a>'
                         str+='<button class="rem_sp" type="button">'
@@ -240,7 +241,7 @@ Public.prototype.huoqu=function (tbody,obj,fn1,fn2){ //全局查询方法
                         str+='<tr class="pom_h2" id="divContainer">'
                         str+='<td colspan="12" style="padding-left: 40px;line-height: 25px">'
                         str+='公司名称：'+data.list[i].postionSendMsg.filed2+'&nbsp;'
-                        str+='面试时间：'+data.list[i].postionSendMsg.interviewTime+'&nbsp;'
+                        str+='面试时间：'+getNowFormatDateSS(data.list[i].postionSendMsg.interviewTime)+'&nbsp;'
                         str+='面试地点：'+data.list[i].postionSendMsg.filed1+'&nbsp;'
                         str+='附加信息：'+data.list[i].postionSendMsg.pmsgValue+''
                         str+='</td>'
@@ -633,9 +634,7 @@ Mstz.prototype.JS=function (){                     //点击事件加载
 }
 Mstz.prototype.yl=function (){     //预览事件
     var This=this;
-    $('#rem_seven').find('.zw_yl').unbind().on('click',function(){        //预览事件
-        alert('aaa')
-    })
+
     This.sc('#rem_seven',This)                  //删除方法
     $(".rem_sp").click(function () {            //点击展开方法
         var aa=$(this).parent().parent().next();
@@ -1173,6 +1172,13 @@ function aa(){
 $(function (){
     gszw();
     aa()
+    jeDate({
+        dateCell: "#yy_sj",
+        format: "YYYY-MM-DD hh:mm:ss",
+        isTime: true, isClear:true,
+        minDate: "2000-01-01 00:00:00"
+    })
+
 
     var  jlrzp=new Jlrzp();
     jlrzp.upload();
@@ -1212,6 +1218,9 @@ $(function (){
             $('.newpop').removeClass('is-visible');
         }
     });
+
+
+
 
 })
 
