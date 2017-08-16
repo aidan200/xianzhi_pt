@@ -3140,6 +3140,7 @@ obj_gssc.prototype.bindingSJ=function (){
         $('#pbqy').find('button').eq(1).css({"display":"inline-block"})
         $('#sy').css({"display":"block"})
     })
+
     $('#pbqy').find('button').eq(1).unbind().on('click',function (){                 //这是取消按钮
         $('#pbqy').find('button').eq(0).css({'display':'inline-block'})
         $(this).siblings('input').css({"display":"none"})
@@ -3259,6 +3260,8 @@ obj_gssc.prototype.bindingSJ=function (){
             dataType:'text',                   //定义返回data类型
             url:path+'Shield/insertShield',    //路径
             success:function (data){//data 就是数据 json
+                $('#pbqy').find('button').eq(1).click();
+
                 btn.css({"display":"none"})
                     This.init()
             },error:function (){ //报错执行的

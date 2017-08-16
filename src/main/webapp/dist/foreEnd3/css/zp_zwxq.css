@@ -687,3 +687,75 @@ ul li {
     background: no-repeat 100% 50%;
     text-decoration: none;
 }
+.zwxq_li{
+    width: 580px;
+    height: auto;
+    overflow: hidden;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.zwxq_new{
+    width: 580px;
+    padding: 10px 50px;
+    height: 100px;
+}
+.carousel-control {
+    position: absolute;
+    height: 50px;
+    top: 110px;
+    bottom: 0;
+    left: 0;
+    display: inline;
+    font-size: 50px;
+    color: #3d9ccc;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+.zw_po{
+    display: inline-block;
+    color: #3d9ccc;
+    font-size: 23px;
+    margin-right: 10px;
+}
+.zw_bu{
+    float: right;
+    width: 80px;
+    height: 30px;
+    color: #FFFFff;
+    background-color: #FFA500;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
+.zw_we{
+    margin-top: 10px;
+}
+.zw_o{
+    font-size: 18px;
+    color: #fc6866;
+}
+.zw_all{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: #c0c0c0;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #3d9ccc;
+}
