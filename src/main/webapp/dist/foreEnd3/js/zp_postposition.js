@@ -337,7 +337,6 @@ Qbzt.prototype.init=function (){            //初始化载入数据
 }
 Qbzt.prototype.xxk_sj=function (){            //初始化载入数据
    var This=this;
-    This.init();
     $('#myTab li a').eq(0).unbind().on('click',function (){
         This.init();
     })
@@ -788,8 +787,18 @@ Msyy.prototype.sj=function (){
 $(function (){
     var qbzt=new Qbzt();
 
+
     var ytd=new Ytd();
     ytd.xxk_sj();
+
+    if(type){
+        if(type=='ytd'){
+            qbzt.xxk_sj()             //默认初始化
+            $('#myTab a').eq(1).click();
+        }
+    }else{
+        qbzt.init()             //默认初始化
+    }
 
     var yck=new Yck();
     yck.xxk_sj();
@@ -798,13 +807,7 @@ $(function (){
     msyy.xxk_sj();
 
 
-    if(type){
-        if(type=='ytd'){
-            $('#myTab a').eq(1).click();
-        }
-    }else{
-        qbzt.xxk_sj()             //默认初始化
-    }
+
 
 
 
