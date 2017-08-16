@@ -687,3 +687,57 @@ ul li {
     background: no-repeat 100% 50%;
     text-decoration: none;
 }
+.zwxq_li{
+    width: 580px;
+    height: auto;
+    overflow: hidden;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.zwxq_new{
+    width: 580px;
+    padding: 10px 50px;
+    height: 100px;
+}
+.carousel-control {
+    position: absolute;
+    height: 50px;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    display: inline;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    filter: alpha(opacity=50);
+    opacity: .5;
+}
+.zw_po{
+    display: inline-block;
+    color: #3d9ccc;
+    font-size: 23px;
+    margin-right: 10px;
+}
+.zw_bu{
+    float: right;
+    width: 80px;
+    height: 30px;
+    color: #FFFFff;
+    background-color: #FFA500;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
+.zw_we{
+    margin-top: 10px;
+}
+.zw_o{
+    font-size: 20px;
+    color: #fc6866;
+}
+.zw_all{
+    margin-right: 10px;
+    margin-left: 10px;
+}

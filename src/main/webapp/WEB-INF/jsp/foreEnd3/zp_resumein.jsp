@@ -72,14 +72,15 @@
                     <div>目前行业：<span class="rei_spans">
                         <c:forEach items="${xzResume.fields}" var="fi" varStatus="stat1">
                            <c:if test="${fi.fieldType.equals('2')}">
-                                ${fi.fieldName}&nbsp;&nbsp;
+                                ${fi.fieldName}
                            </c:if>
                         </c:forEach>
-                    </span></div>
-                    <div>期望行业：<span>
+                    </span>
+                    </div>
+                    <div>期望行业：<span class="rei_spans">
                          <c:forEach items="${xzResume.fields}" var="fi" varStatus="stat1">
                              <c:if test="${fi.fieldType.equals('3')}">
-                                 ${fi.fieldName}&nbsp;&nbsp;
+                                 ${fi.fieldName}
                              </c:if>
                          </c:forEach>
                     </span></div>
