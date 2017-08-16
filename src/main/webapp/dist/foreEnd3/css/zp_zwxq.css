@@ -539,6 +539,7 @@ textarea {
     padding: 20px 20px;
     border-bottom: 1px dotted #d8d8d8;
 }
+
 ul li {
     list-style-type: none;
 }
@@ -632,9 +633,13 @@ ul li {
 
 .zp_zwxq_cont_right_cont_bottom > ul > li a {
     float: left;
-    width: 80px;
+    width: 100px;
     margin-right: 10px;
     color: #00528C;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .zp_zwxq_span1 {
@@ -687,18 +692,20 @@ ul li {
     background: no-repeat 100% 50%;
     text-decoration: none;
 }
-.zwxq_li{
+
+.zwxq_li {
     width: 580px;
     height: auto;
     overflow: hidden;
     border-bottom: 1px solid #EEEEEE;
 }
 
-.zwxq_new{
+.zwxq_new {
     width: 580px;
     padding: 10px 50px;
     height: 100px;
 }
+
 .carousel-control {
     position: absolute;
     height: 50px;
@@ -713,13 +720,15 @@ ul li {
     filter: alpha(opacity=50);
     opacity: .5;
 }
-.zw_po{
+
+.zw_po {
     display: inline-block;
     color: #3d9ccc;
     font-size: 23px;
     margin-right: 10px;
 }
-.zw_bu{
+
+.zw_bu {
     float: right;
     width: 80px;
     height: 30px;
@@ -730,17 +739,20 @@ ul li {
     border-radius: 3px;
 }
 
-.zw_we{
+.zw_we {
     margin-top: 10px;
 }
-.zw_o{
+
+.zw_o {
     font-size: 18px;
     color: #fc6866;
 }
-.zw_all{
+
+.zw_all {
     margin-right: 10px;
     margin-left: 10px;
 }
+
 .carousel-indicators li {
     display: inline-block;
     width: 10px;
@@ -753,6 +765,7 @@ ul li {
     border: 1px solid #fff;
     border-radius: 10px;
 }
+
 .carousel-indicators .active {
     width: 12px;
     height: 12px;

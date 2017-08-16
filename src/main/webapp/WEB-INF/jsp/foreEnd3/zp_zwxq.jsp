@@ -327,7 +327,7 @@
                         <ul>
                             <c:forEach items="${cplist}" var="cp">
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${cp.postionId}">${cp.postionName}</a>
+                                    <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${cp.postionId}" class="zw_what">${cp.postionName}</a>
                                     <span class="zp_zwxq_span1">${cp.postionSpace}</span>
                                     <span class="zp_zwxq_span2">
                                     <c:choose>
