@@ -79,6 +79,7 @@ public class LoginUserServiceImpl implements LoginUserService {
                 XzResume resume = new XzResume();
                 resume.setMemberId(member.getMemberId());
                 resume.setResumeEmail(member.getMemberEmail());
+                resume.setDeleteFalt(0);
                 resumeMapper.insert(resume);
             }
         }
