@@ -69,7 +69,7 @@ public class PdfUtil {
             if(resume.getResumeIntentField()!=null){
                 image = Image.getInstance(request.getServletContext().getRealPath("/uploadImg/"+resume.getResumeIntentField()));
             }else{
-                if(resume.getResumeSex()==1){
+                if(resume.getResumeSex()!=null&&1==resume.getResumeSex()){
                     image = Image.getInstance(request.getServletContext().getRealPath("/dist/foreEnd3/img/girl.png"));
                 }
             }
@@ -101,7 +101,11 @@ public class PdfUtil {
             table.addCell(cell1);
             cell1 = makeCell("工作年限",content);
             table.addCell(cell1);
-            cell1 = makeCell(resume.getResumeIntentYm()+"年",content);
+            if(resume.getResumeIntentYm()!=null){
+                cell1 = makeCell(resume.getResumeIntentYm()+"年",content);
+            }else{
+                cell1 = makeCell("",content);
+            }
             table.addCell(cell1);
             document.add(table);
 
@@ -116,9 +120,9 @@ public class PdfUtil {
             table.addCell(cell1);
             cell1 = makeCell("性别",content);
             table.addCell(cell1);
-            if(0==resume.getResumeSex()){
+            if(resume.getResumeSex()!=null&&0==resume.getResumeSex()){
                 cell1 = makeCell("男",content);
-            }else if(1==resume.getResumeSex()){
+            }else if(resume.getResumeSex()!=null&&1==resume.getResumeSex()){
                 cell1 = makeCell("女",content);
             }else{
                 cell1 = makeCell("",content);
@@ -130,15 +134,24 @@ public class PdfUtil {
             table.addCell(cell1);
             cell1 = makeCell("年龄",content);
             table.addCell(cell1);
-            Calendar birth=Calendar.getInstance();
-            birth.setTime(resume.getResumeBirth());
-            Calendar cal=Calendar.getInstance();
-            cell1 = makeCell(cal.get(Calendar.YEAR)-birth.get(Calendar.YEAR)+"岁",content);
-            table.addCell(cell1);
+            if(resume.getResumeBirth()!=null){
+                Calendar birth=Calendar.getInstance();
+                birth.setTime(resume.getResumeBirth());
+                Calendar cal=Calendar.getInstance();
+                cell1 = makeCell(cal.get(Calendar.YEAR)-birth.get(Calendar.YEAR)+"岁",content);
+                table.addCell(cell1);
+            }else{
+                cell1 = makeCell("",content);
+                table.addCell(cell1);
+            }
             cell1 = makeCell("出生日期",content);
             table.addCell(cell1);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            cell1 = makeCell(sdf.format(resume.getResumeBirth()),content);
+            if(resume.getResumeBirth()!=null){
+                cell1 = makeCell(sdf.format(resume.getResumeBirth()),content);
+            }else{
+                cell1 = makeCell("",content);
+            }
             table.addCell(cell1);
             cell1 = makeCell("婚姻状态",content);
             table.addCell(cell1);
@@ -220,11 +233,19 @@ public class PdfUtil {
             table.addCell(cell1);
             cell1 = makeCell("目前薪资",content);
             table.addCell(cell1);
-            cell1 = makeCell(resume.getResumeMm()+"/月",content);
+            if(resume.getResumeMm()!=null){
+                cell1 = makeCell(resume.getResumeMm()+"/月",content);
+            }else{
+                cell1 = makeCell("/月",content);
+            }
             table.addCell(cell1);
             cell1 = makeCell("期望薪资",content);
             table.addCell(cell1);
-            cell1 = makeCell(resume.getResumeMm()+"/月",content);
+            if(resume.getResumeIntentMm()!=null){
+                cell1 = makeCell(resume.getResumeIntentMm()+"/月",content);
+            }else{
+                cell1 = makeCell("/月",content);
+            }
             table.addCell(cell1);
             document.add(table);
 
