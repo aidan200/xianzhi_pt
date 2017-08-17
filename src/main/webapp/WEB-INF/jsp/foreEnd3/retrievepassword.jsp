@@ -121,7 +121,7 @@
         <div class="rep_bgimg">
             <div class="rep_bgin">
                 <h2 style="color: #fc6866">修改成功</h2>
-                <a href="" class="rep_b4">返回首页</a>
+                <a href="${pageContext.request.contextPath}/" class="rep_b4">返回首页</a>
                 <div style="margin-top: 40px;font-size: 15px">
                     <span id="rep_time" style="font-size: 25px;color: #FFA500">5</span>秒后自动跳转
                 </div>
@@ -129,7 +129,6 @@
         </div>
     </div>
 </div>
-
 
 <!--进度-->
 <script type="text/javascript"
