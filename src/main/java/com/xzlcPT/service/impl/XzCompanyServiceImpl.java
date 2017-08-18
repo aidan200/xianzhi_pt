@@ -68,6 +68,7 @@ public class XzCompanyServiceImpl implements XzCompanyService{
                 companySkillMapper.insert(companySkill);
             }
         }
+        updateCompletionById(company.getCompanyId());
         return i;
     }
 
@@ -264,7 +265,7 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     //公司信息完成度
     @Override
     public XzCompany updateCompletionById(Long companyId) {
-        XzCompany xzCompany=companyMapper.selectByPrimaryKey(companyId);
+        XzCompany xzCompany=companyMapper.selCompanyInf(companyId);
         Class c=XzCompany.class;
         Field[] fields = c.getDeclaredFields();
         int count=0;
@@ -272,12 +273,13 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         try {
             for (Field f:fields){
                 if (f.getName().startsWith("company")||f.getType().equals(List.class)){
-                    if (!f.getName().equals("companyId")&&!f.getName().equals("companyState")&&!f.getName().equals("companyX")&&!f.getName().equals("companyY")){
+                    if (!f.getName().equals("companyId")&&!f.getName().equals("companyState")&&!f.getName().equals("companyX")&&!f.getName().equals("companyY")
+                        &&!f.getName().equals("postions")&&!f.getName().equals("skills")&&!f.getName().equals("domains")&&!f.getName().equals("images")){
                     f.setAccessible(true);
                     if (f.getType().equals(List.class)){
                         size+=3;
                         List list1=(List)f.get(xzCompany);
-                        if (list1.size()!=0&&list1!=null){
+                        if (list1!=null&&list1.size()!=0){
                             count+=3;
                         }
                         }else {
@@ -291,6 +293,8 @@ public class XzCompanyServiceImpl implements XzCompanyService{
                 }
             }
             xzCompany.setIsListing(new Double(Math.floor(count*1.0/size*100)).intValue());
+            int j=new Double(Math.floor(count*1.0/size*100)).intValue();
+            System.out.println("j:::::::::::::::::::::::::::::"+j);
             companyMapper.updateByPrimaryKeySelective(xzCompany);
         }catch (Exception e){
             e.printStackTrace();

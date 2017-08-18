@@ -656,6 +656,7 @@
         #{field_name,jdbcType=VARCHAR}
       </foreach>
     </if>
+    and c.company_state=2
     GROUP BY c.company_id
   </select>
   <select id="selFollowState" parameterType="java.util.Map" resultType="java.lang.Integer">
