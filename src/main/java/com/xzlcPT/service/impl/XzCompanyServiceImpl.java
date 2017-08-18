@@ -260,6 +260,12 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         List<XzCompany> xzCompanyList=companyMapper.selectRecommend();
         return xzCompanyList;
     }
+    //公司信息完成度
+    @Override
+    public XzCompany updateCompletionById(Long companyId) {
+        XzCompany xzCompany=companyMapper.selectByPrimaryKey(companyId);
+        return null;
+    }
 
 
 }

@@ -340,4 +340,30 @@ public class PostionController extends BaseController{
         map.put("list",list);
         return map;
     }
+
+
+    //-------------------------------- 以下为管理员用户操作的方法-------------------------------------------
+
+   //查询所有审核中的职位
+    @RequestMapping("selectAllByWelfare.emp")
+    public ModelAndView selectAllByWelfare(){
+        ModelAndView mv=new ModelAndView("index");
+        List<XzPostion> list=postionService.selectAllByWelfare();
+        mv.addObject("list",list);
+        return mv;
+    }
+    //修改审核中的职位的状态
+    @ResponseBody
+    @RequestMapping("updateByWelfare.emp")
+    public Map updateByWelfare(XzPostion xzPostion){
+        int i=postionService.updateByWelfare(xzPostion);
+        Map map=new HashMap();
+        if(i==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","err");
+        }
+        return map;
+    }
+
 }

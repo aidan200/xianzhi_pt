@@ -42,4 +42,6 @@ public interface XzCompanyService {
     int selFollowState(Map map);
 
     List<XzCompany> selectRecommend();
+
+    XzCompany updateCompletionById(Long companyId);
 }
