@@ -1,0 +1,512 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Microsoft YaHei UI', Calibri, Arial, sans-serif;
+    /*background-color: rgba(0,0,0,0.15);*/
+    font-weight: 300;
+    font-size: 15px;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    color: #555;
+    text-decoration: none;
+!important;
+}
+
+body a:hover {
+    text-decoration: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.panel-body a {
+    /*color: #555;*/
+    display: block;
+}
+
+.panel-default > .panel-heading :hover {
+    text-decoration: none;
+!important;
+}
+
+.panel-default > .panel-heading > a:visited {
+    text-decoration: none;
+!important;
+}
+
+/*.panel-default > .panel-heading:hover {*/
+/*background-color: #3399FF;*/
+/*color: white;*/
+/*cursor: pointer;*/
+/*}*/
+
+.panel-body a:hover {
+    text-decoration: none;
+!important;
+    color: #3399FF;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+}
+
+.main {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*-------------------主页-------------------*/
+.home_logo {
+    width: 150px;
+    height: 55px;
+    margin-top: 5px;
+    margin-left: 50px;
+}
+
+.home_username {
+    width: 150px;
+    float: right;
+    margin-right: 80px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+.home_username a {
+    color: #fff;
+}
+
+.home_username a:hover {
+    text-decoration: none;
+    color: #eee;
+}
+
+.home_username li {
+    float: left;
+    margin-left: 50px;
+}
+
+.home_e {
+    width: 40px;
+    height: 28px;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    position: relative;
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    margin-top: -10px;
+}
+
+.home_e2 {
+    color: #3399FF;
+    position: absolute;
+    left: 15px;
+    top: 7px
+}
+
+.home_number {
+    font-size: 11px;
+    color: #ffffff;
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    width: 18px;
+    height: 18px;
+    background-color: rgb(217, 83, 79);
+    border: 1px solid rgb(217, 83, 79);
+    border-radius: 50%;
+}
+
+.all {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    width: 100%;
+    height: 65px;
+    min-width: 1200px;
+    background-color: rgb(85, 97, 101);
+    box-sizing: border-box;
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    position: fixed;
+}
+
+.center {
+    width: 100%;
+    overflow: hidden;
+}
+
+.left {
+    float: left;
+    width: 180px;
+    height: 100%;
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    background-color: #575757;
+    position: fixed;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.nav1 {
+    /*width: 150px;*/
+    margin: 0 auto;
+    margin-top: 110px;
+}
+
+.nav_all {
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #656565;
+    color: #ffffff;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.nav_all:hover {
+    color: #cccccc;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.one_all {
+    color: #ffffff;
+}
+
+.panel-title > a {
+    font-family: 'Microsoft YaHei UI', Calibri, Arial, sans-serif;
+    line-height: 30px;
+}
+
+.panel-body {
+    text-align: center;
+}
+
+.home_nav {
+    margin-top: 3px;
+    height: 35px;
+    line-height: 35px;
+}
+
+.home_nav a {
+    color: #ffffff;
+}
+
+.home_nav > a:hover {
+    color: #cccccc;
+}
+
+.right {
+    width: 75%;
+    height: auto;
+    margin-left: 230px;
+    margin-top: 70px;
+    padding: 10px 30px;
+    position: relative;
+
+}
+
+.allblue {
+    height: 37px;
+    width: 100%;
+    background-color: rgba(57, 147, 255, 0.67);
+    /*border: 1px solid  rgba(57,147,255,0.5);*/
+    border-radius: 3px 3px 3px 3px;
+    position: fixed;
+}
+
+.allblue h4 {
+    font-family: "Microsoft YaHei UI", Helvetica, Arial, sans-serif;
+    color: white;
+    line-height: 20px;
+    margin-left: 80px;
+    letter-spacing: 2px;
+}
+
+.home_uu {
+    margin-left: -40px;
+}
+
+/*-------------------业务总览---------------------*/
+.allform {
+    overflow: auto;
+    border: 1px solid #d4d4d4;
+    margin-top: 20px;
+}
+
+.b {
+    cursor: default;
+}
+
+.all_a {
+    color: #666;
+}
+
+.all_a:hover {
+    text-decoration: none;
+    color: rgb(57, 147, 255)
+}
+
+.table-fix {
+    table-layout: fixed
+}
+
+.ww {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    height: 50px;
+}
+
+.user_height {
+    height: 50px;
+}
+
+.all_search {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.big {
+    margin-top: 10px;
+}
+
+.every_top {
+    width: 100%;
+    height: auto;
+    background-color: #3d9ccc;
+    overflow: hidden;
+    padding-left: 20px;
+    color: #ffffff;
+    border-radius: 3px;
+}
+
+.every_top span {
+    font-size: 12px;
+}
+
+.every_top h3 {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.all_select {
+    width: 100%;
+    min-width: 1100px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.all_input {
+    width: 200px;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-right: 15px;
+    padding-left: 10px;
+    font-family: "Microsoft YaHei UI";
+}
+
+.all_button {
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 3px;
+    background-color: #ffa500;
+    color: #ffffff;
+    outline: none;
+}
+
+/*--------------------个人业务管理--------------------*/
+.allform2 {
+    overflow: auto;
+    margin-top: 80px;
+}
+
+/*后改的导航*/
+.all_nav {
+    color: #333;
+    line-height: 45px;
+    height: 45px;
+    text-align: center;
+    /*border-color: #ddd*/
+    border-radius: 5px 5px 0 0;
+    display: block;
+}
+
+.all_nav:hover {
+    background-color: #3399FF;
+    color: white;
+    cursor: pointer;
+}
+
+/*------------中间那一点------------*/
+.center_small {
+    width: 200px;
+    height: 500px;
+    background-color: red;
+    float: left;
+    margin-left: 180px;
+    display: none;
+}
+
+#btn_no {
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    margin-bottom: 10px;
+}
+
+#btn_yes {
+    width: 80px;
+    height: 500px;
+    background-color: #575757;
+    position: absolute;
+    left: -80px;
+}
+
+.yes_btn {
+    background: transparent;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin-left: 12px;
+    outline: none;
+    position: absolute;
+    top: -30px;
+}
+
+/*--导航--*/
+.pagination > li > a.a {
+    background-color: #eee;
+    color: #c0c0c0;
+    border: 1px solid #eee;
+}
+
+.pagination > li > a.a:hover {
+    background-color: #eee;
+    color: #c0c0c0;
+    border: 1px solid #eee;
+    cursor: default;
+}
+
+.pagination > li > a.a:focus {
+    background-color: #eee;
+    color: #c0c0c0;
+    border: 1px solid #eee;
+}
+
+/*----------隐藏的三级导航----------*/
+.all_center {
+    width: 150px;
+    height: 100%;
+    background-color: #8d8d8d;
+    overflow: hidden;
+    float: left;
+    margin-left: 180px;
+    position: fixed;
+    padding-top: 80px;
+    display: none;
+    z-index: 99;
+}
+
+.all_center #c1,.all_center #c2,.all_center #c3 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.all_center div {
+    display: none;
+}
+
+.all_center .show {
+    display: block;
+}
+
+.center_ul {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.center_ul li {
+    /*margin: 10px;*/
+    font-size: 16px;
+}
+.center_ul li a{
+    color: #ffffff;
+    display: block;
+    padding: 10px;
+}
+.center_btn {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    position: absolute;
+    right: 15px;
+    top: 300px;
+    color: white;
+    cursor: pointer;
+}
+
+.center_btn2 {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    position: absolute;
+    cursor: pointer;
+    left: -150px;
+    top: 300px;
+    color: #ffffff;
+}
