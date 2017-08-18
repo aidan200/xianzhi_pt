@@ -43,6 +43,8 @@ public interface XzCompanyService {
 
     List<XzCompany> selectRecommend();
 
+    XzCompany updateCompletionById(Long companyId);
+
     List<XzCompany> selAllCompanyExamine();
 
     XzCompany selCompanyById(Long companyId);

@@ -17,7 +17,6 @@
 </head>
 <body style="background-color: #f9f9f9">
 <jsp:include page="headerforeEnd.jsp"/>
-<jsp:include page="personnav.jsp"/>
 
 <div class="saf_all">
 

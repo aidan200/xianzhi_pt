@@ -43,4 +43,8 @@ public interface XzPostionService {
     int updateState(XzPostion xzPostion);
 
     List<XzPostion> selByCompanyId(Long companyId);
+//    以下为管理员操作的方法
+    List<XzPostion> selectAllByWelfare();
+
+    int updateByWelfare(XzPostion xzPostion);
 }

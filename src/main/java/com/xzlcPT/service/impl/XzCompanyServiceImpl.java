@@ -260,6 +260,12 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         List<XzCompany> xzCompanyList=companyMapper.selectRecommend();
         return xzCompanyList;
     }
+    //公司信息完成度
+    @Override
+    public XzCompany updateCompletionById(Long companyId) {
+        XzCompany xzCompany=companyMapper.selectByPrimaryKey(companyId);
+        return null;
+    }
 
     //以下为管理员操作方法
     //查询所有执照状态为1的公司
