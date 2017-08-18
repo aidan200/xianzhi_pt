@@ -494,10 +494,12 @@ body a:hover {
     background-color: transparent;
     outline: none;
     position: absolute;
-    right: 15px;
+    right: 5px;
     top: 300px;
     color: white;
     cursor: pointer;
+    width: 50px;
+    height: 50px;
 }
 
 .center_btn2 {
@@ -509,4 +511,6 @@ body a:hover {
     left: -150px;
     top: 300px;
     color: #ffffff;
+    width: 50px;
+    height: 50px;
 }
