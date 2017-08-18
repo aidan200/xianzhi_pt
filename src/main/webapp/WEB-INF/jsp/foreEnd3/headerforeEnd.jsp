@@ -56,7 +56,7 @@
                                         <img src="${pageContext.request.contextPath}/uploadImg/${userLogin.company.companyPicture}" alt="" class="allheader">
                                     </c:when>
                                     <c:otherwise>
-                                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hahaha.png" alt="" class="allheader">
+                                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/tou.png" alt="" class="allheader">
                                     </c:otherwise>
                                 </c:choose>
                                 <span id="newMsg" style="width: 5px;height: 5px;background-color: red;display:none;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
