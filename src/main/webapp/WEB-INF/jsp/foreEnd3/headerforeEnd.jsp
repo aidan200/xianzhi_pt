@@ -47,14 +47,22 @@
                     <c:when test="${userLogin!=undefined}">
                         <a href="" style="">
                             <li class="login1">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hahaha.png" alt=""
-                                     class="allheader">
-                                <span id="newMsg"
-                                      style="width: 5px;height: 5px;background-color: red;display:none;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
+
+                                <c:choose>
+                                    <c:when test="${userLogin.loginType == 0 && userLogin.member.memberPicture != undefined}">
+                                        <img src="${pageContext.request.contextPath}/uploadImg/${company.licence}" alt="" class="allheader">
+                                    </c:when>
+                                    <c:when test="${userLogin.loginType == 1 && userLogin.company.companyPicture != undefined}">
+                                        <img src="${pageContext.request.contextPath}/uploadImg/${userLogin.company.companyPicture}" alt="" class="allheader">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/hahaha.png" alt="" class="allheader">
+                                    </c:otherwise>
+                                </c:choose>
+                                <span id="newMsg" style="width: 5px;height: 5px;background-color: red;display:none;border-radius: 50px;position: absolute;top: 19px;left: 70px "></span>
                                 <ul class="head-menu">
                                     <li class="head_new2">
-                                        <span class="fa fa-user"
-                                              style="color: #666;float: left;font-size: 16px;margin-right: 5px;line-height: 22px"></span>
+                                        <span class="fa fa-user" style="color: #666;float: left;font-size: 16px;margin-right: 5px;line-height: 22px"></span>
                                         <span style="float: left">
                                             <c:if test="${userLogin.loginType == 0}">
                                                 <a href="${pageContext.request.contextPath}/Member/selMemberInfo.do" style="width: 80px;display: inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height: 22px">${userLogin.loginCount}</a>
