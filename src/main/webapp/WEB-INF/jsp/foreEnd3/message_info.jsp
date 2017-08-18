@@ -17,7 +17,6 @@
 </head>
 <body style="background-color: #EEEEEE">
 <jsp:include page="headerforeEnd.jsp"/>
-<jsp:include page="personnav.jsp"/>
 
 <div class="nei_all">
     <div class="nei_center">

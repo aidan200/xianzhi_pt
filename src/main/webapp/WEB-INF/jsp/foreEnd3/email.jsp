@@ -12,8 +12,6 @@
 <html>
 <head>
     <jsp:include page="distforeEnd.jsp"/>
-    <style>
-    </style>
 </head>
 <body>
 

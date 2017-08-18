@@ -138,7 +138,7 @@
 
             </div>
 
-
+            <c:if test="${plist.size()>0}">
             <div class="zp_zwxq_cont_left_xq">
                 <h3>可能感兴趣的职位：</h3>
                 <div id="myCarousel" class="carousel slide" style="overflow: inherit">
@@ -292,6 +292,7 @@
                 <%--<a href="" class="zp_zwxq_cont_a_left"></a>--%>
                 <%--<a href="" class="zp_zwxq_cont_a_right"></a>--%>
             </div>
+            </c:if>
             <div class="zp_zwxq_cont_left_ss">
                 <form action="${pageContext.request.contextPath}/Postion/selPostionIndex.do" method="post">
                     <input type="text" placeholder="搜索其他职位，如：总经理秘书" name="likeStr">
@@ -386,7 +387,7 @@
                     <div class="zp_zwxq_cont_right_cont_bottom">
                         <p>
                             该企业其他相似职位
-                            <a href="" class="pull-right">更多>></a>
+                            <a href="${pageContext.request.contextPath}/CompanyInfo/selCompanyInf.do?companyId=${xzPostion.companyId}" class="pull-right">更多>></a>
                         </p>
                         <ul>
                             <c:forEach items="${cplist}" var="cp">

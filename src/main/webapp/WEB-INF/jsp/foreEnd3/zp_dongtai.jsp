@@ -409,7 +409,7 @@
                 $(_self.dataBox).append(str);
             }
             $('.isRead').on('click',function () {
-                alert($(this).attr('data-readId'));
+                /*alert($(this).attr('data-readId'));*/
                 $.ajax({
                    url:path+'/ResumeBrowse/updateIsRead.do',
                     data:{resumeBrowseId:$(this).attr('data-readId')},
