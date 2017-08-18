@@ -146,7 +146,7 @@
                             期望职位： <span>${xzResume.resumeIntentPosition}</span>
                         </div>
                         <div class="resume_every">
-                            目前薪资： <span> </span>
+                            目前薪资： <span> ${xzResume.resumeMm}</span>
                         </div>
                         <div class="resume_every">
                             期望薪资： <span> ${fn:replace((xzResume.resumeIntentMm*12/10000),".0","")}万/年</span>
