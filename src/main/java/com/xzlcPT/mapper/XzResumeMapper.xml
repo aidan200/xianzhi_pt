@@ -699,4 +699,9 @@
     ) s
     GROUP BY s.resume_id
   </select>
+  <select id="selAllResume" resultMap="BaseResultMap" parameterType="com.xzlcPT.bean.XzResume">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from xz_resume
+  </select>
 </mapper>

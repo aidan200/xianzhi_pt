@@ -51,4 +51,10 @@ public interface XzCompanyService {
 
     int updateCompanyState(XzCompany record);
 
+
+    PageBean<XzCompany> selAllCompany(int page,int rows,XzCompany xzCompany);
+
+    XzCompany selectByPrimaryKey(Long companyId);
+
+    int deleteByPrimaryKey(Long companyId);
 }

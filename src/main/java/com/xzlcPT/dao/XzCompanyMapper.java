@@ -55,4 +55,6 @@ public interface XzCompanyMapper {
     XzCompany selCompanyById(Long companyId);
 
     int updateCompanyState(XzCompany record);
+
+    List<XzCompany> selAllCompany(XzCompany xzCompany);
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -264,6 +265,36 @@ public class XzCompanyServiceImpl implements XzCompanyService{
     @Override
     public XzCompany updateCompletionById(Long companyId) {
         XzCompany xzCompany=companyMapper.selectByPrimaryKey(companyId);
+        Class c=XzCompany.class;
+        Field[] fields = c.getDeclaredFields();
+        int count=0;
+        int size=0;
+        try {
+            for (Field f:fields){
+                if (f.getName().startsWith("company")||f.getType().equals(List.class)){
+                    if (!f.getName().equals("companyId")&&!f.getName().equals("companyState")&&!f.getName().equals("companyX")&&!f.getName().equals("companyY")){
+                    f.setAccessible(true);
+                    if (f.getType().equals(List.class)){
+                        size+=3;
+                        List list1=(List)f.get(xzCompany);
+                        if (list1.size()!=0&&list1!=null){
+                            count+=3;
+                        }
+                        }else {
+                        size++;
+                        Object o=f.get(xzCompany);
+                        if (o!=null&&o!=""){
+                            count++;
+                        }
+                        }
+                    }
+                }
+            }
+            xzCompany.setIsListing(new Double(Math.floor(count*1.0/size*100)).intValue());
+            companyMapper.updateByPrimaryKeySelective(xzCompany);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -289,6 +320,26 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         return i;
     }
 
+
+    @Override
+    public PageBean<XzCompany> selAllCompany(int page, int rows, XzCompany xzCompany) {
+        PageHelper.startPage(page,rows);
+        List<XzCompany> clist=companyMapper.selAllCompany(xzCompany);
+        PageBean<XzCompany> pageBean=new PageBean<>(clist);
+        return pageBean;
+    }
+
+    @Override
+    public XzCompany selectByPrimaryKey(Long companyId) {
+        XzCompany xzCompany=companyMapper.selectByPrimaryKey(companyId);
+        return xzCompany;
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Long companyId) {
+        int i=companyMapper.deleteByPrimaryKey(companyId);
+        return i;
+    }
 
 
 }

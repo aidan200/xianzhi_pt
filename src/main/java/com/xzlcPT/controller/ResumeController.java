@@ -346,4 +346,32 @@ public class ResumeController extends BaseController {
         mv.addObject("xzResume",xzResume);
         return mv;
     }
+    //-----------------------------------以下为后台管理员用户使用的方法------------------------------
+    @RequestMapping("selAllResume.emp")
+    public ModelAndView selAllResume(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,XzResume xzResume){
+        ModelAndView mv=new ModelAndView("index");
+        PageBean pageBean=resumeService.selAllResume(page,rows,xzResume);
+        mv.addObject("list",pageBean.getList());
+        return mv;
+    }
+    @ResponseBody
+    @RequestMapping("deleteByPrimaryKey.emp")
+    public Map deleteByPrimaryKey(Long resumeId){
+        Map map=new HashMap();
+        int i=resumeService.deleteByPrimaryKey(resumeId);
+        if(i==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","err");
+        }
+        return map;
+    }
+    @ResponseBody
+    @RequestMapping("selectByPrimaryKey.emp")
+    public Map selectByPrimaryKey(Long resumeId){
+        Map map=new HashMap();
+        XzResume xzResume=resumeService.selectByPrimaryKey(resumeId);
+        map.put("xzResume",xzResume);
+        return map;
+    }
 }

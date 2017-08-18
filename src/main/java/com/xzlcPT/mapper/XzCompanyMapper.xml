@@ -667,6 +667,11 @@
     <include refid="recommendList"/>
     from xz_company where company_id in(SELECT company_id from xz_company_recommend)
   </select>
+  <select id="selAllCompany" parameterType="com.xzlcPT.bean.XzCompany" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from xz_company
+  </select>
 
   <!-- 以下为管理员用户操作  -->
 <!-- 查询所有执照状态为1的公司-->

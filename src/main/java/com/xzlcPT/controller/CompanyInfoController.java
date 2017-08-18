@@ -1,6 +1,7 @@
 package com.xzlcPT.controller;
 
 import com.amazonaws.services.dynamodbv2.xspec.M;
+import com.github.pagehelper.Page;
 import com.util.MobileAndPersonID;
 import com.util.PageBean;
 import com.util.SavePicture;
@@ -456,7 +457,7 @@ public class CompanyInfoController {
         return mv;
     }
 
-    //以下为管理员用户操作方法------------------------------------------------------------------------------------------------------------
+    //---------------------------------以下为管理员用户操作方法-------------------------
     //按公司id查询公司详情
     @RequestMapping("selAllCompanyExa.emp")
     public ModelAndView selAllCompanyExamine(){
@@ -487,4 +488,32 @@ public class CompanyInfoController {
     }
 
 
+//------------------------------以下为管理员用户操作的方法------------------------------------
+    @RequestMapping("selAllCompany.emp")
+    public ModelAndView selAllCompany(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,XzCompany xzCompany){
+        ModelAndView mv=new ModelAndView("index");
+        PageBean<XzCompany> pageBean=companyService.selAllCompany(page,rows,xzCompany);
+        mv.addObject("list",pageBean.getList());
+        return mv;
+    }
+    @ResponseBody
+    @RequestMapping("selectByPrimaryKey.emp")
+    public Map selectByPrimaryKey(Long companyId){
+        Map map=new HashMap();
+        XzCompany xzCompany=companyService.selectByPrimaryKey(companyId);
+        map.put("xzCompany",xzCompany);
+        return map;
+    }
+    @ResponseBody
+    @RequestMapping("deleteByPrimaryKey.emp")
+    public Map deleteByPrimaryKey(Long companyId){
+        Map map=new HashMap();
+        int i=companyService.deleteByPrimaryKey(companyId);
+        if(i==1){
+            map.put("msg","ok");
+        }else {
+            map.put("msg","err");
+        }
+        return map;
+    }
 }
