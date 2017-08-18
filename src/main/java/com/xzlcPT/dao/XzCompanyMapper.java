@@ -49,4 +49,6 @@ public interface XzCompanyMapper {
     int selFollowState(Map map);
 
     List<XzCompany> selectRecommend();
+
+    List<XzCompany> selAllCompany(XzCompany xzCompany);
 }

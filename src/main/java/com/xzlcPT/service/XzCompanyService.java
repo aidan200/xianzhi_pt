@@ -44,4 +44,10 @@ public interface XzCompanyService {
     List<XzCompany> selectRecommend();
 
     XzCompany updateCompletionById(Long companyId);
+
+    PageBean<XzCompany> selAllCompany(int page,int rows,XzCompany xzCompany);
+
+    XzCompany selectByPrimaryKey(Long companyId);
+
+    int deleteByPrimaryKey(Long companyId);
 }

@@ -1,5 +1,6 @@
 package com.xzlcPT.dao;
 
+import com.xzlcPT.bean.XzCompany;
 import com.xzlcPT.bean.XzEducation;
 import com.xzlcPT.bean.XzResume;
 
@@ -34,5 +35,7 @@ public interface XzResumeMapper {
     List<XzResume> selectCollect(Long companyId);
 
     List<XzResume> selResume(Map map);
+
+    List<XzResume> selAllResume(XzResume xzResume);
 
 }

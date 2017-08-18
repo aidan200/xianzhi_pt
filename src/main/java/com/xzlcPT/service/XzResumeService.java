@@ -33,4 +33,10 @@ public interface XzResumeService {
     List<XzResume> selectCollect(Long companyId);
 
     PageBean<XzResume> selResume(Integer page,Integer rows,Map map);
+
+    PageBean<XzResume> selAllResume(Integer page,Integer rows,XzResume xzResume);
+
+    int deleteByPrimaryKey(Long resumeId);
+
+    XzResume selectByPrimaryKey(Long resumeId);
 }

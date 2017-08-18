@@ -169,6 +169,26 @@ public class XzResumeServiceImpl implements XzResumeService{
         return pageBean;
     }
 
+    @Override
+    public PageBean<XzResume> selAllResume(Integer page, Integer rows, XzResume xzResume) {
+        PageHelper.startPage(page,rows);
+        List<XzResume> rlist=resumeMapper.selAllResume(xzResume);
+        PageBean<XzResume> pageBean=new PageBean<>(rlist);
+        return pageBean;
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Long resumeId) {
+        int i=resumeMapper.deleteByPrimaryKey(resumeId);
+        return i;
+    }
+
+    @Override
+    public XzResume selectByPrimaryKey(Long resumeId) {
+        XzResume xzResume=resumeMapper.selectByPrimaryKey(resumeId);
+        return xzResume;
+    }
+
     //修改完成度
     public XzResume updateCompletionById(Long id) {
         //System.out.println(id+"++++++++++++++++++++++");
