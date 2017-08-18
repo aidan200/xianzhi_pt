@@ -213,6 +213,7 @@
     <foreach collection="list" item="pid" index="index" open="(" close=")" separator=",">
       #{pid}
     </foreach>
+    and p.postion_welfare=3
     ORDER BY p.publish_time DESC,d.domain_id
   </select>
   <select id="selPostionList" resultMap="BaseResultMap" parameterType="Map">

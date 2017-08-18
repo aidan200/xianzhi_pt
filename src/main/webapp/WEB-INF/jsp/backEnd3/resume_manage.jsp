@@ -57,7 +57,7 @@
                             <th width="120">当前状态</th>
                             <th width="120">婚姻状况</th>
                             <th width="120">现在的职位</th>
-                            <th width="120">8</th>
+                            <th width="120">简历完成度</th>
                             <th width="150">操作</th>
                         </tr>
                         </thead>
@@ -72,7 +72,7 @@
                             <td class="ww">${l1.resumeState eq 0?"未工作":''}${l1.resumeState eq 1?"在职":''}${l1.resumeState eq 2?"离职":''}</td>
                             <td class="ww">${l1.resumeMarriage eq 0?"未婚":''}${l1.resumeMarriage eq 1?"已婚":''}${l1.resumeMarriage eq 2?"保密":''}</td>
                             <td class="ww">${l1.resumePosition}</td>
-                            <td class="ww">徐珠贤</td>
+                            <td class="ww">${l1.resumeCompletion}</td>
                             <td class="ww">
                                 <a href="" class="all_a">分配</a>
                                 <a href="" class="all_a">详情</a>
