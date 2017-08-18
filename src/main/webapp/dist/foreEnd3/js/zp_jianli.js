@@ -709,7 +709,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
                     $('#jl_sj').addClass('jl_name');
                     $('#jl_sj').focus()
                     $('#jl_sj').css({"color":"red"})   //手机不合理
-                    alert("只能输入数字")
+                    alert("只能输入1-8位的数字")
                     return
                 }
 
@@ -1105,14 +1105,14 @@ obj_zyyx.prototype.bindingSJ=function (){
                         $('#_zwnx_').css({"color":"#555555"})
                     }else{
                         $('#_zwnx_').css({"color":"red"})
-                        alert('只能输入数字')
+                        alert('只能输入1-8位的数字')
                         return
                     }
                     if(bbb){
                         $('#nx_ym').css({"color":"#555555"})
                     }else{
                         $('#nx_ym').css({"color":"red"})
-                        alert('只能输入数字')
+                        alert('只能输入1-8位的数字')
                         return
                     }
                     if(pcont.resumeMm==''||pcont.resumeMm==null){
@@ -1336,7 +1336,6 @@ obj_gzjl.prototype.bindingSJ=function (){
     $('#gzjl').siblings('div').find('.zp_jianli_xg').each(function (index,ele){ //修改弹出框事件
 
         $(ele).on('click',function () {     //插入简历弹出框
-
             if(kg){
                 kg=false;
 
@@ -1359,7 +1358,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='<em class="em2"></em>'
                 str+='</li>'
                 str+='<li>'
-                str+='月薪<input type="text" id="yx___" value="'+_self.obj_s[index].yx+'" class="zwmc_input form-control zp_jianli_zl_3_input1 " placeholder="请输入职位名称">'
+                str+='月薪<input type="text" id="yx___" value="'+_self.obj_s[index].yx+'" class="zwmc_input form-control zp_jianli_zl_3_input1 " placeholder="请输入月薪">'
                 str+='</li>'
                 str+='<li>'
                 str+='职位名称<input type="text" id="zwmc___" value="'+_self.obj_s[index].zwmc2+'" class="zwmc_input form-control zp_jianli_zl_3_input1 " placeholder="请输入职位名称">'
@@ -1510,7 +1509,7 @@ obj_gzjl.prototype.bindingSJ=function (){
 
                     }else{
                         $('#yx___').css({"color":"red"})
-                        alert('只能输入数字')
+                        alert('只能输入1-8位的数字')
                         return
                     }
 
@@ -1533,7 +1532,7 @@ obj_gzjl.prototype.bindingSJ=function (){
 
                     }else{
                         $('#xxrs__').css({"color":"red"})
-                        alert('只能输入数字')
+                        alert('只能输入1-8位的数字')
                         return
                     }
 
@@ -1631,10 +1630,11 @@ obj_gzjl.prototype.bindingSJ=function (){
 
             str+='<li class="li_03">'
             str+='公司领域<div class="gsly_xg" >'
-
             str+='</div>'
-
             str+='<em class="em2"></em>'
+            str+='</li>'
+            str+='<li>'
+            str+='月薪<input type="text" id="yx___" class="form-control zp_jianli_zl_3_input1 " placeholder="请输入月薪">'
             str+='</li>'
             str+='<li>'
             str+='职位名称<input type="text" id="zwmc___"  class="form-control zp_jianli_zl_3_input1 "  placeholder="请输入职位名称">'
@@ -1735,11 +1735,12 @@ obj_gzjl.prototype.bindingSJ=function (){
                 var obj_gzjl={
                     jobexpCompanyName:trim(gzjl.find('input').eq(0).val()),         //公司名称
                     fields:attr,                                            //公司领域
-                    jobexpPostion:trim(gzjl.find('input').eq(1).val()),             //职位名称
-                    jobexpWorkspace:trim(gzjl.find('input').eq(2).val()),           //工作地点
-                    jobexpSubordinate:trim(gzjl.find('input').eq(3).val()),         //下属人数
-                    jobexpBeginTime:trim(gzjl.find('input').eq(4).val()),           //任职时间
-                    jobexpEndTime:trim(gzjl.find('input').eq(5).val()),             //离职时间
+                    jobexpMm:trim(gzjl.find('input').eq(1).val()),
+                    jobexpPostion:trim(gzjl.find('input').eq(2).val()),             //职位名称
+                    jobexpWorkspace:trim(gzjl.find('input').eq(3).val()),           //工作地点
+                    jobexpSubordinate:trim(gzjl.find('input').eq(4).val()),         //下属人数
+                    jobexpBeginTime:trim(gzjl.find('input').eq(5).val()),           //任职时间
+                    jobexpEndTime:trim(gzjl.find('input').eq(6).val()),             //离职时间
                     jobexpDuty:trim(gzjl.find('textarea').eq(0).val()),                //职责业绩
                     resumeId:ID,                                                 //简历ID
                 };
@@ -1755,6 +1756,11 @@ obj_gzjl.prototype.bindingSJ=function (){
                         $('.gsly_xg').css({
                             "border-color":"#FF4600"
                         })
+                        return
+                    }
+                    if(obj_gzjl.jobexpMm==''||obj_gzjl.jobexpMm==null){
+                        $('#yx___').addClass('jl_name');
+                        $('#yx___').focus();
                         return
                     }
                     if(obj_gzjl.jobexpPostion==''||obj_gzjl.jobexpPostion==null){
@@ -1777,7 +1783,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                     }else{
                         $('#xxrs__').css({"color":"red"})
                         $('#xxrs__').focus();
-                        alert('只能输入数字')
+                        alert('只能输入1-8位的数字')
                         return
                     }
                     if(obj_gzjl.jobexpBeginTime==''||obj_gzjl.jobexpBeginTime==null){
@@ -3326,7 +3332,7 @@ function flashResume2(){  //查看简历完成度
     })
 }
 function number(obj){                   //正则表达式
-    var s = /^[0-9]*$/;
+    var s = /^[0-9]{1,8}$/;
     var v = s.test($(obj).val())
     return v
 }
