@@ -50,5 +50,11 @@ public interface XzCompanyMapper {
 
     List<XzCompany> selectRecommend();
 
+    List<XzCompany> selAllCompanyExamine();
+
+    XzCompany selCompanyById(Long companyId);
+
+    int updateCompanyState(XzCompany record);
+
     List<XzCompany> selAllCompany(XzCompany xzCompany);
 }

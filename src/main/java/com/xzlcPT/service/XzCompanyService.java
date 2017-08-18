@@ -45,6 +45,13 @@ public interface XzCompanyService {
 
     XzCompany updateCompletionById(Long companyId);
 
+    List<XzCompany> selAllCompanyExamine();
+
+    XzCompany selCompanyById(Long companyId);
+
+    int updateCompanyState(XzCompany record);
+
+
     PageBean<XzCompany> selAllCompany(int page,int rows,XzCompany xzCompany);
 
     XzCompany selectByPrimaryKey(Long companyId);
