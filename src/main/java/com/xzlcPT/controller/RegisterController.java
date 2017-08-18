@@ -137,6 +137,7 @@ public class RegisterController extends BaseController {
                 company.setCompanyId(companyId);
                 company.setCompanyName(companyName);
                 company.setCompanyPicture(fileName);
+                company.setCompanyState(1);
                 int i = companyService.updateByPrimaryKeySelective(company);
                 if(i==1){
                     mv.addObject("msg","保存企业信息成功");

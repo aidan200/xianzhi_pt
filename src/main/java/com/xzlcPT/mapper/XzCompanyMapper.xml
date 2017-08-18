@@ -667,4 +667,34 @@
     <include refid="recommendList"/>
     from xz_company where company_id in(SELECT company_id from xz_company_recommend)
   </select>
+
+  <!-- 以下为管理员用户操作  -->
+<!-- 查询所有执照状态为1的公司-->
+  <select id="selAllCompanyExamine" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from xz_company
+    where company_state = 1
+  </select>
+
+  <!-- 按公司id查询与预览-->
+  <select id="selCompanyById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xz_company
+    where company_id = #{companyId,jdbcType=BIGINT} AND company_state = 1
+  </select>
+
+<!--修改执照审核状态-->
+  <update id="updateCompanyState"  parameterType="com.xzlcPT.bean.XzCompany">
+    update xz_company
+    <set>
+      <if test="companyState != null and companyState != '' ">
+        company_state = #{companyState},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=BIGINT}
+  </update>
+
+
 </mapper>
