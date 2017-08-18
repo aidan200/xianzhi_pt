@@ -67,13 +67,21 @@
             <div class="zp_jianli_cont_left_top2">
                 <div class="zp_jianli_cont_left_top2_top jbxx2">
                     <div class="zp_jianli_cont_left_top2_left"></div>
-                    <h3><span id="grxx_name"></span> <a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a></h3>
-                    <p>职位名称：<span id="grxx_zwmc" style="margin-right: 15px"></span>
-                        当前城市：<span id="grxx_dqcs"></span>
-                    </p>
-                    <p>当前行业：<span id="grxx_dqhy" style="margin-right: 15px"></span>
-                        工作年限：<span id="grxx_gznf"></span>
-                    </p>
+                    <div>
+                        <h3><span id="grxx_name"></span> <a class="zp_jianli_xg fa fa-edit" href="javascript:;"></a>
+                        </h3>
+                        <p>职位名称：<span id="grxx_zwmc" style="margin-right: 15px"></span>
+                            当前城市：<span id="grxx_dqcs"></span>
+                        </p>
+                        <p style="word-break: break-all"><span style="float: left;margin-right: 0">当前行业：</span><span
+                                id="grxx_dqhy" style="margin-right: 15px;
+                                                                   word-break: break-all;width: 400px;height: auto"></span>
+
+                        </p>
+                        <p style="margin-left: 110px">
+                            工作年限：<span id="grxx_gznf"></span>
+                        </p>
+                    </div>
                 </div>
 
             </div>
@@ -305,7 +313,8 @@
                     <div>
                         <div class="zp_index_ww1"><span class="iss">0</span></div>
                         <div class="zp_index_ww2">
-                            <p><a href="${pageContext.request.contextPath}selPostionBySelf.do?type=ytd">今日已投递<span class="iss">0</span>个职位</a></p>
+                            <p><a href="${pageContext.request.contextPath}selPostionBySelf.do?type=ytd">今日已投递<span
+                                    class="iss">0</span>个职位</a></p>
                             <p>每天最多投递50个</p>
 
                         </div>
