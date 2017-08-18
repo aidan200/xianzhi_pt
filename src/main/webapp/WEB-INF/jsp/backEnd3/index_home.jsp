@@ -120,12 +120,12 @@
         $(".center_btn").click(function () {
             $(".all_center").animate({left: '-100px'});
             $(".center_btn").animate({left: '-150px'});
-            $(".center_btn2").animate({left: '120px'});
+            $(".center_btn2").animate({left: '105px'});
             $("#all_right").animate({left: '0'});
         });
         $(".center_btn2").click(function () {
             $(".center_btn2").animate({left: '-50px'});
-            $(".center_btn").animate({left: '120px'});
+            $(".center_btn").animate({left: '100px'});
             $(".all_center").animate({left: '0'});
             $("#all_right").animate({left: '110px'});
         });
@@ -138,7 +138,7 @@
                 $(".all_center").animate({left: '0'});
                 $("#all_right").animate({left: '110px'});
                 $(".center_btn2").animate({left: '-50px'});
-                $(".center_btn").animate({left: '120px'});
+                $(".center_btn").animate({left: '100px'});
             }
 
         });
