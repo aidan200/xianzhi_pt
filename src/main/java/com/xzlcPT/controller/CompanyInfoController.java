@@ -489,6 +489,7 @@ public class CompanyInfoController {
 
 
 //------------------------------以下为管理员用户操作的方法------------------------------------
+    //查询所有公司信息（带分页）
     @RequestMapping("selAllCompany.emp")
     public ModelAndView selAllCompany(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,XzCompany xzCompany){
         ModelAndView mv=new ModelAndView("index");
@@ -496,6 +497,7 @@ public class CompanyInfoController {
         mv.addObject("list",pageBean.getList());
         return mv;
     }
+    //按ID查询公司详情
     @ResponseBody
     @RequestMapping("selectByPrimaryKey.emp")
     public Map selectByPrimaryKey(Long companyId){
@@ -504,6 +506,7 @@ public class CompanyInfoController {
         map.put("xzCompany",xzCompany);
         return map;
     }
+    //按ID删除
     @ResponseBody
     @RequestMapping("deleteByPrimaryKey.emp")
     public Map deleteByPrimaryKey(Long companyId){
