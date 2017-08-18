@@ -421,7 +421,7 @@
         })
         $('.tPhone').each(function (index, e) {
             var s = /^([0-9]{3,4}-[0-9]{7,8})$/;
-            alert(s.test($(e).val()))
+            //alert(s.test($(e).val()))
             if (!s.test($(e).val())) {
                 $(e).css({"border-color": "#FF4600"});
                 isOK = false
