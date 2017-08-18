@@ -266,6 +266,7 @@ public class ResumeController extends BaseController {
         mv.addObject("rows",pageBean.getPageSize());
         mv.addObject("total",pageBean.getTotal());
         mv.addObject("workspace",workspace);
+        mv.addObject("userLogin",xzLogin);
         return mv;
     }
     //添加收藏
@@ -349,9 +350,13 @@ public class ResumeController extends BaseController {
     //-----------------------------------以下为后台管理员用户使用的方法------------------------------
     @RequestMapping("selAllResume.emp")
     public ModelAndView selAllResume(@RequestParam(defaultValue = "1")int page,@RequestParam(defaultValue = "10")int rows,XzResume xzResume){
-        ModelAndView mv=new ModelAndView("index");
-        PageBean pageBean=resumeService.selAllResume(page,rows,xzResume);
+        ModelAndView mv=new ModelAndView("backEnd3/resume_manage");
+        PageBean<XzResume> pageBean=resumeService.selAllResume(page,rows,xzResume);
         mv.addObject("list",pageBean.getList());
+        mv.addObject("page",pageBean.getPageNum());
+        mv.addObject("pages",pageBean.getPages());
+        mv.addObject("total",pageBean.getTotal());
+        mv.addObject("rows",pageBean.getPageSize());
         return mv;
     }
     @ResponseBody

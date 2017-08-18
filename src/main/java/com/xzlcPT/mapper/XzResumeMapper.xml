@@ -564,6 +564,7 @@
         #{resume_id,jdbcType=BIGINT}
       </foreach>
     </if>
+    and r.resume_completion &gt;80
    ORDER BY  e.graduate_date,j.jobexp_end_time DESC
   </select>
   <select id="selectRcount" resultMap="ResumeInformation" parameterType="java.util.Map">
