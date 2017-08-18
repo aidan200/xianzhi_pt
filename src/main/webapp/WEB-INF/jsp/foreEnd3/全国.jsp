@@ -27,6 +27,7 @@
             var width = $(window).width();
             var height = $(window).height();
 //   省市联动开始
+            //1
             $("#this_space").on('click', function () {                            //点击事件
                 $('#zp_gsxq_bd_tck').css({
                     "display": "block",
