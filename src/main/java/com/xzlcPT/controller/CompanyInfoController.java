@@ -457,7 +457,7 @@ public class CompanyInfoController {
         return mv;
     }
 
-    //以下为管理员用户操作方法------------------------------------------------------------------------------------------------------------
+    //---------------------------------以下为管理员用户操作方法-------------------------
     //按公司id查询公司详情
     @RequestMapping("selAllCompanyExa.emp")
     public ModelAndView selAllCompanyExamine(){
