@@ -164,7 +164,7 @@
     p.postion_id, p.company_id, p.postion_name, p.postion_company, p.postion_ym, p.postion_mm, p.postion_space,
     p.postion_time, p.postion_education, p.postion_exp, p.postion_age, p.postion_description, p.postion_welfare,
     p.delete_flat,p.publish_time, p.over_time, p.postion_department, p.people_number, p.postion_specialty,p.publish_month,
-    p.force_age,p.force_specialty,p.education_entrance
+    p.force_age,p.force_specialty,p.education_entrance,p.filed1
   </sql>
   <sql id="selByNameList">
     p.postion_id, p.postion_name,p.postion_ym,p.postion_mm,p.postion_space,c.company_id, c.company_name,
@@ -724,5 +724,19 @@
   </select>
   <select id="selByCompanyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
     SELECT postion_id,postion_name from xz_postion where company_id=#{companyId,jdbcType=BIGINT}
+  </select>
+  <!--以下为管理员操作的方法-->
+  <select id="selectAllByWelfare" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM xz_postion WHERE postion_welfare=1;
+  </select>
+  <select id="updateByWelfare" parameterType="com.xzlcPT.bean.XzPostion">
+    UPDATE xz_postion SET
+    <if test="filed1 !=null and filed1 !=''">
+      filed1=#{filed1,jdbcType=VARCHAR},
+    </if>
+    postion_welfare=#{postionWelfare,jdbcType=VARCHAR}
+    WHERE postion_id=#{postionId,jdbcType=BIGINT}
   </select>
 </mapper>

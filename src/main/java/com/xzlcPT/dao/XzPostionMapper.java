@@ -48,4 +48,9 @@ public interface XzPostionMapper {
     int selCollectState(Map map);
 
     List<XzPostion> selByCompanyId(long companyId);
+
+//    以下为管理员用户操作方法
+    List<XzPostion> selectAllByWelfare();
+
+    int updateByWelfare(XzPostion xzPostion);
 }

@@ -456,4 +456,35 @@ public class CompanyInfoController {
         return mv;
     }
 
+    //以下为管理员用户操作方法------------------------------------------------------------------------------------------------------------
+    //按公司id查询公司详情
+    @RequestMapping("selAllCompanyExa.emp")
+    public ModelAndView selAllCompanyExamine(){
+        ModelAndView mv = new ModelAndView("");
+        List list = companyService.selAllCompanyExamine();
+        System.out.println(list);
+        mv.addObject("list",list);
+        return mv;
+    }
+
+    //按公司id查询与预览
+    @RequestMapping("selCompanyById.emp")
+    public ModelAndView selCompanyById(Long memberId){
+        ModelAndView mv=new ModelAndView("");
+        XzCompany company=companyService.selCompanyById(memberId);
+        mv.addObject("company",company);
+        return mv;
+    }
+
+    //修改执照审核状态
+    @ResponseBody
+    @RequestMapping("updateCompanyState.emp")
+    public Map updateCompanyState(@RequestBody XzCompany xzCompany){
+        Map map=new HashMap();
+        int i=companyService.updateCompanyState(xzCompany);
+        map.put("i",i);
+        return map;
+    }
+
+
 }
