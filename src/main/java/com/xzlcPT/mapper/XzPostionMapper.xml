@@ -675,7 +675,7 @@
     <if test="postionId !=null and postionId !=''">
     and p.postion_id &lt;&gt;#{postionId,jdbcType=BIGINT}
     </if>
-
+    and p.postion_welfare=3
   </select>
   <select id="selInfoByComId" parameterType="com.xzlcPT.bean.XzPostion" resultMap="BaseResultMap">
     select

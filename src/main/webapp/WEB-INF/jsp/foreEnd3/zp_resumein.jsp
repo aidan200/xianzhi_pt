@@ -69,21 +69,20 @@
             <div class="rei_right">
                 <div class="rei_topr">
                     <h4><span class="fa fa-map-signs rei_col"></span> 职业意向</h4>
-                    <div>目前行业：<span class="rei_spans">
+                    <div>目前行业：
                         <c:forEach items="${xzResume.fields}" var="fi" varStatus="stat1">
                            <c:if test="${fi.fieldType.equals('2')}">
-                                ${fi.fieldName}
+                        <span class="rei_spans">${fi.fieldName}</span>
                            </c:if>
                         </c:forEach>
-                    </span>
                     </div>
-                    <div>期望行业：<span class="rei_spans">
+                    <div>期望行业：
                          <c:forEach items="${xzResume.fields}" var="fi" varStatus="stat1">
                              <c:if test="${fi.fieldType.equals('3')}">
-                                 ${fi.fieldName}
+                        <span class="rei_spans">${fi.fieldName}</span>
                              </c:if>
                          </c:forEach>
-                    </span></div>
+                    </div>
 
                     <div class="rei_two">期望地点：<span>${xzResume.resumeIntentWorkspace}</span></div>
                     <div class="rei_two2">期望职位：<span>${xzResume.resumeIntentPosition}</span></div>
@@ -101,12 +100,11 @@
                         <span style="margin-right: 40px">${jo.jobexpWorkspace}</span>
                         <span>${jo.jobexpCompanyName}</span>
                     </div>
-                    <div>公司领域：<span>
+                    <div>公司领域：
                         <c:forEach items="${jo.fields}" var="jf" varStatus="state">
-                            <c:if test="${!state.last}">${jf.fieldName}/</c:if>
-                            <c:if test="${state.last}">${jf.fieldName}</c:if>
+                        <span class="rei_spans">${jf.fieldName}</span>
                         </c:forEach>
-                    </span></div>
+                    </div>
                     <div class="rei_two">职位名称：<span>${jo.jobexpPostion}</span></div>
                     <div class="rei_two2">下属人数：<span>${jo.jobexpSubordinate}</span></div>
                         <input type="hidden" id="h5" value="${jo.jobexpDuty}">
