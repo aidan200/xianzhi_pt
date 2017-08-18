@@ -513,8 +513,10 @@ obj_zbzl.prototype.init=function (){    //初始化赋值
 };
 obj_zbzl.prototype.bindingDOM=function (){//绑定基本信息
     var _self=this;
-    if(getNowFormatDate(_self.cstime)!=''&&getNowFormatDate(_self.cstime)!=null){
+
+    if(_self.cstime!=''&&_self.cstime!=null){
         _self.DOM.csnf.html(getNowFormatDate(_self.cstime));      //出生年月
+        alert('aa')
     }
 
     if(_self.hyzk==0){                                          //婚姻状况
@@ -3316,10 +3318,19 @@ function flashResume2(){  //查看简历完成度
         success:function (data){
                 var date = new Date(data.resumeFlash);//刷新简历时间
                 var completion = data.resumeCompletion;//完成度
-                $('.zp_jianli_wcd .zl_wcd').html(completion);
-                $('.zp_jianli_wcd div').css({"width":completion+"%"})
-                $('#jl_wcd').html(completion)
-                $('#js_sxsj').html(getNowFormatDateSS(date))
+
+                if(completion!=null){
+                    $('.zp_jianli_wcd .zl_wcd').html(completion);
+                    $('.zp_jianli_wcd div').css({"width":completion+"%"})
+                    $('#jl_wcd').html(completion)
+                }else{
+                    $('.zp_jianli_wcd .zl_wcd').html(0);
+                    $('.zp_jianli_wcd div').css({"width":"0%"})
+                    $('#jl_wcd').html(0)
+                }
+
+
+                $('#js_sxsj').html(getNowFormatDateSS(date));
                 if(Number(completion)>=80){
                     $(".zhe").hide();
                 }else{
