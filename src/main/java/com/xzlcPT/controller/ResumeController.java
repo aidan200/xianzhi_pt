@@ -111,7 +111,7 @@ public class ResumeController extends BaseController {
         XzResume xzResume = resumeService.selResumeInformation(resumeId);
         System.out.println("路径：：："+request.getServletContext().getRealPath("/dist/foreEnd3/img/boy.png"));
         System.out.println(xzResume);
-        String fileName = xzResume.getResumeName()+"("+new Date().getTime()+").pdf";
+        String fileName = (xzResume.getResumeName()==null?"unKnown":xzResume.getResumeName())+"("+new Date().getTime()+").pdf";
         File file = PdfUtil.makePdf(xzResume,fileName,request);
         if(file!=null){
             try {

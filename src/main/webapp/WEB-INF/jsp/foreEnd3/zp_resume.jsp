@@ -35,16 +35,18 @@
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <c:when test="${xzResume.resumeSex==1}">
-                            <div class="rem_ht">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt=""
-                                     class="resume_head"></div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="rem_ht">
-                                <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt=""
-                                     class="resume_head"></div>
-                        </c:otherwise>
+                        <c:choose>
+                            <c:when test="${xzResume.resumeSex!=undefined&&xzResume.resumeSex==1}">
+                                <div class="rem_ht">
+                                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/girl.png" alt=""
+                                         class="resume_head"></div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="rem_ht">
+                                    <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/boy.png" alt=""
+                                         class="resume_head"></div>
+                            </c:otherwise>
+                        </c:choose>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -144,7 +146,7 @@
                             期望职位： <span>${xzResume.resumeIntentPosition}</span>
                         </div>
                         <div class="resume_every">
-                            目前薪资： <span> 多少元</span>
+                            目前薪资： <span> </span>
                         </div>
                         <div class="resume_every">
                             期望薪资： <span> ${fn:replace((xzResume.resumeIntentMm*12/10000),".0","")}万/年</span>

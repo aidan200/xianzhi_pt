@@ -27,7 +27,7 @@ public class XzLogin {
     @Size(min = 6,max = 18, message="长度必须在6到18字符之间",groups = {F1.class})
     private String loginPassword;//密码
     private int loginType;//会员类型 1:个人 2:公司
-    @Pattern(regexp="^[\\w,\\.,-]*@[0-9A-Za-z]{1,20}((\\.com)|(\\.net)|(\\.com.cn)){1}$", message="邮箱格式不正确",groups = {F1.class})
+    @Pattern(regexp="^[\\w,\\.,-]*@[0-9A-Za-z]{1,20}((\\.com)|(\\.net)|(\\.com.cn)|(\\.cn)){1}$", message="邮箱格式不正确",groups = {F1.class})
     @ValidById(serviceClazz = RegisterService.class,message = "该邮箱已被注册",methodName = "selectEmail",groups = {F2.class})
     private String loginEmail;//用户邮箱
     private int loginActive;//激活状态

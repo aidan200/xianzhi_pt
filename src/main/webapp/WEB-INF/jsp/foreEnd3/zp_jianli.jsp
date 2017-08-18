@@ -428,7 +428,7 @@
         <div class="zhe_every1">
             <div style="position: relative">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/bcircle1.png" alt="" class="zhe_img">
-                <span class="zhe_span">请完善你的简历信息,使你的简历完成度达60%以上</span>
+                <span class="zhe_span">请完善你的简历信息,使你的简历完成度达80%以上</span>
             </div>
         </div>
         <div class="zhe_many1">

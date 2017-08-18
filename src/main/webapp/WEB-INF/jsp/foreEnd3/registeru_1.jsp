@@ -114,7 +114,7 @@
                 <div class="reu_b">
                     <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/success.png" alt="" class="reu_img3">
                     <div style="clear: both;display: inline-block"></div>
-                    <button>进入官网首页</button>
+                    <button onclick="toHome()">进入官网首页</button>
                     <div class="reu_bo"><span id="test">5</span>秒后自动跳转</div>
                     <span>${msg}</span>
                 </div>
@@ -128,6 +128,11 @@
 
 
 <script type="text/javascript">
+
+    function toHome() {
+        window.location.href = "${pageContext.request.contextPath}/";
+    }
+
     $(document).ready(function () {
         console.log('${msg}');
         var state = 1;
