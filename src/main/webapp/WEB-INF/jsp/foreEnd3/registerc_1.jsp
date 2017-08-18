@@ -145,7 +145,7 @@
         <div class="reu_over">
             <div class="reu_b">
                 <img src="${pageContext.request.contextPath}/dist/foreEnd3/img/success.png" alt="" class="reu_img3">
-                <button>进入官网首页</button>
+                <button onclick="toHome()">进入官网首页</button>
                 <div class="reu_bo"><span id="test">5</span>秒后自动跳转</div>
                 <span>${msg}</span>
             </div>
@@ -172,7 +172,11 @@
         }
         toTag(state);
     });
-    
+
+    function toHome() {
+        window.location.href = "${pageContext.request.contextPath}/";
+    }
+
     function toTag(state) {
         stepBar.init("stepBar", {
             step: state,

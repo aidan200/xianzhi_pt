@@ -149,4 +149,16 @@ public class XzPostionServiceImpl implements XzPostionService{
        List<XzPostion> postionList=postionMapper.selByCompanyId(companyId);
         return postionList;
     }
+    //以下为管理员用户操作的方法
+    @Override
+    public List<XzPostion> selectAllByWelfare() {
+        List<XzPostion> list=postionMapper.selectAllByWelfare();
+        return list;
+    }
+
+    @Override
+    public int updateByWelfare(XzPostion xzPostion) {
+        int i=postionMapper.updateByWelfare(xzPostion);
+        return i;
+    }
 }

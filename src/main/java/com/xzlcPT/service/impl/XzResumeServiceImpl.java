@@ -184,14 +184,15 @@ public class XzResumeServiceImpl implements XzResumeService{
                 if(f.getName().startsWith("resume")||f.getType().equals(List.class)){
                     if(!f.getName().equals("resumeId")&&!f.getName().equals("resumeField")&&!f.getName().equals("resumeNationality")){
                         f.setAccessible(true);
-                        size++;
                         if(f.getType().equals(List.class)){
+                        size+=3;
                             List ol = (List) f.get(resume);
                             if(ol!=null&&ol.size()!=0){
                                //System.out.println(f.getName()+"----"+ol.size());
-                                count++;
+                                count+=3;
                             }
                         }else{
+                        size++;
                             Object o = f.get(resume);
                             if(o!=null&&!o.equals("")){
                                //System.out.println(f.getName());

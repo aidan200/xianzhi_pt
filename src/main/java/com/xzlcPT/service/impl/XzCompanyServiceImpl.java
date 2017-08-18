@@ -260,6 +260,35 @@ public class XzCompanyServiceImpl implements XzCompanyService{
         List<XzCompany> xzCompanyList=companyMapper.selectRecommend();
         return xzCompanyList;
     }
+    //公司信息完成度
+    @Override
+    public XzCompany updateCompletionById(Long companyId) {
+        XzCompany xzCompany=companyMapper.selectByPrimaryKey(companyId);
+        return null;
+    }
+
+    //以下为管理员操作方法
+    //查询所有执照状态为1的公司
+    @Override
+    public List<XzCompany> selAllCompanyExamine() {
+        List<XzCompany> xzCompanyList=companyMapper.selAllCompanyExamine();
+        return xzCompanyList;
+    }
+
+    //按公司id查询与预览
+    @Override
+    public XzCompany selCompanyById(Long companyId) {
+        XzCompany xzCompany=companyMapper.selCompanyById(companyId);
+        return xzCompany;
+    }
+
+    //修改执照审核状态
+    @Override
+    public int updateCompanyState(XzCompany xzCompany) {
+        int i=companyMapper.updateCompanyState(xzCompany);
+        return i;
+    }
+
 
 
 }
