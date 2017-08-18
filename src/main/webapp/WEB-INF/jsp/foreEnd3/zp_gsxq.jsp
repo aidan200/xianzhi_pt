@@ -170,7 +170,7 @@
                                 <div class="zp_gsxq_zpzw_li_left">
                                     <p>
                                         <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${po.postionId}">${po.postionName}</a>
-                                        <button type="button" class="gsxq_bu">立即应聘</button>
+                                        <a href="${pageContext.request.contextPath}/Postion/selPostionInfo.do?postionId=${po.postionId}"><button type="button" class="gsxq_bu">立即应聘</button></a>
                                     </p>
                                     <p><span>
                                         <c:choose>
