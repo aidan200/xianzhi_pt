@@ -14,6 +14,15 @@ ojdt+='</div>'
 ojdt+='</div>'
 ojdt+='</div>'
 
+
+
+
+
+
+
+
+
+
 function th(obj){
     // var qwe=/\n/.test(obj);
     var ss = obj.replace(/\n/g,"<br>");
@@ -577,7 +586,7 @@ obj_zbzl.prototype.bindingSJ=function () {      //绑定的事件
             str+='<ul>'
             str+='<li class="csny__" style="position: relative;">'
             str+='出生年月'
-            if(getNowFormatDate(_self.cstime)!=''&&getNowFormatDate(_self.cstime)!=null){
+            if(_self.cstime!=''&&_self.cstime!=null){
                 str+='<input class="form-control workinput wicon Date1 " value="'+getNowFormatDate(_self.cstime)+'" style="background-color: #ffffff;" id="jl_cstime" placeholder="请选择你的出生日期" readonly>'
             }else{
                 str+='<input class="form-control workinput wicon Date1 " value="" style="background-color: #ffffff;" id="jl_cstime" placeholder="请选择你的出生日期" readonly>'
@@ -1080,6 +1089,8 @@ obj_zyyx.prototype.bindingSJ=function (){
                 };
                 var aaa=number('#_zwnx_');
                 var bbb=number('#nx_ym');
+                var ccc=number('#_mqnx_');
+                var ddd=number('#nx_mm');
                 function bdxy(){
                     if(pcont.fields.length==0){
                         $('#zp_qwhy').css({
@@ -1103,20 +1114,39 @@ obj_zyyx.prototype.bindingSJ=function (){
                         return
                     }
 
+
                     if(aaa){
                         $('#_zwnx_').css({"color":"#555555"})
+
                     }else{
                         $('#_zwnx_').css({"color":"red"})
-                        alert('只能输入1-8位的数字')
+                        alert('期望年薪不得为空且只能为数字')
                         return
                     }
                     if(bbb){
                         $('#nx_ym').css({"color":"#555555"})
                     }else{
                         $('#nx_ym').css({"color":"red"})
-                        alert('只能输入1-8位的数字')
+                        alert('月数不得为空且只能为数字')
                         return
                     }
+                    if(ccc){
+                        $('#_mqnx_').css({"color":"#555555"})
+                    }else{
+                        $('#_mqnx_').css({"color":"red"})
+                        alert('目前年薪不得为空且只能为数字')
+                        return
+                    }
+                    if(ddd){
+                        $('#nx_mm').css({"color":"#555555"})
+                    }else{
+                        $('#nx_mm').css({"color":"red"})
+                        alert('月数不得为空且只能为数字')
+                        return
+                    }
+
+
+
                     if(pcont.resumeMm==''||pcont.resumeMm==null){
                         $('#_mqnx_').addClass('jl_name');
                         $('#_mqnx_').focus()
@@ -1124,7 +1154,7 @@ obj_zyyx.prototype.bindingSJ=function (){
                     }
                 }
                 bdxy()
-                if(pcont.fields.length!=0&&pcont.resumeIntentPosition!=''&&pcont.resumeIntentPosition!=null&&pcont.resumeIntentWorkspace!=''&&pcont.resumeIntentWorkspace!=null&&pcont.resumeIntentMm!=''&&pcont.resumeIntentMm!=null&&pcont.resumeMm!=''&&pcont.resumeMm!=null&&aaa==true&&bbb==true){
+                if(pcont.fields.length!=0&&pcont.resumeIntentPosition!=''&&pcont.resumeIntentPosition!=null&&pcont.resumeIntentWorkspace!=''&&pcont.resumeIntentWorkspace!=null&&pcont.resumeIntentMm!=''&&pcont.resumeIntentMm!=null&&pcont.resumeMm!=''&&pcont.resumeMm!=null&&aaa==true&&bbb==true&&ccc==true&&ddd==true){
                     $('.zp_jianli_zl_3').append(ojdt);
                     $(this).unbind('click')
                     $.ajax({
@@ -1243,30 +1273,36 @@ obj_gzjl.prototype.bindingSJ=function (){
             $('.li_03').css({"height":"30px"});
             $('.gsly_xg').css({
                 "height":"30px",
-                "line-height":"10px"
+                "line-height":"10px",
+                "color":"#999999",
+
             }).html("请选择公司领域")
 
         }else{
             $('.li_03').css({"height":"auto"});
             $('.gsly_xg').css({
                 "height":"auto",
-                "line-height":"26px"
+                "line-height":"26px",
+                'border-color':"#cccccc"
             })
         }
+
         $('.gsly_xg a').on('click',function (){
             $(this).parent().remove();
             if( $('.gsly_xg div').length==0){
                 $('.li_03').css({"height":"30px"})
                 $('.gsly_xg').css({
                     "height":"30px",
-                    "line-height":"10px"
+                    "line-height":"10px",
+                    "color":"#999999"
                 }).html("请选择公司领域")
 
             }else{
                 $('.li_03').css({"height":"auto"})
                 $('.gsly_xg').css({
                     "height":"auto",
-                    "line-height":"26px"
+                    "line-height":"26px",
+                    'border-color':"#cccccc"
                 })
             }
         })
@@ -1381,10 +1417,10 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='<li>'
                 str+='任职时间'
                 str+='<div class="zp_jianli_zl_4_div2" style="position: relative" >'
-                str+='<input class="form-control rzsh_input "  id="rzsj__" value="'+getNowFormatDate(_self.obj_s[index].rzsj)+'" placeholder="请输入任职时间" readonly style="background-color: #ffffff"> '
+                str+='<input class="form-control rzsh_input "  id="rzsj__" data-time="'+_self.obj_s[index].rzsj+'" value="'+getNowFormatDate(_self.obj_s[index].rzsj)+'" placeholder="请输入任职时间" readonly style="background-color: #ffffff"> '
                 str+='<em class="em3"  style="left: 150px"></em>'
                 str+='&nbsp;&nbsp;离职时间'
-                str+='<input class="form-control pull-right lzsj_input" id="lzsj__" value="'+getNowFormatDate(_self.obj_s[index].lzsj)+'"placeholder="请输入离职时间" readonly style="background-color: #ffffff"> '
+                str+='<input class="form-control pull-right lzsj_input" id="lzsj__" data-time="'+_self.obj_s[index].lzsj+'" value="'+getNowFormatDate(_self.obj_s[index].lzsj)+'"placeholder="请输入离职时间" readonly style="background-color: #ffffff"> '
                 str+='<em class="em3" ></em>'
                 str+='</div>'
                 str+='</li>'
@@ -1392,14 +1428,18 @@ obj_gzjl.prototype.bindingSJ=function (){
                 str+='<div>'
                 str+='<span>职责业绩</span>'
                 str+='<textarea placeholder="请输入职责业绩" id="zzyj__">'+_self.obj_s[index].zzyj+'</textarea>'
+
                 str+='<div style="clear: both;"></div>'
                 str+='</div>'
+                str+='<p class="sr_sz">你还可以输入<span>600</span>个字</p>'
                 str+='<div class="zp_jianli_zl_2_bottom">'
                 str+='<button type="button" class="allyes">确定</button>'
                 str+='<button class="allno" id="jbzl_4_qx" type="button">取消</button>'
                 str+='</div>'
                 str+='</div>'
                 $('#gzjl').siblings('div').eq(index).after(str);  //插入
+
+                 LimitInput2('#zzyj__',600,'.sr_sz span');
 
                 didian("#gzjl_gzdd","#gzdd___")
                 $('#xxrs__').unbind().on('keyup',function (){
@@ -1511,7 +1551,7 @@ obj_gzjl.prototype.bindingSJ=function (){
 
                     }else{
                         $('#yx___').css({"color":"red"})
-                        alert('只能输入1-8位的数字')
+                        alert('月薪不得为空且只能是数字')
                         return
                     }
 
@@ -1534,7 +1574,7 @@ obj_gzjl.prototype.bindingSJ=function (){
 
                     }else{
                         $('#xxrs__').css({"color":"red"})
-                        alert('只能输入1-8位的数字')
+                        alert('下属人数不得为空且只能是数字')
                         return
                     }
 
@@ -1548,6 +1588,14 @@ obj_gzjl.prototype.bindingSJ=function (){
                         $('#lzsj__').focus();
                         return
                     }
+                    var aaa= temporal (obj_gzjl.jobexpBeginTime,obj_gzjl.jobexpEndTime);
+                    if(!aaa){
+                        alert('时间输入错误请查看是否正确')
+                        return
+                    }
+
+
+
                     if(obj_gzjl.jobexpDuty==''||obj_gzjl.jobexpDuty==null){
                         $('#zzyj__').addClass('jl_name');
                         $('#zzyj__').focus();
@@ -1666,12 +1714,16 @@ obj_gzjl.prototype.bindingSJ=function (){
             str+='<textarea placeholder="请输入职责业绩" id="zzyj__" ></textarea>'
             str+='<div style="clear: both;"></div>'
             str+='</div>'
+            str+='<p class="sr_sz">你还可以输入<span>600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
             str+='<button type="button" class="allyes"">确定</button>'
             str+='<button class="allno" id="jbzl_4_qx" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
-            $(this).before(str)//插入简历的空白模板
+            $(this).before(str);//插入简历的空白模板
+
+            LimitInput2('#zzyj__',600,'.sr_sz span');
+
             didian("#gzjl_gzdd","#gzdd___")
             $('#xxrs__').unbind().on('keyup',function (){
                 var num_kg=number('#xxrs__');
@@ -1681,6 +1733,15 @@ obj_gzjl.prototype.bindingSJ=function (){
                     $('#xxrs__').css({"color":"red"})
                 }
             });
+            $('#yx___').unbind().on('keyup',function (){
+                var num_kg=number('#yx___');
+                if(num_kg){
+                    $('#yx___').css({"color":"#555555"})
+                }else{
+                    $('#yx___').css({"color":"red"})
+                }
+            });
+
 
             eee('#gsmc___')
             eee('#zwmc___')
@@ -1747,7 +1808,9 @@ obj_gzjl.prototype.bindingSJ=function (){
                     resumeId:ID,                                                 //简历ID
                 };
 
+                var yx_kg=number('#yx___');
                 var num_kg=number('#xxrs__');
+                var aaa= temporal (obj_gzjl.jobexpBeginTime,obj_gzjl.jobexpEndTime);
                 function bdyz(){
                     if(obj_gzjl.jobexpCompanyName==''||obj_gzjl.jobexpCompanyName==null){
                         $('#gsmc___').addClass('jl_name');
@@ -1759,10 +1822,22 @@ obj_gzjl.prototype.bindingSJ=function (){
                             "border-color":"#FF4600"
                         })
                         return
+                    }else{
+                        $('.gsly_xg').css({
+                            "border-color":"#CCCCCCCCCCCC"
+                        })
                     }
                     if(obj_gzjl.jobexpMm==''||obj_gzjl.jobexpMm==null){
                         $('#yx___').addClass('jl_name');
                         $('#yx___').focus();
+                        return
+                    }
+                    if(yx_kg){
+
+                    }else{
+                        $('#yx___').css({"color":"red"})
+                        $('#yx___').focus();
+                        alert('月薪不得为空且只能为数字')
                         return
                     }
                     if(obj_gzjl.jobexpPostion==''||obj_gzjl.jobexpPostion==null){
@@ -1785,7 +1860,7 @@ obj_gzjl.prototype.bindingSJ=function (){
                     }else{
                         $('#xxrs__').css({"color":"red"})
                         $('#xxrs__').focus();
-                        alert('只能输入1-8位的数字')
+                        alert('下属人数不得为空且只能是数字')
                         return
                     }
                     if(obj_gzjl.jobexpBeginTime==''||obj_gzjl.jobexpBeginTime==null){
@@ -1798,35 +1873,41 @@ obj_gzjl.prototype.bindingSJ=function (){
                         $('#lzsj__').focus();
                         return
                     }
+
+                    if(!aaa){
+                        alert('时间输入错误请查看是否正确')
+                        return
+                    }
+
                     if(obj_gzjl.jobexpDuty==''||obj_gzjl.jobexpDuty==null){
                         $('#zzyj__').addClass('jl_name');
                         $('#zzyj__').focus();
                         return
                     }
+                    if(obj_gzjl.jobexpCompanyName!=''&&obj_gzjl.jobexpCompanyName!=null&&obj_gzjl.fields.length!=0&&obj_gzjl.jobexpPostion!=''&&obj_gzjl.jobexpPostion!=null&&obj_gzjl.fields.length!=0&&obj_gzjl.jobexpWorkspace!=''&&obj_gzjl.jobexpWorkspace!=null&&obj_gzjl.jobexpSubordinate!=''&&obj_gzjl.jobexpSubordinate!=null&&obj_gzjl.jobexpBeginTime!=''&&obj_gzjl.jobexpBeginTime!=null&&obj_gzjl.jobexpEndTime!=''&&obj_gzjl.jobexpEndTime!=null&&obj_gzjl.jobexpDuty!=''&&obj_gzjl.jobexpDuty!=null&&num_kg){
+                        $('.zp_jianli_zl_4').append(ojdt);
+                        $.ajax({
+                            type:"post",    //提交方式
+                            async:true,  //是否异步
+                            contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                            data:JSON.stringify(obj_gzjl),        //转为JSON格式
+                            dataType:'text',                   //定义返回data类型
+                            url:path+'JobExp/insertJobExp.do',    //路径
+                            success:function (data){//data 就是数据 json
+                                $(This2).parent().parent().remove();               //自杀
+                                $('#gzjl').siblings('div').remove();
+                                _self.init();
+                                flashResume()           //刷新简历
 
+                            },error:function (){ //报错执行的
+                                alert('基本资料修改错误')
+                            }
+
+                        })
+                    }
                 }
                 bdyz()
-                if(obj_gzjl.jobexpCompanyName!=''&&obj_gzjl.jobexpCompanyName!=null&&obj_gzjl.fields.length!=0&&obj_gzjl.jobexpPostion!=''&&obj_gzjl.jobexpPostion!=null&&obj_gzjl.fields.length!=0&&obj_gzjl.jobexpWorkspace!=''&&obj_gzjl.jobexpWorkspace!=null&&obj_gzjl.jobexpSubordinate!=''&&obj_gzjl.jobexpSubordinate!=null&&obj_gzjl.jobexpBeginTime!=''&&obj_gzjl.jobexpBeginTime!=null&&obj_gzjl.jobexpEndTime!=''&&obj_gzjl.jobexpEndTime!=null&&obj_gzjl.jobexpDuty!=''&&obj_gzjl.jobexpDuty!=null&&num_kg){
-                    $('.zp_jianli_zl_4').append(ojdt);
-                    $.ajax({
-                        type:"post",    //提交方式
-                        async:true,  //是否异步
-                        contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
-                        data:JSON.stringify(obj_gzjl),        //转为JSON格式
-                        dataType:'text',                   //定义返回data类型
-                        url:path+'JobExp/insertJobExp.do',    //路径
-                        success:function (data){//data 就是数据 json
-                            $(This2).parent().parent().remove();               //自杀
-                            $('#gzjl').siblings('div').remove();
-                            _self.init();
-                            flashResume()           //刷新简历
 
-                        },error:function (){ //报错执行的
-                            alert('基本资料修改错误')
-                        }
-
-                    })
-                }
 
             })
         }
@@ -1995,6 +2076,8 @@ obj_yyjl.prototype.bindingSJ=function (){
                                 educationEntrance:patent2.find('input:checked').length,   //是否统招
                                  educationLevel:patent2.find('select').eq(0).val(),        // 学历
                             };
+                        var sj=temporal(jyjl.enrollmentDate,jyjl.graduateDate)
+
                             function bdyz(){
                                 if(jyjl.educationSchool==''||jyjl.educationSchool==null){
                                     $('#_xxmc_').addClass('jl_name')
@@ -2016,35 +2099,42 @@ obj_yyjl.prototype.bindingSJ=function (){
                                     $('#_bynf_').focus()
                                     return
                                 }
-                            }
-                        bdyz()
-                        if(jyjl.educationSchool!=''&&jyjl.educationSchool!=null&&jyjl.educationMajor!=''&&jyjl.educationMajor!=null&&jyjl.enrollmentDate!=''&&jyjl.enrollmentDate!=null&&jyjl.graduateDate!=''&&jyjl.graduateDate!=null){
-                            $('.zp_jianli_zl_5').append(ojdt);
-                            $(this).unbind('click')
-
-                            $.ajax({
-                                type:"post",    //提交方式
-                                async:true,  //是否异步
-                                contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
-                                data:JSON.stringify(jyjl),        //转为JSON格式
-                                dataType:'text',                   //定义返回data类型
-                                url:path+'Education/updateEducation.do',    //路径
-                                success:function (data){//data 就是数据 json
-                                    $(This).parent().parent().prev().css({"display":"block"})
-                                    $(This).parent().parent().remove();
-                                    var aaa=$('.zp_jianli_cont_left_xl > div')
-                                    for(var i=1;i<aaa.length-1;i++){            //清空之前的经历
-                                        aaa.eq(i).remove();
-                                    }
-                                    _self.init();
-                                    flashResume()           //刷新简历
-
-                                },error:function (){ //报错执行的
-                                    alert('基本资料修改错误')
+                                if(!sj){
+                                    alert('时间输入错误请查看是否正确')
+                                    return
                                 }
 
-                            })
-                        }
+                                if(jyjl.educationSchool!=''&&jyjl.educationSchool!=null&&jyjl.educationMajor!=''&&jyjl.educationMajor!=null&&jyjl.enrollmentDate!=''&&jyjl.enrollmentDate!=null&&jyjl.graduateDate!=''&&jyjl.graduateDate!=null){
+                                    $('.zp_jianli_zl_5').append(ojdt);
+                                    $(this).unbind('click')
+
+                                    $.ajax({
+                                        type:"post",    //提交方式
+                                        async:true,  //是否异步
+                                        contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                                        data:JSON.stringify(jyjl),        //转为JSON格式
+                                        dataType:'text',                   //定义返回data类型
+                                        url:path+'Education/updateEducation.do',    //路径
+                                        success:function (data){//data 就是数据 json
+                                            $(This).parent().parent().prev().css({"display":"block"})
+                                            $(This).parent().parent().remove();
+                                            var aaa=$('.zp_jianli_cont_left_xl > div')
+                                            for(var i=1;i<aaa.length-1;i++){            //清空之前的经历
+                                                aaa.eq(i).remove();
+                                            }
+                                            _self.init();
+                                            flashResume()           //刷新简历
+
+                                        },error:function (){ //报错执行的
+                                            alert('基本资料修改错误')
+                                        }
+
+                                    })
+                                }
+
+                            }
+                        bdyz()
+
 
 
                      })
@@ -2162,6 +2252,8 @@ obj_yyjl.prototype.bindingSJ=function (){
                     educationEntrance:patent2.find('input:checked').length,         //是否统招
                     educationLevel:trim(patent2.find('select').eq(0).val()),        // 学历
                 };
+                var sj=temporal(jyjl.enrollmentDate,jyjl.graduateDate)
+
                 function bdyz(){
                     if(jyjl.educationSchool==''||jyjl.educationSchool==null){
                         $('#_xxmc_').addClass('jl_name')
@@ -2183,31 +2275,36 @@ obj_yyjl.prototype.bindingSJ=function (){
                         $('#_bynf_').focus()
                         return
                     }
+                    if(!sj){
+                        alert('时间输入错误请查看是否正确')
+                        return
+                    }
+                    if(jyjl.educationSchool!=''&&jyjl.educationSchool!=null&&jyjl.educationMajor!=''&&jyjl.educationMajor!=null&&jyjl.enrollmentDate!=''&&jyjl.enrollmentDate!=null&&jyjl.graduateDate!=''&&jyjl.graduateDate!=null){
+                        $('.zp_jianli_zl_5').append(ojdt);
+                        $.ajax({
+                            type:"post",    //提交方式
+                            async:true,  //是否异步
+                            contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                            data:JSON.stringify(jyjl),        //转为JSON格式
+                            dataType:'text',                   //定义返回data类型
+                            url:path+'Education/insertEducation.do',    //路径
+                            success:function (data){//data 就是数据 json
+                                var aa=$('.zp_jianli_cont_left_xl > div');
+                                for(var i=1;i<aa.length-1;i++){
+                                    aa.eq(i).remove();
+                                }
+                                _self.init();
+                                flashResume()           //刷新简历
+
+                            },error:function (){ //报错执行的
+                                alert('基本资料修改错误')
+                            }
+
+                        })
+                    }
                 }
                 bdyz()
-                if(jyjl.educationSchool!=''&&jyjl.educationSchool!=null&&jyjl.educationMajor!=''&&jyjl.educationMajor!=null&&jyjl.enrollmentDate!=''&&jyjl.enrollmentDate!=null&&jyjl.graduateDate!=''&&jyjl.graduateDate!=null){
-                    $('.zp_jianli_zl_5').append(ojdt);
-                    $.ajax({
-                        type:"post",    //提交方式
-                        async:true,  //是否异步
-                        contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
-                        data:JSON.stringify(jyjl),        //转为JSON格式
-                        dataType:'text',                   //定义返回data类型
-                        url:path+'Education/insertEducation.do',    //路径
-                        success:function (data){//data 就是数据 json
-                            var aa=$('.zp_jianli_cont_left_xl > div');
-                            for(var i=1;i<aa.length-1;i++){
-                                aa.eq(i).remove();
-                            }
-                            _self.init();
-                            flashResume()           //刷新简历
 
-                        },error:function (){ //报错执行的
-                            alert('基本资料修改错误')
-                        }
-
-                    })
-                }
 
 
 
@@ -2311,7 +2408,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                 str+='<span>项目描述</span>'
                 str+='<div>'
                 str+='<textarea id="xmjy_xmms" placeholder="请填写项目描述">'+_self.obj_s[index].xmms+'</textarea>'
-                str+='<p>您还可以输入 <span>900</span>个字</p>'
+                str+='<p>您还可以输入 <span id="xmms_length">600</span>个字</p>'
                 str+='</div>'
                 str+='<div style="clear: both;"></div>'
                 str+='</div>'
@@ -2319,7 +2416,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                 str+='<span>项目职责</span>'
                 str+='<div>'
                 str+='<textarea id="xmjy_xmzz" placeholder="请填写项目职责">'+_self.obj_s[index].zz+'</textarea>'
-                str+='<p>您还可以输入 <span>900</span>个字</p>'
+                str+='<p>您还可以输入 <span id="xmzz_length">600</span>个字</p>'
                 str+='</div>'
                 str+='<div style="clear: both;"></div>'
                 str+='</div>'
@@ -2330,6 +2427,10 @@ obj_xmjy.prototype.bindingSJ=function (){
                 str+='</div>'
                 str+=' </div>'
                 $(this).parent().after(str);//插入进去
+
+                LimitInput2('#xmjy_xmms',600,'#xmms_length');              //限制字数
+                LimitInput2('#xmjy_xmzz',600,'#xmzz_length');              //限制字数
+
                 eee('#ttk_xmmc')
                 eee('#ttk_xmzw')
                 eee('#xmjy_xmms')
@@ -2373,6 +2474,7 @@ obj_xmjy.prototype.bindingSJ=function (){
                         proexpDuty:xmjy.find('textarea').eq(1).val(),
                         proexpId:xmjy.attr('data-id')
                     }
+                    var sj=temporal(qrxg.proexpBeginTime,qrxg.proexpEndTime);
                     function bdxy(){
                         if(qrxg.proexpName==''||qrxg.proexpName==null){
                             $('#ttk_xmmc').addClass('jl_name')
@@ -2394,6 +2496,12 @@ obj_xmjy.prototype.bindingSJ=function (){
                             $('#xmjy_jssj').focus()
                             return
                         }
+
+                        if(!sj){
+                            alert('时间输入错误请查看是否正确')
+                            return
+                        }
+
                         if(qrxg.proexpDescribe==''||qrxg.proexpDescribe==null){
                             $('#xmjy_xmms').addClass('jl_name')
                             $('#xmjy_xmms').focus()
@@ -2404,30 +2512,31 @@ obj_xmjy.prototype.bindingSJ=function (){
                             $('#xmjy_xmzz').focus()
                             return
                         }
+                        if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.proexpBeginTime!=''&&qrxg.proexpBeginTime!=null&&qrxg.proexpEndTime!=''&&qrxg.proexpEndTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
+                            $('.zp_jianli_zl_7').append(ojdt);
+                            $.ajax({
+                                type:"post",    //提交方式
+                                async:true,  //是否异步
+                                contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                                data:JSON.stringify(qrxg),        //转为JSON格式
+                                dataType:'json',                   //定义返回data类型
+                                url:path+'ProjectExp/updateProjectExp.do',    //路径
+                                success:function (data){//data 就是数据 json
+                                    var aa=$('.zp_jianli_cont_left_xmjy > div')
+                                    for(var i=1;i<aa.length-1;i++){
+                                        aa.eq(i).remove();
+                                    }
+                                    _self.init();
+                                    flashResume()           //刷新简历
+                                },error:function (){ //报错执行的
+                                    alert('基本资料修改错误')
+                                }
+                            })
+
+                        }
                     }
                     bdxy()
-                    if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.proexpBeginTime!=''&&qrxg.proexpBeginTime!=null&&qrxg.proexpEndTime!=''&&qrxg.proexpEndTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
-                        $('.zp_jianli_zl_7').append(ojdt);
-                        $.ajax({
-                            type:"post",    //提交方式
-                            async:true,  //是否异步
-                            contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
-                            data:JSON.stringify(qrxg),        //转为JSON格式
-                            dataType:'json',                   //定义返回data类型
-                            url:path+'ProjectExp/updateProjectExp.do',    //路径
-                            success:function (data){//data 就是数据 json
-                                var aa=$('.zp_jianli_cont_left_xmjy > div')
-                                for(var i=1;i<aa.length-1;i++){
-                                    aa.eq(i).remove();
-                                }
-                                _self.init();
-                                flashResume()           //刷新简历
-                            },error:function (){ //报错执行的
-                                alert('基本资料修改错误')
-                            }
-                        })
 
-                    }
 
 
                 })
@@ -2483,7 +2592,7 @@ obj_xmjy.prototype.bindingSJ=function (){
              str+='<span>项目描述</span>'
              str+='<div>'
              str+='<textarea id="xmjy_xmms" placeholder="请填写项目描述"></textarea>'
-             str+='<p>您还可以输入 <span>900</span>个字</p>'
+             str+='<p>您还可以输入 <span id="xmms_length">600</span>个字</p>'
              str+='</div>'
              str+='<div style="clear: both;"></div>'
              str+='</div>'
@@ -2491,7 +2600,7 @@ obj_xmjy.prototype.bindingSJ=function (){
              str+='<span>项目职责</span>'
              str+='<div>'
              str+='<textarea id="xmjy_xmzz" placeholder="请填写项目职责"></textarea>'
-             str+='<p>您还可以输入 <span>900</span>个字</p>'
+             str+='<p>您还可以输入 <span id="xmzz_length">600</span>个字</p>'
              str+='</div>'
              str+='<div style="clear: both;"></div>'
              str+='</div>'
@@ -2502,6 +2611,11 @@ obj_xmjy.prototype.bindingSJ=function (){
              str+='</div>'
              str+=' </div>'
              $(this).before(str) //插入进去
+
+             LimitInput2('#xmjy_xmms',600,'#xmms_length');              //限制字数
+             LimitInput2('#xmjy_xmzz',600,'#xmzz_length');              //限制字数
+
+
              eee('#ttk_xmmc')
              eee('#ttk_xmzw')
              eee('#xmjy_xmms')
@@ -2543,6 +2657,8 @@ obj_xmjy.prototype.bindingSJ=function (){
                      resumeId:ID,
 
                  }
+                 var sj=temporal(qrxg.proexpBeginTime,qrxg.proexpEndTime);
+
                  function bdxy(){
                      if(qrxg.proexpName==''||qrxg.proexpName==null){
                          $('#ttk_xmmc').addClass('jl_name')
@@ -2564,6 +2680,10 @@ obj_xmjy.prototype.bindingSJ=function (){
                          $('#xmjy_jssj').focus()
                          return
                      }
+                     if(!sj){
+                         alert('时间输入错误请查看是否正确')
+                         return
+                     }
                      if(qrxg.proexpDescribe==''||qrxg.proexpDescribe==null){
                          $('#xmjy_xmms').addClass('jl_name')
                          $('#xmjy_xmms').focus()
@@ -2574,33 +2694,34 @@ obj_xmjy.prototype.bindingSJ=function (){
                          $('#xmjy_xmzz').focus()
                          return
                      }
+                     if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.proexpBeginTime!=''&&qrxg.proexpBeginTime!=null&&qrxg.proexpEndTime!=''&&qrxg.proexpEndTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
+                         $('.zp_jianli_zl_7').append(ojdt);
+                         $(this).unbind()
+                         $.ajax({
+                             type:"post",    //提交方式
+                             async:true,  //是否异步
+                             contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
+                             data:JSON.stringify(qrxg),        //转为JSON格式
+                             dataType:'json',                   //定义返回data类型
+                             url:path+'ProjectExp/insertProjectExp.do',    //路径
+                             success:function (data){//data 就是数据 json
+                                 var odiv=$('.zp_jianli_cont_left_xmjy >div')
+                                 for(var i=1;i<odiv.length-1;i++){
+                                     odiv.eq(i).remove();
+                                 }
+                                 _self.init();
+                                 flashResume()           //刷新简历
+
+                             },error:function (){ //报错执行的
+                                 alert('基本资料修改错误')
+                             }
+
+                         })
+
+                     }
                  }
                  bdxy()
-                 if(qrxg.proexpName!=''&&qrxg.proexpName!=null&&qrxg.proexpPostion!=''&&qrxg.proexpPostion!=null&&qrxg.proexpBeginTime!=''&&qrxg.proexpBeginTime!=null&&qrxg.proexpEndTime!=''&&qrxg.proexpEndTime!=null&&qrxg.proexpDescribe!=''&&qrxg.proexpDescribe!=null&&qrxg.proexpDuty!=''&&qrxg.proexpDuty!=null){
-                     $('.zp_jianli_zl_7').append(ojdt);
-                    $(this).unbind()
-                     $.ajax({
-                         type:"post",    //提交方式
-                         async:true,  //是否异步
-                         contentType: "application/json",    //设置请求头文件格式要想后台传数据必须写
-                         data:JSON.stringify(qrxg),        //转为JSON格式
-                         dataType:'json',                   //定义返回data类型
-                         url:path+'ProjectExp/insertProjectExp.do',    //路径
-                         success:function (data){//data 就是数据 json
-                             var odiv=$('.zp_jianli_cont_left_xmjy >div')
-                             for(var i=1;i<odiv.length-1;i++){
-                                 odiv.eq(i).remove();
-                             }
-                             _self.init();
-                             flashResume()           //刷新简历
 
-                         },error:function (){ //报错执行的
-                             alert('基本资料修改错误')
-                         }
-
-                     })
-
-                 }
 
 
 
@@ -2656,17 +2777,22 @@ obj_zopj.prototype.bindingSJ=function (){
             var str='';
             str+='<div class="zp_jianli_zl_8">'
             if(_self.zopj!=''&&_self.zopj!=null){
-                str+='<textarea class="form-control" rows="3" placeholder="请填写自我评价">'+_self.zopj+'</textarea>'
+                str+='<textarea class="form-control" id="zp_zwpj" rows="3" placeholder="请填写自我评价">'+_self.zopj+'</textarea>'
             }else{
-                str+='<textarea class="form-control" rows="3"  placeholder="请填写自我评价"></textarea>'
+                str+='<textarea class="form-control" id="zp_zwpj" rows="3"  placeholder="请填写自我评价"></textarea>'
             }
-            str+='<p>你还可以输入<span>600</span>个字</p>'
+            str+='<p>你还可以输入<span id="zp_zwpj_length">600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
             str+='<button type="button" class="allyes">确定</button>'
             str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_zopj').after(str);
+
+            LimitInput2('#zp_zwpj',900,'#zp_zwpj_length');
+
+
+
             $('#zp_zopj').css({'display':"none"});
             $('.zp_jianli_zl_8').find('button').eq(1).on('click',function (){
                 kg=true;
@@ -2708,14 +2834,17 @@ obj_zopj.prototype.bindingSJ=function (){
             kg=false;
             var str='';
             str+='<div class="zp_jianli_zl_8">'
-            str+='<textarea class="form-control" rows="3"  placeholder="请填写自我评价"></textarea>'
-            str+='<p>你还可以输入<span>600</span>个字</p>'
+            str+='<textarea class="form-control" rows="3" id="zp_zwpj"  placeholder="请填写自我评价"></textarea>'
+            str+='<p>你还可以输入<span id="zp_zwpj_length">600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
             str+='<button type="button" class="allyes">确定</button>'
             str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_zopj').after(str);
+
+            LimitInput2('#zp_zwpj',900,'#zp_zwpj_length');              //限制字数
+
             $('#zp_zopj').css({'display':"none"});
             $('.zp_jianli_zl_8').find('button').eq(1).on('click',function (){
                 kg=true;
@@ -2796,18 +2925,22 @@ obj_fjxx.prototype.bindingSJ=function (){
             var str='';
             str+='<div class="zp_jianli_zl_9">'
             if(_self.fjxx!=''&&_self.fjxx!=null){
-                str+='<textarea class="form-control" rows="3"  placeholder="请填写附加信息">'+_self.fjxx+'</textarea>'
+                str+='<textarea class="form-control" rows="3" id="fjxx_cont"  placeholder="请填写附加信息">'+_self.fjxx+'</textarea>'
             }else{
-                str+='<textarea class="form-control" rows="3" placeholder="请填写附加信息"></textarea>'
+                str+='<textarea class="form-control" rows="3" id="fjxx_cont"  placeholder="请填写附加信息"></textarea>'
             }
 
-            str+='<p>你还可以输入<span>600</span>个字</p>'
+            str+='<p>你还可以输入<span id="fjxx_zs" >900</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
             str+='<button type="button" class="allyes">确定</button>'
             str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_fjxx').after(str);
+
+            LimitInput2('#fjxx_cont',900,'#fjxx_zs');              //限制字数
+
+
             $('#zp_fjxx').css({"display":"none"})
             $('.zp_jianli_zl_9').find('button').eq(1).on('click',function (){
                 kg=true;
@@ -2849,14 +2982,17 @@ obj_fjxx.prototype.bindingSJ=function (){
             kg=false
             var str='';
             str+='<div class="zp_jianli_zl_9">'
-            str+='<textarea class="form-control" rows="3" placeholder="请填写附加信息"></textarea>'
-            str+='<p>你还可以输入<span>600</span>个字</p>'
+            str+='<textarea class="form-control" id="fjxx_cont" rows="3" placeholder="请填写附加信息"></textarea>'
+            str+='<p>你还可以输入<span id="fjxx_zs">600</span>个字</p>'
             str+='<div class="zp_jianli_zl_2_bottom">'
             str+='<button type="button" class="allyes">确定</button>'
             str+='<button class="allno" type="button">取消</button>'
             str+='</div>'
             str+='</div>'
             $('#zp_fjxx').after(str);
+
+            LimitInput2('#fjxx_cont',900,'#fjxx_zs');              //限制字数
+
             $('#zp_fjxx').css({"display":"none"})
             $('.zp_jianli_zl_9').find('button').eq(1).on('click',function (){
                 kg=true;
@@ -3352,9 +3488,81 @@ function number2(obj){                   //正则表达式
     var v = s.test($(obj).val())
     return v
 }
+function  temporal (time1,time2){       //判断时间
+    var BeginTime='';
+    var EndTime='';
+    time1.split('-').forEach(function (e,i) {
+        BeginTime+=e;
+    });
+    time2.split('-').forEach(function (e,i) {
+        EndTime+=e;
+    });
+
+    return BeginTime<=EndTime
+
+}
+
+
+function LimitInput2(input,sl,obj) {                        //限制数字
+
+    var length=$(input).val().length;
+    $(obj).html(sl-length);
+
+    $(input).on('keydown',function (e) {
+        console.log(e.keyCode)
+        var aaa=$(input).val();
+        $(input).on('keyup',function (e) {
+
+
+           if(aaa.length>=sl&&e.keyCode!=8&&e.keyCode!=37&&e.keyCode!=38&&e.keyCode!=39&&e.keyCode!=40){
+
+               var cont=$(input).val().substring(0,sl);
+               $(input).val(cont);
+           }
+            var length=$(input).val().length;
+            $(obj).html(sl-length);
+
+        })
+    })
 
 
 
+}
+function LimitInput(input,sl,obj){                  //这个方法没办法限制中文输入
+    $(input).on('keydown',function (e) {
+        var length=$(input).val().length;
+        var aa=$(input).val();
+        console.log(e.keyCode)
+        if(length>=sl&&e.keyCode!=8&&e.keyCode!=37&&e.keyCode!=38&&e.keyCode!=39&&e.keyCode!=40){
+
+            // var reg = /^[u4E00-u9FA5]+$/;
+            //
+
+
+
+            return false
+
+        }else{
+            $(input).on('keyup',function (e) {
+
+
+                var length=$(input).val().length;
+                $(obj).html(sl-length);
+            })
+        }
+
+    })
+
+}
+
+
+function isChn(str){
+    var reg = /^[u4E00-u9FA5]+$/;
+    if(!reg.test(str)){
+        return false;
+    }
+    return true;
+}
 
 
 $(function (){                              //入口函数

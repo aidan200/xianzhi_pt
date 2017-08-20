@@ -2186,3 +2186,12 @@ ul, li {
 
 }
 
+.sr_sz{
+    color: #c0c0c0;
+    padding: 0 40px;
+    text-align: right;
+
+}
+.sr_sz > span {
+    color: #000;
+}
